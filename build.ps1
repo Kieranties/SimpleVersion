@@ -3,10 +3,8 @@ param(
 	[String]$artifactsPath = (New-Item "$PSScriptRoot\artifacts" -ItemType Container -Force | % FullName)
 )
 
-#TODO: Ensure dotnet
+# Clean artifacts
+Get-ChildItem $artifactsPath | Remove-Item -Recurse
 
-Write-Host $artifactsPath
-
-#TODO: Run tests
-
+# Publish self-contained app
 dotnet publish "$srcPath\SimpleVersion.Command\SimpleVersion.Command.csproj" --output $artifactsPath
