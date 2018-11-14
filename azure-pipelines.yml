@@ -48,11 +48,10 @@ jobs:
   - task: DotNetCoreCLI@2
     inputs:
       command: 'publish'
-      projects:
-      - .\src\SimpleVersion.Command\SimpleVersion.Command.csproj
+      projects: src\SimpleVersion.Command\SimpleVersion.Command.csproj
       zipAfterPublish: true
       publishWebProjects: false
-      feedsToUse: .\nuget.config
+      feedsToUse: nuget.config
       restoreDirectory:
       packagesToPush: '$(Build.ArtifactStagingDirectory)/*.zip'
       configuration: '$(BuildConfiguration)'
