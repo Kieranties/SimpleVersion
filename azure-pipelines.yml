@@ -50,6 +50,7 @@ jobs:
       command: 'publish'
       projects: .\src\*.Command\*.csproj
       zipAfterPublish: true
+      publishWebProjects: false
       feedsToUse: .\nuget.config
       restoreDirectory:
       packagesToPush: '$(Build.ArtifactStagingDirectory)/*.zip'
