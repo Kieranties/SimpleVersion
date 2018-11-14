@@ -47,3 +47,19 @@ jobs:
   # Run the actual build script
   - powershell: .\build.ps1
     displayName: "PowerShell: build.ps1"
+
+  # Handle artifacts
+  - task: CopyFiles@1
+    inputs:
+      sourceFolder: .\artifacts
+      Contents: |
+        **\*.zip
+      TargetFolder: $(Build.ArtifactStagingDirectory)/distributables
+    displayName: Artifacts: Collect distributables
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: $(Build.ArtifactStagingDirectory)/distributables
+      ArtifactName: distributables
+      ArtifactType: Container
+    displayName: Artifacts: Publish distributables
+    condition: and(succeeded(), ne(variables['system.pullrequest.isfork'], true))
