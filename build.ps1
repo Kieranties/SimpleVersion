@@ -29,8 +29,11 @@ if($env:TF_Build){
 }
 
 # Publish self-contained app
-dotnet publish "$SrcPath\SimpleVersion.Command\SimpleVersion.Command.csproj" --output $ArtifactsPath --configuration Release
+dotnet publish "$SrcPath\SimpleVersion.Command\SimpleVersion.Command.csproj" --output $ArtifactsPath
 
 # Package
 $destination = "$ArtifactsPath\SimpleVersion.$Version$fullLabel.zip"
 Compress-Archive -Path $ArtifactsPath\*.exe,$PSScriptroot\Readme.md -DestinationPath $destination
+
+# Env dump
+Get-Item env:\
