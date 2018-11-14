@@ -26,10 +26,10 @@ jobs:
   steps:
   # PR branches should include the pr label part
   - powershell: |
-    if($env:BUILD_SOURCEBRANCH -match 'refs\/pull\/(?<id>\d+)\/merge'){
-        $env:VersionSuffix += ".pr$($matches.id)"
-        Write-Output "##vso[task.setvariable variable=VersionSuffix;]$env:VersionSuffix"
-    }
+      if($env:BUILD_SOURCEBRANCH -match 'refs\/pull\/(?<id>\d+)\/merge'){
+          $env:VersionSuffix += ".pr$($matches.id)"
+          Write-Output "##vso[task.setvariable variable=VersionSuffix;]$env:VersionSuffix"
+      }
     displayName: "PowerShell: Update build label"
 
   # Calculate the height - this will be reafactored in the future
