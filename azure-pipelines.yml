@@ -46,15 +46,16 @@ jobs:
 
   # Publish the command app
   - task: DotNetCoreCLI@2
-  inputs:
-    command: 'publish'
-    projects: .\src\*.Command\*.csproj
-    zipAfterPublish: true
-    feedsToUse: .\nuget.config
-    restoreDirectory:
-    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.zip'
-    configuration: '$(BuildConfiguration)'
-    versioningScheme: byEnvVar
+    inputs:
+      command: 'publish'
+      projects: .\src\*.Command\*.csproj
+      zipAfterPublish: true
+      feedsToUse: .\nuget.config
+      restoreDirectory:
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.zip'
+      configuration: '$(BuildConfiguration)'
+      versioningScheme: byEnvVar
+    displayName: "Publish: SimpleVersion.Command"
 
   # Handle artifacts
   - task: PublishBuildArtifacts@1
