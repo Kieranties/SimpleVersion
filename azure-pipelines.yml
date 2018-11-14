@@ -17,7 +17,7 @@ variables:
   TreatWarningsAsErrors: true
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_CLI_TELEMETRY_OPTOUT: false
-  BuildConfiguration: Release
+  Configuration: Release
 
 jobs:
 - job: Windows
@@ -53,7 +53,7 @@ jobs:
       publishWebProjects: false
       feedsToUse: nuget.config
       versioningScheme: byEnvVar
-      arguments: -o $(Build.ArtifactStagingDirectory)/distributables -c $(Build.Configuration)
+      arguments: -o $(Build.ArtifactStagingDirectory)/distributables
     displayName: "Publish: SimpleVersion.Command"
 
   # Handle artifacts
