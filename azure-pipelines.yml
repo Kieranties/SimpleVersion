@@ -55,11 +55,11 @@ jobs:
       Contents: |
         **\*.zip
       TargetFolder: $(Build.ArtifactStagingDirectory)/distributables
-    displayName: Artifacts: Collect distributables
+    displayName: "Artifacts: Collect distributables"
   - task: PublishBuildArtifacts@1
     inputs:
       PathtoPublish: $(Build.ArtifactStagingDirectory)/distributables
       ArtifactName: distributables
       ArtifactType: Container
-    displayName: Artifacts: Publish distributables
+    displayName: "Artifacts: Publish distributables"
     condition: and(succeeded(), ne(variables['system.pullrequest.isfork'], true))
