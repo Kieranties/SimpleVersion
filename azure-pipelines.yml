@@ -48,7 +48,7 @@ jobs:
   - task: DotNetCoreCLI@2
     inputs:
       command: 'publish'
-      projects: .\src\*.Command\*.csproj
+      projects: .\src\SimpleVersion.Command\*.csproj
       zipAfterPublish: true
       publishWebProjects: false
       feedsToUse: .\nuget.config
