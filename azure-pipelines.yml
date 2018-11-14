@@ -17,7 +17,7 @@ variables:
   TreatWarningsAsErrors: true
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_CLI_TELEMETRY_OPTOUT: false
-  Configuration: Release
+  BuildConfiguration: Release
 
 jobs:
 - job: Windows
@@ -32,7 +32,7 @@ jobs:
       }
     displayName: "PowerShell: Update build label"
 
-  # Calculate the height - this will be reafactored in the future
+  # Calculate the height - this will be refactored in the future
   - powershell: |
       $height = git rev-list --count HEAD
       $env:VersionSuffix = if($env:VersionSuffix){
@@ -44,18 +44,19 @@ jobs:
       Write-Output "##vso[task.setvariable variable=VersionSuffix;]$env:VersionSuffix"
     displayName: "PowerShell: Calculate Height"
 
-  # Run the actual build script
-  - powershell: .\build.ps1
-    displayName: "PowerShell: build.ps1"
+  # Publish the command app
+  - task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    projects: .\src\*.Command\*.csproj
+    zipAfterPublish: true
+    feedsToUse: .\nuget.config
+    restoreDirectory:
+    packagesToPush: '$(Build.ArtifactStagingDirectory)/*.zip'
+    configuration: '$(BuildConfiguration)'
+    versioningScheme: byEnvVar
 
   # Handle artifacts
-  - task: CopyFiles@1
-    inputs:
-      sourceFolder: .\artifacts
-      Contents: |
-        **\*.zip
-      TargetFolder: $(Build.ArtifactStagingDirectory)/distributables
-    displayName: "Artifacts: Collect distributables"
   - task: PublishBuildArtifacts@1
     inputs:
       PathtoPublish: $(Build.ArtifactStagingDirectory)/distributables

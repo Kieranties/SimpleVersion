@@ -7,13 +7,25 @@
     <TrimUnusedDependencies>true</TrimUnusedDependencies>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <!-- No pdbs for this project -->
+    <DebugType>None</DebugType>
+    <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
+    <!-- No pdbs from otehr projects -->
+    <AllowedReferenceRelatedFileExtensions>none</AllowedReferenceRelatedFileExtensions>
+    <!-- No deps.json -->
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <!-- No runtimeconfig.json -->
+    <GenerateRuntimeConfigurationFiles>false</GenerateRuntimeConfigurationFiles>
+  </PropertyGroup>
+
   <ItemGroup>
     <!-- Support ILMerge - Requires  Desktop Development for C++ workload from vs installer -->
     <PackageReference Include="Microsoft.DotNet.ILCompiler" Version="1.0.0-*" PrivateAssets="All" />
     <!-- Support trimming - reduces size when self-contained -->
     <PackageReference Include="Microsoft.Packaging.Tools.Trimming" Version="1.1.0-*" PrivateAssets="All" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\SimpleVersion.Git\SimpleVersion.Git.csproj" />
   </ItemGroup>
