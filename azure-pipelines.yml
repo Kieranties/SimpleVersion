@@ -52,10 +52,10 @@ jobs:
       zipAfterPublish: true
       publishWebProjects: false
       feedsToUse: nuget.config
-      restoreDirectory:
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.zip'
-      configuration: '$(BuildConfiguration)'
       versioningScheme: byEnvVar
+      arguments: |
+        -o $(Build.ArtifactStagingDirectory)/distributables
+        -c $(Build.Configuration)
     displayName: "Publish: SimpleVersion.Command"
 
   # Handle artifacts
