@@ -53,9 +53,7 @@ jobs:
       publishWebProjects: false
       feedsToUse: nuget.config
       versioningScheme: byEnvVar
-      arguments: |
-        -o $(Build.ArtifactStagingDirectory)/distributables
-        -c $(Build.Configuration)
+      arguments: -o $(Build.ArtifactStagingDirectory)/distributables -c $(Build.Configuration)
     displayName: "Publish: SimpleVersion.Command"
 
   # Handle artifacts
