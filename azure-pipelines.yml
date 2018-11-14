@@ -24,6 +24,15 @@ jobs:
   pool:
     vmImage: vs2017-win2016
   steps:
+  # PR branches should include the pr label part
+  - powershell: |
+    if($env:BUILD_SOURCEBRANCH -match 'refs\/pull\/(?<id>\d+)\/merge'){
+        $env:VersionSuffix += ".pr$($matches.id)"
+        Write-Output "##vso[task.setvariable variable=VersionSuffix;]$env:VersionSuffix"
+    }
+    displayName: "PowerShell: Update build label"
+
+  # Calculate the height - this will be reafactored in the future
   - powershell: |
       $height = git rev-list --count HEAD
       $env:VersionSuffix = if($env:VersionSuffix){
@@ -34,5 +43,7 @@ jobs:
       Write-Output "##vso[build.updatebuildnumber]$env:Version$env:VersionSuffix"
       Write-Output "##vso[task.setvariable variable=VersionSuffix;]$env:VersionSuffix"
     displayName: "PowerShell: Calculate Height"
+
+  # Run the actual build script
   - powershell: .\build.ps1
     displayName: "PowerShell: build.ps1"
