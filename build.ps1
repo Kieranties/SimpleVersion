@@ -23,6 +23,11 @@ $fullLabel = if($Label){
 $env:Version = $Version
 $env:VersionSuffix = $fullLabel
 
+# if running on the build server we want the build version to be updated
+if($env:TF_Build){
+	Write-Output "##vso[build.updatebuildnumber]$Version$fullLabel"
+}
+
 # Publish self-contained app
 dotnet publish "$SrcPath\SimpleVersion.Command\SimpleVersion.Command.csproj" --output $ArtifactsPath --configuration Release
 

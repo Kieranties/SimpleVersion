@@ -18,11 +18,10 @@ variables:
   BuildConfiguration: Release
   BuildPlatform: Any CPU
 
-
 jobs:
 - job: Windows
   pool:
     vmImage: vs2017-win2016
   steps:
   - powershell: .\build.ps1
-    displayName: "build.ps1"
+    displayName: "PowerShell: build.ps1"
