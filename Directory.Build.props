@@ -1,0 +1,19 @@
+<Project>
+    <!-- Meta properties: https://docs.microsoft.com/en-us/dotnet/core/tools/csproj -->
+    <PropertyGroup Label="Assembly Meta">
+        <Company>Kieranties</Company>
+        <Copyright>(c) Kieranties</Copyright>
+        <Description>SimpleVersion enables Semver2 versioning for a git repository</Description>
+        <FileVersion>$([System.Text.RegularExpressions.Regex]::Match($(Version), '\d+\.\d+\.\d+').Value).0</FileVersion>
+        <AssemblyVersion>$([System.Text.RegularExpressions.Regex]::Match($(Version), '\d+\.\d+').Value).0.0</AssemblyVersion>
+        <InformationalVersion>$(Version)$(VersionSuffix)</InformationalVersion>
+    </PropertyGroup>
+    <PropertyGroup Label="Package Meta">
+        <Authors>Kieran@Kieranties.com</Authors>
+        <PackageLicenseUrl>https://raw.githubusercontent.com/Kieranties/SimpleVersion/master/LICENSE</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/Kieranties/SimpleVersion</PackageProjectUrl>
+        <PackageTags>semver;versioning</PackageTags>
+        <RepositoryUrl>https://github.com/Kieranties/SimpleVersion</RepositoryUrl>
+        <MinClientVersion>4.3.0</MinClientVersion>
+    </PropertyGroup>
+</Project>

@@ -1,10 +1,31 @@
 param(
-	[String]$srcPath = (Resolve-Path "$PSScriptroot\src"),
-	[String]$artifactsPath = (New-Item "$PSScriptRoot\artifacts" -ItemType Container -Force | % FullName)
+	[String]$SrcPath = (Resolve-Path "$PSScriptroot\src"),
+	[String]$ArtifactsPath = (New-Item "$PSScriptRoot\artifacts" -ItemType Container -Force | ForEach-Object FullName),
+	[String]$Version = "0.1.0",
+	[String]$Label = "alpha1"
 )
 
 # Clean artifacts
-Get-ChildItem $artifactsPath | Remove-Item -Recurse
+Get-ChildItem $ArtifactsPath | Remove-Item -Recurse
+
+# For now, we are just counting the number of commits on this branch if we have a label
+# This will be modified in the future to use a subset of the functionality we are actually implementing
+
+# Assumes git is on the path
+$height = git rev-list --count HEAD
+$fullLabel = if($Label){
+	"-${Label}.${height}"
+} else {
+	"+${height}"
+}
+
+# Set version info
+$env:Version = $Version
+$env:VersionSuffix = $fullLabel
 
 # Publish self-contained app
-dotnet publish "$srcPath\SimpleVersion.Command\SimpleVersion.Command.csproj" --output $artifactsPath
+dotnet publish "$SrcPath\SimpleVersion.Command\SimpleVersion.Command.csproj" --output $ArtifactsPath --configuration Release
+
+# Package
+$destination = "$ArtifactsPath\SimpleVersion.$Version$fullLabel.zip"
+Compress-Archive -Path $ArtifactsPath\*.exe,$PSScriptroot\Readme.md -DestinationPath $destination
