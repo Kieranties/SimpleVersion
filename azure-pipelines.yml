@@ -24,10 +24,10 @@ jobs:
   pool:
     vmImage: vs2017-win2016
   steps:
-     - powershell: |
+  - powershell: |
       $height = git rev-list --count HEAD
       $env:VersionSuffix = if($env:VersionSuffix){
-        "-${env:VersionSuffix}.${height}"
+      "-${env:VersionSuffix}.${height}"
       } else {
         "+${height}"
       }
