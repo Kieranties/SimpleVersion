@@ -12,13 +12,27 @@ pr:
 - master
 
 variables:
+  Version: 0.1.0
+  VersionSuffix: alpha1
   TreatWarningsAsErrors: true
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
-  DOTNET_CLI_TELEMETRY_OPTOUT: true
-  BuildConfiguration: Release
-  BuildPlatform: Any CPU
+  DOTNET_CLI_TELEMETRY_OPTOUT: false
+  Configuration: Release
 
 jobs:
+- job: Calculate height
+  pool: server
+  steps:
+  - powershell: |
+    $height = git rev-list --count HEAD
+    $env:VersionSuffix = if($env:VersionSuffix){
+	    "-${env:VersionSuffix}.${height}"
+    } else {
+	    "+${height}"
+    }
+    Write-Output "##vso[build.updatebuildnumber]$env:Version$env:VersionSuffix"
+    Write-Output "##vso[task.setvariable variable=VersionSuffix;]$env:VersionSuffix"
+
 - job: Windows
   pool:
     vmImage: vs2017-win2016
