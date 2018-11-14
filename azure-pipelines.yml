@@ -24,14 +24,14 @@ jobs:
   pool: server
   steps:
   - powershell: |
-    $height = git rev-list --count HEAD
-    $env:VersionSuffix = if($env:VersionSuffix){
-	    "-${env:VersionSuffix}.${height}"
-    } else {
-	    "+${height}"
-    }
-    Write-Output "##vso[build.updatebuildnumber]$env:Version$env:VersionSuffix"
-    Write-Output "##vso[task.setvariable variable=VersionSuffix;]$env:VersionSuffix"
+      $height = git rev-list --count HEAD
+      $env:VersionSuffix = if($env:VersionSuffix){
+        "-${env:VersionSuffix}.${height}"
+      } else {
+        "+${height}"
+      }
+      Write-Output "##vso[build.updatebuildnumber]$env:Version$env:VersionSuffix"
+      Write-Output "##vso[task.setvariable variable=VersionSuffix;]$env:VersionSuffix"
 
 - job: Windows
   pool:
