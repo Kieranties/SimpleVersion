@@ -1,0 +1,74 @@
+# Build pipeline for Azure Devops
+trigger:
+  branches:
+    include:
+    - feature/*
+    - master
+  paths:
+    exclude:
+    - README.md
+
+pr:
+- master
+
+variables:
+  Version: 0.1.0
+  VersionSuffix: alpha1
+  TreatWarningsAsErrors: true
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: false
+  Configuration: Release
+
+jobs:
+- job: Windows
+  pool:
+    vmImage: vs2017-win2016
+  steps:
+  # PR branches should include the pr label part
+  - powershell: |
+      if($env:BUILD_SOURCEBRANCH -match 'refs\/pull\/(?<id>\d+)\/merge'){
+          $env:VersionSuffix += ".pr$($matches.id)"
+          Write-Output "##vso[task.setvariable variable=VersionSuffix;]$env:VersionSuffix"
+      }
+    displayName: "PowerShell: Update build label"
+
+  # Calculate the height - this will be refactored in the future
+  - powershell: |
+      $height = git rev-list --count HEAD
+      $env:VersionSuffix = if($env:VersionSuffix){
+      "-${env:VersionSuffix}.${height}"
+      } else {
+        "+${height}"
+      }
+      Write-Output "##vso[build.updatebuildnumber]$env:Version$env:VersionSuffix"
+      Write-Output "##vso[task.setvariable variable=VersionSuffix;]$env:VersionSuffix"
+    displayName: "PowerShell: Calculate Height"
+
+  # Publish the command app
+  - task: DotNetCoreCLI@2
+    inputs:
+      command: 'publish'
+      projects: src\SimpleVersion.Command\SimpleVersion.Command.csproj
+      publishWebProjects: false
+      feedsToUse: nuget.config
+      versioningScheme: byEnvVar
+      arguments: -o $(Build.ArtifactStagingDirectory)/distributables
+    displayName: "Publish: SimpleVersion.Command"
+
+  # Handle artifacts
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: $(Build.ArtifactStagingDirectory)/distributables
+      ArtifactName: distributables
+      ArtifactType: Container
+    displayName: "Artifacts: Publish distributables"
+    condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
+
+  - task: NuGetCommand@2
+    inputs:
+      command: push
+      searchPatternPush: $(Build.ArtifactStagingDirectory)/distributables/**/*.nupkg
+      nuGetFeedType: internal
+      publishVstsFeed: 'SimpleVersion'
+    displayName: "Publish: Project Feed"
+    condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
