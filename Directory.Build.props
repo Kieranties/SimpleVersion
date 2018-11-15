@@ -16,7 +16,7 @@
     <Authors>Kieran@Kieranties.com</Authors>
     <PackageLicenseUrl>https://raw.githubusercontent.com/Kieranties/SimpleVersion/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Kieranties/SimpleVersion</PackageProjectUrl>
-    <PackageTags>semver;versioning</PackageTags>
+    <PackageTags>semver;versioning;git</PackageTags>
     <RepositoryUrl>https://github.com/Kieranties/SimpleVersion</RepositoryUrl>
     <MinClientVersion>4.3.0</MinClientVersion>
   </PropertyGroup>
