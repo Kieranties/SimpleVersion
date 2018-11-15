@@ -1,0 +1,9 @@
+{
+  "Version": "1.2.3.4",
+  "Major": 1,
+  "Minor": 11,
+  "Patch": 111,
+  "Revision": 1111,
+  "Label": [ "alpha1" ],
+  "Metadata": [ "test" ]
+}
