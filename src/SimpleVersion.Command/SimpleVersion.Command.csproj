@@ -20,9 +20,9 @@
     <GenerateRuntimeConfigurationFiles>false</GenerateRuntimeConfigurationFiles>
   </PropertyGroup>
 
-  <PropertyGroup Label="Pack Customizations">
+  <PropertyGroup Label="Publish/Pack Customizations">
     <!-- We pack custom assets after the publish task -->
-    <!-- <IncludeContentInPack>false</IncludeContentInPack> -->
+    <IncludeContentInPack>false</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <GenerateNuspecDependsOn>$(GenerateNuspecDependsOn);_CustomPackFiles</GenerateNuspecDependsOn>
   </PropertyGroup>
@@ -45,6 +45,7 @@
     hence a post publish task.
   -->
   <Target Name="PostPublishPack" AfterTargets="Publish">
+
     <MSBuild Projects ="$(MSBuildProjectFullPath)"
              Properties="NoBuild=true;Configuration=$(Configuration);PackageOutputPath=$(PublishDir);$(IncludeContentInPack)=false"
              Targets="Pack" />
