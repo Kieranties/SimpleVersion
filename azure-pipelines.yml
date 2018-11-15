@@ -67,7 +67,7 @@ jobs:
   - task: NuGetCommand@2
     inputs:
       command: push
-      searchPatternPush: $(Build.ArtifactStagingDirectory)/distributables/**/*.nupkg
+      packagesToPush: $(Build.ArtifactStagingDirectory)/distributables/**/*.nupkg
       nuGetFeedType: internal
       publishVstsFeed: 'SimpleVersion'
     displayName: "Publish: Project Feed"
