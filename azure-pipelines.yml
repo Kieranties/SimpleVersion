@@ -58,7 +58,7 @@ jobs:
   # Handle artifacts
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: $(Build.ArtifactStagingDirectory)/distributables/**/*
+      PathtoPublish: $(Build.ArtifactStagingDirectory)/distributables
       ArtifactName: distributables
       ArtifactType: Container
     displayName: "Artifacts: Publish distributables"
