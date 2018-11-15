@@ -5,6 +5,7 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <TrimUnusedDependencies>true</TrimUnusedDependencies>
+    <AssemblyName>SimpleVersion</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
@@ -19,6 +20,13 @@
     <GenerateRuntimeConfigurationFiles>false</GenerateRuntimeConfigurationFiles>
   </PropertyGroup>
 
+  <PropertyGroup Label="Pack Customizations">
+    <!-- We pack custom assets after the publish task -->
+    <!-- <IncludeContentInPack>false</IncludeContentInPack> -->
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <GenerateNuspecDependsOn>$(GenerateNuspecDependsOn);_CustomPackFiles</GenerateNuspecDependsOn>
+  </PropertyGroup>
+
   <ItemGroup>
     <!-- Support ILMerge - Requires  Desktop Development for C++ workload from vs installer -->
     <PackageReference Include="Microsoft.DotNet.ILCompiler" Version="1.0.0-*" PrivateAssets="All" />
@@ -30,4 +38,24 @@
     <ProjectReference Include="..\SimpleVersion.Git\SimpleVersion.Git.csproj" />
   </ItemGroup>
 
+  <!--
+    The application is published to a native exe
+    We want to pack the native exe into the nuget package
+    However, the native exe can only be built on publish,
+    hence a post publish task.
+  -->
+  <Target Name="PostPublishPack" AfterTargets="Publish">
+    <MSBuild Projects ="$(MSBuildProjectFullPath)"
+             Properties="NoBuild=true;Configuration=$(Configuration);PackageOutputPath=$(PublishDir);$(IncludeContentInPack)=false"
+             Targets="Pack" />
+  </Target>
+
+  <Target Name="_CustomPackFiles">
+    <ItemGroup>
+      <_PackageFiles Include="$(PublishDir)\**\*">
+        <BuildAction>None</BuildAction>
+        <PackagePath>tools\</PackagePath>
+      </_PackageFiles>
+    </ItemGroup>
+  </Target>
 </Project>
