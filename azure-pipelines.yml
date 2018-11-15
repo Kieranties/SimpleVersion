@@ -49,7 +49,6 @@ jobs:
     inputs:
       command: 'publish'
       projects: src\SimpleVersion.Command\SimpleVersion.Command.csproj
-      zipAfterPublish: true
       publishWebProjects: false
       feedsToUse: nuget.config
       versioningScheme: byEnvVar
