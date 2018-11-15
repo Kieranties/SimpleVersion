@@ -62,4 +62,12 @@ jobs:
       ArtifactName: distributables
       ArtifactType: Container
     displayName: "Artifacts: Publish distributables"
-    condition: and(succeeded(), ne(variables['system.pullrequest.isfork'], true))
+    condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
+
+  - task: NuGetCommand@2
+    inputs:
+      command: push
+      nuGetFeedType: internal
+      publishVstsFeed: 'SimpleVersion'
+    displayName: "Publish: Project Feed"
+    #condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
