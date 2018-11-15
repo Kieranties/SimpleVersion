@@ -23,5 +23,7 @@
 
   <PropertyGroup Label="Build Attributes">
     <WarningsAsErrors>true</WarningsAsErrors>
+    <!-- Ignore wanring on usage of semver 2 versioning -->
+    <NoWarn>$(NoWarn);NU5105</NoWarn>
   </PropertyGroup>
 </Project>
