@@ -50,8 +50,9 @@ jobs:
       command: 'publish'
       projects: src\SimpleVersion.Command\SimpleVersion.Command.csproj
       publishWebProjects: false
+      zipAfterPublish: false
       feedsToUse: nuget.config
-      versioningScheme: byEnvVar
+      versioningScheme: 'off'
       arguments: -o $(Build.ArtifactStagingDirectory)/distributables
     displayName: "Publish: SimpleVersion.Command"
 
@@ -70,5 +71,5 @@ jobs:
       packagesToPush: $(Build.ArtifactStagingDirectory)/distributables/**/*.nupkg
       nuGetFeedType: internal
       publishVstsFeed: 'SimpleVersion'
-    displayName: "Publish: Project Feed"
+    displayName: "Publish: Test Feed"
     condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
