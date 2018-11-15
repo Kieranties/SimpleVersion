@@ -67,7 +67,8 @@ jobs:
   - task: NuGetCommand@2
     inputs:
       command: push
+      searchPatternPush: $(Build.ArtifactStagingDirectory)/distributables/**/*.nupkg
       nuGetFeedType: internal
       publishVstsFeed: 'SimpleVersion'
     displayName: "Publish: Project Feed"
-    #condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
+    condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
