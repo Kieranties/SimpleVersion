@@ -2,10 +2,16 @@
 
 namespace SimpleVersion.Command
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
+            /*
+             * Init repo
+             * Parse version.json
+             * Compare history of version.json
+             * return height
+             */
             Console.WriteLine("Hello World!");
         }
     }

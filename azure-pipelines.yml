@@ -2,7 +2,6 @@
 trigger:
   branches:
     include:
-    - feature/*
     - master
   paths:
     exclude:
@@ -71,5 +70,6 @@ jobs:
       packagesToPush: $(Build.ArtifactStagingDirectory)/distributables/**/*.nupkg
       nuGetFeedType: internal
       publishVstsFeed: 'SimpleVersion'
+      feedsToUse: nuget.config
     displayName: "Publish: Test Feed"
     condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))

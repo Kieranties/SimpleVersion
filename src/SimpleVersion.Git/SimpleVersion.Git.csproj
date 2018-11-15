@@ -8,4 +8,8 @@
     <ProjectReference Include="..\SimpleVersion.Abstractions\SimpleVersion.Abstractions.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="LibGit2Sharp" Version="0.26.0-*" />
+  </ItemGroup>
+
 </Project>

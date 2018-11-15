@@ -3,12 +3,12 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-    <TrimUnusedDependencies>true</TrimUnusedDependencies>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>    
     <AssemblyName>SimpleVersion</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TrimUnusedDependencies>true</TrimUnusedDependencies>
     <!-- No pdbs for this project -->
     <DebugType>None</DebugType>
     <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
