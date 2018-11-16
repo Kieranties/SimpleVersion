@@ -3,16 +3,17 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net462</TargetFramework>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <AssemblyName>SimpleVersion</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <TrimUnusedDependencies>true</TrimUnusedDependencies>
     <!-- No pdbs for this project -->
-    <!--<DebugType>None</DebugType>-->
-    <!--<CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>-->
+    <DebugType>None</DebugType>
+    <CopyOutputSymbolsToPublishDirectory>false</CopyOutputSymbolsToPublishDirectory>
     <!-- No pdbs from other projects -->
-    <!--<AllowedReferenceRelatedFileExtensions>none</AllowedReferenceRelatedFileExtensions>-->
+    <AllowedReferenceRelatedFileExtensions>none</AllowedReferenceRelatedFileExtensions>
   </PropertyGroup>
 
   <PropertyGroup Label="Publish/Pack Customizations">
@@ -21,12 +22,11 @@
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <GenerateNuspecDependsOn>$(GenerateNuspecDependsOn);_CustomPackFiles</GenerateNuspecDependsOn>
   </PropertyGroup>
-  
+
   <ItemGroup>
-    <!-- Support ILMerge - Requires  Desktop Development for C++ workload from vs installer -->
     <!-- Support trimming - reduces size when self-contained -->
     <PackageReference Include="Microsoft.Packaging.Tools.Trimming" Version="1.1.0-*" />
-    <!-- All references are private -->    
+    <!-- All references are private -->
     <PackageReference Update="@(PackageReference)" PrivateAssets="All" />
   </ItemGroup>
 
