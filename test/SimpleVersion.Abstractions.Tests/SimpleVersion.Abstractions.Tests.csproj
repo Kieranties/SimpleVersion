@@ -2,7 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <RootNamespace>SimpleVersion</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\SimpleVersion.Abstractions\SimpleVersion.Abstractions.csproj" />
+  </ItemGroup>
 
 </Project>
