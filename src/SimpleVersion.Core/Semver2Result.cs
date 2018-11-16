@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SimpleVersion
+﻿namespace SimpleVersion
 {
     public class Semver2Result : IVersionResult
     {
-        public Semver2Result(VersionModel model, int height)
+        public Semver2Result(VersionInfo info, int height)
         {
             Height = height;
-            Version = model.Version;
-            Label = string.Join(".", model.Label);
+            Version = info.Version;
+            Label = string.Join(".", info.Label);
 
             if (!string.IsNullOrWhiteSpace(Label))
                 Label += $".{Height}";
             else if (!string.IsNullOrWhiteSpace(MetaData))
                 MetaData += Height;
 
-            if (model.MetaData.Count > 0)
-                MetaData += $".{string.Join(".", model.MetaData)}";
+            if (info.MetaData.Count > 0)
+                MetaData += $".{string.Join(".", info.MetaData)}";
         }
 
         public int Height { get; }

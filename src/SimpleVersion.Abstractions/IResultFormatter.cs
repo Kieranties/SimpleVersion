@@ -2,6 +2,6 @@
 {
     public interface IResultFormatter
     {
-        IVersionResult Format(int height, VersionModel model);
+        IVersionResult Format(int height, VersionInfo info);
     }
 }

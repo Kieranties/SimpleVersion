@@ -1,23 +1,26 @@
 ﻿using LibGit2Sharp;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace SimpleVersion.Git
 {
-    public class GitRepository : IRepository
+    public class GitRepository
     {
-        private readonly IVersionModelReader _reader;
-        private Repository _repo;
+        private readonly IVersionInfoReader _reader;
 
-        public GitRepository(IVersionModelReader reader, string path)
+        public GitRepository(IVersionInfoReader reader, string path)
         {
+            ValidatePath(path);
+
             _reader = reader;
             Repository = new Repository(path);
         }
 
         public Repository Repository { get; }
 
-        public (int height, VersionModel model) GetResult()
+        public (int height, VersionInfo model) GetInfo()
         {
             var model = GetVersionModel(Repository.Head.Tip);
             var height = GetHeight(model);
@@ -25,7 +28,7 @@ namespace SimpleVersion.Git
             return (height, model);
         }
 
-        private int GetHeight(VersionModel model)
+        private int GetHeight(VersionInfo model)
         {
             // Get the current tree
             Tree last = Repository.Head.Tip.Tree;
@@ -53,7 +56,7 @@ namespace SimpleVersion.Git
             return count;
         }
 
-        private bool HasChange(TreeChanges diff, Commit commit, VersionModel model)
+        private bool HasChange(TreeChanges diff, Commit commit, VersionInfo model)
         {
             if (diff.Any(d => d.Path == Constants.VersionFileName))
             {
@@ -64,7 +67,7 @@ namespace SimpleVersion.Git
             return false;
         }
 
-        private VersionModel GetVersionModel(Commit commit)
+        private VersionInfo GetVersionModel(Commit commit)
         {
             var blob = commit.Tree[Constants.VersionFileName].Target as Blob;
             return _reader.Read(blob.GetContentText());
@@ -80,6 +83,25 @@ namespace SimpleVersion.Git
             };
 
             return Repository.Commits.QueryBy(filter).Reverse();
+        }
+
+        private void ValidatePath(string path)
+        {
+            if (string.IsNullOrWhiteSpace(path))
+            {
+                throw new ArgumentException("Null or empty repostiory path", nameof(path));
+            }
+
+            if (!Directory.Exists(path))
+            {
+                throw new DirectoryNotFoundException($"Directory '{path}' does not exist");
+            }
+
+            var gitPath = Path.Combine(path, ".git");
+            if (!Directory.Exists(gitPath))
+            {
+                throw new DirectoryNotFoundException($"Could not find git repository '{gitPath}'");
+            }
         }
     }
 }

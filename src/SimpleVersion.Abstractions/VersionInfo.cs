@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SimpleVersion
 {
-    public class VersionModel : IEquatable<VersionModel>
+    public class VersionInfo : IEquatable<VersionInfo>
     {
         public string Version { get; set; } = string.Empty;
 
@@ -11,7 +11,7 @@ namespace SimpleVersion
 
         public List<string> MetaData { get; } = new List<string>();
 
-        public bool Equals(VersionModel other)
+        public bool Equals(VersionInfo other)
         {
             if (other == null) return false;
 

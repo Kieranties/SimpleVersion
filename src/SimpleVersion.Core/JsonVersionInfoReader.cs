@@ -4,11 +4,11 @@ using Newtonsoft.Json;
 
 namespace SimpleVersion
 {
-    public class JsonVersionModelReader : IVersionModelReader
+    public class JsonVersionInfoReader : IVersionInfoReader
     {
-        public VersionModel Load() => Load(Directory.GetCurrentDirectory());
+        public VersionInfo Load() => Load(Directory.GetCurrentDirectory());
 
-        public VersionModel Load(string path)
+        public VersionInfo Load(string path)
         {
             if (string.IsNullOrWhiteSpace(path))
             {
@@ -25,6 +25,6 @@ namespace SimpleVersion
             return Read(File.ReadAllText(fullPath));
         }
 
-        public VersionModel Read(string text) => JsonConvert.DeserializeObject<VersionModel>(text);
+        public VersionInfo Read(string text) => JsonConvert.DeserializeObject<VersionInfo>(text);
     }
 }

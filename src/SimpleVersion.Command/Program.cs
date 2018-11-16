@@ -1,53 +1,27 @@
-﻿using McMaster.Extensions.CommandLineUtils;
-using Microsoft.Extensions.DependencyInjection;
-using SimpleVersion.Git;
-using static System.IO.Directory;
+﻿using SimpleVersion.Git;
+using System;
 
 namespace SimpleVersion.Command
 {
-    [HelpOption]
     public class Program
     {
-        private readonly IConsole _console;
-        private readonly IRepositoryResolver _repoResolver;
-        private readonly IResultFormatter _formatter;
-
         public static int Main(string[] args)
         {
-            var services = new ServiceCollection()
-                .AddSingleton<IVersionModelReader, JsonVersionModelReader>()
-                .AddSingleton<IRepositoryResolver, GitRepositoryResolver>()
-                .AddSingleton<IResultFormatter, Semver2Formatter>()
-                .BuildServiceProvider();
+            var path = System.IO.Directory.GetCurrentDirectory();
+            if (args.Length > 0)
+                path = args[0];
 
-            var app = new CommandLineApplication<Program>();
-            app.Conventions
-                .UseDefaultConventions()
-                .UseConstructorInjection(services);
+            var reader = new JsonVersionInfoReader();
+            var repo = new GitRepository(reader, path);
 
-            return app.Execute(args);
-        }
+            var (height, version) = repo.GetInfo();
 
-        [Option(Description = "The path to the respository")]
-        public string Path { get; } = GetCurrentDirectory();
+            var formatter = new Semver2Formatter();
+            var result = formatter.Format(height, version);
 
-        public Program(
-            IConsole console,
-            IRepositoryResolver repoResolver,
-            IResultFormatter formatter)
-        {
-            _console = console;
-            _repoResolver = repoResolver;
-            _formatter = formatter;
-        }
-        
-        public void OnExecute()
-        {
-            var repo = _repoResolver.Resolve(Path);
-            var (height, model) = repo.GetResult();
-            var formattedResult = _formatter.Format(height, model);
+            Console.Out.WriteLine(result.FullVersion);
 
-            _console.WriteLine(formattedResult.FullVersion);
+            return 0;
         }
     }
 }

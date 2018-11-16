@@ -3,13 +3,13 @@ using Xunit;
 
 namespace SimpleVersion.Abstractions.Tests
 {
-    public class VersionModelFixture
+    public class VersionInfoFixture
     {
         [Fact]
         public void Ctor_SetsDefaults()
         {
             // Arrange / Act
-            var sut = new VersionModel();
+            var sut = new VersionInfo();
 
             // Assert
             sut.Label.Should().BeEmpty();

@@ -1,5 +1,5 @@
 {
   "Version": "1.2.3.4",
   "Label": [ "alpha1" ],
-  "Metadata": [ "test" ]
+  "Metadata": [ "test", "branch" ]
 }
