@@ -24,19 +24,18 @@ jobs:
   pool:
     vmImage: vs2017-win2016
   steps:
-  # PR branches should include the pr label part
-  - powershell: |
-      if($env:BUILD_SOURCEBRANCH -match 'refs\/pull\/(?<id>\d+)\/merge'){
-          $env:VersionSuffix += ".pr$($matches.id)"
-          Write-Output "##vso[task.setvariable variable=VersionSuffix;]$env:VersionSuffix"
-      }
-    displayName: "PowerShell: Update build label"
-
-  # Calculate the height - this will be refactored in the future
+  # Calculate the version suffix - this will be refactored in the future
   - powershell: |
       $height = git rev-list --count HEAD
+      if($env:BUILD_SOURCEBRANCH -match 'refs\/pull\/(?<id>\d+)\/merge'){
+          if($env:VersionSuffix){
+              $env:VersionSuffix += ".pr$($matches.id)"
+          } else {
+              $env:VersionSuffix = ".pr$($matches.id)"
+          }
+      }
       $env:VersionSuffix = if($env:VersionSuffix){
-      "-${env:VersionSuffix}.${height}"
+      "${env:VersionSuffix}.${height}"
       } else {
         "+${height}"
       }
@@ -51,7 +50,7 @@ jobs:
       packagesToPack: src/**/*.csproj
       packDirectory: $(DistDir)
       versioningScheme: off
-    displayName: "Pack: SimpleVersion.sln"
+    displayName: "Pack: Source"
 
   # Handle artifacts
   - task: PublishBuildArtifacts@1
@@ -67,7 +66,7 @@ jobs:
       command: push
       packagesToPush: $(DistDir)/**/*.nupkg
       nuGetFeedType: internal
-      publishVstsFeed: 'SimpleVersion'
+      publishVstsFeed: SimpleVersion
       feedsToUse: nuget.config
     displayName: "Publish: Test Feed"
     condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
