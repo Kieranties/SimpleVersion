@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SimpleVersion.Git\SimpleVersion.Git.csproj" />
+    <ProjectReference Include="..\SimpleVersion.Core\SimpleVersion.Core.csproj" />
   </ItemGroup>
 
   <PropertyGroup Label="Pack Customizations">

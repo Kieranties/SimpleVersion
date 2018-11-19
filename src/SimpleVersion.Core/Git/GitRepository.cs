@@ -24,7 +24,7 @@ namespace SimpleVersion.Git
         public VersionResult GetResult()
         {
             var result = new VersionResult();
-            var (height, version) = GetInfo();
+            var version = GetInfo(out var height);
 
             result.Height = height;
             result.BranchName = Repository.Head.FriendlyName;
@@ -37,12 +37,12 @@ namespace SimpleVersion.Git
             return result;
         }
 
-        private (int height, VersionInfo model) GetInfo()
+        private VersionInfo GetInfo(out int height)
         {
             var model = GetVersionModel(Repository.Head.Tip);
-            var height = GetHeight(model);
+            height = GetHeight(model);
 
-            return (height, model);
+            return model;
         }
 
         private int GetHeight(VersionInfo model)
