@@ -59,8 +59,7 @@ jobs:
     inputs:
       command: test
       projects: test/**/*.csproj
-      nobuild: true
-      publishTestResults: true    
+      publishTestResults: true
 
   # Handle artifacts
   - task: PublishBuildArtifacts@1
