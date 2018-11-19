@@ -4,7 +4,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net462</TargetFramework>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-    <AssemblyName>SimpleVersion</AssemblyName>
+    <AssemblyName>SimpleVersion</AssemblyName>    
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
@@ -36,6 +36,16 @@
     <ProjectReference Update="@(ProjectReference)" PrivateAssets="All" />
   </ItemGroup>
 
+  <!-- 
+    Modify the actual publish output directory 
+    as it is likely shared with other projects
+  -->
+  <Target Name="PrePublish" BeforeTargets="PrepareForPublish">
+    <PropertyGroup>
+      <PublishDir>$(PublishDir)\$(AssemblyName)</PublishDir>
+    </PropertyGroup>
+  </Target>
+  
   <!--
     The application is published to a native exe
     We want to pack the native exe into the nuget package
@@ -43,13 +53,17 @@
     hence a post publish task.
   -->
   <Target Name="PostPublishPack" AfterTargets="Publish">
-
-    <MSBuild Projects="$(MSBuildProjectFullPath)" Properties="NoBuild=true;Configuration=$(Configuration);PackageOutputPath=$(PublishDir);$(IncludeContentInPack)=false;PackageVersion=$(Version)$(VersionSuffix)" Targets="Pack" />
+    <MSBuild 
+      Projects="$(MSBuildProjectFullPath)" 
+      Properties="NoBuild=true;Configuration=$(Configuration);PackageOutputPath=$(PublishDir);$(IncludeContentInPack)=false;PackageVersion=$(Version)$(VersionSuffix)" Targets="Pack" />
   </Target>
 
+  <!-- 
+    Pack the content that is published
+  -->
   <Target Name="_CustomPackFiles">
     <ItemGroup>
-      <_PackageFiles Include="$(PublishDir)\**\*">
+      <_PackageFiles Include="$(PublishDir)\**\*" Exclude="$(PublishDir)\**\*.nupkg">
         <BuildAction>None</BuildAction>
         <PackagePath>tools\</PackagePath>
       </_PackageFiles>
