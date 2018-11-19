@@ -1,4 +1,5 @@
 ﻿using LibGit2Sharp;
+using SimpleVersion.Formatters;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,7 +21,23 @@ namespace SimpleVersion.Git
 
         public Repository Repository { get; }
 
-        public (int height, VersionInfo model) GetInfo()
+        public VersionResult GetResult()
+        {
+            var result = new VersionResult();
+            var (height, version) = GetInfo();
+
+            result.Height = height;
+            result.BranchName = Repository.Head.FriendlyName;
+            result.Sha = Repository.Head.Tip.Sha;
+
+            new VersionFormat().Apply(result, version);
+            new Semver1Format().Apply(result, version);
+            new Semver2Format().Apply(result, version);
+
+            return result;
+        }
+
+        private (int height, VersionInfo model) GetInfo()
         {
             var model = GetVersionModel(Repository.Head.Tip);
             var height = GetHeight(model);

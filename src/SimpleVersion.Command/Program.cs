@@ -15,9 +15,7 @@ namespace SimpleVersion.Command
             var reader = new JsonVersionInfoReader();
             var repo = new GitRepository(reader, path);
 
-            var (height, version) = repo.GetInfo();
-
-            var result = new VersionResult(version, height);
+            var result = repo.GetResult();
 
             Console.Out.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
