@@ -17,6 +17,7 @@ variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_CLI_TELEMETRY_OPTOUT: false
   Configuration: Release
+  DistDir: $(Build.ArtifactStagingDirectory)/distributables
 
 jobs:
 - job: Windows
@@ -47,18 +48,15 @@ jobs:
   - task: DotNetCoreCLI@2
     inputs:
       command: pack
-      projects: src/**/*.csproj
-      zipAfterPublish: false
-      nobuild: false
-      feedsToUse: nuget.config
+      packagesToPack: src/**/*.csproj
+      packDirectory: $(DistDir)
       versioningScheme: off
-      arguments: -o $(Build.ArtifactStagingDirectory)/distributables
     displayName: "Pack: SimpleVersion.sln"
 
   # Handle artifacts
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: $(Build.ArtifactStagingDirectory)/distributables
+      PathtoPublish: $(DistDir)
       ArtifactName: distributables
       ArtifactType: Container
     displayName: "Artifacts: Publish distributables"
@@ -67,7 +65,7 @@ jobs:
   - task: NuGetCommand@2
     inputs:
       command: push
-      packagesToPush: $(Build.ArtifactStagingDirectory)/distributables/**/*.nupkg
+      packagesToPush: $(DistDir)/**/*.nupkg
       nuGetFeedType: internal
       publishVstsFeed: 'SimpleVersion'
       feedsToUse: nuget.config
