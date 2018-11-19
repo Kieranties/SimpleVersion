@@ -45,38 +45,39 @@ jobs:
 
   # Build/Pack the assets
   - task: DotNetCoreCLI@2
+    displayName: "Pack: Source"
     inputs:
       command: pack
       packagesToPack: src/**/*.csproj
       packDirectory: $(DistDir)
       versioningScheme: off
-    displayName: "Pack: Source"
+    
   
   # Run unit tests
   - task: DotNetCoreCLI@2
-    displayName: Run Unit Tests
+    displayName: "Test: Unit"
     inputs:
       command: test
       projects: test/**/*.csproj
       nobuild: true
-      publishTestResults: true
-    displayName: "Test: Unit"
+      publishTestResults: true    
 
   # Handle artifacts
   - task: PublishBuildArtifacts@1
+    displayName: "Artifacts: Publish distributables"
+    condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
     inputs:
       PathtoPublish: $(DistDir)
       ArtifactName: distributables
       ArtifactType: Container
-    displayName: "Artifacts: Publish distributables"
-    condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
+    
 
   - task: NuGetCommand@2
+    displayName: "Publish: Test Feed"
+    condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))   
     inputs:
       command: push
       packagesToPush: $(DistDir)/**/*.nupkg
       nuGetFeedType: internal
       publishVstsFeed: SimpleVersion
       feedsToUse: nuget.config
-    displayName: "Publish: Test Feed"
-    condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))   
