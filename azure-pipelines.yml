@@ -47,7 +47,7 @@ jobs:
   - task: DotNetCoreCLI@2
     inputs:
       command: 'pack'
-      projects: SimpleVersion.sln
+      projects: .\SimpleVersion.sln
       publishWebProjects: false
       zipAfterPublish: false
       feedsToUse: nuget.config
