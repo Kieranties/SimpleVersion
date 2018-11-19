@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net462</TargetFramework>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <RootNamespace>SimpleVersion</RootNamespace>
   </PropertyGroup>
 
