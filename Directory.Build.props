@@ -24,9 +24,10 @@
 
   <PropertyGroup Label="Build Attributes">
     <WarningsAsErrors>true</WarningsAsErrors>
+    <!-- NU5104 - LibGit2Sharp has no release package yet -->
     <!-- NU5105 - Usage of semver 2 versioning -->
     <!-- NU5125 - LicenseUrl will be deprecated -->
-    <NoWarn>$(NoWarn);NU5105;NU5125</NoWarn>
+    <NoWarn>$(NoWarn);NU5104;NU5105;NU5125</NoWarn>
   </PropertyGroup>
 
   

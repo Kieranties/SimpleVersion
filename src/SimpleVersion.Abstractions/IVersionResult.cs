@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SimpleVersion
+﻿namespace SimpleVersion
 {
     public interface IVersionResult
     {
-        string FullVersion { get; }
+        string Semver1 { get; }
+
+        string Semver2 { get; }
     }
 }

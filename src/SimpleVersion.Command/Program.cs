@@ -1,4 +1,5 @@
-﻿using SimpleVersion.Git;
+﻿using Newtonsoft.Json;
+using SimpleVersion.Git;
 using System;
 
 namespace SimpleVersion.Command
@@ -16,10 +17,9 @@ namespace SimpleVersion.Command
 
             var (height, version) = repo.GetInfo();
 
-            var formatter = new Semver2Formatter();
-            var result = formatter.Format(height, version);
+            var result = new VersionResult(version, height);
 
-            Console.Out.WriteLine(result.FullVersion);
+            Console.Out.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
 
             return 0;
         }

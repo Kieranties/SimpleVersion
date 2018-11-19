@@ -11,9 +11,8 @@ namespace Cake.SimpleVersion
     public static class CakeAliases
     {
         [CakeMethodAlias]
-        public static string SimpleVersion(this ICakeContext context, string path = null)
+        public static VersionResult SimpleVersion(this ICakeContext context, string path = null)
         {
-
             context.Log.Write(Verbosity.Normal, LogLevel.Information, "In custom task", Array.Empty<object>());
 
             if(string.IsNullOrWhiteSpace(path))
@@ -23,11 +22,8 @@ namespace Cake.SimpleVersion
             var repo = new GitRepository(reader, path);
 
             var (height, version) = repo.GetInfo();
-
-            var formatter = new Semver2Formatter();
-            var result = formatter.Format(height, version);
-
-            return result.FullVersion;
+            
+            return new VersionResult(version, height);
         }
     }
 }

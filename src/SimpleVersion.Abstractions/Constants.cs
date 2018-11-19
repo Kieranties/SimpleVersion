@@ -2,6 +2,6 @@
 {
     public static class Constants
     {
-        public const string VersionFileName = ".version.json";
+        public const string VersionFileName = ".simpleversion.json";
     }
 }
