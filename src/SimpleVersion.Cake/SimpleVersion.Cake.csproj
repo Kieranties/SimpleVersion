@@ -1,17 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="..\App.props"/>
-  
+
   <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFramework>net462</TargetFramework>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-    <AssemblyName>Cake.SimpleVersion</AssemblyName>    
+    <AssemblyName>Cake.SimpleVersion</AssemblyName>
   </PropertyGroup>
 
   <PropertyGroup Label="Pack Meta">
     <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);PackBuildOutputs</TargetsForTfmSpecificContentInPackage>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <PackageReference Include="Cake.Core" Version="0.30.0" />
   </ItemGroup>
@@ -25,5 +25,5 @@
       </TfmSpecificPackageFile>
     </ItemGroup>
   </Target>
-  
+
 </Project>

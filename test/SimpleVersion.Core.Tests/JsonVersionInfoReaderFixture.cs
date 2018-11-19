@@ -30,7 +30,7 @@ namespace SimpleVersion.Core.Tests
 
             // Assert
             action.Should().Throw<FileNotFoundException>()
-                .WithMessage("Could not find version file")
+                .WithMessage($"Could not find {Constants.VersionFileName} file")
                 .And.FileName.Should().Be(possiblePath);
 
         }
@@ -78,7 +78,7 @@ namespace SimpleVersion.Core.Tests
 
             // Assert
             action.Should().Throw<FileNotFoundException>()
-                .WithMessage("Could not find version file")
+                .WithMessage($"Could not find {Constants.VersionFileName} file")
                 .And.FileName.Should().Be(Path.Combine(expectedPath, Constants.VersionFileName));
         }
 
@@ -93,7 +93,7 @@ namespace SimpleVersion.Core.Tests
 
             // Assert
             action.Should().Throw<FileNotFoundException>()
-                .WithMessage("Could not find version file")
+                .WithMessage($"Could not find {Constants.VersionFileName} file")
                 .And.FileName.Should().Be(Path.Combine(expectedPath, Constants.VersionFileName));
         }
 

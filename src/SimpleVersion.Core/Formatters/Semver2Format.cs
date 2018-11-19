@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SimpleVersion.Formatters
+﻿namespace SimpleVersion.Formatters
 {
     public class Semver2Format : IVersionFormat
     {
-        public void Apply(VersionResult result, VersionInfo info)
+        public void Apply(VersionInfo info, VersionResult result)
         {
             var format = info.Version;
 

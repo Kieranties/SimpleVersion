@@ -19,7 +19,7 @@ namespace SimpleVersion
             var fullPath = Path.Combine(basePath, Constants.VersionFileName);
             if (!File.Exists(fullPath))
             {
-                throw new FileNotFoundException("Could not find version file", fullPath);
+                throw new FileNotFoundException($"Could not find {Constants.VersionFileName} file", fullPath);
             }
 
             return Read(File.ReadAllText(fullPath));

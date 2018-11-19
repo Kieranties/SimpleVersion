@@ -24,25 +24,25 @@ namespace SimpleVersion.Git
         public VersionResult GetResult()
         {
             var result = new VersionResult();
-            var (height, version) = GetInfo();
+            var version = GetInfo(out var height);
 
             result.Height = height;
             result.BranchName = Repository.Head.FriendlyName;
             result.Sha = Repository.Head.Tip.Sha;
 
-            new VersionFormat().Apply(result, version);
-            new Semver1Format().Apply(result, version);
-            new Semver2Format().Apply(result, version);
+            new VersionFormat().Apply(version, result);
+            new Semver1Format().Apply(version, result);
+            new Semver2Format().Apply(version, result);
 
             return result;
         }
 
-        private (int height, VersionInfo model) GetInfo()
+        private VersionInfo GetInfo(out int height)
         {
             var model = GetVersionModel(Repository.Head.Tip);
-            var height = GetHeight(model);
+            height = GetHeight(model);
 
-            return (height, model);
+            return model;
         }
 
         private int GetHeight(VersionInfo model)

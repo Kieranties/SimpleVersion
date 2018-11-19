@@ -4,21 +4,21 @@ namespace SimpleVersion
 {
     public class VersionResult
     {
-        public int Major { get; set; }
+        public int Major { get; set; } = 0;
 
-        public int Minor { get; set; }
+        public int Minor { get; set; } = 0;
 
-        public int Patch { get; set; }
+        public int Patch { get; set; } = 0;
 
-        public int Revision { get; set; }
+        public int Revision { get; set; } = 0;
 
-        public int Height { get; set; }
+        public int Height { get; set; } = 0;
 
         public string HeightPadded => Height.ToString("D4");
 
-        public string Sha { get; set; }
+        public string Sha { get; set; } = string.Empty;
 
-        public string BranchName { get; set; }
+        public string BranchName { get; set; } = string.Empty;
 
         public IDictionary<string, string> Formats { get; } = new Dictionary<string, string>();
     }

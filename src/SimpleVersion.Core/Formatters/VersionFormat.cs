@@ -1,12 +1,13 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 
 namespace SimpleVersion.Formatters
 {
     public class VersionFormat : IVersionFormat
     {
-        private static readonly Regex _regex = new Regex(@"(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)(?:\.(?<revision>\d+))?", RegexOptions.Compiled);
+        private static readonly Regex _regex = new Regex(@"^(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)(?:$|\.(?<revision>\d+)$)", RegexOptions.Compiled);
 
-        public void Apply(VersionResult result, VersionInfo info)
+        public void Apply(VersionInfo info, VersionResult result)
         {
             var match = _regex.Match(info.Version);
             if (match.Success)
@@ -16,9 +17,12 @@ namespace SimpleVersion.Formatters
                 result.Patch = int.Parse(match.Groups["patch"].Value);
                 var revisionGroup = match.Groups["revision"];
                 if (revisionGroup.Success)
-                    result.Major = int.Parse(revisionGroup.Value);
+                    result.Revision = int.Parse(revisionGroup.Value);
                 else
                     result.Revision = 0;
+            } else
+            {
+                throw new InvalidOperationException($"Version '{info.Version}' is not in a valid format");
             }
         }
     }
