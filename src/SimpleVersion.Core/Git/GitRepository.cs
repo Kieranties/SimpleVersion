@@ -106,7 +106,7 @@ namespace SimpleVersion.Git
         {
             if (string.IsNullOrWhiteSpace(path))
             {
-                throw new ArgumentException("Null or empty repostiory path", nameof(path));
+                throw new ArgumentException("Null or empty repository path", nameof(path));
             }
 
             if (!Directory.Exists(path))

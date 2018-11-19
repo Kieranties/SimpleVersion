@@ -3,7 +3,7 @@
   <Import Project="..\App.props"/>
 
   <PropertyGroup>
-    <TargetFramework>net462</TargetFramework>
+    <TargetFramework>net461</TargetFramework>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
     <AssemblyName>Cake.SimpleVersion</AssemblyName>
   </PropertyGroup>
