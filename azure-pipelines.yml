@@ -46,14 +46,14 @@ jobs:
   # Publish the command app
   - task: DotNetCoreCLI@2
     inputs:
-      command: 'publish'
-      projects: src\SimpleVersion.Command\SimpleVersion.Command.csproj
+      command: 'pack'
+      projects: SimpleVersion.sln
       publishWebProjects: false
       zipAfterPublish: false
       feedsToUse: nuget.config
       versioningScheme: 'off'
       arguments: -o $(Build.ArtifactStagingDirectory)/distributables
-    displayName: "Publish: SimpleVersion.Command"
+    displayName: "Pack: SimpleVersion.sln"
 
   # Handle artifacts
   - task: PublishBuildArtifacts@1

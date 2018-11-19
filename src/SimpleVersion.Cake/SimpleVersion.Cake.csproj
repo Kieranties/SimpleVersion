@@ -3,23 +3,27 @@
   <Import Project="..\App.props"/>
   
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net462</TargetFramework>
+    <TargetFramework>net461</TargetFramework>
     <RuntimeIdentifier>win-x64</RuntimeIdentifier>
-    <AssemblyName>SimpleVersion</AssemblyName>
+    <AssemblyName>Cake.SimpleVersion</AssemblyName>    
   </PropertyGroup>
 
   <PropertyGroup Label="Pack Meta">
     <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);PackBuildOutputs</TargetsForTfmSpecificContentInPackage>
-    <PackageId>SimpleVersion.Command</PackageId>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Cake.Core" Version="0.30.0" />
+  </ItemGroup>
 
   <Target Name="PackBuildOutputs">
     <ItemGroup>
       <TfmSpecificPackageFile
-        Include="$(OutputPath)\**\*">
-        <PackagePath>tools\</PackagePath>
+        Include="$(OutputPath)\**\*"
+        Exclude="$(OutputPath)\**\Cake.Core.dll">
+        <PackagePath>lib\$(TargetFramework)\</PackagePath>
       </TfmSpecificPackageFile>
     </ItemGroup>
   </Target>
+  
 </Project>

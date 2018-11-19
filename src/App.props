@@ -1,0 +1,37 @@
+<Project>
+  
+  <ItemDefinitionGroup>
+    <ProjectReference>
+      <PrivateAssets>All</PrivateAssets>
+    </ProjectReference>
+    <PackageReference>
+      <PrivateAssets>All</PrivateAssets>
+    </PackageReference>
+  </ItemDefinitionGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Packaging.Tools.Trimming" Version="1.1.0-*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleVersion.Git\SimpleVersion.Git.csproj" />
+  </ItemGroup>
+
+  <PropertyGroup Label="Pack Customizations">
+    <!-- We pack custom assets after the publish task -->
+    <IncludeContentInPack>False</IncludeContentInPack>
+    <IncludeBuildOutput>False</IncludeBuildOutput>
+    
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TrimUnusedDependencies>True</TrimUnusedDependencies>
+    <!-- No pdbs for this project -->
+    <DebugType>None</DebugType>
+    <CopyOutputSymbolsToPublishDirectory>False</CopyOutputSymbolsToPublishDirectory>
+    <!-- No pdbs from other projects -->
+    <AllowedReferenceRelatedFileExtensions>None</AllowedReferenceRelatedFileExtensions>
+  </PropertyGroup>
+
+  
+</Project>

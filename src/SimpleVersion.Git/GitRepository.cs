@@ -61,7 +61,7 @@ namespace SimpleVersion.Git
             if (diff.Any(d => d.Path == Constants.VersionFileName))
             {
                 var version = GetVersionModel(commit);
-                return version.Version != model.Version;
+                return version.Equals(model);
             }
 
             return false;
