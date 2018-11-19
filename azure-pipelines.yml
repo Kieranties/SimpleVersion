@@ -43,15 +43,15 @@ jobs:
       Write-Output "##vso[task.setvariable variable=VersionSuffix;]$env:VersionSuffix"
     displayName: "PowerShell: Calculate Height"
 
-  # Publish the command app
+  # Build/Pack the assets
   - task: DotNetCoreCLI@2
     inputs:
-      command: 'pack'
-      projects: .\SimpleVersion.sln
-      publishWebProjects: false
+      command: pack
+      projects: src/**/*.csproj
       zipAfterPublish: false
+      nobuild: false
       feedsToUse: nuget.config
-      versioningScheme: 'off'
+      versioningScheme: off
       arguments: -o $(Build.ArtifactStagingDirectory)/distributables
     displayName: "Pack: SimpleVersion.sln"
 
