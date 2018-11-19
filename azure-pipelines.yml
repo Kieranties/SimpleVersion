@@ -51,6 +51,16 @@ jobs:
       packDirectory: $(DistDir)
       versioningScheme: off
     displayName: "Pack: Source"
+  
+  # Run unit tests
+  - task: DotNetCoreCLI@2
+    displayName: Run Unit Tests
+    inputs:
+      command: test
+      projects: test/**/*.csproj
+      nobuild: true
+      publishTestResults: true
+    displayName: "Test: Unit"
 
   # Handle artifacts
   - task: PublishBuildArtifacts@1
@@ -69,4 +79,4 @@ jobs:
       publishVstsFeed: SimpleVersion
       feedsToUse: nuget.config
     displayName: "Publish: Test Feed"
-    condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
+    condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))   

@@ -30,9 +30,9 @@ namespace SimpleVersion.Git
             result.BranchName = Repository.Head.FriendlyName;
             result.Sha = Repository.Head.Tip.Sha;
 
-            new VersionFormat().Apply(result, version);
-            new Semver1Format().Apply(result, version);
-            new Semver2Format().Apply(result, version);
+            new VersionFormat().Apply(version, result);
+            new Semver1Format().Apply(version, result);
+            new Semver2Format().Apply(version, result);
 
             return result;
         }

@@ -6,7 +6,7 @@ namespace SimpleVersion.Formatters
 {
     public class Semver1Format : IVersionFormat
     {
-        public void Apply(VersionResult result, VersionInfo info)
+        public void Apply(VersionInfo info, VersionResult result)
         {
             var format = info.Version;
 
