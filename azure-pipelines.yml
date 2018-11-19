@@ -35,11 +35,11 @@ jobs:
           }
       }
       $env:VersionSuffix = if($env:VersionSuffix){
-      "${env:VersionSuffix}.${height}"
+        "${env:VersionSuffix}.${height}"
       } else {
         "+${height}"
       }
-      Write-Output "##vso[build.updatebuildnumber]$env:Version$env:VersionSuffix"
+      Write-Output "##vso[build.updatebuildnumber]$env:Version $env:VersionSuffix"
       Write-Output "##vso[task.setvariable variable=VersionSuffix;]$env:VersionSuffix"
     displayName: "PowerShell: Calculate Height"
 
