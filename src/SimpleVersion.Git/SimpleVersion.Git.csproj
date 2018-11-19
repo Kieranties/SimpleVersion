@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -6,6 +6,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SimpleVersion.Abstractions\SimpleVersion.Abstractions.csproj" />
+    <ProjectReference Include="..\SimpleVersion.Core\SimpleVersion.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LibGit2Sharp" Version="0.26.0-*" />
   </ItemGroup>
 
 </Project>
