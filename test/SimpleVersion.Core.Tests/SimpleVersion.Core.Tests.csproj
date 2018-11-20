@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
-    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="GitTools.Testing" Version="1.2.0" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\SimpleVersion.Core\SimpleVersion.Core.csproj" />

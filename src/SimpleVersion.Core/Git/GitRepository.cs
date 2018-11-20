@@ -23,65 +23,48 @@ namespace SimpleVersion.Git
 
         public VersionResult GetResult()
         {
-            var result = new VersionResult();
-            var version = GetInfo(out var height);
-
-            result.Height = height;
-            result.BranchName = Repository.Head.FriendlyName;
-            result.Sha = Repository.Head.Tip.Sha;
-
-            new VersionFormat().Apply(version, result);
-            new Semver1Format().Apply(version, result);
-            new Semver2Format().Apply(version, result);
+            var result = GetInfo(out var info);
+            
+            new VersionFormat().Apply(info, result);
+            new Semver1Format().Apply(info, result);
+            new Semver2Format().Apply(info, result);
 
             return result;
         }
 
-        private VersionInfo GetInfo(out int height)
+        private VersionResult GetInfo(out VersionInfo info)
         {
-            var model = GetVersionModel(Repository.Head.Tip);
-            height = GetHeight(model);
+            // get the commits for the version file
+            var history = GetVersionFileCommits().ToArray();
+            if (history.Count() == 0)
+                throw new InvalidOperationException($"No commits found for '{Constants.VersionFileName}'");
 
-            return model;
-        }
-
-        private int GetHeight(VersionInfo model)
-        {
-            // Get the current tree
-            Tree last = Repository.Head.Tip.Tree;
-            // Initialise count - the current commit counts
-            var count = 1;
-            // skip the first commit as that is our baseline
-            var commits = GetReachableCommits().Skip(1).GetEnumerator();
-
-            while (commits.MoveNext())
+            // iterate over the commits
+            var current = history[0];
+            var currentVersion = GetVersionModel(current);
+            for (var i = 1; i < history.Count(); i++)
             {
-                // Get the current tree
-                var next = commits.Current.Tree;
-                // Perform a diff
-                var diff = Repository.Diff.Compare<TreeChanges>(last, next);
-                // If a change to the file is found, stop counting
-                if (HasChange(diff, commits.Current, model))
+                var next = history[i];
+                var nextVersion = GetVersionModel(next);
+                if (nextVersion.Equals(currentVersion))
+                {
+                    current = next;
+                    currentVersion = nextVersion;
+                }
+                else
+                {
+                    // if the versions are the same, exit loop
                     break;
-
-                // Update the next diff tree
-                last = next;
-                // Increment count
-                count++;
+                }
             }
 
-            return count;
-        }
-
-        private bool HasChange(TreeChanges diff, Commit commit, VersionInfo model)
-        {
-            if (diff.Any(d => d.Path == Constants.VersionFileName))
+            info = currentVersion;
+            return new VersionResult
             {
-                var version = GetVersionModel(commit);
-                return !version.Equals(model);
-            }
-
-            return false;
+                Height = CountCommits(current, Repository.Head.Tip) + info.OffSet,
+                BranchName = Repository.Head.FriendlyName,
+                Sha = Repository.Head.Tip.Sha
+            };
         }
 
         private VersionInfo GetVersionModel(Commit commit)
@@ -90,16 +73,34 @@ namespace SimpleVersion.Git
             return _reader.Read(blob.GetContentText());
         }
 
-        private IEnumerable<Commit> GetReachableCommits()
+        private int CountCommits(Commit from, Commit to)
+        {
+            var filter = new CommitFilter
+            {
+                FirstParentOnly = true,
+                ExcludeReachableFrom = from.Sha,
+                IncludeReachableFrom = to.Sha
+            };
+
+            return Repository
+                .Commits
+                .QueryBy(filter)
+                .Count() + 1;
+        }
+
+        private IEnumerable<Commit> GetVersionFileCommits()
         {
             var filter = new CommitFilter
             {
                 FirstParentOnly = true,
                 IncludeReachableFrom = Repository.Head,
-                SortBy = CommitSortStrategies.Reverse
+                SortBy = CommitSortStrategies.Topological | CommitSortStrategies.Time
             };
 
-            return Repository.Commits.QueryBy(filter).Reverse();
+            return Repository
+                .Commits
+                .QueryBy(Constants.VersionFileName, filter)
+                .Select(x => x.Commit);
         }
 
         private void ValidatePath(string path)

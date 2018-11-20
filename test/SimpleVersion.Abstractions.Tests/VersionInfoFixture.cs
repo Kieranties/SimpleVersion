@@ -16,6 +16,7 @@ namespace SimpleVersion.Abstractions.Tests
             sut.Label.Should().BeEmpty();
             sut.MetaData.Should().BeEmpty();
             sut.Version.Should().BeEmpty();
+            sut.OffSet.Should().Be(0);
         }
 
         [Fact]

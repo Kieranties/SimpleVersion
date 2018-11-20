@@ -48,7 +48,7 @@ namespace SimpleVersion.Core.Tests
             var result = _sut.ToText(model);
 
             // Assert
-            result.Should().Be("{\r\n  \"Version\": \"1.2.3.4\",\r\n  \"Label\": [\r\n    \"First\",\r\n    \"Second\"\r\n  ],\r\n  \"MetaData\": [\r\n    \"Meta1\",\r\n    \"Meta2\"\r\n  ]\r\n}");
+            result.Should().Be("{\r\n  \"Version\": \"1.2.3.4\",\r\n  \"OffSet\": 0,\r\n  \"Label\": [\r\n    \"First\",\r\n    \"Second\"\r\n  ],\r\n  \"MetaData\": [\r\n    \"Meta1\",\r\n    \"Meta2\"\r\n  ]\r\n}");
         }
 
         [Fact]
@@ -91,7 +91,7 @@ namespace SimpleVersion.Core.Tests
             File.Exists(resultPath).Should().BeTrue();
 
             var resultContent = File.ReadAllText(resultPath);
-            resultContent.Should().Be("{\r\n  \"Version\": \"\",\r\n  \"Label\": [],\r\n  \"MetaData\": []\r\n}");
+            resultContent.Should().Be("{\r\n  \"Version\": \"\",\r\n  \"OffSet\": 0,\r\n  \"Label\": [],\r\n  \"MetaData\": []\r\n}");
         }
     }
 }
