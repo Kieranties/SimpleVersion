@@ -13,10 +13,10 @@ namespace SimpleVersion.Git
 
         public GitRepository(IVersionInfoReader reader, string path)
         {
-            ValidatePath(path);
+            var resolvedPath = LocateRepo(path);
 
             _reader = reader;
-            Repository = new Repository(path);
+            Repository = new Repository(resolvedPath);
         }
 
         public Repository Repository { get; }
@@ -34,92 +34,82 @@ namespace SimpleVersion.Git
 
         private VersionResult GetInfo(out VersionInfo info)
         {
-            // get the commits for the version file
-            var history = GetVersionFileCommits().ToArray();
-            if (history.Count() == 0)
+            info = GetVersionModel(Repository.Head?.Tip);
+            if (info == null)
                 throw new InvalidOperationException($"No commits found for '{Constants.VersionFileName}'");
 
-            // iterate over the commits
-            var current = history[0];
-            var currentVersion = GetVersionModel(current);
-            for (var i = 1; i < history.Count(); i++)
+            // Get the state of this tree to compare for diffs
+            var tipTree = Repository.Head.Tip.Tree;
+
+            // Initialise count - The current commit counts, include offset
+            var height = 1 + info.OffSet;
+
+            // skip the first commit as that is our baseline
+            var commits = GetReachableCommits().Skip(1).GetEnumerator();
+
+            while (commits.MoveNext())
             {
-                var next = history[i];
-                var nextVersion = GetVersionModel(next);
-                if (nextVersion.Equals(currentVersion))
-                {
-                    current = next;
-                    currentVersion = nextVersion;
-                }
-                else
-                {
-                    // if the versions are the same, exit loop
+                // Get the current tree
+                var next = commits.Current.Tree;
+                // Perform a diff
+                var diff = Repository.Diff.Compare<TreeChanges>(next, tipTree);
+                // If a change to the file is found, stop counting
+                if (HasVersionChange(diff, commits.Current, info))
                     break;
-                }
+
+                // Increment height
+                height++;
             }
 
-            info = currentVersion;
             return new VersionResult
             {
-                Height = CountCommits(current, Repository.Head.Tip) + info.OffSet,
+                Height = height,
                 BranchName = Repository.Head.FriendlyName,
                 Sha = Repository.Head.Tip.Sha
             };
         }
 
+        private bool HasVersionChange(TreeChanges diff, Commit commit, VersionInfo model)
+        {
+            if (diff.Any(d => d.Path == Constants.VersionFileName))
+            {
+                var version = GetVersionModel(commit);
+                return !model.Equals(version);
+            }
+
+            return false;
+        }
+
         private VersionInfo GetVersionModel(Commit commit)
         {
-            var blob = commit.Tree[Constants.VersionFileName].Target as Blob;
-            return _reader.Read(blob.GetContentText());
+            var gitObj = commit?.Tree[Constants.VersionFileName]?.Target;
+            if (gitObj == null)
+                return null;
+
+            return _reader.Read((gitObj as Blob).GetContentText());
         }
 
-        private int CountCommits(Commit from, Commit to)
-        {
-            var filter = new CommitFilter
-            {
-                FirstParentOnly = true,
-                ExcludeReachableFrom = from.Sha,
-                IncludeReachableFrom = to.Sha
-            };
-
-            return Repository
-                .Commits
-                .QueryBy(filter)
-                .Count() + 1;
-        }
-
-        private IEnumerable<Commit> GetVersionFileCommits()
+        private IEnumerable<Commit> GetReachableCommits()
         {
             var filter = new CommitFilter
             {
                 FirstParentOnly = true,
                 IncludeReachableFrom = Repository.Head,
-                SortBy = CommitSortStrategies.Topological | CommitSortStrategies.Time
+                SortBy = CommitSortStrategies.Reverse
             };
 
-            return Repository
-                .Commits
-                .QueryBy(Constants.VersionFileName, filter)
-                .Select(x => x.Commit);
+            return Repository.Commits.QueryBy(filter).Reverse();
         }
 
-        private void ValidatePath(string path)
+        private string LocateRepo(string path)
         {
+            var resolvedPath = Repository.Discover(path);
+
             if (string.IsNullOrWhiteSpace(path))
             {
-                throw new ArgumentException("Null or empty repository path", nameof(path));
+                throw new DirectoryNotFoundException($"Could not find git repository at '{path}' or any parent directory");
             }
-
-            if (!Directory.Exists(path))
-            {
-                throw new DirectoryNotFoundException($"Directory '{path}' does not exist");
-            }
-
-            var gitPath = Path.Combine(path, ".git");
-            if (!Directory.Exists(gitPath))
-            {
-                throw new DirectoryNotFoundException($"Could not find git repository '{gitPath}'");
-            }
+            return resolvedPath;
         }
     }
 }

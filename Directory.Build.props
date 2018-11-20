@@ -9,7 +9,7 @@
   <PropertyGroup Label="Assembly Meta">
     <Company>Kieranties</Company>
     <Copyright>(c) Kieranties</Copyright>
-    <Description>SimpleVersion enables Semver2 versioning for a git repository</Description>
+    <Description>SimpleVersion - A simple tool to version your code</Description>
     <FileVersion>$([System.Text.RegularExpressions.Regex]::Match($(Version), '\d+\.\d+\.\d+').Value).0</FileVersion>
     <AssemblyVersion>$([System.Text.RegularExpressions.Regex]::Match($(Version), '\d+\.\d+').Value).0.0</AssemblyVersion>
     <InformationalVersion>$(Version)$(VersionSuffix)</InformationalVersion>
@@ -26,10 +26,9 @@
 
   <PropertyGroup Label="Build Attributes">
     <WarningsAsErrors>true</WarningsAsErrors>
-    <!-- NU5104 - LibGit2Sharp has no release package yet -->
     <!-- NU5105 - Usage of semver 2 versioning -->
     <!-- NU5125 - LicenseUrl will be deprecated -->
-    <NoWarn>$(NoWarn);NU5104;NU5105;NU5125</NoWarn>
+    <NoWarn>$(NoWarn);NU5105;NU5125</NoWarn>
   </PropertyGroup>
 
   
