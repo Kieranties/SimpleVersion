@@ -13,6 +13,8 @@ namespace SimpleVersion
 
         public List<string> MetaData { get; } = new List<string>();
 
+        public BranchInfo Branches { get; set; } = new BranchInfo();
+
         public bool Equals(VersionInfo other)
         {
             if (other == null) return false;

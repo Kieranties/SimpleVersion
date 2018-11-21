@@ -5,6 +5,7 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests
 {
+    [Collection("Relies on current directory")]
     public class JsonVersionInfoReaderFixture: IDisposable
     {
         private readonly JsonVersionInfoReader _sut;
@@ -35,7 +36,7 @@ namespace SimpleVersion.Core.Tests
 
         }
 
-        [Fact]
+        [Fact]        
         public void Load_CurrentDirectoryHasFile_ReturnsVersion()
         {
             // Arrange

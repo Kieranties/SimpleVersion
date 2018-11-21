@@ -24,12 +24,44 @@ namespace SimpleVersion.Core.Tests.Formatters
 
         [Theory]
         [MemberData(nameof(LabelParts))]
-        public void Apply_LabelParts_IsFormatted(string[] parts, string version, int height, string expected)
+        public void Apply_LabelParts_NonRelease_Is_Formatted(
+            string[] parts,
+            string version,
+            int height,
+            string expectedPart)
         {
             // Arrange
-            var info = new VersionInfo { Version = version };
-            info.Label.AddRange(parts);
-            var result = new VersionResult { Height = height };
+            var info = Utils.GetVersionInfo(version, label: parts);
+            var result = Utils.GetVersionResult(height, false);
+
+            var fullExpected = expectedPart;
+
+            if (parts.Length > 0)
+            {
+                var shaSub = result.Sha.Substring(0, 7);
+                fullExpected = $"{expectedPart}-{shaSub}";
+            }
+
+            // Act
+            _sut.Apply(info, result);
+
+            // Assert
+            result.Formats.Should().ContainKey("Semver1");
+            result.Formats["Semver1"].Should().Be(fullExpected);
+        }
+
+
+        [Theory]
+        [MemberData(nameof(LabelParts))]
+        public void Apply_LabelParts_Release_Is_Formatted(
+            string[] parts,
+            string version,
+            int height,
+            string expected)
+        {
+            // Arrange
+            var info = Utils.GetVersionInfo(version, label: parts);
+            var result = Utils.GetVersionResult(height, true);
 
             // Act
             _sut.Apply(info, result);

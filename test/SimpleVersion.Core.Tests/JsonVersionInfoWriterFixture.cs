@@ -5,6 +5,7 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests
 {
+    [Collection("Relies on current directory")]
     public class JsonVersionInfoWriterFixture
     {
         private readonly JsonVersionInfoWriter _sut;
@@ -43,12 +44,13 @@ namespace SimpleVersion.Core.Tests
                 },
                 Version = "1.2.3.4"
             };
+            var expectedContent = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Assets", "Expectations", "ToTextWithModel.json"));
 
             // Act
             var result = _sut.ToText(model);
 
             // Assert
-            result.Should().Be("{\r\n  \"Version\": \"1.2.3.4\",\r\n  \"OffSet\": 0,\r\n  \"Label\": [\r\n    \"First\",\r\n    \"Second\"\r\n  ],\r\n  \"MetaData\": [\r\n    \"Meta1\",\r\n    \"Meta2\"\r\n  ]\r\n}");
+            result.Should().Be(expectedContent);
         }
 
         [Fact]
@@ -82,6 +84,7 @@ namespace SimpleVersion.Core.Tests
         {
             // Arrange
             var expectedPath = Path.Combine(Directory.GetCurrentDirectory(), Guid.NewGuid().ToString());
+            var expectedContent = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Assets", "Expectations", "Empty.json"));
 
             // Act
             _sut.ToFile(new VersionInfo(), expectedPath);
@@ -91,7 +94,8 @@ namespace SimpleVersion.Core.Tests
             File.Exists(resultPath).Should().BeTrue();
 
             var resultContent = File.ReadAllText(resultPath);
-            resultContent.Should().Be("{\r\n  \"Version\": \"\",\r\n  \"OffSet\": 0,\r\n  \"Label\": [],\r\n  \"MetaData\": []\r\n}");
+            
+            resultContent.Should().Be(expectedContent);
         }
     }
 }

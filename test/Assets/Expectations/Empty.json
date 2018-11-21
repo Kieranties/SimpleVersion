@@ -1,0 +1,10 @@
+{
+  "Version": "",
+  "OffSet": 0,
+  "Label": [],
+  "MetaData": [],
+  "Branches": {
+    "AddShortShaToNonRelease": true,
+    "Release": []
+  }
+}
