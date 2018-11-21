@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SimpleVersion
 {
@@ -20,7 +21,7 @@ namespace SimpleVersion
             if (other == null) return false;
 
             return Version.Equals(other.Version)
-                && Label.Equals(other.Label);
+                && Label.SequenceEqual(other.Label);
         }
     }
 }

@@ -92,6 +92,32 @@ namespace SimpleVersion.Core.Tests.Git
         }
 
         [Fact]
+        public void GetResult_Modfied_No_Version_Or_Label_Changes_Does_Not_Reset()
+        {
+            var writer = new JsonVersionInfoWriter();
+            using (var fixture = new EmptyRepositoryFixture())
+            {
+                var sut = new GitRepository(new JsonVersionInfoReader(), fixture.RepositoryPath);
+
+                // write the version file
+                var info = new VersionInfo { Version = "0.1.0" };
+                WriteVersion(info, fixture); // 1
+
+                fixture.MakeACommit(); // 2
+                fixture.MakeACommit(); // 3
+                fixture.MakeACommit(); // 4
+                fixture.MakeACommit(); // 5
+
+                info.MetaData.Add("example");
+                WriteVersion(info, fixture); // 6
+
+                var result = GetResult(sut, fixture);
+
+                result.Height.Should().Be(6);
+            }
+        }
+
+        [Fact]
         public void GetResult_Feature_Branch_No_Change_Increments_Merge_Once()
         {
             var writer = new JsonVersionInfoWriter();
