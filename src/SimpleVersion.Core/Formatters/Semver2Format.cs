@@ -10,11 +10,18 @@ namespace SimpleVersion.Formatters
             var labelParts = new List<string>(info.Label);
             var metaParts = new List<string>(info.MetaData);
 
-            // if no label, add height to meta data
-            if (labelParts.Count == 0)
-                metaParts.Insert(0, result.Height.ToString());
-            else
-                labelParts.Add(result.Height.ToString());
+            if (!info.Version.Contains("*"))
+            {
+                if (labelParts.Count == 0)
+                {
+                    if (!metaParts.Contains("*"))
+                        metaParts.Add("*");
+                }
+                else if (!labelParts.Contains("*"))
+                {
+                    labelParts.Add("*");
+                }
+            }
 
             // add short sha if required
             if (info.Branches.AddShortShaToNonRelease)
@@ -37,10 +44,12 @@ namespace SimpleVersion.Formatters
             }
 
             var label = string.Join(".", labelParts);
+            label = label.Replace("*", result.Height.ToString());
+
             var meta = string.Join(".", metaParts);
+            meta = meta.Replace("*", result.Height.ToString());
 
-
-            var format = info.Version;
+            var format = result.Version;
 
             if (!string.IsNullOrWhiteSpace(label))
                 format += $"-{label}";

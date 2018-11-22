@@ -9,7 +9,7 @@ namespace SimpleVersion.Core.Tests.Formatters
     public class Semver2FormatterFixture
     {
         private readonly Semver2Format _sut;
-        
+
         public Semver2FormatterFixture()
         {
             _sut = new Semver2Format();
@@ -35,8 +35,10 @@ namespace SimpleVersion.Core.Tests.Formatters
             // Arrange
             var info = Utils.GetVersionInfo(version, parts);
             var result = Utils.GetVersionResult(height, false);
+            result.Version = info.Version;
+
             string expected;
-            if(parts.Length > 0)
+            if (parts.Length > 0)
                 expected = $"{version}-{string.Join(".", parts)}.{height}.4ca82d2";
             else
                 expected = $"{version}-4ca82d2+{height}";
@@ -60,6 +62,8 @@ namespace SimpleVersion.Core.Tests.Formatters
             // Arrange
             var info = Utils.GetVersionInfo(version, parts);
             var result = Utils.GetVersionResult(height);
+            result.Version = info.Version;
+
             string expected;
             if (parts.Length > 0)
                 expected = $"{version}-{string.Join(".", parts)}.{height}";
@@ -77,7 +81,7 @@ namespace SimpleVersion.Core.Tests.Formatters
         public static IEnumerable<object[]> MetaDataParts()
         {
             yield return new object[] { Array.Empty<object>(), "1.2.0", 10 };
-            yield return new object[] { new[] { "one" }, "1.2.0", 10};
+            yield return new object[] { new[] { "one" }, "1.2.0", 10 };
             yield return new object[] { new[] { "one", "two" }, "1.2.0", 106 };
         }
 
@@ -91,9 +95,11 @@ namespace SimpleVersion.Core.Tests.Formatters
             // Arrange
             var info = Utils.GetVersionInfo(version, meta: parts);
             var result = Utils.GetVersionResult(height, false);
+            result.Version = info.Version;
+
             string expected;
             if (parts.Length > 0)
-                expected = $"{version}-4ca82d2+{height}.{string.Join(".", parts)}";
+                expected = $"{version}-4ca82d2+{string.Join(".", parts)}.{height}";
             else
                 expected = $"{version}-4ca82d2+{height}";
 
@@ -108,17 +114,19 @@ namespace SimpleVersion.Core.Tests.Formatters
         [Theory]
         [MemberData(nameof(MetaDataParts))]
         public void Apply_MetaDataParts_Release_Is_Formatted(
-            string[] parts, 
-            string version, 
+            string[] parts,
+            string version,
             int height)
         {
 
             // Arrange
             var info = Utils.GetVersionInfo(version, meta: parts);
             var result = Utils.GetVersionResult(height);
+            result.Version = info.Version;
+
             string expected;
             if (parts.Length > 0)
-                expected = $"{version}+{height}.{string.Join(".", parts)}";
+                expected = $"{version}+{string.Join(".", parts)}.{height}";
             else
                 expected = $"{version}+{height}";
 

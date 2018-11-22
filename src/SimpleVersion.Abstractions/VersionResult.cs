@@ -4,6 +4,8 @@ namespace SimpleVersion
 {
     public class VersionResult
     {
+        public string Version { get; set; } = string.Empty;
+
         public int Major { get; set; } = 0;
 
         public int Minor { get; set; } = 0;
