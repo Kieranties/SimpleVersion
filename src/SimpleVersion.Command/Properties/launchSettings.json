@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SimpleVersion.Command": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Code\\Tfs\\Framework\\Framework.Build"
+    }
+  }
+}
