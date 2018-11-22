@@ -20,6 +20,8 @@ namespace SimpleVersion.Core.Tests.Formatters
             yield return new object[] { Array.Empty<object>(), "1.2.0", 10, "1.2.0" };
             yield return new object[] { new[] { "one" }, "1.2.0", 10, "1.2.0-one-0010" };
             yield return new object[] { new[] { "one", "two" } , "1.2.0", 106, "1.2.0-one-two-0106" };
+            yield return new object[] { new[] { "*", "one", "two" } , "1.2.0", 106, "1.2.0-0106-one-two" };
+            yield return new object[] { new[] { "one", "*", "two" } , "1.2.0", 106, "1.2.0-one-0106-two" };
         }
 
         [Theory]
@@ -33,6 +35,7 @@ namespace SimpleVersion.Core.Tests.Formatters
             // Arrange
             var info = Utils.GetVersionInfo(version, label: parts);
             var result = Utils.GetVersionResult(height, false);
+            result.Version = info.Version;
 
             var fullExpected = expectedPart;
 
@@ -62,6 +65,7 @@ namespace SimpleVersion.Core.Tests.Formatters
             // Arrange
             var info = Utils.GetVersionInfo(version, label: parts);
             var result = Utils.GetVersionResult(height, true);
+            result.Version = info.Version;
 
             // Act
             _sut.Apply(info, result);

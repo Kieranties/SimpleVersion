@@ -9,9 +9,12 @@ namespace SimpleVersion.Formatters
         {
             var labelParts = new List<string>(info.Label);
 
-            // if no label, add height to meta data
-            if (labelParts.Count != 0)
-                labelParts.Add(result.HeightPadded);
+            if (!info.Version.Contains("*"))
+            {
+                // if we have a label, ensure height is included
+                if (labelParts.Count != 0 && !labelParts.Contains("*"))
+                    labelParts.Add("*");
+            }
 
             // add short sha if required
             if (info.Branches.AddShortShaToNonRelease && labelParts.Count > 0)
@@ -34,7 +37,9 @@ namespace SimpleVersion.Formatters
             }
 
             var label = string.Join("-", labelParts);
-            var format = info.Version;
+            label = label.Replace("*", result.HeightPadded);
+
+            var format = result.Version;
             
             if (!string.IsNullOrWhiteSpace(label))
                 format += $"-{label}";
