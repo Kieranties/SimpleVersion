@@ -105,7 +105,7 @@ namespace SimpleVersion.Git
         {
             var resolvedPath = Repository.Discover(path);
 
-            if (string.IsNullOrWhiteSpace(path))
+            if (string.IsNullOrWhiteSpace(resolvedPath))
             {
                 throw new DirectoryNotFoundException($"Could not find git repository at '{path}' or any parent directory");
             }
