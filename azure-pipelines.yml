@@ -41,11 +41,11 @@ jobs:
       }
       Write-Output "##vso[build.updatebuildnumber]$env:Version $env:VersionSuffix"
       Write-Output "##vso[task.setvariable variable=VersionSuffix;]$env:VersionSuffix"
-    displayName: "PowerShell: Calculate Height"
+    displayName: "Build: Calculate Height"
 
   # Build/Pack the assets
   - task: DotNetCoreCLI@2
-    displayName: "Pack: Source"
+    displayName: "Build: Pack Source"
     inputs:
       command: pack
       packagesToPack: src/**/*.csproj
@@ -62,7 +62,7 @@ jobs:
 
   # Run integration tests
   - powershell: .\integration\test.ps1 -Artifacts $(DistDir)
-    displayName: "Test: Unit"
+    displayName: "Test: Integration"
     failOnStderr: true
     errorActionPreference: stop
 
@@ -84,7 +84,7 @@ jobs:
       ArtifactType: Container
     
   - task: NuGetCommand@2
-    displayName: "Publish: Test Feed"
+    displayName: "Artifacts: Publish Packages"
     condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))   
     inputs:
       command: push
