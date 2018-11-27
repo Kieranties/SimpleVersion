@@ -5,8 +5,6 @@ param(
 	[String]$WorkingDir = "$ArtifactsDir\..\integration"
 )
 
-$InformationPreference = 'Continue'
-
 # Ensure we have our paths
 if(!(Test-Path $ArtifactsDir)){
 	throw "ArtifactsDir does not exist: $ArtifactsDir";
@@ -48,7 +46,7 @@ function NugetInstall {
 	if($PreRelease){
 		$nugetArgs += '-Pre'
 	}
-	nuget $nugetArgs | Write-Information
+	nuget $nugetArgs | Write-Host
 
 	if($LASTEXITCODE -ne 0) {
 		throw "Nuget failed to install SimpleVersion.Command"
@@ -58,11 +56,11 @@ function NugetInstall {
 }
 
 # Install Pester
-$pesterPath = NugetInstall -PackageName Pester -Source https://www.powershellgallery.com/api/v2/
+$pesterPath = NugetInstall Pester https://www.powershellgallery.com/api/v2/
 Import-Module "$pesterPath\Pester"
 
 # Install SimpleVersion.Command
-$command = NugetInstall -PackageName SimpleVersion.Command -Source $ArtifactsDir -PreRelease -Force
+$command = NugetInstall SimpleVersion.Command $ArtifactsDir -PreRelease -Force
 $env:Path += ";$command\tools"
 
 $pesterArgs = @{
