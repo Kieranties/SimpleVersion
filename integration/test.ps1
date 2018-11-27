@@ -60,11 +60,11 @@ function NugetInstall {
 }
 
 # Install Pester
-$pesterPath = NugetInstall Pester https://www.powershellgallery.com/api/v2/
+$pesterPath = NugetInstall -PackageName Pester -Source https://www.powershellgallery.com/api/v2/
 Import-Module "$pesterPath\Pester"
 
 # Install SimpleVersion.Command
-$command = NugetInstall SimpleVersion.Command $ArtifactsDir -PreRelease -Force
+$command = NugetInstall -PackageName SimpleVersion.Command -Source $ArtifactsDir -PreRelease -Force
 $env:Path += ";$command\tools"
 
 $pesterArgs = @{
