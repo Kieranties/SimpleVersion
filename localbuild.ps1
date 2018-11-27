@@ -19,7 +19,7 @@ dotnet pack (Join-Path $Root 'SimpleVersion.sln') -o $Artifacts
 # Unit
 if(!$NoUnit){	
 	Get-ChildItem 'test' -Filter '*.csproj' -Recurse | ForEach-Object {
-		dotnet test $_.Fullname --no-build
+		dotnet test $_.Fullname
 	}
 }
 

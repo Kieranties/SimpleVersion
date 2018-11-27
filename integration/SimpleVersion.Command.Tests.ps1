@@ -1,3 +1,12 @@
+param(
+	[String]$Artifacts = "$PSScriptRoot\..\artifacts"
+)
+
+. $PSScriptRoot\utils.ps1
+
+# Install SimpleVersion.Command
+$command = NugetInstall SimpleVersion.Command $ArtifactsDir -PreRelease -Force
+$env:Path += ";$command\tools"
 
 function Invoke{
     $result = SimpleVersion $Args *>&1
