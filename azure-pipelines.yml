@@ -51,8 +51,7 @@ jobs:
       packagesToPack: src/**/*.csproj
       packDirectory: $(DistDir)
       versioningScheme: off
-    
-  
+
   # Run unit tests
   - task: DotNetCoreCLI@2
     displayName: "Test: Unit"
@@ -61,16 +60,29 @@ jobs:
       projects: test/**/*.csproj
       publishTestResults: true
 
+  # Run integration tests
+  - powershell: .\integration\test.ps1 -Artifacts $(DistDir)
+    displayName: "Test: Unit"
+    failOnStderr: true
+    errorActionPreference: stop
+
+  - task: PublishTestResults@2
+    displayName: "Artifacts: Publish Integration Tests"
+    inputs:
+      testResultsFormat: NUnit
+      testResultsFiles: '**/*.Pester.xml' 
+      searchFolder: $(DistDir)\.. 
+      testRunTitle: "Integration Tests"
+
   # Handle artifacts
   - task: PublishBuildArtifacts@1
-    displayName: "Artifacts: Publish distributables"
+    displayName: "Artifacts: Publish Distributables"
     condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
     inputs:
       PathtoPublish: $(DistDir)
       ArtifactName: distributables
       ArtifactType: Container
     
-
   - task: NuGetCommand@2
     displayName: "Publish: Test Feed"
     condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))   

@@ -2,7 +2,7 @@
 
 param(
 	[String]$ArtifactsDir = "$PSScriptRoot\..\artifacts",
-	[String]$WorkingDir = "$ArtifactsDir\integration"
+	[String]$WorkingDir = "$ArtifactsDir\..\integration"
 )
 
 $InformationPreference = 'Continue'
@@ -70,7 +70,7 @@ $env:Path += ";$command\tools"
 $pesterArgs = @{
 	Script = $PSScriptRoot
 	OutputFormat = "NunitXml"
-	OutputFile = "$ArtifactsDir\IntegrationTests.Pester.xml"
+	OutputFile = "$WorkingDir\IntegrationTests.Pester.xml"
 	PassThru = $true
 }
 
