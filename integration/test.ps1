@@ -25,10 +25,8 @@ if($nuget){;
 }
 
 function NugetInstall {
-	param(
-		[Parameter(Mandatory)]
-		[String]$PackageName,
-		[Parameter(Mandatory)]
+	param(		
+		[String]$PackageName,		
 		[String]$Source,
 		[String]$Version,
 		[Switch]$PreRelease,
