@@ -13,17 +13,17 @@ namespace Cake.SimpleVersion
             string path = null)
         {
 
-                if (string.IsNullOrWhiteSpace(path))
-                    path = context.Environment.WorkingDirectory.FullPath;
+            if (string.IsNullOrWhiteSpace(path))
+                path = context.Environment.WorkingDirectory.FullPath;
 
             context.Log.Write(Core.Diagnostics.Verbosity.Normal, Core.Diagnostics.LogLevel.Information, "Path: {0}", path);
             context.Log.Write(Core.Diagnostics.Verbosity.Normal, Core.Diagnostics.LogLevel.Information, "ContextPath: {0}", context.Environment.WorkingDirectory.FullPath);
-
-
-                var reader = new JsonVersionInfoReader();
-                var repo = new GitRepository(reader, path);
-
+            
+            var reader = new JsonVersionInfoReader();
+            using (var repo = new GitRepository(reader, path))
+            {
                 return repo.GetResult();
+            }
         }
     }
 }

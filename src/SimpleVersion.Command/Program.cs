@@ -15,11 +15,11 @@ namespace SimpleVersion.Command
                     path = args[0];
 
                 var reader = new JsonVersionInfoReader();
-                var repo = new GitRepository(reader, path);
-
-                var result = repo.GetResult();
-
-                Console.Out.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+                using (var repo = new GitRepository(reader, path))
+                {
+                    var result = repo.GetResult();
+                    Console.Out.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+                }
             }
             catch (Exception ex) {
                 Console.Error.WriteLine($"[Error] {ex.Message}");
