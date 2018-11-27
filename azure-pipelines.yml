@@ -62,7 +62,7 @@ jobs:
 
   # Run integration tests
   - powershell: |
-      .\integration\test.ps1 -Artifacts $(DistDir)
+      .\integration\test.ps1 -Verbose -Artifacts $(DistDir)
     displayName: "Test: Integration"
     failOnStderr: true
      
