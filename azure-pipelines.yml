@@ -64,7 +64,6 @@ jobs:
   - powershell: |
       .\integration\test.ps1 -Verbose -Artifacts $(DistDir)
     displayName: "Test: Integration"
-    failOnStderr: true
      
   - task: PublishTestResults@2
     displayName: "Artifacts: Publish Integration Tests"
