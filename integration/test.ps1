@@ -31,8 +31,14 @@ function NugetInstall {
 		[Parameter(Mandatory)]
 		[String]$Source,
 		[String]$Version,
-		[Switch]$PreRelease
+		[Switch]$PreRelease,
+		[Switch]$Force
 	)
+
+	if($Force){
+		Get-ChildItem $WorkingDir -Filter "$PackageName.*" | Remove-Item -Recurse
+	}
+
 	$nugetArgs = @(
 		'install', $PackageName,
 		'-Source', $Source,
@@ -58,13 +64,13 @@ $pesterPath = NugetInstall Pester https://www.powershellgallery.com/api/v2/
 Import-Module "$pesterPath\Pester"
 
 # Install SimpleVersion.Command
-$command = NugetInstall SimpleVersion.Command $ArtifactsDir -PreRelease
+$command = NugetInstall SimpleVersion.Command $ArtifactsDir -PreRelease -Force
 $env:Path += ";$command\tools"
 
 $pesterArgs = @{
 	Script = $PSScriptRoot
 	OutputFormat = "NunitXml"
-	OutputFile = "$ArtifactsDir\PesterTests.xml"
+	OutputFile = "$ArtifactsDir\IntegrationTests.Pester.xml"
 	PassThru = $true
 }
 
