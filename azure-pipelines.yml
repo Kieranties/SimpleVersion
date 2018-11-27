@@ -64,7 +64,7 @@ jobs:
   - task: richardfennellBM.BM-VSTS-PesterRunner-Task.Pester-Task.Pester@8
     displayName: "Test: Integration"
     inputs:
-      scriptFolder: "@{ Path='$(System.DefaultWorkingDirectory)\integration\*.Command.Tests.ps1'; Parameters=@{ Artifacts='$(Build.ArtifactStagingDirectory)/distributables'}}"
+      scriptFolder: '@{Path=''$(System.DefaultWorkingDirectory)\integration\*.Command.Tests.ps1''; Parameters=@{ Artifacts=''$(Build.ArtifactStagingDirectory)/distributables''}}'
       resultsFile: '$(Build.ArtifactStagingDirectory)\Pester.Tests.XML'
      
   # Publish integration tests
@@ -94,8 +94,3 @@ jobs:
       nuGetFeedType: internal
       publishVstsFeed: SimpleVersion
       feedsToUse: nuget.config
-
-
-
-
-      scriptFolder: "@{ Path='$(System.DefaultWorkingDirectory)\integration\*.Command.Tests.ps1'; Parameters=@{ Artifacts='$(Build.ArtifactStagingDirectory)/distributables'}}"
