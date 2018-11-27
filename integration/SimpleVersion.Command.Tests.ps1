@@ -1,5 +1,5 @@
 param(
-	[String]$Artifacts = "$PSScriptRoot\..\artifacts"
+	[String]$ArtifactsDir = "$PSScriptRoot\..\artifacts"
 )
 
 . $PSScriptRoot\utils.ps1
