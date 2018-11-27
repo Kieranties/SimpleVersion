@@ -24,6 +24,11 @@ jobs:
   pool:
     vmImage: vs2017-win2016
   steps:
+  - powershell: |
+      nuget install SimpleVersion.Command -Source https://www.powershellgallery.com/api/v2/ -Pre
+      .\SimpleVersion.Command.*\SimpleVersion.exe
+    displayName: "Testing nuget"
+
   # Calculate the version suffix - this will be refactored in the future
   - powershell: |
       $height = git rev-list --count HEAD
@@ -60,7 +65,7 @@ jobs:
       projects: test/**/*.csproj
       publishTestResults: true
 
-  # Run integration tests  
+  # Run integration tests
   - task: richardfennellBM.BM-VSTS-PesterRunner-Task.Pester-Task.Pester@8
     displayName: "Test: Integration"
     inputs:
