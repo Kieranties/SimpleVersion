@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace SimpleVersion.Git
 {
-    public class GitRepository
+    public class GitRepository : IDisposable
     {
         private readonly IVersionInfoReader _reader;
 
@@ -105,11 +105,16 @@ namespace SimpleVersion.Git
         {
             var resolvedPath = Repository.Discover(path);
 
-            if (string.IsNullOrWhiteSpace(path))
+            if (string.IsNullOrWhiteSpace(resolvedPath))
             {
                 throw new DirectoryNotFoundException($"Could not find git repository at '{path}' or any parent directory");
             }
             return resolvedPath;
+        }
+
+        public void Dispose()
+        {
+            Repository?.Dispose();
         }
     }
 }

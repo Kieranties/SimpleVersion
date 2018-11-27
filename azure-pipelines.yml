@@ -41,18 +41,17 @@ jobs:
       }
       Write-Output "##vso[build.updatebuildnumber]$env:Version $env:VersionSuffix"
       Write-Output "##vso[task.setvariable variable=VersionSuffix;]$env:VersionSuffix"
-    displayName: "PowerShell: Calculate Height"
+    displayName: "Build: Calculate Height"
 
   # Build/Pack the assets
   - task: DotNetCoreCLI@2
-    displayName: "Pack: Source"
+    displayName: "Build: Pack Source"
     inputs:
       command: pack
       packagesToPack: src/**/*.csproj
       packDirectory: $(DistDir)
       versioningScheme: off
-    
-  
+
   # Run unit tests
   - task: DotNetCoreCLI@2
     displayName: "Test: Unit"
@@ -61,18 +60,33 @@ jobs:
       projects: test/**/*.csproj
       publishTestResults: true
 
+  # Run integration tests  
+  - task: richardfennellBM.BM-VSTS-PesterRunner-Task.Pester-Task.Pester@8
+    displayName: "Test: Integration"
+    inputs:
+      scriptFolder: '@{Path=''$(System.DefaultWorkingDirectory)\integration\*.Command.Tests.ps1''; Parameters=@{ Artifacts=''$(Build.ArtifactStagingDirectory)/distributables''}}'
+      resultsFile: '$(Build.ArtifactStagingDirectory)\Pester.Tests.XML'
+     
+  # Publish integration tests
+  - task: PublishTestResults@2
+    displayName: "Artifacts: Publish Integration Tests"
+    condition: succeededOrFailed()
+    inputs:
+      testResultsFormat: NUnit
+      testResultsFiles: $(Build.ArtifactStagingDirectory)\Pester.Tests.xml
+      testRunTitle: "Integration Tests"
+
   # Handle artifacts
   - task: PublishBuildArtifacts@1
-    displayName: "Artifacts: Publish distributables"
+    displayName: "Artifacts: Publish Distributables"
     condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
     inputs:
       PathtoPublish: $(DistDir)
       ArtifactName: distributables
       ArtifactType: Container
     
-
   - task: NuGetCommand@2
-    displayName: "Publish: Test Feed"
+    displayName: "Artifacts: Publish Packages"
     condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))   
     inputs:
       command: push

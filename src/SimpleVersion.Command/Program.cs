@@ -8,18 +8,25 @@ namespace SimpleVersion.Command
     {
         public static int Main(string[] args)
         {
-            var path = System.IO.Directory.GetCurrentDirectory();
-            if (args.Length > 0)
-                path = args[0];
+            var exitCode = 0;
+            try {
+                var path = System.IO.Directory.GetCurrentDirectory();
+                if (args.Length > 0)
+                    path = args[0];
 
-            var reader = new JsonVersionInfoReader();
-            var repo = new GitRepository(reader, path);
+                var reader = new JsonVersionInfoReader();
+                using (var repo = new GitRepository(reader, path))
+                {
+                    var result = repo.GetResult();
+                    Console.Out.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+                }
+            }
+            catch (Exception ex) {
+                Console.Error.WriteLine($"[Error] {ex.Message}");
+                exitCode = -1;
+            }
 
-            var result = repo.GetResult();
-
-            Console.Out.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
-
-            return 0;
+            return exitCode;
         }
     }
 }

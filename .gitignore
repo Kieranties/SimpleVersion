@@ -3,3 +3,4 @@ artifacts
 packages
 bin
 obj
+integration/temp
