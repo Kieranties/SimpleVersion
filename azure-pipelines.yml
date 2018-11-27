@@ -73,7 +73,7 @@ jobs:
     condition: succeededOrFailed()
     inputs:
       testResultsFormat: NUnit
-      testResultsFiles: $(Build.ArtifactStagingDirectory)/Pester.Tests.xml'
+      testResultsFiles: $(Build.ArtifactStagingDirectory)\Pester.Tests.xml
       testRunTitle: "Integration Tests"
 
   # Handle artifacts
