@@ -61,15 +61,11 @@ jobs:
       publishTestResults: true
 
   # Run integration tests
-  - task: PowerShell@2
+  - powershell: |
+      .\integration\test.ps1 -Artifacts $(DistDir)
     displayName: "Test: Integration"
-    inputs:
-      targetType: filePath
-      filePath: .\integration\test.ps1 
-      arguments: $(DistDir)    
-      failOnStderr: true
-      errorActionPreference: stop
-
+    failOnStderr: true
+     
   - task: PublishTestResults@2
     displayName: "Artifacts: Publish Integration Tests"
     inputs:
