@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Sdk Name="Microsoft.Build.CentralPackageVersions" />
 
   <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
     <RootNamespace>SimpleVersion</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="LibGit2Sharp" Version="0.25.3" />
-    <PackageReference Include="LibGit2Sharp.NativeBinaries" Version="1.0.235" />
-    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="LibGit2Sharp" />
+    <PackageReference Include="LibGit2Sharp.NativeBinaries" />
+    <PackageReference Include="Newtonsoft.Json" />
   </ItemGroup>
 
   <ItemGroup>

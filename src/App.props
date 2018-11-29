@@ -1,27 +1,18 @@
 <Project>
-  
-  <ItemDefinitionGroup>
-    <ProjectReference>
-      <PrivateAssets>All</PrivateAssets>
-    </ProjectReference>
-    <PackageReference>
-      <PrivateAssets>All</PrivateAssets>
-    </PackageReference>
-  </ItemDefinitionGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Packaging.Tools.Trimming" Version="1.1.0-*" />
+    <PackageReference Include="Microsoft.Packaging.Tools.Trimming" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SimpleVersion.Core\SimpleVersion.Core.csproj" />
+    <ProjectReference Include="..\SimpleVersion.Core\SimpleVersion.Core.csproj" PrivateAssets="All" />
   </ItemGroup>
 
   <PropertyGroup Label="Pack Customizations">
     <!-- We pack custom assets after the publish task -->
     <IncludeContentInPack>False</IncludeContentInPack>
     <IncludeBuildOutput>False</IncludeBuildOutput>
-    
+
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Release'">
@@ -33,5 +24,5 @@
     <AllowedReferenceRelatedFileExtensions>None</AllowedReferenceRelatedFileExtensions>
   </PropertyGroup>
 
-  
+
 </Project>
