@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Sdk Name="Microsoft.Build.CentralPackageVersions" />
 
   <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
     <RootNamespace>SimpleVersion</RootNamespace>
   </PropertyGroup>
 
