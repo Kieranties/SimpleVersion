@@ -11,37 +11,40 @@ pr:
 - master
 
 variables:
-  Version: 0.1.0
-  VersionSuffix: alpha1
   TreatWarningsAsErrors: true
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_CLI_TELEMETRY_OPTOUT: false
   Configuration: Release
   DistDir: $(Build.ArtifactStagingDirectory)/distributables
+  LocalFeed: https://pkgs.dev.azure.com/Kieranties/_packaging/SimpleVersion/nuget/v3/index.json
 
 jobs:
 - job: Windows
   pool:
     vmImage: vs2017-win2016
   steps:
-  # Calculate the version suffix - this will be refactored in the future
+
+  # Install nuget
+  - task: NuGetToolInstaller@0
+    displayName: 'Prepare: Install NuGet'
+
+  # Install previous release
+  - task: NuGetCommand@2
+    displayName: 'Prepare: Install SimpleVersion'
+    inputs:
+      command: custom
+      arguments: 'install SimpleVersion.Command -Pre -Source $(LocalFeed)'
+
+  # Calculate the version
   - powershell: |
-      $height = git rev-list --count HEAD
-      if($env:BUILD_SOURCEBRANCH -match 'refs\/pull\/(?<id>\d+)\/merge'){
-          if($env:VersionSuffix){
-              $env:VersionSuffix += ".pr$($matches.id)"
-          } else {
-              $env:VersionSuffix = ".pr$($matches.id)"
-          }
+      $result = .\SimpleVersion.*\tools\SimpleVersion.exe
+      $fullVersion = ($result | ConvertFrom-Json).Formats.Semver2
+      Write-Output "##vso[build.updatebuildnumber]$fullVersion"
+      if($fullVersion -match '(?<version>\d+\.\d+\.\d+(?:\.\d+)?)(?<suffix>.*)') {
+        Write-Output "##vso[task.setvariable variable=Version;]$($Matches.version)"
+        Write-Output "##vso[task.setvariable variable=VersionSuffix;]$($Matches.suffix)"
       }
-      $env:VersionSuffix = if($env:VersionSuffix){
-        "${env:VersionSuffix}.${height}"
-      } else {
-        "+${height}"
-      }
-      Write-Output "##vso[build.updatebuildnumber]$env:Version $env:VersionSuffix"
-      Write-Output "##vso[task.setvariable variable=VersionSuffix;]$env:VersionSuffix"
-    displayName: "Build: Calculate Height"
+    displayName: 'Prepare: Set version information'
 
   # Build/Pack the assets
   - task: DotNetCoreCLI@2
@@ -60,13 +63,13 @@ jobs:
       projects: test/**/*.csproj
       publishTestResults: true
 
-  # Run integration tests  
+  # Run integration tests
   - task: richardfennellBM.BM-VSTS-PesterRunner-Task.Pester-Task.Pester@8
     displayName: "Test: Integration"
     inputs:
       scriptFolder: '@{Path=''$(System.DefaultWorkingDirectory)\integration\*.Command.Tests.ps1''; Parameters=@{ Artifacts=''$(Build.ArtifactStagingDirectory)/distributables''}}'
       resultsFile: '$(Build.ArtifactStagingDirectory)\Pester.Tests.XML'
-     
+
   # Publish integration tests
   - task: PublishTestResults@2
     displayName: "Artifacts: Publish Integration Tests"
@@ -84,10 +87,10 @@ jobs:
       PathtoPublish: $(DistDir)
       ArtifactName: distributables
       ArtifactType: Container
-    
+
   - task: NuGetCommand@2
     displayName: "Artifacts: Publish Packages"
-    condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))   
+    condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
     inputs:
       command: push
       packagesToPush: $(DistDir)/**/*.nupkg
