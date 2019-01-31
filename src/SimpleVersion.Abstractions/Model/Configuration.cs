@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 
 namespace SimpleVersion.Model
 {
-    public class Configuration : IEquatable<Configuration>
+    public class Configuration
     {
         public string Version { get; set; } = string.Empty;
 
@@ -15,13 +13,5 @@ namespace SimpleVersion.Model
         public List<string> MetaData { get; } = new List<string>();
 
         public BranchInfo Branches { get; set; } = new BranchInfo();
-
-        public bool Equals(Configuration other)
-        {
-            if (other == null) return false;
-
-            return Version.Equals(other.Version)
-                && Label.SequenceEqual(other.Label);
-        }
     }
 }

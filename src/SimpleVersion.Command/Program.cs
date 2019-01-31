@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using SimpleVersion.Git;
+using SimpleVersion.Pipeline;
 using System;
 
 namespace SimpleVersion.Command
@@ -14,12 +14,11 @@ namespace SimpleVersion.Command
                 if (args.Length > 0)
                     path = args[0];
 
-                var reader = new JsonVersionInfoReader();
-                using (var repo = new GitRepository(reader, path))
-                {
-                    var result = repo.GetResult();
-                    Console.Out.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
-                }
+                var result = VersionCalculator
+                    .Default()
+                    .GetResult(path);
+
+                Console.Out.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));                
             }
             catch (Exception ex) {
                 Console.Error.WriteLine($"[Error] {ex.Message}");

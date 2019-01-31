@@ -1,14 +1,13 @@
-﻿using System;
+﻿using SimpleVersion.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace SimpleVersion.Comparers
 {
-    public class VersionLabelComparer : IEqualityComparer<(string Version, List<string> Label)>
+    public class ConfigurationVersionLabelComparer : IEqualityComparer<Configuration>
     {        
-        public bool Equals(
-            (string Version, List<string> Label) x, 
-            (string Version, List<string> Label) y)
+        public bool Equals(Configuration x, Configuration y)
         {
             if (ReferenceEquals(x, y))
                 return true;
@@ -28,15 +27,18 @@ namespace SimpleVersion.Comparers
             return false;
         }
 
-        public int GetHashCode((string Version, List<string> Label) obj)
+        public int GetHashCode(Configuration configuration)
         {
-            if (obj.Version is null)
+            if(configuration is null)
+                throw new ArgumentNullException(nameof(configuration));
+
+            if (configuration.Version is null)
                 throw new ArgumentNullException("Version");
 
-            if (obj.Label is null)
+            if (configuration.Label is null)
                 throw new ArgumentNullException("Label");
 
-            return obj.Version.GetHashCode() ^ obj.Label.GetHashCode();
+            return configuration.Version.GetHashCode() * 17 + configuration.Label.GetHashCode();
         }
     }
 }

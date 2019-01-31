@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace SimpleVersion
+namespace SimpleVersion.Model
 {
     public class BranchInfo
     {
         public List<string> Release { get; } = new List<string>();
-
-        public bool AddShortShaToNonRelease = true;
     }
 }
