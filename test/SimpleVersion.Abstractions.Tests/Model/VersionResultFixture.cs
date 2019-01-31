@@ -1,8 +1,8 @@
 ﻿using Xunit;
 using FluentAssertions;
+using SimpleVersion.Model;
 
-
-namespace SimpleVersion.Abstractions.Tests
+namespace SimpleVersion.Abstractions.Tests.Model
 {
     public class VersionResultFixture
     {
@@ -13,6 +13,7 @@ namespace SimpleVersion.Abstractions.Tests
             var sut = new VersionResult();
 
             // Assert
+            sut.Version.Should().BeEmpty();
             sut.Major.Should().Be(0);
             sut.Minor.Should().Be(0);
             sut.Patch.Should().Be(0);
@@ -32,7 +33,6 @@ namespace SimpleVersion.Abstractions.Tests
 
             // Assert
             sut.HeightPadded.Should().Be("0040");
-
         }
     }
 }

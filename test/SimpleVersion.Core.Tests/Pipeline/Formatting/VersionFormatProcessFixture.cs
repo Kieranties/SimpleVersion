@@ -1,18 +1,19 @@
 ﻿using FluentAssertions;
-using SimpleVersion.Formatters;
+using SimpleVersion.Pipeline;
+using SimpleVersion.Pipeline.Formatting;
 using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace SimpleVersion.Core.Tests.Formatters
+namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 {
-    public class VersionFormatFixture
+    public class VersionFormatProcessFixture
     {
-        private readonly VersionFormat _sut;
+        private readonly VersionFormatProcess _sut;
 
-        public VersionFormatFixture()
+        public VersionFormatProcessFixture()
         {
-            _sut = new VersionFormat();
+            _sut = new VersionFormatProcess();
         }
 
         public static IEnumerable<object[]> InvalidVersions()
@@ -28,15 +29,19 @@ namespace SimpleVersion.Core.Tests.Formatters
         public void Apply_InvalidVersion_Throws(string version)
         {
             // Arrange
-            var info = new VersionInfo { Version = version };
-            var result = new VersionResult();
+            var context = new VersionContext
+            {
+                Configuration = {
+                    Version = version
+                }
+            };            
 
             // Act
-            Action action = () => _sut.Apply(info, result);
+            Action action = () => _sut.Apply(context);
 
             // Asset
             action.Should().Throw<InvalidOperationException>()
-                .WithMessage($"Version '{info.Version}' is not in a valid format");
+                .WithMessage($"Version '{context.Configuration.Version}' is not in a valid format");
         }
 
         public static IEnumerable<object[]> ValidVersions()
@@ -53,17 +58,22 @@ namespace SimpleVersion.Core.Tests.Formatters
         public void Apply_ValidVersions_SetsMembers(string version, int major, int minor, int patch, int revision)
         {
             // Arrange
-            var info = new VersionInfo { Version = version };
-            var result = new VersionResult();
+            // Arrange
+            var context = new VersionContext
+            {
+                Configuration = {
+                    Version = version
+                }
+            };
 
             // Act
-            _sut.Apply(info, result);
+            _sut.Apply(context);
 
             // Assert
-            result.Major.Should().Be(major);
-            result.Minor.Should().Be(minor);
-            result.Patch.Should().Be(patch);
-            result.Revision.Should().Be(revision);
+            context.Result.Major.Should().Be(major);
+            context.Result.Minor.Should().Be(minor);
+            context.Result.Patch.Should().Be(patch);
+            context.Result.Revision.Should().Be(revision);
 
         }
 
@@ -85,17 +95,24 @@ namespace SimpleVersion.Core.Tests.Formatters
             int revision)
         {
             // Arrange
-            var info = new VersionInfo { Version = version };
-            var result = new VersionResult { Height = commits };
+            var context = new VersionContext
+            {
+                Configuration = {
+                    Version = version
+                },
+                Result = {
+                    Height = commits
+                }
+            };
 
             // Act
-            _sut.Apply(info, result);
+            _sut.Apply(context);
 
             // Assert
-            result.Major.Should().Be(major);
-            result.Minor.Should().Be(minor);
-            result.Patch.Should().Be(patch);
-            result.Revision.Should().Be(revision);
+            context.Result.Major.Should().Be(major);
+            context.Result.Minor.Should().Be(minor);
+            context.Result.Patch.Should().Be(patch);
+            context.Result.Revision.Should().Be(revision);
         }
     }
 }

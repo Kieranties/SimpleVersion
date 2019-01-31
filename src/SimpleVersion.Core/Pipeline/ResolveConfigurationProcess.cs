@@ -48,12 +48,9 @@ namespace SimpleVersion.Pipeline
                 height++;
             }
 
-            context.Result = new SVM.VersionResult
-            {
-                BranchName = repo.Head.FriendlyName,
-                Sha = repo.Head.Tip.Sha,
-                Height = height
-            };
+            context.Result.BranchName = repo.Head.FriendlyName;
+            context.Result.Sha = repo.Head.Tip.Sha;
+            context.Result.Height = height;
         }
 
         private bool HasVersionChange(TreeChanges diff, Commit commit, SVM.Configuration config)
