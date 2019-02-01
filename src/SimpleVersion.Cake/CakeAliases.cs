@@ -15,9 +15,6 @@ namespace Cake.SimpleVersion
             if (string.IsNullOrWhiteSpace(path))
                 path = context.Environment.WorkingDirectory.FullPath;
 
-            context.Log.Write(Core.Diagnostics.Verbosity.Normal, Core.Diagnostics.LogLevel.Information, "Path: {0}", path);
-            context.Log.Write(Core.Diagnostics.Verbosity.Normal, Core.Diagnostics.LogLevel.Information, "ContextPath: {0}", context.Environment.WorkingDirectory.FullPath);
-
             return VersionCalculator
                 .Default()
                 .GetResult(path);

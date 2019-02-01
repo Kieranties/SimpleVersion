@@ -14,6 +14,7 @@ namespace SimpleVersion.Abstractions.Tests.Pipeline
 
             // Assert
             sut.Path.Should().BeEmpty();
+            sut.RepositoryPath.Should().BeEmpty();
             sut.Result.Should().NotBeNull();
             sut.Configuration.Should().NotBeNull();
         }

@@ -14,7 +14,13 @@ namespace SimpleVersion.Pipeline
 
         public void Apply(VersionContext context)
         {
-            var repo = new Repository(context.Path);
+            if (context == null)
+                throw new ArgumentNullException(nameof(context));
+
+            if (string.IsNullOrWhiteSpace(context.RepositoryPath))
+                throw new ArgumentException($"{nameof(context.RepositoryPath)} must be a directory");
+
+            var repo = new Repository(context.RepositoryPath);
             var config = GetConfiguration(repo.Head?.Tip)
                 ?? throw new InvalidOperationException($"No commits found for '{Constants.VersionFileName}'");
 
