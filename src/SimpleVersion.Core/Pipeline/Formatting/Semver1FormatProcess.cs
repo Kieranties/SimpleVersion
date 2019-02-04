@@ -9,6 +9,27 @@ namespace SimpleVersion.Pipeline.Formatting
         {
             var labelParts = new List<string>(context.Configuration.Label);
 
+            // Order of operations count here. Each part of the 'label' is added in the oder in which it is processed.
+
+            if (labelParts.Count == 0)
+            {
+                var AddBranchName = true;
+                foreach (var pattern in context.Configuration.Branches.Release)
+                {
+                    if (Regex.IsMatch(context.Result.BranchName, pattern))
+                    {
+                        AddBranchName = false;
+                        break;
+                    }
+                }
+
+                if (AddBranchName)
+                {
+                    string ShortName = context.Result.BranchName.Remove(0, ((context.Result.BranchName.LastIndexOf('/') + 1)));
+                    labelParts.Add(ShortName);
+                }
+            }
+
             if (!context.Configuration.Version.Contains("*"))
             {
                 // if we have a label, ensure height is included

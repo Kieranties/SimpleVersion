@@ -45,7 +45,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             if (parts.Length > 0)
                 expected = $"{version}-{string.Join(".", parts)}.{height}.4ca82d2";
             else
-                expected = $"{version}-4ca82d2+{height}";
+                expected = $"{version}-example.4ca82d2+{height}";
 
             // Act
             _sut.Apply(context);
@@ -108,10 +108,10 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             context.Result.Version = context.Configuration.Version;
             
             string expected;
-            if (parts.Length > 0)
-                expected = $"{version}-4ca82d2+{string.Join(".", parts)}.{height}";
+            if (context.Configuration.MetaData.Count > 0)
+                expected = $"{version}-example.4ca82d2+{string.Join(".", parts)}.{height}";
             else
-                expected = $"{version}-4ca82d2+{height}";
+                expected = $"{version}-example.4ca82d2+{height}";
 
             // Act
             _sut.Apply(context);

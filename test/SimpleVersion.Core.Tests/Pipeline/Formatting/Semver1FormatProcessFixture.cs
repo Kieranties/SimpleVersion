@@ -18,6 +18,15 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
         public static IEnumerable<object[]> LabelParts()
         {
+            yield return new object[] { Array.Empty<object>(), "1.2.0", 10, "1.2.0-example-0010" };
+            yield return new object[] { new[] { "one" }, "1.2.0", 10, "1.2.0-one-0010" };
+            yield return new object[] { new[] { "one", "two" }, "1.2.0", 106, "1.2.0-one-two-0106" };
+            yield return new object[] { new[] { "*", "one", "two" }, "1.2.0", 106, "1.2.0-0106-one-two" };
+            yield return new object[] { new[] { "one", "*", "two" }, "1.2.0", 106, "1.2.0-one-0106-two" };
+        }
+
+        public static IEnumerable<object[]> FormattedLabelParts()
+        {
             yield return new object[] { Array.Empty<object>(), "1.2.0", 10, "1.2.0" };
             yield return new object[] { new[] { "one" }, "1.2.0", 10, "1.2.0-one-0010" };
             yield return new object[] { new[] { "one", "two" }, "1.2.0", 106, "1.2.0-one-two-0106" };
@@ -43,11 +52,8 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
             var fullExpected = expectedPart;
 
-            if (parts.Length > 0)
-            {
-                var shaSub = context.Result.Sha.Substring(0, 7);
-                fullExpected = $"{expectedPart}-{shaSub}";
-            }
+            var shaSub = context.Result.Sha.Substring(0, 7);
+            fullExpected = $"{expectedPart}-{shaSub}";
 
             // Act
             _sut.Apply(context);
@@ -58,7 +64,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
         }
 
         [Theory]
-        [MemberData(nameof(LabelParts))]
+        [MemberData(nameof(FormattedLabelParts))]
         public void Apply_LabelParts_Release_Is_Formatted(
             string[] parts,
             string version,
