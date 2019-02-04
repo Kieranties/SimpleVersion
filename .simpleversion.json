@@ -1,6 +1,5 @@
 {
-  "version": "0.1.0",
-  "label": [ "alpha2" ],
+  "version": "0.1.*",
   "branches": {
     "release": [
       "^master$",
