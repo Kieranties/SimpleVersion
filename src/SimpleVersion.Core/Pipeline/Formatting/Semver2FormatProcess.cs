@@ -12,15 +12,9 @@ namespace SimpleVersion.Pipeline.Formatting
 
             if (!context.Configuration.Version.Contains("*"))
             {
-                if (labelParts.Count == 0)
-                {
-                    if (!metaParts.Contains("*"))
-                        metaParts.Add("*");
-                }
-                else if (!labelParts.Contains("*"))
-                {
+                // if we have a label, ensure height is included
+                if (labelParts.Count != 0 && !labelParts.Contains("*"))
                     labelParts.Add("*");
-                }
             }
 
             // add short sha if required

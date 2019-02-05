@@ -45,7 +45,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             if (parts.Length > 0)
                 expected = $"{version}-{string.Join(".", parts)}.{height}.4ca82d2";
             else
-                expected = $"{version}-4ca82d2+{height}";
+                expected = $"{version}-4ca82d2";
 
             // Act
             _sut.Apply(context);
@@ -75,7 +75,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             if (parts.Length > 0)
                 expected = $"{version}-{string.Join(".", parts)}.{height}";
             else
-                expected = $"{version}+{height}";
+                expected = $"{version}";
 
             // Act
             _sut.Apply(context);
@@ -109,9 +109,9 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             
             string expected;
             if (parts.Length > 0)
-                expected = $"{version}-4ca82d2+{string.Join(".", parts)}.{height}";
+                expected = $"{version}-4ca82d2+{string.Join(".", parts)}";
             else
-                expected = $"{version}-4ca82d2+{height}";
+                expected = $"{version}-4ca82d2";
 
             // Act
             _sut.Apply(context);
@@ -139,9 +139,9 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
             string expected;
             if (parts.Length > 0)
-                expected = $"{version}+{string.Join(".", parts)}.{height}";
+                expected = $"{version}+{string.Join(".", parts)}";
             else
-                expected = $"{version}+{height}";
+                expected = $"{version}";
 
             // Act
             _sut.Apply(context);
