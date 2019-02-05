@@ -12,7 +12,7 @@ function Invoke{
     $result = SimpleVersion $Args *>&1
     return [PSCustomObject]@{
         Output = $result
-        ExitCode = $LASTEXITCODE 
+        ExitCode = $LASTEXITCODE
     }
 }
 
@@ -31,5 +31,27 @@ Describe 'SimpleVersion.Command'{
 				$result.ExitCode | Should -Be -1
 			}
 		}
-	}    
+
+		Context 'Existing Git Repo'{
+			BeforeAll {
+				$dir = New-Item "${env:TEMP}\$(Get-Random)" -ItemType Directory
+				Push-Location $dir
+				git init
+			}
+
+			AfterAll {
+				Pop-Location
+				Remove-Item $dir -Recurse -Force
+			}
+
+			It 'Throws error if no commits for version file'{
+
+				$expectedError = "[Error] Could not find git repository at '{$($dir.fullname)}' or any parent directory"
+				$result = Invoke
+
+				$result.Output | Should -Be $expectedError
+				$result.ExitCode | Should -Be -1
+			}
+		}
+	}
 }
