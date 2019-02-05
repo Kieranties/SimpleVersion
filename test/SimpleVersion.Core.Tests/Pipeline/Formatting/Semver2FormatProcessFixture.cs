@@ -1,18 +1,19 @@
 ﻿using FluentAssertions;
-using SimpleVersion.Formatters;
+using SimpleVersion.Pipeline;
+using SimpleVersion.Pipeline.Formatting;
 using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace SimpleVersion.Core.Tests.Formatters
+namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 {
-    public class Semver2FormatterFixture
+    public class Semver2FormatProcessFixture
     {
-        private readonly Semver2Format _sut;
+        private readonly Semver2FormatProcess _sut;
 
-        public Semver2FormatterFixture()
+        public Semver2FormatProcessFixture()
         {
-            _sut = new Semver2Format();
+            _sut = new Semver2FormatProcess();
         }
 
         public static IEnumerable<object[]> LabelParts()
@@ -33,9 +34,12 @@ namespace SimpleVersion.Core.Tests.Formatters
             int height)
         {
             // Arrange
-            var info = Utils.GetVersionInfo(version, parts);
-            var result = Utils.GetVersionResult(height, false);
-            result.Version = info.Version;
+            var context = new VersionContext
+            {
+                Configuration = Utils.GetConfiguration(version, label: parts),
+                Result = Utils.GetVersionResult(height, false)
+            };
+            context.Result.Version = context.Configuration.Version;
 
             string expected;
             if (parts.Length > 0)
@@ -44,11 +48,11 @@ namespace SimpleVersion.Core.Tests.Formatters
                 expected = $"{version}-4ca82d2";
 
             // Act
-            _sut.Apply(info, result);
+            _sut.Apply(context);
 
             // Assert
-            result.Formats.Should().ContainKey("Semver2");
-            result.Formats["Semver2"].Should().Be(expected);
+            context.Result.Formats.Should().ContainKey("Semver2");
+            context.Result.Formats["Semver2"].Should().Be(expected);
         }
 
 
@@ -60,9 +64,12 @@ namespace SimpleVersion.Core.Tests.Formatters
             int height)
         {
             // Arrange
-            var info = Utils.GetVersionInfo(version, parts);
-            var result = Utils.GetVersionResult(height);
-            result.Version = info.Version;
+            var context = new VersionContext
+            {
+                Configuration = Utils.GetConfiguration(version, parts),
+                Result = Utils.GetVersionResult(height)
+            };
+            context.Result.Version = context.Configuration.Version;
 
             string expected;
             if (parts.Length > 0)
@@ -71,11 +78,11 @@ namespace SimpleVersion.Core.Tests.Formatters
                 expected = $"{version}";
 
             // Act
-            _sut.Apply(info, result);
+            _sut.Apply(context);
 
             // Assert
-            result.Formats.Should().ContainKey("Semver2");
-            result.Formats["Semver2"].Should().Be(expected);
+            context.Result.Formats.Should().ContainKey("Semver2");
+            context.Result.Formats["Semver2"].Should().Be(expected);
         }
 
         public static IEnumerable<object[]> MetaDataParts()
@@ -93,10 +100,13 @@ namespace SimpleVersion.Core.Tests.Formatters
             int height)
         {
             // Arrange
-            var info = Utils.GetVersionInfo(version, meta: parts);
-            var result = Utils.GetVersionResult(height, false);
-            result.Version = info.Version;
-
+            var context = new VersionContext
+            {
+                Configuration = Utils.GetConfiguration(version, meta: parts),
+                Result = Utils.GetVersionResult(height, false)
+            };
+            context.Result.Version = context.Configuration.Version;
+            
             string expected;
             if (parts.Length > 0)
                 expected = $"{version}-4ca82d2+{string.Join(".", parts)}";
@@ -104,11 +114,11 @@ namespace SimpleVersion.Core.Tests.Formatters
                 expected = $"{version}-4ca82d2";
 
             // Act
-            _sut.Apply(info, result);
+            _sut.Apply(context);
 
             // Assert
-            result.Formats.Should().ContainKey("Semver2");
-            result.Formats["Semver2"].Should().Be(expected);
+            context.Result.Formats.Should().ContainKey("Semver2");
+            context.Result.Formats["Semver2"].Should().Be(expected);
         }
 
         [Theory]
@@ -120,9 +130,12 @@ namespace SimpleVersion.Core.Tests.Formatters
         {
 
             // Arrange
-            var info = Utils.GetVersionInfo(version, meta: parts);
-            var result = Utils.GetVersionResult(height);
-            result.Version = info.Version;
+            var context = new VersionContext
+            {
+                Configuration = Utils.GetConfiguration(version, meta: parts),
+                Result = Utils.GetVersionResult(height)
+            };
+            context.Result.Version = context.Configuration.Version;
 
             string expected;
             if (parts.Length > 0)
@@ -131,11 +144,11 @@ namespace SimpleVersion.Core.Tests.Formatters
                 expected = $"{version}";
 
             // Act
-            _sut.Apply(info, result);
+            _sut.Apply(context);
 
             // Assert
-            result.Formats.Should().ContainKey("Semver2");
-            result.Formats["Semver2"].Should().Be(expected);
+            context.Result.Formats.Should().ContainKey("Semver2");
+            context.Result.Formats["Semver2"].Should().Be(expected);
         }
     }
 }

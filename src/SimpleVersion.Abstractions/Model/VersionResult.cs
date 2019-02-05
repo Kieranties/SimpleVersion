@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SimpleVersion
+namespace SimpleVersion.Model
 {
     public class VersionResult
     {

@@ -1,15 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace SimpleVersion.Formatters
+namespace SimpleVersion.Pipeline.Formatting
 {
-    public class Semver1Format : IVersionFormat
+    public class Semver1FormatProcess : ICalculatorProcess
     {
-        public void Apply(VersionInfo info, VersionResult result)
+        public void Apply(VersionContext context)
         {
-            var labelParts = new List<string>(info.Label);
+            var labelParts = new List<string>(context.Configuration.Label);
 
-            if (!info.Version.Contains("*"))
+            if (!context.Configuration.Version.Contains("*"))
             {
                 // if we have a label, ensure height is included
                 if (labelParts.Count != 0 && !labelParts.Contains("*"))
@@ -17,12 +17,12 @@ namespace SimpleVersion.Formatters
             }
 
             // add short sha if required
-            if (info.Branches.AddShortShaToNonRelease && labelParts.Count > 0)
+            if (labelParts.Count > 0)
             {
                 var addShortSha = true;
-                foreach (var pattern in info.Branches.Release)
+                foreach (var pattern in context.Configuration.Branches.Release)
                 {
-                    if (Regex.IsMatch(result.BranchName, pattern))
+                    if (Regex.IsMatch(context.Result.BranchName, pattern))
                     {
                         addShortSha = false;
                         break;
@@ -31,20 +31,20 @@ namespace SimpleVersion.Formatters
 
                 if (addShortSha)
                 {
-                    var shortSha = result.Sha.Substring(0, 7);
+                    var shortSha = context.Result.Sha.Substring(0, 7);
                     labelParts.Add(shortSha);
                 }
             }
 
             var label = string.Join("-", labelParts);
-            label = label.Replace("*", result.HeightPadded);
+            label = label.Replace("*", context.Result.HeightPadded);
 
-            var format = result.Version;
-            
+            var format = context.Result.Version;
+
             if (!string.IsNullOrWhiteSpace(label))
                 format += $"-{label}";
-            
-            result.Formats["Semver1"] = format;
+
+            context.Result.Formats["Semver1"] = format;
         }
     }
 }

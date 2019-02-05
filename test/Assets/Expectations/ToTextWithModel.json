@@ -10,7 +10,6 @@
     "Meta2"
   ],
   "Branches": {
-    "AddShortShaToNonRelease": true,
     "Release": []
   }
 }
