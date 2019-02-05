@@ -55,6 +55,8 @@ Describe 'SimpleVersion.Command'{
 				$dir = New-Item "${TestDrive}\$(Get-Random)" -ItemType Directory
 				Push-Location $dir
 				git init
+				git config user.email "SimpleVersion@Kieranties.com"
+				git config user.name "Simple Version"
 			}
 
 			AfterAll {
