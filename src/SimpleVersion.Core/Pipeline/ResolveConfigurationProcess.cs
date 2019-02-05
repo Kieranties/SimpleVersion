@@ -20,13 +20,14 @@ namespace SimpleVersion.Pipeline
             if (string.IsNullOrWhiteSpace(context.RepositoryPath))
                 throw new ArgumentException($"{nameof(context.RepositoryPath)} must be a directory");
 
-            var repo = new Repository(context.RepositoryPath);
-            var config = GetConfiguration(repo.Head?.Tip)
-                ?? throw new InvalidOperationException($"No commits found for '{Constants.VersionFileName}'");
+            using(var repo = new Repository(context.RepositoryPath)){
+                var config = GetConfiguration(repo.Head?.Tip)
+                    ?? throw new InvalidOperationException($"No commits found for '{Constants.VersionFileName}'");
 
-            context.Configuration = config;
+                context.Configuration = config;
 
-            PopulateResult(context, repo);
+                PopulateResult(context, repo);
+            }
         }
 
         private void PopulateResult(VersionContext context, Repository repo)
