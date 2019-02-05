@@ -43,10 +43,10 @@ namespace SimpleVersion.Core.Tests.Comparers
 
         [Theory]
         [MemberData(nameof(DifferInLabel))]
-        public void Equals_DifferInLabel_ReturnsFalse(Configuration sut, Configuration other)
+        public void Equals_DifferInLabel_ReturnsFalse(Configuration x, Configuration y)
         {
             // Arrange / Act
-            var result = sut.Equals(other);
+            var result = _sut.Equals(x, y);
 
             // Assert
             result.Should().BeFalse();
@@ -61,10 +61,27 @@ namespace SimpleVersion.Core.Tests.Comparers
 
         [Theory]
         [MemberData(nameof(DifferInVersion))]
-        public void Equals_DifferInVersion_ReturnsFalse(Configuration sut, Configuration other)
+        public void Equals_DifferInVersion_ReturnsFalse(Configuration x, Configuration y)
         {
             // Arrange / Act
-            var result = sut.Equals(other);
+            var result = _sut.Equals(x, y);
+
+            // Assert
+            result.Should().BeFalse();
+        }
+
+        public static IEnumerable<object[]> NullValues()
+        {
+            yield return new[] { new Configuration(), null };
+            yield return new[] { null, new Configuration() };
+        }
+
+        [Theory]
+        [MemberData(nameof(NullValues))]
+        public void Equals_NullInstance_ReturnsFalse(Configuration x, Configuration y)
+        {
+            // Arrange / Act
+            var result = _sut.Equals(x, y);
 
             // Assert
             result.Should().BeFalse();

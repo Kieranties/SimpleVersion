@@ -1,0 +1,11 @@
+{
+  "version": "0.1.0",
+  "label": [ "alpha1" ],
+  "branches": {
+    "release": [
+      "^master$",
+      "^preview/.+$",
+      "^release/.+$"
+    ]
+  }
+}
