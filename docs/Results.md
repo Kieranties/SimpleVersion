@@ -4,7 +4,9 @@ Results
 How you handle the results of SimpleVersion will vary based on how you are
 invoking the tool.  However, all implementations return the same results object.
 
-```
+The following is an example from invoking the command line tool:
+
+```json
 {
   "Version": "0.1.0",
   "Major": 0,
@@ -22,6 +24,9 @@ invoking the tool.  However, all implementations return the same results object.
 }
 ```
 
+Properties
+----------
+
 | Name | Type Value | Details |
 | --- | --- | --- |
 | Version | _int_._int_._int_(._int_) | The Major.Minor.Patch version value. If Revision was provided in the original format, it will also be included. |
@@ -34,8 +39,7 @@ invoking the tool.  However, all implementations return the same results object.
 | Sha | string | The sha of the current commit at the time of invocation |
 | BranchName | string | The checked out branch at the time of invocation |
 
-Formats
--------
+### Formats
 
 Formats are specified combinations of the result values that follow a
 specification. Currently only built in formats are supported, however custom

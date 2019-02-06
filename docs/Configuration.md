@@ -12,7 +12,7 @@ You  may set the property with a version string that consists of one to four
 dot seperated digits.
 
 All of the following are accepted values:
-```
+```json
 "Version" : "1"
 "Version" : "1.2"
 "Version" : "1.2.3"
@@ -28,7 +28,7 @@ The `Label` property specifies an array of labels to be included in the version.
 
 > By specifying values in the label, the version will be returned as a pre-release version.
 
-```
+```json
 "Label" : []
 "Label" : ["alpha1"]
 "Label" : ["alpha1", "test"]
@@ -43,7 +43,7 @@ in the final version.
 
 > Currently, only `Semver2` format supports `metadata`.
 
-```
+```json
 "MetaData" : []
 "MetaData" : ["demo"]
 "MetaData" : ["demo", "sprint1"]
@@ -60,7 +60,7 @@ should be discounted, or any other reason.
 
 Specify the `OffSet` as a numeric value to impact the base value of the height.
 
-```
+```json
 "OffSet" : -5
 "OffSet" : 4
 ```
@@ -78,7 +78,7 @@ may match to the current branch being built. If the current branch does not matc
 any of the expressions it will have the short sha of the current commit added
 to the `Labels` property.
 
-```
+```json
 {
   "version": "0.1.0",
   "label": [ "alpha2" ],
