@@ -38,17 +38,18 @@ The `Label` property specifies an array of labels to be included in the version.
 MetaData
 --------
 
-> Currently, only `Semver2` format supports `metadata`.
-
 The `MetaData` property specifies an array of values to be included as metadata
 in the final version.
 
-> You may also specify'*' in place of a value to insert the generated height.
+> Currently, only `Semver2` format supports `metadata`.
+
 ```
 "MetaData" : []
 "MetaData" : ["demo"]
 "MetaData" : ["demo", "sprint1"]
 ```
+
+> You may also specify '*' in place of a value to insert the generated height.
 
 OffSet
 ------
@@ -98,7 +99,3 @@ Semver2 verison of `0.1.0-alpha2.5` when there are five commits.
 All other branches will append the short sha, generating a Semver2 version of
 `0.1.0-alpha2.5.903782` when there are five commits and the sha begins with
 _903782_
-
-```
-
-```
