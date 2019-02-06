@@ -22,6 +22,7 @@ namespace SimpleVersion.Abstractions.Tests.Model
             sut.HeightPadded.Should().Be("0000");
             sut.Sha.Should().BeEmpty();
             sut.BranchName.Should().BeEmpty();
+            sut.CanonicalBranchName.Should().BeEmpty();
             sut.Formats.Should().BeEmpty();
         }
 

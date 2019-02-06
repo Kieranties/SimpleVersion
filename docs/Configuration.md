@@ -84,9 +84,9 @@ to the `Labels` property prefixed with `c` (for commit).
   "label": [ "alpha2" ],
   "branches": {
     "release": [
-      "^master$",
-      "^preview/.+$",
-      "^release/.+$"
+      "^refs/heads/master$",
+      "^refs/heads/preview/.+$",
+      "^refs/heads/release/.+$"
     ]
   }
 }

@@ -18,8 +18,8 @@ namespace SimpleVersion.Core.Tests
                 {
                     Release =
                     {
-                        "^master$",
-                        "^release/.+$"
+                        "^refs/heads/master$",
+                        "^refs/heads/release/.+$"
                     }
                 }
             };
@@ -47,9 +47,12 @@ namespace SimpleVersion.Core.Tests
 
         public static VersionResult GetVersionResult(int height, bool release = true)
         {
+            var branchName = release ? "release/example" : "feature/example";
+
             return new VersionResult
             {
-                BranchName = release ? "release/example" : "feature/example",
+                BranchName = branchName,
+                CanonicalBranchName = "refs/heads/" + branchName,
                 Sha = "4ca82d2c58f48007bf16d69ebf036fc4ebfdd059",
                 Height = height
             };
