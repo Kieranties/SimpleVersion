@@ -34,5 +34,27 @@ namespace SimpleVersion.Abstractions.Tests.Model
             // Assert
             sut.HeightPadded.Should().Be("0040");
         }
+
+        [Fact]
+        public void Formats_Has_CaseInsensitiveKeys()
+        {
+            // Arrange
+            var key = "This is the KEY";
+            var value = "This is the value";
+            var sut = new VersionResult
+            {
+                Formats = {
+                    [key] = value
+                }
+            };
+
+            // Act
+            var upperResult = sut.Formats[key.ToUpper()];
+            var lowerResult = sut.Formats[key.ToLower()];
+
+            // Assert
+            upperResult.Should().Be(value);
+            lowerResult.Should().Be(value);
+        }
     }
 }
