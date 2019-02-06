@@ -5,6 +5,7 @@
 
   <PropertyGroup>
     <AssemblyName>Cake.SimpleVersion</AssemblyName>
+    <PackageTags>$(PackageTags);Cake</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Label="Pack Meta">
