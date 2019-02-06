@@ -46,7 +46,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             if (parts.Length > 0)
             {
                 var shaSub = context.Result.Sha.Substring(0, 7);
-                fullExpected = $"{expectedPart}-{shaSub}";
+                fullExpected = $"{expectedPart}-c{shaSub}";
             }
 
             // Act

@@ -76,7 +76,7 @@ be applied based on the branch currently being built.
 `Release` allows for a list of regular expressions to be defined where each
 may match to the current branch being built. If the current branch does not match
 any of the expressions it will have the short sha of the current commit added
-to the `Labels` property.
+to the `Labels` property prefixed with `c` (for commit).
 
 ```json
 {
@@ -97,5 +97,5 @@ starting with _release/_ will **not** have the short sha appended. Generating a
 Semver2 verison of `0.1.0-alpha2.5` when there are five commits.
 
 All other branches will append the short sha, generating a Semver2 version of
-`0.1.0-alpha2.5.903782` when there are five commits and the sha begins with
+`0.1.0-alpha2.5.c903782` when there are five commits and the sha begins with
 _903782_

@@ -32,7 +32,7 @@ namespace SimpleVersion.Pipeline.Formatting
                 if (addShortSha)
                 {
                     var shortSha = context.Result.Sha.Substring(0, 7);
-                    labelParts.Add(shortSha);
+                    labelParts.Add($"c{shortSha}");
                 }
             }
 
