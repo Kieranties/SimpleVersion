@@ -25,6 +25,7 @@
     <PackageProjectUrl>https://github.com/Kieranties/SimpleVersion</PackageProjectUrl>
     <PackageTags>semver;versioning;git</PackageTags>
     <RepositoryUrl>https://github.com/Kieranties/SimpleVersion</RepositoryUrl>
+    <PackageIconUrl>https://raw.github.com/Kieranties/SimpleVersion/master/docs/img/logo.png</PackageIconUrl>
   </PropertyGroup>
 
   <PropertyGroup Label="Build Attributes">
