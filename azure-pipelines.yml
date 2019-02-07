@@ -37,10 +37,6 @@ jobs:
 
   # Calculate the version
   - powershell: |
-      # We need to be checked out on a branch - Ideally this would be handled in SimpleVersion itself
-      # Get the full branch and remove the refs/heads
-      $branchName = '$(Build.SourceBranch)' -replace '^refs/heads/',''
-      git checkout --progress --force $branchName
       $result = .\SimpleVersion.*\tools\SimpleVersion.exe
       Write-Output $result
       $fullVersion = ($result | ConvertFrom-Json).Formats.Semver2
