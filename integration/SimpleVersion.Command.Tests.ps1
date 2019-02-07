@@ -35,6 +35,7 @@ function Validate {
 }
 
 Describe 'SimpleVersion.Command'{
+
 	Context 'Working Directory' {
 		Context 'Not a git repo' {
 			BeforeAll { Push-Location $Testdrive }

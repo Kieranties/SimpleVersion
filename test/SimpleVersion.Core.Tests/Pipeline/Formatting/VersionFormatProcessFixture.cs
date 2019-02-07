@@ -34,7 +34,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 Configuration = {
                     Version = version
                 }
-            };            
+            };
 
             // Act
             Action action = () => _sut.Apply(context);
@@ -46,16 +46,22 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
         public static IEnumerable<object[]> ValidVersions()
         {
-            yield return new object[] { "1.0", 1, 0, 0, 0 };
-            yield return new object[] { "1.0.0", 1, 0, 0, 0 };
-            yield return new object[] { "1.2.0", 1, 2, 0, 0 };
-            yield return new object[] { "1.2.3", 1, 2, 3, 0 };
-            yield return new object[] { "14.22.32.234", 14, 22, 32, 234 };
+            yield return new object[] { "1.0", "1.0.0", 1, 0, 0, 0 };
+            yield return new object[] { "1.0.0", "1.0.0", 1, 0, 0, 0 };
+            yield return new object[] { "1.2.0", "1.2.0", 1, 2, 0, 0 };
+            yield return new object[] { "1.2.3", "1.2.3", 1, 2, 3, 0 };
+            yield return new object[] { "14.22.32.234", "14.22.32.234", 14, 22, 32, 234 };
         }
 
         [Theory]
         [MemberData(nameof(ValidVersions))]
-        public void Apply_ValidVersions_SetsMembers(string version, int major, int minor, int patch, int revision)
+        public void Apply_ValidVersions_SetsMembers(
+            string version, 
+            string expectedVersion,
+            int major, 
+            int minor, 
+            int patch, 
+            int revision)
         {
             // Arrange
             // Arrange
@@ -70,6 +76,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             _sut.Apply(context);
 
             // Assert
+            context.Result.Version.Should().Be(expectedVersion);
             context.Result.Major.Should().Be(major);
             context.Result.Minor.Should().Be(minor);
             context.Result.Patch.Should().Be(patch);
@@ -78,16 +85,17 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
         }
 
         [Theory]
-        [InlineData("1.0", 10, 1, 0, 0, 0)]
-        [InlineData("1.0.0", 10, 1, 0, 0, 0)]
-        [InlineData("1.0.0.0", 10, 1, 0, 0, 0)]
-        [InlineData("1.*", 10, 1, 10, 0, 0)]
-        [InlineData("1.0.*", 10, 1, 0, 10, 0)]
-        [InlineData("1.0.0.*", 10, 1, 0, 0, 10)]
-        [InlineData("1.*.0", 10, 1, 10, 0, 0)]
-        [InlineData("1.0.*.0", 10, 1, 0, 10, 0)]
+        [InlineData("1.0", "1.0.0", 10, 1, 0, 0, 0)]
+        [InlineData("1.0.0", "1.0.0", 10, 1, 0, 0, 0)]
+        [InlineData("1.0.0.0", "1.0.0.0", 10, 1, 0, 0, 0)]
+        [InlineData("1.*", "1.10.0", 10, 1, 10, 0, 0)]
+        [InlineData("1.0.*", "1.0.10", 10, 1, 0, 10, 0)]
+        [InlineData("1.0.0.*", "1.0.0.10", 10, 1, 0, 0, 10)]
+        [InlineData("1.*.0", "1.10.0", 10, 1, 10, 0, 0)]
+        [InlineData("1.0.*.0", "1.0.10.0", 10, 1, 0, 10, 0)]
         public void Height_In_Version(
             string version,
+            string expectedVersion,
             int commits,
             int major,
             int minor,
@@ -109,6 +117,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             _sut.Apply(context);
 
             // Assert
+            context.Result.Version.Should().Be(expectedVersion);
             context.Result.Major.Should().Be(major);
             context.Result.Minor.Should().Be(minor);
             context.Result.Patch.Should().Be(patch);

@@ -22,7 +22,7 @@ namespace SimpleVersion.Pipeline.Formatting
                 var addShortSha = true;
                 foreach (var pattern in context.Configuration.Branches.Release)
                 {
-                    if (Regex.IsMatch(context.Result.BranchName, pattern))
+                    if (Regex.IsMatch(context.Result.CanonicalBranchName, pattern))
                     {
                         addShortSha = false;
                         break;
@@ -32,7 +32,7 @@ namespace SimpleVersion.Pipeline.Formatting
                 if (addShortSha)
                 {
                     var shortSha = context.Result.Sha.Substring(0, 7);
-                    labelParts.Add(shortSha);
+                    labelParts.Add($"c{shortSha}");
                 }
             }
 

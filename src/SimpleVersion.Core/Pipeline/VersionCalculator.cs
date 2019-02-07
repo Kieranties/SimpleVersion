@@ -1,4 +1,5 @@
 ﻿using SimpleVersion.Model;
+using SimpleVersion.Pipeline.BuildServers;
 using SimpleVersion.Pipeline.Formatting;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace SimpleVersion.Pipeline
             => new VersionCalculator()
                 .AddProcessor<ResolveRepositoryPathProcess>()
                 .AddProcessor<ResolveConfigurationProcess>()
+                .AddProcessor<AzureDevopsProcess>()
                 .AddProcessor<VersionFormatProcess>()
                 .AddProcessor<Semver1FormatProcess>()
                 .AddProcessor<Semver2FormatProcess>();

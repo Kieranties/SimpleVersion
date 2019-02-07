@@ -55,6 +55,7 @@ namespace SimpleVersion.Pipeline
                 height++;
             }
 
+            context.Result.CanonicalBranchName = repo.Head.CanonicalName;
             context.Result.BranchName = repo.Head.FriendlyName;
             context.Result.Sha = repo.Head.Tip.Sha;
             context.Result.Height = height;

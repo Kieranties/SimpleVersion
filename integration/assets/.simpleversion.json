@@ -3,9 +3,9 @@
   "label": [ "alpha1" ],
   "branches": {
     "release": [
-      "^master$",
-      "^preview/.+$",
-      "^release/.+$"
+      "^refs/heads/master$",
+      "^refs/heads/preview/.+$",
+      "^refs/heads/release/.+$"
     ]
   }
 }

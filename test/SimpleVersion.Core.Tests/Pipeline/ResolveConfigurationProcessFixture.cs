@@ -5,7 +5,7 @@ using SimpleVersion.Pipeline;
 using System;
 using Xunit;
 
-namespace SimpleVersion.Core.Tests.Pipeline.Formatting
+namespace SimpleVersion.Core.Tests.Pipeline
 {
     public class ResolveConfigurationProcessFixture
     {
@@ -266,5 +266,34 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             }
         }
 
+        [Fact]
+        public void Apply_Feature_Branch_Sets_BranchName()
+        {
+            using (var fixture = new EmptyRepositoryFixture())
+            {
+                // Arrange
+                var context = new VersionContext { RepositoryPath = fixture.RepositoryPath };
+
+                // write the version file
+                var config = new Configuration { Version = "0.1.0" };
+                Utils.WriteConfiguration(config, fixture); // 1
+
+                fixture.MakeACommit(); // 2
+                fixture.MakeACommit(); // 3
+                fixture.MakeACommit(); // 4
+                fixture.MakeACommit(); // 5
+
+                fixture.BranchTo("feature/other");
+                fixture.MakeACommit(); // feature 1
+                fixture.MakeACommit(); // feature 2
+                fixture.MakeACommit(); // feature 3
+                
+                // Act
+                _sut.Apply(context);
+
+                context.Result.BranchName.Should().Be("feature/other");
+                context.Result.CanonicalBranchName.Should().Be("refs/heads/feature/other");
+            }
+        }
     }
 }

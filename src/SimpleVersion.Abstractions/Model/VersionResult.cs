@@ -22,6 +22,8 @@ namespace SimpleVersion.Model
 
         public string BranchName { get; set; } = string.Empty;
 
-        public IDictionary<string, string> Formats { get; } = new Dictionary<string, string>();
+        public string CanonicalBranchName { get; set; } = string.Empty;
+
+        public IDictionary<string, string> Formats { get; } = new Dictionary<string, string>(System.StringComparer.OrdinalIgnoreCase);
     }
 }

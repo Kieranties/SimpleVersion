@@ -38,6 +38,7 @@ Properties
 | HeightPadded | int | The cacluated height padded to four digits |
 | Sha | string | The sha of the current commit at the time of invocation |
 | BranchName | string | The checked out branch at the time of invocation |
+| CanonicalBranchName | string | The full canonical name of the checked out branch at the time of invocation |
 
 ### Formats
 
