@@ -3,12 +3,15 @@ trigger:
   branches:
     include:
     - master
+    - release/*
   paths:
     exclude:
+    - docs/*
     - README.md
 
 pr:
 - master
+- release/*
 
 variables:
   TreatWarningsAsErrors: true
