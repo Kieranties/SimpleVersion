@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Text.RegularExpressions;
+﻿using SimpleVersion.Rules;
 
 namespace SimpleVersion.Pipeline.Formatting
 {
@@ -7,37 +6,15 @@ namespace SimpleVersion.Pipeline.Formatting
     {
         public void Apply(VersionContext context)
         {
-            var labelParts = new List<string>(context.Configuration.Label);
-
-            if (!context.Configuration.Version.Contains("*"))
+            var rules = new IRule<string>[]
             {
-                // if we have a label, ensure height is included
-                if (labelParts.Count != 0 && !labelParts.Contains("*"))
-                    labelParts.Add("*");
-            }
+                new HeightRule(true),
+                ShortShaRule.Instance,
+                BranchNameRule.Instance
+            };
 
-            // add short sha if required
-            if (labelParts.Count > 0)
-            {
-                var addShortSha = true;
-                foreach (var pattern in context.Configuration.Branches.Release)
-                {
-                    if (Regex.IsMatch(context.Result.CanonicalBranchName, pattern))
-                    {
-                        addShortSha = false;
-                        break;
-                    }
-                }
-
-                if (addShortSha)
-                {
-                    var shortSha = context.Result.Sha.Substring(0, 7);
-                    labelParts.Add($"c{shortSha}");
-                }
-            }
-
-            var label = string.Join("-", labelParts);
-            label = label.Replace("*", context.Result.HeightPadded);
+            var labelParts = context.Configuration.Label.ApplyRules(context, rules);
+            var label = string.Join("-", labelParts).ResolveRules(context, rules);
 
             var format = context.Result.Version;
 
