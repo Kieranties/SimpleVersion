@@ -44,10 +44,7 @@ jobs:
       Write-Output $result
       $fullVersion = ($result | ConvertFrom-Json).Formats.Semver2
       Write-Output "##vso[build.updatebuildnumber]$fullVersion"
-      if($fullVersion -match '(?<version>\d+\.\d+\.\d+(?:\.\d+)?)-?(?<suffix>.*)') {
-        Write-Output "##vso[task.setvariable variable=Version;]$($Matches.version)"
-        Write-Output "##vso[task.setvariable variable=VersionSuffix;]$($Matches.suffix)"
-      }
+      Write-Output "##vso[task.setvariable variable=Version;]$fullVersion"
     displayName: 'Prepare: Set version information'
 
   # Build/Pack the assets
