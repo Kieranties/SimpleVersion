@@ -6,8 +6,8 @@ namespace SimpleVersion.Model
     {
         public string Match { get; set; } = string.Empty;
 
-        public List<string> Label { get; } = new List<string>();
+        public List<string> Label { get; set; } = null;
 
-        public List<string> MetaData { get; } = new List<string>();
+        public List<string> MetaData { get; set; } = null;
     }
 }

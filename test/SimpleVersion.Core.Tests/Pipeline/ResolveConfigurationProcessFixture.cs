@@ -3,6 +3,7 @@ using GitTools.Testing;
 using SimpleVersion.Model;
 using SimpleVersion.Pipeline;
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace SimpleVersion.Core.Tests.Pipeline
@@ -181,7 +182,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
 
                 // Act
                 _sut.Apply(context);
- 
+
                 context.Result.Height.Should().Be(6);
             }
         }
@@ -287,12 +288,58 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit(); // feature 1
                 fixture.MakeACommit(); // feature 2
                 fixture.MakeACommit(); // feature 3
-                
+
                 // Act
                 _sut.Apply(context);
 
                 context.Result.BranchName.Should().Be("feature/other");
                 context.Result.CanonicalBranchName.Should().Be("refs/heads/feature/other");
+            }
+        }
+
+        [Fact]
+        public void Apply_BranchOverride_AppliesOverride()
+        {
+            using (var fixture = new EmptyRepositoryFixture())
+            {
+                // Arrange
+                var context = new VersionContext { RepositoryPath = fixture.RepositoryPath };
+
+                var expectedLabel = new List<string> { "{branchName}" };
+                var expectedMeta =  new List<string> { "meta" };
+
+                // write the version file
+                var config = new Configuration
+                {
+                    Version = "0.1.0",
+                    Branches = {
+                        Overrides = {
+                            new BranchConfiguration
+                            {
+                                Match = "feature/other",
+                                Label = expectedLabel,
+                                MetaData = expectedMeta
+                            }
+                        }
+                    }
+                };
+                Utils.WriteConfiguration(config, fixture); // 1
+
+                fixture.MakeACommit(); // 2
+                fixture.MakeACommit(); // 3
+                fixture.MakeACommit(); // 4
+                fixture.MakeACommit(); // 5
+
+                fixture.BranchTo("feature/other");
+                fixture.MakeACommit(); // feature 1
+                fixture.MakeACommit(); // feature 2
+                fixture.MakeACommit(); // feature 3
+
+                // Act
+                _sut.Apply(context);
+
+                context.Configuration.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
+                context.Configuration.MetaData.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
             }
         }
     }

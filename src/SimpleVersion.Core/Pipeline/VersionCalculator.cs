@@ -8,11 +8,11 @@ namespace SimpleVersion.Pipeline
 {
     public class VersionCalculator : IVersionCalculator
     {
-        public static IVersionCalculator Default() 
+        public static IVersionCalculator Default()
             => new VersionCalculator()
                 .AddProcessor<ResolveRepositoryPathProcess>()
-                .AddProcessor<ResolveConfigurationProcess>()
                 .AddProcessor<AzureDevopsProcess>()
+                .AddProcessor<ResolveConfigurationProcess>()
                 .AddProcessor<VersionFormatProcess>()
                 .AddProcessor<Semver1FormatProcess>()
                 .AddProcessor<Semver2FormatProcess>();
@@ -31,7 +31,7 @@ namespace SimpleVersion.Pipeline
 
             foreach (var processor in _queue)
                 processor.Value.Apply(ctx);
-            
+
             return ctx.Result;
         }
     }

@@ -1,11 +1,26 @@
 {
   "version": "0.1.0",
-  "label": [ "alpha2" ],
+  "label": [ "alpha1" ],
   "branches": {
     "release": [
       "^refs/heads/master$",
       "^refs/heads/preview/.+$",
       "^refs/heads/release/.+$"
+    ],
+    "overrides" : [
+      {
+        "match": "feature",
+        "label": ["{branchname}"],
+        "meta" : ["internal"]
+      },
+      {
+        "match": "release",
+        "meta": ["*", "{shortsha}"]
+      },
+      {
+        "match": "hotfix",
+        "label": ["{shortsha}"]
+      }
     ]
   }
 }

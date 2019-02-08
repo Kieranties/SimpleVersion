@@ -5,7 +5,23 @@
     "release": [
       "^refs/heads/master$",
       "^refs/heads/preview/.+$",
-      "^refs/heads/release/.+$"
+      "^refs/heads/release/.+$",
+      "^refs/heads/test/.+$"
+    ],
+    "overrides" : [
+      {
+        "match": "test/feature",
+        "label": ["{branchname}"],
+        "metadata" : ["internal"]
+      },
+      {
+        "match": "test/release",
+        "metadata": ["*", "{shortsha}"]
+      },
+      {
+        "match": "test/hotfix",
+        "label": ["{shortsha}"]
+      }
     ]
   }
 }
