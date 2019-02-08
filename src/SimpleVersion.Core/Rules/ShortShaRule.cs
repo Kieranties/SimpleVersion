@@ -25,7 +25,7 @@ namespace SimpleVersion.Rules
             var isRelease = context.Configuration.Branches.Release
                 .Any(x => Regex.IsMatch(context.Result.CanonicalBranchName, x));
 
-            if (!isRelease)
+            if (!isRelease && !input.Contains(Token))
             {
                 return input.Concat(new[] { Token });
             }
