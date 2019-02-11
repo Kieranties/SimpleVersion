@@ -7,17 +7,17 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests.Rules
 {
-    public class BranchNameRuleFixture
+    public class ShortBranchNameRuleFixture
     {
         [Fact]
         public void Instance_SetsDefaults()
         {
             // Arrange / Act
-            var sut = BranchNameRule.Instance;
+            var sut = ShortBranchNameRule.Instance;
 
             // Assert
             sut.Pattern.Should().NotBeNull();
-            sut.UseCanonical.Should().BeTrue();
+            sut.UseCanonical.Should().BeFalse();
         }
 
         public static IEnumerable<object[]> ApplyData()
@@ -32,7 +32,7 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Apply_Returns_Input(VersionContext context, IEnumerable<string> input)
         {
             // Arrange
-            var sut = new BranchNameRule();
+            var sut = new ShortBranchNameRule();
 
             // Act
             var result = sut.Apply(context, input);
@@ -40,21 +40,21 @@ namespace SimpleVersion.Core.Tests.Rules
             // Assert
             result.Should().BeSameAs(input);
         }
-        
+
         [Theory]
-        [InlineData("refs/heads/master", "{branchName}", "refsheadsmaster")]
-        [InlineData("refs/heads/master", "{BRANCHNAME}", "refsheadsmaster")]
-        [InlineData("refs/heads/release/1.0", "{BRANCHNAME}", "refsheadsrelease10")]
-        [InlineData("refs/heads/release-1.0", "{BRANCHNAME}", "refsheadsrelease10")]
-        public void Resolve_Replaces_CanonicalBranchName(string branchName, string input, string expected)
+        [InlineData("master", "{shortBranchName}", "master")]
+        [InlineData("master", "{SHORTBRANCHNAME}", "master")]
+        [InlineData("release/1.0", "{shortBRANCHNAME}", "release10")]
+        [InlineData("release-1.0", "{shortBRANCHNAME}", "release10")]
+        public void Resolve_Replaces_BranchName(string branchName, string input, string expected)
         {
             // Arrange
-            var sut = new BranchNameRule();
+            var sut = new ShortBranchNameRule();
             var context = new VersionContext
             {
                 Result =
                 {
-                    CanonicalBranchName = branchName
+                    BranchName = branchName
                 }
             };
 
@@ -65,17 +65,18 @@ namespace SimpleVersion.Core.Tests.Rules
             result.Should().Be(expected);
         }
 
+      
         [Theory]
-        [InlineData("master", "{branchName}", "[mr]", "aste")]
+        [InlineData("master", "{shortbranchName}", "[mr]", "aste")]
         public void Resolve_CustomPattern_Replaces_BranchName(string branchName, string input, string pattern, string expected)
         {
             // Arrange
-            var sut = new BranchNameRule(pattern);
+            var sut = new ShortBranchNameRule(pattern);
             var context = new VersionContext
             {
                 Result =
                 {
-                    CanonicalBranchName = branchName
+                    BranchName = branchName
                 }
             };
 
