@@ -29,7 +29,7 @@ namespace SimpleVersion.Pipeline
                     context.Result.BranchName = repo.Head.FriendlyName;
 
                 var config = GetConfiguration(repo.Head?.Tip, context)
-                    ?? throw new InvalidOperationException($"No commits found for '{Constants.VersionFileName}'");
+                    ?? throw new InvalidOperationException($"Could not read '{Constants.VersionFileName}', has it been committed?");
 
                 context.Configuration = config;
 
@@ -74,7 +74,7 @@ namespace SimpleVersion.Pipeline
             if (diff.Any(d => d.Path == Constants.VersionFileName))
             {
                 var commitConfig = GetConfiguration(commit, context);
-                return !_comparer.Equals(context.Configuration, commitConfig);
+                return commitConfig != null && !_comparer.Equals(context.Configuration, commitConfig);
             }
 
             return false;
@@ -105,6 +105,9 @@ namespace SimpleVersion.Pipeline
 
         private void ApplyConfigOverrides(SVM.Configuration config, VersionContext context)
         {
+            if (config == null)
+                return;
+
             var firstMatch = config.Branches
                 .Overrides.FirstOrDefault(x => Regex.IsMatch(context.Result.CanonicalBranchName, x.Match, RegexOptions.IgnoreCase));
 
@@ -123,6 +126,17 @@ namespace SimpleVersion.Pipeline
                 }
             }
         }
-        private SVM.Configuration Read(string rawConfiguration) => JsonConvert.DeserializeObject<SVM.Configuration>(rawConfiguration);
+        private SVM.Configuration Read(string rawConfiguration)
+        {
+            try
+            {
+                return JsonConvert.DeserializeObject<SVM.Configuration>(rawConfiguration);
+            }
+            catch
+            {
+                //TODO handle logger of invalid parsing
+                return null;
+            }
+        }
     }
 }

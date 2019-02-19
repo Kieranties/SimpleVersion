@@ -4,6 +4,7 @@ using SimpleVersion.Model;
 using SimpleVersion.Pipeline;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Xunit;
 
 namespace SimpleVersion.Core.Tests.Pipeline
@@ -57,7 +58,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
 
                 // Assert
                 action.Should().Throw<InvalidOperationException>()
-                    .WithMessage($"No commits found for '{Constants.VersionFileName}'");
+                    .WithMessage($"Could not read '{Constants.VersionFileName}', has it been committed?");
             }
         }
 
@@ -78,7 +79,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
 
                 // Assert
                 action.Should().Throw<InvalidOperationException>()
-                    .WithMessage($"No commits found for '{Constants.VersionFileName}'");
+                    .WithMessage($"Could not read '{Constants.VersionFileName}', has it been committed?");
             }
         }
 
@@ -340,6 +341,90 @@ namespace SimpleVersion.Core.Tests.Pipeline
 
                 context.Configuration.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
                 context.Configuration.MetaData.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
+            }
+        }
+
+		[Fact]
+        public void Apply_Malformed_Json_At_Commit_Throws()
+        {
+            using (var fixture = new EmptyRepositoryFixture())
+            {
+                // Arrange
+                var context = new VersionContext { RepositoryPath = fixture.RepositoryPath };
+
+                // write the version file (Well formaed)
+                var config = new Configuration { Version = "0.1.0" };
+                Utils.WriteConfiguration(config, fixture); // 1
+
+                fixture.MakeACommit(); // 2
+                fixture.MakeACommit(); // 3
+                fixture.MakeACommit(); // 4
+
+
+                // Write the version file (with parsing errors)
+                var file = Path.Combine(fixture.RepositoryPath, Constants.VersionFileName);
+                using (var writer = File.AppendText(file))
+                {
+                    writer.WriteLine("This will not parse");
+                    writer.Flush();
+                }
+
+                fixture.Repository.Index.Add(Constants.VersionFileName);
+                fixture.Repository.Index.Write();
+                fixture.MakeACommit(); // 5
+                fixture.MakeACommit(); // 6
+                fixture.MakeACommit(); // 7
+                fixture.MakeACommit(); // 8
+
+                // Act
+                Action action = () => _sut.Apply(context);
+
+                // Assert
+                action.Should().Throw<InvalidOperationException>()
+                    .WithMessage($"Could not read '{Constants.VersionFileName}', has it been committed?");
+            }
+        }
+
+        [Fact]
+        public void Apply_Malformed_Json_Committed_Counts_As_No_Change()
+        {
+            using (var fixture = new EmptyRepositoryFixture())
+            {
+                // Arrange
+                var context = new VersionContext { RepositoryPath = fixture.RepositoryPath };
+
+                // write the version file (Well formaed)
+                var config = new Configuration { Version = "0.1.0" };
+                Utils.WriteConfiguration(config, fixture); // 1
+
+                fixture.MakeACommit(); // 2
+                fixture.MakeACommit(); // 3
+                fixture.MakeACommit(); // 4
+
+
+                // Write the version file (with parsing errors)
+                var file = Path.Combine(fixture.RepositoryPath, Constants.VersionFileName);
+
+                using (var writer = File.AppendText(file))
+                {
+                    writer.WriteLine("This will not parse");
+                    writer.Flush();
+                }
+
+                fixture.Repository.Index.Add(Constants.VersionFileName);
+                fixture.Repository.Index.Write();
+                fixture.MakeACommit(); // 5
+                fixture.MakeACommit(); // 6
+                fixture.MakeACommit(); // 7
+                fixture.MakeACommit(); // 8
+
+                config = new Configuration { Version = "0.1.0" };
+                Utils.WriteConfiguration(config, fixture); // 9
+
+                // Act
+                _sut.Apply(context);
+
+                context.Result.Height.Should().Be(9);
             }
         }
     }
