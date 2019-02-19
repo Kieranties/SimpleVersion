@@ -22,7 +22,7 @@ namespace SimpleVersion.Pipeline
 
             using(var repo = new Repository(context.RepositoryPath)){
                 var config = GetConfiguration(repo.Head?.Tip)
-                    ?? throw new InvalidOperationException($"No commits found for '{Constants.VersionFileName}'");
+                    ?? throw new InvalidOperationException($"Could not read '{Constants.VersionFileName}', has it been committed?");
 
                 context.Configuration = config;
 
@@ -66,7 +66,7 @@ namespace SimpleVersion.Pipeline
             if (diff.Any(d => d.Path == Constants.VersionFileName))
             {
                 var commitConfig = GetConfiguration(commit);
-                return !_comparer.Equals(config, commitConfig);
+                return commitConfig != null && !_comparer.Equals(config, commitConfig);
             }
 
             return false;
@@ -93,6 +93,17 @@ namespace SimpleVersion.Pipeline
             return Read((gitObj as Blob).GetContentText());
         }
 
-        private SVM.Configuration Read(string rawConfiguration) => JsonConvert.DeserializeObject<SVM.Configuration>(rawConfiguration);
+        private SVM.Configuration Read(string rawConfiguration)
+        {
+            try
+            {
+                return JsonConvert.DeserializeObject<SVM.Configuration>(rawConfiguration);
+            }
+            catch
+            {
+                //TODO handle logger of invalid parsing
+                return null;
+            }
+        }
     }
 }
