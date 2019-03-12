@@ -1,25 +1,21 @@
 {
   "version": "0.1.0",
-  "label": [ "alpha1" ],
+  "label": [ "alpha2" ],
   "branches": {
     "release": [
       "^refs/heads/master$",
       "^refs/heads/preview/.+$",
       "^refs/heads/release/.+$"
     ],
-    "overrides" : [
+    "overrides": [
       {
-        "match": "feature",
-        "label": ["{branchname}"],
-        "meta" : ["internal"]
+        "match": "^refs/heads/feature/.+$",
+        "metadata": [ "{shortbranchname}" ]
       },
       {
-        "match": "release",
-        "meta": ["*", "{shortsha}"]
-      },
-      {
-        "match": "hotfix",
-        "label": ["{shortsha}"]
+        "match": "^refs/heads/release/.+$",
+        "label": [],
+        "metadata": [ "*" ]
       }
     ]
   }
