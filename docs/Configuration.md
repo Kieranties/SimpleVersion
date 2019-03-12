@@ -19,8 +19,6 @@ All of the following are accepted values:
 "Version" : "1.2.3.4"
 ```
 
-> You may also specify '*' in place of a number to insert the generated height.
-
 Label
 -----
 
@@ -33,7 +31,6 @@ The `Label` property specifies an array of labels to be included in the version.
 "Label" : ["alpha1"]
 "Label" : ["alpha1", "test"]
 ```
-> You may also specify '*' in place of a value to insert the generated height.
 
 MetaData
 --------
@@ -48,8 +45,6 @@ in the final version.
 "MetaData" : ["demo"]
 "MetaData" : ["demo", "sprint1"]
 ```
-
-> You may also specify '*' in place of a value to insert the generated height.
 
 OffSet
 ------
@@ -99,3 +94,18 @@ Semver2 verison of `0.1.0-alpha2.5` when there are five commits.
 All other branches will append the short sha, generating a Semver2 version of
 `0.1.0-alpha2.5.c903782` when there are five commits and the sha begins with
 _903782_
+
+Replacement Tokens
+------------------
+
+SimpleVersion allows specific _tokens_ to be used in some properties to allow
+substitution of values during invocation.  The following tokens may be used:
+
+
+| Name               | Token                | Where                          | Description                                                                |
+| ------------------ | -------------------- | ------------------------------ | -------------------------------------------------------------------------- |
+| Height             | `*`                  | `Version`, `Label`, `Metadata` | Inserts the calculated height                                              |
+| Branch Name        | `{branchname}`       | `Label`, `Metadata`            | Inserts the canonical branch name, stripped of non-alphanumeric characters |
+| Short Branch Name  | `{shortbranchname}`  | `Label`, `Metadata`            | Inserts the friendly branch name, stripped of non-alphanumeric characters  |
+| Branch Name Suffix | `{branchnamesuffix}` | `Label`, `Metadata`            | Inserts the last segment of the canonical name of a branch				  |
+| Short Sha          | `{shortsha}`         | `Label`, `Metadata`            | Inserts the first seven characters of the commit sha, prefixed with `c`    |

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleVersion.Rules;
+using System;
 
 namespace SimpleVersion.Pipeline.Formatting
 {
@@ -6,9 +7,7 @@ namespace SimpleVersion.Pipeline.Formatting
     {
         public void Apply(VersionContext context)
         {
-            var versionString = context.Configuration.Version;
-            if (versionString.Contains("*"))
-                versionString = versionString.Replace("*", context.Result.Height.ToString());
+            var versionString = HeightRule.Instance.Resolve(context, context.Configuration.Version);
 
             if (Version.TryParse(versionString, out var version))
             {

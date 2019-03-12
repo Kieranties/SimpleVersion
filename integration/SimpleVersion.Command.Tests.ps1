@@ -74,7 +74,7 @@ Describe 'SimpleVersion.Command'{
 				}
 			}
 
-			It 'Returns base values for initial commit'{
+			It 'Returns base values for initial commit' {
 				Copy-Item $PSScriptRoot\assets\.simpleversion.json -Destination $pwd
 				git add *
 				git commit -m 'Initial commit'
@@ -130,7 +130,7 @@ Describe 'SimpleVersion.Command'{
 				git commit -m 'empty' --allow-empty
 				$json = Get-Content $pwd\.simpleversion.json -Raw | ConvertFrom-Json
 				$json.Version = "1.0.0"
-				Set-Content $pwd\.simpleversion.json (ConvertTo-Json $json)
+				Set-Content $pwd\.simpleversion.json (ConvertTo-Json $json -Depth 100)
 				git add *
 				git commit -m 'Updated version'
 				git commit -m 'empty' --allow-empty
@@ -150,6 +150,64 @@ Describe 'SimpleVersion.Command'{
 					$json.BranchName | Should -Be 'master'
 					$json.Formats.Semver1 | Should -Be '1.0.0-alpha1-0002'
 					$json.Formats.Semver2 | Should -Be '1.0.0-alpha1.2'
+				}
+			}
+		}
+	}
+
+	Context 'Branch Overrides' {
+		Context 'Override Matches' {
+
+			BeforeAll {
+				$dir = New-Item "${TestDrive}\$(Get-Random)" -ItemType Directory
+				Push-Location $dir
+				git init
+				git config user.email "SimpleVersion@Kieranties.com"
+				git config user.name "Simple Version"
+
+				Copy-Item $PSScriptRoot\assets\.simpleversion.json -Destination $pwd
+				git add *
+				git commit -m 'Initial commit'
+
+				$sha = git rev-parse HEAD
+				$expectedSha = "c$($sha.Substring(0, 7))"
+			}
+
+			AfterAll {
+				Pop-Location
+				Remove-Item $dir -Recurse -Force
+			}
+
+			It 'Returns override label and meta if provided' {
+
+				git checkout -b test/feature
+				$result = Invoke
+				Validate $result -AsSuccess {
+					$json.BranchName | Should -Be 'test/feature'
+					$json.Formats.Semver1 | Should -Be '0.1.0-testfeature-0001'
+					$json.Formats.Semver2 | Should -Be '0.1.0-testfeature.1+internal'
+				}
+			}
+
+			It 'Returns override label only if provided' {
+
+				git checkout -b test/hotfix
+				$result = Invoke
+				Validate $result -AsSuccess {
+					$json.BranchName | Should -Be 'test/hotfix'
+					$json.Formats.Semver1 | Should -Be "0.1.0-$expectedSha-0001"
+					$json.Formats.Semver2 | Should -Be "0.1.0-$expectedSha.1"
+				}
+			}
+
+			It 'Returns override label only if provided' {
+
+				git checkout -b test/release
+				$result = Invoke
+				Validate $result -AsSuccess {
+					$json.BranchName | Should -Be 'test/release'
+					$json.Formats.Semver1 | Should -Be "0.1.0-alpha1-0001"
+					$json.Formats.Semver2 | Should -Be "0.1.0-alpha1.1+1.$expectedSha"
 				}
 			}
 		}
