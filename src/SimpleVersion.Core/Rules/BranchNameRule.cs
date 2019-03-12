@@ -1,4 +1,5 @@
 ﻿using System;
+using SimpleVersion.Pipeline;
 
 namespace SimpleVersion.Rules
 {
@@ -8,14 +9,16 @@ namespace SimpleVersion.Rules
 
         public static BranchNameRule Instance => _default.Value;
 
-        public BranchNameRule() : base(true)
+        public BranchNameRule() : base()
         {
         }
 
-        public BranchNameRule(string pattern) : base(pattern, true)
+        public BranchNameRule(string pattern) : base(pattern)
         {
         }                
 
         public override string Token { get; protected set; } = "{branchname}";
+
+        protected override string ResolveBranchName(VersionContext context) => context.Result.CanonicalBranchName;
     }
 }

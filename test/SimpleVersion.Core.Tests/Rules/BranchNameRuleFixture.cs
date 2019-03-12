@@ -17,7 +17,7 @@ namespace SimpleVersion.Core.Tests.Rules
 
             // Assert
             sut.Pattern.Should().NotBeNull();
-            sut.UseCanonical.Should().BeTrue();
+            sut.Token.Should().Be("{branchname}");
         }
 
         public static IEnumerable<object[]> ApplyData()

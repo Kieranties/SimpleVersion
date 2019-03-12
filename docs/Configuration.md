@@ -102,9 +102,10 @@ SimpleVersion allows specific _tokens_ to be used in some properties to allow
 substitution of values during invocation.  The following tokens may be used:
 
 
-| Name              | Token               | Where                          | Description                                                                |
-| ----------------- | ------------------- | ------------------------------ | -------------------------------------------------------------------------- |
-| Height            | `*`                 | `Version`, `Label`, `Metadata` | Inserts the calculated height                                              |
-| Branch Name       | `{branchname}`      | `Label`, `Metadata`            | Inserts the canonical branch name, stripped of non-alphanumeric characters |
-| Short Branch Name | `{shortbranchname}` | `Label`, `Metadata`            | Inserts the friendly branch name, stripped of non-alphanumeric characters  |
-| Short Sha         | `{shortsha}`        | `Label`, `Metadata`            | Inserts the first seven characters of the commit sha, prefixed with `c`    |
+| Name               | Token                | Where                          | Description                                                                |
+| ------------------ | -------------------- | ------------------------------ | -------------------------------------------------------------------------- |
+| Height             | `*`                  | `Version`, `Label`, `Metadata` | Inserts the calculated height                                              |
+| Branch Name        | `{branchname}`       | `Label`, `Metadata`            | Inserts the canonical branch name, stripped of non-alphanumeric characters |
+| Short Branch Name  | `{shortbranchname}`  | `Label`, `Metadata`            | Inserts the friendly branch name, stripped of non-alphanumeric characters  |
+| Branch Name Suffix | `{branchnamesuffix}` | `Label`, `Metadata`            | Inserts the last segment of the canonical name of a branch				  |
+| Short Sha          | `{shortsha}`         | `Label`, `Metadata`            | Inserts the first seven characters of the commit sha, prefixed with `c`    |
