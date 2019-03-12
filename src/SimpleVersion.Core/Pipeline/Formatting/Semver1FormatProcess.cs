@@ -11,7 +11,8 @@ namespace SimpleVersion.Pipeline.Formatting
                 new HeightRule(true),
                 ShortShaRule.Instance,
                 BranchNameRule.Instance,
-                ShortBranchNameRule.Instance
+                ShortBranchNameRule.Instance,
+                BranchNameSuffixRule.Instance
             };
 
             var labelParts = context.Configuration.Label.ApplyRules(context, rules);
