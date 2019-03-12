@@ -14,6 +14,7 @@ namespace SimpleVersion.Abstractions.Tests.Model
 
             // Assert
             sut.Release.Should().BeEmpty();
+            sut.Overrides.Should().BeEmpty();
         }
     }
 }

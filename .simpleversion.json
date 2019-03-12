@@ -6,6 +6,17 @@
       "^refs/heads/master$",
       "^refs/heads/preview/.+$",
       "^refs/heads/release/.+$"
+    ],
+    "overrides": [
+      {
+        "match": "^refs/heads/feature/.+$",
+        "metadata": [ "{shortbranchname}" ]
+      },
+      {
+        "match": "^refs/heads/release/.+$",
+        "label": [],
+        "metadata": [ "*" ]
+      }
     ]
   }
 }
