@@ -16,6 +16,7 @@ The following is an example from invoking the command line tool:
   "Height": 18,
   "HeightPadded": "0018",
   "Sha": "ebc8f22ae83bfa3c1e36d6bf70c2a383ae30c9dd",
+  "CanonicalBranchName": "refs/heads/preview/test",
   "BranchName": "preview/test",
   "Formats": {
     "Semver1": "0.1.0-alpha2-0018",

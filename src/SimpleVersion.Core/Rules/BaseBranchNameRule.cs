@@ -13,22 +13,19 @@ namespace SimpleVersion.Rules
         protected static string _defaultPattern = "[^a-z0-9]";
 
 
-        protected BaseBranchNameRule(bool useCanonical) : this(_defaultPattern, useCanonical)
+        protected BaseBranchNameRule() : this(_defaultPattern)
         {
         }
 
-        protected BaseBranchNameRule(string pattern, bool useCanonical)
+        protected BaseBranchNameRule(string pattern)
         {
             Pattern = new Regex(pattern, RegexOptions.IgnoreCase);
-            UseCanonical = useCanonical;
         }
 
         public abstract string Token { get; protected set; }
 
         public Regex Pattern { get; protected set; }
-
-        public bool UseCanonical { get; protected set; }
-
+        
         public virtual IEnumerable<string> Apply(VersionContext context, IEnumerable<string> value)
         {
             // No default implementation applies branch name
@@ -37,14 +34,16 @@ namespace SimpleVersion.Rules
 
         public virtual string Resolve(VersionContext context, string value)
         {
-            var name = ResolveBranchName(context);
-            name = Pattern.Replace(name, "");
-            return Regex.Replace(value, Regex.Escape(Token), name, RegexOptions.IgnoreCase);
+            if (Regex.IsMatch(value, Token, RegexOptions.IgnoreCase))
+            {
+                var name = ResolveBranchName(context);
+                name = Pattern.Replace(name, "");
+                return Regex.Replace(value, Regex.Escape(Token), name, RegexOptions.IgnoreCase);
+            }
+
+            return value;
         }
 
-        protected virtual string ResolveBranchName(VersionContext context)
-        {
-            return UseCanonical ? context.Result.CanonicalBranchName : context.Result.BranchName;
-        }
+        protected abstract string ResolveBranchName(VersionContext context);
     }
 }
