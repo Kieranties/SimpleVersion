@@ -1,22 +1,10 @@
 {
-  "version": "0.1.0",
-  "metadata": ["*"],
+  "version": "0.1.*",
   "branches": {
     "release": [
       "^refs/heads/master$",
       "^refs/heads/preview/.+$",
       "^refs/heads/release/.+$"
-    ],
-    "overrides": [
-      {
-        "match": "^refs/heads/feature/.+$",
-        "metadata": [ "{shortbranchname}" ]
-      },
-      {
-        "match": "^refs/heads/release/.+$",
-        "label": [],
-        "metadata": [ "*" ]
-      }
     ]
   }
 }
