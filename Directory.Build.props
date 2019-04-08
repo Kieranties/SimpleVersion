@@ -21,18 +21,17 @@
 
   <PropertyGroup Label="Package Meta">
     <Authors>Kieran@Kieranties.com</Authors>
-    <PackageLicenseUrl>https://raw.githubusercontent.com/Kieranties/SimpleVersion/master/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/Kieranties/SimpleVersion</PackageProjectUrl>
     <PackageTags>semver;versioning;git</PackageTags>
     <RepositoryUrl>https://github.com/Kieranties/SimpleVersion</RepositoryUrl>
     <PackageIconUrl>https://raw.github.com/Kieranties/SimpleVersion/master/docs/img/logo.png</PackageIconUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <PropertyGroup Label="Build Attributes">
     <WarningsAsErrors>true</WarningsAsErrors>
     <!-- NU5105 - Usage of semver 2 versioning -->
-    <!-- NU5125 - LicenseUrl will be deprecated -->
-    <NoWarn>$(NoWarn);NU5105;NU5125</NoWarn>
+    <NoWarn>$(NoWarn);NU5105</NoWarn>
   </PropertyGroup>
 
 </Project>
