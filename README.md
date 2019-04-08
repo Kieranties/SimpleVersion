@@ -51,9 +51,9 @@ root of your git repository and commit it.
   "label": [ "alpha2" ],
   "branches": {
     "release": [
-      "^master$",
-      "^preview/.+$",
-      "^release/.+$"
+      "^refs/heads/master$",
+      "^refs/heads/preview/.+$",
+      "^refs/heads/release/.+$"
     ]
   }
 }
