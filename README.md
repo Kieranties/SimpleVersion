@@ -2,11 +2,15 @@
 
 SimpleVersion
 =============
-
-SimpleVersion aims to simplify how you version the artifacts of your git repository.
+[![Nuget](https://img.shields.io/nuget/v/SimpleVersion.Core.svg?logo=nuget)][NugetRel]
+[![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/SimpleVersion.Core.svg?logo=nuget)][NugetPre]
+[![Azure DevOps tests (branch)](https://img.shields.io/azure-devops/tests/Kieranties/SimpleVersion/1/master.svg?logo=azuredevops)][AzureRelease]
+[![License](https://img.shields.io/github/license/Kieranties/SimpleVersion.svg?logo=github)][License]
 
 Brief
 -----
+
+SimpleVersion aims to simplify how you version the artifacts of your git repository.
 
 Using SimpleVersion you can generate consistent, expected version numbers for
 each commit in your repository, based on a few simple configuration options.
@@ -73,5 +77,9 @@ The height will be reset to 0 when SimpleVersion detects a change to either the
 [semver2]:      https://semver.org/spec/v2.0.0.html
 [GitVersion]:   https://github.com/GitTools/GitVersion
 [NerdBank]:     https://github.com/aarnott/Nerdbank.GitVersioning
-[ConfigDoc]:    /docs/configuration.md
-[UsageDoc]:     /docs/usage.md
+[ConfigDoc]:    /docs/Configuration.md
+[UsageDoc]:     /docs/Usage.md
+[License]:      /LICENSE
+[NugetPre]:     https://www.nuget.org/packages?q=simpleversion
+[NugetRel]:     https://www.nuget.org/packages?q=simpleversion&prerel=false
+[AzureRelease]: https://dev.azure.com/Kieranties/SimpleVersion/_build?definitionId=1
