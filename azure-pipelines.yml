@@ -38,13 +38,14 @@ jobs:
       command: custom
       arguments: 'install SimpleVersion.Command -Pre -Source $(LocalFeed)'
 
-  # Calculate the version
+  # Calculate the version and set variables
   - powershell: |
       $result = .\SimpleVersion.*\tools\SimpleVersion.exe
       Write-Output $result
       $fullVersion = ($result | ConvertFrom-Json).Formats.Semver2
       Write-Output "##vso[build.updatebuildnumber]$fullVersion"
       Write-Output "##vso[task.setvariable variable=Version;]$fullVersion"
+      Write-Output "##vso[build.addbuildtag]$fullVersion" 
     displayName: 'Prepare: Set version information'
 
   # Build/Pack the assets
