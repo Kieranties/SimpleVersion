@@ -2,6 +2,7 @@
   <PropertyGroup Label="Local build version">
     <Version Condition="'$(Version)' == ''">1.0.0</Version>
     <PackageVersion>$(Version)</PackageVersion>
+    <MajorMinorPatchVersion>$([System.Text.RegularExpressions.Regex]::Match($(Version), '\d+\.\d+\.\d+').Value)</MajorMinorPatchVersion>
   </PropertyGroup>
 
   <PropertyGroup Label="All package targets">
@@ -13,7 +14,7 @@
     <Company>Kieranties</Company>
     <Copyright>(c) Kieranties</Copyright>
     <Description>SimpleVersion - A simple tool to version your code</Description>
-    <FileVersion>$([System.Text.RegularExpressions.Regex]::Match($(Version), '\d+\.\d+\.\d+').Value).0</FileVersion>
+    <FileVersion>$(MajorMinorPatchVersion).0</FileVersion>
     <AssemblyVersion>$([System.Text.RegularExpressions.Regex]::Match($(Version), '\d+\.\d+').Value).0.0</AssemblyVersion>
     <InformationalVersion>$(Version)$(VersionSuffix)</InformationalVersion>
   </PropertyGroup>
