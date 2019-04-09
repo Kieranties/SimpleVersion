@@ -7,6 +7,7 @@ trigger:
   paths:
     exclude:
     - docs/*
+    - .github/*
     - README.md
 
 pr:
@@ -45,7 +46,7 @@ jobs:
       $fullVersion = ($result | ConvertFrom-Json).Formats.Semver2
       Write-Output "##vso[build.updatebuildnumber]$fullVersion"
       Write-Output "##vso[task.setvariable variable=Version;]$fullVersion"
-      Write-Output "##vso[build.addbuildtag]build/$fullVersion" 
+      Write-Output "##vso[build.addbuildtag]build/$fullVersion"
     displayName: 'Prepare: Set version information'
 
   # Build/Pack the assets
