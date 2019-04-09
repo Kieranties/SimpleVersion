@@ -66,7 +66,7 @@ namespace SimpleVersion.Pipeline
             context.Result.Height = height;
         }
 
-        private bool HasVersionChange(
+        private static bool HasVersionChange(
             TreeChanges diff,
             Commit commit,
             VersionContext context)
@@ -80,7 +80,7 @@ namespace SimpleVersion.Pipeline
             return false;
         }
 
-        private IEnumerable<Commit> GetReachableCommits(Repository repo)
+        private static IEnumerable<Commit> GetReachableCommits(Repository repo)
         {
             var filter = new CommitFilter
             {
@@ -92,7 +92,7 @@ namespace SimpleVersion.Pipeline
             return repo.Commits.QueryBy(filter).Reverse();
         }
 
-        private SVM.Configuration GetConfiguration(Commit commit, VersionContext context)
+        private static SVM.Configuration GetConfiguration(Commit commit, VersionContext context)
         {
             var gitObj = commit?.Tree[Constants.VersionFileName]?.Target;
             if (gitObj == null)
@@ -103,7 +103,7 @@ namespace SimpleVersion.Pipeline
             return config;
         }
 
-        private void ApplyConfigOverrides(SVM.Configuration config, VersionContext context)
+        private static void ApplyConfigOverrides(SVM.Configuration config, VersionContext context)
         {
             if (config == null)
                 return;
@@ -126,7 +126,7 @@ namespace SimpleVersion.Pipeline
                 }
             }
         }
-        private SVM.Configuration Read(string rawConfiguration)
+        private static SVM.Configuration Read(string rawConfiguration)
         {
             try
             {

@@ -39,10 +39,12 @@ namespace SimpleVersion.Comparers
                 throw new ArgumentNullException(nameof(configuration));
 
             if (configuration.Version is null)
+#pragma warning disable CA2208 // Instantiate argument exceptions correctly
                 throw new ArgumentNullException("Version");
 
             if (configuration.Label is null)
                 throw new ArgumentNullException("Label");
+#pragma warning restore CA2208 // Instantiate argument exceptions correctly
 
             return configuration.Version.GetHashCode() * 17 + configuration.Label.GetHashCode();
         }

@@ -50,8 +50,8 @@ namespace SimpleVersion.Abstractions.Tests.Model
             };
 
             // Act
-            var upperResult = sut.Formats[key.ToUpper()];
-            var lowerResult = sut.Formats[key.ToLower()];
+            var upperResult = sut.Formats[key.ToUpper(System.Globalization.CultureInfo.CurrentCulture)];
+            var lowerResult = sut.Formats[key.ToLower(System.Globalization.CultureInfo.CurrentCulture)];
 
             // Assert
             upperResult.Should().Be(value);

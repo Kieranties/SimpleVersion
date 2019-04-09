@@ -16,7 +16,7 @@ namespace SimpleVersion.Model
 
         public int Height { get; set; } = 0;
 
-        public string HeightPadded => Height.ToString("D4");
+        public string HeightPadded => Height.ToString("D4", System.Globalization.CultureInfo.CurrentCulture);
 
         public string Sha { get; set; } = string.Empty;
 

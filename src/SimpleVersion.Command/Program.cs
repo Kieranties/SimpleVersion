@@ -4,7 +4,7 @@ using System;
 
 namespace SimpleVersion.Command
 {
-    public class Program
+    public sealed class Program
     {
         public static int Main(string[] args)
         {

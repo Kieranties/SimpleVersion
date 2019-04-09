@@ -30,7 +30,7 @@ namespace SimpleVersion.Rules
             if (Padded)
                 return value.Replace(Token, context.Result.HeightPadded);
             else
-                return value.Replace(Token, context.Result.Height.ToString());
+                return value.Replace(Token, context.Result.Height.ToString(System.Globalization.CultureInfo.CurrentCulture));
         }
 
         public IEnumerable<string> Apply(VersionContext context, IEnumerable<string> input)

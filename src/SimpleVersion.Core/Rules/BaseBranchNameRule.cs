@@ -10,8 +10,7 @@ namespace SimpleVersion.Rules
 {
     public abstract class BaseBranchNameRule : IRule<string>
     {
-        protected static string _defaultPattern = "[^a-z0-9]";
-
+        private const string _defaultPattern = "[^a-z0-9]";
 
         protected BaseBranchNameRule() : this(_defaultPattern)
         {
