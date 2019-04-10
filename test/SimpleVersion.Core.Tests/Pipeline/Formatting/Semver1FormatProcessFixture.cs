@@ -2,10 +2,10 @@
 
 using System;
 using System.Collections.Generic;
-using Xunit;
 using FluentAssertions;
-using SimpleVersion.Pipeline.Formatting;
 using SimpleVersion.Pipeline;
+using SimpleVersion.Pipeline.Formatting;
+using Xunit;
 
 namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 {

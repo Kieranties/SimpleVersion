@@ -45,7 +45,6 @@ namespace SimpleVersion.Core.Tests.Rules
             sut.Padded.Should().BeFalse();
         }
 
-
         [Theory]
         [InlineData(true)]
         [InlineData(false)]
@@ -88,12 +87,13 @@ namespace SimpleVersion.Core.Tests.Rules
         {
             // Version in string, Do not add to label
             yield return new object[] { "1.*", new[] { "this" }, new[] { "this" } };
+
             // No release label, Do not add to label
             yield return new object[] { "1.0", Array.Empty<string>(), Array.Empty<string>() };
+
             // Not in version and release, append to end
             yield return new object[] { "1.0", new[] { "this" }, new[] { "this", "*" } };
         }
-
 
         [Theory]
         [MemberData(nameof(ApplyData))]
@@ -115,6 +115,5 @@ namespace SimpleVersion.Core.Tests.Rules
             // Assert
             result.Should().BeEquivalentTo(expected, options => options.WithStrictOrdering());
         }
-
     }
 }

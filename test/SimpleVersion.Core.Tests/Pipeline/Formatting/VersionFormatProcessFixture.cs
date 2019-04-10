@@ -33,7 +33,8 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             // Arrange
             var context = new VersionContext
             {
-                Configuration = {
+                Configuration =
+                {
                     Version = version
                 }
             };
@@ -69,7 +70,8 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             // Arrange
             var context = new VersionContext
             {
-                Configuration = {
+                Configuration =
+                {
                     Version = version
                 }
             };
@@ -83,7 +85,6 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             context.Result.Minor.Should().Be(minor);
             context.Result.Patch.Should().Be(patch);
             context.Result.Revision.Should().Be(revision);
-
         }
 
         [Theory]
@@ -107,10 +108,12 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             // Arrange
             var context = new VersionContext
             {
-                Configuration = {
+                Configuration =
+                {
                     Version = version
                 },
-                Result = {
+                Result =
+                {
                     Height = commits
                 }
             };

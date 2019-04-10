@@ -1,8 +1,8 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using Xunit;
 using FluentAssertions;
 using SimpleVersion.Model;
+using Xunit;
 
 namespace SimpleVersion.Abstractions.Tests.Model
 {
@@ -46,7 +46,8 @@ namespace SimpleVersion.Abstractions.Tests.Model
             var value = "This is the value";
             var sut = new VersionResult
             {
-                Formats = {
+                Formats =
+                {
                     [key] = value
                 }
             };

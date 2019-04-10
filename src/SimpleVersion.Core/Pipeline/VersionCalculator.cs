@@ -10,6 +10,8 @@ namespace SimpleVersion.Pipeline
 {
     public class VersionCalculator : IVersionCalculator
     {
+        private readonly Queue<Lazy<ICalculatorProcess>> _queue = new Queue<Lazy<ICalculatorProcess>>();
+
         public static IVersionCalculator Default()
             => new VersionCalculator()
                 .AddProcessor<ResolveRepositoryPathProcess>()
@@ -19,9 +21,8 @@ namespace SimpleVersion.Pipeline
                 .AddProcessor<Semver1FormatProcess>()
                 .AddProcessor<Semver2FormatProcess>();
 
-        private readonly Queue<Lazy<ICalculatorProcess>> _queue = new Queue<Lazy<ICalculatorProcess>>();
-
-        public IVersionCalculator AddProcessor<T>() where T : ICalculatorProcess, new()
+        public IVersionCalculator AddProcessor<T>()
+            where T : ICalculatorProcess, new()
         {
             _queue.Enqueue(new Lazy<ICalculatorProcess>(() => new T()));
             return this;

@@ -49,10 +49,13 @@ namespace SimpleVersion.Core.Tests.Rules
         {
             // release branch does not include sha
             yield return new object[] { true, new[] { "this" }, new[] { "this" } };
+
             // non-release sha appends
             yield return new object[] { false, new[] { "this" }, new[] { "this", "{shortsha}" } };
+
             // non-release sha does not append if already there
             yield return new object[] { false, new[] { "{shortsha}", "this" }, new[] { "{shortsha}", "this" } };
+
             // empty array appends
             yield return new object[] { false, Array.Empty<string>(), new[] { "{shortsha}" } };
         }

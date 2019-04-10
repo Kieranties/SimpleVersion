@@ -30,7 +30,6 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Build Attributes">
-    <WarningsAsErrors>true</WarningsAsErrors>
     <MSBuildTreatWarningsAsErrors>true</MSBuildTreatWarningsAsErrors>
     <!-- NU5105 - Usage of semver 2 versioning -->
     <NoWarn>$(NoWarn);NU5105</NoWarn>

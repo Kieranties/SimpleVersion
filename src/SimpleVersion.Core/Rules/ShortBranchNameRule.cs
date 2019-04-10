@@ -7,11 +7,12 @@ namespace SimpleVersion.Rules
 {
     public class ShortBranchNameRule : BaseBranchNameRule
     {
-        private static readonly Lazy<ShortBranchNameRule> _default = new Lazy<ShortBranchNameRule>(() => new ShortBranchNameRule());
-
         public static ShortBranchNameRule Instance => _default.Value;
 
-        public ShortBranchNameRule() : base()
+        private static readonly Lazy<ShortBranchNameRule> _default = new Lazy<ShortBranchNameRule>(() => new ShortBranchNameRule());
+
+        public ShortBranchNameRule()
+            : base()
         {
         }
 

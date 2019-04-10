@@ -9,6 +9,15 @@
         "licenseName": "MIT",
         "licenseUri": "https://kieranties.mit-license.org/"
       }
+    },
+    "maintainabilityRules": {
+      "topLevelTypes": [
+        "class",
+        "interface"
+      ]
+    },
+    "layoutRules": {
+      "newlineAtEndOfFile": "require"
     }
   }
 }

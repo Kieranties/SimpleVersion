@@ -10,9 +10,9 @@ namespace SimpleVersion.Rules
 {
     public class ShortShaRule : IRule<string>
     {
-        private static readonly Lazy<ShortShaRule> _default = new Lazy<ShortShaRule>(() => new ShortShaRule());
-
         public static ShortShaRule Instance => _default.Value;
+
+        private static readonly Lazy<ShortShaRule> _default = new Lazy<ShortShaRule>(() => new ShortShaRule());
 
         public string Token => "{shortsha}";
 

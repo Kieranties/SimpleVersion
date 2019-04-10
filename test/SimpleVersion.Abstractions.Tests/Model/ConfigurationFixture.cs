@@ -36,8 +36,6 @@ namespace SimpleVersion.Abstractions.Tests.Model
             result.Should().BeFalse();
         }
 
-        public static string Thing => "this";
-
         public static IEnumerable<object[]> DifferInLabel()
         {
             yield return new[] { new Configuration(), new Configuration { Label = { "one" } } };

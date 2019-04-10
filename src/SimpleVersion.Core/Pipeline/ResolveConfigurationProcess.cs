@@ -1,13 +1,13 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using LibGit2Sharp;
-using SVM = SimpleVersion.Model;
-using Newtonsoft.Json;
-using SimpleVersion.Comparers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using LibGit2Sharp;
+using Newtonsoft.Json;
+using SimpleVersion.Comparers;
+using SVM = SimpleVersion.Model;
 
 namespace SimpleVersion.Pipeline
 {
@@ -55,8 +55,10 @@ namespace SimpleVersion.Pipeline
             {
                 // Get the current tree
                 var next = commits.Current.Tree;
+
                 // Perform a diff
                 var diff = repo.Diff.Compare<TreeChanges>(next, tipTree);
+
                 // If a change to the file is found, stop counting
                 if (HasVersionChange(diff, commits.Current, context))
                     break;
@@ -129,6 +131,7 @@ namespace SimpleVersion.Pipeline
                 }
             }
         }
+
         private static SVM.Configuration Read(string rawConfiguration)
         {
             try
@@ -138,7 +141,7 @@ namespace SimpleVersion.Pipeline
 #pragma warning disable CA1031 // Do not catch general exception types
             catch
             {
-                //TODO handle logger of invalid parsing
+                // TODO handle logger of invalid parsing
                 return null;
             }
 #pragma warning restore CA1031 // Do not catch general exception types

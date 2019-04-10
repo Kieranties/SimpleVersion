@@ -103,7 +103,7 @@ namespace SimpleVersion.Core.Tests.Comparers
         [Fact]
         public void GetHashCode_NullVersion_Throws()
         {
-            // Arrange 
+            // Arrange
             var config = new Configuration { Version = null };
 
             // Act

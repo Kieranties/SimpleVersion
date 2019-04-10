@@ -7,9 +7,9 @@ namespace SimpleVersion.Rules
 {
     public class BranchNameSuffixRule : BaseBranchNameRule
     {
-        private static readonly Lazy<BranchNameSuffixRule> _default = new Lazy<BranchNameSuffixRule>(() => new BranchNameSuffixRule());
-
         public static BranchNameSuffixRule Instance => _default.Value;
+
+        private static readonly Lazy<BranchNameSuffixRule> _default = new Lazy<BranchNameSuffixRule>(() => new BranchNameSuffixRule());
 
         public BranchNameSuffixRule() : base()
         {

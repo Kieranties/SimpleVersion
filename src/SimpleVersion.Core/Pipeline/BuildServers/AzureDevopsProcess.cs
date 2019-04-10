@@ -10,9 +10,9 @@ namespace SimpleVersion.Pipeline.BuildServers
         private static readonly Regex _trim = new Regex(@"^refs\/(heads\/)?", RegexOptions.IgnoreCase);
         private readonly IEnvironment _env;
 
-        public AzureDevopsProcess() : this(new VersioningEnvironment())
+        public AzureDevopsProcess()
+            : this(new VersioningEnvironment())
         {
-
         }
 
         public AzureDevopsProcess(IEnvironment env)
@@ -25,7 +25,7 @@ namespace SimpleVersion.Pipeline.BuildServers
             if (_env.GetVariable("TF_BUILD").ToBool())
             {
                 context.Result.CanonicalBranchName = _env.GetVariable("BUILD_SOURCEBRANCH");
-                context.Result.BranchName = _trim.Replace(context.Result.CanonicalBranchName, string.Empty); ;
+                context.Result.BranchName = _trim.Replace(context.Result.CanonicalBranchName, string.Empty);
             }
         }
     }

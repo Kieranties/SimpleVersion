@@ -9,13 +9,12 @@ namespace SimpleVersion.Rules
 {
     public class HeightRule : IRule<string>
     {
-        private static readonly Lazy<HeightRule> _default = new Lazy<HeightRule>(() => new HeightRule());
-
         public static HeightRule Instance => _default.Value;
+
+        private static readonly Lazy<HeightRule> _default = new Lazy<HeightRule>(() => new HeightRule());
 
         public HeightRule() : this(false)
         {
-
         }
 
         public HeightRule(bool padded)

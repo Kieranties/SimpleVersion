@@ -46,7 +46,6 @@ namespace SimpleVersion.Core.Tests.Pipeline
             action.Should().Throw<Exception>();
         }
 
-
         public static IEnumerable<object[]> InvalidPaths()
         {
             yield return new[] { Environment.GetLogicalDrives()[0] };
@@ -63,7 +62,6 @@ namespace SimpleVersion.Core.Tests.Pipeline
             // Assert
             action.Should().Throw<DirectoryNotFoundException>()
                 .And.Message.Should().Be($"Could not find git repository at '{path}' or any parent directory");
-
         }
 
         [Fact]
@@ -98,6 +96,5 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 context.RepositoryPath.Should().Be(fixture.RepositoryPath);
             }
         }
-
     }
 }

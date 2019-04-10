@@ -57,7 +57,6 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             context.Result.Formats["Semver2"].Should().Be(expected);
         }
 
-
         [Theory]
         [MemberData(nameof(LabelParts))]
         public void Apply_LabelParts_Release_Is_Formatted(
@@ -130,7 +129,6 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             string version,
             int height)
         {
-
             // Arrange
             var context = new VersionContext
             {

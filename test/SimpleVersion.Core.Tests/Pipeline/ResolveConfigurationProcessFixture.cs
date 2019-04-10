@@ -315,8 +315,10 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 var config = new Configuration
                 {
                     Version = "0.1.0",
-                    Branches = {
-                        Overrides = {
+                    Branches =
+                    {
+                        Overrides =
+                        {
                             new BranchConfiguration
                             {
                                 Match = "feature/other",
@@ -362,7 +364,6 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit(); // 3
                 fixture.MakeACommit(); // 4
 
-
                 // Write the version file (with parsing errors)
                 var file = Path.Combine(fixture.RepositoryPath, Constants.VersionFileName);
                 using (var writer = File.AppendText(file))
@@ -402,7 +403,6 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit(); // 2
                 fixture.MakeACommit(); // 3
                 fixture.MakeACommit(); // 4
-
 
                 // Write the version file (with parsing errors)
                 var file = Path.Combine(fixture.RepositoryPath, Constants.VersionFileName);

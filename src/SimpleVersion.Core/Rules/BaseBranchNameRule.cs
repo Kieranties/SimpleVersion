@@ -14,7 +14,8 @@ namespace SimpleVersion.Rules
     {
         private const string _defaultPattern = "[^a-z0-9]";
 
-        protected BaseBranchNameRule() : this(_defaultPattern)
+        protected BaseBranchNameRule()
+            : this(_defaultPattern)
         {
         }
 
@@ -38,7 +39,7 @@ namespace SimpleVersion.Rules
             if (Regex.IsMatch(value, Token, RegexOptions.IgnoreCase))
             {
                 var name = ResolveBranchName(context);
-                name = Pattern.Replace(name, "");
+                name = Pattern.Replace(name, string.Empty);
                 return Regex.Replace(value, Regex.Escape(Token), name, RegexOptions.IgnoreCase);
             }
 

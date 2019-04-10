@@ -1,15 +1,10 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using SimpleVersion.Pipeline.BuildServers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xunit;
+using FluentAssertions;
 using NSubstitute;
 using SimpleVersion.Pipeline;
-using FluentAssertions;
+using SimpleVersion.Pipeline.BuildServers;
+using Xunit;
 
 namespace SimpleVersion.Core.Tests.Pipeline.BuildServers
 {
