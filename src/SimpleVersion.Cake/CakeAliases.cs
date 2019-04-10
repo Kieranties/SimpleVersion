@@ -1,4 +1,6 @@
-﻿using Cake.Core;
+﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using Cake.Core;
 using Cake.Core.Annotations;
 using SimpleVersion.Model;
 using SimpleVersion.Pipeline;

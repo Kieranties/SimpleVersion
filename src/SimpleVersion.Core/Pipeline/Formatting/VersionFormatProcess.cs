@@ -1,4 +1,6 @@
-﻿using SimpleVersion.Rules;
+﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using SimpleVersion.Rules;
 using System;
 
 namespace SimpleVersion.Pipeline.Formatting

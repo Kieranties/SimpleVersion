@@ -1,4 +1,6 @@
-﻿using SimpleVersion.Model;
+﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using SimpleVersion.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

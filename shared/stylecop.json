@@ -3,8 +3,8 @@
   "settings": {
     "documentationRules": {
       "companyName": "Kieranties",
-      "copyrightText": "Copyright (c) {companyName}. All rights reserved.\nLicensed under the {licenseName} license. See {licenseUri} for full license information.",
-      "headerDecoration": "-----------------------------------------------------------------------",
+      "copyrightText": "Licensed under the {licenseName} license. See {licenseUri} for full license information.",
+      "xmlHeader": false,
       "variables": {
         "licenseName": "MIT",
         "licenseUri": "https://kieranties.mit-license.org/"

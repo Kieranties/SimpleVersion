@@ -1,4 +1,6 @@
-﻿using Xunit;
+﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using Xunit;
 using FluentAssertions;
 using SimpleVersion.Model;
 

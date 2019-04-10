@@ -1,4 +1,6 @@
-﻿using SimpleVersion.Pipeline.BuildServers;
+﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using SimpleVersion.Pipeline.BuildServers;
 using System;
 using System.Collections.Generic;
 using System.Linq;

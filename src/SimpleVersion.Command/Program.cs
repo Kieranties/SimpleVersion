@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using Newtonsoft.Json;
 using SimpleVersion.Pipeline;
 using System;
 

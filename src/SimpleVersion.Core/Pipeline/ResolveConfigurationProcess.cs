@@ -1,4 +1,6 @@
-﻿using LibGit2Sharp;
+﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using LibGit2Sharp;
 using SVM = SimpleVersion.Model;
 using Newtonsoft.Json;
 using SimpleVersion.Comparers;
