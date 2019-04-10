@@ -23,7 +23,7 @@
 
   <ItemGroup Label="Global project tooling">
     <GlobalPackageReference Include="Microsoft.CodeAnalysis.FXCopAnalyzers" Version="2.9.*" />  
-    <GlobalPackageReference Include="StyleCop.Analyzers" Version="1.1.1-*" />  
+    <!--<GlobalPackageReference Include="StyleCop.Analyzers" Version="1.1.1-*" />-->  
   </ItemGroup>
   
   <ItemGroup Label="Test only tooling"

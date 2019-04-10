@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D5992CB5-3542-41C8-BE85-F52699729C57}"
+	ProjectSection(SolutionItems) = preProject
+		src\Directory.Build.props = src\Directory.Build.props
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleVersion.Abstractions", "src\SimpleVersion.Abstractions\SimpleVersion.Abstractions.csproj", "{57BD2337-57AB-4F50-BAE5-796DCDC70576}"
 EndProject
