@@ -1,24 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
-	<Sdk Name="Microsoft.Build.CentralPackageVersions" />
+  <Sdk Name="Microsoft.Build.CentralPackageVersions" />
 
-	<Import Project="..\App.props"/>
+  <Import Project="..\App.props"/>
 
-	<PropertyGroup>
-		<OutputType>Exe</OutputType>
-		<AssemblyName>SimpleVersion</AssemblyName>
-	</PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>SimpleVersion</AssemblyName>
+  </PropertyGroup>
 
-	<PropertyGroup Label="Pack Meta">
-		<TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);PackBuildOutputs</TargetsForTfmSpecificContentInPackage>
-		<PackageId>SimpleVersion.Command</PackageId>
-	</PropertyGroup>
+  <PropertyGroup Label="Pack Meta">
+    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);PackBuildOutputs</TargetsForTfmSpecificContentInPackage>
+    <PackageId>SimpleVersion.Command</PackageId>
+  </PropertyGroup>
 
-	<Target Name="PackBuildOutputs">
-		<ItemGroup>
-			<TfmSpecificPackageFile
+  <Target Name="PackBuildOutputs">
+    <ItemGroup>
+      <TfmSpecificPackageFile
         Include="$(OutputPath)\**\*">
-				<PackagePath>tools\</PackagePath>
-			</TfmSpecificPackageFile>
-		</ItemGroup>
-	</Target>
+        <PackagePath>tools\</PackagePath>
+      </TfmSpecificPackageFile>
+    </ItemGroup>
+  </Target>
 </Project>

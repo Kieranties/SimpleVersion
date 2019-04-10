@@ -1,46 +1,46 @@
 <Project>
-	<PropertyGroup Label="Local build version">
-		<Version Condition="'$(Version)' == ''">1.0.0</Version>
-		<PackageVersion>$(Version)</PackageVersion>
-		<MajorMinorPatchVersion>$([System.Text.RegularExpressions.Regex]::Match($(Version), '\d+\.\d+\.\d+').Value)</MajorMinorPatchVersion>
-	</PropertyGroup>
+  <PropertyGroup Label="Local build version">
+    <Version Condition="'$(Version)' == ''">1.0.0</Version>
+    <PackageVersion>$(Version)</PackageVersion>
+    <MajorMinorPatchVersion>$([System.Text.RegularExpressions.Regex]::Match($(Version), '\d+\.\d+\.\d+').Value)</MajorMinorPatchVersion>
+  </PropertyGroup>
 
-	<PropertyGroup Label="All package targets">
-		<TargetFramework>net461</TargetFramework>
-	</PropertyGroup>
+  <PropertyGroup Label="All package targets">
+    <TargetFramework>net461</TargetFramework>
+  </PropertyGroup>
 
-	<!-- Meta properties: https://docs.microsoft.com/en-us/dotnet/core/tools/csproj -->
-	<PropertyGroup Label="Assembly Meta">
-		<Company>Kieranties</Company>
-		<Copyright>(c) Kieranties</Copyright>
-		<Description>SimpleVersion - A simple tool to version your code</Description>
-		<FileVersion>$(MajorMinorPatchVersion).0</FileVersion>
-		<AssemblyVersion>$([System.Text.RegularExpressions.Regex]::Match($(Version), '\d+\.\d+').Value).0.0</AssemblyVersion>
-		<InformationalVersion>$(Version)$(VersionSuffix)</InformationalVersion>
-	</PropertyGroup>
+  <!-- Meta properties: https://docs.microsoft.com/en-us/dotnet/core/tools/csproj -->
+  <PropertyGroup Label="Assembly Meta">
+    <Company>Kieranties</Company>
+    <Copyright>(c) Kieranties</Copyright>
+    <Description>SimpleVersion - A simple tool to version your code</Description>
+    <FileVersion>$(MajorMinorPatchVersion).0</FileVersion>
+    <AssemblyVersion>$([System.Text.RegularExpressions.Regex]::Match($(Version), '\d+\.\d+').Value).0.0</AssemblyVersion>
+    <InformationalVersion>$(Version)$(VersionSuffix)</InformationalVersion>
+  </PropertyGroup>
 
-	<PropertyGroup Label="Package Meta">
-		<Authors>Kieran@Kieranties.com</Authors>
-		<PackageProjectUrl>https://github.com/Kieranties/SimpleVersion</PackageProjectUrl>
-		<PackageTags>semver;versioning;git</PackageTags>
-		<RepositoryUrl>https://github.com/Kieranties/SimpleVersion</RepositoryUrl>
-		<RepositoryType>git</RepositoryType>
-		<PackageIconUrl>https://raw.github.com/Kieranties/SimpleVersion/master/docs/img/logo.png</PackageIconUrl>
-		<PackageLicenseExpression>MIT</PackageLicenseExpression>
-	</PropertyGroup>
+  <PropertyGroup Label="Package Meta">
+    <Authors>Kieran@Kieranties.com</Authors>
+    <PackageProjectUrl>https://github.com/Kieranties/SimpleVersion</PackageProjectUrl>
+    <PackageTags>semver;versioning;git</PackageTags>
+    <RepositoryUrl>https://github.com/Kieranties/SimpleVersion</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageIconUrl>https://raw.github.com/Kieranties/SimpleVersion/master/docs/img/logo.png</PackageIconUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
 
-	<PropertyGroup Label="Build Attributes">
-		<WarningsAsErrors>true</WarningsAsErrors>
-		<MSBuildTreatWarningsAsErrors>true</MSBuildTreatWarningsAsErrors>
-		<!-- NU5105 - Usage of semver 2 versioning -->
-		<NoWarn>$(NoWarn);NU5105</NoWarn>
-	</PropertyGroup>
+  <PropertyGroup Label="Build Attributes">
+    <WarningsAsErrors>true</WarningsAsErrors>
+    <MSBuildTreatWarningsAsErrors>true</MSBuildTreatWarningsAsErrors>
+    <!-- NU5105 - Usage of semver 2 versioning -->
+    <NoWarn>$(NoWarn);NU5105</NoWarn>
+  </PropertyGroup>
 
-	<ItemGroup Label="Shared Assets">
-		<AdditionalFiles Include="$(MSBuildThisFileDirectory)shared/stylecop.json" Link="stylecop.json" />
-	</ItemGroup>
+  <ItemGroup Label="Shared Assets">
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)shared/stylecop.json" Link="stylecop.json" />
+  </ItemGroup>
 
-	<PropertyGroup Label="Shared properties">
-		<CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)shared/SimpleVersion.ruleset</CodeAnalysisRuleSet>
-	</PropertyGroup>
+  <PropertyGroup Label="Shared properties">
+    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)shared/SimpleVersion.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
 </Project>

@@ -7,26 +7,26 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests.Pipeline
 {
-	public class VersionCalculatorFixture
-	{
-		private readonly VersionCalculator _sut;
+    public class VersionCalculatorFixture
+    {
+        private readonly VersionCalculator _sut;
 
-		public VersionCalculatorFixture()
-		{
-			_sut = new VersionCalculator();
-		}
+        public VersionCalculatorFixture()
+        {
+            _sut = new VersionCalculator();
+        }
 
-		[Theory]
-		[InlineData(null)]
-		[InlineData("")]
-		[InlineData("   \t\t")]
-		public void GetResult_EmptyPath_ReturnsResult(string path)
-		{
-			// Arrange / Act
-			var result = _sut.GetResult(path);
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("   \t\t")]
+        public void GetResult_EmptyPath_ReturnsResult(string path)
+        {
+            // Arrange / Act
+            var result = _sut.GetResult(path);
 
-			// Assert
-			result.Should().BeEquivalentTo(new VersionResult());
-		}
-	}
+            // Assert
+            result.Should().BeEquivalentTo(new VersionResult());
+        }
+    }
 }

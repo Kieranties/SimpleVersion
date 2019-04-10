@@ -1,29 +1,29 @@
 <Project Sdk="Microsoft.NET.Sdk">
-	<Sdk Name="Microsoft.Build.CentralPackageVersions" />
+  <Sdk Name="Microsoft.Build.CentralPackageVersions" />
 
-	<Import Project="..\App.props"/>
+  <Import Project="..\App.props"/>
 
-	<PropertyGroup>
-		<AssemblyName>Cake.SimpleVersion</AssemblyName>
-		<PackageTags>$(PackageTags);Cake</PackageTags>
-	</PropertyGroup>
+  <PropertyGroup>
+    <AssemblyName>Cake.SimpleVersion</AssemblyName>
+    <PackageTags>$(PackageTags);Cake</PackageTags>
+  </PropertyGroup>
 
-	<PropertyGroup Label="Pack Meta">
-		<TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);PackBuildOutputs</TargetsForTfmSpecificContentInPackage>
-	</PropertyGroup>
+  <PropertyGroup Label="Pack Meta">
+    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);PackBuildOutputs</TargetsForTfmSpecificContentInPackage>
+  </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Cake.Core" />
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Cake.Core" />
+  </ItemGroup>
 
-	<Target Name="PackBuildOutputs">
-		<ItemGroup>
-			<TfmSpecificPackageFile
+  <Target Name="PackBuildOutputs">
+    <ItemGroup>
+      <TfmSpecificPackageFile
         Include="$(OutputPath)\**\*"
         Exclude="$(OutputPath)\**\Cake.Core.dll">
-				<PackagePath>lib\$(TargetFramework)\</PackagePath>
-			</TfmSpecificPackageFile>
-		</ItemGroup>
-	</Target>
+        <PackagePath>lib\$(TargetFramework)\</PackagePath>
+      </TfmSpecificPackageFile>
+    </ItemGroup>
+  </Target>
 
 </Project>

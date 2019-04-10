@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace SimpleVersion.Model
 {
-	public class LabelConfiguration
-	{
-		public List<string> Label { get; } = new List<string>();
-	}
+    public class LabelConfiguration
+    {
+        public List<string> Label { get; } = new List<string>();
+    }
 }

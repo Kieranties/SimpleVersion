@@ -1,28 +1,28 @@
 <Project>
 
-	<ItemGroup>
-		<PackageReference Include="Microsoft.Packaging.Tools.Trimming" />
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Packaging.Tools.Trimming" />
+  </ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\SimpleVersion.Core\SimpleVersion.Core.csproj" PrivateAssets="All" />
-	</ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleVersion.Core\SimpleVersion.Core.csproj" PrivateAssets="All" />
+  </ItemGroup>
 
-	<PropertyGroup Label="Pack Customizations">
-		<!-- We pack custom assets after the publish task -->
-		<IncludeContentInPack>False</IncludeContentInPack>
-		<IncludeBuildOutput>False</IncludeBuildOutput>
+  <PropertyGroup Label="Pack Customizations">
+    <!-- We pack custom assets after the publish task -->
+    <IncludeContentInPack>False</IncludeContentInPack>
+    <IncludeBuildOutput>False</IncludeBuildOutput>
 
-	</PropertyGroup>
+  </PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)' == 'Release'">
-		<TrimUnusedDependencies>True</TrimUnusedDependencies>
-		<!-- No pdbs for this project -->
-		<DebugType>None</DebugType>
-		<CopyOutputSymbolsToPublishDirectory>False</CopyOutputSymbolsToPublishDirectory>
-		<!-- No pdbs from other projects -->
-		<AllowedReferenceRelatedFileExtensions>None</AllowedReferenceRelatedFileExtensions>
-	</PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TrimUnusedDependencies>True</TrimUnusedDependencies>
+    <!-- No pdbs for this project -->
+    <DebugType>None</DebugType>
+    <CopyOutputSymbolsToPublishDirectory>False</CopyOutputSymbolsToPublishDirectory>
+    <!-- No pdbs from other projects -->
+    <AllowedReferenceRelatedFileExtensions>None</AllowedReferenceRelatedFileExtensions>
+  </PropertyGroup>
 
 
 </Project>

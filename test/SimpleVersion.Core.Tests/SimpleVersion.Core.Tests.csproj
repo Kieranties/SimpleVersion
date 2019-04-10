@@ -1,11 +1,11 @@
 <Project Sdk="Microsoft.NET.Sdk">
-	<Sdk Name="Microsoft.Build.CentralPackageVersions" />
+  <Sdk Name="Microsoft.Build.CentralPackageVersions" />
 
-	<ItemGroup>
-		<PackageReference Include="GitTools.Testing" />
-	</ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="GitTools.Testing" />
+  </ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\..\src\SimpleVersion.Core\SimpleVersion.Core.csproj" />
-	</ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\SimpleVersion.Core\SimpleVersion.Core.csproj" />
+  </ItemGroup>
 </Project>

@@ -1,15 +1,15 @@
 {
-	"Version": "1.2.3.4",
-	"OffSet": 0,
-	"Label": [
-		"First",
-		"Second"
-	],
-	"MetaData": [
-		"Meta1",
-		"Meta2"
-	],
-	"Branches": {
-		"Release": []
-	}
+  "Version": "1.2.3.4",
+  "OffSet": 0,
+  "Label": [
+    "First",
+    "Second"
+  ],
+  "MetaData": [
+    "Meta1",
+    "Meta2"
+  ],
+  "Branches": {
+    "Release": []
+  }
 }

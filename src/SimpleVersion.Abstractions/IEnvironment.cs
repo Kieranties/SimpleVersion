@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace SimpleVersion
 {
-	public interface IEnvironment
-	{
-		string GetVariable(string name);
-	}
+    public interface IEnvironment
+    {
+        string GetVariable(string name);
+    }
 }
