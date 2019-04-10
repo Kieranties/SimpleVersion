@@ -22,6 +22,11 @@
   </ItemGroup>
 
   <ItemGroup Label="Global project tooling">
-    <GlobalPackageReference Include="Microsoft.CodeAnalysis.FXCopAnalyzers" Version="2.9.*" />
+    <GlobalPackageReference Include="Microsoft.CodeAnalysis.FXCopAnalyzers" Version="2.9.*" />  
+  </ItemGroup>
+  
+  <ItemGroup Label="Test only tooling"
+             Condition="$(MSBuildProjectName.EndsWith('Tests'))">
+    <GlobalPackageReference Include="NSubstitute.Analyzers.CSharp" Version="1.0.*" />
   </ItemGroup>
 </Project>
