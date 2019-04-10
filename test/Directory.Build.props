@@ -20,9 +20,11 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  
   <ItemGroup>
     <Compile Include="..\..\shared\Tests.GlobalSuppressions.cs">
       <Link>GlobalSuppressions.cs</Link>
     </Compile>
   </ItemGroup>
+  
 </Project>

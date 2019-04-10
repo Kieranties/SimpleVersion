@@ -22,6 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 		Directory.Build.targets = Directory.Build.targets
 		global.json = global.json
+		LICENSE = LICENSE
 		localbuild.ps1 = localbuild.ps1
 		nuget.config = nuget.config
 		Packages.props = Packages.props
@@ -38,6 +39,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleVersion.Cake", "src\S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{385532A7-26BE-4596-9EEE-E7C3984643ED}"
 	ProjectSection(SolutionItems) = preProject
+		shared\SimpleVersion.ruleset = shared\SimpleVersion.ruleset
+		shared\stylecop.json = shared\stylecop.json
 		shared\Tests.GlobalSuppressions.cs = shared\Tests.GlobalSuppressions.cs
 	EndProjectSection
 EndProject

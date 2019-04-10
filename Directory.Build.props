@@ -24,6 +24,7 @@
     <PackageProjectUrl>https://github.com/Kieranties/SimpleVersion</PackageProjectUrl>
     <PackageTags>semver;versioning;git</PackageTags>
     <RepositoryUrl>https://github.com/Kieranties/SimpleVersion</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <PackageIconUrl>https://raw.github.com/Kieranties/SimpleVersion/master/docs/img/logo.png</PackageIconUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
@@ -35,4 +36,11 @@
     <NoWarn>$(NoWarn);NU5105</NoWarn>
   </PropertyGroup>
 
+  <ItemGroup Label="Shared Assets">
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory)shared/stylecop.json" Link="stylecop.json" />
+  </ItemGroup>
+
+  <PropertyGroup Label="Shared properties">
+    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)shared/SimpleVersion.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
 </Project>
