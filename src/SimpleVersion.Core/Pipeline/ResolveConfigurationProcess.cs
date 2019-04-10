@@ -132,11 +132,13 @@ namespace SimpleVersion.Pipeline
             {
                 return JsonConvert.DeserializeObject<SVM.Configuration>(rawConfiguration);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch
             {
                 //TODO handle logger of invalid parsing
                 return null;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 }

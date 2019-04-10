@@ -2,7 +2,9 @@
 
 namespace SimpleVersion.Model
 {
+#pragma warning disable CA1724
     public class Configuration
+#pragma warning restore CA1724
     {
         public string Version { get; set; } = string.Empty;
 

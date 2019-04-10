@@ -20,10 +20,12 @@ namespace SimpleVersion.Command
 
                 Console.Out.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));                
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex) {
                 Console.Error.WriteLine($"[Error] {ex.Message}");
                 exitCode = -1;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
 
             return exitCode;
         }
