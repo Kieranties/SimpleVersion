@@ -1,9 +1,9 @@
 <Project>
-  
-  <Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)\.., Directory.Build.props))\Directory.Build.props"/>
 
-  <PropertyGroup>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-  </PropertyGroup>
-  
+	<Import Project="$([MSBuild]::GetDirectoryNameOfFileAbove($(MSBuildThisFileDirectory)\.., Directory.Build.props))\Directory.Build.props"/>
+
+	<PropertyGroup>
+		<!--<GenerateDocumentationFile>true</GenerateDocumentationFile>-->
+	</PropertyGroup>
+
 </Project>

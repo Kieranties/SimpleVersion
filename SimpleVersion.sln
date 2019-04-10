@@ -5,6 +5,7 @@ VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D5992CB5-3542-41C8-BE85-F52699729C57}"
 	ProjectSection(SolutionItems) = preProject
+		src\App.props = src\App.props
 		src\Directory.Build.props = src\Directory.Build.props
 	EndProjectSection
 EndProject
@@ -19,6 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{9EEF54AE-E
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0F190AA6-731C-425E-894B-F4A63A86200A}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		.simpleversion.json = .simpleversion.json
 		azure-pipelines.yml = azure-pipelines.yml

@@ -1,12 +1,12 @@
 {
-  "Version": "1.2.3.4",
-  "Label": [ "alpha1" ],
-  "Metadata": [ "test", "branch" ],
-  "Branches": {
-    "Release": [
-      "^master$",
-      "^preview/.+$",
-      "^release/.+$"
-    ]
-  }
+	"Version": "1.2.3.4",
+	"Label": [ "alpha1" ],
+	"Metadata": [ "test", "branch" ],
+	"Branches": {
+		"Release": [
+			"^master$",
+			"^preview/.+$",
+			"^release/.+$"
+		]
+	}
 }

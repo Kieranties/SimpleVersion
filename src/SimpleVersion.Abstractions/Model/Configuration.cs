@@ -1,21 +1,21 @@
-﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System.Collections.Generic;
 
 namespace SimpleVersion.Model
 {
 #pragma warning disable CA1724
-    public class Configuration
+	public class Configuration
 #pragma warning restore CA1724
-    {
-        public string Version { get; set; } = string.Empty;
+	{
+		public string Version { get; set; } = string.Empty;
 
-        public int OffSet { get; set; } = 0;
+		public int OffSet { get; set; } = 0;
 
-        public List<string> Label { get; } = new List<string>();
+		public List<string> Label { get; } = new List<string>();
 
-        public List<string> MetaData { get; } = new List<string>();
+		public List<string> MetaData { get; } = new List<string>();
 
-        public BranchInfo Branches { get; set; } = new BranchInfo();
-    }
+		public BranchInfo Branches { get; set; } = new BranchInfo();
+	}
 }

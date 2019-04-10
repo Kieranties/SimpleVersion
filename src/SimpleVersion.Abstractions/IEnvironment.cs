@@ -1,4 +1,4 @@
-﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System;
 using System.Collections.Generic;
@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace SimpleVersion
 {
-    public interface IEnvironment
-    {
-        string GetVariable(string name);
-    }
+	public interface IEnvironment
+	{
+		string GetVariable(string name);
+	}
 }

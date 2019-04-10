@@ -1,18 +1,18 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Sdk Name="Microsoft.Build.CentralPackageVersions" />
+<Project Sdk="Microsoft.NET.Sdk">
+	<Sdk Name="Microsoft.Build.CentralPackageVersions" />
 
-  <PropertyGroup>
-    <RootNamespace>SimpleVersion</RootNamespace>
-  </PropertyGroup>
+	<PropertyGroup>
+		<RootNamespace>SimpleVersion</RootNamespace>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="LibGit2Sharp" />
-    <PackageReference Include="LibGit2Sharp.NativeBinaries" />
-    <PackageReference Include="Newtonsoft.Json" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="LibGit2Sharp" />
+		<PackageReference Include="LibGit2Sharp.NativeBinaries" />
+		<PackageReference Include="Newtonsoft.Json" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\SimpleVersion.Abstractions\SimpleVersion.Abstractions.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\SimpleVersion.Abstractions\SimpleVersion.Abstractions.csproj" />
+	</ItemGroup>
 
 </Project>

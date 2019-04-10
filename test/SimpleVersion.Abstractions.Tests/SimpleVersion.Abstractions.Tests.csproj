@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-  <Sdk Name="Microsoft.Build.CentralPackageVersions" />
-  
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\SimpleVersion.Abstractions\SimpleVersion.Abstractions.csproj" />
-  </ItemGroup>
+<Project Sdk="Microsoft.NET.Sdk">
+	<Sdk Name="Microsoft.Build.CentralPackageVersions" />
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\src\SimpleVersion.Abstractions\SimpleVersion.Abstractions.csproj" />
+	</ItemGroup>
 
 </Project>

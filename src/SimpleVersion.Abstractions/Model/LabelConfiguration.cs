@@ -1,4 +1,4 @@
-﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System;
 using System.Collections.Generic;
@@ -8,8 +8,8 @@ using System.Threading.Tasks;
 
 namespace SimpleVersion.Model
 {
-    public class LabelConfiguration
-    {
-        public List<string> Label { get; } = new List<string>();
-    }
+	public class LabelConfiguration
+	{
+		public List<string> Label { get; } = new List<string>();
+	}
 }

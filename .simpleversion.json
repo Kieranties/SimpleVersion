@@ -1,22 +1,22 @@
 {
-  "version": "0.2.0",
-  "label": ["alpha1"],
-  "branches": {
-    "release": [
-      "^refs/heads/master$",
-      "^refs/heads/preview/.+$",
-      "^refs/heads/release/.+$"
-    ],
-    "overrides": [
-      {
-        "match": "^refs/heads/feature/.+$",
-        "metadata": [ "{shortbranchname}" ]
-      },
-      {
-        "match": "^refs/heads/release/.+$",
-        "label": [],
-        "metadata": [ "*" ]
-      }
-    ]
-  }
+	"version": "0.2.0",
+	"label": [ "alpha1" ],
+	"branches": {
+		"release": [
+			"^refs/heads/master$",
+			"^refs/heads/preview/.+$",
+			"^refs/heads/release/.+$"
+		],
+		"overrides": [
+			{
+				"match": "^refs/heads/feature/.+$",
+				"metadata": [ "{shortbranchname}" ]
+			},
+			{
+				"match": "^refs/heads/release/.+$",
+				"label": [],
+				"metadata": [ "*" ]
+			}
+		]
+	}
 }
