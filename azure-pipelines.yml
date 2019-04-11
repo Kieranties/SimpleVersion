@@ -93,12 +93,12 @@ jobs:
 
   # Quality check the build
   - task: mspremier.BuildQualityChecks.QualityChecks-task.BuildQualityChecks@5
-  displayName: 'Checks: Quality'
-  inputs:
-    checkWarnings: true
-    showStatistics: true
-    checkCoverage: true
-    forceCoverageImprovement: true
+    displayName: 'Checks: Quality'
+    inputs:
+      checkWarnings: true
+      showStatistics: true
+      checkCoverage: true
+      forceCoverageImprovement: true
 
   # Handle artifacts
   - task: PublishBuildArtifacts@1
