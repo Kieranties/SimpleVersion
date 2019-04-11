@@ -61,7 +61,7 @@ jobs:
     inputs:
       command: test
       projects: 'test/**/*.csproj'
-      arguments: '--collect "Code Coverage" -s $(System.DefaultWorkingDirectory)shared/codecoverage.runsettings'
+      arguments: '--collect "Code Coverage" -s $(System.DefaultWorkingDirectory)\shared\codecoverage.runsettings'
 
   # Pack assets
   - task: DotNetCoreCLI@2
