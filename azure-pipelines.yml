@@ -48,22 +48,29 @@ jobs:
       Write-Output "##vso[task.setvariable variable=Version;]$fullVersion"
     displayName: 'Prepare: Set version information'
 
-  # Build/Pack the assets
+  # Build
   - task: DotNetCoreCLI@2
-    displayName: "Build: Pack Source"
+    displayName: "Build: Source"
+    inputs:
+      command: build
+      projects: src/**/*.csproj
+
+  # Run unit tests
+  - task: DotNetCoreCLI@2
+    displayName: "Test: Unit + Coverage"
+    inputs:
+      command: test
+      projects: 'test/**/*.csproj'
+      arguments: '--collect "Code Coverage" -s shared/codecoverage.runsettings'
+
+  # Pack assets
+  - task: DotNetCoreCLI@2
+    displayName: "Pack: Source Nuget Packages"
     inputs:
       command: pack
       packagesToPack: src/**/*.csproj
       packDirectory: $(DistDir)
-      versioningScheme: off
-
-  # Run unit tests
-  - task: DotNetCoreCLI@2
-    displayName: "Test: Unit"
-    inputs:
-      command: test
-      projects: test/**/*.csproj
-      publishTestResults: true
+      nobuild: true
 
   # TODO - Renable integration tests. Currently fail as environment variables
   # are always collected, so branch always maps to current repo branch being built
