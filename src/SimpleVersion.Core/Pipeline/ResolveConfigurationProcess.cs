@@ -11,10 +11,14 @@ using SVM = SimpleVersion.Model;
 
 namespace SimpleVersion.Pipeline
 {
-    public class ResolveConfigurationProcess : ICalculatorProcess
+    /// <summary>
+    /// Resolves the configuration for the version calculation.
+    /// </summary>
+    public class ResolveConfigurationProcess : IVersionProcessor
     {
         private static readonly ConfigurationVersionLabelComparer _comparer = new ConfigurationVersionLabelComparer();
 
+        /// <inheritdoc/>
         public void Apply(VersionContext context)
         {
             if (context == null)

@@ -4,6 +4,8 @@
 
   <PropertyGroup>
     <IsPackable>false</IsPackable>
+    <!-- Documentation for tests is not needed-->
+    <NoWarn>$(NoWarn);SA0001</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

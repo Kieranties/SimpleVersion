@@ -2,8 +2,14 @@
 
 namespace SimpleVersion
 {
+    /// <summary>
+    /// Utility class to contain constants.
+    /// </summary>
     public static class Constants
     {
+        /// <summary>
+        /// The file name of the configuration file.
+        /// </summary>
         public const string VersionFileName = ".simpleversion.json";
     }
 }

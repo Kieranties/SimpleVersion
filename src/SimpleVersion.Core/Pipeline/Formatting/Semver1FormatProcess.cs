@@ -4,21 +4,25 @@ using SimpleVersion.Rules;
 
 namespace SimpleVersion.Pipeline.Formatting
 {
-    public class Semver1FormatProcess : ICalculatorProcess
+    /// <summary>
+    /// Processes the Semver 1 format.
+    /// </summary>
+    public class Semver1FormatProcess : IVersionProcessor
     {
+        /// <inheritdoc/>
         public void Apply(VersionContext context)
         {
-            var rules = new IRule<string>[]
+            var rules = new ITokenRule<string>[]
             {
-                new HeightRule(true),
-                ShortShaRule.Instance,
-                BranchNameRule.Instance,
-                ShortBranchNameRule.Instance,
-                BranchNameSuffixRule.Instance
+                new HeightTokenRule(true),
+                ShortShaTokenRule.Instance,
+                BranchNameTokenRule.Instance,
+                ShortBranchNameTokenRule.Instance,
+                BranchNameSuffixTokenRule.Instance
             };
 
-            var labelParts = context.Configuration.Label.ApplyRules(context, rules);
-            var label = string.Join("-", labelParts).ResolveRules(context, rules);
+            var labelParts = context.Configuration.Label.ApplyTokenRules(context, rules);
+            var label = string.Join("-", labelParts).ResolveTokenRules(context, rules);
 
             var format = context.Result.Version;
 

@@ -1,4 +1,4 @@
-// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using FluentAssertions;
 using SimpleVersion.Pipeline;
@@ -10,13 +10,13 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests.Rules
 {
-    public class HeightRuleFixture
+    public class HeightTokenRuleFixture
     {
         [Fact]
         public void Instance_Padded_IsFalse()
         {
             // Arrange
-            var sut = HeightRule.Instance;
+            var sut = HeightTokenRule.Instance;
 
             // Act
             var result = sut.Padded;
@@ -29,7 +29,7 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Token_Is_Asterisk()
         {
             // Arrange / Act
-            var sut = new HeightRule();
+            var sut = new HeightTokenRule();
 
             // Assert
             sut.Token.Should().Be("*");
@@ -39,7 +39,7 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Padded_ByDefault_IsFalse()
         {
             // Arrange / Act
-            var sut = new HeightRule();
+            var sut = new HeightTokenRule();
 
             // Assert
             sut.Padded.Should().BeFalse();
@@ -51,7 +51,7 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Padded_WhenSet_SetsCorrectly(bool usePadding)
         {
             // Arrange / Act
-            var sut = new HeightRule(usePadding);
+            var sut = new HeightTokenRule(usePadding);
 
             // Assert
             sut.Padded.Should().Be(usePadding);
@@ -67,7 +67,7 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Resolve_ReplacesToken_IfNeeded(bool usePadding, int height, string input, string expected)
         {
             // Arrange
-            var sut = new HeightRule(usePadding);
+            var sut = new HeightTokenRule(usePadding);
             var context = new VersionContext
             {
                 Result =
@@ -100,7 +100,7 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Apply_Appends_IfRequired(string version, IEnumerable<string> input, IEnumerable<string> expected)
         {
             // Arrange
-            var sut = new HeightRule();
+            var sut = new HeightTokenRule();
             var context = new VersionContext
             {
                 Configuration =

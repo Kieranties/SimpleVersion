@@ -1,4 +1,4 @@
-// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using FluentAssertions;
 using SimpleVersion.Pipeline;
@@ -9,13 +9,13 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests.Rules
 {
-    public class BranchNameRuleFixture
+    public class BranchNameTokenRuleFixture
     {
         [Fact]
         public void Instance_SetsDefaults()
         {
             // Arrange / Act
-            var sut = BranchNameRule.Instance;
+            var sut = BranchNameTokenRule.Instance;
 
             // Assert
             sut.Pattern.Should().NotBeNull();
@@ -34,7 +34,7 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Apply_Returns_Input(VersionContext context, IEnumerable<string> input)
         {
             // Arrange
-            var sut = new BranchNameRule();
+            var sut = new BranchNameTokenRule();
 
             // Act
             var result = sut.Apply(context, input);
@@ -51,7 +51,7 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Resolve_Replaces_CanonicalBranchName(string branchName, string input, string expected)
         {
             // Arrange
-            var sut = new BranchNameRule();
+            var sut = new BranchNameTokenRule();
             var context = new VersionContext
             {
                 Result =
@@ -72,7 +72,7 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Resolve_CustomPattern_Replaces_BranchName(string branchName, string input, string pattern, string expected)
         {
             // Arrange
-            var sut = new BranchNameRule(pattern);
+            var sut = new BranchNameTokenRule(pattern);
             var context = new VersionContext
             {
                 Result =

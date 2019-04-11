@@ -5,11 +5,15 @@ using System;
 
 namespace SimpleVersion.Pipeline.Formatting
 {
-    public class VersionFormatProcess : ICalculatorProcess
+    /// <summary>
+    /// Processes the version string.
+    /// </summary>
+    public class VersionFormatProcess : IVersionProcessor
     {
+        /// <inheritdoc/>
         public void Apply(VersionContext context)
         {
-            var versionString = HeightRule.Instance.Resolve(context, context.Configuration.Version);
+            var versionString = HeightTokenRule.Instance.Resolve(context, context.Configuration.Version);
 
             if (Version.TryParse(versionString, out var version))
             {

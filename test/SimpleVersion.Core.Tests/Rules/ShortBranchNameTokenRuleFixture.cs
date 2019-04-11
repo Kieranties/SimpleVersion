@@ -1,4 +1,4 @@
-// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using FluentAssertions;
 using SimpleVersion.Pipeline;
@@ -9,17 +9,17 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests.Rules
 {
-    public class BranchNameSuffixRuleFixture
+    public class ShortBranchNameTokenRuleFixture
     {
         [Fact]
         public void Instance_SetsDefaults()
         {
             // Arrange / Act
-            var sut = BranchNameSuffixRule.Instance;
+            var sut = ShortBranchNameTokenRule.Instance;
 
             // Assert
             sut.Pattern.Should().NotBeNull();
-            sut.Token.Should().Be("{branchnamesuffix}");
+            sut.Token.Should().Be("{shortbranchname}");
         }
 
         public static IEnumerable<object[]> ApplyData()
@@ -34,7 +34,7 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Apply_Returns_Input(VersionContext context, IEnumerable<string> input)
         {
             // Arrange
-            var sut = new BranchNameSuffixRule();
+            var sut = new ShortBranchNameTokenRule();
 
             // Act
             var result = sut.Apply(context, input);
@@ -44,19 +44,19 @@ namespace SimpleVersion.Core.Tests.Rules
         }
 
         [Theory]
-        [InlineData("refs/heads/master", "{branchNameSuffix}", "master")]
-        [InlineData("refs/heads/master", "{BRANCHNAMESUFFIX}", "master")]
-        [InlineData("refs/heads/release/1.0", "{BRANCHNAMESuffix}", "10")]
-        [InlineData("refs/heads/release-1.0", "{BRANCHNAMEsuffix}", "release10")]
-        public void Resolve_Replaces_CanonicalBranchName(string branchName, string input, string expected)
+        [InlineData("master", "{shortBranchName}", "master")]
+        [InlineData("master", "{SHORTBRANCHNAME}", "master")]
+        [InlineData("release/1.0", "{shortBRANCHNAME}", "release10")]
+        [InlineData("release-1.0", "{shortBRANCHNAME}", "release10")]
+        public void Resolve_Replaces_BranchName(string branchName, string input, string expected)
         {
             // Arrange
-            var sut = new BranchNameSuffixRule();
+            var sut = new ShortBranchNameTokenRule();
             var context = new VersionContext
             {
                 Result =
                 {
-                    CanonicalBranchName = branchName
+                    BranchName = branchName
                 }
             };
 
@@ -68,16 +68,16 @@ namespace SimpleVersion.Core.Tests.Rules
         }
 
         [Theory]
-        [InlineData("master", "{branchNameSuffix}", "[mr]", "aste")]
+        [InlineData("master", "{shortbranchName}", "[mr]", "aste")]
         public void Resolve_CustomPattern_Replaces_BranchName(string branchName, string input, string pattern, string expected)
         {
             // Arrange
-            var sut = new BranchNameSuffixRule(pattern);
+            var sut = new ShortBranchNameTokenRule(pattern);
             var context = new VersionContext
             {
                 Result =
                 {
-                    CanonicalBranchName = branchName
+                    BranchName = branchName
                 }
             };
 

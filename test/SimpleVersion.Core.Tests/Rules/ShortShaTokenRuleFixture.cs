@@ -1,4 +1,4 @@
-// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using FluentAssertions;
 using SimpleVersion.Pipeline;
@@ -9,13 +9,13 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests.Rules
 {
-    public class ShortShaRuleFixture
+    public class ShortShaTokenRuleFixture
     {
-        private readonly ShortShaRule _sut;
+        private readonly ShortShaTokenRule _sut;
 
-        public ShortShaRuleFixture()
+        public ShortShaTokenRuleFixture()
         {
-            _sut = new ShortShaRule();
+            _sut = new ShortShaTokenRule();
         }
 
         [Fact]

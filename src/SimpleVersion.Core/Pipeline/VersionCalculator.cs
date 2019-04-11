@@ -8,10 +8,17 @@ using System.Collections.Generic;
 
 namespace SimpleVersion.Pipeline
 {
+    /// <summary>
+    /// Entry point for version calculation.
+    /// </summary>
     public class VersionCalculator : IVersionCalculator
     {
-        private readonly Queue<Lazy<ICalculatorProcess>> _queue = new Queue<Lazy<ICalculatorProcess>>();
+        private readonly Queue<Lazy<IVersionProcessor>> _queue = new Queue<Lazy<IVersionProcessor>>();
 
+        /// <summary>
+        /// Default calculator instance with default processors already populated.
+        /// </summary>
+        /// <returns>An instance of <see cref="IVersionCalculator"/>.</returns>
         public static IVersionCalculator Default()
             => new VersionCalculator()
                 .AddProcessor<ResolveRepositoryPathProcess>()
@@ -21,13 +28,15 @@ namespace SimpleVersion.Pipeline
                 .AddProcessor<Semver1FormatProcess>()
                 .AddProcessor<Semver2FormatProcess>();
 
+        /// <inheritdoc/>
         public IVersionCalculator AddProcessor<T>()
-            where T : ICalculatorProcess, new()
+            where T : IVersionProcessor, new()
         {
-            _queue.Enqueue(new Lazy<ICalculatorProcess>(() => new T()));
+            _queue.Enqueue(new Lazy<IVersionProcessor>(() => new T()));
             return this;
         }
 
+        /// <inheritdoc/>
         public VersionResult GetResult(string path)
         {
             var ctx = new VersionContext { Path = path };

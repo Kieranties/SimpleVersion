@@ -6,8 +6,16 @@ using System;
 
 namespace SimpleVersion.Command
 {
+    /// <summary>
+    /// Commandline entry point.
+    /// </summary>
     public sealed class Program
     {
+        /// <summary>
+        /// Entry point for SimpleVersion invocation.
+        /// </summary>
+        /// <param name="args">The array of arguments.</param>
+        /// <returns>0 if success, otherwise an error exit code.</returns>
         public static int Main(string[] args)
         {
             var exitCode = 0;

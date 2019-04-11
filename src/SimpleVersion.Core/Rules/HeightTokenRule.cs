@@ -7,25 +7,43 @@ using System.Linq;
 
 namespace SimpleVersion.Rules
 {
-    public class HeightRule : IRule<string>
+    /// <summary>
+    /// Applies rules for the height.
+    /// </summary>
+    public class HeightTokenRule : ITokenRule<string>
     {
-        public static HeightRule Instance => _default.Value;
+        /// <summary>
+        /// Gets a default instance of the rule.
+        /// </summary>
+        public static HeightTokenRule Instance => _default.Value;
 
-        private static readonly Lazy<HeightRule> _default = new Lazy<HeightRule>(() => new HeightRule());
+        private static readonly Lazy<HeightTokenRule> _default = new Lazy<HeightTokenRule>(() => new HeightTokenRule());
 
-        public HeightRule() : this(false)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HeightTokenRule"/> class.
+        /// </summary>
+        public HeightTokenRule() : this(false)
         {
         }
 
-        public HeightRule(bool padded)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="HeightTokenRule"/> class.
+        /// </summary>
+        /// <param name="padded">True if the value should be padded.</param>
+        public HeightTokenRule(bool padded)
         {
             Padded = padded;
         }
 
+        /// <summary>
+        /// Gets a value indicating whether padding should be applied.
+        /// </summary>
         public bool Padded { get; }
 
+        /// <inheritdoc/>
         public string Token => "*";
 
+        /// <inheritdoc/>
         public string Resolve(VersionContext context, string value)
         {
             if (Padded)
@@ -34,6 +52,7 @@ namespace SimpleVersion.Rules
                 return value.Replace(Token, context.Result.Height.ToString(System.Globalization.CultureInfo.CurrentCulture));
         }
 
+        /// <inheritdoc/>
         public IEnumerable<string> Apply(VersionContext context, IEnumerable<string> input)
         {
             if (!context.Configuration.Version.Contains(Token)

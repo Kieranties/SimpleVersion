@@ -6,8 +6,12 @@ using System.IO;
 
 namespace SimpleVersion.Pipeline
 {
-    public class ResolveRepositoryPathProcess : ICalculatorProcess
+    /// <summary>
+    /// Resolves the repository path for the version calculation.
+    /// </summary>
+    public class ResolveRepositoryPathProcess : IVersionProcessor
     {
+        /// <inheritdoc/>
         public void Apply(VersionContext context)
         {
             if (context == null)
