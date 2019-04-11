@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using FluentAssertions;
 using GitTools.Testing;
 using SimpleVersion.Model;
 using SimpleVersion.Pipeline;
@@ -307,14 +309,16 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 var context = new VersionContext { RepositoryPath = fixture.RepositoryPath };
 
                 var expectedLabel = new List<string> { "{branchName}" };
-                var expectedMeta =  new List<string> { "meta" };
+                var expectedMeta = new List<string> { "meta" };
 
                 // write the version file
                 var config = new Configuration
                 {
                     Version = "0.1.0",
-                    Branches = {
-                        Overrides = {
+                    Branches =
+                    {
+                        Overrides =
+                        {
                             new BranchConfiguration
                             {
                                 Match = "feature/other",
@@ -344,7 +348,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
             }
         }
 
-		[Fact]
+        [Fact]
         public void Apply_Malformed_Json_At_Commit_Throws()
         {
             using (var fixture = new EmptyRepositoryFixture())
@@ -359,7 +363,6 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit(); // 2
                 fixture.MakeACommit(); // 3
                 fixture.MakeACommit(); // 4
-
 
                 // Write the version file (with parsing errors)
                 var file = Path.Combine(fixture.RepositoryPath, Constants.VersionFileName);
@@ -400,7 +403,6 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit(); // 2
                 fixture.MakeACommit(); // 3
                 fixture.MakeACommit(); // 4
-
 
                 // Write the version file (with parsing errors)
                 var file = Path.Combine(fixture.RepositoryPath, Constants.VersionFileName);

@@ -13,7 +13,7 @@ Fixes # (provide one or more issues this PR fixes)
 
 # Quality
 - [ ] Unit tests have been added/updated
-- [ ] Local builds/testing are successfull
+- [ ] Local builds/testing are successful
 - [ ] Code coverage has not decreased
 - [ ] Code comments have been provided (where appropriate)
 - [ ] Core styles have been followed

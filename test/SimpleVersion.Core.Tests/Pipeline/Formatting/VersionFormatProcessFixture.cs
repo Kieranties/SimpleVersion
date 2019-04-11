@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using FluentAssertions;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Pipeline.Formatting;
 using System;
@@ -31,7 +33,8 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             // Arrange
             var context = new VersionContext
             {
-                Configuration = {
+                Configuration =
+                {
                     Version = version
                 }
             };
@@ -56,18 +59,19 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
         [Theory]
         [MemberData(nameof(ValidVersions))]
         public void Apply_ValidVersions_SetsMembers(
-            string version, 
+            string version,
             string expectedVersion,
-            int major, 
-            int minor, 
-            int patch, 
+            int major,
+            int minor,
+            int patch,
             int revision)
         {
             // Arrange
             // Arrange
             var context = new VersionContext
             {
-                Configuration = {
+                Configuration =
+                {
                     Version = version
                 }
             };
@@ -81,7 +85,6 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             context.Result.Minor.Should().Be(minor);
             context.Result.Patch.Should().Be(patch);
             context.Result.Revision.Should().Be(revision);
-
         }
 
         [Theory]
@@ -105,10 +108,12 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             // Arrange
             var context = new VersionContext
             {
-                Configuration = {
+                Configuration =
+                {
                     Version = version
                 },
-                Result = {
+                Result =
+                {
                     Height = commits
                 }
             };

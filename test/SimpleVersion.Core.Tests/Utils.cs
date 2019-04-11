@@ -1,4 +1,6 @@
-﻿using GitTools.Testing;
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using GitTools.Testing;
 using Newtonsoft.Json;
 using SimpleVersion.Model;
 using System;
@@ -56,6 +58,6 @@ namespace SimpleVersion.Core.Tests
                 Sha = "4ca82d2c58f48007bf16d69ebf036fc4ebfdd059",
                 Height = height
             };
-        }        
+        }
     }
 }

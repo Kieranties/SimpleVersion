@@ -1,9 +1,11 @@
-﻿using System;
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using System;
 using System.Collections.Generic;
-using Xunit;
 using FluentAssertions;
-using SimpleVersion.Pipeline.Formatting;
 using SimpleVersion.Pipeline;
+using SimpleVersion.Pipeline.Formatting;
+using Xunit;
 
 namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 {
@@ -43,7 +45,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
             var shaSub = context.Result.Sha.Substring(0, 7);
             var fullExpected = $"{expectedPart}-c{shaSub}";
-            
+
             // Act
             _sut.Apply(context);
 
@@ -67,7 +69,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 Result = Utils.GetVersionResult(height, true)
             };
             context.Result.Version = context.Configuration.Version;
-            
+
             // Act
             _sut.Apply(context);
 

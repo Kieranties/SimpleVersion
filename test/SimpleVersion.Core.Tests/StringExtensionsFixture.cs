@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using FluentAssertions;
 using Xunit;
 
 namespace SimpleVersion.Core.Tests
@@ -38,7 +40,7 @@ namespace SimpleVersion.Core.Tests
         {
             // Arrange / Act
             var result = StringExtensions.ToBool(value);
-            
+
             // Assert
             result.Should().BeTrue();
         }

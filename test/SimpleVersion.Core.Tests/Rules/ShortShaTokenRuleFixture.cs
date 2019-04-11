@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using FluentAssertions;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Rules;
 using System;
@@ -7,13 +9,13 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests.Rules
 {
-    public class ShortShaRuleFixture
+    public class ShortShaTokenRuleFixture
     {
-        private ShortShaRule _sut;
+        private readonly ShortShaTokenRule _sut;
 
-        public ShortShaRuleFixture()
+        public ShortShaTokenRuleFixture()
         {
-            _sut = new ShortShaRule();
+            _sut = new ShortShaTokenRule();
         }
 
         [Fact]
@@ -47,10 +49,13 @@ namespace SimpleVersion.Core.Tests.Rules
         {
             // release branch does not include sha
             yield return new object[] { true, new[] { "this" }, new[] { "this" } };
+
             // non-release sha appends
             yield return new object[] { false, new[] { "this" }, new[] { "this", "{shortsha}" } };
+
             // non-release sha does not append if already there
             yield return new object[] { false, new[] { "{shortsha}", "this" }, new[] { "{shortsha}", "this" } };
+
             // empty array appends
             yield return new object[] { false, Array.Empty<string>(), new[] { "{shortsha}" } };
         }

@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using FluentAssertions;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Rules;
 using System;
@@ -7,13 +9,13 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests.Rules
 {
-    public class ShortBranchNameRuleFixture
+    public class ShortBranchNameTokenRuleFixture
     {
         [Fact]
         public void Instance_SetsDefaults()
         {
             // Arrange / Act
-            var sut = ShortBranchNameRule.Instance;
+            var sut = ShortBranchNameTokenRule.Instance;
 
             // Assert
             sut.Pattern.Should().NotBeNull();
@@ -32,7 +34,7 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Apply_Returns_Input(VersionContext context, IEnumerable<string> input)
         {
             // Arrange
-            var sut = new ShortBranchNameRule();
+            var sut = new ShortBranchNameTokenRule();
 
             // Act
             var result = sut.Apply(context, input);
@@ -49,7 +51,7 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Resolve_Replaces_BranchName(string branchName, string input, string expected)
         {
             // Arrange
-            var sut = new ShortBranchNameRule();
+            var sut = new ShortBranchNameTokenRule();
             var context = new VersionContext
             {
                 Result =
@@ -65,13 +67,12 @@ namespace SimpleVersion.Core.Tests.Rules
             result.Should().Be(expected);
         }
 
-      
         [Theory]
         [InlineData("master", "{shortbranchName}", "[mr]", "aste")]
         public void Resolve_CustomPattern_Replaces_BranchName(string branchName, string input, string pattern, string expected)
         {
             // Arrange
-            var sut = new ShortBranchNameRule(pattern);
+            var sut = new ShortBranchNameTokenRule(pattern);
             var context = new VersionContext
             {
                 Result =

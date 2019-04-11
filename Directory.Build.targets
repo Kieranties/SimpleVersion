@@ -1,0 +1,22 @@
+<Project>
+
+  <PropertyGroup>
+    <GenerateNuspecDependsOn>$(GenerateNuspecDependsOn);SetReleaseNotes</GenerateNuspecDependsOn>
+  </PropertyGroup>
+
+  <Target Name="SetReleaseNotes">
+
+    <ItemGroup>
+      <ReleaseNotesSources Include="$(MSBuildThisFileDirectory)docs\releasenotes\$(MajorMinorPatchVersion).md" />
+    </ItemGroup>
+
+    <ReadLinesFromFile File="@(ReleaseNotesSources)" >
+      <Output TaskParameter="Lines" ItemName="ReleaseNotes"/>
+    </ReadLinesFromFile>
+
+    <PropertyGroup>
+      <PackageReleaseNotes>@(ReleaseNotes->'%(Identity)', '%0a')</PackageReleaseNotes>
+    </PropertyGroup>
+
+  </Target>
+</Project>

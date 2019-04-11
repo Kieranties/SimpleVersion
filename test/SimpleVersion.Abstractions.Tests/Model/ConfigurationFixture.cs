@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using FluentAssertions;
 using SimpleVersion.Model;
 using System.Collections.Generic;
 using Xunit;
@@ -33,8 +35,6 @@ namespace SimpleVersion.Abstractions.Tests.Model
             // Assert
             result.Should().BeFalse();
         }
-
-        public static string Thing => "this";
 
         public static IEnumerable<object[]> DifferInLabel()
         {

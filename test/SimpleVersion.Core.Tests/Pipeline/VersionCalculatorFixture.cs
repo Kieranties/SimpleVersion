@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using FluentAssertions;
 using SimpleVersion.Model;
 using SimpleVersion.Pipeline;
 using Xunit;

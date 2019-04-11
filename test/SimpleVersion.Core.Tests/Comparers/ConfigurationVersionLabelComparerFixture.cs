@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using FluentAssertions;
 using SimpleVersion.Comparers;
 using SimpleVersion.Model;
 using System;
@@ -20,7 +22,7 @@ namespace SimpleVersion.Core.Tests.Comparers
         {
             yield return new[] { new Configuration(), new Configuration() };
             yield return new[] { new Configuration { Label = { "one" } }, new Configuration { Label = { "one" } } };
-            yield return new[] { new Configuration { Version= "1.2.3", Label = { "one", "two" } }, new Configuration { Version = "1.2.3", Label = { "one", "two" } } };
+            yield return new[] { new Configuration { Version = "1.2.3", Label = { "one", "two" } }, new Configuration { Version = "1.2.3", Label = { "one", "two" } } };
         }
 
         [Theory]
@@ -101,7 +103,7 @@ namespace SimpleVersion.Core.Tests.Comparers
         [Fact]
         public void GetHashCode_NullVersion_Throws()
         {
-            // Arrange 
+            // Arrange
             var config = new Configuration { Version = null };
 
             // Act
@@ -111,7 +113,7 @@ namespace SimpleVersion.Core.Tests.Comparers
             action.Should().Throw<ArgumentNullException>()
                 .And.ParamName.Should().Be("Version");
         }
-        
+
         [Fact]
         public void GetHashCode_Returns_Hashcode()
         {
@@ -121,7 +123,7 @@ namespace SimpleVersion.Core.Tests.Comparers
                 Version = "1.2.3",
                 Label = { "hi" }
             };
-            var expected = config.Version.GetHashCode() * 17 + config.Label.GetHashCode();
+            var expected = (config.Version.GetHashCode() * 17) + config.Label.GetHashCode();
 
             // Arrange / Act
             var result = _sut.GetHashCode(config);

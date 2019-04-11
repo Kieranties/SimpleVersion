@@ -1,4 +1,6 @@
-﻿using SimpleVersion.Model;
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using SimpleVersion.Model;
 using SimpleVersion.Pipeline.BuildServers;
 using SimpleVersion.Pipeline.Formatting;
 using System;
@@ -6,8 +8,17 @@ using System.Collections.Generic;
 
 namespace SimpleVersion.Pipeline
 {
+    /// <summary>
+    /// Entry point for version calculation.
+    /// </summary>
     public class VersionCalculator : IVersionCalculator
     {
+        private readonly Queue<Lazy<IVersionProcessor>> _queue = new Queue<Lazy<IVersionProcessor>>();
+
+        /// <summary>
+        /// Default calculator instance with default processors already populated.
+        /// </summary>
+        /// <returns>An instance of <see cref="IVersionCalculator"/>.</returns>
         public static IVersionCalculator Default()
             => new VersionCalculator()
                 .AddProcessor<ResolveRepositoryPathProcess>()
@@ -17,14 +28,15 @@ namespace SimpleVersion.Pipeline
                 .AddProcessor<Semver1FormatProcess>()
                 .AddProcessor<Semver2FormatProcess>();
 
-        private readonly Queue<Lazy<ICalculatorProcess>> _queue = new Queue<Lazy<ICalculatorProcess>>();
-
-        public IVersionCalculator AddProcessor<T>() where T : ICalculatorProcess, new()
+        /// <inheritdoc/>
+        public IVersionCalculator AddProcessor<T>()
+            where T : IVersionProcessor, new()
         {
-            _queue.Enqueue(new Lazy<ICalculatorProcess>(() => new T()));
+            _queue.Enqueue(new Lazy<IVersionProcessor>(() => new T()));
             return this;
         }
 
+        /// <inheritdoc/>
         public VersionResult GetResult(string path)
         {
             var ctx = new VersionContext { Path = path };

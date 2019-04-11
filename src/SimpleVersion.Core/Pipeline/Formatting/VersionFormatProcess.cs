@@ -1,13 +1,19 @@
-﻿using SimpleVersion.Rules;
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using SimpleVersion.Rules;
 using System;
 
 namespace SimpleVersion.Pipeline.Formatting
 {
-    public class VersionFormatProcess : ICalculatorProcess
+    /// <summary>
+    /// Processes the version string.
+    /// </summary>
+    public class VersionFormatProcess : IVersionProcessor
     {
+        /// <inheritdoc/>
         public void Apply(VersionContext context)
         {
-            var versionString = HeightRule.Instance.Resolve(context, context.Configuration.Version);
+            var versionString = HeightTokenRule.Instance.Resolve(context, context.Configuration.Version);
 
             if (Version.TryParse(versionString, out var version))
             {
@@ -16,7 +22,7 @@ namespace SimpleVersion.Pipeline.Formatting
                 context.Result.Patch = version.Build > -1 ? version.Build : 0;
 
                 context.Result.Version = $"{context.Result.Major}.{context.Result.Minor}.{context.Result.Patch}";
-                if(version.Revision > -1)
+                if (version.Revision > -1)
                 {
                     context.Result.Version += $".{version.Revision}";
                     context.Result.Revision = version.Revision;

@@ -1,18 +1,24 @@
-﻿using LibGit2Sharp;
-using SVM = SimpleVersion.Model;
-using Newtonsoft.Json;
-using SimpleVersion.Comparers;
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using LibGit2Sharp;
+using Newtonsoft.Json;
+using SimpleVersion.Comparers;
+using SVM = SimpleVersion.Model;
 
 namespace SimpleVersion.Pipeline
 {
-    public class ResolveConfigurationProcess : ICalculatorProcess
+    /// <summary>
+    /// Resolves the configuration for the version calculation.
+    /// </summary>
+    public class ResolveConfigurationProcess : IVersionProcessor
     {
         private static readonly ConfigurationVersionLabelComparer _comparer = new ConfigurationVersionLabelComparer();
 
+        /// <inheritdoc/>
         public void Apply(VersionContext context)
         {
             if (context == null)
@@ -21,11 +27,12 @@ namespace SimpleVersion.Pipeline
             if (string.IsNullOrWhiteSpace(context.RepositoryPath))
                 throw new ArgumentException($"{nameof(context.RepositoryPath)} must be a directory");
 
-            using(var repo = new Repository(context.RepositoryPath)){
-                if(string.IsNullOrWhiteSpace(context.Result.CanonicalBranchName))
+            using (var repo = new Repository(context.RepositoryPath))
+            {
+                if (string.IsNullOrWhiteSpace(context.Result.CanonicalBranchName))
                     context.Result.CanonicalBranchName = repo.Head.CanonicalName;
 
-                if(string.IsNullOrWhiteSpace(context.Result.BranchName))
+                if (string.IsNullOrWhiteSpace(context.Result.BranchName))
                     context.Result.BranchName = repo.Head.FriendlyName;
 
                 var config = GetConfiguration(repo.Head?.Tip, context)
@@ -52,8 +59,10 @@ namespace SimpleVersion.Pipeline
             {
                 // Get the current tree
                 var next = commits.Current.Tree;
+
                 // Perform a diff
                 var diff = repo.Diff.Compare<TreeChanges>(next, tipTree);
+
                 // If a change to the file is found, stop counting
                 if (HasVersionChange(diff, commits.Current, context))
                     break;
@@ -66,7 +75,7 @@ namespace SimpleVersion.Pipeline
             context.Result.Height = height;
         }
 
-        private bool HasVersionChange(
+        private static bool HasVersionChange(
             TreeChanges diff,
             Commit commit,
             VersionContext context)
@@ -80,7 +89,7 @@ namespace SimpleVersion.Pipeline
             return false;
         }
 
-        private IEnumerable<Commit> GetReachableCommits(Repository repo)
+        private static IEnumerable<Commit> GetReachableCommits(Repository repo)
         {
             var filter = new CommitFilter
             {
@@ -92,7 +101,7 @@ namespace SimpleVersion.Pipeline
             return repo.Commits.QueryBy(filter).Reverse();
         }
 
-        private SVM.Configuration GetConfiguration(Commit commit, VersionContext context)
+        private static SVM.Configuration GetConfiguration(Commit commit, VersionContext context)
         {
             var gitObj = commit?.Tree[Constants.VersionFileName]?.Target;
             if (gitObj == null)
@@ -103,7 +112,7 @@ namespace SimpleVersion.Pipeline
             return config;
         }
 
-        private void ApplyConfigOverrides(SVM.Configuration config, VersionContext context)
+        private static void ApplyConfigOverrides(SVM.Configuration config, VersionContext context)
         {
             if (config == null)
                 return;
@@ -119,24 +128,27 @@ namespace SimpleVersion.Pipeline
                     config.Label.AddRange(firstMatch.Label);
                 }
 
-                if(firstMatch.MetaData != null)
+                if (firstMatch.MetaData != null)
                 {
                     config.MetaData.Clear();
                     config.MetaData.AddRange(firstMatch.MetaData);
                 }
             }
         }
-        private SVM.Configuration Read(string rawConfiguration)
+
+        private static SVM.Configuration Read(string rawConfiguration)
         {
             try
             {
                 return JsonConvert.DeserializeObject<SVM.Configuration>(rawConfiguration);
             }
+#pragma warning disable CA1031 // Do not catch general exception types
             catch
             {
-                //TODO handle logger of invalid parsing
+                // TODO handle logger of invalid parsing
                 return null;
             }
+#pragma warning restore CA1031 // Do not catch general exception types
         }
     }
 }
