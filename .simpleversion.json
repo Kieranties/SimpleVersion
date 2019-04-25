@@ -14,8 +14,7 @@
       },
       {
         "match": "^refs/heads/release/.+$",
-        "label": [],
-        "metadata": [ "*" ]
+        "label": []
       }
     ]
   }
