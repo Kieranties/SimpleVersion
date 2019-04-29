@@ -22,9 +22,9 @@ namespace SimpleVersion.Model
         public List<string> Label { get; set; } = null;
 
         /// <summary>
-        /// Gets or sets the metadata parts to use in the generated version.
+        /// Gets or sets the Metadata parts to use in the generated version.
         /// </summary>
-        public List<string> MetaData { get; set; } = null;
+        public List<string> Metadata { get; set; } = null;
 #pragma warning restore CA2227 // Collection properties should be read only
     }
 }

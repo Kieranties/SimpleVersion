@@ -86,7 +86,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             context.Result.Formats["Semver2"].Should().Be(expected);
         }
 
-        public static IEnumerable<object[]> MetaDataParts()
+        public static IEnumerable<object[]> MetadataParts()
         {
             yield return new object[] { Array.Empty<object>(), "1.2.0", 10 };
             yield return new object[] { new[] { "one" }, "1.2.0", 10 };
@@ -94,8 +94,8 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
         }
 
         [Theory]
-        [MemberData(nameof(MetaDataParts))]
-        public void Apply_MetaDataParts_NonRelease_Is_Formatted(
+        [MemberData(nameof(MetadataParts))]
+        public void Apply_MetadataParts_NonRelease_Is_Formatted(
             string[] parts,
             string version,
             int height)
@@ -123,8 +123,8 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
         }
 
         [Theory]
-        [MemberData(nameof(MetaDataParts))]
-        public void Apply_MetaDataParts_Release_Is_Formatted(
+        [MemberData(nameof(MetadataParts))]
+        public void Apply_MetadataParts_Release_Is_Formatted(
             string[] parts,
             string version,
             int height)

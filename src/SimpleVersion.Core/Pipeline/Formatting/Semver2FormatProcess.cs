@@ -23,7 +23,7 @@ namespace SimpleVersion.Pipeline.Formatting
 
             var labelParts = context.Configuration.Label.ApplyTokenRules(context, rules);
             var label = string.Join(".", labelParts).ResolveTokenRules(context, rules);
-            var meta = string.Join(".", context.Configuration.MetaData).ResolveTokenRules(context, rules);
+            var meta = string.Join(".", context.Configuration.Metadata).ResolveTokenRules(context, rules);
 
             var format = context.Result.Version;
 

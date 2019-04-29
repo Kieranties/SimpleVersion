@@ -30,7 +30,7 @@ namespace SimpleVersion.Core.Tests
                 info.Label.AddRange(label);
 
             if (meta != null)
-                info.MetaData.AddRange(meta);
+                info.Metadata.AddRange(meta);
 
             return info;
         }
