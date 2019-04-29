@@ -23,6 +23,9 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             yield return new object[] { new[] { "one", "two" }, "1.2.0", 106, "1.2.0-one-two-0106" };
             yield return new object[] { new[] { "*", "one", "two" }, "1.2.0", 106, "1.2.0-0106-one-two" };
             yield return new object[] { new[] { "one", "*", "two" }, "1.2.0", 106, "1.2.0-one-0106-two" };
+            yield return new object[] { new[] { "one", "two*", "three" }, "1.2.0", 106, "1.2.0-one-two0106-three" };
+            yield return new object[] { new[] { "one", "*two*", "three" }, "1.2.0", 106, "1.2.0-one-0106two0106-three" };
+            yield return new object[] { new[] { "one", "*t*o*", "three" }, "1.2.0", 106, "1.2.0-one-0106t0106o0106-three" };
         }
 
         [Theory]

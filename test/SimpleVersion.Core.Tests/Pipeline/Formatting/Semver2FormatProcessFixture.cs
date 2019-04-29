@@ -18,12 +18,14 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
         public static IEnumerable<object[]> LabelParts()
         {
-            return new List<object[]>
-            {
-                new object[] { Array.Empty<object>(), "1.2.0", 10 },
-                new object[] { new[] { "one" }, "1.2.0", 10 },
-                new object[] { new[] { "one", "two" }, "1.2.0", 106 }
-            };
+            yield return new object[] { Array.Empty<object>(), "1.2.0", 10, "1.2.0" };
+            yield return new object[] { new[] { "one" }, "1.2.0", 10, "1.2.0-one.10" };
+            yield return new object[] { new[] { "one", "two" }, "1.2.0", 106, "1.2.0-one.two.106" };
+            yield return new object[] { new[] { "*", "one", "two" }, "1.2.0", 106, "1.2.0-106.one.two" };
+            yield return new object[] { new[] { "one", "*", "two" }, "1.2.0", 106, "1.2.0-one.106.two" };
+            yield return new object[] { new[] { "one", "two*", "three" }, "1.2.0", 106, "1.2.0-one.two106.three" };
+            yield return new object[] { new[] { "one", "*two*", "three" }, "1.2.0", 106, "1.2.0-one.106two106.three" };
+            yield return new object[] { new[] { "one", "*t*o*", "three" }, "1.2.0", 106, "1.2.0-one.106t106o106.three" };
         }
 
         [Theory]
@@ -31,7 +33,8 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
         public void Apply_LabelParts_NonRelease_Is_Formatted(
             string[] parts,
             string version,
-            int height)
+            int height,
+            string expectedPart)
         {
             // Arrange
             var context = new VersionContext
@@ -41,18 +44,16 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             };
             context.Result.Version = context.Configuration.Version;
 
-            string expected;
-            if (parts.Length > 0)
-                expected = $"{version}-{string.Join(".", parts)}.{height}.c4ca82d2";
-            else
-                expected = $"{version}-c4ca82d2";
+            var divider = parts.Length > 0 ? '.' : '-';
+            var shaSub = context.Result.Sha.Substring(0, 7);
+            var fullExpected = $"{expectedPart}{divider}c{shaSub}";
 
             // Act
             _sut.Apply(context);
 
             // Assert
             context.Result.Formats.Should().ContainKey("Semver2");
-            context.Result.Formats["Semver2"].Should().Be(expected);
+            context.Result.Formats["Semver2"].Should().Be(fullExpected);
         }
 
 
@@ -61,7 +62,8 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
         public void Apply_LabelParts_Release_Is_Formatted(
             string[] parts,
             string version,
-            int height)
+            int height,
+            string expected)
         {
             // Arrange
             var context = new VersionContext
@@ -70,13 +72,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 Result = Utils.GetVersionResult(height)
             };
             context.Result.Version = context.Configuration.Version;
-
-            string expected;
-            if (parts.Length > 0)
-                expected = $"{version}-{string.Join(".", parts)}.{height}";
-            else
-                expected = $"{version}";
-
+            
             // Act
             _sut.Apply(context);
 
@@ -106,12 +102,13 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 Result = Utils.GetVersionResult(height, false)
             };
             context.Result.Version = context.Configuration.Version;
-            
+            var shaSub = context.Result.Sha.Substring(0, 7);
+
             string expected;
             if (parts.Length > 0)
-                expected = $"{version}-c4ca82d2+{string.Join(".", parts)}";
+                expected = $"{version}-c{shaSub}+{string.Join(".", parts)}";
             else
-                expected = $"{version}-c4ca82d2";
+                expected = $"{version}-c{shaSub}";
 
             // Act
             _sut.Apply(context);
