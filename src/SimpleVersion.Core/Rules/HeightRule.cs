@@ -37,7 +37,7 @@ namespace SimpleVersion.Rules
         {
             if (!context.Configuration.Version.Contains(Token)
                 && input.Count() != 0
-                && !input.Contains(Token))
+                && !input.Any(x => x.Contains(Token)))
             {
                 return input.Concat(new[] { Token });
             }
