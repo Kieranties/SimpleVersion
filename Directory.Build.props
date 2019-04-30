@@ -31,6 +31,7 @@
 
   <PropertyGroup Label="Build Attributes">
     <MSBuildTreatWarningsAsErrors>true</MSBuildTreatWarningsAsErrors>
+    <TreatWarningsAsErrors Condition="'$(BuildingInsideVisualStudio)' != 'true'">true</TreatWarningsAsErrors>
     <!-- NU5105 - Usage of semver 2 versioning -->
     <NoWarn>$(NoWarn);NU5105</NoWarn>
   </PropertyGroup>

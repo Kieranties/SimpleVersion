@@ -15,6 +15,8 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
         public Semver2FormatProcessFixture()
         {
+
+
             _sut = new Semver2FormatProcess();
         }
 
