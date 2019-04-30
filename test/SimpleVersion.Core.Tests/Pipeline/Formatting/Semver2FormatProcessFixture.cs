@@ -1,4 +1,6 @@
-﻿using FluentAssertions;
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using FluentAssertions;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Pipeline.Formatting;
 using System;
@@ -56,7 +58,6 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             context.Result.Formats["Semver2"].Should().Be(fullExpected);
         }
 
-
         [Theory]
         [MemberData(nameof(LabelParts))]
         public void Apply_LabelParts_Release_Is_Formatted(
@@ -72,7 +73,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 Result = Utils.GetVersionResult(height)
             };
             context.Result.Version = context.Configuration.Version;
-            
+
             // Act
             _sut.Apply(context);
 
@@ -125,7 +126,6 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             string version,
             int height)
         {
-
             // Arrange
             var context = new VersionContext
             {
