@@ -4,3 +4,4 @@ packages
 bin
 obj
 integration/temp
+log.txt
