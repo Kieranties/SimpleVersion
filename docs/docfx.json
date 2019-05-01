@@ -3,20 +3,22 @@
     {
       "src": [
         {
-          "files": [ "**/*.csproj" ],
-          "exclude": [ "**/bin/**", "**/obj/**" ],
-          "src": "../../src"
+          "files": [ "**/bin/**/Simpleversion*" ],
+          "exclude": [ "**/obj/**", "**/*.{xml,pdb,config}" ],
+          "src": "../src"
         }
       ],
-      "dest": "obj/_api"
+      "dest": "site/api",
+      "properties": {
+        "TargetFramework": "net461"
+      }
     }
   ],
   "build": {
     "content": [
       {
         "files": [ "**.{md,yml}" ],
-        "src": "obj/_api",
-        "dest": "api"
+        "src": "site/_api"
       },
       {
         "files": [ "**/*.{md,yml}" ]
@@ -28,7 +30,7 @@
       }
     ],
     "overwrite": "apispec/*.md",
-    "dest": "obj/_site",
+    "dest": "site",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": [ "statictoc", "./theme" ],

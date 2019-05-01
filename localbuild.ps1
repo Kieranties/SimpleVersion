@@ -1,32 +1,51 @@
 <#
-	Local build script to perform build and test validation
+    Local build script to perform build and test validation
 #>
 param(
-	[String]$Root = $PSScriptRoot,
-	[String]$Artifacts = (Join-Path $Root 'artifacts'),
-	[Switch]$NoIntegration,
-	[Switch]$NoUnit
+    [ValidateSet('Unit','Integration','Docs')]
+    [string[]]$Tasks = @('Unit'),
+    [String]$RootPath = $PSScriptRoot,
+    [String]$ArtifactsPath = (Join-Path $RootPath 'artifacts'),
+    [String]$BuildPath = (Join-Path $RootPath 'build'),
+    [String]$DocsPath = (Join-Path $RootPath 'docs'),
+    [Switch]$NoBuild,
+    [Switch]$ServeDocs
+
 )
 
 $env:DOTNET_CLI_TELEMETRY_OPTOUT = 1
 
-# Clean previous run
-if(Test-Path $Artifacts){
-	Get-ChildItem $Artifacts -Filter '*.nupkg' | Remove-Item
+# Clean and build
+if(!$NoBuild) {
+    Get-ChildItem $ArtifactsPath -ErrorAction Ignore | Remove-Item -Recurse -Force
+    dotnet pack (Join-Path $RootPath 'SimpleVersion.sln') -o $ArtifactsPath
 }
 
-# Pack
-dotnet pack (Join-Path $Root 'SimpleVersion.sln') -o $Artifacts
-
-# Unit
-if(!$NoUnit){
-	Get-ChildItem 'test' -Filter '*.csproj' -Recurse | ForEach-Object {
-		dotnet test $_.Fullname
-	}
+if($Tasks -contains 'Unit') {
+    Get-ChildItem 'test' -Filter '*.csproj' -Recurse | ForEach-Object {
+        dotnet test $_.Fullname
+    }
 }
 
-# Integration
-if(!$NoIntegration){
-	$integration = [System.IO.Path]::Combine($Root, 'integration', 'localtest.ps1')
-	. $integration $Artifacts
+if($Tasks -contains 'Integration'){
+    . "$RootPath\integration\localtest.ps1" $ArtifactsPath
+}
+
+if($Tasks -contains 'Docs') {
+    # Install docfx
+    nuget install docfx.console -OutputDirectory $BuildPath
+    $docfx = Resolve-Path "$BuildPath\docfx.console*\tools\docfx.exe"
+    $docsDest = Join-path $ArtifactsPath 'docs'
+    Remove-Item $docsDest -Recurse -Force -ErrorAction Ignore
+
+     Push-Location $DocsPath
+    try {
+        $docfxArgs = @()
+        if($ServeDocs) {
+            $docfxArgs += '-s'
+        }
+        . $docfx -o $docsDest @docfxArgs
+    } finally {
+        Pop-Location
+    }
 }
