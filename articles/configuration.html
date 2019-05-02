@@ -1,0 +1,251 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Configuration </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Configuration ">
+    <meta name="generator" content="docfx 2.42.0.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" style="height:40px;padding-top:15px;" src="../images/logo.png" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+                
+                <ul class="nav level1 navbar-nav">
+                      <li>
+                          <a href="../articles/intro.html" title="Articles">Articles</a>
+                      </li>
+                      <li>
+                          <a href="../api/index.html" title="Api Documentation">Api Documentation</a>
+                      </li>
+                </ul>    </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div>
+              <div class="sidefilter">
+                <form class="toc-filter">
+                  <span class="glyphicon glyphicon-filter filter-icon"></span>
+                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
+                </form>
+              </div>
+              <div class="sidetoc">
+                <div class="toc" id="toc">
+                  
+                  <ul class="nav level1">
+                    <li class="">
+                      <a href="intro.html" title="Introduction" class="">Introduction</a>
+                    </li>
+                    <li class="active">
+                      <a href="configuration.html" title="Configuration" class="active">Configuration</a>
+                    </li>
+                    <li class="">
+                      <a href="results.html" title="Results" class="">Results</a>
+                    </li>
+                    <li class="">
+                      <a href="usage.html" title="Usage" class="">Usage</a>
+                    </li>
+                  </ul>        </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="configuration">Configuration</h1>
+
+<p>SimpleVersion reads the <code>.simpleversion.json</code> from the root of your git repo.
+This file provides various configuration options.</p>
+<h2 id="version">Version</h2>
+<p>The <code>Version</code> property allows you to specify the base version to be generated.
+You  may set the property with a version string that consists of one to four
+dot seperated digits.</p>
+<p>All of the following are accepted values:</p>
+<pre><code class="lang-json">&quot;Version&quot; : &quot;1&quot;
+&quot;Version&quot; : &quot;1.2&quot;
+&quot;Version&quot; : &quot;1.2.3&quot;
+&quot;Version&quot; : &quot;1.2.3.4&quot;
+</code></pre>
+<h2 id="label">Label</h2>
+<p>The <code>Label</code> property specifies an array of labels to be included in the version.</p>
+<blockquote>
+<p>By specifying values in the label, the version will be returned as a pre-release version.</p>
+</blockquote>
+<pre><code class="lang-json">&quot;Label&quot; : []
+&quot;Label&quot; : [&quot;alpha1&quot;]
+&quot;Label&quot; : [&quot;alpha1&quot;, &quot;test&quot;]
+</code></pre>
+<h2 id="metadata">MetaData</h2>
+<p>The <code>MetaData</code> property specifies an array of values to be included as metadata
+in the final version.</p>
+<blockquote>
+<p>Currently, only <code>Semver2</code> format supports <code>metadata</code>.</p>
+</blockquote>
+<pre><code class="lang-json">&quot;MetaData&quot; : []
+&quot;MetaData&quot; : [&quot;demo&quot;]
+&quot;MetaData&quot; : [&quot;demo&quot;, &quot;sprint1&quot;]
+</code></pre>
+<h2 id="offset">OffSet</h2>
+<p>Sometimes you may need to adjust the base value of the height. This could be
+when migrating from a previous versioning pattern, if a number of commits
+should be discounted, or any other reason.</p>
+<p>Specify the <code>OffSet</code> as a numeric value to impact the base value of the height.</p>
+<pre><code class="lang-json">&quot;OffSet&quot; : -5
+&quot;OffSet&quot; : 4
+</code></pre>
+<h2 id="branches">Branches</h2>
+<p>The <code>Branches</code> section allows for branch specific rules and configuration to
+be applied based on the branch currently being built.</p>
+<h3 id="release">Release</h3>
+<p><code>Release</code> allows for a list of regular expressions to be defined where each
+may match to the current branch being built. If the current branch does not match
+any of the expressions it will have the short sha of the current commit added
+to the <code>Labels</code> property prefixed with <code>c</code> (for commit).</p>
+<pre><code class="lang-json">{
+  &quot;version&quot;: &quot;0.1.0&quot;,
+  &quot;label&quot;: [ &quot;alpha2&quot; ],
+  &quot;branches&quot;: {
+    &quot;release&quot;: [
+      &quot;^refs/heads/master$&quot;,
+      &quot;^refs/heads/preview/.+$&quot;,
+      &quot;^refs/heads/release/.+$&quot;
+    ]
+  }
+}
+</code></pre>
+<p>In the above example, any branch called <em>master</em>, starting with <em>preview/</em> or
+starting with <em>release/</em> will <strong>not</strong> have the short sha appended. Generating a
+Semver2 verison of <code>0.1.0-alpha2.5</code> when there are five commits.</p>
+<p>All other branches will append the short sha, generating a Semver2 version of
+<code>0.1.0-alpha2.5.c903782</code> when there are five commits and the sha begins with
+<em>903782</em></p>
+<h2 id="replacement-tokens">Replacement Tokens</h2>
+<p>SimpleVersion allows specific <em>tokens</em> to be used in some properties to allow
+substitution of values during invocation.  The following tokens may be used:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Token</th>
+<th>Where</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Height</td>
+<td><code>*</code></td>
+<td><code>Version</code>, <code>Label</code>, <code>Metadata</code></td>
+<td>Inserts the calculated height</td>
+</tr>
+<tr>
+<td>Branch Name</td>
+<td><code>{branchname}</code></td>
+<td><code>Label</code>, <code>Metadata</code></td>
+<td>Inserts the canonical branch name, stripped of non-alphanumeric characters</td>
+</tr>
+<tr>
+<td>Short Branch Name</td>
+<td><code>{shortbranchname}</code></td>
+<td><code>Label</code>, <code>Metadata</code></td>
+<td>Inserts the friendly branch name, stripped of non-alphanumeric characters</td>
+</tr>
+<tr>
+<td>Branch Name Suffix</td>
+<td><code>{branchnamesuffix}</code></td>
+<td><code>Label</code>, <code>Metadata</code></td>
+<td>Inserts the last segment of the canonical name of a branch</td>
+</tr>
+<tr>
+<td>Short Sha</td>
+<td><code>{shortsha}</code></td>
+<td><code>Label</code>, <code>Metadata</code></td>
+<td>Inserts the first seven characters of the commit sha, prefixed with <code>c</code></td>
+</tr>
+</tbody>
+</table>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Kieranties/SimpleVersion/blob/feature/docs/docs/articles/configuration.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
