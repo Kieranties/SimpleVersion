@@ -3,37 +3,42 @@
     {
       "src": [
         {
-          "files": [ "**/bin/**/Simpleversion*" ],
-          "exclude": [ "**/obj/**", "**/*.{xml,pdb,config}" ],
-          "src": "../src"
+          "files": "**/bin/**/Simpleversion*dll",
+          "src" : "../src"
         }
       ],
-      "dest": "site/api",
-      "properties": {
-        "TargetFramework": "net461"
-      }
+      "dest": "api",
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false
     }
   ],
   "build": {
     "content": [
       {
-        "files": [ "**.{md,yml}" ],
-        "src": "site/_api"
-      },
-      {
-        "files": [ "**/*.{md,yml}" ]
+        "files": [
+          "api/**.{yml,md}",
+          "articles/**.{yml,md}",
+          "*.{yml,md}"
+        ]
       }
     ],
     "resource": [
       {
-        "files": [ "images/**" ]
+        "files": [
+          "images/**",
+          "theme/**"
+        ]
       }
     ],
-    "overwrite": "apispec/*.md",
-    "dest": "site",
+    "overwrite":  "apidoc/**.md",
+    "dest": "obj/site",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
-    "template": [ "statictoc", "./theme" ],
+    "template": [
+      "default",
+      "statictoc",
+      "./theme"
+    ],
     "postProcessors": [],
     "markdownEngineName": "markdig",
     "noLangKeyword": false,

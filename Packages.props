@@ -9,7 +9,7 @@
     <PackageReference Update="LibGit2Sharp"                         Version="0.25.3" />
     <PackageReference Update="LibGit2Sharp.NativeBinaries"          Version="1.0.235" />
     <PackageReference Update="Newtonsoft.Json"                      Version="11.0.*" />
-    <PackageReference Update="Microsoft.Packaging.Tools.Trimming"   Version="1.1.0-*" PrivateAssets="All"/>
+    <PackageReference Update="Microsoft.Packaging.Tools.Trimming"   Version="1.1.0-*" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup Label="Test library packages">
@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Docs support packages">
-    <PackageReference Update="docfx.console"                        Version="2.*" />
+    <PackageReference Update="docfx.console"                        Version="2.42.*" />
   </ItemGroup>
   
   <ItemGroup Label="Global project tooling">

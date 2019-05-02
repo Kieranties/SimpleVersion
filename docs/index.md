@@ -68,6 +68,7 @@ Resetting The Height
 The height will be reset to 0 when SimpleVersion detects a change to either the
 `version` or the `label` in the `.simpleversion.json` file.
 
+> [!IMPORTANT]
 > You must commit changes to the file for SimpleVersion to identify the change
 
 [semver2]:      https://semver.org/spec/v2.0.0.html
