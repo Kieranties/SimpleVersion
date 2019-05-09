@@ -9,7 +9,7 @@ Version
 
 The `Version` property allows you to specify the base version to be generated.
 You  may set the property with a version string that consists of one to four
-dot seperated digits.
+dot separated digits.
 
 All of the following are accepted values:
 ```json
@@ -32,32 +32,32 @@ The `Label` property specifies an array of labels to be included in the version.
 "Label" : ["alpha1", "test"]
 ```
 
-MetaData
+Metadata
 --------
 
-The `MetaData` property specifies an array of values to be included as metadata
+The `Metadata` property specifies an array of values to be included as metadata
 in the final version.
 
 > Currently, only `Semver2` format supports `metadata`.
 
 ```json
-"MetaData" : []
-"MetaData" : ["demo"]
-"MetaData" : ["demo", "sprint1"]
+"Metadata" : []
+"Metadata" : ["demo"]
+"Metadata" : ["demo", "sprint1"]
 ```
 
-OffSet
+Offset
 ------
 
 Sometimes you may need to adjust the base value of the height. This could be
 when migrating from a previous versioning pattern, if a number of commits
 should be discounted, or any other reason.
 
-Specify the `OffSet` as a numeric value to impact the base value of the height.
+Specify the `Offset` as a numeric value to impact the base value of the height.
 
 ```json
-"OffSet" : -5
-"OffSet" : 4
+"Offset" : -5
+"Offset" : 4
 ```
 
 Branches
@@ -89,11 +89,50 @@ to the `Labels` property prefixed with `c` (for commit).
 
 In the above example, any branch called _master_, starting with _preview/_ or
 starting with _release/_ will **not** have the short sha appended. Generating a
-Semver2 verison of `0.1.0-alpha2.5` when there are five commits.
+Semver2 version of `0.1.0-alpha2.5` when there are five commits.
 
 All other branches will append the short sha, generating a Semver2 version of
 `0.1.0-alpha2.5.c903782` when there are five commits and the sha begins with
 _903782_
+
+### Overrides
+
+Overrides allow for certain elements of the version to be reconfigured based
+on the branch being built.  Overrides are matched by a regular expression where
+only the first match (if found) is used.
+
+```json
+{
+  "version": "0.2.0",
+  "label": [ "alpha1" ],
+  "branches": {
+    "release": [
+      "^refs/heads/master$",
+      "^refs/heads/preview/.+$",
+      "^refs/heads/release/.+$"
+    ],
+    "overrides": [
+      {
+        "match": "^refs/heads/feature/.+$",
+        "metadata": [ "{shortbranchname}" ]
+      },
+      {
+        "match": "^refs/heads/release/.+$",
+        "label": [],
+        "metadata": [ "*" ]
+      }
+    ]
+  }
+}
+```
+
+In th above example, any branch starting with _feature/_ will add the branches
+shortname as metadata to the generated version. E.g. _feature/testing_ will
+create a version of `0.2.0-alpha1.5.c903782+featuretesting` when there are five
+commits and the sha begins with _903782_
+
+Additionally, any branch beginning with _release/_ will strip the release label
+and have the height added into the metadata.
 
 Replacement Tokens
 ------------------

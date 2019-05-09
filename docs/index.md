@@ -14,13 +14,17 @@ Using SimpleVersion you can generate consistent, expected version numbers for
 each commit in your repository, based on a few simple configuration options.
 
 SimpleVersion uses some base configuration and the 'height' of your commit history
-to generate a version.  Height is calculated as the number of commits since your
-last change to the version.
+to generate a version.  Height is calculated as the number of commits _since the
+last change to the .simpleversion.json file_.
+
+> [!IMPORTANT]
+> You must commit changes to the file for SimpleVersion to identify the change.
 
 Future versions of SimpleVersion aim to provide:
 + Validation of the version based on branch configuration
 + Custom formatting configuration to support custom versioning schemes
-+ and more!
++ Override logic with custom token replacement syntax
++ [and more!][FeatureBacklog]
 
 Why?
 ----
@@ -56,11 +60,11 @@ root of your git repository and commit it.
 }
 ```
 The above configuration tells SimpleVersion that the version will be `0.1.0` and
-should have a release label of `alpha2`.  As their is a pre-release label, the
+should have a release label of `alpha2`.  As there is a pre-release label, the
 height will be appended to label, generating a [Semver2] version `0.1.0-alpha2.3`
-if their were three commits since the version was last set.
+if there were three commits since the version was last set.
 
-For further guidance, see the [configuration documentation][ConfigDoc] and the [usage documentation][UsageDoc].
+For further guidance, see the [configuration documentation][ConfigDoc].
 
 Resetting The Height
 --------------------
@@ -68,15 +72,12 @@ Resetting The Height
 The height will be reset to 0 when SimpleVersion detects a change to either the
 `version` or the `label` in the `.simpleversion.json` file.
 
-> [!IMPORTANT]
-> You must commit changes to the file for SimpleVersion to identify the change
-
-[semver2]:      https://semver.org/spec/v2.0.0.html
-[GitVersion]:   https://github.com/GitTools/GitVersion
-[NerdBank]:     https://github.com/aarnott/Nerdbank.GitVersioning
-[ConfigDoc]:    /articles/configuration.html
-[UsageDoc]:     /articles/usage.html
-[NugetRel]:     https://www.nuget.org/packages?q=simpleversion&prerel=false
-[NugetPre]:     https://www.nuget.org/packages?q=simpleversion
-[AzureRelease]: https://dev.azure.com/Kieranties/SimpleVersion/_build?definitionId=1
-[License]:      https://kieranties.mit-license.org/
+[semver2]:        https://semver.org/spec/v2.0.0.html
+[GitVersion]:     https://github.com/GitTools/GitVersion
+[NerdBank]:       https://github.com/aarnott/Nerdbank.GitVersioning
+[ConfigDoc]:      /articles/configuration.html
+[NugetRel]:       https://www.nuget.org/packages?q=simpleversion&prerel=false
+[NugetPre]:       https://www.nuget.org/packages?q=simpleversion
+[AzureRelease]:   https://dev.azure.com/Kieranties/SimpleVersion/_build?definitionId=1
+[License]:        https://kieranties.mit-license.org/
+[FeatureBacklog]: https://github.com/kieranties/simpleversion/issues?q=is%3Aissue+is%3Aopen+label%3A%22%3Asparkles%3A+feature%22
