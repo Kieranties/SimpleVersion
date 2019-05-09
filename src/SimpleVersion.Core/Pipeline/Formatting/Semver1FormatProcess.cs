@@ -9,6 +9,11 @@ namespace SimpleVersion.Pipeline.Formatting
     /// </summary>
     public class Semver1FormatProcess : IVersionProcessor
     {
+        /// <summary>
+        /// The key used to identify this format.
+        /// </summary>
+        public const string FormatKey = "Semver1";
+
         /// <inheritdoc/>
         public void Apply(VersionContext context)
         {
@@ -29,7 +34,7 @@ namespace SimpleVersion.Pipeline.Formatting
             if (!string.IsNullOrWhiteSpace(label))
                 format += $"-{label}";
 
-            context.Result.Formats["Semver1"] = format;
+            context.Result.Formats[FormatKey] = format;
         }
     }
 }
