@@ -10,12 +10,11 @@
     "overrides": [
       {
         "match": "^refs/heads/feature/.+$",
-        "metadata": [ "{shortbranchname}" ]
+        "Metadata": [ "{shortbranchname}" ]
       },
       {
         "match": "^refs/heads/release/.+$",
-        "label": [],
-        "metadata": [ "*" ]
+        "label": []
       }
     ]
   }

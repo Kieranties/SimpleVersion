@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using LibGit2Sharp;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Schema;
 using SimpleVersion.Comparers;
 using SVM = SimpleVersion.Model;
 
@@ -128,10 +129,10 @@ namespace SimpleVersion.Pipeline
                     config.Label.AddRange(firstMatch.Label);
                 }
 
-                if (firstMatch.MetaData != null)
+                if (firstMatch.Metadata != null)
                 {
-                    config.MetaData.Clear();
-                    config.MetaData.AddRange(firstMatch.MetaData);
+                    config.Metadata.Clear();
+                    config.Metadata.AddRange(firstMatch.Metadata);
                 }
             }
         }
