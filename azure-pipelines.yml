@@ -65,12 +65,12 @@ jobs:
 
   # Publish Unit tests
   - task: PublishTestResults@2
-   displayName: "Artifacts: Publish Coverage"
-   condition: succeededOrFailed()
-   inputs:
-     testResultsFormat: Covertura
-     testResultsFiles: $(System.DefaultWorkingDirectory)\TestResults\Coverage\**
-     testRunTitle: "Unit Tests"
+    displayName: "Artifacts: Publish Coverage"
+    condition: succeededOrFailed()
+    inputs:
+      testResultsFormat: Covertura
+      testResultsFiles: $(System.DefaultWorkingDirectory)\TestResults\Coverage\**
+      testRunTitle: "Unit Tests"
 
   # Pack assets
   - task: DotNetCoreCLI@2
