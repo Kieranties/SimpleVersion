@@ -12,7 +12,7 @@ namespace SimpleVersion
     /// Contract for accessing environment variables.
     /// </summary>
     public interface IEnvironment
-    {        
+    {
         /// <summary>
         /// Gets the value of the given variable name.
         /// </summary>
