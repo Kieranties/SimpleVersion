@@ -15,6 +15,17 @@ param(
     [String]$DocfxVersion = '2.42.0'
 )
 
+function exec([string]$cmd) {
+    $currentPref = $ErrorActionPreference
+    $ErrorActionPreference = 'Continue'
+    & $cmd @args
+    $ErrorActionPreference = $currentPref
+    if($LASTEXITCODE -ne 0) {
+        Write-Error "[Errorcode $LASTEXITCODE] Command $cmd $args"
+        exit $LASTEXITCODE
+    }
+}
+
 $ErrorActionPreference = 'Stop'
 $env:DOTNET_CLI_TELEMETRY_OPTOUT = 1
 $env:Configuration = $Configuration
@@ -26,9 +37,9 @@ if($ServeDocs) {
 
 # Build/Pack
 Remove-Item $ArtifactsPath -Recurse -Force -ErrorAction Ignore
-dotnet build
+exec dotnet build
 $distArtifacts = Join-Path $ArtifactsPath 'dist'
-dotnet pack --no-restore --no-build -o $distArtifacts
+exec dotnet pack --no-restore --no-build -o $distArtifacts
 
 # Unit Test
 $testArtifacts = Join-Path $ArtifactsPath 'tests'
@@ -41,7 +52,7 @@ Get-ChildItem 'test' -Filter '*.csproj' -Recurse |
             '--logger', 'trx',
             '-r', $testArtifacts
         )
-        dotnet test $_.Fullname @testArgs
+        exec dotnet test $_.Fullname @testArgs
     }
 
 # docs
@@ -60,6 +71,6 @@ if($BuildDocs) {
     if($ServeDocs) {
         $docfxArgs += '-s'
     }
-    . $docfx "$DocsPath\docfx.json" @docfxArgs
+    exec $docfx "$DocsPath\docfx.json" @docfxArgs
     Copy-Item "$DocsPath\obj\site" -Recurse -Destination (Join-Path $ArtifactsPath 'docs') -Container
 }
