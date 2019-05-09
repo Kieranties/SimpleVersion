@@ -32,10 +32,10 @@ The `Label` property specifies an array of labels to be included in the version.
 "Label" : ["alpha1", "test"]
 ```
 
-MetaData
+Metadata
 --------
 
-The `MetaData` property specifies an array of values to be included as metadata
+The `Metadata` property specifies an array of values to be included as metadata
 in the final version.
 
 > Currently, only `Semver2` format supports `metadata`.
