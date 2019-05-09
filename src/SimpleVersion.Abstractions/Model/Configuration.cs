@@ -27,9 +27,9 @@ namespace SimpleVersion.Model
         public List<string> Label { get; } = new List<string>();
 
         /// <summary>
-        /// Gets the metadata parts to use in the generated version.
+        /// Gets the Metadata parts to use in the generated version.
         /// </summary>
-        public List<string> MetaData { get; } = new List<string>();
+        public List<string> Metadata { get; } = new List<string>();
 
         /// <summary>
         /// Gets or sets the information on branches.

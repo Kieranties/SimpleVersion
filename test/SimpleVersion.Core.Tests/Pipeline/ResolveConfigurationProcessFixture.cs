@@ -147,7 +147,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit(); // 4
                 fixture.MakeACommit(); // 5
 
-                config.MetaData.Add("example");
+                config.Metadata.Add("example");
                 Utils.WriteConfiguration(config, fixture); // 6
 
                 // Act
@@ -323,7 +323,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                             {
                                 Match = "feature/other",
                                 Label = expectedLabel,
-                                MetaData = expectedMeta
+                                Metadata = expectedMeta
                             }
                         }
                     }
@@ -344,7 +344,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 _sut.Apply(context);
 
                 context.Configuration.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
-                context.Configuration.MetaData.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
+                context.Configuration.Metadata.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
             }
         }
 

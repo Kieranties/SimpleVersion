@@ -17,7 +17,7 @@ namespace SimpleVersion.Abstractions.Tests.Model
 
             // Assert
             sut.Label.Should().BeEmpty();
-            sut.MetaData.Should().BeEmpty();
+            sut.Metadata.Should().BeEmpty();
             sut.Version.Should().BeEmpty();
             sut.OffSet.Should().Be(0);
             sut.Branches.Should().NotBeNull();
