@@ -10,8 +10,7 @@
 
   <PropertyGroup Label="Coverlet properties">
     <Include>[*SimpleVersion*]*</Include>
-    <!--<CollectCoverage Condition="'$(Configuration)' == 'Release'">true</CollectCoverage>
-    <CoverletOutput>$(Build.SourcesDirectory)/TestResults/Coverage</CoverletOutput>-->
+    <CollectCoverage Condition="'$(Configuration)' == 'Release'">true</CollectCoverage>
   </PropertyGroup>
   
   <ItemGroup>
