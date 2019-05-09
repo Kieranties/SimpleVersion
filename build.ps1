@@ -3,8 +3,8 @@
 #>
 param(
     [ValidateSet('Debug', 'Release')]
-    [String]$Configuration = 'Debug',
-    [String]$Version = '1.0.0-local',
+    [String]$Configuration = (if($env:Configuration) { $env:Configuration} else { 'Debug' }),
+    [String]$Version = (if($env:Version) { $env:Version} else { '1.0.0-local'}),
     [String]$RootPath = $PSScriptRoot,
     [String]$ArtifactsPath = (Join-Path $RootPath 'artifacts'),
     [String]$BuildPath = (Join-Path $RootPath 'build'),
