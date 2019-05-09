@@ -69,10 +69,12 @@ namespace SimpleVersion.Core.Tests
 
             // Act
             var result = GetResult(_repo);
+            var semver1 = result.Formats[Semver1FormatProcess.FormatKey];
+            var semver2 = result.Formats[Semver2FormatProcess.FormatKey];
 
             // Assert
-            result.Formats[Semver1FormatProcess.FormatKey].Should().Be("1.0.0-featurePBI319594GitVersionDeprecation-0007");
-            result.Formats[Semver2FormatProcess.FormatKey].Should().Be("1.0.0-featurePBI319594GitVersionDeprecation.7");
+            semver1.Should().Be("1.0.0-featurePBI319594GitVersionDeprecation-0007");
+            semver2.Should().Be("1.0.0-featurePBI319594GitVersionDeprecation.7");
         }
 
         private static Model.VersionResult GetResult(RepositoryFixtureBase repo) => VersionCalculator.Default().GetResult(repo.RepositoryPath);
