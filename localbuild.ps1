@@ -33,18 +33,23 @@ if($Tasks -contains 'Integration'){
 
 if($Tasks -contains 'Docs') {
     # Install docfx
-    nuget install docfx.console -OutputDirectory $BuildPath
-    $docfx = Resolve-Path "$BuildPath\docfx.console*\tools\docfx.exe"
+    New-Item $BuildPath -ItemType Directory -Force | Out-Null
+    $docfx = "$BuildPath\docfx.console*\tools\docfx.exe"
+    if(!(Test-Path $docfx)) {
+        Install-Package docfx.console -Destination $BuildPath -Source 'https://www.nuget.org/api/v2/' -ForceBootstrap -Force
+    }
+    $docfx = Resolve-Path $docfx
     $docsDest = Join-path $ArtifactsPath 'docs'
     Remove-Item $docsDest -Recurse -Force -ErrorAction Ignore
 
-     Push-Location $DocsPath
+    Push-Location $DocsPath
     try {
         $docfxArgs = @()
         if($ServeDocs) {
             $docfxArgs += '-s'
         }
-        . $docfx -o $docsDest @docfxArgs
+        . $docfx @docfxArgs
+        Copy-Item '.\obj\site' -Recurse -Destination $docsDest -Container
     } finally {
         Pop-Location
     }
