@@ -21,10 +21,6 @@
     <PackageReference Update="NSubstitute"                          Version="4.0.*" />
   </ItemGroup>
 
-  <ItemGroup Label="Docs support packages">
-    <PackageReference Update="docfx.console"                        Version="2.42.*" />
-  </ItemGroup>
-  
   <ItemGroup Label="Global project tooling">
     <GlobalPackageReference Include="Microsoft.CodeAnalysis.FXCopAnalyzers" Version="2.9.*" />
     <GlobalPackageReference Include="StyleCop.Analyzers" Version="1.1.1-*" />

@@ -36,7 +36,6 @@
     "fileMetadataFiles": [],
     "template": [
       "default",
-      "statictoc",
       "./theme"
     ],
     "postProcessors": [],
