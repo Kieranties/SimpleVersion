@@ -61,7 +61,16 @@ jobs:
     inputs:
       command: test
       projects: 'test/**/*.csproj'
-      arguments: '--collect "Code Coverage" -s $(System.DefaultWorkingDirectory)\shared\codecoverage.runsettings'
+      arguments: '/p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(System.DefaultWorkingDirectory)\TestResults\Coverage'
+
+  # Publish Unit tests
+  - task: PublishTestResults@2
+   displayName: "Artifacts: Publish Coverage"
+   condition: succeededOrFailed()
+   inputs:
+     testResultsFormat: Covertura
+     testResultsFiles: $(System.DefaultWorkingDirectory)\TestResults\Coverage\**
+     testRunTitle: "Unit Tests"
 
   # Pack assets
   - task: DotNetCoreCLI@2
