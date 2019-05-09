@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Coverlet properties">
-    <Include>[*SimpleVersion*]*</Include>
+    <CoverletOutput>$(CoverletOutput)\$(MSBuildProjectName)\</CoverletOutput>
     <CollectCoverage Condition="'$(Configuration)' == 'Release'">true</CollectCoverage>
   </PropertyGroup>
   

@@ -61,7 +61,7 @@ jobs:
     inputs:
       command: test
       projects: 'test/**/*.csproj'
-      arguments: '/p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(System.DefaultWorkingDirectory)\TestResults\Coverage'
+      arguments: '/p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(System.DefaultWorkingDirectory)\TestResults\Coverage\'
 
   # Publish Unit tests
   - task: PublishTestResults@2
@@ -69,7 +69,7 @@ jobs:
     condition: succeededOrFailed()
     inputs:
       testResultsFormat: Covertura
-      testResultsFiles: $(System.DefaultWorkingDirectory)\TestResults\Coverage\**
+      testResultsFiles: $(System.DefaultWorkingDirectory)\TestResults\Coverage\**\*.xml
       testRunTitle: "Unit Tests"
 
   # Pack assets
