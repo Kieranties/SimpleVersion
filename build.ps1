@@ -3,8 +3,8 @@
 #>
 param(
     [ValidateSet('Debug', 'Release')]
-    [String]$Configuration = (if($env:Configuration) { $env:Configuration} else { 'Debug' }),
-    [String]$Version = (if($env:Version) { $env:Version} else { '1.0.0-local'}),
+    [String]$Configuration = $env:Configuration,
+    [String]$Version = $env:Version,
     [String]$RootPath = $PSScriptRoot,
     [String]$ArtifactsPath = (Join-Path $RootPath 'artifacts'),
     [String]$BuildPath = (Join-Path $RootPath 'build'),
@@ -28,9 +28,14 @@ function exec([string]$cmd) {
 
 $ErrorActionPreference = 'Stop'
 $env:DOTNET_CLI_TELEMETRY_OPTOUT = 1
-$env:Configuration = $Configuration
-$env:Version = $Version
-
+if(!$Configuration) {
+    $Configuration = 'Debug'
+    $env:Configuration = $Configuration
+}
+if(!$Version) {
+    $Version = '1.0.0-local'
+    $env:Version = $Version
+}
 if($ServeDocs) {
     $BuildDocs = $true
 }
