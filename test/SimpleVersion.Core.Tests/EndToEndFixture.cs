@@ -17,6 +17,7 @@ namespace SimpleVersion.Core.Tests
         {
             // Arrange
             using (var repo = new EmptyRepositoryFixture())
+            using (EnvrionmentContext.NoBuildServer())
             {
                 // Create the configuration model
                 var config = new Model.Configuration
