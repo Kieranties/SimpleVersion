@@ -50,16 +50,21 @@ jobs:
 
   # Build
   - powershell: ./build.ps1 -BuildDocs -ArtifactsPath $(ArtifactsDir)
-    displayName: 'Build: With docs'
+    displayName: 'Build'
 
-  # Collect test assets
+  # Publish test results
   - task: PublishTestResults@2
-    displayName: 'Tests: Publish unit test'
+    displayName: 'Tests: Publish unit tests'
     continueOnError: true
     inputs:
-      testRunTitle: Unit Tests
-      testRunner: vstest
-      testResultsFiles: '$(ArtifactsDir)/**/*.trx'
+
+  # Publish coverage
+  - task: PublishCodeCoverageResults@1
+    displayName: "Tests: Publish unit test coverage"
+    continueOnError: true
+    inputs:
+      codeCoverageTool: Cobertura
+      summaryFileLocation: '$(ArtifactsDir)/**/*.cobertura.xml'
 
   # TODO - Renable integration tests. Currently fail as environment variables
   # are always collected, so branch always maps to current repo branch being built
@@ -87,7 +92,9 @@ jobs:
       checkWarnings: true
       showStatistics: true
       checkCoverage: true
-      forceCoverageImprovement: true
+      coverageFailOption: fixed
+      coverageThreshold: 90
+      coverageType: branches
 
   # Handle artifacts
   - task: PublishBuildArtifacts@1
@@ -99,7 +106,7 @@ jobs:
       ArtifactType: Container
 
   - task: NuGetCommand@2
-    displayName: "Artifacts: Publish Packages"
+    displayName: "Artifacts: Push Packages"
     condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
     inputs:
       command: push

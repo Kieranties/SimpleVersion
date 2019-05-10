@@ -52,10 +52,10 @@ Get-ChildItem 'test' -Filter '*.csproj' -Recurse |
     ForEach-Object {
         $testArgs = @(
             '--no-restore', '--no-build'
-            '--collect', '"Code Coverage"',
-            '-s', "$PSScriptRoot\shared\codecoverage.runsettings"
-            '--logger', 'trx',
+            '--logger', 'trx'
             '-r', $testArtifacts
+            '/p:CollectCoverage=true', "/p:MergeWith=$testArtifacts\coverage.json"
+            '/p:CoverletOutputFormat=\"cobertura,json\"', "/p:CoverletOutput=$testArtifacts\"
         )
         exec dotnet test $_.Fullname @testArgs
     }
