@@ -43,15 +43,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
-                <ul class="nav level1 navbar-nav">
-                      <li>
-                          <a href="articles/intro.html" title="Articles">Articles</a>
-                      </li>
-                      <li>
-                          <a href="api/index.html" title="Api Documentation">Api Documentation</a>
-                      </li>
-                </ul>    </div>
+            </div>
           </div>
         </nav>
         
@@ -78,13 +70,18 @@
 <p>Using SimpleVersion you can generate consistent, expected version numbers for
 each commit in your repository, based on a few simple configuration options.</p>
 <p>SimpleVersion uses some base configuration and the 'height' of your commit history
-to generate a version.  Height is calculated as the number of commits since your
-last change to the version.</p>
+to generate a version.  Height is calculated as the number of commits <em>since the
+last change to the .simpleversion.json file</em>.</p>
+<div class="IMPORTANT">
+<h5>Important</h5>
+<p>You must commit changes to the file for SimpleVersion to identify the change.</p>
+</div>
 <p>Future versions of SimpleVersion aim to provide:</p>
 <ul>
 <li>Validation of the version based on branch configuration</li>
 <li>Custom formatting configuration to support custom versioning schemes</li>
-<li>and more!</li>
+<li>Override logic with custom token replacement syntax</li>
+<li><a href="https://github.com/kieranties/simpleversion/issues?q=is%3Aissue+is%3Aopen+label%3A%22%3Asparkles%3A+feature%22">and more!</a></li>
 </ul>
 <h2 id="why">Why?</h2>
 <p>SimpleVersion borrows ideas from other excellent versioning tools, notably:
@@ -114,17 +111,13 @@ root of your git repository and commit it.</p>
 }
 </code></pre>
 <p>The above configuration tells SimpleVersion that the version will be <code>0.1.0</code> and
-should have a release label of <code>alpha2</code>.  As their is a pre-release label, the
+should have a release label of <code>alpha2</code>.  As there is a pre-release label, the
 height will be appended to label, generating a <a href="https://semver.org/spec/v2.0.0.html">Semver2</a> version <code>0.1.0-alpha2.3</code>
-if their were three commits since the version was last set.</p>
-<p>For further guidance, see the <a href="/articles/configuration.html">configuration documentation</a> and the <a href="/articles/usage.html">usage documentation</a>.</p>
+if there were three commits since the version was last set.</p>
+<p>For further guidance, see the <a href="/articles/configuration.html">configuration documentation</a>.</p>
 <h2 id="resetting-the-height">Resetting The Height</h2>
 <p>The height will be reset to 0 when SimpleVersion detects a change to either the
 <code>version</code> or the <code>label</code> in the <code>.simpleversion.json</code> file.</p>
-<div class="IMPORTANT">
-<h5>Important</h5>
-<p>You must commit changes to the file for SimpleVersion to identify the change</p>
-</div>
 </article>
           </div>
           
@@ -133,7 +126,7 @@ if their were three commits since the version was last set.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Kieranties/SimpleVersion/blob/feature/docs/docs/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/docs/index.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

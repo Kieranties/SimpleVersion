@@ -133,18 +133,18 @@ references:
   commentId: Overload:SimpleVersion.Model.BranchConfiguration.Match
   fullName: SimpleVersion.Model.BranchConfiguration.Match
   nameWithType: BranchConfiguration.Match
-- uid: SimpleVersion.Model.BranchConfiguration.MetaData
-  name: MetaData
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_MetaData
-  commentId: P:SimpleVersion.Model.BranchConfiguration.MetaData
-  fullName: SimpleVersion.Model.BranchConfiguration.MetaData
-  nameWithType: BranchConfiguration.MetaData
-- uid: SimpleVersion.Model.BranchConfiguration.MetaData*
-  name: MetaData
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_MetaData_
-  commentId: Overload:SimpleVersion.Model.BranchConfiguration.MetaData
-  fullName: SimpleVersion.Model.BranchConfiguration.MetaData
-  nameWithType: BranchConfiguration.MetaData
+- uid: SimpleVersion.Model.BranchConfiguration.Metadata
+  name: Metadata
+  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_Metadata
+  commentId: P:SimpleVersion.Model.BranchConfiguration.Metadata
+  fullName: SimpleVersion.Model.BranchConfiguration.Metadata
+  nameWithType: BranchConfiguration.Metadata
+- uid: SimpleVersion.Model.BranchConfiguration.Metadata*
+  name: Metadata
+  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_Metadata_
+  commentId: Overload:SimpleVersion.Model.BranchConfiguration.Metadata
+  fullName: SimpleVersion.Model.BranchConfiguration.Metadata
+  nameWithType: BranchConfiguration.Metadata
 - uid: SimpleVersion.Model.BranchInfo
   name: BranchInfo
   href: api/SimpleVersion.Model.BranchInfo.html
@@ -229,18 +229,18 @@ references:
   commentId: Overload:SimpleVersion.Model.Configuration.Label
   fullName: SimpleVersion.Model.Configuration.Label
   nameWithType: Configuration.Label
-- uid: SimpleVersion.Model.Configuration.MetaData
-  name: MetaData
-  href: api/SimpleVersion.Model.Configuration.html#SimpleVersion_Model_Configuration_MetaData
-  commentId: P:SimpleVersion.Model.Configuration.MetaData
-  fullName: SimpleVersion.Model.Configuration.MetaData
-  nameWithType: Configuration.MetaData
-- uid: SimpleVersion.Model.Configuration.MetaData*
-  name: MetaData
-  href: api/SimpleVersion.Model.Configuration.html#SimpleVersion_Model_Configuration_MetaData_
-  commentId: Overload:SimpleVersion.Model.Configuration.MetaData
-  fullName: SimpleVersion.Model.Configuration.MetaData
-  nameWithType: Configuration.MetaData
+- uid: SimpleVersion.Model.Configuration.Metadata
+  name: Metadata
+  href: api/SimpleVersion.Model.Configuration.html#SimpleVersion_Model_Configuration_Metadata
+  commentId: P:SimpleVersion.Model.Configuration.Metadata
+  fullName: SimpleVersion.Model.Configuration.Metadata
+  nameWithType: Configuration.Metadata
+- uid: SimpleVersion.Model.Configuration.Metadata*
+  name: Metadata
+  href: api/SimpleVersion.Model.Configuration.html#SimpleVersion_Model_Configuration_Metadata_
+  commentId: Overload:SimpleVersion.Model.Configuration.Metadata
+  fullName: SimpleVersion.Model.Configuration.Metadata
+  nameWithType: Configuration.Metadata
 - uid: SimpleVersion.Model.Configuration.OffSet
   name: OffSet
   href: api/SimpleVersion.Model.Configuration.html#SimpleVersion_Model_Configuration_OffSet
@@ -499,6 +499,12 @@ references:
   commentId: Overload:SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply
   fullName: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply
   nameWithType: Semver1FormatProcess.Apply
+- uid: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.FormatKey
+  name: FormatKey
+  href: api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver1FormatProcess_FormatKey
+  commentId: F:SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.FormatKey
+  fullName: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.FormatKey
+  nameWithType: Semver1FormatProcess.FormatKey
 - uid: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess
   name: Semver2FormatProcess
   href: api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.html
@@ -529,6 +535,12 @@ references:
   commentId: Overload:SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply
   fullName: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply
   nameWithType: Semver2FormatProcess.Apply
+- uid: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.FormatKey
+  name: FormatKey
+  href: api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver2FormatProcess_FormatKey
+  commentId: F:SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.FormatKey
+  fullName: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.FormatKey
+  nameWithType: Semver2FormatProcess.FormatKey
 - uid: SimpleVersion.Pipeline.Formatting.VersionFormatProcess
   name: VersionFormatProcess
   href: api/SimpleVersion.Pipeline.Formatting.VersionFormatProcess.html

@@ -43,15 +43,7 @@
                   <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
                 </div>
               </form>
-                
-                <ul class="nav level1 navbar-nav">
-                      <li>
-                          <a href="../articles/intro.html" title="Articles">Articles</a>
-                      </li>
-                      <li>
-                          <a href="../api/index.html" title="Api Documentation">Api Documentation</a>
-                      </li>
-                </ul>    </div>
+            </div>
           </div>
         </nav>
         
@@ -64,35 +56,11 @@
         </div>
       </header>
       <div role="main" class="container body-content hide-when-search">
+        
         <div class="sidenav hide-when-search">
           <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
           <div class="sidetoggle collapse" id="sidetoggle">
-            <div>
-              <div class="sidefilter">
-                <form class="toc-filter">
-                  <span class="glyphicon glyphicon-filter filter-icon"></span>
-                  <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
-                </form>
-              </div>
-              <div class="sidetoc">
-                <div class="toc" id="toc">
-                  
-                  <ul class="nav level1">
-                    <li class="">
-                      <a href="intro.html" title="Introduction" class="">Introduction</a>
-                    </li>
-                    <li class="active">
-                      <a href="configuration.html" title="Configuration" class="active">Configuration</a>
-                    </li>
-                    <li class="">
-                      <a href="results.html" title="Results" class="">Results</a>
-                    </li>
-                    <li class="">
-                      <a href="usage.html" title="Usage" class="">Usage</a>
-                    </li>
-                  </ul>        </div>
-              </div>
-            </div>
+            <div id="sidetoc"></div>
           </div>
         </div>
         <div class="article row grid-right">
@@ -105,7 +73,7 @@ This file provides various configuration options.</p>
 <h2 id="version">Version</h2>
 <p>The <code>Version</code> property allows you to specify the base version to be generated.
 You  may set the property with a version string that consists of one to four
-dot seperated digits.</p>
+dot separated digits.</p>
 <p>All of the following are accepted values:</p>
 <pre><code class="lang-json">&quot;Version&quot; : &quot;1&quot;
 &quot;Version&quot; : &quot;1.2&quot;
@@ -121,23 +89,23 @@ dot seperated digits.</p>
 &quot;Label&quot; : [&quot;alpha1&quot;]
 &quot;Label&quot; : [&quot;alpha1&quot;, &quot;test&quot;]
 </code></pre>
-<h2 id="metadata">MetaData</h2>
-<p>The <code>MetaData</code> property specifies an array of values to be included as metadata
+<h2 id="metadata">Metadata</h2>
+<p>The <code>Metadata</code> property specifies an array of values to be included as metadata
 in the final version.</p>
 <blockquote>
 <p>Currently, only <code>Semver2</code> format supports <code>metadata</code>.</p>
 </blockquote>
-<pre><code class="lang-json">&quot;MetaData&quot; : []
-&quot;MetaData&quot; : [&quot;demo&quot;]
-&quot;MetaData&quot; : [&quot;demo&quot;, &quot;sprint1&quot;]
+<pre><code class="lang-json">&quot;Metadata&quot; : []
+&quot;Metadata&quot; : [&quot;demo&quot;]
+&quot;Metadata&quot; : [&quot;demo&quot;, &quot;sprint1&quot;]
 </code></pre>
-<h2 id="offset">OffSet</h2>
+<h2 id="offset">Offset</h2>
 <p>Sometimes you may need to adjust the base value of the height. This could be
 when migrating from a previous versioning pattern, if a number of commits
 should be discounted, or any other reason.</p>
-<p>Specify the <code>OffSet</code> as a numeric value to impact the base value of the height.</p>
-<pre><code class="lang-json">&quot;OffSet&quot; : -5
-&quot;OffSet&quot; : 4
+<p>Specify the <code>Offset</code> as a numeric value to impact the base value of the height.</p>
+<pre><code class="lang-json">&quot;Offset&quot; : -5
+&quot;Offset&quot; : 4
 </code></pre>
 <h2 id="branches">Branches</h2>
 <p>The <code>Branches</code> section allows for branch specific rules and configuration to
@@ -161,10 +129,43 @@ to the <code>Labels</code> property prefixed with <code>c</code> (for commit).</
 </code></pre>
 <p>In the above example, any branch called <em>master</em>, starting with <em>preview/</em> or
 starting with <em>release/</em> will <strong>not</strong> have the short sha appended. Generating a
-Semver2 verison of <code>0.1.0-alpha2.5</code> when there are five commits.</p>
+Semver2 version of <code>0.1.0-alpha2.5</code> when there are five commits.</p>
 <p>All other branches will append the short sha, generating a Semver2 version of
 <code>0.1.0-alpha2.5.c903782</code> when there are five commits and the sha begins with
 <em>903782</em></p>
+<h3 id="overrides">Overrides</h3>
+<p>Overrides allow for certain elements of the version to be reconfigured based
+on the branch being built.  Overrides are matched by a regular expression where
+only the first match (if found) is used.</p>
+<pre><code class="lang-json">{
+  &quot;version&quot;: &quot;0.2.0&quot;,
+  &quot;label&quot;: [ &quot;alpha1&quot; ],
+  &quot;branches&quot;: {
+    &quot;release&quot;: [
+      &quot;^refs/heads/master$&quot;,
+      &quot;^refs/heads/preview/.+$&quot;,
+      &quot;^refs/heads/release/.+$&quot;
+    ],
+    &quot;overrides&quot;: [
+      {
+        &quot;match&quot;: &quot;^refs/heads/feature/.+$&quot;,
+        &quot;metadata&quot;: [ &quot;{shortbranchname}&quot; ]
+      },
+      {
+        &quot;match&quot;: &quot;^refs/heads/release/.+$&quot;,
+        &quot;label&quot;: [],
+        &quot;metadata&quot;: [ &quot;*&quot; ]
+      }
+    ]
+  }
+}
+</code></pre>
+<p>In th above example, any branch starting with <em>feature/</em> will add the branches
+shortname as metadata to the generated version. E.g. <em>feature/testing</em> will
+create a version of <code>0.2.0-alpha1.5.c903782+featuretesting</code> when there are five
+commits and the sha begins with <em>903782</em></p>
+<p>Additionally, any branch beginning with <em>release/</em> will strip the release label
+and have the height added into the metadata.</p>
 <h2 id="replacement-tokens">Replacement Tokens</h2>
 <p>SimpleVersion allows specific <em>tokens</em> to be used in some properties to allow
 substitution of values during invocation.  The following tokens may be used:</p>
@@ -218,7 +219,7 @@ substitution of values during invocation.  The following tokens may be used:</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Kieranties/SimpleVersion/blob/feature/docs/docs/articles/configuration.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/docs/articles/configuration.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
