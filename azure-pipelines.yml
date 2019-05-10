@@ -50,11 +50,11 @@ jobs:
 
   # Build
   - powershell: ./build.ps1 -BuildDocs -ArtifactsPath $(ArtifactsDir)
-    displayName: 'Build: With docs'
+    displayName: 'Build'
 
   # Publish test results
   - task: PublishTestResults@2
-    displayName: 'Tests: Publish unit test'
+    displayName: 'Tests: Publish unit tests'
     continueOnError: true
     inputs:
       testRunTitle: Unit Tests
@@ -63,7 +63,7 @@ jobs:
 
   # Publish coverage
   - task: PublishCodeCoverageResults@1
-    displayName: "Artifacts: Publish Coverage"
+    displayName: "Tests: Publish unit test coverage"
     continueOnError: true
     inputs:
       codeCoverageTool: Cobertura
@@ -109,7 +109,7 @@ jobs:
       ArtifactType: Container
 
   - task: NuGetCommand@2
-    displayName: "Artifacts: Publish Packages"
+    displayName: "Artifacts: Push Packages"
     condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
     inputs:
       command: push
