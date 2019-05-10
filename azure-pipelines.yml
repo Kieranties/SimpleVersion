@@ -64,7 +64,7 @@ jobs:
       arguments: '/p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(System.DefaultWorkingDirectory)\TestResults\Coverage\'
 
   # Publish Unit tests
-  - task: PublishCodeCoverageResults@2
+  - task: PublishCodeCoverageResults@1
     displayName: "Artifacts: Publish Coverage"
     condition: succeededOrFailed()
     inputs:
