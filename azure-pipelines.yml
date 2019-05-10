@@ -64,13 +64,12 @@ jobs:
       arguments: '/p:CoverletOutputFormat=cobertura /p:CoverletOutput=$(System.DefaultWorkingDirectory)\TestResults\Coverage\'
 
   # Publish Unit tests
-  - task: PublishTestResults@2
+  - task: PublishCodeCoverageResults@2
     displayName: "Artifacts: Publish Coverage"
     condition: succeededOrFailed()
     inputs:
-      testResultsFormat: Cobertura
-      testResultsFiles: $(System.DefaultWorkingDirectory)\TestResults\Coverage\**\*.xml
-      testRunTitle: "Unit Tests"
+      codeCoverageTool: Cobertura
+      summaryFileLocation: $(System.DefaultWorkingDirectory)\TestResults\Coverage\**\*.xml
 
   # Pack assets
   - task: DotNetCoreCLI@2
