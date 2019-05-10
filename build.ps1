@@ -47,8 +47,8 @@ Get-ChildItem 'test' -Filter '*.csproj' -Recurse |
             '--no-restore', '--no-build'
             '--logger', 'trx'
             '-r', $testArtifacts
-            '/p:CollectCoverage=true'
-            '/p:CoverletOutputFormat=cobertura', "/p:CoverletOutput=$testArtifacts\$($_.basename).cobertura.xml"
+            '/p:CollectCoverage=true', "/p:MergeWith=$testArtifacts\coverage.json"
+            '/p:CoverletOutputFormat=\"cobertura,json\"', "/p:CoverletOutput=$testArtifacts\"
         )
         exec dotnet test $_.Fullname @testArgs
     }
