@@ -1,10 +1,10 @@
-Usage
-=====
+Introduction
+============
 
 SimpleVersion is available as a command line tool (distributed via nuget), a Cake
 addin, or as a collection of libraries for direct consumption in a project.
 
-To get a better understanding of the values returnd from invoking SimpleVersion
+To get a better understanding of the values returned from invoking SimpleVersion
 see the [results documentation][results].
 
 Command Line Tool
@@ -18,6 +18,7 @@ You can install SimpleVersion.Command using `nuget.exe`:
 nuget install SimpleVersion.Command
 ```
 
+> [!INFO]
 > Execute `nuget install -?` for additional options
 
 Once downloaded, you can invoke SimpleVersion using the `exe` under the installed

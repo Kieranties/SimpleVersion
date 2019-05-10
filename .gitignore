@@ -4,4 +4,8 @@ packages
 bin
 obj
 integration/temp
+log.txt
+/build
+/docs/api/*.yml
+/docs/api/.manifest
 coverage.json

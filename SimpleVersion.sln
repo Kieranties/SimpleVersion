@@ -18,22 +18,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{9EEF54AE-E
 		test\Directory.Build.props = test\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0F190AA6-731C-425E-894B-F4A63A86200A}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-		.gitignore = .gitignore
-		.simpleversion.json = .simpleversion.json
-		azure-pipelines.yml = azure-pipelines.yml
-		Directory.Build.props = Directory.Build.props
-		Directory.Build.targets = Directory.Build.targets
-		global.json = global.json
-		LICENSE = LICENSE
-		localbuild.ps1 = localbuild.ps1
-		nuget.config = nuget.config
-		Packages.props = Packages.props
-		README.md = README.md
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleVersion.Core", "src\SimpleVersion.Core\SimpleVersion.Core.csproj", "{C3908FD1-A959-4687-9221-C058698B126A}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleVersion.Core.Tests", "test\SimpleVersion.Core.Tests\SimpleVersion.Core.Tests.csproj", "{C367CC5A-5ACC-442A-8885-ED9A94A9A43E}"
@@ -44,7 +28,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleVersion.Cake", "src\S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{385532A7-26BE-4596-9EEE-E7C3984643ED}"
 	ProjectSection(SolutionItems) = preProject
-		shared\codecoverage.runsettings = shared\codecoverage.runsettings
 		shared\SimpleVersion.ruleset = shared\SimpleVersion.ruleset
 		shared\stylecop.json = shared\stylecop.json
 		shared\Tests.GlobalSuppressions.cs = shared\Tests.GlobalSuppressions.cs
