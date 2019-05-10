@@ -1,6 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <Sdk Name="Microsoft.Build.CentralPackageVersions" />
 
+  <PropertyGroup Label="Coverlet properties">
+    <Include>[SimpleVersion.Abstractions]*</Include>
+  </PropertyGroup>
+  
   <ItemGroup>
     <ProjectReference Include="..\..\src\SimpleVersion.Abstractions\SimpleVersion.Abstractions.csproj" />
   </ItemGroup>

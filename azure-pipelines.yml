@@ -19,7 +19,7 @@ variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
   DOTNET_CLI_TELEMETRY_OPTOUT: false
   Configuration: Release
-  DistDir: $(Build.ArtifactStagingDirectory)/distributables
+  ArtifactsDir: $(Build.ArtifactStagingDirectory)
   LocalFeed: https://pkgs.dev.azure.com/Kieranties/_packaging/SimpleVersion/nuget/v3/index.json
 
 jobs:
@@ -49,28 +49,25 @@ jobs:
     displayName: 'Prepare: Set version information'
 
   # Build
-  - task: DotNetCoreCLI@2
-    displayName: "Build: Source"
-    inputs:
-      command: build
-      projects: src/**/*.csproj
+  - powershell: ./build.ps1 -BuildDocs -ArtifactsPath $(ArtifactsDir)
+    displayName: 'Build'
 
-  # Run unit tests
-  - task: DotNetCoreCLI@2
-    displayName: "Test: Unit + Coverage"
+  # Publish test results
+  - task: PublishTestResults@2
+    displayName: 'Tests: Publish unit tests'
+    continueOnError: true
     inputs:
-      command: test
-      projects: 'test/**/*.csproj'
-      arguments: '--collect "Code Coverage" -s $(System.DefaultWorkingDirectory)\shared\codecoverage.runsettings'
+      testRunTitle: Unit Tests
+      testRunner: vstest
+      testResultsFiles: '$(ArtifactsDir)/**/*.trx'
 
-  # Pack assets
-  - task: DotNetCoreCLI@2
-    displayName: "Pack: Source Nuget Packages"
+  # Publish coverage
+  - task: PublishCodeCoverageResults@1
+    displayName: "Tests: Publish unit test coverage"
+    continueOnError: true
     inputs:
-      command: pack
-      packagesToPack: src/**/*.csproj
-      packDirectory: $(DistDir)
-      nobuild: true
+      codeCoverageTool: Cobertura
+      summaryFileLocation: '$(ArtifactsDir)/**/*.cobertura.xml'
 
   # TODO - Renable integration tests. Currently fail as environment variables
   # are always collected, so branch always maps to current repo branch being built
@@ -98,23 +95,25 @@ jobs:
       checkWarnings: true
       showStatistics: true
       checkCoverage: true
-      forceCoverageImprovement: true
+      coverageFailOption: fixed
+      coverageThreshold: 90
+      coverageType: branches
 
   # Handle artifacts
   - task: PublishBuildArtifacts@1
-    displayName: "Artifacts: Publish Distributables"
+    displayName: "Artifacts: Publish"
     condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
     inputs:
-      PathtoPublish: $(DistDir)
-      ArtifactName: distributables
+      PathtoPublish: $(ArtifactsDir)
+      ArtifactName: Artifacts
       ArtifactType: Container
 
   - task: NuGetCommand@2
-    displayName: "Artifacts: Publish Packages"
+    displayName: "Artifacts: Push Packages"
     condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
     inputs:
       command: push
-      packagesToPush: $(DistDir)/**/*.nupkg
+      packagesToPush: $(ArtifactsDir)/**/*.nupkg
       nuGetFeedType: internal
       publishVstsFeed: SimpleVersion
       feedsToUse: nuget.config
