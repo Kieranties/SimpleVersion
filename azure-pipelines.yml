@@ -95,7 +95,9 @@ jobs:
       checkWarnings: true
       showStatistics: true
       checkCoverage: true
-      forceCoverageImprovement: true
+      coverageFailOption: fixed
+      coverageThreshold: 90
+      coverageType: branches
 
   # Handle artifacts
   - task: PublishBuildArtifacts@1
