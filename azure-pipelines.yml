@@ -57,6 +57,9 @@ jobs:
     displayName: 'Tests: Publish unit tests'
     continueOnError: true
     inputs:
+      testRunTitle: Unit Tests
+      testRunner: vstest
+      testResultsFiles: '$(ArtifactsDir)/**/*.trx'
 
   # Publish coverage
   - task: PublishCodeCoverageResults@1
