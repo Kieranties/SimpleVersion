@@ -11,6 +11,6 @@
     margin-bottom: 0px !important;
 }
 
-#shields {
-    padding-left: 10px;
+#shields > .nav > li > a {
+    padding: 5px 10px;
 }

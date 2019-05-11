@@ -19,8 +19,8 @@
     <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
     <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
     </nav>
-    <div id="shields">
-      <ul>
+    <nav id="shields">
+      <ul class="nav">
         <li>
           <a href="https://www.nuget.org/packages?q=simpleversion&amp;prerel=false">
             <img src="https://img.shields.io/nuget/v/SimpleVersion.Core.svg?logo=nuget" alt="Nuget">
@@ -31,11 +31,15 @@
             <img src="https://img.shields.io/nuget/vpre/SimpleVersion.Core.svg?logo=nuget" alt="Nuget (with prereleases)">
           </a>
         </li>
+        <li>
           <a href="https://dev.azure.com/Kieranties/SimpleVersion/_build?definitionId=1">
             <img src="https://img.shields.io/azure-devops/tests/Kieranties/SimpleVersion/1/master.svg?logo=azuredevops" alt="Azure DevOps tests (branch)">
           </a>
+        </li>
         <li>
-          <img src="https://img.shields.io/azure-devops/coverage/Kieranties/SimpleVersion/1/master.svg?logo=azuredevops" alt="Azure DevOps coverage (branch)">
+          <a href="">
+            <img src="https://img.shields.io/azure-devops/coverage/Kieranties/SimpleVersion/1/master.svg?logo=azuredevops" alt="Azure DevOps coverage (branch)">
+          </a>
         </li>
         <li>
           <a href="https://github.com/kieranties/simpleversion/issues">
