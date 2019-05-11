@@ -1,5 +1,11 @@
 SimpleVersion
 =============
+[![Nuget](https://img.shields.io/nuget/v/SimpleVersion.Core.svg?logo=nuget&color=blue)][NugetRel]
+[![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/SimpleVersion.Core.svg?logo=nuget)][NugetPre]
+[![Build Status](https://dev.azure.com/Kieranties/SimpleVersion/_apis/build/status/Kieranties.SimpleVersion?branchName=master)][AzureRelease]
+[![GitHub issues](https://img.shields.io/github/issues/Kieranties/Simpleversion.svg?logo=github)][Issues]
+[![License](https://img.shields.io/github/license/Kieranties/SimpleVersion.svg?logo=github)][License]
+
 
 SimpleVersion aims to simplify how you version the artifacts of your git repository.
 
@@ -68,4 +74,9 @@ The height will be reset to 0 when SimpleVersion detects a change to either the
 [GitVersion]:     https://github.com/GitTools/GitVersion
 [NerdBank]:       https://github.com/aarnott/Nerdbank.GitVersioning
 [ConfigDoc]:      /articles/configuration.html
+[NugetRel]:       https://www.nuget.org/packages?q=simpleversion&prerel=false
+[NugetPre]:       https://www.nuget.org/packages?q=simpleversion
+[AzureRelease]:   https://dev.azure.com/Kieranties/SimpleVersion/_build/latest?definitionId=1&branchName=master
+[License]:        https://kieranties.mit-license.org/
 [FeatureBacklog]: https://github.com/kieranties/simpleversion/issues?q=is%3Aissue+is%3Aopen+label%3A%22%3Asparkles%3A+feature%22
+[Issues]:         https://github.com/kieranties/simpleversion/issues

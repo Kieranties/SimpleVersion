@@ -2,15 +2,3 @@
     height:40px;
     padding-top:15px;
 }
-
-.affix {
-    height: auto !important;
-}
-
-.affix > ul > li.active:last-child {
-    margin-bottom: 0px !important;
-}
-
-#shields > .nav > li > a {
-    padding: 5px 10px;
-}
