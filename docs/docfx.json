@@ -45,7 +45,9 @@
     "cleanupCacheHistory": false,
     "disableGitFeatures": false,
     "globalMetadata": {
-      "_appLogo": "images/logo.png"
+      "_appFaviconPath": "images/log.png",
+      "_appLogoPath": "images/logo.png",
+      "_appName": "SimpleVersion"
     }
   }
 }

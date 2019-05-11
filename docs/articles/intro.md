@@ -18,14 +18,14 @@ You can install SimpleVersion.Command using `nuget.exe`:
 nuget install SimpleVersion.Command
 ```
 
-> [!INFO]
+> [!NOTE]
 > Execute `nuget install -?` for additional options
 
 Once downloaded, you can invoke SimpleVersion using the `exe` under the installed
 `tools` folder.
 
 ```posh
-.\SimpleVersion.Command<version>\tools\SimpleVersion.exe
+.\SimpleVersion.Command.<version>\tools\SimpleVersion.exe
 ```
 
 Cake Addin

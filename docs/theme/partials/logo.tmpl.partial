@@ -1,3 +1,0 @@
-<a class="navbar-brand" href="{{_rel}}index.html">
-  <img id="logo" style="height:40px;padding-top:15px;" src="{{_rel}}{{_appLogo}}" alt="{{_appName}}" >
-</a>

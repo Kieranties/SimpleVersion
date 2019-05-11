@@ -24,13 +24,14 @@ Label
 
 The `Label` property specifies an array of labels to be included in the version.
 
-> By specifying values in the label, the version will be returned as a pre-release version.
-
 ```json
 "Label" : []
 "Label" : ["alpha1"]
 "Label" : ["alpha1", "test"]
 ```
+
+> [!NOTE]
+> By specifying values in the label, the version will be returned as a pre-release version.
 
 Metadata
 --------
@@ -38,13 +39,14 @@ Metadata
 The `Metadata` property specifies an array of values to be included as metadata
 in the final version.
 
-> Currently, only `Semver2` format supports `metadata`.
-
 ```json
 "Metadata" : []
 "Metadata" : ["demo"]
 "Metadata" : ["demo", "sprint1"]
 ```
+
+> [!WARNING]
+> Currently, only `Semver2` format supports `metadata`.
 
 Offset
 ------
@@ -95,6 +97,12 @@ All other branches will append the short sha, generating a Semver2 version of
 `0.1.0-alpha2.5.c903782` when there are five commits and the sha begins with
 _903782_
 
+> [!NOTE]
+> Release branch configuration provides a simple way to identify what may be
+> publicly shipped. If the version has a label containing the sha, you probably
+> don't want it released.  You can enable all branches to be release branches
+> using teh regular expression `.*`
+
 ### Overrides
 
 Overrides allow for certain elements of the version to be reconfigured based
@@ -133,6 +141,10 @@ commits and the sha begins with _903782_
 
 Additionally, any branch beginning with _release/_ will strip the release label
 and have the height added into the metadata.
+
+> [!WARNING]
+> Overrides will allow the same commit to be built with different versions
+> depending on the current branch.
 
 Replacement Tokens
 ------------------
