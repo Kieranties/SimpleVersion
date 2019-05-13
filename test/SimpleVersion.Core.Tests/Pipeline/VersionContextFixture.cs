@@ -2,7 +2,7 @@
 
 using FluentAssertions;
 using GitTools.Testing;
-using SimpleVersion.Model;
+using LibGit2Sharp;
 using SimpleVersion.Pipeline;
 using System;
 using System.Collections.Generic;
@@ -59,7 +59,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
         }
 
         [Fact]
-        public void GetResult_DescendantPath_ReturnsRootPath()
+        public void Ctor_DescendantPath_ReturnsRootPath()
         {
             using (var fixture = new EmptyRepositoryFixture())
             {
@@ -77,10 +77,9 @@ namespace SimpleVersion.Core.Tests.Pipeline
         private void AssertContext(VersionContext sut, RepositoryFixtureBase fixture)
         {
             sut.Configuration.Should().NotBeNull();
-            sut.Repository.Should().NotBeNull();
             sut.Result.BranchName.Should().Be(fixture.Repository.Head.FriendlyName);
             sut.Result.CanonicalBranchName.Should().Be(fixture.Repository.Head.CanonicalName);
-            sut.Result.Sha.Should().Be(fixture.Repository.Head.Tip.Sha);
+            sut.Result.Sha.Should().Be(fixture.Repository.Head.Tip?.Sha);
         }
     }
 }

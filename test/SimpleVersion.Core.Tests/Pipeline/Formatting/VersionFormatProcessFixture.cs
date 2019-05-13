@@ -31,7 +31,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
         public void Apply_InvalidVersion_Throws(string version)
         {
             // Arrange
-            var context = new VersionContext
+            var context = new VersionContext("test path")
             {
                 Configuration =
                 {
@@ -68,7 +68,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
         {
             // Arrange
             // Arrange
-            var context = new VersionContext
+            var context = new VersionContext("test path")
             {
                 Configuration =
                 {
@@ -106,7 +106,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             int revision)
         {
             // Arrange
-            var context = new VersionContext
+            var context = new VersionContext("test path")
             {
                 Configuration =
                 {

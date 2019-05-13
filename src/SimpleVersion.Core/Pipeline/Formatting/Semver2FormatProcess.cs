@@ -1,5 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using SimpleVersion.Abstractions.Pipeline;
+using SimpleVersion.Abstractions.Rules;
 using SimpleVersion.Rules;
 
 namespace SimpleVersion.Pipeline.Formatting
@@ -7,7 +9,7 @@ namespace SimpleVersion.Pipeline.Formatting
     /// <summary>
     /// Process the Semver 2 format.
     /// </summary>
-    public class Semver2FormatProcess : IVersionProcessor
+    public class Semver2FormatProcess : IVersionContextProcessor<IVersionContext>
     {
         /// <summary>
         /// The key used to identify this format.
@@ -15,7 +17,7 @@ namespace SimpleVersion.Pipeline.Formatting
         public const string FormatKey = "Semver2";
 
         /// <inheritdoc/>
-        public void Apply(VersionContext context)
+        public void Apply(IVersionContext context)
         {
             var rules = new ITokenRule<string>[]
             {

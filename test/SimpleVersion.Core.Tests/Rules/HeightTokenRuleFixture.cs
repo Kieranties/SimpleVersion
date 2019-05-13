@@ -1,4 +1,4 @@
-﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using FluentAssertions;
 using SimpleVersion.Pipeline;
@@ -68,7 +68,7 @@ namespace SimpleVersion.Core.Tests.Rules
         {
             // Arrange
             var sut = new HeightTokenRule(usePadding);
-            var context = new VersionContext
+            var context = new VersionContext("test path")
             {
                 Result =
                 {
@@ -101,7 +101,7 @@ namespace SimpleVersion.Core.Tests.Rules
         {
             // Arrange
             var sut = new HeightTokenRule();
-            var context = new VersionContext
+            var context = new VersionContext("test path")
             {
                 Configuration =
                 {

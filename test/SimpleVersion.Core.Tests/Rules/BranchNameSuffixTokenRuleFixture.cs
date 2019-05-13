@@ -1,4 +1,4 @@
-﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using FluentAssertions;
 using SimpleVersion.Pipeline;
@@ -26,7 +26,7 @@ namespace SimpleVersion.Core.Tests.Rules
         {
             yield return new object[] { null, null };
             yield return new object[] { null, Array.Empty<string>() };
-            yield return new object[] { new VersionContext(), new[] { "this" } };
+            yield return new object[] { new VersionContext("test path"), new[] { "this" } };
         }
 
         [Theory]
@@ -52,7 +52,7 @@ namespace SimpleVersion.Core.Tests.Rules
         {
             // Arrange
             var sut = new BranchNameSuffixTokenRule();
-            var context = new VersionContext
+            var context = new VersionContext("test path")
             {
                 Result =
                 {
@@ -73,7 +73,7 @@ namespace SimpleVersion.Core.Tests.Rules
         {
             // Arrange
             var sut = new BranchNameSuffixTokenRule(pattern);
-            var context = new VersionContext
+            var context = new VersionContext("test path")
             {
                 Result =
                 {

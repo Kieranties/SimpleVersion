@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using LibGit2Sharp;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Schema;
+using SimpleVersion.Abstractions.Pipeline;
 using SimpleVersion.Comparers;
 using SVM = SimpleVersion.Model;
 
@@ -15,7 +15,7 @@ namespace SimpleVersion.Pipeline
     /// <summary>
     /// Resolves the configuration for the version calculation.
     /// </summary>
-    public class ResolveConfigurationProcess : IVersionProcessor
+    public class ConfigurationContextProcessor : IVersionContextProcessor<VersionContext>
     {
         private static readonly ConfigurationVersionLabelComparer _comparer = new ConfigurationVersionLabelComparer();
 
@@ -24,28 +24,18 @@ namespace SimpleVersion.Pipeline
         {
             if (context == null)
                 throw new ArgumentNullException(nameof(context));
-
-            if (string.IsNullOrWhiteSpace(context.RepositoryPath))
-                throw new ArgumentException($"{nameof(context.RepositoryPath)} must be a directory");
-
-            using (var repo = new Repository(context.RepositoryPath))
+            using (var repo = context.GetRepository())
             {
-                if (string.IsNullOrWhiteSpace(context.Result.CanonicalBranchName))
-                    context.Result.CanonicalBranchName = repo.Head.CanonicalName;
-
-                if (string.IsNullOrWhiteSpace(context.Result.BranchName))
-                    context.Result.BranchName = repo.Head.FriendlyName;
-
                 var config = GetConfiguration(repo.Head?.Tip, context)
-                    ?? throw new InvalidOperationException($"Could not read '{Constants.VersionFileName}', has it been committed?");
+                        ?? throw new InvalidOperationException($"Could not read '{Constants.VersionFileName}', has it been committed?");
 
                 context.Configuration = config;
 
-                PopulateResult(context, repo);
+                PopulateHeight(context, repo);
             }
         }
 
-        private void PopulateResult(VersionContext context, Repository repo)
+        private void PopulateHeight(VersionContext context, Repository repo)
         {
             // Get the state of this tree to compare for diffs
             var tipTree = repo.Head.Tip.Tree;
@@ -72,7 +62,6 @@ namespace SimpleVersion.Pipeline
                 height++;
             }
 
-            context.Result.Sha = repo.Head.Tip.Sha;
             context.Result.Height = height;
         }
 

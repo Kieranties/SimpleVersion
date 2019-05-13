@@ -11,13 +11,13 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests.Pipeline
 {
-    public class ResolveConfigurationProcessFixture
+    public class ConfigurationContextProcessorFixture
     {
-        private readonly ResolveConfigurationProcess _sut;
+        private readonly ConfigurationContextProcessor _sut;
 
-        public ResolveConfigurationProcessFixture()
+        public ConfigurationContextProcessorFixture()
         {
-            _sut = new ResolveConfigurationProcess();
+            _sut = new ConfigurationContextProcessor();
         }
 
         [Fact]
@@ -31,29 +31,13 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 .And.ParamName.Should().Be("context");
         }
 
-        [Theory]
-        [InlineData(null)]
-        [InlineData("")]
-        [InlineData("  \t\t")]
-        public void Apply_InvalidRepositoryPath_Throws(string path)
-        {
-            // Arrange
-            var context = new VersionContext { RepositoryPath = path };
-
-            // Act
-            Action action = () => _sut.Apply(context);
-
-            // Assert
-            action.Should().Throw<ArgumentException>();
-        }
-
         [Fact]
         public void Apply_NoCommits_ShouldThrow()
         {
             using (var fixture = new EmptyRepositoryFixture())
             {
                 // Arrange
-                var context = new VersionContext { RepositoryPath = fixture.RepositoryPath };
+                var context = new VersionContext(fixture.RepositoryPath);
 
                 // Act
                 Action action = () => _sut.Apply(context);
@@ -70,11 +54,11 @@ namespace SimpleVersion.Core.Tests.Pipeline
             using (var fixture = new EmptyRepositoryFixture())
             {
                 // Arrange
-                var context = new VersionContext { RepositoryPath = fixture.RepositoryPath };
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
 
-                fixture.MakeACommit();
-                fixture.MakeACommit();
-                fixture.MakeACommit();
+                var context = new VersionContext(fixture.RepositoryPath);
 
                 // Act
                 Action action = () => _sut.Apply(context);
@@ -91,11 +75,10 @@ namespace SimpleVersion.Core.Tests.Pipeline
             using (var fixture = new EmptyRepositoryFixture())
             {
                 // Arrange
-                var context = new VersionContext { RepositoryPath = fixture.RepositoryPath };
-
-                // write the version file
                 var config = new Configuration { Version = "0.1.0" };
                 Utils.WriteConfiguration(config, fixture);
+
+                var context = new VersionContext(fixture.RepositoryPath);
 
                 // Act
                 _sut.Apply(context);
@@ -111,9 +94,6 @@ namespace SimpleVersion.Core.Tests.Pipeline
             using (var fixture = new EmptyRepositoryFixture())
             {
                 // Arrange
-                var context = new VersionContext { RepositoryPath = fixture.RepositoryPath };
-
-                // write the version file
                 var config = new Configuration { Version = "0.1.0" };
                 Utils.WriteConfiguration(config, fixture); // 1
 
@@ -121,6 +101,8 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit(); // 3
                 fixture.MakeACommit(); // 4
                 fixture.MakeACommit(); // 5
+
+                var context = new VersionContext(fixture.RepositoryPath);
 
                 // Act
                 _sut.Apply(context);
@@ -136,9 +118,6 @@ namespace SimpleVersion.Core.Tests.Pipeline
             using (var fixture = new EmptyRepositoryFixture())
             {
                 // Arrange
-                var context = new VersionContext { RepositoryPath = fixture.RepositoryPath };
-
-                // write the version file
                 var config = new Configuration { Version = "0.1.0" };
                 Utils.WriteConfiguration(config, fixture); // 1
 
@@ -149,6 +128,8 @@ namespace SimpleVersion.Core.Tests.Pipeline
 
                 config.Metadata.Add("example");
                 Utils.WriteConfiguration(config, fixture); // 6
+
+                var context = new VersionContext(fixture.RepositoryPath);
 
                 // Act
                 _sut.Apply(context);
@@ -164,9 +145,6 @@ namespace SimpleVersion.Core.Tests.Pipeline
             using (var fixture = new EmptyRepositoryFixture())
             {
                 // Arrange
-                var context = new VersionContext { RepositoryPath = fixture.RepositoryPath };
-
-                // write the version file
                 var config = new Configuration { Version = "0.1.0" };
                 Utils.WriteConfiguration(config, fixture); // 1
 
@@ -183,6 +161,8 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.Checkout("master");
                 fixture.MergeNoFF("feature/other"); // 6
 
+                var context = new VersionContext(fixture.RepositoryPath);
+
                 // Act
                 _sut.Apply(context);
 
@@ -196,9 +176,6 @@ namespace SimpleVersion.Core.Tests.Pipeline
             using (var fixture = new EmptyRepositoryFixture())
             {
                 // Arrange
-                var context = new VersionContext { RepositoryPath = fixture.RepositoryPath };
-
-                // write the version file
                 var config = new Configuration { Version = "0.1.0" };
                 Utils.WriteConfiguration(config, fixture); // 1
 
@@ -217,6 +194,8 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.Checkout("master");
                 fixture.MergeNoFF("feature/other"); // 1
 
+                var context = new VersionContext(fixture.RepositoryPath);
+
                 // Act
                 _sut.Apply(context);
 
@@ -231,9 +210,6 @@ namespace SimpleVersion.Core.Tests.Pipeline
             using (var fixture = new EmptyRepositoryFixture())
             {
                 // Arrange
-                var context = new VersionContext { RepositoryPath = fixture.RepositoryPath };
-
-                // write the version file
                 var config = new Configuration { Version = "0.1.0" };
                 Utils.WriteConfiguration(config, fixture); // 1
 
@@ -262,6 +238,8 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.Checkout("master");
                 fixture.MergeNoFF("feature/other"); // 1
 
+                var context = new VersionContext(fixture.RepositoryPath);
+
                 // Act
                 _sut.Apply(context);
 
@@ -276,9 +254,6 @@ namespace SimpleVersion.Core.Tests.Pipeline
             using (var fixture = new EmptyRepositoryFixture())
             {
                 // Arrange
-                var context = new VersionContext { RepositoryPath = fixture.RepositoryPath };
-
-                // write the version file
                 var config = new Configuration { Version = "0.1.0" };
                 Utils.WriteConfiguration(config, fixture); // 1
 
@@ -291,6 +266,8 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit(); // feature 1
                 fixture.MakeACommit(); // feature 2
                 fixture.MakeACommit(); // feature 3
+
+                var context = new VersionContext(fixture.RepositoryPath);
 
                 // Act
                 _sut.Apply(context);
@@ -306,8 +283,6 @@ namespace SimpleVersion.Core.Tests.Pipeline
             using (var fixture = new EmptyRepositoryFixture())
             {
                 // Arrange
-                var context = new VersionContext { RepositoryPath = fixture.RepositoryPath };
-
                 var expectedLabel = new List<string> { "{branchName}" };
                 var expectedMeta = new List<string> { "meta" };
 
@@ -340,6 +315,8 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit(); // feature 2
                 fixture.MakeACommit(); // feature 3
 
+                var context = new VersionContext(fixture.RepositoryPath);
+
                 // Act
                 _sut.Apply(context);
 
@@ -354,9 +331,6 @@ namespace SimpleVersion.Core.Tests.Pipeline
             using (var fixture = new EmptyRepositoryFixture())
             {
                 // Arrange
-                var context = new VersionContext { RepositoryPath = fixture.RepositoryPath };
-
-                // write the version file (Well formaed)
                 var config = new Configuration { Version = "0.1.0" };
                 Utils.WriteConfiguration(config, fixture); // 1
 
@@ -379,6 +353,8 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit(); // 7
                 fixture.MakeACommit(); // 8
 
+                var context = new VersionContext(fixture.RepositoryPath);
+
                 // Act
                 Action action = () => _sut.Apply(context);
 
@@ -394,9 +370,6 @@ namespace SimpleVersion.Core.Tests.Pipeline
             using (var fixture = new EmptyRepositoryFixture())
             {
                 // Arrange
-                var context = new VersionContext { RepositoryPath = fixture.RepositoryPath };
-
-                // write the version file (Well formaed)
                 var config = new Configuration { Version = "0.1.0" };
                 Utils.WriteConfiguration(config, fixture); // 1
 
@@ -422,6 +395,8 @@ namespace SimpleVersion.Core.Tests.Pipeline
 
                 config = new Configuration { Version = "0.1.0" };
                 Utils.WriteConfiguration(config, fixture); // 9
+
+                var context = new VersionContext(fixture.RepositoryPath);
 
                 // Act
                 _sut.Apply(context);

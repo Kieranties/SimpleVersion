@@ -39,7 +39,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             string expectedPart)
         {
             // Arrange
-            var context = new VersionContext
+            var context = new VersionContext("test path")
             {
                 Configuration = Utils.GetConfiguration(version, label: parts),
                 Result = Utils.GetVersionResult(height, false)
@@ -66,7 +66,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             string expected)
         {
             // Arrange
-            var context = new VersionContext
+            var context = new VersionContext("test path")
             {
                 Configuration = Utils.GetConfiguration(version, label: parts),
                 Result = Utils.GetVersionResult(height, true)

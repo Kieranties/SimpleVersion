@@ -1,36 +1,37 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using System;
+using SimpleVersion.Abstractions;
+using SimpleVersion.Abstractions.Pipeline;
 using System.Text.RegularExpressions;
 
-namespace SimpleVersion.Pipeline.BuildServers
+namespace SimpleVersion.Pipeline
 {
     /// <summary>
     /// Modifies the calculation when running in TFS/Azure Devops.
     /// </summary>
-    public class AzureDevopsProcess : IVersionProcessor
+    public class AzureDevopsContextProcessor : IVersionContextProcessor<IVersionContext>
     {
         private static readonly Regex _trim = new Regex(@"^refs\/(heads\/)?", RegexOptions.IgnoreCase);
         private readonly IEnvironment _env;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AzureDevopsProcess"/> class.
+        /// Initializes a new instance of the <see cref="AzureDevopsContextProcessor"/> class.
         /// </summary>
-        public AzureDevopsProcess() : this(new VersioningEnvironment())
+        public AzureDevopsContextProcessor() : this(new VersioningEnvironment())
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="AzureDevopsProcess"/> class.
+        /// Initializes a new instance of the <see cref="AzureDevopsContextProcessor"/> class.
         /// </summary>
         /// <param name="env">The <see cref="IEnvironment"/> for accessing environment variables.</param>
-        public AzureDevopsProcess(IEnvironment env)
+        public AzureDevopsContextProcessor(IEnvironment env)
         {
             _env = env;
         }
 
         /// <inheritdoc/>
-        public void Apply(VersionContext context)
+        public void Apply(IVersionContext context)
         {
             if (_env.GetVariable("TF_BUILD").ToBool())
             {

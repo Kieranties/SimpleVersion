@@ -9,7 +9,7 @@ namespace SimpleVersion.Pipeline
     /// <summary>
     /// Versioning context for Git repositories.
     /// </summary>
-    public sealed class VersionContext : IVersionContext, IDisposable
+    public class VersionContext : IVersionContext
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="VersionContext"/> class.
@@ -25,38 +25,35 @@ namespace SimpleVersion.Pipeline
             if (string.IsNullOrWhiteSpace(resolvedPath))
                 throw new DirectoryNotFoundException($"Could not find git repository at '{path}' or any parent directory.");
 
-            Repository = new Git.Repository(resolvedPath);
-            SetIntialResult();
+            _repoPath = resolvedPath;
+            Result = SetIntialResult();
         }
 
         /// <inheritdoc/>
         public Configuration Configuration { get; set; } = new Configuration();
 
+        private readonly string _repoPath;
+
         /// <inheritdoc/>
-        public VersionResult Result { get; set; } = new VersionResult();
+        public VersionResult Result { get; set; }
 
         /// <summary>
-        /// Gets the git repository for this context.
+        /// Gets and instance of the current repository.
         /// </summary>
-        public Git.Repository Repository { get; }
-
-        /// <inheritdoc/>
-        public void Dispose()
-        {
-            if (Repository != null)
-            {
-                Repository.Dispose();
-            }
-        }
+        /// <returns>The current <see cref="Git.Repository"/> being versioned.</returns>
+        public Git.Repository GetRepository() => new Git.Repository(_repoPath);
 
         private VersionResult SetIntialResult()
         {
-            return new VersionResult
+            using (var repo = GetRepository())
             {
-                BranchName = Repository.Head.FriendlyName,
-                CanonicalBranchName = Repository.Head.CanonicalName,
-                Sha = Repository.Head.Tip.Sha
-            };
+                return new VersionResult
+                {
+                    BranchName = repo.Head.FriendlyName,
+                    CanonicalBranchName = repo.Head.CanonicalName,
+                    Sha = repo.Head.Tip?.Sha
+                };
+            }
         }
     }
 }

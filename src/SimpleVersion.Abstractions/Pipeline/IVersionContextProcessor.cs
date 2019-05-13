@@ -6,7 +6,7 @@ namespace SimpleVersion.Abstractions.Pipeline
     /// Contract for a processor step during version calculation.
     /// </summary>
     /// <typeparam name="TContext">The type of context that can be processed.</typeparam>
-    public interface IVersionProcessor<TContext> where TContext : IVersionContext
+    public interface IVersionContextProcessor<TContext> where TContext : IVersionContext
     {
         /// <summary>
         /// Applies the processor to the given context.

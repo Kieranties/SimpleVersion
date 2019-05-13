@@ -1,4 +1,4 @@
-﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using FluentAssertions;
 using SimpleVersion.Pipeline;
@@ -33,7 +33,7 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Resolve_ReplacesToken_IfNeeded(string input, string expected)
         {
             // Arrange
-            var context = new VersionContext
+            var context = new VersionContext("test path")
             {
                 Result = Utils.GetVersionResult(10)
             };
@@ -65,7 +65,7 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Apply_AppendsToken_IfNeeded(bool isRelease, IEnumerable<string> input, IEnumerable<string> expected)
         {
             // Arrange
-            var context = new VersionContext
+            var context = new VersionContext("test path")
             {
                 Configuration = Utils.GetConfiguration("1.2.3"),
                 Result = Utils.GetVersionResult(10, isRelease)
