@@ -1,8 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <Sdk Name="Microsoft.Build.CentralPackageVersions" />
-
-  <PropertyGroup>
-    <RootNamespace>SimpleVersion</RootNamespace>
-  </PropertyGroup>
 
 </Project>

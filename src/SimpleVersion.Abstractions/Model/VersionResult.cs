@@ -60,6 +60,16 @@ namespace SimpleVersion.Model
         public string CanonicalBranchName { get; set; } = string.Empty;
 
         /// <summary>
+        /// Gets or sets a value indicating whether the current branch is a pull request.
+        /// </summary>
+        public bool IsPullRequest { get; set; } = false;
+
+        /// <summary>
+        /// Gets or sets the pull request number (if the current branch is a pull request).
+        /// </summary>
+        public int PullRequestNumber { get; set; } = 0;
+
+        /// <summary>
         /// Gets the collection of generated version strings.
         /// </summary>
         public IDictionary<string, string> Formats { get; } = new Dictionary<string, string>(System.StringComparer.OrdinalIgnoreCase);
