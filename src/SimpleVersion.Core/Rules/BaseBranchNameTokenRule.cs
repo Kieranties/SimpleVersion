@@ -1,11 +1,9 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using SimpleVersion.Abstractions.Pipeline;
+using SimpleVersion.Abstractions.Rules;
 using SimpleVersion.Pipeline;
 
 namespace SimpleVersion.Rules
@@ -43,14 +41,14 @@ namespace SimpleVersion.Rules
         public Regex Pattern { get; protected set; }
 
         /// <inheritdoc/>
-        public virtual IEnumerable<string> Apply(VersionContext context, IEnumerable<string> value)
+        public virtual IEnumerable<string> Apply(IVersionContext context, IEnumerable<string> value)
         {
             // No default implementation applies branch name
             return value;
         }
 
         /// <inheritdoc/>
-        public virtual string Resolve(VersionContext context, string value)
+        public virtual string Resolve(IVersionContext context, string value)
         {
             if (Regex.IsMatch(value, Token, RegexOptions.IgnoreCase))
             {
@@ -67,6 +65,6 @@ namespace SimpleVersion.Rules
         /// </summary>
         /// <param name="context">The <see cref="VersionContext"/> of the current calculation.</param>
         /// <returns>The branch name value.</returns>
-        protected abstract string ResolveBranchName(VersionContext context);
+        protected abstract string ResolveBranchName(IVersionContext context);
     }
 }

@@ -35,18 +35,6 @@ namespace SimpleVersion.Core.Tests
             return info;
         }
 
-        public static void WriteConfiguration(Configuration config, RepositoryFixtureBase fixture, bool commit = true)
-        {
-            // write the version file
-            var json = JsonConvert.SerializeObject(config, Formatting.Indented);
-            var fullPath = Path.Combine(fixture.RepositoryPath, Constants.VersionFileName);
-            File.WriteAllText(fullPath, json);
-            fixture.Repository.Index.Add(Constants.VersionFileName);
-            fixture.Repository.Index.Write();
-            if (commit)
-                fixture.MakeACommit();
-        }
-
         public static VersionResult GetVersionResult(int height, bool release = true)
         {
             var branchName = release ? "release/example" : "feature/example";

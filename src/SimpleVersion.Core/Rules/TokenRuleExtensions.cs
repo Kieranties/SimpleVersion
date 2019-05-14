@@ -1,5 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using SimpleVersion.Abstractions.Pipeline;
+using SimpleVersion.Abstractions.Rules;
 using SimpleVersion.Pipeline;
 using System.Collections.Generic;
 
@@ -18,7 +20,7 @@ namespace SimpleVersion.Rules
         /// <param name="context">The <see cref="VersionContext"/> of the current version calculation.</param>
         /// <param name="rules">The enumerable of rules to apply.</param>
         /// <returns>The value once all rules have been applied.</returns>
-        public static IEnumerable<T> ApplyTokenRules<T>(this IEnumerable<T> value, VersionContext context, IEnumerable<ITokenRule<T>> rules)
+        public static IEnumerable<T> ApplyTokenRules<T>(this IEnumerable<T> value, IVersionContext context, IEnumerable<ITokenRule<T>> rules)
         {
             var next = value;
             foreach (var rule in rules)
@@ -35,7 +37,7 @@ namespace SimpleVersion.Rules
         /// <param name="context">The <see cref="VersionContext"/> of the current version calculation.</param>
         /// <param name="rules">The enumerable of rules to resolve.</param>
         /// <returns>The value once all rules have been resolved.</returns>
-        public static T ResolveTokenRules<T>(this T value, VersionContext context, IEnumerable<ITokenRule<T>> rules)
+        public static T ResolveTokenRules<T>(this T value, IVersionContext context, IEnumerable<ITokenRule<T>> rules)
         {
             var next = value;
             foreach (var rule in rules)

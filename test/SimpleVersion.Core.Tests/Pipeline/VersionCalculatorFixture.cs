@@ -1,8 +1,12 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using FluentAssertions;
+using GitTools.Testing;
 using SimpleVersion.Model;
 using SimpleVersion.Pipeline;
+using System;
+using System.Collections.Generic;
+using System.IO;
 using Xunit;
 
 namespace SimpleVersion.Core.Tests.Pipeline
@@ -20,13 +24,61 @@ namespace SimpleVersion.Core.Tests.Pipeline
         [InlineData(null)]
         [InlineData("")]
         [InlineData("   \t\t")]
-        public void GetResult_EmptyPath_ReturnsResult(string path)
+        public void GetResult_EmptyPath_Throws(string path)
         {
             // Arrange / Act
-            var result = _sut.GetResult(path);
+            Action action = () => _sut.GetResult(path);
 
             // Assert
-            result.Should().BeEquivalentTo(new VersionResult());
+            action.Should().Throw<ArgumentException>()
+                .WithMessage("Path must be provided.\r\nParameter name: path");
+        }
+
+        public static IEnumerable<object[]> InvalidPaths()
+        {
+            yield return new[] { Environment.GetLogicalDrives()[0] };
+            yield return new[] { Path.Combine(Directory.GetCurrentDirectory(), "does not exist") };
+        }
+
+        [Theory]
+        [MemberData(nameof(InvalidPaths))]
+        public void GetResult_InvalidContextPath_Throws(string path)
+        {
+            // Arrange / Act
+            Action action = () => _sut.GetResult(path);
+
+            // Assert
+            action.Should().Throw<DirectoryNotFoundException>()
+                .And.Message.Should().Be($"Could not find git repository at '{path}' or any parent directory.");
+        }
+
+        [Fact]
+        public void GetResult_WithRootPath_ReturnsRootPath()
+        {
+            using (var fixture = new SimpleVersionRepositoryFixture())
+            {
+                // Act
+                var result = _sut.GetResult(fixture.RepositoryPath);
+
+                // Assert
+                result.RepositoryPath.Should().Be(fixture.RepositoryPath);
+            }
+        }
+
+        [Fact]
+        public void GetResult_DescendantPath_ReturnsRootPath()
+        {
+            using (var fixture = new SimpleVersionRepositoryFixture())
+            {
+                // Arrange
+                var dir = Directory.CreateDirectory(Path.Combine(fixture.RepositoryPath, "alpha", "beta"));
+
+                // Act
+                var result = _sut.GetResult(dir.FullName);
+
+                // Assert
+                result.RepositoryPath.Should().Be(fixture.RepositoryPath);
+            }
         }
     }
 }

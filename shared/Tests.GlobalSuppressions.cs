@@ -14,3 +14,8 @@
     "StyleCop.CSharp.DocumentationRules",
     "SA1600:Elements should be documented",
     Justification = "Tests do not require documentations")]
+
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage(
+    "Usage",
+    "CA1806:Do not ignore method results",
+    Justification = "Tests use lambdas/anonynmous functions for exception handling")]

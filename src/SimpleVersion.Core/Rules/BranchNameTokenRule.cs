@@ -1,6 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System;
+using SimpleVersion.Abstractions.Pipeline;
 using SimpleVersion.Pipeline;
 
 namespace SimpleVersion.Rules
@@ -36,6 +37,6 @@ namespace SimpleVersion.Rules
         public override string Token { get; protected set; } = "{branchname}";
 
         /// <inheritdoc/>
-        protected override string ResolveBranchName(VersionContext context) => context.Result.CanonicalBranchName;
+        protected override string ResolveBranchName(IVersionContext context) => context.Result.CanonicalBranchName;
     }
 }

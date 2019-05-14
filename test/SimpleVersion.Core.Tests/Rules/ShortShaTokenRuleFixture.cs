@@ -1,6 +1,7 @@
-﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using FluentAssertions;
+using GitTools.Testing;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Rules;
 using System;
@@ -33,16 +34,19 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Resolve_ReplacesToken_IfNeeded(string input, string expected)
         {
             // Arrange
-            var context = new VersionContext
+            using (var fixture = new EmptyRepositoryFixture())
             {
-                Result = Utils.GetVersionResult(10)
-            };
+                var context = new VersionContext(fixture.Repository)
+                {
+                    Result = Utils.GetVersionResult(10)
+                };
 
-            // Act
-            var result = _sut.Resolve(context, input);
+                // Act
+                var result = _sut.Resolve(context, input);
 
-            // Assert
-            result.Should().Be(expected);
+                // Assert
+                result.Should().Be(expected);
+            }
         }
 
         public static IEnumerable<object[]> ApplyData()
@@ -65,17 +69,20 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Apply_AppendsToken_IfNeeded(bool isRelease, IEnumerable<string> input, IEnumerable<string> expected)
         {
             // Arrange
-            var context = new VersionContext
+            using (var fixture = new EmptyRepositoryFixture())
             {
-                Configuration = Utils.GetConfiguration("1.2.3"),
-                Result = Utils.GetVersionResult(10, isRelease)
-            };
+                var context = new VersionContext(fixture.Repository)
+                {
+                    Configuration = Utils.GetConfiguration("1.2.3"),
+                    Result = Utils.GetVersionResult(10, isRelease)
+                };
 
-            // Act
-            var result = _sut.Apply(context, input);
+                // Act
+                var result = _sut.Apply(context, input);
 
-            // Assert
-            result.Should().BeEquivalentTo(expected, options => options.WithStrictOrdering());
+                // Assert
+                result.Should().BeEquivalentTo(expected, options => options.WithStrictOrdering());
+            }
         }
     }
 }

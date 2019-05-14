@@ -2,7 +2,7 @@
 
 using SimpleVersion.Model;
 
-namespace SimpleVersion.Pipeline
+namespace SimpleVersion.Abstractions
 {
     /// <summary>
     /// Contract for the calculation process.
@@ -10,13 +10,6 @@ namespace SimpleVersion.Pipeline
     /// </summary>
     public interface IVersionCalculator
     {
-        /// <summary>
-        /// Adds a  processor to the calculation process.
-        /// </summary>
-        /// <typeparam name="T">The processor to add.</typeparam>
-        /// <returns>An instance of <see cref="IVersionCalculator"/> with the processor addded.</returns>
-        IVersionCalculator AddProcessor<T>() where T : IVersionProcessor, new();
-
         /// <summary>
         /// Invokes the chain of processors to get a <see cref="VersionResult"/>.
         /// </summary>

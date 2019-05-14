@@ -1,6 +1,7 @@
-﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using SimpleVersion.Pipeline;
+using SimpleVersion.Abstractions.Pipeline;
+using SimpleVersion.Abstractions.Rules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,14 +25,14 @@ namespace SimpleVersion.Rules
         public string Token => "{shortsha}";
 
         /// <inheritdoc/>
-        public string Resolve(VersionContext context, string value)
+        public string Resolve(IVersionContext context, string value)
         {
             var shortSha = context.Result.Sha.Substring(0, 7);
             return Regex.Replace(value, Regex.Escape(Token), $"c{shortSha}", RegexOptions.IgnoreCase);
         }
 
         /// <inheritdoc/>
-        public IEnumerable<string> Apply(VersionContext context, IEnumerable<string> input)
+        public IEnumerable<string> Apply(IVersionContext context, IEnumerable<string> input)
         {
             var isRelease = context.Configuration.Branches.Release
                 .Any(x => Regex.IsMatch(context.Result.CanonicalBranchName, x));

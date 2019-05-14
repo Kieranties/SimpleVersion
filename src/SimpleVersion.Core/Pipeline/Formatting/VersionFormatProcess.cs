@@ -1,5 +1,6 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using SimpleVersion.Abstractions.Pipeline;
 using SimpleVersion.Rules;
 using System;
 
@@ -8,10 +9,10 @@ namespace SimpleVersion.Pipeline.Formatting
     /// <summary>
     /// Processes the version string.
     /// </summary>
-    public class VersionFormatProcess : IVersionProcessor
+    public class VersionFormatProcess : IVersionContextProcessor
     {
         /// <inheritdoc/>
-        public void Apply(VersionContext context)
+        public void Apply(IVersionContext context)
         {
             var versionString = HeightTokenRule.Instance.Resolve(context, context.Configuration.Version);
 

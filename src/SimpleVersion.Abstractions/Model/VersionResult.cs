@@ -1,6 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace SimpleVersion.Model
 {
@@ -9,10 +10,12 @@ namespace SimpleVersion.Model
     /// </summary>
     public class VersionResult
     {
+        private static readonly Regex _prRegex = new Regex(@"^refs\/pull\/(?<id>\d+)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
+
         /// <summary>
         /// Gets or sets the generated version.
         /// </summary>
-        public string Version { get; set; } = string.Empty;
+        public string Version { get; set; }
 
         /// <summary>
         /// Gets or sets the generated major version part.
@@ -47,17 +50,32 @@ namespace SimpleVersion.Model
         /// <summary>
         /// Gets or sets the full sha of the current commit.
         /// </summary>
-        public string Sha { get; set; } = string.Empty;
+        public string Sha { get; set; }
 
         /// <summary>
         /// Gets or sets the friendly branch name of the current branch.
         /// </summary>
-        public string BranchName { get; set; } = string.Empty;
+        public string BranchName { get; set; }
 
         /// <summary>
         /// Gets or sets the full canonical name of the current branch.
         /// </summary>
-        public string CanonicalBranchName { get; set; } = string.Empty;
+        public string CanonicalBranchName { get; set; }
+
+        /// <summary>
+        /// Gets a value indicating whether the current branch is a pull request.
+        /// </summary>
+        public bool IsPullRequest => _prRegex.IsMatch(CanonicalBranchName);
+
+        /// <summary>
+        /// Gets the pull request number (if the current branch is a pull request).
+        /// </summary>
+        public int PullRequestNumber => int.TryParse(_prRegex.Match(CanonicalBranchName).Groups["id"].Value, out var id) ? id : 0;
+
+        /// <summary>
+        /// Gets or sets the path to the repository.
+        /// </summary>
+        public string RepositoryPath { get; set; }
 
         /// <summary>
         /// Gets the collection of generated version strings.

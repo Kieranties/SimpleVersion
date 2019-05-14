@@ -2,8 +2,8 @@
 
 using Cake.Core;
 using Cake.Core.Annotations;
+using SimpleVersion;
 using SimpleVersion.Model;
-using SimpleVersion.Pipeline;
 
 namespace Cake.SimpleVersion
 {

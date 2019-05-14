@@ -1,9 +1,9 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using SimpleVersion.Pipeline;
+using SimpleVersion.Abstractions.Pipeline;
 using System.Collections.Generic;
 
-namespace SimpleVersion.Rules
+namespace SimpleVersion.Abstractions.Rules
 {
     /// <summary>
     /// Contract for a rule which applies for a specific token.
@@ -20,18 +20,18 @@ namespace SimpleVersion.Rules
         /// Resolve the <typeparamref name="T"/> value using the given context.
         /// The result will have any application of the token replaced.
         /// </summary>
-        /// <param name="context">The <see cref="VersionContext"/> of the current calculation.</param>
+        /// <param name="context">The context of the current calculation.</param>
         /// <param name="value">The <typeparamref name="T"/> value to resolve the token against.</param>
         /// <returns>An instance of <typeparamref name="T"/> with the tokens replaced.</returns>
-        T Resolve(VersionContext context, T value);
+        T Resolve(IVersionContext context, T value);
 
         /// <summary>
         /// Returns an enumerables of <typeparamref name="T"/> where the rule token
         /// may have been applied of the token rule requires it.
         /// </summary>
-        /// <param name="context">The <see cref="VersionContext"/> of the current calculation.</param>
+        /// <param name="context">The context of the current calculation.</param>
         /// <param name="value">An enumerable of <typeparamref name="T"/> values to possible update.</param>
         /// <returns>An enuemrable of <typeparamref name="T"/> where inclusion of the token may have been applied.</returns>
-        IEnumerable<T> Apply(VersionContext context, IEnumerable<T> value);
+        IEnumerable<T> Apply(IVersionContext context, IEnumerable<T> value);
     }
 }

@@ -15,16 +15,16 @@ namespace SimpleVersion.Abstractions.Tests.Model
             var sut = new VersionResult();
 
             // Assert
-            sut.Version.Should().BeEmpty();
+            sut.Version.Should().BeNull();
             sut.Major.Should().Be(0);
             sut.Minor.Should().Be(0);
             sut.Patch.Should().Be(0);
             sut.Revision.Should().Be(0);
             sut.Height.Should().Be(0);
             sut.HeightPadded.Should().Be("0000");
-            sut.Sha.Should().BeEmpty();
-            sut.BranchName.Should().BeEmpty();
-            sut.CanonicalBranchName.Should().BeEmpty();
+            sut.Sha.Should().BeNull();
+            sut.BranchName.Should().BeNull();
+            sut.CanonicalBranchName.Should().BeNull();
             sut.Formats.Should().BeEmpty();
         }
 
@@ -36,6 +36,17 @@ namespace SimpleVersion.Abstractions.Tests.Model
 
             // Assert
             sut.HeightPadded.Should().Be("0040");
+        }
+
+        [Fact]
+        public void PR_Branch_Sets_PR_Properties()
+        {
+            // Arrange / Act
+            var sut = new VersionResult { CanonicalBranchName = "refs/pull/124876/merge" };
+
+            // Assert
+            sut.IsPullRequest.Should().BeTrue();
+            sut.PullRequestNumber.Should().Be(124876);
         }
 
         [Fact]
