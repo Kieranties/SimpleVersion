@@ -1,6 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using FluentAssertions;
+using GitTools.Testing;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Pipeline.Formatting;
 using System;
@@ -31,20 +32,23 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
         public void Apply_InvalidVersion_Throws(string version)
         {
             // Arrange
-            var context = new VersionContext("test path")
+            using (var fixture = new EmptyRepositoryFixture())
             {
-                Configuration =
+                var context = new VersionContext(fixture.Repository)
                 {
-                    Version = version
-                }
-            };
+                    Configuration =
+                    {
+                        Version = version
+                    }
+                };
 
-            // Act
-            Action action = () => _sut.Apply(context);
+                // Act
+                Action action = () => _sut.Apply(context);
 
-            // Asset
-            action.Should().Throw<InvalidOperationException>()
-                .WithMessage($"Version '{context.Configuration.Version}' is not in a valid format");
+                // Asset
+                action.Should().Throw<InvalidOperationException>()
+                    .WithMessage($"Version '{context.Configuration.Version}' is not in a valid format");
+            }
         }
 
         public static IEnumerable<object[]> ValidVersions()
@@ -67,24 +71,26 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             int revision)
         {
             // Arrange
-            // Arrange
-            var context = new VersionContext("test path")
+            using (var fixture = new EmptyRepositoryFixture())
             {
-                Configuration =
+                var context = new VersionContext(fixture.Repository)
                 {
-                    Version = version
-                }
-            };
+                    Configuration =
+                    {
+                        Version = version
+                    }
+                };
 
-            // Act
-            _sut.Apply(context);
+                // Act
+                _sut.Apply(context);
 
-            // Assert
-            context.Result.Version.Should().Be(expectedVersion);
-            context.Result.Major.Should().Be(major);
-            context.Result.Minor.Should().Be(minor);
-            context.Result.Patch.Should().Be(patch);
-            context.Result.Revision.Should().Be(revision);
+                // Assert
+                context.Result.Version.Should().Be(expectedVersion);
+                context.Result.Major.Should().Be(major);
+                context.Result.Minor.Should().Be(minor);
+                context.Result.Patch.Should().Be(patch);
+                context.Result.Revision.Should().Be(revision);
+            }
         }
 
         [Theory]
@@ -106,27 +112,30 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             int revision)
         {
             // Arrange
-            var context = new VersionContext("test path")
+            using (var fixture = new EmptyRepositoryFixture())
             {
-                Configuration =
+                var context = new VersionContext(fixture.Repository)
                 {
-                    Version = version
-                },
-                Result =
-                {
-                    Height = commits
-                }
-            };
+                    Configuration =
+                    {
+                        Version = version
+                    },
+                    Result =
+                    {
+                        Height = commits
+                    }
+                };
 
-            // Act
-            _sut.Apply(context);
+                // Act
+                _sut.Apply(context);
 
-            // Assert
-            context.Result.Version.Should().Be(expectedVersion);
-            context.Result.Major.Should().Be(major);
-            context.Result.Minor.Should().Be(minor);
-            context.Result.Patch.Should().Be(patch);
-            context.Result.Revision.Should().Be(revision);
+                // Assert
+                context.Result.Version.Should().Be(expectedVersion);
+                context.Result.Major.Should().Be(major);
+                context.Result.Minor.Should().Be(minor);
+                context.Result.Patch.Should().Be(patch);
+                context.Result.Revision.Should().Be(revision);
+            }
         }
     }
 }

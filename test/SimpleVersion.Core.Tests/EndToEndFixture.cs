@@ -15,16 +15,12 @@ namespace SimpleVersion.Core.Tests
         [Fact]
         public void Override_Branches_Do_Not_Work_If_Asterisk_Used_In_Label()
         {
-            // Arrange
-            using (var repo = new EmptyRepositoryFixture())
-            using (EnvrionmentContext.NoBuildServer())
+            // Create the configuration model
+            var config = new Model.Configuration
             {
-                // Create the configuration model
-                var config = new Model.Configuration
-                {
-                    Version = "1.0.0",
-                    Label = { "r*" },
-                    Branches =
+                Version = "1.0.0",
+                Label = { "r*" },
+                Branches =
                     {
                         Release =
                         {
@@ -41,22 +37,25 @@ namespace SimpleVersion.Core.Tests
                             }
                         }
                     }
-                };
-                Utils.WriteConfiguration(config, repo);
+            };
 
+            // Arrange
+            using (var fixture = new SimpleVersionRepositoryFixture(config))
+            using (EnvrionmentContext.NoBuildServer())
+            {
                 // Make some extra commits on master
-                repo.MakeACommit();
-                repo.MakeACommit();
-                repo.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
 
                 // branch to a feature branch
-                repo.BranchTo("feature/PBI-319594-GitVersionDeprecation");
-                repo.MakeACommit();
-                repo.MakeACommit();
-                repo.MakeACommit();
+                fixture.BranchTo("feature/PBI-319594-GitVersionDeprecation");
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
 
                 // Act
-                var result = GetResult(repo);
+                var result = GetResult(fixture);
                 var semver1 = result.Formats[Semver1FormatProcess.FormatKey];
                 var semver2 = result.Formats[Semver2FormatProcess.FormatKey];
 

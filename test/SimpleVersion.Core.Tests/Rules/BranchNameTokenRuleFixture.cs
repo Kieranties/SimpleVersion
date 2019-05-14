@@ -1,6 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using FluentAssertions;
+using GitTools.Testing;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Rules;
 using System;
@@ -26,7 +27,6 @@ namespace SimpleVersion.Core.Tests.Rules
         {
             yield return new object[] { null, null };
             yield return new object[] { null, Array.Empty<string>() };
-            yield return new object[] { new VersionContext("test path"), new[] { "this" } };
         }
 
         [Theory]
@@ -52,19 +52,22 @@ namespace SimpleVersion.Core.Tests.Rules
         {
             // Arrange
             var sut = new BranchNameTokenRule();
-            var context = new VersionContext("test path")
+            using (var fixture = new EmptyRepositoryFixture())
             {
-                Result =
+                var context = new VersionContext(fixture.Repository)
                 {
-                    CanonicalBranchName = branchName
-                }
-            };
+                    Result =
+                    {
+                        CanonicalBranchName = branchName
+                    }
+                };
 
-            // Act
-            var result = sut.Resolve(context, input);
+                // Act
+                var result = sut.Resolve(context, input);
 
-            // Assert
-            result.Should().Be(expected);
+                // Assert
+                result.Should().Be(expected);
+            }
         }
 
         [Theory]
@@ -73,19 +76,22 @@ namespace SimpleVersion.Core.Tests.Rules
         {
             // Arrange
             var sut = new BranchNameTokenRule(pattern);
-            var context = new VersionContext("test path")
+            using (var fixture = new EmptyRepositoryFixture())
             {
-                Result =
+                var context = new VersionContext(fixture.Repository)
                 {
-                    CanonicalBranchName = branchName
-                }
-            };
+                    Result =
+                    {
+                        CanonicalBranchName = branchName
+                    }
+                };
 
-            // Act
-            var result = sut.Resolve(context, input);
+                // Act
+                var result = sut.Resolve(context, input);
 
-            // Assert
-            result.Should().Be(expected);
+                // Assert
+                result.Should().Be(expected);
+            }
         }
     }
 }

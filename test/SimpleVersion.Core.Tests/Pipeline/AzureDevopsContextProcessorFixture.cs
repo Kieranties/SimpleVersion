@@ -29,13 +29,13 @@ namespace SimpleVersion.Core.Tests.Pipeline
             var expectedCanonicalBranchName = "CanonicalBranchName";
             using (var fixture = new EmptyRepositoryFixture())
             {
-                var context = new VersionContext(fixture.RepositoryPath)
+                var context = new VersionContext(fixture.Repository)
                 {
-                    Result =
-                {
-                    BranchName = expectedBranchName,
-                    CanonicalBranchName = expectedCanonicalBranchName
-                }
+                        Result =
+                    {
+                        BranchName = expectedBranchName,
+                        CanonicalBranchName = expectedCanonicalBranchName
+                    }
                 };
 
                 // Act
@@ -58,7 +58,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
             _env.GetVariable("BUILD_SOURCEBRANCH").Returns(canonical);
             using (var fixture = new EmptyRepositoryFixture())
             {
-                var context = new VersionContext(fixture.RepositoryPath)
+                var context = new VersionContext(fixture.Repository)
                 {
                     Result =
                     {

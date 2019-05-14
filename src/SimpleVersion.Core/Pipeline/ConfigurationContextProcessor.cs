@@ -15,36 +15,37 @@ namespace SimpleVersion.Pipeline
     /// <summary>
     /// Resolves the configuration for the version calculation.
     /// </summary>
-    public class ConfigurationContextProcessor : IVersionContextProcessor<VersionContext>
+    public class ConfigurationContextProcessor : IVersionContextProcessor
     {
         private static readonly ConfigurationVersionLabelComparer _comparer = new ConfigurationVersionLabelComparer();
 
         /// <inheritdoc/>
-        public void Apply(VersionContext context)
+        public void Apply(IVersionContext context)
         {
             if (context == null)
                 throw new ArgumentNullException(nameof(context));
-            using (var repo = context.GetRepository())
-            {
-                var config = GetConfiguration(repo.Head?.Tip, context)
+
+            if (!(context is VersionContext repoContext))
+                throw new InvalidCastException($"Could not convert given context to {typeof(VersionContext)}");
+
+            var config = GetConfiguration(repoContext.Repository.Head?.Tip, repoContext)
                         ?? throw new InvalidOperationException($"Could not read '{Constants.VersionFileName}', has it been committed?");
 
-                context.Configuration = config;
+            context.Configuration = config;
 
-                PopulateHeight(context, repo);
-            }
+            PopulateHeight(repoContext);
         }
 
-        private void PopulateHeight(VersionContext context, Repository repo)
+        private void PopulateHeight(VersionContext context)
         {
             // Get the state of this tree to compare for diffs
-            var tipTree = repo.Head.Tip.Tree;
+            var tipTree = context.Repository.Head.Tip.Tree;
 
             // Initialise count - The current commit counts, include offset
             var height = 1 + context.Configuration.OffSet;
 
             // skip the first commit as that is our baseline
-            var commits = GetReachableCommits(repo).Skip(1).GetEnumerator();
+            var commits = GetReachableCommits(context.Repository).Skip(1).GetEnumerator();
 
             while (commits.MoveNext())
             {
@@ -52,7 +53,7 @@ namespace SimpleVersion.Pipeline
                 var next = commits.Current.Tree;
 
                 // Perform a diff
-                var diff = repo.Diff.Compare<TreeChanges>(next, tipTree);
+                var diff = context.Repository.Diff.Compare<TreeChanges>(next, tipTree);
 
                 // If a change to the file is found, stop counting
                 if (HasVersionChange(diff, commits.Current, context))
@@ -79,7 +80,7 @@ namespace SimpleVersion.Pipeline
             return false;
         }
 
-        private static IEnumerable<Commit> GetReachableCommits(Repository repo)
+        private static IEnumerable<Commit> GetReachableCommits(IRepository repo)
         {
             var filter = new CommitFilter
             {

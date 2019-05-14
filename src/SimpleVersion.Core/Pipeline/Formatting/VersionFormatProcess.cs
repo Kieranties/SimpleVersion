@@ -9,7 +9,7 @@ namespace SimpleVersion.Pipeline.Formatting
     /// <summary>
     /// Processes the version string.
     /// </summary>
-    public class VersionFormatProcess : IVersionContextProcessor<IVersionContext>
+    public class VersionFormatProcess : IVersionContextProcessor
     {
         /// <inheritdoc/>
         public void Apply(IVersionContext context)

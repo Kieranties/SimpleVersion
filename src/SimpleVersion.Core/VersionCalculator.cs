@@ -1,5 +1,8 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System;
+using System.IO;
+using LibGit2Sharp;
 using SimpleVersion.Abstractions;
 using SimpleVersion.Abstractions.Pipeline;
 using SimpleVersion.Model;
@@ -22,28 +25,44 @@ namespace SimpleVersion
         /// <inheritdoc/>
         public VersionResult GetResult(string path)
         {
-            var ctx = new VersionContext(path);
+            var resolvedPath = ResolveRepoPath(path);
 
-            // Resolve build server information
-            ApplyProcessor<AzureDevopsContextProcessor>(ctx);
-            ApplyProcessor<ConfigurationContextProcessor>(ctx);
-            ApplyProcessor<VersionFormatProcess>(ctx);
-            ApplyProcessor<Semver1FormatProcess>(ctx);
-            ApplyProcessor<Semver2FormatProcess>(ctx);
+            using (var repo = new Repository(resolvedPath))
+            {
+                // Init context
+                var ctx = new VersionContext(repo);
+                ctx.Result.RepositoryPath = Directory.GetParent(resolvedPath).Parent.FullName;
 
-            return ctx.Result;
+                // Resolve build server information
+                ApplyProcessor<AzureDevopsContextProcessor>(ctx);
 
+                // Resolve configuration
+                ApplyProcessor<ConfigurationContextProcessor>(ctx);
+
+                // Resolve Formats
+                ApplyProcessor<VersionFormatProcess>(ctx);
+                ApplyProcessor<Semver1FormatProcess>(ctx);
+                ApplyProcessor<Semver2FormatProcess>(ctx);
+
+                return ctx.Result;
+            }
+        }
+
+        private string ResolveRepoPath(string path)
+        {
+            if (string.IsNullOrWhiteSpace(path))
+                throw new ArgumentException("Path must be provided.", nameof(path));
+
+            var resolvedPath = Repository.Discover(path);
+
+            if (string.IsNullOrWhiteSpace(resolvedPath))
+                throw new DirectoryNotFoundException($"Could not find git repository at '{path}' or any parent directory.");
+
+            return resolvedPath;
         }
 
         private void ApplyProcessor<T>(IVersionContext context)
-            where T : IVersionContextProcessor<IVersionContext>, new()
-        {
-            var instance = new T();
-            instance.Apply(context);
-        }
-
-        private void ApplyProcessor<T>(VersionContext context)
-            where T : IVersionContextProcessor<VersionContext>, new()
+            where T : IVersionContextProcessor, new()
         {
             var instance = new T();
             instance.Apply(context);

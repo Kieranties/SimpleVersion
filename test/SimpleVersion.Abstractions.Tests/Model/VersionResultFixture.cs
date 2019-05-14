@@ -15,16 +15,16 @@ namespace SimpleVersion.Abstractions.Tests.Model
             var sut = new VersionResult();
 
             // Assert
-            sut.Version.Should().BeEmpty();
+            sut.Version.Should().BeNull();
             sut.Major.Should().Be(0);
             sut.Minor.Should().Be(0);
             sut.Patch.Should().Be(0);
             sut.Revision.Should().Be(0);
             sut.Height.Should().Be(0);
             sut.HeightPadded.Should().Be("0000");
-            sut.Sha.Should().BeEmpty();
-            sut.BranchName.Should().BeEmpty();
-            sut.CanonicalBranchName.Should().BeEmpty();
+            sut.Sha.Should().BeNull();
+            sut.BranchName.Should().BeNull();
+            sut.CanonicalBranchName.Should().BeNull();
             sut.Formats.Should().BeEmpty();
         }
 

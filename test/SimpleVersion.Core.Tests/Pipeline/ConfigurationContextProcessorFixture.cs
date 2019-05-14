@@ -37,7 +37,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
             using (var fixture = new EmptyRepositoryFixture())
             {
                 // Arrange
-                var context = new VersionContext(fixture.RepositoryPath);
+                var context = new VersionContext(fixture.Repository);
 
                 // Act
                 Action action = () => _sut.Apply(context);
@@ -49,7 +49,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
         }
 
         [Fact]
-        public void Apply_CommitsForFile_ShouldThrow()
+        public void Apply_NoCommitsForFile_ShouldThrow()
         {
             using (var fixture = new EmptyRepositoryFixture())
             {
@@ -58,7 +58,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit();
                 fixture.MakeACommit();
 
-                var context = new VersionContext(fixture.RepositoryPath);
+                var context = new VersionContext(fixture.Repository);
 
                 // Act
                 Action action = () => _sut.Apply(context);
@@ -72,13 +72,10 @@ namespace SimpleVersion.Core.Tests.Pipeline
         [Fact]
         public void Apply_First_Commit_Height_Is_One()
         {
-            using (var fixture = new EmptyRepositoryFixture())
+            using (var fixture = new SimpleVersionRepositoryFixture())
             {
                 // Arrange
-                var config = new Configuration { Version = "0.1.0" };
-                Utils.WriteConfiguration(config, fixture);
-
-                var context = new VersionContext(fixture.RepositoryPath);
+                var context = new VersionContext(fixture.Repository);
 
                 // Act
                 _sut.Apply(context);
@@ -91,18 +88,15 @@ namespace SimpleVersion.Core.Tests.Pipeline
         [Fact]
         public void Apply_Single_Branch_Increments_Each_Commit()
         {
-            using (var fixture = new EmptyRepositoryFixture())
+            using (var fixture = new SimpleVersionRepositoryFixture())
             {
                 // Arrange
-                var config = new Configuration { Version = "0.1.0" };
-                Utils.WriteConfiguration(config, fixture); // 1
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
 
-                fixture.MakeACommit(); // 2
-                fixture.MakeACommit(); // 3
-                fixture.MakeACommit(); // 4
-                fixture.MakeACommit(); // 5
-
-                var context = new VersionContext(fixture.RepositoryPath);
+                var context = new VersionContext(fixture.Repository);
 
                 // Act
                 _sut.Apply(context);
@@ -115,21 +109,20 @@ namespace SimpleVersion.Core.Tests.Pipeline
         [Fact]
         public void Apply_Modfied_No_Version_Or_Label_Changes_Does_Not_Reset()
         {
-            using (var fixture = new EmptyRepositoryFixture())
+            using (var fixture = new SimpleVersionRepositoryFixture())
             {
                 // Arrange
-                var config = new Configuration { Version = "0.1.0" };
-                Utils.WriteConfiguration(config, fixture); // 1
+                var config = fixture.GetConfig();
 
-                fixture.MakeACommit(); // 2
-                fixture.MakeACommit(); // 3
-                fixture.MakeACommit(); // 4
-                fixture.MakeACommit(); // 5
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
 
                 config.Metadata.Add("example");
-                Utils.WriteConfiguration(config, fixture); // 6
+                fixture.SetConfig(config);
 
-                var context = new VersionContext(fixture.RepositoryPath);
+                var context = new VersionContext(fixture.Repository);
 
                 // Act
                 _sut.Apply(context);
@@ -142,26 +135,23 @@ namespace SimpleVersion.Core.Tests.Pipeline
         [Fact]
         public void Apply_Feature_Branch_No_Change_Increments_Merge_Once()
         {
-            using (var fixture = new EmptyRepositoryFixture())
+            using (var fixture = new SimpleVersionRepositoryFixture())
             {
                 // Arrange
-                var config = new Configuration { Version = "0.1.0" };
-                Utils.WriteConfiguration(config, fixture); // 1
-
-                fixture.MakeACommit(); // 2
-                fixture.MakeACommit(); // 3
-                fixture.MakeACommit(); // 4
-                fixture.MakeACommit(); // 5
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
 
                 fixture.BranchTo("feature/other");
-                fixture.MakeACommit(); // feature 1
-                fixture.MakeACommit(); // feature 2
-                fixture.MakeACommit(); // feature 3
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
 
                 fixture.Checkout("master");
-                fixture.MergeNoFF("feature/other"); // 6
+                fixture.MergeNoFF("feature/other");
 
-                var context = new VersionContext(fixture.RepositoryPath);
+                var context = new VersionContext(fixture.Repository);
 
                 // Act
                 _sut.Apply(context);
@@ -173,28 +163,29 @@ namespace SimpleVersion.Core.Tests.Pipeline
         [Fact]
         public void Apply_Feature_Branch_Changes_Version_Resets_On_Merge()
         {
-            using (var fixture = new EmptyRepositoryFixture())
+            using (var fixture = new SimpleVersionRepositoryFixture())
             {
                 // Arrange
-                var config = new Configuration { Version = "0.1.0" };
-                Utils.WriteConfiguration(config, fixture); // 1
+                var config = fixture.GetConfig();
 
-                fixture.MakeACommit(); // 2
-                fixture.MakeACommit(); // 3
-                fixture.MakeACommit(); // 4
-                fixture.MakeACommit(); // 5
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
 
                 fixture.BranchTo("feature/other");
-                fixture.MakeACommit(); // feature 1
+                fixture.MakeACommit();
+
                 config.Version = "0.1.1";
-                Utils.WriteConfiguration(config, fixture); // 1
-                fixture.MakeACommit(); // feature 2
-                fixture.MakeACommit(); // feature 3
+                fixture.SetConfig(config);
+
+                fixture.MakeACommit();
+                fixture.MakeACommit();
 
                 fixture.Checkout("master");
-                fixture.MergeNoFF("feature/other"); // 1
+                fixture.MergeNoFF("feature/other");
 
-                var context = new VersionContext(fixture.RepositoryPath);
+                var context = new VersionContext(fixture.Repository);
 
                 // Act
                 _sut.Apply(context);
@@ -207,38 +198,41 @@ namespace SimpleVersion.Core.Tests.Pipeline
         [Fact]
         public void Apply_Feature_Branch_Changes_Version_Resets_On_Each_Merge()
         {
-            using (var fixture = new EmptyRepositoryFixture())
+            using (var fixture = new SimpleVersionRepositoryFixture())
             {
                 // Arrange
-                var config = new Configuration { Version = "0.1.0" };
-                Utils.WriteConfiguration(config, fixture); // 1
+                var config = fixture.GetConfig();
 
-                fixture.MakeACommit(); // 2
-                fixture.MakeACommit(); // 3
-                fixture.MakeACommit(); // 4
-                fixture.MakeACommit(); // 5
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
 
                 fixture.BranchTo("feature/other");
-                fixture.MakeACommit(); // feature 1
+                fixture.MakeACommit();
+
                 config.Version = "0.1.1";
-                Utils.WriteConfiguration(config, fixture); // 1
-                fixture.MakeACommit(); // feature 2
-                fixture.MakeACommit(); // feature 3
+                fixture.SetConfig(config);
+
+                fixture.MakeACommit();
+                fixture.MakeACommit();
 
                 fixture.Checkout("master");
-                fixture.MergeNoFF("feature/other"); // 1
+                fixture.MergeNoFF("feature/other");
 
                 fixture.Checkout("feature/other");
-                fixture.MakeACommit(); // feature 1
+                fixture.MakeACommit();
+
                 config.Version = "0.1.2";
-                Utils.WriteConfiguration(config, fixture); // 1
-                fixture.MakeACommit(); // feature 2
-                fixture.MakeACommit(); // feature 3
+                fixture.SetConfig(config);
+
+                fixture.MakeACommit();
+                fixture.MakeACommit();
 
                 fixture.Checkout("master");
-                fixture.MergeNoFF("feature/other"); // 1
+                fixture.MergeNoFF("feature/other");
 
-                var context = new VersionContext(fixture.RepositoryPath);
+                var context = new VersionContext(fixture.Repository);
 
                 // Act
                 _sut.Apply(context);
@@ -251,23 +245,20 @@ namespace SimpleVersion.Core.Tests.Pipeline
         [Fact]
         public void Apply_Feature_Branch_Sets_BranchName()
         {
-            using (var fixture = new EmptyRepositoryFixture())
+            using (var fixture = new SimpleVersionRepositoryFixture())
             {
                 // Arrange
-                var config = new Configuration { Version = "0.1.0" };
-                Utils.WriteConfiguration(config, fixture); // 1
-
-                fixture.MakeACommit(); // 2
-                fixture.MakeACommit(); // 3
-                fixture.MakeACommit(); // 4
-                fixture.MakeACommit(); // 5
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
 
                 fixture.BranchTo("feature/other");
-                fixture.MakeACommit(); // feature 1
-                fixture.MakeACommit(); // feature 2
-                fixture.MakeACommit(); // feature 3
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
 
-                var context = new VersionContext(fixture.RepositoryPath);
+                var context = new VersionContext(fixture.Repository);
 
                 // Act
                 _sut.Apply(context);
@@ -280,42 +271,40 @@ namespace SimpleVersion.Core.Tests.Pipeline
         [Fact]
         public void Apply_BranchOverride_AppliesOverride()
         {
-            using (var fixture = new EmptyRepositoryFixture())
-            {
-                // Arrange
-                var expectedLabel = new List<string> { "{branchName}" };
-                var expectedMeta = new List<string> { "meta" };
+            // Arrange
+            var expectedLabel = new List<string> { "{branchName}" };
+            var expectedMeta = new List<string> { "meta" };
 
-                // write the version file
-                var config = new Configuration
+            var config = new Configuration
+            {
+                Version = "0.1.0",
+                Branches =
                 {
-                    Version = "0.1.0",
-                    Branches =
+                    Overrides =
                     {
-                        Overrides =
+                        new BranchConfiguration
                         {
-                            new BranchConfiguration
-                            {
-                                Match = "feature/other",
-                                Label = expectedLabel,
-                                Metadata = expectedMeta
-                            }
+                            Match = "feature/other",
+                            Label = expectedLabel,
+                            Metadata = expectedMeta
                         }
                     }
-                };
-                Utils.WriteConfiguration(config, fixture); // 1
+                }
+            };
 
-                fixture.MakeACommit(); // 2
-                fixture.MakeACommit(); // 3
-                fixture.MakeACommit(); // 4
-                fixture.MakeACommit(); // 5
+            using (var fixture = new SimpleVersionRepositoryFixture(config))
+            {
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
 
                 fixture.BranchTo("feature/other");
-                fixture.MakeACommit(); // feature 1
-                fixture.MakeACommit(); // feature 2
-                fixture.MakeACommit(); // feature 3
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
 
-                var context = new VersionContext(fixture.RepositoryPath);
+                var context = new VersionContext(fixture.Repository);
 
                 // Act
                 _sut.Apply(context);
@@ -328,15 +317,12 @@ namespace SimpleVersion.Core.Tests.Pipeline
         [Fact]
         public void Apply_Malformed_Json_At_Commit_Throws()
         {
-            using (var fixture = new EmptyRepositoryFixture())
+            using (var fixture = new SimpleVersionRepositoryFixture())
             {
                 // Arrange
-                var config = new Configuration { Version = "0.1.0" };
-                Utils.WriteConfiguration(config, fixture); // 1
-
-                fixture.MakeACommit(); // 2
-                fixture.MakeACommit(); // 3
-                fixture.MakeACommit(); // 4
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
 
                 // Write the version file (with parsing errors)
                 var file = Path.Combine(fixture.RepositoryPath, Constants.VersionFileName);
@@ -348,12 +334,12 @@ namespace SimpleVersion.Core.Tests.Pipeline
 
                 fixture.Repository.Index.Add(Constants.VersionFileName);
                 fixture.Repository.Index.Write();
-                fixture.MakeACommit(); // 5
-                fixture.MakeACommit(); // 6
-                fixture.MakeACommit(); // 7
-                fixture.MakeACommit(); // 8
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
 
-                var context = new VersionContext(fixture.RepositoryPath);
+                var context = new VersionContext(fixture.Repository);
 
                 // Act
                 Action action = () => _sut.Apply(context);
@@ -367,15 +353,12 @@ namespace SimpleVersion.Core.Tests.Pipeline
         [Fact]
         public void Apply_Malformed_Json_Committed_Counts_As_No_Change()
         {
-            using (var fixture = new EmptyRepositoryFixture())
+            using (var fixture = new SimpleVersionRepositoryFixture())
             {
                 // Arrange
-                var config = new Configuration { Version = "0.1.0" };
-                Utils.WriteConfiguration(config, fixture); // 1
-
-                fixture.MakeACommit(); // 2
-                fixture.MakeACommit(); // 3
-                fixture.MakeACommit(); // 4
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
 
                 // Write the version file (with parsing errors)
                 var file = Path.Combine(fixture.RepositoryPath, Constants.VersionFileName);
@@ -393,10 +376,10 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit(); // 7
                 fixture.MakeACommit(); // 8
 
-                config = new Configuration { Version = "0.1.0" };
-                Utils.WriteConfiguration(config, fixture); // 9
+                var config = new Configuration { Version = "0.1.0" };
+                fixture.SetConfig(config);
 
-                var context = new VersionContext(fixture.RepositoryPath);
+                var context = new VersionContext(fixture.Repository);
 
                 // Act
                 _sut.Apply(context);

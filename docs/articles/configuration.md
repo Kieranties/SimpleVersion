@@ -158,5 +158,6 @@ substitution of values during invocation.  The following tokens may be used:
 | Height             | `*`                  | `Version`, `Label`, `Metadata` | Inserts the calculated height                                              |
 | Branch Name        | `{branchname}`       | `Label`, `Metadata`            | Inserts the canonical branch name, stripped of non-alphanumeric characters |
 | Short Branch Name  | `{shortbranchname}`  | `Label`, `Metadata`            | Inserts the friendly branch name, stripped of non-alphanumeric characters  |
-| Branch Name Suffix | `{branchnamesuffix}` | `Label`, `Metadata`            | Inserts the last segment of the canonical name of a branch				  |
+| Branch Name Suffix | `{branchnamesuffix}` | `Label`, `Metadata`            | Inserts the last segment of the canonical name of a branch                 |
 | Short Sha          | `{shortsha}`         | `Label`, `Metadata`            | Inserts the first seven characters of the commit sha, prefixed with `c`    |
+| Pull-Request Id    | `{pr}`               | `Label`, `Metadata`            | Inserts the id of the pull-request (or 0 by default)                       |

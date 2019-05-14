@@ -52,33 +52,33 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 .And.Message.Should().Be($"Could not find git repository at '{path}' or any parent directory.");
         }
 
-        //[Fact]
-        //public void GetResult_WithRootPath_ReturnsRootPath()
-        //{
-        //    using (var fixture = new EmptyRepositoryFixture())
-        //    {
-        //        // Act
-        //        var result = _sut.GetResult(fixture.RepositoryPath);
+        [Fact]
+        public void GetResult_WithRootPath_ReturnsRootPath()
+        {
+            using (var fixture = new SimpleVersionRepositoryFixture())
+            {
+                // Act
+                var result = _sut.GetResult(fixture.RepositoryPath);
 
-        //        // Assert
-        //        result.RepositoryPath.Should().Be(fixture.RepositoryPath);
-        //    }
-        //}
+                // Assert
+                result.RepositoryPath.Should().Be(fixture.RepositoryPath);
+            }
+        }
 
-        //[Fact]
-        //public void GetResult_DescendantPath_ReturnsRootPath()
-        //{
-        //    using (var fixture = new EmptyRepositoryFixture())
-        //    {
-        //        // Arrange
-        //        var dir = Directory.CreateDirectory(Path.Combine(fixture.RepositoryPath, "alpha", "beta"));
+        [Fact]
+        public void GetResult_DescendantPath_ReturnsRootPath()
+        {
+            using (var fixture = new SimpleVersionRepositoryFixture())
+            {
+                // Arrange
+                var dir = Directory.CreateDirectory(Path.Combine(fixture.RepositoryPath, "alpha", "beta"));
 
-        //        // Act
-        //        var result = _sut.GetResult(dir.FullName);
+                // Act
+                var result = _sut.GetResult(dir.FullName);
 
-        //        // Assert
-        //        result.RepositoryPath.Should().Be(fixture.RepositoryPath);
-        //    }
-        //}
+                // Assert
+                result.RepositoryPath.Should().Be(fixture.RepositoryPath);
+            }
+        }
     }
 }

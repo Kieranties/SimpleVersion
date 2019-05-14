@@ -9,7 +9,7 @@ namespace SimpleVersion.Pipeline
     /// <summary>
     /// Modifies the calculation when running in TFS/Azure Devops.
     /// </summary>
-    public class AzureDevopsContextProcessor : IVersionContextProcessor<IVersionContext>
+    public class AzureDevopsContextProcessor : IVersionContextProcessor
     {
         private static readonly Regex _trim = new Regex(@"^refs\/(heads\/)?", RegexOptions.IgnoreCase);
         private readonly IEnvironment _env;
