@@ -36,12 +36,14 @@ namespace SimpleVersion.Pipeline
 
         private VersionResult SetIntialResult()
         {
+            var sha = Repository.Head.Tip?.Sha;
             return new VersionResult
             {
                 BranchName = Repository.Head.FriendlyName,
                 CanonicalBranchName = Repository.Head.CanonicalName,
-                Sha = Repository.Head.Tip?.Sha
-            };
+                Sha = sha,
+                Sha7 = (string.IsNullOrEmpty(sha) || sha.Length < 8) ? null : sha.Substring(0, 7)
+        };
         }
     }
 }

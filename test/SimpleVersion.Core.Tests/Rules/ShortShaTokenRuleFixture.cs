@@ -49,6 +49,26 @@ namespace SimpleVersion.Core.Tests.Rules
             }
         }
 
+        [Theory]
+        [InlineData("this-{shortsha}", "this-c4ca82d2")]
+        public void Resolve_ReplacesToken2_IfNeeded(string input, string expected)
+        {
+            // Arrange
+            using (var fixture = new EmptyRepositoryFixture())
+            {
+                var context = new VersionContext(fixture.Repository)
+                {
+                    Result = Utils.GetVersionResult(10)
+                };
+
+                // Act
+                var result = _sut.Resolve(context, input);
+
+                // Assert
+                result.Should().Be(expected);
+            }
+        }
+
         public static IEnumerable<object[]> ApplyData()
         {
             // release branch does not include sha
