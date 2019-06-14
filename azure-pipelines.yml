@@ -37,7 +37,7 @@ jobs:
     displayName: 'Prepare: Install SimpleVersion'
     inputs:
       command: custom
-      arguments: 'install SimpleVersion.Command -Pre -Source $(LocalFeed)'
+      arguments: 'install SimpleVersion.Command -Pre -Source https://api.nuget.org/v3/index.json'
 
   # Calculate the version and set variables
   - powershell: |
