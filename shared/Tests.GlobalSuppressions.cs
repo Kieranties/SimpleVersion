@@ -19,3 +19,8 @@
     "Usage",
     "CA1806:Do not ignore method results",
     Justification = "Tests use lambdas/anonynmous functions for exception handling")]
+
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage(
+    "Usage",
+    "CA1062:Validate arguments of public methods",
+    Justification = "Tests do not require validation")]
