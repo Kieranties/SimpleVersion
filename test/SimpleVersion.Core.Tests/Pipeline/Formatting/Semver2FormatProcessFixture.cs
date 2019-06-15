@@ -50,8 +50,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 context.Result.Version = context.Configuration.Version;
 
                 var divider = parts.Length > 0 ? '.' : '-';
-                var shaSub = context.Result.Sha.Substring(0, 7);
-                var fullExpected = $"{expectedPart}{divider}c{shaSub}";
+                var fullExpected = $"{expectedPart}{divider}c{context.Result.Sha7}";
 
                 // Act
                 _sut.Apply(context);
@@ -112,13 +111,12 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                     Result = Utils.GetVersionResult(height, false)
                 };
                 context.Result.Version = context.Configuration.Version;
-                var shaSub = context.Result.Sha.Substring(0, 7);
 
                 string expected;
                 if (parts.Length > 0)
-                    expected = $"{version}-c{shaSub}+{string.Join(".", parts)}";
+                    expected = $"{version}-c{context.Result.Sha7}+{string.Join(".", parts)}";
                 else
-                    expected = $"{version}-c{shaSub}";
+                    expected = $"{version}-c{context.Result.Sha7}";
 
                 // Act
                 _sut.Apply(context);

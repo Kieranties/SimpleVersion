@@ -27,8 +27,7 @@ namespace SimpleVersion.Rules
         /// <inheritdoc/>
         public string Resolve(IVersionContext context, string value)
         {
-            var shortSha = context.Result.Sha.Substring(0, 7);
-            return Regex.Replace(value, Regex.Escape(Token), $"c{shortSha}", RegexOptions.IgnoreCase);
+            return Regex.Replace(value, Regex.Escape(Token), $"c{context.Result.Sha7}", RegexOptions.IgnoreCase);
         }
 
         /// <inheritdoc/>

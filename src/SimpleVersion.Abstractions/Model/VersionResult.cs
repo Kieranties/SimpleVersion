@@ -53,6 +53,11 @@ namespace SimpleVersion.Model
         public string Sha { get; set; }
 
         /// <summary>
+        /// Gets or sets the shortened (7 char) sha of the current commit.
+        /// </summary>
+        public string Sha7 { get; set; }
+
+        /// <summary>
         /// Gets or sets the friendly branch name of the current branch.
         /// </summary>
         public string BranchName { get; set; }

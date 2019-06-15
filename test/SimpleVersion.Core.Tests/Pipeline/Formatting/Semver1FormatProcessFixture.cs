@@ -49,8 +49,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 };
                 context.Result.Version = context.Configuration.Version;
 
-                var shaSub = context.Result.Sha.Substring(0, 7);
-                var fullExpected = $"{expectedPart}-c{shaSub}";
+                var fullExpected = $"{expectedPart}-c{context.Result.Sha7}";
 
                 // Act
                 _sut.Apply(context);
