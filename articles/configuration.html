@@ -10,7 +10,7 @@
     <meta name="title" content="Configuration ">
     <meta name="generator" content="docfx 2.42.0.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../images/log.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
@@ -33,8 +33,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
+              
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" style="height:40px;padding-top:15px;" src="../images/logo.png" alt="">
+                <img id="logo" class="svg" src="../images/logo.png" alt="SimpleVersion">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -82,23 +83,25 @@ dot separated digits.</p>
 </code></pre>
 <h2 id="label">Label</h2>
 <p>The <code>Label</code> property specifies an array of labels to be included in the version.</p>
-<blockquote>
-<p>By specifying values in the label, the version will be returned as a pre-release version.</p>
-</blockquote>
 <pre><code class="lang-json">&quot;Label&quot; : []
 &quot;Label&quot; : [&quot;alpha1&quot;]
 &quot;Label&quot; : [&quot;alpha1&quot;, &quot;test&quot;]
 </code></pre>
+<div class="NOTE">
+<h5>Note</h5>
+<p>By specifying values in the label, the version will be returned as a pre-release version.</p>
+</div>
 <h2 id="metadata">Metadata</h2>
 <p>The <code>Metadata</code> property specifies an array of values to be included as metadata
 in the final version.</p>
-<blockquote>
-<p>Currently, only <code>Semver2</code> format supports <code>metadata</code>.</p>
-</blockquote>
 <pre><code class="lang-json">&quot;Metadata&quot; : []
 &quot;Metadata&quot; : [&quot;demo&quot;]
 &quot;Metadata&quot; : [&quot;demo&quot;, &quot;sprint1&quot;]
 </code></pre>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Currently, only <code>Semver2</code> format supports <code>metadata</code>.</p>
+</div>
 <h2 id="offset">Offset</h2>
 <p>Sometimes you may need to adjust the base value of the height. This could be
 when migrating from a previous versioning pattern, if a number of commits
@@ -133,6 +136,13 @@ Semver2 version of <code>0.1.0-alpha2.5</code> when there are five commits.</p>
 <p>All other branches will append the short sha, generating a Semver2 version of
 <code>0.1.0-alpha2.5.c903782</code> when there are five commits and the sha begins with
 <em>903782</em></p>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Release branch configuration provides a simple way to identify what may be
+publicly shipped. If the version has a label containing the sha, you probably
+don't want it released.  You can enable all branches to be release branches
+using teh regular expression <code>.*</code></p>
+</div>
 <h3 id="overrides">Overrides</h3>
 <p>Overrides allow for certain elements of the version to be reconfigured based
 on the branch being built.  Overrides are matched by a regular expression where
@@ -166,6 +176,11 @@ create a version of <code>0.2.0-alpha1.5.c903782+featuretesting</code> when ther
 commits and the sha begins with <em>903782</em></p>
 <p>Additionally, any branch beginning with <em>release/</em> will strip the release label
 and have the height added into the metadata.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>Overrides will allow the same commit to be built with different versions
+depending on the current branch.</p>
+</div>
 <h2 id="replacement-tokens">Replacement Tokens</h2>
 <p>SimpleVersion allows specific <em>tokens</em> to be used in some properties to allow
 substitution of values during invocation.  The following tokens may be used:</p>
@@ -208,6 +223,12 @@ substitution of values during invocation.  The following tokens may be used:</p>
 <td><code>{shortsha}</code></td>
 <td><code>Label</code>, <code>Metadata</code></td>
 <td>Inserts the first seven characters of the commit sha, prefixed with <code>c</code></td>
+</tr>
+<tr>
+<td>Pull-Request Id</td>
+<td><code>{pr}</code></td>
+<td><code>Label</code>, <code>Metadata</code></td>
+<td>Inserts the id of the pull-request (or 0 by default)</td>
 </tr>
 </tbody>
 </table>

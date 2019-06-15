@@ -7,6 +7,166 @@ references:
   commentId: N:SimpleVersion
   fullName: SimpleVersion
   nameWithType: SimpleVersion
+- uid: SimpleVersion.Abstractions
+  name: SimpleVersion.Abstractions
+  href: api/SimpleVersion.Abstractions.html
+  commentId: N:SimpleVersion.Abstractions
+  fullName: SimpleVersion.Abstractions
+  nameWithType: SimpleVersion.Abstractions
+- uid: SimpleVersion.Abstractions.IEnvironment
+  name: IEnvironment
+  href: api/SimpleVersion.Abstractions.IEnvironment.html
+  commentId: T:SimpleVersion.Abstractions.IEnvironment
+  fullName: SimpleVersion.Abstractions.IEnvironment
+  nameWithType: IEnvironment
+- uid: SimpleVersion.Abstractions.IEnvironment.GetVariable(System.String)
+  name: GetVariable(String)
+  href: api/SimpleVersion.Abstractions.IEnvironment.html#SimpleVersion_Abstractions_IEnvironment_GetVariable_System_String_
+  commentId: M:SimpleVersion.Abstractions.IEnvironment.GetVariable(System.String)
+  fullName: SimpleVersion.Abstractions.IEnvironment.GetVariable(System.String)
+  nameWithType: IEnvironment.GetVariable(String)
+- uid: SimpleVersion.Abstractions.IEnvironment.GetVariable*
+  name: GetVariable
+  href: api/SimpleVersion.Abstractions.IEnvironment.html#SimpleVersion_Abstractions_IEnvironment_GetVariable_
+  commentId: Overload:SimpleVersion.Abstractions.IEnvironment.GetVariable
+  fullName: SimpleVersion.Abstractions.IEnvironment.GetVariable
+  nameWithType: IEnvironment.GetVariable
+- uid: SimpleVersion.Abstractions.IVersionCalculator
+  name: IVersionCalculator
+  href: api/SimpleVersion.Abstractions.IVersionCalculator.html
+  commentId: T:SimpleVersion.Abstractions.IVersionCalculator
+  fullName: SimpleVersion.Abstractions.IVersionCalculator
+  nameWithType: IVersionCalculator
+- uid: SimpleVersion.Abstractions.IVersionCalculator.GetResult(System.String)
+  name: GetResult(String)
+  href: api/SimpleVersion.Abstractions.IVersionCalculator.html#SimpleVersion_Abstractions_IVersionCalculator_GetResult_System_String_
+  commentId: M:SimpleVersion.Abstractions.IVersionCalculator.GetResult(System.String)
+  fullName: SimpleVersion.Abstractions.IVersionCalculator.GetResult(System.String)
+  nameWithType: IVersionCalculator.GetResult(String)
+- uid: SimpleVersion.Abstractions.IVersionCalculator.GetResult*
+  name: GetResult
+  href: api/SimpleVersion.Abstractions.IVersionCalculator.html#SimpleVersion_Abstractions_IVersionCalculator_GetResult_
+  commentId: Overload:SimpleVersion.Abstractions.IVersionCalculator.GetResult
+  fullName: SimpleVersion.Abstractions.IVersionCalculator.GetResult
+  nameWithType: IVersionCalculator.GetResult
+- uid: SimpleVersion.Abstractions.Pipeline
+  name: SimpleVersion.Abstractions.Pipeline
+  href: api/SimpleVersion.Abstractions.Pipeline.html
+  commentId: N:SimpleVersion.Abstractions.Pipeline
+  fullName: SimpleVersion.Abstractions.Pipeline
+  nameWithType: SimpleVersion.Abstractions.Pipeline
+- uid: SimpleVersion.Abstractions.Pipeline.IVersionContext
+  name: IVersionContext
+  href: api/SimpleVersion.Abstractions.Pipeline.IVersionContext.html
+  commentId: T:SimpleVersion.Abstractions.Pipeline.IVersionContext
+  fullName: SimpleVersion.Abstractions.Pipeline.IVersionContext
+  nameWithType: IVersionContext
+- uid: SimpleVersion.Abstractions.Pipeline.IVersionContext.Configuration
+  name: Configuration
+  href: api/SimpleVersion.Abstractions.Pipeline.IVersionContext.html#SimpleVersion_Abstractions_Pipeline_IVersionContext_Configuration
+  commentId: P:SimpleVersion.Abstractions.Pipeline.IVersionContext.Configuration
+  fullName: SimpleVersion.Abstractions.Pipeline.IVersionContext.Configuration
+  nameWithType: IVersionContext.Configuration
+- uid: SimpleVersion.Abstractions.Pipeline.IVersionContext.Configuration*
+  name: Configuration
+  href: api/SimpleVersion.Abstractions.Pipeline.IVersionContext.html#SimpleVersion_Abstractions_Pipeline_IVersionContext_Configuration_
+  commentId: Overload:SimpleVersion.Abstractions.Pipeline.IVersionContext.Configuration
+  fullName: SimpleVersion.Abstractions.Pipeline.IVersionContext.Configuration
+  nameWithType: IVersionContext.Configuration
+- uid: SimpleVersion.Abstractions.Pipeline.IVersionContext.Result
+  name: Result
+  href: api/SimpleVersion.Abstractions.Pipeline.IVersionContext.html#SimpleVersion_Abstractions_Pipeline_IVersionContext_Result
+  commentId: P:SimpleVersion.Abstractions.Pipeline.IVersionContext.Result
+  fullName: SimpleVersion.Abstractions.Pipeline.IVersionContext.Result
+  nameWithType: IVersionContext.Result
+- uid: SimpleVersion.Abstractions.Pipeline.IVersionContext.Result*
+  name: Result
+  href: api/SimpleVersion.Abstractions.Pipeline.IVersionContext.html#SimpleVersion_Abstractions_Pipeline_IVersionContext_Result_
+  commentId: Overload:SimpleVersion.Abstractions.Pipeline.IVersionContext.Result
+  fullName: SimpleVersion.Abstractions.Pipeline.IVersionContext.Result
+  nameWithType: IVersionContext.Result
+- uid: SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor
+  name: IVersionContextProcessor
+  href: api/SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.html
+  commentId: T:SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor
+  fullName: SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor
+  nameWithType: IVersionContextProcessor
+- uid: SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  name: Apply(IVersionContext)
+  href: api/SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.html#SimpleVersion_Abstractions_Pipeline_IVersionContextProcessor_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  nameWithType: IVersionContextProcessor.Apply(IVersionContext)
+- uid: SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.Apply*
+  name: Apply
+  href: api/SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.html#SimpleVersion_Abstractions_Pipeline_IVersionContextProcessor_Apply_
+  commentId: Overload:SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.Apply
+  fullName: SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.Apply
+  nameWithType: IVersionContextProcessor.Apply
+- uid: SimpleVersion.Abstractions.Rules
+  name: SimpleVersion.Abstractions.Rules
+  href: api/SimpleVersion.Abstractions.Rules.html
+  commentId: N:SimpleVersion.Abstractions.Rules
+  fullName: SimpleVersion.Abstractions.Rules
+  nameWithType: SimpleVersion.Abstractions.Rules
+- uid: SimpleVersion.Abstractions.Rules.ITokenRule`1
+  name: ITokenRule<T>
+  href: api/SimpleVersion.Abstractions.Rules.ITokenRule-1.html
+  commentId: T:SimpleVersion.Abstractions.Rules.ITokenRule`1
+  name.vb: ITokenRule(Of T)
+  fullName: SimpleVersion.Abstractions.Rules.ITokenRule<T>
+  fullName.vb: SimpleVersion.Abstractions.Rules.ITokenRule(Of T)
+  nameWithType: ITokenRule<T>
+  nameWithType.vb: ITokenRule(Of T)
+- uid: SimpleVersion.Abstractions.Rules.ITokenRule`1.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{`0})
+  name: Apply(IVersionContext, IEnumerable<T>)
+  href: api/SimpleVersion.Abstractions.Rules.ITokenRule-1.html#SimpleVersion_Abstractions_Rules_ITokenRule_1_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable__0__
+  commentId: M:SimpleVersion.Abstractions.Rules.ITokenRule`1.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{`0})
+  name.vb: Apply(IVersionContext, IEnumerable(Of T))
+  fullName: SimpleVersion.Abstractions.Rules.ITokenRule<T>.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<T>)
+  fullName.vb: SimpleVersion.Abstractions.Rules.ITokenRule(Of T).Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of T))
+  nameWithType: ITokenRule<T>.Apply(IVersionContext, IEnumerable<T>)
+  nameWithType.vb: ITokenRule(Of T).Apply(IVersionContext, IEnumerable(Of T))
+- uid: SimpleVersion.Abstractions.Rules.ITokenRule`1.Apply*
+  name: Apply
+  href: api/SimpleVersion.Abstractions.Rules.ITokenRule-1.html#SimpleVersion_Abstractions_Rules_ITokenRule_1_Apply_
+  commentId: Overload:SimpleVersion.Abstractions.Rules.ITokenRule`1.Apply
+  fullName: SimpleVersion.Abstractions.Rules.ITokenRule<T>.Apply
+  fullName.vb: SimpleVersion.Abstractions.Rules.ITokenRule(Of T).Apply
+  nameWithType: ITokenRule<T>.Apply
+  nameWithType.vb: ITokenRule(Of T).Apply
+- uid: SimpleVersion.Abstractions.Rules.ITokenRule`1.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,`0)
+  name: Resolve(IVersionContext, T)
+  href: api/SimpleVersion.Abstractions.Rules.ITokenRule-1.html#SimpleVersion_Abstractions_Rules_ITokenRule_1_Resolve_SimpleVersion_Abstractions_Pipeline_IVersionContext__0_
+  commentId: M:SimpleVersion.Abstractions.Rules.ITokenRule`1.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,`0)
+  fullName: SimpleVersion.Abstractions.Rules.ITokenRule<T>.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext, T)
+  fullName.vb: SimpleVersion.Abstractions.Rules.ITokenRule(Of T).Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext, T)
+  nameWithType: ITokenRule<T>.Resolve(IVersionContext, T)
+  nameWithType.vb: ITokenRule(Of T).Resolve(IVersionContext, T)
+- uid: SimpleVersion.Abstractions.Rules.ITokenRule`1.Resolve*
+  name: Resolve
+  href: api/SimpleVersion.Abstractions.Rules.ITokenRule-1.html#SimpleVersion_Abstractions_Rules_ITokenRule_1_Resolve_
+  commentId: Overload:SimpleVersion.Abstractions.Rules.ITokenRule`1.Resolve
+  fullName: SimpleVersion.Abstractions.Rules.ITokenRule<T>.Resolve
+  fullName.vb: SimpleVersion.Abstractions.Rules.ITokenRule(Of T).Resolve
+  nameWithType: ITokenRule<T>.Resolve
+  nameWithType.vb: ITokenRule(Of T).Resolve
+- uid: SimpleVersion.Abstractions.Rules.ITokenRule`1.Token
+  name: Token
+  href: api/SimpleVersion.Abstractions.Rules.ITokenRule-1.html#SimpleVersion_Abstractions_Rules_ITokenRule_1_Token
+  commentId: P:SimpleVersion.Abstractions.Rules.ITokenRule`1.Token
+  fullName: SimpleVersion.Abstractions.Rules.ITokenRule<T>.Token
+  fullName.vb: SimpleVersion.Abstractions.Rules.ITokenRule(Of T).Token
+  nameWithType: ITokenRule<T>.Token
+  nameWithType.vb: ITokenRule(Of T).Token
+- uid: SimpleVersion.Abstractions.Rules.ITokenRule`1.Token*
+  name: Token
+  href: api/SimpleVersion.Abstractions.Rules.ITokenRule-1.html#SimpleVersion_Abstractions_Rules_ITokenRule_1_Token_
+  commentId: Overload:SimpleVersion.Abstractions.Rules.ITokenRule`1.Token
+  fullName: SimpleVersion.Abstractions.Rules.ITokenRule<T>.Token
+  fullName.vb: SimpleVersion.Abstractions.Rules.ITokenRule(Of T).Token
+  nameWithType: ITokenRule<T>.Token
+  nameWithType.vb: ITokenRule(Of T).Token
 - uid: SimpleVersion.Comparers
   name: SimpleVersion.Comparers
   href: api/SimpleVersion.Comparers.html
@@ -67,24 +227,6 @@ references:
   commentId: F:SimpleVersion.Constants.VersionFileName
   fullName: SimpleVersion.Constants.VersionFileName
   nameWithType: Constants.VersionFileName
-- uid: SimpleVersion.IEnvironment
-  name: IEnvironment
-  href: api/SimpleVersion.IEnvironment.html
-  commentId: T:SimpleVersion.IEnvironment
-  fullName: SimpleVersion.IEnvironment
-  nameWithType: IEnvironment
-- uid: SimpleVersion.IEnvironment.GetVariable(System.String)
-  name: GetVariable(String)
-  href: api/SimpleVersion.IEnvironment.html#SimpleVersion_IEnvironment_GetVariable_System_String_
-  commentId: M:SimpleVersion.IEnvironment.GetVariable(System.String)
-  fullName: SimpleVersion.IEnvironment.GetVariable(System.String)
-  nameWithType: IEnvironment.GetVariable(String)
-- uid: SimpleVersion.IEnvironment.GetVariable*
-  name: GetVariable
-  href: api/SimpleVersion.IEnvironment.html#SimpleVersion_IEnvironment_GetVariable_
-  commentId: Overload:SimpleVersion.IEnvironment.GetVariable
-  fullName: SimpleVersion.IEnvironment.GetVariable
-  nameWithType: IEnvironment.GetVariable
 - uid: SimpleVersion.Model
   name: SimpleVersion.Model
   href: api/SimpleVersion.Model.html
@@ -343,6 +485,18 @@ references:
   commentId: Overload:SimpleVersion.Model.VersionResult.HeightPadded
   fullName: SimpleVersion.Model.VersionResult.HeightPadded
   nameWithType: VersionResult.HeightPadded
+- uid: SimpleVersion.Model.VersionResult.IsPullRequest
+  name: IsPullRequest
+  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_IsPullRequest
+  commentId: P:SimpleVersion.Model.VersionResult.IsPullRequest
+  fullName: SimpleVersion.Model.VersionResult.IsPullRequest
+  nameWithType: VersionResult.IsPullRequest
+- uid: SimpleVersion.Model.VersionResult.IsPullRequest*
+  name: IsPullRequest
+  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_IsPullRequest_
+  commentId: Overload:SimpleVersion.Model.VersionResult.IsPullRequest
+  fullName: SimpleVersion.Model.VersionResult.IsPullRequest
+  nameWithType: VersionResult.IsPullRequest
 - uid: SimpleVersion.Model.VersionResult.Major
   name: Major
   href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Major
@@ -379,6 +533,30 @@ references:
   commentId: Overload:SimpleVersion.Model.VersionResult.Patch
   fullName: SimpleVersion.Model.VersionResult.Patch
   nameWithType: VersionResult.Patch
+- uid: SimpleVersion.Model.VersionResult.PullRequestNumber
+  name: PullRequestNumber
+  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_PullRequestNumber
+  commentId: P:SimpleVersion.Model.VersionResult.PullRequestNumber
+  fullName: SimpleVersion.Model.VersionResult.PullRequestNumber
+  nameWithType: VersionResult.PullRequestNumber
+- uid: SimpleVersion.Model.VersionResult.PullRequestNumber*
+  name: PullRequestNumber
+  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_PullRequestNumber_
+  commentId: Overload:SimpleVersion.Model.VersionResult.PullRequestNumber
+  fullName: SimpleVersion.Model.VersionResult.PullRequestNumber
+  nameWithType: VersionResult.PullRequestNumber
+- uid: SimpleVersion.Model.VersionResult.RepositoryPath
+  name: RepositoryPath
+  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_RepositoryPath
+  commentId: P:SimpleVersion.Model.VersionResult.RepositoryPath
+  fullName: SimpleVersion.Model.VersionResult.RepositoryPath
+  nameWithType: VersionResult.RepositoryPath
+- uid: SimpleVersion.Model.VersionResult.RepositoryPath*
+  name: RepositoryPath
+  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_RepositoryPath_
+  commentId: Overload:SimpleVersion.Model.VersionResult.RepositoryPath
+  fullName: SimpleVersion.Model.VersionResult.RepositoryPath
+  nameWithType: VersionResult.RepositoryPath
 - uid: SimpleVersion.Model.VersionResult.Revision
   name: Revision
   href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Revision
@@ -403,6 +581,18 @@ references:
   commentId: Overload:SimpleVersion.Model.VersionResult.Sha
   fullName: SimpleVersion.Model.VersionResult.Sha
   nameWithType: VersionResult.Sha
+- uid: SimpleVersion.Model.VersionResult.Sha7
+  name: Sha7
+  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Sha7
+  commentId: P:SimpleVersion.Model.VersionResult.Sha7
+  fullName: SimpleVersion.Model.VersionResult.Sha7
+  nameWithType: VersionResult.Sha7
+- uid: SimpleVersion.Model.VersionResult.Sha7*
+  name: Sha7
+  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Sha7_
+  commentId: Overload:SimpleVersion.Model.VersionResult.Sha7
+  fullName: SimpleVersion.Model.VersionResult.Sha7
+  nameWithType: VersionResult.Sha7
 - uid: SimpleVersion.Model.VersionResult.Version
   name: Version
   href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Version
@@ -421,48 +611,72 @@ references:
   commentId: N:SimpleVersion.Pipeline
   fullName: SimpleVersion.Pipeline
   nameWithType: SimpleVersion.Pipeline
-- uid: SimpleVersion.Pipeline.BuildServers
-  name: SimpleVersion.Pipeline.BuildServers
-  href: api/SimpleVersion.Pipeline.BuildServers.html
-  commentId: N:SimpleVersion.Pipeline.BuildServers
-  fullName: SimpleVersion.Pipeline.BuildServers
-  nameWithType: SimpleVersion.Pipeline.BuildServers
-- uid: SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess
-  name: AzureDevopsProcess
-  href: api/SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.html
-  commentId: T:SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess
-  fullName: SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess
-  nameWithType: AzureDevopsProcess
-- uid: SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.#ctor
-  name: AzureDevopsProcess()
-  href: api/SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.html#SimpleVersion_Pipeline_BuildServers_AzureDevopsProcess__ctor
-  commentId: M:SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.#ctor
-  fullName: SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.AzureDevopsProcess()
-  nameWithType: AzureDevopsProcess.AzureDevopsProcess()
-- uid: SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.#ctor(SimpleVersion.IEnvironment)
-  name: AzureDevopsProcess(IEnvironment)
-  href: api/SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.html#SimpleVersion_Pipeline_BuildServers_AzureDevopsProcess__ctor_SimpleVersion_IEnvironment_
-  commentId: M:SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.#ctor(SimpleVersion.IEnvironment)
-  fullName: SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.AzureDevopsProcess(SimpleVersion.IEnvironment)
-  nameWithType: AzureDevopsProcess.AzureDevopsProcess(IEnvironment)
-- uid: SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.#ctor*
-  name: AzureDevopsProcess
-  href: api/SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.html#SimpleVersion_Pipeline_BuildServers_AzureDevopsProcess__ctor_
-  commentId: Overload:SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.#ctor
-  fullName: SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.AzureDevopsProcess
-  nameWithType: AzureDevopsProcess.AzureDevopsProcess
-- uid: SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.Apply(SimpleVersion.Pipeline.VersionContext)
-  name: Apply(VersionContext)
-  href: api/SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.html#SimpleVersion_Pipeline_BuildServers_AzureDevopsProcess_Apply_SimpleVersion_Pipeline_VersionContext_
-  commentId: M:SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.Apply(SimpleVersion.Pipeline.VersionContext)
-  fullName: SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.Apply(SimpleVersion.Pipeline.VersionContext)
-  nameWithType: AzureDevopsProcess.Apply(VersionContext)
-- uid: SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.Apply*
+- uid: SimpleVersion.Pipeline.AzureDevopsContextProcessor
+  name: AzureDevopsContextProcessor
+  href: api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.html
+  commentId: T:SimpleVersion.Pipeline.AzureDevopsContextProcessor
+  fullName: SimpleVersion.Pipeline.AzureDevopsContextProcessor
+  nameWithType: AzureDevopsContextProcessor
+- uid: SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor
+  name: AzureDevopsContextProcessor()
+  href: api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.html#SimpleVersion_Pipeline_AzureDevopsContextProcessor__ctor
+  commentId: M:SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor
+  fullName: SimpleVersion.Pipeline.AzureDevopsContextProcessor.AzureDevopsContextProcessor()
+  nameWithType: AzureDevopsContextProcessor.AzureDevopsContextProcessor()
+- uid: SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor(SimpleVersion.Abstractions.IEnvironment)
+  name: AzureDevopsContextProcessor(IEnvironment)
+  href: api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.html#SimpleVersion_Pipeline_AzureDevopsContextProcessor__ctor_SimpleVersion_Abstractions_IEnvironment_
+  commentId: M:SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor(SimpleVersion.Abstractions.IEnvironment)
+  fullName: SimpleVersion.Pipeline.AzureDevopsContextProcessor.AzureDevopsContextProcessor(SimpleVersion.Abstractions.IEnvironment)
+  nameWithType: AzureDevopsContextProcessor.AzureDevopsContextProcessor(IEnvironment)
+- uid: SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor*
+  name: AzureDevopsContextProcessor
+  href: api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.html#SimpleVersion_Pipeline_AzureDevopsContextProcessor__ctor_
+  commentId: Overload:SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor
+  fullName: SimpleVersion.Pipeline.AzureDevopsContextProcessor.AzureDevopsContextProcessor
+  nameWithType: AzureDevopsContextProcessor.AzureDevopsContextProcessor
+- uid: SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  name: Apply(IVersionContext)
+  href: api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.html#SimpleVersion_Pipeline_AzureDevopsContextProcessor_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  nameWithType: AzureDevopsContextProcessor.Apply(IVersionContext)
+- uid: SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply*
   name: Apply
-  href: api/SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.html#SimpleVersion_Pipeline_BuildServers_AzureDevopsProcess_Apply_
-  commentId: Overload:SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.Apply
-  fullName: SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.Apply
-  nameWithType: AzureDevopsProcess.Apply
+  href: api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.html#SimpleVersion_Pipeline_AzureDevopsContextProcessor_Apply_
+  commentId: Overload:SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply
+  fullName: SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply
+  nameWithType: AzureDevopsContextProcessor.Apply
+- uid: SimpleVersion.Pipeline.ConfigurationContextProcessor
+  name: ConfigurationContextProcessor
+  href: api/SimpleVersion.Pipeline.ConfigurationContextProcessor.html
+  commentId: T:SimpleVersion.Pipeline.ConfigurationContextProcessor
+  fullName: SimpleVersion.Pipeline.ConfigurationContextProcessor
+  nameWithType: ConfigurationContextProcessor
+- uid: SimpleVersion.Pipeline.ConfigurationContextProcessor.#ctor
+  name: ConfigurationContextProcessor()
+  href: api/SimpleVersion.Pipeline.ConfigurationContextProcessor.html#SimpleVersion_Pipeline_ConfigurationContextProcessor__ctor
+  commentId: M:SimpleVersion.Pipeline.ConfigurationContextProcessor.#ctor
+  fullName: SimpleVersion.Pipeline.ConfigurationContextProcessor.ConfigurationContextProcessor()
+  nameWithType: ConfigurationContextProcessor.ConfigurationContextProcessor()
+- uid: SimpleVersion.Pipeline.ConfigurationContextProcessor.#ctor*
+  name: ConfigurationContextProcessor
+  href: api/SimpleVersion.Pipeline.ConfigurationContextProcessor.html#SimpleVersion_Pipeline_ConfigurationContextProcessor__ctor_
+  commentId: Overload:SimpleVersion.Pipeline.ConfigurationContextProcessor.#ctor
+  fullName: SimpleVersion.Pipeline.ConfigurationContextProcessor.ConfigurationContextProcessor
+  nameWithType: ConfigurationContextProcessor.ConfigurationContextProcessor
+- uid: SimpleVersion.Pipeline.ConfigurationContextProcessor.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  name: Apply(IVersionContext)
+  href: api/SimpleVersion.Pipeline.ConfigurationContextProcessor.html#SimpleVersion_Pipeline_ConfigurationContextProcessor_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Pipeline.ConfigurationContextProcessor.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Pipeline.ConfigurationContextProcessor.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  nameWithType: ConfigurationContextProcessor.Apply(IVersionContext)
+- uid: SimpleVersion.Pipeline.ConfigurationContextProcessor.Apply*
+  name: Apply
+  href: api/SimpleVersion.Pipeline.ConfigurationContextProcessor.html#SimpleVersion_Pipeline_ConfigurationContextProcessor_Apply_
+  commentId: Overload:SimpleVersion.Pipeline.ConfigurationContextProcessor.Apply
+  fullName: SimpleVersion.Pipeline.ConfigurationContextProcessor.Apply
+  nameWithType: ConfigurationContextProcessor.Apply
 - uid: SimpleVersion.Pipeline.Formatting
   name: SimpleVersion.Pipeline.Formatting
   href: api/SimpleVersion.Pipeline.Formatting.html
@@ -487,12 +701,12 @@ references:
   commentId: Overload:SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.#ctor
   fullName: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Semver1FormatProcess
   nameWithType: Semver1FormatProcess.Semver1FormatProcess
-- uid: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply(SimpleVersion.Pipeline.VersionContext)
-  name: Apply(VersionContext)
-  href: api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver1FormatProcess_Apply_SimpleVersion_Pipeline_VersionContext_
-  commentId: M:SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply(SimpleVersion.Pipeline.VersionContext)
-  fullName: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply(SimpleVersion.Pipeline.VersionContext)
-  nameWithType: Semver1FormatProcess.Apply(VersionContext)
+- uid: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  name: Apply(IVersionContext)
+  href: api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver1FormatProcess_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  nameWithType: Semver1FormatProcess.Apply(IVersionContext)
 - uid: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply*
   name: Apply
   href: api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver1FormatProcess_Apply_
@@ -523,12 +737,12 @@ references:
   commentId: Overload:SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.#ctor
   fullName: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Semver2FormatProcess
   nameWithType: Semver2FormatProcess.Semver2FormatProcess
-- uid: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply(SimpleVersion.Pipeline.VersionContext)
-  name: Apply(VersionContext)
-  href: api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver2FormatProcess_Apply_SimpleVersion_Pipeline_VersionContext_
-  commentId: M:SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply(SimpleVersion.Pipeline.VersionContext)
-  fullName: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply(SimpleVersion.Pipeline.VersionContext)
-  nameWithType: Semver2FormatProcess.Apply(VersionContext)
+- uid: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  name: Apply(IVersionContext)
+  href: api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver2FormatProcess_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  nameWithType: Semver2FormatProcess.Apply(IVersionContext)
 - uid: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply*
   name: Apply
   href: api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver2FormatProcess_Apply_
@@ -559,198 +773,30 @@ references:
   commentId: Overload:SimpleVersion.Pipeline.Formatting.VersionFormatProcess.#ctor
   fullName: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.VersionFormatProcess
   nameWithType: VersionFormatProcess.VersionFormatProcess
-- uid: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply(SimpleVersion.Pipeline.VersionContext)
-  name: Apply(VersionContext)
-  href: api/SimpleVersion.Pipeline.Formatting.VersionFormatProcess.html#SimpleVersion_Pipeline_Formatting_VersionFormatProcess_Apply_SimpleVersion_Pipeline_VersionContext_
-  commentId: M:SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply(SimpleVersion.Pipeline.VersionContext)
-  fullName: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply(SimpleVersion.Pipeline.VersionContext)
-  nameWithType: VersionFormatProcess.Apply(VersionContext)
+- uid: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  name: Apply(IVersionContext)
+  href: api/SimpleVersion.Pipeline.Formatting.VersionFormatProcess.html#SimpleVersion_Pipeline_Formatting_VersionFormatProcess_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  nameWithType: VersionFormatProcess.Apply(IVersionContext)
 - uid: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply*
   name: Apply
   href: api/SimpleVersion.Pipeline.Formatting.VersionFormatProcess.html#SimpleVersion_Pipeline_Formatting_VersionFormatProcess_Apply_
   commentId: Overload:SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply
   fullName: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply
   nameWithType: VersionFormatProcess.Apply
-- uid: SimpleVersion.Pipeline.IVersionCalculator
-  name: IVersionCalculator
-  href: api/SimpleVersion.Pipeline.IVersionCalculator.html
-  commentId: T:SimpleVersion.Pipeline.IVersionCalculator
-  fullName: SimpleVersion.Pipeline.IVersionCalculator
-  nameWithType: IVersionCalculator
-- uid: SimpleVersion.Pipeline.IVersionCalculator.AddProcessor*
-  name: AddProcessor
-  href: api/SimpleVersion.Pipeline.IVersionCalculator.html#SimpleVersion_Pipeline_IVersionCalculator_AddProcessor_
-  commentId: Overload:SimpleVersion.Pipeline.IVersionCalculator.AddProcessor
-  fullName: SimpleVersion.Pipeline.IVersionCalculator.AddProcessor
-  nameWithType: IVersionCalculator.AddProcessor
-- uid: SimpleVersion.Pipeline.IVersionCalculator.AddProcessor``1
-  name: AddProcessor<T>()
-  href: api/SimpleVersion.Pipeline.IVersionCalculator.html#SimpleVersion_Pipeline_IVersionCalculator_AddProcessor__1
-  commentId: M:SimpleVersion.Pipeline.IVersionCalculator.AddProcessor``1
-  name.vb: AddProcessor(Of T)()
-  fullName: SimpleVersion.Pipeline.IVersionCalculator.AddProcessor<T>()
-  fullName.vb: SimpleVersion.Pipeline.IVersionCalculator.AddProcessor(Of T)()
-  nameWithType: IVersionCalculator.AddProcessor<T>()
-  nameWithType.vb: IVersionCalculator.AddProcessor(Of T)()
-- uid: SimpleVersion.Pipeline.IVersionCalculator.GetResult(System.String)
-  name: GetResult(String)
-  href: api/SimpleVersion.Pipeline.IVersionCalculator.html#SimpleVersion_Pipeline_IVersionCalculator_GetResult_System_String_
-  commentId: M:SimpleVersion.Pipeline.IVersionCalculator.GetResult(System.String)
-  fullName: SimpleVersion.Pipeline.IVersionCalculator.GetResult(System.String)
-  nameWithType: IVersionCalculator.GetResult(String)
-- uid: SimpleVersion.Pipeline.IVersionCalculator.GetResult*
-  name: GetResult
-  href: api/SimpleVersion.Pipeline.IVersionCalculator.html#SimpleVersion_Pipeline_IVersionCalculator_GetResult_
-  commentId: Overload:SimpleVersion.Pipeline.IVersionCalculator.GetResult
-  fullName: SimpleVersion.Pipeline.IVersionCalculator.GetResult
-  nameWithType: IVersionCalculator.GetResult
-- uid: SimpleVersion.Pipeline.IVersionProcessor
-  name: IVersionProcessor
-  href: api/SimpleVersion.Pipeline.IVersionProcessor.html
-  commentId: T:SimpleVersion.Pipeline.IVersionProcessor
-  fullName: SimpleVersion.Pipeline.IVersionProcessor
-  nameWithType: IVersionProcessor
-- uid: SimpleVersion.Pipeline.IVersionProcessor.Apply(SimpleVersion.Pipeline.VersionContext)
-  name: Apply(VersionContext)
-  href: api/SimpleVersion.Pipeline.IVersionProcessor.html#SimpleVersion_Pipeline_IVersionProcessor_Apply_SimpleVersion_Pipeline_VersionContext_
-  commentId: M:SimpleVersion.Pipeline.IVersionProcessor.Apply(SimpleVersion.Pipeline.VersionContext)
-  fullName: SimpleVersion.Pipeline.IVersionProcessor.Apply(SimpleVersion.Pipeline.VersionContext)
-  nameWithType: IVersionProcessor.Apply(VersionContext)
-- uid: SimpleVersion.Pipeline.IVersionProcessor.Apply*
-  name: Apply
-  href: api/SimpleVersion.Pipeline.IVersionProcessor.html#SimpleVersion_Pipeline_IVersionProcessor_Apply_
-  commentId: Overload:SimpleVersion.Pipeline.IVersionProcessor.Apply
-  fullName: SimpleVersion.Pipeline.IVersionProcessor.Apply
-  nameWithType: IVersionProcessor.Apply
-- uid: SimpleVersion.Pipeline.ResolveConfigurationProcess
-  name: ResolveConfigurationProcess
-  href: api/SimpleVersion.Pipeline.ResolveConfigurationProcess.html
-  commentId: T:SimpleVersion.Pipeline.ResolveConfigurationProcess
-  fullName: SimpleVersion.Pipeline.ResolveConfigurationProcess
-  nameWithType: ResolveConfigurationProcess
-- uid: SimpleVersion.Pipeline.ResolveConfigurationProcess.#ctor
-  name: ResolveConfigurationProcess()
-  href: api/SimpleVersion.Pipeline.ResolveConfigurationProcess.html#SimpleVersion_Pipeline_ResolveConfigurationProcess__ctor
-  commentId: M:SimpleVersion.Pipeline.ResolveConfigurationProcess.#ctor
-  fullName: SimpleVersion.Pipeline.ResolveConfigurationProcess.ResolveConfigurationProcess()
-  nameWithType: ResolveConfigurationProcess.ResolveConfigurationProcess()
-- uid: SimpleVersion.Pipeline.ResolveConfigurationProcess.#ctor*
-  name: ResolveConfigurationProcess
-  href: api/SimpleVersion.Pipeline.ResolveConfigurationProcess.html#SimpleVersion_Pipeline_ResolveConfigurationProcess__ctor_
-  commentId: Overload:SimpleVersion.Pipeline.ResolveConfigurationProcess.#ctor
-  fullName: SimpleVersion.Pipeline.ResolveConfigurationProcess.ResolveConfigurationProcess
-  nameWithType: ResolveConfigurationProcess.ResolveConfigurationProcess
-- uid: SimpleVersion.Pipeline.ResolveConfigurationProcess.Apply(SimpleVersion.Pipeline.VersionContext)
-  name: Apply(VersionContext)
-  href: api/SimpleVersion.Pipeline.ResolveConfigurationProcess.html#SimpleVersion_Pipeline_ResolveConfigurationProcess_Apply_SimpleVersion_Pipeline_VersionContext_
-  commentId: M:SimpleVersion.Pipeline.ResolveConfigurationProcess.Apply(SimpleVersion.Pipeline.VersionContext)
-  fullName: SimpleVersion.Pipeline.ResolveConfigurationProcess.Apply(SimpleVersion.Pipeline.VersionContext)
-  nameWithType: ResolveConfigurationProcess.Apply(VersionContext)
-- uid: SimpleVersion.Pipeline.ResolveConfigurationProcess.Apply*
-  name: Apply
-  href: api/SimpleVersion.Pipeline.ResolveConfigurationProcess.html#SimpleVersion_Pipeline_ResolveConfigurationProcess_Apply_
-  commentId: Overload:SimpleVersion.Pipeline.ResolveConfigurationProcess.Apply
-  fullName: SimpleVersion.Pipeline.ResolveConfigurationProcess.Apply
-  nameWithType: ResolveConfigurationProcess.Apply
-- uid: SimpleVersion.Pipeline.ResolveRepositoryPathProcess
-  name: ResolveRepositoryPathProcess
-  href: api/SimpleVersion.Pipeline.ResolveRepositoryPathProcess.html
-  commentId: T:SimpleVersion.Pipeline.ResolveRepositoryPathProcess
-  fullName: SimpleVersion.Pipeline.ResolveRepositoryPathProcess
-  nameWithType: ResolveRepositoryPathProcess
-- uid: SimpleVersion.Pipeline.ResolveRepositoryPathProcess.#ctor
-  name: ResolveRepositoryPathProcess()
-  href: api/SimpleVersion.Pipeline.ResolveRepositoryPathProcess.html#SimpleVersion_Pipeline_ResolveRepositoryPathProcess__ctor
-  commentId: M:SimpleVersion.Pipeline.ResolveRepositoryPathProcess.#ctor
-  fullName: SimpleVersion.Pipeline.ResolveRepositoryPathProcess.ResolveRepositoryPathProcess()
-  nameWithType: ResolveRepositoryPathProcess.ResolveRepositoryPathProcess()
-- uid: SimpleVersion.Pipeline.ResolveRepositoryPathProcess.#ctor*
-  name: ResolveRepositoryPathProcess
-  href: api/SimpleVersion.Pipeline.ResolveRepositoryPathProcess.html#SimpleVersion_Pipeline_ResolveRepositoryPathProcess__ctor_
-  commentId: Overload:SimpleVersion.Pipeline.ResolveRepositoryPathProcess.#ctor
-  fullName: SimpleVersion.Pipeline.ResolveRepositoryPathProcess.ResolveRepositoryPathProcess
-  nameWithType: ResolveRepositoryPathProcess.ResolveRepositoryPathProcess
-- uid: SimpleVersion.Pipeline.ResolveRepositoryPathProcess.Apply(SimpleVersion.Pipeline.VersionContext)
-  name: Apply(VersionContext)
-  href: api/SimpleVersion.Pipeline.ResolveRepositoryPathProcess.html#SimpleVersion_Pipeline_ResolveRepositoryPathProcess_Apply_SimpleVersion_Pipeline_VersionContext_
-  commentId: M:SimpleVersion.Pipeline.ResolveRepositoryPathProcess.Apply(SimpleVersion.Pipeline.VersionContext)
-  fullName: SimpleVersion.Pipeline.ResolveRepositoryPathProcess.Apply(SimpleVersion.Pipeline.VersionContext)
-  nameWithType: ResolveRepositoryPathProcess.Apply(VersionContext)
-- uid: SimpleVersion.Pipeline.ResolveRepositoryPathProcess.Apply*
-  name: Apply
-  href: api/SimpleVersion.Pipeline.ResolveRepositoryPathProcess.html#SimpleVersion_Pipeline_ResolveRepositoryPathProcess_Apply_
-  commentId: Overload:SimpleVersion.Pipeline.ResolveRepositoryPathProcess.Apply
-  fullName: SimpleVersion.Pipeline.ResolveRepositoryPathProcess.Apply
-  nameWithType: ResolveRepositoryPathProcess.Apply
-- uid: SimpleVersion.Pipeline.VersionCalculator
-  name: VersionCalculator
-  href: api/SimpleVersion.Pipeline.VersionCalculator.html
-  commentId: T:SimpleVersion.Pipeline.VersionCalculator
-  fullName: SimpleVersion.Pipeline.VersionCalculator
-  nameWithType: VersionCalculator
-- uid: SimpleVersion.Pipeline.VersionCalculator.#ctor
-  name: VersionCalculator()
-  href: api/SimpleVersion.Pipeline.VersionCalculator.html#SimpleVersion_Pipeline_VersionCalculator__ctor
-  commentId: M:SimpleVersion.Pipeline.VersionCalculator.#ctor
-  fullName: SimpleVersion.Pipeline.VersionCalculator.VersionCalculator()
-  nameWithType: VersionCalculator.VersionCalculator()
-- uid: SimpleVersion.Pipeline.VersionCalculator.#ctor*
-  name: VersionCalculator
-  href: api/SimpleVersion.Pipeline.VersionCalculator.html#SimpleVersion_Pipeline_VersionCalculator__ctor_
-  commentId: Overload:SimpleVersion.Pipeline.VersionCalculator.#ctor
-  fullName: SimpleVersion.Pipeline.VersionCalculator.VersionCalculator
-  nameWithType: VersionCalculator.VersionCalculator
-- uid: SimpleVersion.Pipeline.VersionCalculator.AddProcessor*
-  name: AddProcessor
-  href: api/SimpleVersion.Pipeline.VersionCalculator.html#SimpleVersion_Pipeline_VersionCalculator_AddProcessor_
-  commentId: Overload:SimpleVersion.Pipeline.VersionCalculator.AddProcessor
-  fullName: SimpleVersion.Pipeline.VersionCalculator.AddProcessor
-  nameWithType: VersionCalculator.AddProcessor
-- uid: SimpleVersion.Pipeline.VersionCalculator.AddProcessor``1
-  name: AddProcessor<T>()
-  href: api/SimpleVersion.Pipeline.VersionCalculator.html#SimpleVersion_Pipeline_VersionCalculator_AddProcessor__1
-  commentId: M:SimpleVersion.Pipeline.VersionCalculator.AddProcessor``1
-  name.vb: AddProcessor(Of T)()
-  fullName: SimpleVersion.Pipeline.VersionCalculator.AddProcessor<T>()
-  fullName.vb: SimpleVersion.Pipeline.VersionCalculator.AddProcessor(Of T)()
-  nameWithType: VersionCalculator.AddProcessor<T>()
-  nameWithType.vb: VersionCalculator.AddProcessor(Of T)()
-- uid: SimpleVersion.Pipeline.VersionCalculator.Default
-  name: Default()
-  href: api/SimpleVersion.Pipeline.VersionCalculator.html#SimpleVersion_Pipeline_VersionCalculator_Default
-  commentId: M:SimpleVersion.Pipeline.VersionCalculator.Default
-  fullName: SimpleVersion.Pipeline.VersionCalculator.Default()
-  nameWithType: VersionCalculator.Default()
-- uid: SimpleVersion.Pipeline.VersionCalculator.Default*
-  name: Default
-  href: api/SimpleVersion.Pipeline.VersionCalculator.html#SimpleVersion_Pipeline_VersionCalculator_Default_
-  commentId: Overload:SimpleVersion.Pipeline.VersionCalculator.Default
-  fullName: SimpleVersion.Pipeline.VersionCalculator.Default
-  nameWithType: VersionCalculator.Default
-- uid: SimpleVersion.Pipeline.VersionCalculator.GetResult(System.String)
-  name: GetResult(String)
-  href: api/SimpleVersion.Pipeline.VersionCalculator.html#SimpleVersion_Pipeline_VersionCalculator_GetResult_System_String_
-  commentId: M:SimpleVersion.Pipeline.VersionCalculator.GetResult(System.String)
-  fullName: SimpleVersion.Pipeline.VersionCalculator.GetResult(System.String)
-  nameWithType: VersionCalculator.GetResult(String)
-- uid: SimpleVersion.Pipeline.VersionCalculator.GetResult*
-  name: GetResult
-  href: api/SimpleVersion.Pipeline.VersionCalculator.html#SimpleVersion_Pipeline_VersionCalculator_GetResult_
-  commentId: Overload:SimpleVersion.Pipeline.VersionCalculator.GetResult
-  fullName: SimpleVersion.Pipeline.VersionCalculator.GetResult
-  nameWithType: VersionCalculator.GetResult
 - uid: SimpleVersion.Pipeline.VersionContext
   name: VersionContext
   href: api/SimpleVersion.Pipeline.VersionContext.html
   commentId: T:SimpleVersion.Pipeline.VersionContext
   fullName: SimpleVersion.Pipeline.VersionContext
   nameWithType: VersionContext
-- uid: SimpleVersion.Pipeline.VersionContext.#ctor
-  name: VersionContext()
-  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext__ctor
-  commentId: M:SimpleVersion.Pipeline.VersionContext.#ctor
-  fullName: SimpleVersion.Pipeline.VersionContext.VersionContext()
-  nameWithType: VersionContext.VersionContext()
+- uid: SimpleVersion.Pipeline.VersionContext.#ctor(LibGit2Sharp.IRepository)
+  name: VersionContext(IRepository)
+  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext__ctor_LibGit2Sharp_IRepository_
+  commentId: M:SimpleVersion.Pipeline.VersionContext.#ctor(LibGit2Sharp.IRepository)
+  fullName: SimpleVersion.Pipeline.VersionContext.VersionContext(LibGit2Sharp.IRepository)
+  nameWithType: VersionContext.VersionContext(IRepository)
 - uid: SimpleVersion.Pipeline.VersionContext.#ctor*
   name: VersionContext
   href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext__ctor_
@@ -769,30 +815,18 @@ references:
   commentId: Overload:SimpleVersion.Pipeline.VersionContext.Configuration
   fullName: SimpleVersion.Pipeline.VersionContext.Configuration
   nameWithType: VersionContext.Configuration
-- uid: SimpleVersion.Pipeline.VersionContext.Path
-  name: Path
-  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Path
-  commentId: P:SimpleVersion.Pipeline.VersionContext.Path
-  fullName: SimpleVersion.Pipeline.VersionContext.Path
-  nameWithType: VersionContext.Path
-- uid: SimpleVersion.Pipeline.VersionContext.Path*
-  name: Path
-  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Path_
-  commentId: Overload:SimpleVersion.Pipeline.VersionContext.Path
-  fullName: SimpleVersion.Pipeline.VersionContext.Path
-  nameWithType: VersionContext.Path
-- uid: SimpleVersion.Pipeline.VersionContext.RepositoryPath
-  name: RepositoryPath
-  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_RepositoryPath
-  commentId: P:SimpleVersion.Pipeline.VersionContext.RepositoryPath
-  fullName: SimpleVersion.Pipeline.VersionContext.RepositoryPath
-  nameWithType: VersionContext.RepositoryPath
-- uid: SimpleVersion.Pipeline.VersionContext.RepositoryPath*
-  name: RepositoryPath
-  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_RepositoryPath_
-  commentId: Overload:SimpleVersion.Pipeline.VersionContext.RepositoryPath
-  fullName: SimpleVersion.Pipeline.VersionContext.RepositoryPath
-  nameWithType: VersionContext.RepositoryPath
+- uid: SimpleVersion.Pipeline.VersionContext.Repository
+  name: Repository
+  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Repository
+  commentId: P:SimpleVersion.Pipeline.VersionContext.Repository
+  fullName: SimpleVersion.Pipeline.VersionContext.Repository
+  nameWithType: VersionContext.Repository
+- uid: SimpleVersion.Pipeline.VersionContext.Repository*
+  name: Repository
+  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Repository_
+  commentId: Overload:SimpleVersion.Pipeline.VersionContext.Repository
+  fullName: SimpleVersion.Pipeline.VersionContext.Repository
+  nameWithType: VersionContext.Repository
 - uid: SimpleVersion.Pipeline.VersionContext.Result
   name: Result
   href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Result
@@ -835,15 +869,15 @@ references:
   commentId: Overload:SimpleVersion.Rules.BaseBranchNameTokenRule.#ctor
   fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.BaseBranchNameTokenRule
   nameWithType: BaseBranchNameTokenRule.BaseBranchNameTokenRule
-- uid: SimpleVersion.Rules.BaseBranchNameTokenRule.Apply(SimpleVersion.Pipeline.VersionContext,System.Collections.Generic.IEnumerable{System.String})
-  name: Apply(VersionContext, IEnumerable<String>)
-  href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_Apply_SimpleVersion_Pipeline_VersionContext_System_Collections_Generic_IEnumerable_System_String__
-  commentId: M:SimpleVersion.Rules.BaseBranchNameTokenRule.Apply(SimpleVersion.Pipeline.VersionContext,System.Collections.Generic.IEnumerable{System.String})
-  name.vb: Apply(VersionContext, IEnumerable(Of String))
-  fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.Apply(SimpleVersion.Pipeline.VersionContext, System.Collections.Generic.IEnumerable<System.String>)
-  fullName.vb: SimpleVersion.Rules.BaseBranchNameTokenRule.Apply(SimpleVersion.Pipeline.VersionContext, System.Collections.Generic.IEnumerable(Of System.String))
-  nameWithType: BaseBranchNameTokenRule.Apply(VersionContext, IEnumerable<String>)
-  nameWithType.vb: BaseBranchNameTokenRule.Apply(VersionContext, IEnumerable(Of String))
+- uid: SimpleVersion.Rules.BaseBranchNameTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
+  name: Apply(IVersionContext, IEnumerable<String>)
+  href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:SimpleVersion.Rules.BaseBranchNameTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
+  name.vb: Apply(IVersionContext, IEnumerable(Of String))
+  fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<System.String>)
+  fullName.vb: SimpleVersion.Rules.BaseBranchNameTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of System.String))
+  nameWithType: BaseBranchNameTokenRule.Apply(IVersionContext, IEnumerable<String>)
+  nameWithType.vb: BaseBranchNameTokenRule.Apply(IVersionContext, IEnumerable(Of String))
 - uid: SimpleVersion.Rules.BaseBranchNameTokenRule.Apply*
   name: Apply
   href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_Apply_
@@ -862,24 +896,24 @@ references:
   commentId: Overload:SimpleVersion.Rules.BaseBranchNameTokenRule.Pattern
   fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.Pattern
   nameWithType: BaseBranchNameTokenRule.Pattern
-- uid: SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve(SimpleVersion.Pipeline.VersionContext,System.String)
-  name: Resolve(VersionContext, String)
-  href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_Resolve_SimpleVersion_Pipeline_VersionContext_System_String_
-  commentId: M:SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve(SimpleVersion.Pipeline.VersionContext,System.String)
-  fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve(SimpleVersion.Pipeline.VersionContext, System.String)
-  nameWithType: BaseBranchNameTokenRule.Resolve(VersionContext, String)
+- uid: SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.String)
+  name: Resolve(IVersionContext, String)
+  href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_Resolve_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_String_
+  commentId: M:SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.String)
+  fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.String)
+  nameWithType: BaseBranchNameTokenRule.Resolve(IVersionContext, String)
 - uid: SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve*
   name: Resolve
   href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_Resolve_
   commentId: Overload:SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve
   fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve
   nameWithType: BaseBranchNameTokenRule.Resolve
-- uid: SimpleVersion.Rules.BaseBranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.VersionContext)
-  name: ResolveBranchName(VersionContext)
-  href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_ResolveBranchName_SimpleVersion_Pipeline_VersionContext_
-  commentId: M:SimpleVersion.Rules.BaseBranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.VersionContext)
-  fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.VersionContext)
-  nameWithType: BaseBranchNameTokenRule.ResolveBranchName(VersionContext)
+- uid: SimpleVersion.Rules.BaseBranchNameTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  name: ResolveBranchName(IVersionContext)
+  href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_ResolveBranchName_SimpleVersion_Abstractions_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Rules.BaseBranchNameTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  nameWithType: BaseBranchNameTokenRule.ResolveBranchName(IVersionContext)
 - uid: SimpleVersion.Rules.BaseBranchNameTokenRule.ResolveBranchName*
   name: ResolveBranchName
   href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_ResolveBranchName_
@@ -934,12 +968,12 @@ references:
   commentId: Overload:SimpleVersion.Rules.BranchNameSuffixTokenRule.Instance
   fullName: SimpleVersion.Rules.BranchNameSuffixTokenRule.Instance
   nameWithType: BranchNameSuffixTokenRule.Instance
-- uid: SimpleVersion.Rules.BranchNameSuffixTokenRule.ResolveBranchName(SimpleVersion.Pipeline.VersionContext)
-  name: ResolveBranchName(VersionContext)
-  href: api/SimpleVersion.Rules.BranchNameSuffixTokenRule.html#SimpleVersion_Rules_BranchNameSuffixTokenRule_ResolveBranchName_SimpleVersion_Pipeline_VersionContext_
-  commentId: M:SimpleVersion.Rules.BranchNameSuffixTokenRule.ResolveBranchName(SimpleVersion.Pipeline.VersionContext)
-  fullName: SimpleVersion.Rules.BranchNameSuffixTokenRule.ResolveBranchName(SimpleVersion.Pipeline.VersionContext)
-  nameWithType: BranchNameSuffixTokenRule.ResolveBranchName(VersionContext)
+- uid: SimpleVersion.Rules.BranchNameSuffixTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  name: ResolveBranchName(IVersionContext)
+  href: api/SimpleVersion.Rules.BranchNameSuffixTokenRule.html#SimpleVersion_Rules_BranchNameSuffixTokenRule_ResolveBranchName_SimpleVersion_Abstractions_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Rules.BranchNameSuffixTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Rules.BranchNameSuffixTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  nameWithType: BranchNameSuffixTokenRule.ResolveBranchName(IVersionContext)
 - uid: SimpleVersion.Rules.BranchNameSuffixTokenRule.ResolveBranchName*
   name: ResolveBranchName
   href: api/SimpleVersion.Rules.BranchNameSuffixTokenRule.html#SimpleVersion_Rules_BranchNameSuffixTokenRule_ResolveBranchName_
@@ -994,12 +1028,12 @@ references:
   commentId: Overload:SimpleVersion.Rules.BranchNameTokenRule.Instance
   fullName: SimpleVersion.Rules.BranchNameTokenRule.Instance
   nameWithType: BranchNameTokenRule.Instance
-- uid: SimpleVersion.Rules.BranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.VersionContext)
-  name: ResolveBranchName(VersionContext)
-  href: api/SimpleVersion.Rules.BranchNameTokenRule.html#SimpleVersion_Rules_BranchNameTokenRule_ResolveBranchName_SimpleVersion_Pipeline_VersionContext_
-  commentId: M:SimpleVersion.Rules.BranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.VersionContext)
-  fullName: SimpleVersion.Rules.BranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.VersionContext)
-  nameWithType: BranchNameTokenRule.ResolveBranchName(VersionContext)
+- uid: SimpleVersion.Rules.BranchNameTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  name: ResolveBranchName(IVersionContext)
+  href: api/SimpleVersion.Rules.BranchNameTokenRule.html#SimpleVersion_Rules_BranchNameTokenRule_ResolveBranchName_SimpleVersion_Abstractions_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Rules.BranchNameTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Rules.BranchNameTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  nameWithType: BranchNameTokenRule.ResolveBranchName(IVersionContext)
 - uid: SimpleVersion.Rules.BranchNameTokenRule.ResolveBranchName*
   name: ResolveBranchName
   href: api/SimpleVersion.Rules.BranchNameTokenRule.html#SimpleVersion_Rules_BranchNameTokenRule_ResolveBranchName_
@@ -1042,15 +1076,15 @@ references:
   commentId: Overload:SimpleVersion.Rules.HeightTokenRule.#ctor
   fullName: SimpleVersion.Rules.HeightTokenRule.HeightTokenRule
   nameWithType: HeightTokenRule.HeightTokenRule
-- uid: SimpleVersion.Rules.HeightTokenRule.Apply(SimpleVersion.Pipeline.VersionContext,System.Collections.Generic.IEnumerable{System.String})
-  name: Apply(VersionContext, IEnumerable<String>)
-  href: api/SimpleVersion.Rules.HeightTokenRule.html#SimpleVersion_Rules_HeightTokenRule_Apply_SimpleVersion_Pipeline_VersionContext_System_Collections_Generic_IEnumerable_System_String__
-  commentId: M:SimpleVersion.Rules.HeightTokenRule.Apply(SimpleVersion.Pipeline.VersionContext,System.Collections.Generic.IEnumerable{System.String})
-  name.vb: Apply(VersionContext, IEnumerable(Of String))
-  fullName: SimpleVersion.Rules.HeightTokenRule.Apply(SimpleVersion.Pipeline.VersionContext, System.Collections.Generic.IEnumerable<System.String>)
-  fullName.vb: SimpleVersion.Rules.HeightTokenRule.Apply(SimpleVersion.Pipeline.VersionContext, System.Collections.Generic.IEnumerable(Of System.String))
-  nameWithType: HeightTokenRule.Apply(VersionContext, IEnumerable<String>)
-  nameWithType.vb: HeightTokenRule.Apply(VersionContext, IEnumerable(Of String))
+- uid: SimpleVersion.Rules.HeightTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
+  name: Apply(IVersionContext, IEnumerable<String>)
+  href: api/SimpleVersion.Rules.HeightTokenRule.html#SimpleVersion_Rules_HeightTokenRule_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:SimpleVersion.Rules.HeightTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
+  name.vb: Apply(IVersionContext, IEnumerable(Of String))
+  fullName: SimpleVersion.Rules.HeightTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<System.String>)
+  fullName.vb: SimpleVersion.Rules.HeightTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of System.String))
+  nameWithType: HeightTokenRule.Apply(IVersionContext, IEnumerable<String>)
+  nameWithType.vb: HeightTokenRule.Apply(IVersionContext, IEnumerable(Of String))
 - uid: SimpleVersion.Rules.HeightTokenRule.Apply*
   name: Apply
   href: api/SimpleVersion.Rules.HeightTokenRule.html#SimpleVersion_Rules_HeightTokenRule_Apply_
@@ -1081,12 +1115,12 @@ references:
   commentId: Overload:SimpleVersion.Rules.HeightTokenRule.Padded
   fullName: SimpleVersion.Rules.HeightTokenRule.Padded
   nameWithType: HeightTokenRule.Padded
-- uid: SimpleVersion.Rules.HeightTokenRule.Resolve(SimpleVersion.Pipeline.VersionContext,System.String)
-  name: Resolve(VersionContext, String)
-  href: api/SimpleVersion.Rules.HeightTokenRule.html#SimpleVersion_Rules_HeightTokenRule_Resolve_SimpleVersion_Pipeline_VersionContext_System_String_
-  commentId: M:SimpleVersion.Rules.HeightTokenRule.Resolve(SimpleVersion.Pipeline.VersionContext,System.String)
-  fullName: SimpleVersion.Rules.HeightTokenRule.Resolve(SimpleVersion.Pipeline.VersionContext, System.String)
-  nameWithType: HeightTokenRule.Resolve(VersionContext, String)
+- uid: SimpleVersion.Rules.HeightTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.String)
+  name: Resolve(IVersionContext, String)
+  href: api/SimpleVersion.Rules.HeightTokenRule.html#SimpleVersion_Rules_HeightTokenRule_Resolve_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_String_
+  commentId: M:SimpleVersion.Rules.HeightTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.String)
+  fullName: SimpleVersion.Rules.HeightTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.String)
+  nameWithType: HeightTokenRule.Resolve(IVersionContext, String)
 - uid: SimpleVersion.Rules.HeightTokenRule.Resolve*
   name: Resolve
   href: api/SimpleVersion.Rules.HeightTokenRule.html#SimpleVersion_Rules_HeightTokenRule_Resolve_
@@ -1105,64 +1139,75 @@ references:
   commentId: Overload:SimpleVersion.Rules.HeightTokenRule.Token
   fullName: SimpleVersion.Rules.HeightTokenRule.Token
   nameWithType: HeightTokenRule.Token
-- uid: SimpleVersion.Rules.ITokenRule`1
-  name: ITokenRule<T>
-  href: api/SimpleVersion.Rules.ITokenRule-1.html
-  commentId: T:SimpleVersion.Rules.ITokenRule`1
-  name.vb: ITokenRule(Of T)
-  fullName: SimpleVersion.Rules.ITokenRule<T>
-  fullName.vb: SimpleVersion.Rules.ITokenRule(Of T)
-  nameWithType: ITokenRule<T>
-  nameWithType.vb: ITokenRule(Of T)
-- uid: SimpleVersion.Rules.ITokenRule`1.Apply(SimpleVersion.Pipeline.VersionContext,System.Collections.Generic.IEnumerable{`0})
-  name: Apply(VersionContext, IEnumerable<T>)
-  href: api/SimpleVersion.Rules.ITokenRule-1.html#SimpleVersion_Rules_ITokenRule_1_Apply_SimpleVersion_Pipeline_VersionContext_System_Collections_Generic_IEnumerable__0__
-  commentId: M:SimpleVersion.Rules.ITokenRule`1.Apply(SimpleVersion.Pipeline.VersionContext,System.Collections.Generic.IEnumerable{`0})
-  name.vb: Apply(VersionContext, IEnumerable(Of T))
-  fullName: SimpleVersion.Rules.ITokenRule<T>.Apply(SimpleVersion.Pipeline.VersionContext, System.Collections.Generic.IEnumerable<T>)
-  fullName.vb: SimpleVersion.Rules.ITokenRule(Of T).Apply(SimpleVersion.Pipeline.VersionContext, System.Collections.Generic.IEnumerable(Of T))
-  nameWithType: ITokenRule<T>.Apply(VersionContext, IEnumerable<T>)
-  nameWithType.vb: ITokenRule(Of T).Apply(VersionContext, IEnumerable(Of T))
-- uid: SimpleVersion.Rules.ITokenRule`1.Apply*
+- uid: SimpleVersion.Rules.PullRequestIdTokenRule
+  name: PullRequestIdTokenRule
+  href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html
+  commentId: T:SimpleVersion.Rules.PullRequestIdTokenRule
+  fullName: SimpleVersion.Rules.PullRequestIdTokenRule
+  nameWithType: PullRequestIdTokenRule
+- uid: SimpleVersion.Rules.PullRequestIdTokenRule.#ctor
+  name: PullRequestIdTokenRule()
+  href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule__ctor
+  commentId: M:SimpleVersion.Rules.PullRequestIdTokenRule.#ctor
+  fullName: SimpleVersion.Rules.PullRequestIdTokenRule.PullRequestIdTokenRule()
+  nameWithType: PullRequestIdTokenRule.PullRequestIdTokenRule()
+- uid: SimpleVersion.Rules.PullRequestIdTokenRule.#ctor*
+  name: PullRequestIdTokenRule
+  href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule__ctor_
+  commentId: Overload:SimpleVersion.Rules.PullRequestIdTokenRule.#ctor
+  fullName: SimpleVersion.Rules.PullRequestIdTokenRule.PullRequestIdTokenRule
+  nameWithType: PullRequestIdTokenRule.PullRequestIdTokenRule
+- uid: SimpleVersion.Rules.PullRequestIdTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
+  name: Apply(IVersionContext, IEnumerable<String>)
+  href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:SimpleVersion.Rules.PullRequestIdTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
+  name.vb: Apply(IVersionContext, IEnumerable(Of String))
+  fullName: SimpleVersion.Rules.PullRequestIdTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<System.String>)
+  fullName.vb: SimpleVersion.Rules.PullRequestIdTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of System.String))
+  nameWithType: PullRequestIdTokenRule.Apply(IVersionContext, IEnumerable<String>)
+  nameWithType.vb: PullRequestIdTokenRule.Apply(IVersionContext, IEnumerable(Of String))
+- uid: SimpleVersion.Rules.PullRequestIdTokenRule.Apply*
   name: Apply
-  href: api/SimpleVersion.Rules.ITokenRule-1.html#SimpleVersion_Rules_ITokenRule_1_Apply_
-  commentId: Overload:SimpleVersion.Rules.ITokenRule`1.Apply
-  fullName: SimpleVersion.Rules.ITokenRule<T>.Apply
-  fullName.vb: SimpleVersion.Rules.ITokenRule(Of T).Apply
-  nameWithType: ITokenRule<T>.Apply
-  nameWithType.vb: ITokenRule(Of T).Apply
-- uid: SimpleVersion.Rules.ITokenRule`1.Resolve(SimpleVersion.Pipeline.VersionContext,`0)
-  name: Resolve(VersionContext, T)
-  href: api/SimpleVersion.Rules.ITokenRule-1.html#SimpleVersion_Rules_ITokenRule_1_Resolve_SimpleVersion_Pipeline_VersionContext__0_
-  commentId: M:SimpleVersion.Rules.ITokenRule`1.Resolve(SimpleVersion.Pipeline.VersionContext,`0)
-  fullName: SimpleVersion.Rules.ITokenRule<T>.Resolve(SimpleVersion.Pipeline.VersionContext, T)
-  fullName.vb: SimpleVersion.Rules.ITokenRule(Of T).Resolve(SimpleVersion.Pipeline.VersionContext, T)
-  nameWithType: ITokenRule<T>.Resolve(VersionContext, T)
-  nameWithType.vb: ITokenRule(Of T).Resolve(VersionContext, T)
-- uid: SimpleVersion.Rules.ITokenRule`1.Resolve*
+  href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule_Apply_
+  commentId: Overload:SimpleVersion.Rules.PullRequestIdTokenRule.Apply
+  fullName: SimpleVersion.Rules.PullRequestIdTokenRule.Apply
+  nameWithType: PullRequestIdTokenRule.Apply
+- uid: SimpleVersion.Rules.PullRequestIdTokenRule.Instance
+  name: Instance
+  href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule_Instance
+  commentId: P:SimpleVersion.Rules.PullRequestIdTokenRule.Instance
+  fullName: SimpleVersion.Rules.PullRequestIdTokenRule.Instance
+  nameWithType: PullRequestIdTokenRule.Instance
+- uid: SimpleVersion.Rules.PullRequestIdTokenRule.Instance*
+  name: Instance
+  href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule_Instance_
+  commentId: Overload:SimpleVersion.Rules.PullRequestIdTokenRule.Instance
+  fullName: SimpleVersion.Rules.PullRequestIdTokenRule.Instance
+  nameWithType: PullRequestIdTokenRule.Instance
+- uid: SimpleVersion.Rules.PullRequestIdTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.String)
+  name: Resolve(IVersionContext, String)
+  href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule_Resolve_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_String_
+  commentId: M:SimpleVersion.Rules.PullRequestIdTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.String)
+  fullName: SimpleVersion.Rules.PullRequestIdTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.String)
+  nameWithType: PullRequestIdTokenRule.Resolve(IVersionContext, String)
+- uid: SimpleVersion.Rules.PullRequestIdTokenRule.Resolve*
   name: Resolve
-  href: api/SimpleVersion.Rules.ITokenRule-1.html#SimpleVersion_Rules_ITokenRule_1_Resolve_
-  commentId: Overload:SimpleVersion.Rules.ITokenRule`1.Resolve
-  fullName: SimpleVersion.Rules.ITokenRule<T>.Resolve
-  fullName.vb: SimpleVersion.Rules.ITokenRule(Of T).Resolve
-  nameWithType: ITokenRule<T>.Resolve
-  nameWithType.vb: ITokenRule(Of T).Resolve
-- uid: SimpleVersion.Rules.ITokenRule`1.Token
+  href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule_Resolve_
+  commentId: Overload:SimpleVersion.Rules.PullRequestIdTokenRule.Resolve
+  fullName: SimpleVersion.Rules.PullRequestIdTokenRule.Resolve
+  nameWithType: PullRequestIdTokenRule.Resolve
+- uid: SimpleVersion.Rules.PullRequestIdTokenRule.Token
   name: Token
-  href: api/SimpleVersion.Rules.ITokenRule-1.html#SimpleVersion_Rules_ITokenRule_1_Token
-  commentId: P:SimpleVersion.Rules.ITokenRule`1.Token
-  fullName: SimpleVersion.Rules.ITokenRule<T>.Token
-  fullName.vb: SimpleVersion.Rules.ITokenRule(Of T).Token
-  nameWithType: ITokenRule<T>.Token
-  nameWithType.vb: ITokenRule(Of T).Token
-- uid: SimpleVersion.Rules.ITokenRule`1.Token*
+  href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule_Token
+  commentId: P:SimpleVersion.Rules.PullRequestIdTokenRule.Token
+  fullName: SimpleVersion.Rules.PullRequestIdTokenRule.Token
+  nameWithType: PullRequestIdTokenRule.Token
+- uid: SimpleVersion.Rules.PullRequestIdTokenRule.Token*
   name: Token
-  href: api/SimpleVersion.Rules.ITokenRule-1.html#SimpleVersion_Rules_ITokenRule_1_Token_
-  commentId: Overload:SimpleVersion.Rules.ITokenRule`1.Token
-  fullName: SimpleVersion.Rules.ITokenRule<T>.Token
-  fullName.vb: SimpleVersion.Rules.ITokenRule(Of T).Token
-  nameWithType: ITokenRule<T>.Token
-  nameWithType.vb: ITokenRule(Of T).Token
+  href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule_Token_
+  commentId: Overload:SimpleVersion.Rules.PullRequestIdTokenRule.Token
+  fullName: SimpleVersion.Rules.PullRequestIdTokenRule.Token
+  nameWithType: PullRequestIdTokenRule.Token
 - uid: SimpleVersion.Rules.ShortBranchNameTokenRule
   name: ShortBranchNameTokenRule
   href: api/SimpleVersion.Rules.ShortBranchNameTokenRule.html
@@ -1199,12 +1244,12 @@ references:
   commentId: Overload:SimpleVersion.Rules.ShortBranchNameTokenRule.Instance
   fullName: SimpleVersion.Rules.ShortBranchNameTokenRule.Instance
   nameWithType: ShortBranchNameTokenRule.Instance
-- uid: SimpleVersion.Rules.ShortBranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.VersionContext)
-  name: ResolveBranchName(VersionContext)
-  href: api/SimpleVersion.Rules.ShortBranchNameTokenRule.html#SimpleVersion_Rules_ShortBranchNameTokenRule_ResolveBranchName_SimpleVersion_Pipeline_VersionContext_
-  commentId: M:SimpleVersion.Rules.ShortBranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.VersionContext)
-  fullName: SimpleVersion.Rules.ShortBranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.VersionContext)
-  nameWithType: ShortBranchNameTokenRule.ResolveBranchName(VersionContext)
+- uid: SimpleVersion.Rules.ShortBranchNameTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  name: ResolveBranchName(IVersionContext)
+  href: api/SimpleVersion.Rules.ShortBranchNameTokenRule.html#SimpleVersion_Rules_ShortBranchNameTokenRule_ResolveBranchName_SimpleVersion_Abstractions_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Rules.ShortBranchNameTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Rules.ShortBranchNameTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  nameWithType: ShortBranchNameTokenRule.ResolveBranchName(IVersionContext)
 - uid: SimpleVersion.Rules.ShortBranchNameTokenRule.ResolveBranchName*
   name: ResolveBranchName
   href: api/SimpleVersion.Rules.ShortBranchNameTokenRule.html#SimpleVersion_Rules_ShortBranchNameTokenRule_ResolveBranchName_
@@ -1241,15 +1286,15 @@ references:
   commentId: Overload:SimpleVersion.Rules.ShortShaTokenRule.#ctor
   fullName: SimpleVersion.Rules.ShortShaTokenRule.ShortShaTokenRule
   nameWithType: ShortShaTokenRule.ShortShaTokenRule
-- uid: SimpleVersion.Rules.ShortShaTokenRule.Apply(SimpleVersion.Pipeline.VersionContext,System.Collections.Generic.IEnumerable{System.String})
-  name: Apply(VersionContext, IEnumerable<String>)
-  href: api/SimpleVersion.Rules.ShortShaTokenRule.html#SimpleVersion_Rules_ShortShaTokenRule_Apply_SimpleVersion_Pipeline_VersionContext_System_Collections_Generic_IEnumerable_System_String__
-  commentId: M:SimpleVersion.Rules.ShortShaTokenRule.Apply(SimpleVersion.Pipeline.VersionContext,System.Collections.Generic.IEnumerable{System.String})
-  name.vb: Apply(VersionContext, IEnumerable(Of String))
-  fullName: SimpleVersion.Rules.ShortShaTokenRule.Apply(SimpleVersion.Pipeline.VersionContext, System.Collections.Generic.IEnumerable<System.String>)
-  fullName.vb: SimpleVersion.Rules.ShortShaTokenRule.Apply(SimpleVersion.Pipeline.VersionContext, System.Collections.Generic.IEnumerable(Of System.String))
-  nameWithType: ShortShaTokenRule.Apply(VersionContext, IEnumerable<String>)
-  nameWithType.vb: ShortShaTokenRule.Apply(VersionContext, IEnumerable(Of String))
+- uid: SimpleVersion.Rules.ShortShaTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
+  name: Apply(IVersionContext, IEnumerable<String>)
+  href: api/SimpleVersion.Rules.ShortShaTokenRule.html#SimpleVersion_Rules_ShortShaTokenRule_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:SimpleVersion.Rules.ShortShaTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
+  name.vb: Apply(IVersionContext, IEnumerable(Of String))
+  fullName: SimpleVersion.Rules.ShortShaTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<System.String>)
+  fullName.vb: SimpleVersion.Rules.ShortShaTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of System.String))
+  nameWithType: ShortShaTokenRule.Apply(IVersionContext, IEnumerable<String>)
+  nameWithType.vb: ShortShaTokenRule.Apply(IVersionContext, IEnumerable(Of String))
 - uid: SimpleVersion.Rules.ShortShaTokenRule.Apply*
   name: Apply
   href: api/SimpleVersion.Rules.ShortShaTokenRule.html#SimpleVersion_Rules_ShortShaTokenRule_Apply_
@@ -1268,12 +1313,12 @@ references:
   commentId: Overload:SimpleVersion.Rules.ShortShaTokenRule.Instance
   fullName: SimpleVersion.Rules.ShortShaTokenRule.Instance
   nameWithType: ShortShaTokenRule.Instance
-- uid: SimpleVersion.Rules.ShortShaTokenRule.Resolve(SimpleVersion.Pipeline.VersionContext,System.String)
-  name: Resolve(VersionContext, String)
-  href: api/SimpleVersion.Rules.ShortShaTokenRule.html#SimpleVersion_Rules_ShortShaTokenRule_Resolve_SimpleVersion_Pipeline_VersionContext_System_String_
-  commentId: M:SimpleVersion.Rules.ShortShaTokenRule.Resolve(SimpleVersion.Pipeline.VersionContext,System.String)
-  fullName: SimpleVersion.Rules.ShortShaTokenRule.Resolve(SimpleVersion.Pipeline.VersionContext, System.String)
-  nameWithType: ShortShaTokenRule.Resolve(VersionContext, String)
+- uid: SimpleVersion.Rules.ShortShaTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.String)
+  name: Resolve(IVersionContext, String)
+  href: api/SimpleVersion.Rules.ShortShaTokenRule.html#SimpleVersion_Rules_ShortShaTokenRule_Resolve_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_String_
+  commentId: M:SimpleVersion.Rules.ShortShaTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.String)
+  fullName: SimpleVersion.Rules.ShortShaTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.String)
+  nameWithType: ShortShaTokenRule.Resolve(IVersionContext, String)
 - uid: SimpleVersion.Rules.ShortShaTokenRule.Resolve*
   name: Resolve
   href: api/SimpleVersion.Rules.ShortShaTokenRule.html#SimpleVersion_Rules_ShortShaTokenRule_Resolve_
@@ -1304,30 +1349,30 @@ references:
   commentId: Overload:SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules
   fullName: SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules
   nameWithType: TokenRuleExtensions.ApplyTokenRules
-- uid: SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules``1(System.Collections.Generic.IEnumerable{``0},SimpleVersion.Pipeline.VersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Rules.ITokenRule{``0}})
-  name: ApplyTokenRules<T>(IEnumerable<T>, VersionContext, IEnumerable<ITokenRule<T>>)
-  href: api/SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ApplyTokenRules__1_System_Collections_Generic_IEnumerable___0__SimpleVersion_Pipeline_VersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Rules_ITokenRule___0___
-  commentId: M:SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules``1(System.Collections.Generic.IEnumerable{``0},SimpleVersion.Pipeline.VersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Rules.ITokenRule{``0}})
-  name.vb: ApplyTokenRules(Of T)(IEnumerable(Of T), VersionContext, IEnumerable(Of ITokenRule(Of T)))
-  fullName: SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules<T>(System.Collections.Generic.IEnumerable<T>, SimpleVersion.Pipeline.VersionContext, System.Collections.Generic.IEnumerable<SimpleVersion.Rules.ITokenRule<T>>)
-  fullName.vb: SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules(Of T)(System.Collections.Generic.IEnumerable(Of T), SimpleVersion.Pipeline.VersionContext, System.Collections.Generic.IEnumerable(Of SimpleVersion.Rules.ITokenRule(Of T)))
-  nameWithType: TokenRuleExtensions.ApplyTokenRules<T>(IEnumerable<T>, VersionContext, IEnumerable<ITokenRule<T>>)
-  nameWithType.vb: TokenRuleExtensions.ApplyTokenRules(Of T)(IEnumerable(Of T), VersionContext, IEnumerable(Of ITokenRule(Of T)))
+- uid: SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules``1(System.Collections.Generic.IEnumerable{``0},SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Abstractions.Rules.ITokenRule{``0}})
+  name: ApplyTokenRules<T>(IEnumerable<T>, IVersionContext, IEnumerable<ITokenRule<T>>)
+  href: api/SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ApplyTokenRules__1_System_Collections_Generic_IEnumerable___0__SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Abstractions_Rules_ITokenRule___0___
+  commentId: M:SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules``1(System.Collections.Generic.IEnumerable{``0},SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Abstractions.Rules.ITokenRule{``0}})
+  name.vb: ApplyTokenRules(Of T)(IEnumerable(Of T), IVersionContext, IEnumerable(Of ITokenRule(Of T)))
+  fullName: SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules<T>(System.Collections.Generic.IEnumerable<T>, SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<SimpleVersion.Abstractions.Rules.ITokenRule<T>>)
+  fullName.vb: SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules(Of T)(System.Collections.Generic.IEnumerable(Of T), SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of SimpleVersion.Abstractions.Rules.ITokenRule(Of T)))
+  nameWithType: TokenRuleExtensions.ApplyTokenRules<T>(IEnumerable<T>, IVersionContext, IEnumerable<ITokenRule<T>>)
+  nameWithType.vb: TokenRuleExtensions.ApplyTokenRules(Of T)(IEnumerable(Of T), IVersionContext, IEnumerable(Of ITokenRule(Of T)))
 - uid: SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules*
   name: ResolveTokenRules
   href: api/SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules_
   commentId: Overload:SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules
   fullName: SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules
   nameWithType: TokenRuleExtensions.ResolveTokenRules
-- uid: SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules``1(``0,SimpleVersion.Pipeline.VersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Rules.ITokenRule{``0}})
-  name: ResolveTokenRules<T>(T, VersionContext, IEnumerable<ITokenRule<T>>)
-  href: api/SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Pipeline_VersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Rules_ITokenRule___0___
-  commentId: M:SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules``1(``0,SimpleVersion.Pipeline.VersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Rules.ITokenRule{``0}})
-  name.vb: ResolveTokenRules(Of T)(T, VersionContext, IEnumerable(Of ITokenRule(Of T)))
-  fullName: SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules<T>(T, SimpleVersion.Pipeline.VersionContext, System.Collections.Generic.IEnumerable<SimpleVersion.Rules.ITokenRule<T>>)
-  fullName.vb: SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules(Of T)(T, SimpleVersion.Pipeline.VersionContext, System.Collections.Generic.IEnumerable(Of SimpleVersion.Rules.ITokenRule(Of T)))
-  nameWithType: TokenRuleExtensions.ResolveTokenRules<T>(T, VersionContext, IEnumerable<ITokenRule<T>>)
-  nameWithType.vb: TokenRuleExtensions.ResolveTokenRules(Of T)(T, VersionContext, IEnumerable(Of ITokenRule(Of T)))
+- uid: SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules``1(``0,SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Abstractions.Rules.ITokenRule{``0}})
+  name: ResolveTokenRules<T>(T, IVersionContext, IEnumerable<ITokenRule<T>>)
+  href: api/SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Abstractions_Rules_ITokenRule___0___
+  commentId: M:SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules``1(``0,SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Abstractions.Rules.ITokenRule{``0}})
+  name.vb: ResolveTokenRules(Of T)(T, IVersionContext, IEnumerable(Of ITokenRule(Of T)))
+  fullName: SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules<T>(T, SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<SimpleVersion.Abstractions.Rules.ITokenRule<T>>)
+  fullName.vb: SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules(Of T)(T, SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of SimpleVersion.Abstractions.Rules.ITokenRule(Of T)))
+  nameWithType: TokenRuleExtensions.ResolveTokenRules<T>(T, IVersionContext, IEnumerable<ITokenRule<T>>)
+  nameWithType.vb: TokenRuleExtensions.ResolveTokenRules(Of T)(T, IVersionContext, IEnumerable(Of ITokenRule(Of T)))
 - uid: SimpleVersion.StringExtensions
   name: StringExtensions
   href: api/SimpleVersion.StringExtensions.html
@@ -1346,6 +1391,48 @@ references:
   commentId: Overload:SimpleVersion.StringExtensions.ToBool
   fullName: SimpleVersion.StringExtensions.ToBool
   nameWithType: StringExtensions.ToBool
+- uid: SimpleVersion.VersionCalculator
+  name: VersionCalculator
+  href: api/SimpleVersion.VersionCalculator.html
+  commentId: T:SimpleVersion.VersionCalculator
+  fullName: SimpleVersion.VersionCalculator
+  nameWithType: VersionCalculator
+- uid: SimpleVersion.VersionCalculator.#ctor
+  name: VersionCalculator()
+  href: api/SimpleVersion.VersionCalculator.html#SimpleVersion_VersionCalculator__ctor
+  commentId: M:SimpleVersion.VersionCalculator.#ctor
+  fullName: SimpleVersion.VersionCalculator.VersionCalculator()
+  nameWithType: VersionCalculator.VersionCalculator()
+- uid: SimpleVersion.VersionCalculator.#ctor*
+  name: VersionCalculator
+  href: api/SimpleVersion.VersionCalculator.html#SimpleVersion_VersionCalculator__ctor_
+  commentId: Overload:SimpleVersion.VersionCalculator.#ctor
+  fullName: SimpleVersion.VersionCalculator.VersionCalculator
+  nameWithType: VersionCalculator.VersionCalculator
+- uid: SimpleVersion.VersionCalculator.Default
+  name: Default()
+  href: api/SimpleVersion.VersionCalculator.html#SimpleVersion_VersionCalculator_Default
+  commentId: M:SimpleVersion.VersionCalculator.Default
+  fullName: SimpleVersion.VersionCalculator.Default()
+  nameWithType: VersionCalculator.Default()
+- uid: SimpleVersion.VersionCalculator.Default*
+  name: Default
+  href: api/SimpleVersion.VersionCalculator.html#SimpleVersion_VersionCalculator_Default_
+  commentId: Overload:SimpleVersion.VersionCalculator.Default
+  fullName: SimpleVersion.VersionCalculator.Default
+  nameWithType: VersionCalculator.Default
+- uid: SimpleVersion.VersionCalculator.GetResult(System.String)
+  name: GetResult(String)
+  href: api/SimpleVersion.VersionCalculator.html#SimpleVersion_VersionCalculator_GetResult_System_String_
+  commentId: M:SimpleVersion.VersionCalculator.GetResult(System.String)
+  fullName: SimpleVersion.VersionCalculator.GetResult(System.String)
+  nameWithType: VersionCalculator.GetResult(String)
+- uid: SimpleVersion.VersionCalculator.GetResult*
+  name: GetResult
+  href: api/SimpleVersion.VersionCalculator.html#SimpleVersion_VersionCalculator_GetResult_
+  commentId: Overload:SimpleVersion.VersionCalculator.GetResult
+  fullName: SimpleVersion.VersionCalculator.GetResult
+  nameWithType: VersionCalculator.GetResult
 - uid: SimpleVersion.VersioningEnvironment
   name: VersioningEnvironment
   href: api/SimpleVersion.VersioningEnvironment.html

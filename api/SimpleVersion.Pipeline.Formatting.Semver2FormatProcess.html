@@ -12,7 +12,7 @@
    ">
     <meta name="generator" content="docfx 2.42.0.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../images/log.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
@@ -35,8 +35,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
+              
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" style="height:40px;padding-top:15px;" src="../images/logo.png" alt="">
+                <img id="logo" class="svg" src="../images/logo.png" alt="SimpleVersion">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -82,7 +83,7 @@
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="SimpleVersion.Pipeline.IVersionProcessor.html">IVersionProcessor</a></div>
+    <div><a class="xref" href="SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.html">IVersionContextProcessor</a></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -112,7 +113,7 @@
   <h6><strong>Assembly</strong>: SimpleVersion.Core.dll</h6>
   <h5 id="SimpleVersion_Pipeline_Formatting_Semver2FormatProcess_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class Semver2FormatProcess : IVersionProcessor</code></pre>
+    <pre><code class="lang-csharp hljs">public class Semver2FormatProcess : IVersionContextProcessor</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -158,13 +159,13 @@
   
   
   <a id="SimpleVersion_Pipeline_Formatting_Semver2FormatProcess_Apply_" data-uid="SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply*"></a>
-  <h4 id="SimpleVersion_Pipeline_Formatting_Semver2FormatProcess_Apply_SimpleVersion_Pipeline_VersionContext_" data-uid="SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply(SimpleVersion.Pipeline.VersionContext)">Apply(VersionContext)</h4>
-  <div class="markdown level1 summary"><p>Applies the processor to the current <a class="xref" href="SimpleVersion.Pipeline.VersionContext.html">VersionContext</a>.</p>
+  <h4 id="SimpleVersion_Pipeline_Formatting_Semver2FormatProcess_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_" data-uid="SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)">Apply(IVersionContext)</h4>
+  <div class="markdown level1 summary"><p>Applies the processor to the given context.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Apply(VersionContext context)</code></pre>
+    <pre><code class="lang-csharp hljs">public void Apply(IVersionContext context)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -177,20 +178,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="SimpleVersion.Pipeline.VersionContext.html">VersionContext</a></td>
+        <td><a class="xref" href="SimpleVersion.Abstractions.Pipeline.IVersionContext.html">IVersionContext</a></td>
         <td><span class="parametername">context</span></td>
-        <td><p>The <a class="xref" href="SimpleVersion.Pipeline.VersionContext.html">VersionContext</a> of the calculation.</p>
+        <td><p>The context of the version calculation.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="SimpleVersion.Pipeline.IVersionProcessor.html">IVersionProcessor</a>
+      <a class="xref" href="SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.html">IVersionContextProcessor</a>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Pipeline_VersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Rules_ITokenRule___0___">TokenRuleExtensions.ResolveTokenRules&lt;T&gt;(T, VersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</a>
+      <a class="xref" href="SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Abstractions_Rules_ITokenRule___0___">TokenRuleExtensions.ResolveTokenRules&lt;T&gt;(T, IVersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</a>
   </div>
 </article>
           </div>

@@ -10,7 +10,7 @@
     <meta name="title" content="Results ">
     <meta name="generator" content="docfx 2.42.0.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../images/log.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
@@ -33,8 +33,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
+              
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" style="height:40px;padding-top:15px;" src="../images/logo.png" alt="">
+                <img id="logo" class="svg" src="../images/logo.png" alt="SimpleVersion">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -80,6 +81,7 @@ invoking the tool.  However, all implementations return the same results object.
   &quot;Height&quot;: 18,
   &quot;HeightPadded&quot;: &quot;0018&quot;,
   &quot;Sha&quot;: &quot;ebc8f22ae83bfa3c1e36d6bf70c2a383ae30c9dd&quot;,
+  &quot;Sha7&quot;: &quot;ebc8f22&quot;,
   &quot;CanonicalBranchName&quot;: &quot;refs/heads/preview/test&quot;,
   &quot;BranchName&quot;: &quot;preview/test&quot;,
   &quot;Formats&quot;: {
@@ -137,6 +139,11 @@ invoking the tool.  However, all implementations return the same results object.
 <td>Sha</td>
 <td>string</td>
 <td>The sha of the current commit at the time of invocation</td>
+</tr>
+<tr>
+<td>Sha7</td>
+<td>string</td>
+<td>The sha of the current commit at the time of invocation, shortened to 7 characters</td>
 </tr>
 <tr>
 <td>BranchName</td>

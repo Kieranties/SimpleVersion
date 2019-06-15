@@ -10,7 +10,7 @@
     <meta name="title" content="SimpleVersion ">
     <meta name="generator" content="docfx 2.42.0.0">
     
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="images/log.png">
     <link rel="stylesheet" href="styles/docfx.vendor.css">
     <link rel="stylesheet" href="styles/docfx.css">
     <link rel="stylesheet" href="styles/main.css">
@@ -33,8 +33,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
+              
               <a class="navbar-brand" href="index.html">
-                <img id="logo" style="height:40px;padding-top:15px;" src="images/logo.png" alt="">
+                <img id="logo" class="svg" src="images/logo.png" alt="SimpleVersion">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -61,11 +62,11 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="simpleversion">SimpleVersion</h1>
 
-<p><a href="https://www.nuget.org/packages?q=simpleversion&amp;prerel=false"><img src="https://img.shields.io/nuget/v/SimpleVersion.Core.svg?logo=nuget" alt="Nuget"></a>
+<p><a href="https://www.nuget.org/packages?q=simpleversion&amp;prerel=false"><img src="https://img.shields.io/nuget/v/SimpleVersion.Core.svg?logo=nuget&amp;color=blue" alt="Nuget"></a>
 <a href="https://www.nuget.org/packages?q=simpleversion"><img src="https://img.shields.io/nuget/vpre/SimpleVersion.Core.svg?logo=nuget" alt="Nuget (with prereleases)"></a>
-<a href="https://dev.azure.com/Kieranties/SimpleVersion/_build?definitionId=1"><img src="https://img.shields.io/azure-devops/tests/Kieranties/SimpleVersion/1/master.svg?logo=azuredevops" alt="Azure DevOps tests (branch)"></a>
+<a href="https://dev.azure.com/Kieranties/SimpleVersion/_build/latest?definitionId=1&amp;branchName=master"><img src="https://dev.azure.com/Kieranties/SimpleVersion/_apis/build/status/Kieranties.SimpleVersion?branchName=master" alt="Build Status"></a>
+<a href="https://github.com/kieranties/simpleversion/issues"><img src="https://img.shields.io/github/issues/Kieranties/Simpleversion.svg?logo=github" alt="GitHub issues"></a>
 <a href="https://kieranties.mit-license.org/"><img src="https://img.shields.io/github/license/Kieranties/SimpleVersion.svg?logo=github" alt="License"></a></p>
-<h2 id="brief">Brief</h2>
 <p>SimpleVersion aims to simplify how you version the artifacts of your git repository.</p>
 <p>Using SimpleVersion you can generate consistent, expected version numbers for
 each commit in your repository, based on a few simple configuration options.</p>
@@ -112,7 +113,7 @@ root of your git repository and commit it.</p>
 </code></pre>
 <p>The above configuration tells SimpleVersion that the version will be <code>0.1.0</code> and
 should have a release label of <code>alpha2</code>.  As there is a pre-release label, the
-height will be appended to label, generating a <a href="https://semver.org/spec/v2.0.0.html">Semver2</a> version <code>0.1.0-alpha2.3</code>
+height will be appended to label, generating a [Semver2] version <code>0.1.0-alpha2.3</code>
 if there were three commits since the version was last set.</p>
 <p>For further guidance, see the <a href="/articles/configuration.html">configuration documentation</a>.</p>
 <h2 id="resetting-the-height">Resetting The Height</h2>

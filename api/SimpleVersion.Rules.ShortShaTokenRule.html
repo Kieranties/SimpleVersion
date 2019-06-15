@@ -12,7 +12,7 @@
    ">
     <meta name="generator" content="docfx 2.42.0.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../images/log.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
@@ -35,8 +35,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
+              
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" style="height:40px;padding-top:15px;" src="../images/logo.png" alt="">
+                <img id="logo" class="svg" src="../images/logo.png" alt="SimpleVersion">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -82,7 +83,7 @@
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="SimpleVersion.Rules.ITokenRule-1.html">ITokenRule</a>&lt;<span class="xref">System.String</span>&gt;</div>
+    <div><a class="xref" href="SimpleVersion.Abstractions.Rules.ITokenRule-1.html">ITokenRule</a>&lt;<span class="xref">System.String</span>&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -184,12 +185,12 @@
   
   
   <a id="SimpleVersion_Rules_ShortShaTokenRule_Apply_" data-uid="SimpleVersion.Rules.ShortShaTokenRule.Apply*"></a>
-  <h4 id="SimpleVersion_Rules_ShortShaTokenRule_Apply_SimpleVersion_Pipeline_VersionContext_System_Collections_Generic_IEnumerable_System_String__" data-uid="SimpleVersion.Rules.ShortShaTokenRule.Apply(SimpleVersion.Pipeline.VersionContext,System.Collections.Generic.IEnumerable{System.String})">Apply(VersionContext, IEnumerable&lt;String&gt;)</h4>
+  <h4 id="SimpleVersion_Rules_ShortShaTokenRule_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_System_String__" data-uid="SimpleVersion.Rules.ShortShaTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})">Apply(IVersionContext, IEnumerable&lt;String&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; Apply(VersionContext context, IEnumerable&lt;string&gt; input)</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; Apply(IVersionContext context, IEnumerable&lt;string&gt; input)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -202,7 +203,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="SimpleVersion.Pipeline.VersionContext.html">VersionContext</a></td>
+        <td><a class="xref" href="SimpleVersion.Abstractions.Pipeline.IVersionContext.html">IVersionContext</a></td>
         <td><span class="parametername">context</span></td>
         <td></td>
       </tr>
@@ -231,12 +232,12 @@
   
   
   <a id="SimpleVersion_Rules_ShortShaTokenRule_Resolve_" data-uid="SimpleVersion.Rules.ShortShaTokenRule.Resolve*"></a>
-  <h4 id="SimpleVersion_Rules_ShortShaTokenRule_Resolve_SimpleVersion_Pipeline_VersionContext_System_String_" data-uid="SimpleVersion.Rules.ShortShaTokenRule.Resolve(SimpleVersion.Pipeline.VersionContext,System.String)">Resolve(VersionContext, String)</h4>
+  <h4 id="SimpleVersion_Rules_ShortShaTokenRule_Resolve_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_String_" data-uid="SimpleVersion.Rules.ShortShaTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.String)">Resolve(IVersionContext, String)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Resolve(VersionContext context, string value)</code></pre>
+    <pre><code class="lang-csharp hljs">public string Resolve(IVersionContext context, string value)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -249,7 +250,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="SimpleVersion.Pipeline.VersionContext.html">VersionContext</a></td>
+        <td><a class="xref" href="SimpleVersion.Abstractions.Pipeline.IVersionContext.html">IVersionContext</a></td>
         <td><span class="parametername">context</span></td>
         <td></td>
       </tr>
@@ -277,11 +278,11 @@
   </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="SimpleVersion.Rules.ITokenRule-1.html">ITokenRule&lt;T&gt;</a>
+      <a class="xref" href="SimpleVersion.Abstractions.Rules.ITokenRule-1.html">ITokenRule&lt;T&gt;</a>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Pipeline_VersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Rules_ITokenRule___0___">TokenRuleExtensions.ResolveTokenRules&lt;T&gt;(T, VersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</a>
+      <a class="xref" href="SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Abstractions_Rules_ITokenRule___0___">TokenRuleExtensions.ResolveTokenRules&lt;T&gt;(T, IVersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</a>
   </div>
 </article>
           </div>

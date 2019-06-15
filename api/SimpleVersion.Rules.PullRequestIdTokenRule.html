@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class BranchConfiguration
+    <title>Class PullRequestIdTokenRule
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class BranchConfiguration
+    <meta name="title" content="Class PullRequestIdTokenRule
    ">
     <meta name="generator" content="docfx 2.42.0.0">
     
@@ -68,18 +68,22 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="SimpleVersion.Model.BranchConfiguration">
+            <article class="content wrap" id="_content" data-uid="SimpleVersion.Rules.PullRequestIdTokenRule">
   
   
-  <h1 id="SimpleVersion_Model_BranchConfiguration" data-uid="SimpleVersion.Model.BranchConfiguration" class="text-break">Class BranchConfiguration
+  <h1 id="SimpleVersion_Rules_PullRequestIdTokenRule" data-uid="SimpleVersion.Rules.PullRequestIdTokenRule" class="text-break">Class PullRequestIdTokenRule
   </h1>
-  <div class="markdown level0 summary"><p>Models the configuration for a branch.</p>
+  <div class="markdown level0 summary"><p>Applies rules for the pull-request token.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">BranchConfiguration</span></div>
+    <div class="level1"><span class="xref">PullRequestIdTokenRule</span></div>
+  </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="SimpleVersion.Abstractions.Rules.ITokenRule-1.html">ITokenRule</a>&lt;<span class="xref">System.String</span>&gt;</div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -105,36 +109,36 @@
       <span class="xref">System.Object.MemberwiseClone()</span>
     </div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="SimpleVersion.Model.html">SimpleVersion.Model</a></h6>
-  <h6><strong>Assembly</strong>: SimpleVersion.Abstractions.dll</h6>
-  <h5 id="SimpleVersion_Model_BranchConfiguration_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="SimpleVersion.Rules.html">SimpleVersion.Rules</a></h6>
+  <h6><strong>Assembly</strong>: SimpleVersion.Core.dll</h6>
+  <h5 id="SimpleVersion_Rules_PullRequestIdTokenRule_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class BranchConfiguration</code></pre>
+    <pre><code class="lang-csharp hljs">public class PullRequestIdTokenRule : ITokenRule&lt;string&gt;</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   
   
-  <a id="SimpleVersion_Model_BranchConfiguration__ctor_" data-uid="SimpleVersion.Model.BranchConfiguration.#ctor*"></a>
-  <h4 id="SimpleVersion_Model_BranchConfiguration__ctor" data-uid="SimpleVersion.Model.BranchConfiguration.#ctor">BranchConfiguration()</h4>
+  <a id="SimpleVersion_Rules_PullRequestIdTokenRule__ctor_" data-uid="SimpleVersion.Rules.PullRequestIdTokenRule.#ctor*"></a>
+  <h4 id="SimpleVersion_Rules_PullRequestIdTokenRule__ctor" data-uid="SimpleVersion.Rules.PullRequestIdTokenRule.#ctor">PullRequestIdTokenRule()</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public BranchConfiguration()</code></pre>
+    <pre><code class="lang-csharp hljs">public PullRequestIdTokenRule()</code></pre>
   </div>
   <h3 id="properties">Properties
   </h3>
   
   
-  <a id="SimpleVersion_Model_BranchConfiguration_Label_" data-uid="SimpleVersion.Model.BranchConfiguration.Label*"></a>
-  <h4 id="SimpleVersion_Model_BranchConfiguration_Label" data-uid="SimpleVersion.Model.BranchConfiguration.Label">Label</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the label parts to use in the generated version.</p>
+  <a id="SimpleVersion_Rules_PullRequestIdTokenRule_Instance_" data-uid="SimpleVersion.Rules.PullRequestIdTokenRule.Instance*"></a>
+  <h4 id="SimpleVersion_Rules_PullRequestIdTokenRule_Instance" data-uid="SimpleVersion.Rules.PullRequestIdTokenRule.Instance">Instance</h4>
+  <div class="markdown level1 summary"><p>Gets a default instance of the rule.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;string&gt; Label { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public static PullRequestIdTokenRule Instance { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -146,22 +150,20 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><a class="xref" href="SimpleVersion.Rules.PullRequestIdTokenRule.html">PullRequestIdTokenRule</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
   
   
-  <a id="SimpleVersion_Model_BranchConfiguration_Match_" data-uid="SimpleVersion.Model.BranchConfiguration.Match*"></a>
-  <h4 id="SimpleVersion_Model_BranchConfiguration_Match" data-uid="SimpleVersion.Model.BranchConfiguration.Match">Match</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the regular expression string used to
-identify matching to a branch to identify branch matches.</p>
-</div>
+  <a id="SimpleVersion_Rules_PullRequestIdTokenRule_Token_" data-uid="SimpleVersion.Rules.PullRequestIdTokenRule.Token*"></a>
+  <h4 id="SimpleVersion_Rules_PullRequestIdTokenRule_Token" data-uid="SimpleVersion.Rules.PullRequestIdTokenRule.Token">Token</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public string Match { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public string Token { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -178,18 +180,41 @@ identify matching to a branch to identify branch matches.</p>
       </tr>
     </tbody>
   </table>
+  <h3 id="methods">Methods
+  </h3>
   
   
-  <a id="SimpleVersion_Model_BranchConfiguration_Metadata_" data-uid="SimpleVersion.Model.BranchConfiguration.Metadata*"></a>
-  <h4 id="SimpleVersion_Model_BranchConfiguration_Metadata" data-uid="SimpleVersion.Model.BranchConfiguration.Metadata">Metadata</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the Metadata parts to use in the generated version.</p>
-</div>
+  <a id="SimpleVersion_Rules_PullRequestIdTokenRule_Apply_" data-uid="SimpleVersion.Rules.PullRequestIdTokenRule.Apply*"></a>
+  <h4 id="SimpleVersion_Rules_PullRequestIdTokenRule_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_System_String__" data-uid="SimpleVersion.Rules.PullRequestIdTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})">Apply(IVersionContext, IEnumerable&lt;String&gt;)</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;string&gt; Metadata { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IEnumerable&lt;string&gt; Apply(IVersionContext context, IEnumerable&lt;string&gt; input)</code></pre>
   </div>
-  <h5 class="propertyValue">Property Value</h5>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SimpleVersion.Abstractions.Pipeline.IVersionContext.html">IVersionContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="parametername">input</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -199,11 +224,62 @@ identify matching to a branch to identify branch matches.</p>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<span class="xref">System.String</span>&gt;</td>
         <td></td>
       </tr>
     </tbody>
   </table>
+  
+  
+  <a id="SimpleVersion_Rules_PullRequestIdTokenRule_Resolve_" data-uid="SimpleVersion.Rules.PullRequestIdTokenRule.Resolve*"></a>
+  <h4 id="SimpleVersion_Rules_PullRequestIdTokenRule_Resolve_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_String_" data-uid="SimpleVersion.Rules.PullRequestIdTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.String)">Resolve(IVersionContext, String)</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Resolve(IVersionContext context, string value)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SimpleVersion.Abstractions.Pipeline.IVersionContext.html">IVersionContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td><span class="parametername">value</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="SimpleVersion.Abstractions.Rules.ITokenRule-1.html">ITokenRule&lt;T&gt;</a>
+  </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Abstractions_Rules_ITokenRule___0___">TokenRuleExtensions.ResolveTokenRules&lt;T&gt;(T, IVersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</a>

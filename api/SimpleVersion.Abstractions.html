@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace SimpleVersion.Pipeline
+    <title>Namespace SimpleVersion.Abstractions
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace SimpleVersion.Pipeline
+    <meta name="title" content="Namespace SimpleVersion.Abstractions
    ">
     <meta name="generator" content="docfx 2.42.0.0">
     
@@ -68,23 +68,21 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="SimpleVersion.Pipeline">
+            <article class="content wrap" id="_content" data-uid="SimpleVersion.Abstractions">
   
-  <h1 id="SimpleVersion_Pipeline" data-uid="SimpleVersion.Pipeline" class="text-break">Namespace SimpleVersion.Pipeline
+  <h1 id="SimpleVersion_Abstractions" data-uid="SimpleVersion.Abstractions" class="text-break">Namespace SimpleVersion.Abstractions
   </h1>
   <div class="markdown level0 summary"></div>
   <div class="markdown level0 conceptual"></div>
   <div class="markdown level0 remarks"></div>
-    <h3 id="classes">Classes
+    <h3 id="interfaces">Interfaces
   </h3>
-      <h4><a class="xref" href="SimpleVersion.Pipeline.AzureDevopsContextProcessor.html">AzureDevopsContextProcessor</a></h4>
-      <section><p>Modifies the calculation when running in TFS/Azure Devops.</p>
+      <h4><a class="xref" href="SimpleVersion.Abstractions.IEnvironment.html">IEnvironment</a></h4>
+      <section><p>Contract for accessing environment variables.</p>
 </section>
-      <h4><a class="xref" href="SimpleVersion.Pipeline.ConfigurationContextProcessor.html">ConfigurationContextProcessor</a></h4>
-      <section><p>Resolves the configuration for the version calculation.</p>
-</section>
-      <h4><a class="xref" href="SimpleVersion.Pipeline.VersionContext.html">VersionContext</a></h4>
-      <section><p>Versioning context for Git repositories.</p>
+      <h4><a class="xref" href="SimpleVersion.Abstractions.IVersionCalculator.html">IVersionCalculator</a></h4>
+      <section><p>Contract for the calculation process.
+Enables collection of processes and invocation to get version results.</p>
 </section>
 </article>
           </div>

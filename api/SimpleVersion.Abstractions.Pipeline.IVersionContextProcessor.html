@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace SimpleVersion.Pipeline
+    <title>Interface IVersionContextProcessor
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace SimpleVersion.Pipeline
+    <meta name="title" content="Interface IVersionContextProcessor
    ">
     <meta name="generator" content="docfx 2.42.0.0">
     
@@ -68,24 +68,55 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="SimpleVersion.Pipeline">
+            <article class="content wrap" id="_content" data-uid="SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor">
   
-  <h1 id="SimpleVersion_Pipeline" data-uid="SimpleVersion.Pipeline" class="text-break">Namespace SimpleVersion.Pipeline
+  
+  <h1 id="SimpleVersion_Abstractions_Pipeline_IVersionContextProcessor" data-uid="SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor" class="text-break">Interface IVersionContextProcessor
   </h1>
-  <div class="markdown level0 summary"></div>
+  <div class="markdown level0 summary"><p>Contract for a processor step during version calculation.</p>
+</div>
   <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
-    <h3 id="classes">Classes
+  <h6><strong>Namespace</strong>: <a class="xref" href="SimpleVersion.Abstractions.Pipeline.html">SimpleVersion.Abstractions.Pipeline</a></h6>
+  <h6><strong>Assembly</strong>: SimpleVersion.Abstractions.dll</h6>
+  <h5 id="SimpleVersion_Abstractions_Pipeline_IVersionContextProcessor_syntax">Syntax</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public interface IVersionContextProcessor</code></pre>
+  </div>
+  <h3 id="methods">Methods
   </h3>
-      <h4><a class="xref" href="SimpleVersion.Pipeline.AzureDevopsContextProcessor.html">AzureDevopsContextProcessor</a></h4>
-      <section><p>Modifies the calculation when running in TFS/Azure Devops.</p>
-</section>
-      <h4><a class="xref" href="SimpleVersion.Pipeline.ConfigurationContextProcessor.html">ConfigurationContextProcessor</a></h4>
-      <section><p>Resolves the configuration for the version calculation.</p>
-</section>
-      <h4><a class="xref" href="SimpleVersion.Pipeline.VersionContext.html">VersionContext</a></h4>
-      <section><p>Versioning context for Git repositories.</p>
-</section>
+  
+  
+  <a id="SimpleVersion_Abstractions_Pipeline_IVersionContextProcessor_Apply_" data-uid="SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.Apply*"></a>
+  <h4 id="SimpleVersion_Abstractions_Pipeline_IVersionContextProcessor_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_" data-uid="SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)">Apply(IVersionContext)</h4>
+  <div class="markdown level1 summary"><p>Applies the processor to the given context.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">void Apply(IVersionContext context)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SimpleVersion.Abstractions.Pipeline.IVersionContext.html">IVersionContext</a></td>
+        <td><span class="parametername">context</span></td>
+        <td><p>The context of the version calculation.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Abstractions_Rules_ITokenRule___0___">TokenRuleExtensions.ResolveTokenRules&lt;T&gt;(T, IVersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</a>
+  </div>
 </article>
           </div>
           

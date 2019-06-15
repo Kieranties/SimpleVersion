@@ -5,11 +5,107 @@
   "files": [
     {
       "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Abstractions.IEnvironment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Abstractions.IEnvironment.html",
+          "hash": "zzqP2RdTGcqgTdy0kiEu2Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Abstractions.IVersionCalculator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Abstractions.IVersionCalculator.html",
+          "hash": "dTfJg57Gq0mSUkG2SH07vg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Abstractions.Pipeline.IVersionContext.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Abstractions.Pipeline.IVersionContext.html",
+          "hash": "+vo+sd5N7Y8PAFt02NEtTw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.html",
+          "hash": "cvAMix1Jd+kTkJWvzjwT4A=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Abstractions.Pipeline.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Abstractions.Pipeline.html",
+          "hash": "/d1v8QUHVI9VOaeDkaYq7Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Abstractions.Rules.ITokenRule-1.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Abstractions.Rules.ITokenRule-1.html",
+          "hash": "RHlJkcA4kID1TKWd3Nu5WQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Abstractions.Rules.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Abstractions.Rules.html",
+          "hash": "8NL0zLuKMZupmsVe31+8dw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Abstractions.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Abstractions.html",
+          "hash": "oqwKQPQ7rypeoknaOFV0tg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "api/SimpleVersion.Comparers.ConfigurationVersionLabelComparer.yml",
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Comparers.ConfigurationVersionLabelComparer.html",
-          "hash": "kMn5D7KQR/+jmV2x9/wRkA=="
+          "hash": "uK/JDeh9SIRGk6F0TsLmMQ=="
         }
       },
       "is_incremental": false,
@@ -21,7 +117,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Comparers.html",
-          "hash": "xq29rxWH5vZzpkTUW3Lt9Q=="
+          "hash": "ncCFkuT3mFLR4fvBfRHdcw=="
         }
       },
       "is_incremental": false,
@@ -33,19 +129,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Constants.html",
-          "hash": "s300jnOB+vPvoE8vC4OQmQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.IEnvironment.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SimpleVersion.IEnvironment.html",
-          "hash": "tN0VgIMH6C7wGQltbeCGFw=="
+          "hash": "KCxhm6TE9KL//sQDz4KVsA=="
         }
       },
       "is_incremental": false,
@@ -57,7 +141,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Model.BranchConfiguration.html",
-          "hash": "nBMzW0uesOhIjBnyjDcGXA=="
+          "hash": "cKmmAyrKiQHe4eOUK4Xr+g=="
         }
       },
       "is_incremental": false,
@@ -69,7 +153,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Model.BranchInfo.html",
-          "hash": "0eBwnWIHPzY6hZQBJPkPEg=="
+          "hash": "5l2bOqemTh+2u+246QtLSg=="
         }
       },
       "is_incremental": false,
@@ -81,7 +165,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Model.Configuration.html",
-          "hash": "YBKMQ+90X1h7wzalQmfItQ=="
+          "hash": "UVoO/ZICWhy88IhNq6Os1Q=="
         }
       },
       "is_incremental": false,
@@ -93,7 +177,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Model.VersionResult.html",
-          "hash": "/C/KjSo2Hu5Legtpz75Wtw=="
+          "hash": "LzlzrskVkj0ZoWKgaw5R8g=="
         }
       },
       "is_incremental": false,
@@ -105,7 +189,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Model.html",
-          "hash": "xKiN2yNxspfUKul8SqcfYg=="
+          "hash": "OjCIx0BsUa5jMvh24U3NTw=="
         }
       },
       "is_incremental": false,
@@ -113,11 +197,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.yml",
+      "source_relative_path": "api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SimpleVersion.Pipeline.BuildServers.AzureDevopsProcess.html",
-          "hash": "Lee7Am4ExRuYJPHk0BxYAg=="
+          "relative_path": "api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.html",
+          "hash": "gporapm2lvB/VhkPcgWSvg=="
         }
       },
       "is_incremental": false,
@@ -125,11 +209,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Pipeline.BuildServers.yml",
+      "source_relative_path": "api/SimpleVersion.Pipeline.ConfigurationContextProcessor.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SimpleVersion.Pipeline.BuildServers.html",
-          "hash": "rA3txJkTdOk/g5jjqxe0ZA=="
+          "relative_path": "api/SimpleVersion.Pipeline.ConfigurationContextProcessor.html",
+          "hash": "yHc+edpGNtNVgb6qWc6W1A=="
         }
       },
       "is_incremental": false,
@@ -141,7 +225,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.html",
-          "hash": "CvsOcMKsu9Kvl3nBdLBAew=="
+          "hash": "OZ2+/R6xvuYOIF1oUymzdw=="
         }
       },
       "is_incremental": false,
@@ -153,7 +237,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.html",
-          "hash": "TEAwvLf/po9XKQGAzYrYQg=="
+          "hash": "0b4FuXy2+vzUkLEMFNTWeA=="
         }
       },
       "is_incremental": false,
@@ -165,7 +249,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Pipeline.Formatting.VersionFormatProcess.html",
-          "hash": "IQw7JejUdE5wF98osZbvJA=="
+          "hash": "t3i3UAU6pik4nk6+ZIY02g=="
         }
       },
       "is_incremental": false,
@@ -177,67 +261,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Pipeline.Formatting.html",
-          "hash": "tdzcyOaZcl1zux8bdQTAPw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Pipeline.IVersionCalculator.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SimpleVersion.Pipeline.IVersionCalculator.html",
-          "hash": "GAzsFi2E14CW2U9APRg6XQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Pipeline.IVersionProcessor.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SimpleVersion.Pipeline.IVersionProcessor.html",
-          "hash": "/JH2q5uT6BFBHl5gVd2dBQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Pipeline.ResolveConfigurationProcess.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SimpleVersion.Pipeline.ResolveConfigurationProcess.html",
-          "hash": "l8HPWNlwtmdZrAfkqxJNDQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Pipeline.ResolveRepositoryPathProcess.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SimpleVersion.Pipeline.ResolveRepositoryPathProcess.html",
-          "hash": "5RwJQELlvPM3wUCw+lU41w=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Pipeline.VersionCalculator.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SimpleVersion.Pipeline.VersionCalculator.html",
-          "hash": "IpRMBwwsJodfsH3dxduV8g=="
+          "hash": "MhZTV3J55eobqR49i/lFew=="
         }
       },
       "is_incremental": false,
@@ -249,7 +273,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Pipeline.VersionContext.html",
-          "hash": "NxgSLdsMRcw+/mXxncyVBA=="
+          "hash": "lyGdrDXweBrb/3YAIm1xtQ=="
         }
       },
       "is_incremental": false,
@@ -261,7 +285,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Pipeline.html",
-          "hash": "iaWV8HTYjP0pCansJBuP7Q=="
+          "hash": "/cfvnV7oYsRfDKYrbnIt0w=="
         }
       },
       "is_incremental": false,
@@ -273,7 +297,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Rules.BaseBranchNameTokenRule.html",
-          "hash": "t+miff+JFhAuV9VxVkLIaA=="
+          "hash": "CPl5Qnyci4Y6pAxvg51CDw=="
         }
       },
       "is_incremental": false,
@@ -285,7 +309,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Rules.BranchNameSuffixTokenRule.html",
-          "hash": "hxrxCmSKAbE4W8Gh6La30w=="
+          "hash": "8vxZHT0/DZEiFzeq47jtIQ=="
         }
       },
       "is_incremental": false,
@@ -297,7 +321,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Rules.BranchNameTokenRule.html",
-          "hash": "ucY2aEnQvGWgEMxI7EGYgA=="
+          "hash": "Hml0gzwKavYHK8HUblvsUg=="
         }
       },
       "is_incremental": false,
@@ -309,7 +333,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Rules.HeightTokenRule.html",
-          "hash": "8B+u8LL01OzxVtCeXWHVHA=="
+          "hash": "tTtmcMu4cWri8sb6R1FL6Q=="
         }
       },
       "is_incremental": false,
@@ -317,11 +341,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Rules.ITokenRule-1.yml",
+      "source_relative_path": "api/SimpleVersion.Rules.PullRequestIdTokenRule.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SimpleVersion.Rules.ITokenRule-1.html",
-          "hash": "t5o5vg/boMBTsYBWOkKbvA=="
+          "relative_path": "api/SimpleVersion.Rules.PullRequestIdTokenRule.html",
+          "hash": "IF2sXOhAH/+nnXIdRQ261g=="
         }
       },
       "is_incremental": false,
@@ -333,7 +357,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Rules.ShortBranchNameTokenRule.html",
-          "hash": "9NO5ZtJkAClU6A4Zq4+LlA=="
+          "hash": "RlDW7GT5MSC7DbfogC+xfw=="
         }
       },
       "is_incremental": false,
@@ -345,7 +369,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Rules.ShortShaTokenRule.html",
-          "hash": "43FNvcNGjrC+aNBA4L5FWA=="
+          "hash": "+BumeztGanrIAI9ULKa77Q=="
         }
       },
       "is_incremental": false,
@@ -357,7 +381,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Rules.TokenRuleExtensions.html",
-          "hash": "BybJOQWpd0twoJ4boq6SFA=="
+          "hash": "IxgyktImhBInHz3lwiOggQ=="
         }
       },
       "is_incremental": false,
@@ -369,7 +393,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Rules.html",
-          "hash": "mwVnmEtDfPOzaLGDzsP2iA=="
+          "hash": "MVKHi66EkHbZR+lvXlmC9g=="
         }
       },
       "is_incremental": false,
@@ -381,7 +405,19 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.StringExtensions.html",
-          "hash": "+KDDKfWJCxuj5ceTxuXtWQ=="
+          "hash": "wF3DvF2jnNyLbWUJPAJ7KQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.VersionCalculator.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.VersionCalculator.html",
+          "hash": "F3jcwU+hGXeWuZ+DyXYUGg=="
         }
       },
       "is_incremental": false,
@@ -393,7 +429,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.VersioningEnvironment.html",
-          "hash": "fRa9L8UtHRRHJU75TExjpg=="
+          "hash": "m1823SJP9DCi6Eql5azDKg=="
         }
       },
       "is_incremental": false,
@@ -405,19 +441,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.html",
-          "hash": "tWH/NwXaTPOgCHTzPTiykw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "Conceptual",
-      "source_relative_path": "api/index.md",
-      "output": {
-        ".html": {
-          "relative_path": "api/index.html",
-          "hash": "BOmsA+c94mjSQfHIYcTgeQ=="
+          "hash": "lh/uTYahb9Tc6URSrNGOSw=="
         }
       },
       "is_incremental": false,
@@ -429,7 +453,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "remAuI+1rnXjp83NSU28Dg=="
+          "hash": "twHgPCNHmGEN8MTb2nirMA=="
         }
       },
       "is_incremental": false,
@@ -441,7 +465,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/configuration.html",
-          "hash": "lbHcNMD2Q5YWWuF4TqQAOQ=="
+          "hash": "tu9MXyuN8zTuYCiz0u/Nyw=="
         }
       },
       "is_incremental": false,
@@ -453,7 +477,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "U2V6gElus5ZNhNMqigVgkg=="
+          "hash": "dGVsikynVml0DGeG4NnYDA=="
         }
       },
       "is_incremental": false,
@@ -465,22 +489,19 @@
       "output": {
         ".html": {
           "relative_path": "articles/results.html",
-          "hash": "BZ9Lj+qqrAFi3K7kerspfg=="
+          "hash": "uYLVKFvJcmnrQdbhCXDxYg=="
         }
       },
       "is_incremental": false,
       "version": ""
     },
     {
-      "log_codes": [
-        "InvalidFileLink"
-      ],
       "type": "Toc",
       "source_relative_path": "articles/toc.yml",
       "output": {
         ".html": {
           "relative_path": "articles/toc.html",
-          "hash": "3J4UXSz1UWNp2GxpQr48kg=="
+          "hash": "Xanu+N5cj8V9uyaBnt/j/Q=="
         }
       },
       "is_incremental": false,
@@ -503,7 +524,7 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "lgLG7nHb+v6ekVt4LdGbJQ=="
+          "hash": "6GDcXSl6YlvRg5Pzew1J9Q=="
         }
       },
       "is_incremental": false,
@@ -511,10 +532,10 @@
     },
     {
       "type": "Resource",
-      "source_relative_path": "theme/partials/logo.tmpl.partial",
+      "source_relative_path": "theme/styles/main.css",
       "output": {
         "resource": {
-          "relative_path": "theme/partials/logo.tmpl.partial"
+          "relative_path": "theme/styles/main.css"
         }
       },
       "is_incremental": false,
@@ -526,7 +547,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "k+/dkjFuwAVS32HduMpmBw=="
+          "hash": "8bZKtOzWsQxZq38xqpG+Tw=="
         }
       },
       "is_incremental": false,
@@ -544,6 +565,18 @@
         "full_build_reason_code": "NoAvailableBuildCache"
       },
       "processors": {
+        "ConceptualDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 4,
+          "skipped_file_count": 0
+        },
+        "ManagedReferenceDocumentProcessor": {
+          "can_incremental": false,
+          "incrementalPhase": "build",
+          "total_file_count": 37,
+          "skipped_file_count": 0
+        },
         "ResourceDocumentProcessor": {
           "can_incremental": false,
           "details": "Processor ResourceDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
@@ -556,18 +589,6 @@
           "details": "Processor TocDocumentProcessor cannot support incremental build because the processor doesn't implement ISupportIncrementalDocumentProcessor interface.",
           "incrementalPhase": "build",
           "total_file_count": 0,
-          "skipped_file_count": 0
-        },
-        "ConceptualDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build",
-          "total_file_count": 5,
-          "skipped_file_count": 0
-        },
-        "ManagedReferenceDocumentProcessor": {
-          "can_incremental": false,
-          "incrementalPhase": "build",
-          "total_file_count": 34,
           "skipped_file_count": 0
         }
       }

@@ -10,7 +10,7 @@
     <meta name="title" content="Introduction ">
     <meta name="generator" content="docfx 2.42.0.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../images/log.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
@@ -33,8 +33,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
+              
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" style="height:40px;padding-top:15px;" src="../images/logo.png" alt="">
+                <img id="logo" class="svg" src="../images/logo.png" alt="SimpleVersion">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -78,13 +79,13 @@ You can install SimpleVersion.Command using <code>nuget.exe</code>:</p>
 <pre><code class="lang-posh"># Installs the latest version to the current directory
 nuget install SimpleVersion.Command
 </code></pre>
-<blockquote>
-<p>[!INFO]
-Execute <code>nuget install -?</code> for additional options</p>
-</blockquote>
+<div class="NOTE">
+<h5>Note</h5>
+<p>Execute <code>nuget install -?</code> for additional options</p>
+</div>
 <p>Once downloaded, you can invoke SimpleVersion using the <code>exe</code> under the installed
 <code>tools</code> folder.</p>
-<pre><code class="lang-posh">.\SimpleVersion.Command&lt;version&gt;\tools\SimpleVersion.exe
+<pre><code class="lang-posh">.\SimpleVersion.Command.&lt;version&gt;\tools\SimpleVersion.exe
 </code></pre>
 <h2 id="cake-addin">Cake Addin</h2>
 <p>The <code>Cake.SimpleVersion</code> addin can be used in a Cake build script to invoke

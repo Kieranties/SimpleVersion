@@ -12,7 +12,7 @@
    ">
     <meta name="generator" content="docfx 2.42.0.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../images/log.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
@@ -35,8 +35,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
+              
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" style="height:40px;padding-top:15px;" src="../images/logo.png" alt="">
+                <img id="logo" class="svg" src="../images/logo.png" alt="SimpleVersion">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -115,13 +116,13 @@
   
   
   <a id="SimpleVersion_Rules_TokenRuleExtensions_ApplyTokenRules_" data-uid="SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules*"></a>
-  <h4 id="SimpleVersion_Rules_TokenRuleExtensions_ApplyTokenRules__1_System_Collections_Generic_IEnumerable___0__SimpleVersion_Pipeline_VersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Rules_ITokenRule___0___" data-uid="SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules``1(System.Collections.Generic.IEnumerable{``0},SimpleVersion.Pipeline.VersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Rules.ITokenRule{``0}})">ApplyTokenRules&lt;T&gt;(IEnumerable&lt;T&gt;, VersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</h4>
+  <h4 id="SimpleVersion_Rules_TokenRuleExtensions_ApplyTokenRules__1_System_Collections_Generic_IEnumerable___0__SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Abstractions_Rules_ITokenRule___0___" data-uid="SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules``1(System.Collections.Generic.IEnumerable{``0},SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Abstractions.Rules.ITokenRule{``0}})">ApplyTokenRules&lt;T&gt;(IEnumerable&lt;T&gt;, IVersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</h4>
   <div class="markdown level1 summary"><p>Applies an enumerable of token rules to a value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;T&gt; ApplyTokenRules&lt;T&gt;(this IEnumerable&lt;T&gt; value, VersionContext context, IEnumerable&lt;ITokenRule&lt;T&gt;&gt; rules)</code></pre>
+    <pre><code class="lang-csharp hljs">public static IEnumerable&lt;T&gt; ApplyTokenRules&lt;T&gt;(this IEnumerable&lt;T&gt; value, IVersionContext context, IEnumerable&lt;ITokenRule&lt;T&gt;&gt; rules)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -140,13 +141,13 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="SimpleVersion.Pipeline.VersionContext.html">VersionContext</a></td>
+        <td><a class="xref" href="SimpleVersion.Abstractions.Pipeline.IVersionContext.html">IVersionContext</a></td>
         <td><span class="parametername">context</span></td>
         <td><p>The <a class="xref" href="SimpleVersion.Pipeline.VersionContext.html">VersionContext</a> of the current version calculation.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="SimpleVersion.Rules.ITokenRule-1.html">ITokenRule</a>&lt;T&gt;&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="SimpleVersion.Abstractions.Rules.ITokenRule-1.html">ITokenRule</a>&lt;T&gt;&gt;</td>
         <td><span class="parametername">rules</span></td>
         <td><p>The enumerable of rules to apply.</p>
 </td>
@@ -188,13 +189,13 @@
   
   
   <a id="SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules_" data-uid="SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules*"></a>
-  <h4 id="SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Pipeline_VersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Rules_ITokenRule___0___" data-uid="SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules``1(``0,SimpleVersion.Pipeline.VersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Rules.ITokenRule{``0}})">ResolveTokenRules&lt;T&gt;(T, VersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</h4>
+  <h4 id="SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Abstractions_Rules_ITokenRule___0___" data-uid="SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules``1(``0,SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Abstractions.Rules.ITokenRule{``0}})">ResolveTokenRules&lt;T&gt;(T, IVersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</h4>
   <div class="markdown level1 summary"><p>Resolves an enumerable of token rules against a value.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static T ResolveTokenRules&lt;T&gt;(this T value, VersionContext context, IEnumerable&lt;ITokenRule&lt;T&gt;&gt; rules)</code></pre>
+    <pre><code class="lang-csharp hljs">public static T ResolveTokenRules&lt;T&gt;(this T value, IVersionContext context, IEnumerable&lt;ITokenRule&lt;T&gt;&gt; rules)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -213,13 +214,13 @@
 </td>
       </tr>
       <tr>
-        <td><a class="xref" href="SimpleVersion.Pipeline.VersionContext.html">VersionContext</a></td>
+        <td><a class="xref" href="SimpleVersion.Abstractions.Pipeline.IVersionContext.html">IVersionContext</a></td>
         <td><span class="parametername">context</span></td>
         <td><p>The <a class="xref" href="SimpleVersion.Pipeline.VersionContext.html">VersionContext</a> of the current version calculation.</p>
 </td>
       </tr>
       <tr>
-        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="SimpleVersion.Rules.ITokenRule-1.html">ITokenRule</a>&lt;T&gt;&gt;</td>
+        <td><span class="xref">System.Collections.Generic.IEnumerable</span>&lt;<a class="xref" href="SimpleVersion.Abstractions.Rules.ITokenRule-1.html">ITokenRule</a>&lt;T&gt;&gt;</td>
         <td><span class="parametername">rules</span></td>
         <td><p>The enumerable of rules to resolve.</p>
 </td>
