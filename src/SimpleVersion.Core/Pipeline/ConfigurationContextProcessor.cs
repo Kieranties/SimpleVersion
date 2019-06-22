@@ -108,23 +108,44 @@ namespace SimpleVersion.Pipeline
             if (config == null)
                 return;
 
-            var firstMatch = config.Branches
-                .Overrides.FirstOrDefault(x => Regex.IsMatch(context.Result.CanonicalBranchName, x.Match, RegexOptions.IgnoreCase));
+            var match = config
+                .Branches
+                .Overrides
+                .FirstOrDefault(x => Regex.IsMatch(context.Result.CanonicalBranchName, x.Match, RegexOptions.IgnoreCase));
 
-            if (firstMatch != null)
+            if (match != null)
             {
-                if (firstMatch.Label != null)
-                {
-                    config.Label.Clear();
-                    config.Label.AddRange(firstMatch.Label);
-                }
+                var label = ApplyParts(match.Label ?? config.Label, match.PrefixLabel, match.PostfixLabel, match.InsertLabel);
+                config.Label.Clear();
+                config.Label.AddRange(label);
 
-                if (firstMatch.Metadata != null)
+                var meta = ApplyParts(match.Metadata ?? config.Metadata, match.PrefixMetadata, match.PostfixMetadata, match.InsertMetadata);
+                config.Metadata.Clear();
+                config.Metadata.AddRange(meta);
+            }
+        }
+
+        private static List<string> ApplyParts(List<string> baseList, List<string> pre, List<string> post, IDictionary<int, string> inserts)
+        {
+            var result = new List<string>();
+            if (baseList != null)
+                result.AddRange(baseList);
+
+            if (inserts != null)
+            {
+                foreach (var entry in inserts)
                 {
-                    config.Metadata.Clear();
-                    config.Metadata.AddRange(firstMatch.Metadata);
+                    result.Insert(entry.Key, entry.Value);
                 }
             }
+
+            if (pre != null)
+                result.InsertRange(0, pre);
+
+            if (post != null)
+                result.AddRange(post);
+
+            return result;
         }
 
         private static SVM.Configuration Read(string rawConfiguration)

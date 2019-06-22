@@ -16,8 +16,14 @@ namespace SimpleVersion.Abstractions.Tests.Model
 
             // Assert
             sut.Label.Should().BeNull();
+            sut.PrefixLabel.Should().BeNull();
+            sut.PostfixLabel.Should().BeNull();
+            sut.InsertLabel.Should().BeNull();
             sut.Match.Should().BeEmpty();
             sut.Metadata.Should().BeNull();
+            sut.PrefixMetadata.Should().BeNull();
+            sut.PostfixMetadata.Should().BeNull();
+            sut.InsertMetadata.Should().BeNull();
         }
     }
 }

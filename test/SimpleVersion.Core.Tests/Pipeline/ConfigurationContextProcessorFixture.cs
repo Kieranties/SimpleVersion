@@ -315,6 +315,58 @@ namespace SimpleVersion.Core.Tests.Pipeline
         }
 
         [Fact]
+        public void Apply_AdvancedBranchOverride_AppliesOverride()
+        {
+            // Arrange
+            var expectedLabel = new List<string> { "preL1", "preL2", "L1", "insertedL", "L2", "postL1", "postL2" };
+            var expectedMeta = new List<string> { "preM1", "preM2", "M1", "insertedM", "M2", "postM1", "postM2" };
+
+            var config = new Configuration
+            {
+                Version = "0.1.0",
+                Label = { "L1", "L2" },
+                Metadata = { "M1", "M2" },
+                Branches =
+                {
+                    Overrides =
+                    {
+                        new BranchConfiguration
+                        {
+                            Match = "feature/other",
+                            PrefixLabel = new List<string> { "preL1", "preL2" },
+                            PostfixLabel = new List<string> { "postL1", "postL2" },
+                            InsertLabel = new Dictionary<int, string> { [1] = "insertedL" },
+                            PrefixMetadata = new List<string> { "preM1", "preM2" },
+                            PostfixMetadata = new List<string> { "postM1", "postM2" },
+                            InsertMetadata = new Dictionary<int, string> { [1] = "insertedM" }
+                        }
+                    }
+                }
+            };
+
+            using (var fixture = new SimpleVersionRepositoryFixture(config))
+            {
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+
+                fixture.BranchTo("feature/other");
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+                fixture.MakeACommit();
+
+                var context = new VersionContext(fixture.Repository);
+
+                // Act
+                _sut.Apply(context);
+
+                context.Configuration.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
+                context.Configuration.Metadata.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
+            }
+        }
+
+        [Fact]
         public void Apply_Malformed_Json_At_Commit_Throws()
         {
             using (var fixture = new SimpleVersionRepositoryFixture())
