@@ -134,7 +134,7 @@ only the first match (if found) is used.
 }
 ```
 
-In th above example, any branch starting with _feature/_ will add the branches
+In the above example, any branch starting with _feature/_ will add the branches
 shortname as metadata to the generated version. E.g. _feature/testing_ will
 create a version of `0.2.0-alpha1.5.c903782+featuretesting` when there are five
 commits and the sha begins with _903782_
@@ -146,6 +146,23 @@ and have the height added into the metadata.
 > Overrides will allow the same commit to be built with different versions
 > depending on the current branch.
 
+#### Override Properties
+
+Override configuration has access to the following properties
+
+| Key               | Type                  | Required | Description                                                                               |
+| ----------------- | --------------------- | -------- | ----------------------------------------------------------------------------------------- |
+| `match`           | string                | true     | Branches with a canonical branch name matching this regular expression will be overridden |
+| `label`           | string array          | false    | Overrides `label` from the base configuration                                             |
+| `prefixlabel`     | string array          | false    | Prefixes the base configuration `label` with the given values                             |
+| `postfixlabel`    | string array          | false    | Postfixes the base configuration `label` with the given values                            |
+| `insertlabel`     | int/string dictionary | false    | Inserts the given values into the base `label` at the index specified                     |
+| `metadata`        | string array          | false    | Overrides `metdata` from the base configuration                                           |
+| `prefixmetadata`  | string array          | false    | Prefixes the base configuration `metadata` with the given values                          |
+| `postfixmetadata` | string array          | false    | Postfixes the base configuration `metadata` with the given values                         |
+| `insertmetadata`  | int/string dictionary | false    | Inserts the given values into the base `metadata` at the index specified                  |
+
+
 Replacement Tokens
 ------------------
 
@@ -155,9 +172,9 @@ substitution of values during invocation.  The following tokens may be used:
 
 | Name               | Token                | Where                          | Description                                                                |
 | ------------------ | -------------------- | ------------------------------ | -------------------------------------------------------------------------- |
-| Height             | `*`                  | `Version`, `Label`, `Metadata` | Inserts the calculated height                                              |
-| Branch Name        | `{branchname}`       | `Label`, `Metadata`            | Inserts the canonical branch name, stripped of non-alphanumeric characters |
-| Short Branch Name  | `{shortbranchname}`  | `Label`, `Metadata`            | Inserts the friendly branch name, stripped of non-alphanumeric characters  |
-| Branch Name Suffix | `{branchnamesuffix}` | `Label`, `Metadata`            | Inserts the last segment of the canonical name of a branch                 |
-| Short Sha          | `{shortsha}`         | `Label`, `Metadata`            | Inserts the first seven characters of the commit sha, prefixed with `c`    |
-| Pull-Request Id    | `{pr}`               | `Label`, `Metadata`            | Inserts the id of the pull-request (or 0 by default)                       |
+| Height             | `*`                  | `version`, `label`, `metadata` | Inserts the calculated height                                              |
+| Branch Name        | `{branchname}`       | `label`, `metadata`            | Inserts the canonical branch name, stripped of non-alphanumeric characters |
+| Short Branch Name  | `{shortbranchname}`  | `label`, `metadata`            | Inserts the friendly branch name, stripped of non-alphanumeric characters  |
+| Branch Name Suffix | `{branchnamesuffix}` | `label`, `metadata`            | Inserts the last segment of the canonical name of a branch                 |
+| Short Sha          | `{shortsha}`         | `label`, `metadata`            | Inserts the first seven characters of the commit sha, prefixed with `c`    |
+| Pull-Request Id    | `{pr}`               | `label`, `metadata`            | Inserts the id of the pull-request (or 0 by default)                       |
