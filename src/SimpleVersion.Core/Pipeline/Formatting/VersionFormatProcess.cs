@@ -31,7 +31,7 @@ namespace SimpleVersion.Pipeline.Formatting
             }
             else
             {
-                throw new InvalidOperationException($"Version '{versionString}' is not in a valid format");
+                throw new InvalidOperationException(Resources.InvalidVersionFormat.FormatWith(versionString));
             }
         }
     }

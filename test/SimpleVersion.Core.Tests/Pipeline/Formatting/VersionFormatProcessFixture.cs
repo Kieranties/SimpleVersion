@@ -47,7 +47,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
                 // Asset
                 action.Should().Throw<InvalidOperationException>()
-                    .WithMessage($"Version '{context.Configuration.Version}' is not in a valid format");
+                    .WithMessage($"Version '{context.Configuration.Version}' is not in a valid format.");
             }
         }
 
