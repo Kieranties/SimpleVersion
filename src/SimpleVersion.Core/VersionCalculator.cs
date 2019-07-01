@@ -51,12 +51,12 @@ namespace SimpleVersion
         private string ResolveRepoPath(string path)
         {
             if (string.IsNullOrWhiteSpace(path))
-                throw new ArgumentException("Path must be provided.", nameof(path));
+                throw new ArgumentException(Resources.PathMustBeProvided, nameof(path));
 
             var resolvedPath = Repository.Discover(path);
 
             if (string.IsNullOrWhiteSpace(resolvedPath))
-                throw new DirectoryNotFoundException($"Could not find git repository at '{path}' or any parent directory.");
+                throw new DirectoryNotFoundException(Resources.CouldNotFindGitRepository.FormatWith(path));
 
             return resolvedPath;
         }
