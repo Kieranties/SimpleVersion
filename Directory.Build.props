@@ -33,9 +33,8 @@
     <MSBuildTreatWarningsAsErrors>true</MSBuildTreatWarningsAsErrors>
     <TreatWarningsAsErrors Condition="'$(BuildingInsideVisualStudio)' != 'true'">true</TreatWarningsAsErrors>
     <!-- NU5105 - Usage of semver 2 versioning -->
-    <!-- CA1062 - null validation -->
     <!-- CA1303 - Use resource table -->
-    <NoWarn>$(NoWarn);NU5105;CA1062;CA1303</NoWarn>
+    <NoWarn>$(NoWarn);NU5105;CA1303</NoWarn>
   </PropertyGroup>
 
   <ItemGroup Label="Shared Assets">
