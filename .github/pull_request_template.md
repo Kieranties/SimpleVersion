@@ -10,6 +10,7 @@ Fixes # (provide one or more issues this PR fixes)
 - [ ] Bug Fix: Fixes an issue in implementation
 - [ ] New Feature: Adds new functionality in a non-breaking manner
 - [ ] Breaking Change: Implements a fix or feature in a breaking manner
+- [ ] Other - \<please specify>
 
 # Quality
 - [ ] Unit tests have been added/updated
