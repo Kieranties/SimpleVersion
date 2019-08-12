@@ -56,11 +56,13 @@ namespace SimpleVersion.Rules
         /// <inheritdoc/>
         public IEnumerable<string> Apply(IVersionContext context, IEnumerable<string> input)
         {
-            if (!context.Configuration.Version.Contains(Token)
-                && input.Count() != 0
-                && !input.Any(x => x.Contains(Token)))
+            if (!context.Configuration.Version.Contains(Token))
             {
-                return input.Concat(new[] { Token });
+                var inputEntries = input.ToArray();
+                if (inputEntries.Length > 0 && !inputEntries.Any(x => x.Contains(Token)))
+                {
+                    return input.Concat(new[] { Token });
+                }
             }
 
             return input;
