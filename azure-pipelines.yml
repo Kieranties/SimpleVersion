@@ -69,7 +69,7 @@ jobs:
       codeCoverageTool: Cobertura
       summaryFileLocation: '$(ArtifactsDir)/**/*.cobertura.xml'
 
-  # TODO - Renable integration tests. Currently fail as environment variables
+  # TODO - Re-enable integration tests. Currently fail as environment variables
   # are always collected, so branch always maps to current repo branch being built
 
   # Run integration tests

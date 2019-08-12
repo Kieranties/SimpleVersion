@@ -18,7 +18,7 @@
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage(
     "Usage",
     "CA1806:Do not ignore method results",
-    Justification = "Tests use lambdas/anonynmous functions for exception handling")]
+    Justification = "Tests use lambdas/anonymous functions for exception handling")]
 
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage(
     "Usage",

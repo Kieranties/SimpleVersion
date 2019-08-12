@@ -21,7 +21,7 @@ function exec([string]$cmd) {
     & $cmd @args
     $ErrorActionPreference = $currentPref
     if($LASTEXITCODE -ne 0) {
-        Write-Error "[Errorcode $LASTEXITCODE] Command $cmd $args"
+        Write-Error "[Error code $LASTEXITCODE] Command $cmd $args"
         exit $LASTEXITCODE
     }
 }

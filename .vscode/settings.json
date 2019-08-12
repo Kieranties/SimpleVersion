@@ -3,7 +3,21 @@
     "cSpell.words": [
         "Devops",
         "Xunit",
-        "repo"
+        "repo",
+        "branchname",
+        "branchnamesuffix",
+        "Devops",
+        "diff",
+        "diffs",
+        "hashcode",
+        "metadata",
+        "mr",
+        "pdbs",
+        "Semver",
+        "sha",
+        "shortbranchname",
+        "shortsha",
+        "versioned"
     ],
     "cSpell.ignorePaths": [
         "**/package-lock.json",
@@ -11,6 +25,7 @@
         "**/vscode-extension/**",
         "**/.git/objects/**",
         ".vscode",
-        "**/*.Designer.cs"
+        "**/*.Designer.cs",
+        "**/*.dic"
     ]
 }

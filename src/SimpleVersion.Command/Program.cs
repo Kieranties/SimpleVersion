@@ -7,7 +7,7 @@ using System;
 namespace SimpleVersion.Command
 {
     /// <summary>
-    /// Commandline entry point.
+    /// Command line entry point.
     /// </summary>
     public sealed class Program
     {

@@ -8,7 +8,7 @@ using Git = LibGit2Sharp;
 namespace SimpleVersion.Pipeline
 {
     /// <summary>
-    /// Versioning context for Git repositories.
+    /// Version context for Git repositories.
     /// </summary>
     public class VersionContext : IVersionContext
     {

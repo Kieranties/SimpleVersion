@@ -44,7 +44,7 @@ namespace SimpleVersion.Core.Tests.Rules
         }
 
         [Theory]
-        [InlineData("refs/heads/master", "{branchName}", "refsheadsmaster")]
+        [InlineData("refs/heads/master", "{branchName}", "refsheadsmaster")] // Ignore spelling: refsheadsmaster
         [InlineData("refs/heads/master", "{BRANCHNAME}", "refsheadsmaster")]
         [InlineData("refs/heads/release/1.0", "{BRANCHNAME}", "refsheadsrelease10")]
         [InlineData("refs/heads/release-1.0", "{BRANCHNAME}", "refsheadsrelease10")]
@@ -71,7 +71,7 @@ namespace SimpleVersion.Core.Tests.Rules
         }
 
         [Theory]
-        [InlineData("master", "{branchName}", "[mr]", "aste")] //cSpell:ignore aste
+        [InlineData("master", "{branchName}", "[mr]", "aste")] // cSpell:ignore aste // Ignore spelling: aste
         public void Resolve_CustomPattern_Replaces_BranchName(string branchName, string input, string pattern, string expected)
         {
             // Arrange
