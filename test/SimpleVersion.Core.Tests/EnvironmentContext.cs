@@ -5,18 +5,18 @@ using System.Collections.Generic;
 
 namespace SimpleVersion.Core.Tests
 {
-    public class EnvrionmentContext : IDisposable
+    public class EnvironmentContext : IDisposable
     {
         private static readonly Dictionary<string, string> _noBuildServerVars = new Dictionary<string, string>
         {
             ["TF_BUILD"] = "False"
         };
 
-        public static EnvrionmentContext NoBuildServer() => new EnvrionmentContext(_noBuildServerVars);
+        public static EnvironmentContext NoBuildServer() => new EnvironmentContext(_noBuildServerVars);
 
         private readonly Dictionary<string, string> _initState = new Dictionary<string, string>();
 
-        public EnvrionmentContext(Dictionary<string, string> state)
+        public EnvironmentContext(Dictionary<string, string> state)
         {
             foreach (var entry in state)
             {

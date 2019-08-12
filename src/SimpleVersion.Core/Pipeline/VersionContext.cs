@@ -19,7 +19,7 @@ namespace SimpleVersion.Pipeline
         public VersionContext(Git.IRepository repository)
         {
             Repository = repository ?? throw new ArgumentNullException(nameof(repository));
-            Result = SetIntialResult();
+            Result = SetInitialResult();
         }
 
         /// <inheritdoc/>
@@ -34,7 +34,7 @@ namespace SimpleVersion.Pipeline
         /// <returns>The current <see cref="Git.Repository"/> being versioned.</returns>
         public Git.IRepository Repository { get; }
 
-        private VersionResult SetIntialResult()
+        private VersionResult SetInitialResult()
         {
             var sha = Repository.Head.Tip?.Sha;
             return new VersionResult

@@ -26,12 +26,12 @@ namespace SimpleVersion.Abstractions.Rules
         T Resolve(IVersionContext context, T value);
 
         /// <summary>
-        /// Returns an enumerables of <typeparamref name="T"/> where the rule token
+        /// Returns an enumerable of <typeparamref name="T"/> where the rule token
         /// may have been applied of the token rule requires it.
         /// </summary>
         /// <param name="context">The context of the current calculation.</param>
         /// <param name="value">An enumerable of <typeparamref name="T"/> values to possible update.</param>
-        /// <returns>An enuemrable of <typeparamref name="T"/> where inclusion of the token may have been applied.</returns>
+        /// <returns>An enumerable of <typeparamref name="T"/> where inclusion of the token may have been applied.</returns>
         IEnumerable<T> Apply(IVersionContext context, IEnumerable<T> value);
     }
 }

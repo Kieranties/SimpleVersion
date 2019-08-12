@@ -41,7 +41,7 @@ namespace SimpleVersion.Pipeline
             // Get the state of this tree to compare for diffs
             var tipTree = context.Repository.Head.Tip.Tree;
 
-            // Initialise count - The current commit counts, include offset
+            // Initialize count - The current commit counts, include offset
             var height = 1 + context.Configuration.OffSet;
 
             // skip the first commit as that is our baseline

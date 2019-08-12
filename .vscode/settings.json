@@ -1,5 +1,16 @@
 {
+    "cSpell.language": "en",
     "cSpell.words": [
-        "simpleversion"
+        "Devops",
+        "Xunit",
+        "repo"
+    ],
+    "cSpell.ignorePaths": [
+        "**/package-lock.json",
+        "**/node_modules/**",
+        "**/vscode-extension/**",
+        "**/.git/objects/**",
+        ".vscode",
+        "**/*.Designer.cs"
     ]
 }

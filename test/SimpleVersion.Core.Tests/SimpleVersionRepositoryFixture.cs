@@ -8,7 +8,7 @@ using System.IO;
 namespace SimpleVersion.Core.Tests
 {
     /// <summary>
-    /// Creates a repository containg an intial commit on master with some base configuration.
+    /// Creates a repository containing an initial commit on master with some base configuration.
     /// </summary>
     public class SimpleVersionRepositoryFixture : EmptyRepositoryFixture
     {

@@ -41,7 +41,7 @@ namespace SimpleVersion.Core.Tests
 
             // Arrange
             using (var fixture = new SimpleVersionRepositoryFixture(config))
-            using (EnvrionmentContext.NoBuildServer())
+            using (EnvironmentContext.NoBuildServer())
             {
                 // Make some extra commits on master
                 fixture.MakeACommit();
