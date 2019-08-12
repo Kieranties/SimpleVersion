@@ -29,7 +29,7 @@ namespace SimpleVersion
 
             using (var repo = new Repository(resolvedPath))
             {
-                // Init context
+                // Initialize context
                 var ctx = new VersionContext(repo);
                 ctx.Result.RepositoryPath = Directory.GetParent(resolvedPath).Parent.FullName;
 

@@ -107,7 +107,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
         }
 
         [Fact]
-        public void Apply_Modfied_No_Version_Or_Label_Changes_Does_Not_Reset()
+        public void Apply_Modified_No_Version_Or_Label_Changes_Does_Not_Reset()
         {
             using (var fixture = new SimpleVersionRepositoryFixture())
             {
