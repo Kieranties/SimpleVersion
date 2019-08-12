@@ -113,6 +113,12 @@ will be raised to the repository authors.
 Please complete the pull-request template with any additional information for
 the reviewer.
 
-Pull-Requests are squash-merged into the master branch, so if you have not
+Pull-requests are squash-merged into the master branch, so if you have not
 precisely followed the conventional commits guidelines, don't worry.  The
 approver will clean things up.
+
+
+Contact
+-------
+
+If you have any queries, just ping @Kieranties
