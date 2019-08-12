@@ -6,6 +6,7 @@
   <PropertyGroup>
     <AssemblyName>Cake.SimpleVersion</AssemblyName>
     <PackageTags>$(PackageTags);Cake</PackageTags>
+    <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</PackageIconUrl>
   </PropertyGroup>
 
   <PropertyGroup Label="Pack Meta">
