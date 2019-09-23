@@ -48,17 +48,6 @@ namespace SimpleVersion.Comparers
         /// <returns>The generated hashcode.</returns>
         public int GetHashCode(Configuration configuration)
         {
-            if (configuration is null)
-                throw new ArgumentNullException(nameof(configuration));
-
-            if (configuration.Version is null)
-#pragma warning disable CA2208 // Instantiate argument exceptions correctly
-                throw new ArgumentNullException(nameof(configuration.Version));
-
-            if (configuration.Label is null)
-                throw new ArgumentNullException(nameof(configuration.Label));
-#pragma warning restore CA2208 // Instantiate argument exceptions correctly
-
             return (configuration.Version.GetHashCode() * 17) + configuration.Label.GetHashCode();
         }
     }

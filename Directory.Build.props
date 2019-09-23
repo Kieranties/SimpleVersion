@@ -30,8 +30,10 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Build Attributes">
-    <MSBuildTreatWarningsAsErrors>true</MSBuildTreatWarningsAsErrors>
-    <TreatWarningsAsErrors Condition="'$(BuildingInsideVisualStudio)' != 'true'">true</TreatWarningsAsErrors>
+    <MSBuildTreatWarningsAsErrors>false</MSBuildTreatWarningsAsErrors>    
+    <MSBuildTreatWarningsAsErrors  Condition="'$(Configuration)' == 'Release'">true</MSBuildTreatWarningsAsErrors>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors Condition="'$(Configuration)' == 'Release'">true</TreatWarningsAsErrors>
     <!-- NU5105 - Usage of semver 2 versioning -->
     <NoWarn>$(NoWarn);NU5105</NoWarn>
   </PropertyGroup>
