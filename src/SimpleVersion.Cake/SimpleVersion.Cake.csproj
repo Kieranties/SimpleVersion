@@ -1,13 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <Sdk Name="Microsoft.Build.CentralPackageVersions" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Cake.SimpleVersion</AssemblyName>
     <PackageTags>$(PackageTags);Cake</PackageTags>
-    <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</PackageIconUrl>
   </PropertyGroup>
-
+  
   <ItemGroup>
     <ProjectReference Include="..\SimpleVersion.Core\SimpleVersion.Core.csproj" PrivateAssets="All" />
   </ItemGroup>
@@ -22,9 +21,7 @@
 
   <Target Name="PackBuildOutputs">
     <ItemGroup>
-      <TfmSpecificPackageFile
-        Include="$(OutputPath)\**\*"
-        Exclude="$(OutputPath)\**\Cake.Core.dll">
+      <TfmSpecificPackageFile Include="$(OutputPath)\**\*" Exclude="$(OutputPath)\**\Cake.Core.dll">
         <PackagePath>lib\$(TargetFramework)\</PackagePath>
       </TfmSpecificPackageFile>
     </ItemGroup>
