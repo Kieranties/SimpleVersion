@@ -31,7 +31,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
 
             // Assert
             action.Should().Throw<ArgumentException>()
-                .WithMessage("Path must be provided.\r\nParameter name: path");
+                .WithMessage("Path must be provided. (Parameter 'path')");
         }
 
         public static IEnumerable<object[]> InvalidPaths()

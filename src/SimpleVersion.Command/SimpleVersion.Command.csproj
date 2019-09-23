@@ -1,13 +1,16 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <Sdk Name="Microsoft.Build.CentralPackageVersions" />
 
-  <Import Project="..\App.props"/>
-
   <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
     <OutputType>Exe</OutputType>
     <AssemblyName>SimpleVersion</AssemblyName>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleVersion.Core\SimpleVersion.Core.csproj" PrivateAssets="All" />
+  </ItemGroup>
+  
   <PropertyGroup Label="Pack Meta">
     <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);PackBuildOutputs</TargetsForTfmSpecificContentInPackage>
     <PackageId>SimpleVersion.Command</PackageId>

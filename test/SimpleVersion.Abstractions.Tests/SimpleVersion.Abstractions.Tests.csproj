@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <Sdk Name="Microsoft.Build.CentralPackageVersions" />
-
+  
   <PropertyGroup Label="Coverlet properties">
     <Include>[SimpleVersion.Abstractions]*</Include>
   </PropertyGroup>

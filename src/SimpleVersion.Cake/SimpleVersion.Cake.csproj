@@ -1,21 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <Sdk Name="Microsoft.Build.CentralPackageVersions" />
 
-  <Import Project="..\App.props"/>
-
   <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Cake.SimpleVersion</AssemblyName>
     <PackageTags>$(PackageTags);Cake</PackageTags>
     <PackageIconUrl>https://cdn.jsdelivr.net/gh/cake-contrib/graphics/png/cake-contrib-medium.png</PackageIconUrl>
   </PropertyGroup>
 
-  <PropertyGroup Label="Pack Meta">
-    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);PackBuildOutputs</TargetsForTfmSpecificContentInPackage>
-  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SimpleVersion.Core\SimpleVersion.Core.csproj" PrivateAssets="All" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Cake.Core" />
   </ItemGroup>
+  
+  <PropertyGroup Label="Pack Meta">
+    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);PackBuildOutputs</TargetsForTfmSpecificContentInPackage>
+  </PropertyGroup>
 
   <Target Name="PackBuildOutputs">
     <ItemGroup>

@@ -123,7 +123,7 @@ namespace SimpleVersion.Core.Tests.Comparers
                 Version = "1.2.3",
                 Label = { "hi" }
             };
-            var expected = (config.Version.GetHashCode() * 17) + config.Label.GetHashCode();
+            var expected = (config.Version.GetHashCode(StringComparison.OrdinalIgnoreCase) * 17) + config.Label.GetHashCode();
 
             // Arrange / Act
             var result = _sut.GetHashCode(config);

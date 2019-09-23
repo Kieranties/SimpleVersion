@@ -1,9 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <Sdk Name="Microsoft.Build.CentralPackageVersions" />
 
   <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>SimpleVersion</RootNamespace>
-    <NeutralLanguage>en-GB</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
