@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <PropertyGroup Label="All package targets">
-    <TargetFramework>net461</TargetFramework>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <!-- Meta properties: https://docs.microsoft.com/en-us/dotnet/core/tools/csproj -->
