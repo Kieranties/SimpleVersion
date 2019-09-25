@@ -12,6 +12,7 @@ param(
     [Switch]$NoBuild,
     [Switch]$BuildDocs,
     [Switch]$ServeDocs,
+    [Switch]$Resources,
     [String]$DocfxVersion = '2.42.0'
 )
 
@@ -38,6 +39,12 @@ if(!$Version) {
 }
 if($ServeDocs) {
     $BuildDocs = $true
+}
+
+# Resources
+if($Resources){
+    exec dotnet msbuild /t:ResourceGen
+    return
 }
 
 # Build/Pack

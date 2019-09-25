@@ -31,7 +31,7 @@ namespace SimpleVersion.Pipeline.Formatting
             }
             else
             {
-                throw new InvalidOperationException(Resources.InvalidVersionFormat.FormatWith(versionString));
+                throw new InvalidOperationException(Resources.Exception_InvalidVersionFormat(versionString));
             }
         }
     }

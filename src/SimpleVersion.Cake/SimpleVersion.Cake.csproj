@@ -6,7 +6,7 @@
     <AssemblyName>Cake.SimpleVersion</AssemblyName>
     <PackageTags>$(PackageTags);Cake</PackageTags>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <ProjectReference Include="..\SimpleVersion.Core\SimpleVersion.Core.csproj" PrivateAssets="All" />
   </ItemGroup>
@@ -14,14 +14,16 @@
   <ItemGroup>
     <PackageReference Include="Cake.Core" />
   </ItemGroup>
-  
+
   <PropertyGroup Label="Pack Meta">
     <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);PackBuildOutputs</TargetsForTfmSpecificContentInPackage>
   </PropertyGroup>
 
   <Target Name="PackBuildOutputs">
     <ItemGroup>
-      <TfmSpecificPackageFile Include="$(OutputPath)\**\*" Exclude="$(OutputPath)\**\Cake.Core.dll">
+      <TfmSpecificPackageFile
+        Include="$(OutputPath)\**\*"
+        Exclude="$(OutputPath)\**\Cake.Core.dll;$(OutputPath)\**\*SimpleVersion*">
         <PackagePath>lib\$(TargetFramework)\</PackagePath>
       </TfmSpecificPackageFile>
     </ItemGroup>

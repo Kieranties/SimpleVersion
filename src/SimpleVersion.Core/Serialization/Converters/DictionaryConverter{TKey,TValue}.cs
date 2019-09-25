@@ -19,7 +19,7 @@ namespace SimpleVersion.Serialization.Converters
         public override Dictionary<TKey, TValue> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             if (reader.TokenType != JsonTokenType.StartObject)
-                throw new JsonException("Expected object");
+                throw new JsonException(Resources.Exception_InvalidJsonToken(reader.TokenType, this.GetType()));
 
             // step forward
             reader.Read();
@@ -50,7 +50,7 @@ namespace SimpleVersion.Serialization.Converters
         private (TKey Key, TValue Value) ReadEntry(ref Utf8JsonReader reader, JsonSerializerOptions options)
         {
             if (reader.TokenType != JsonTokenType.PropertyName)
-                throw new JsonException("Expected property");
+                throw new JsonException(Resources.Exception_InvalidJsonToken(reader.TokenType, this.GetType()));
 
             var key = JsonSerializer.Deserialize<TKey>(reader.ValueSpan, options);
 

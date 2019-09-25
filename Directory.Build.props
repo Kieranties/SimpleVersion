@@ -35,7 +35,7 @@
   </ItemGroup>
   
   <PropertyGroup Label="Build Attributes">
-    <MSBuildTreatWarningsAsErrors>false</MSBuildTreatWarningsAsErrors>    
+    <MSBuildTreatWarningsAsErrors>false</MSBuildTreatWarningsAsErrors>
     <MSBuildTreatWarningsAsErrors  Condition="'$(Configuration)' == 'Release'">true</MSBuildTreatWarningsAsErrors>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <TreatWarningsAsErrors Condition="'$(Configuration)' == 'Release'">true</TreatWarningsAsErrors>

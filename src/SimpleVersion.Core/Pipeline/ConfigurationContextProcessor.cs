@@ -28,10 +28,10 @@ namespace SimpleVersion.Pipeline
                 throw new ArgumentNullException(nameof(context));
 
             if (!(context is VersionContext repoContext))
-                throw new InvalidCastException(Resources.CouldNotConvertContextType.FormatWith(typeof(VersionContext)));
+                throw new InvalidCastException(Resources.Exception_CouldNotConvertContextType(typeof(VersionContext)));
 
             var config = GetConfiguration(repoContext.Repository.Head?.Tip, repoContext)
-                        ?? throw new InvalidOperationException(Resources.CouldNotReadSimpleVersionFile.FormatWith(Constants.VersionFileName));
+                        ?? throw new InvalidOperationException(Resources.Exception_CouldNotReadSettingsFile(Constants.VersionFileName));
 
             context.Configuration = config;
 

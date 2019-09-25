@@ -27,16 +27,5 @@ namespace SimpleVersion
 
             return bool.TrueString.Equals(value, StringComparison.OrdinalIgnoreCase);
         }
-
-        /// <summary>
-        /// Returns a formated string using InvariantCulture.
-        /// </summary>
-        /// <param name="format">The format to be used.</param>
-        /// <param name="values">The values to use when formatting.</param>
-        /// <returns>The formatted string.</returns>
-        public static string FormatWith(this string format, params object[] values)
-        {
-            return string.Format(CultureInfo.InvariantCulture, format, values);
-        }
     }
 }

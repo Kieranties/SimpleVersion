@@ -1,0 +1,48 @@
+<Project>
+
+  <ItemDefinitionGroup>
+    <NeedsGeneration>
+      <GeneratedFileName>%(Filename).Generated.cs</GeneratedFileName>
+      <Namespace>$(RootNamespace)</Namespace>
+      <ClassName>%(Filename)</ClassName>
+      <AccessModifier>internal</AccessModifier>
+    </NeedsGeneration>
+  </ItemDefinitionGroup>
+
+  <Target Name="ResourceGen">
+
+    <ItemGroup>
+      <NeedsGeneration Include="@(EmbeddedResource)" Condition="'%(EmbeddedResource.UseResourceGen)' == 'true'" />
+    </ItemGroup>
+
+    <Exec Condition="'@(NeedsGeneration)' != ''"
+      ContinueOnError="false"
+      ConsoleToMsBuild="true"
+      Command="powershell.exe -NoProfile -ExecutionPolicy Unrestricted ^
+        -File $(MSBuildThisFileDirectory)build//scripts/GenerateResource.ps1 ^
+        $([System.IO.Path]::GetFullPath(%(NeedsGeneration.Identity))) ^
+        %(NeedsGeneration.GeneratedFileName) ^
+        %(NeedsGeneration.Namespace) ^
+        %(NeedsGeneration.ClassName) ^
+        %(NeedsGeneration.AccessModifier)">
+      <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
+    </Exec>
+  </Target>
+
+  <Target Name="ValidateResourceGen" BeforeTargets="Build">
+
+    <ItemGroup>
+      <NeedsGeneration Include="@(EmbeddedResource)" Condition="'%(EmbeddedResource.UseResourceGen)' == 'true'" />
+    </ItemGroup>
+
+    <Exec Condition="'@(NeedsGeneration)' != ''"
+      ContinueOnError="false"
+      ConsoleToMsBuild="true"
+      Command="powershell.exe -NoProfile -ExecutionPolicy Unrestricted ^
+        -File $(MSBuildThisFileDirectory)build/scripts/ValidateResource.ps1 ^
+        $([System.IO.Path]::GetFullPath(%(NeedsGeneration.Identity))) ^
+        %(NeedsGeneration.GeneratedFileName)">
+    </Exec>
+  </Target>
+
+</Project>

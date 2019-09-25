@@ -48,6 +48,37 @@ Then add the `PackageReference` to the `*.csproj` where the package will be used
 
 > Note: Do not include the `Version` attribute in the `*.csproj`
 
+### String Resources
+
+This project utilises a custom process to generate classes to manage string localisation.
+To localise strings within a library:
+
+1. Create a resx file with _no culture extension_ (e.g. `Resources.rex` **not** `Resources.en.resx`)
+2. In the relevant csproj _remove_ the auto added designer class
+3. In the relevant csproj _replace_ the metadata for the rex file with `<UseResourceGen>true</UseResourceGen>`
+4. Run `build.ps1 -Resources` from the root of the repo.
+
+> Additional metadata tokens may be set (the defaults should be sufficient) See `Directory.Build.targets` for details
+When ever you make a change to your resource file, re-run `build.ps1 -Resources`.
+
+#### Providing Parameter Values
+
+The resource generator will create properties for resource strings by default.
+If the string contains token replacements (e.g. `My {0} {1} string`) provide a csv comment for the entry
+with the names of the expected members (e.g. `first,second`)
+
+#### Adding Additional Cultures
+
+Additional cultures can be added by providing culture specific resource files (e.g. `Resources.en.resx`, `Resources.en-gb.resx`)
+These files need no special treatment and only need to be added to the project.
+
+#### Validation
+
+When the class files are generated they hold a reference to the hash of the source resource file.
+When the project is built the hashes are compared.  If a difference is found errors are thrown.
+
+The issues can be resolved by regenerating the resource.
+
 Workflow with Git
 -----------------
 

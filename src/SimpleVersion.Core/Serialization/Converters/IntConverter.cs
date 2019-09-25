@@ -24,7 +24,7 @@ namespace SimpleVersion.Serialization.Converters
                 return Convert.ToInt32(value, CultureInfo.InvariantCulture);
             }
 
-            throw new JsonException("Invalid token for number");
+            throw new JsonException(Resources.Exception_InvalidJsonToken(reader.TokenType, this.GetType()));
         }
 
         /// <inheritdoc />
