@@ -275,14 +275,14 @@ namespace SimpleVersion.Core.Tests.Pipeline
             var expectedLabel = new List<string> { "{branchName}" };
             var expectedMeta = new List<string> { "meta" };
 
-            var config = new Configuration
+            var config = new Settings
             {
                 Version = "0.1.0",
                 Branches =
                 {
                     Overrides =
                     {
-                        new BranchConfiguration
+                        new BranchSettings
                         {
                             Match = "feature/other",
                             Label = expectedLabel,
@@ -321,7 +321,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
             var expectedLabel = new List<string> { "preL1", "preL2", "L1", "insertedL", "L2", "postL1", "postL2" };
             var expectedMeta = new List<string> { "preM1", "preM2", "M1", "insertedM", "M2", "postM1", "postM2" };
 
-            var config = new Configuration
+            var config = new Settings
             {
                 Version = "0.1.0",
                 Label = { "L1", "L2" },
@@ -330,7 +330,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 {
                     Overrides =
                     {
-                        new BranchConfiguration
+                        new BranchSettings
                         {
                             Match = "feature/other",
                             PrefixLabel = new List<string> { "preL1", "preL2" },
@@ -428,7 +428,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit(); // 7
                 fixture.MakeACommit(); // 8
 
-                var config = new Configuration { Version = "0.1.0" };
+                var config = new Settings { Version = "0.1.0" };
                 fixture.SetConfig(config);
 
                 var context = new VersionContext(fixture.Repository);

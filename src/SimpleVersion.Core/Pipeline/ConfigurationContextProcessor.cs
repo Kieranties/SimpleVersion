@@ -3,11 +3,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using LibGit2Sharp;
-using Newtonsoft.Json;
 using SimpleVersion.Abstractions.Pipeline;
 using SimpleVersion.Comparers;
+using SimpleVersion.Serialization;
+using SimpleVersion.Serialization.Converters;
 using SVM = SimpleVersion.Model;
 
 namespace SimpleVersion.Pipeline
@@ -92,7 +94,7 @@ namespace SimpleVersion.Pipeline
             return repo.Commits.QueryBy(filter).Reverse();
         }
 
-        private static SVM.Configuration GetConfiguration(Commit commit, VersionContext context)
+        private static SVM.Settings GetConfiguration(Commit commit, VersionContext context)
         {
             var gitObj = commit?.Tree[Constants.VersionFileName]?.Target;
             if (gitObj == null)
@@ -103,7 +105,7 @@ namespace SimpleVersion.Pipeline
             return config;
         }
 
-        private static void ApplyConfigOverrides(SVM.Configuration config, VersionContext context)
+        private static void ApplyConfigOverrides(SVM.Settings config, VersionContext context)
         {
             if (config == null)
                 return;
@@ -148,11 +150,11 @@ namespace SimpleVersion.Pipeline
             return result;
         }
 
-        private static SVM.Configuration Read(string rawConfiguration)
+        private static SVM.Settings Read(string rawConfiguration)
         {
             try
             {
-                return JsonConvert.DeserializeObject<SVM.Configuration>(rawConfiguration);
+                return Serializer.Deserialize<SVM.Settings>(rawConfiguration);
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch

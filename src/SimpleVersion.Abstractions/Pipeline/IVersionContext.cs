@@ -12,7 +12,7 @@ namespace SimpleVersion.Abstractions.Pipeline
         /// <summary>
         /// Gets or sets the resolved configuration for the repository.
         /// </summary>
-        Configuration Configuration { get; set; }
+        Settings Configuration { get; set; }
 
         /// <summary>
         /// Gets or sets the result of the version calculation.

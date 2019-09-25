@@ -1,8 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using Newtonsoft.Json;
-using SimpleVersion.Pipeline;
 using System;
+using System.Text.Json;
 
 namespace SimpleVersion.Command
 {
@@ -29,7 +28,7 @@ namespace SimpleVersion.Command
                     .Default()
                     .GetResult(path);
 
-                Console.Out.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+                Console.Out.WriteLine(JsonSerializer.Serialize(result, new JsonSerializerOptions { WriteIndented = true }));
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)

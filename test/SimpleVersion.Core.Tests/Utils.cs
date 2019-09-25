@@ -1,19 +1,15 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using GitTools.Testing;
-using Newtonsoft.Json;
 using SimpleVersion.Model;
-using System;
 using System.Collections.Generic;
-using System.IO;
 
 namespace SimpleVersion.Core.Tests
 {
     public static class Utils
     {
-        public static Configuration GetConfiguration(string version, IEnumerable<string> label = null, IEnumerable<string> meta = null)
+        public static Settings GetConfiguration(string version, IEnumerable<string> label = null, IEnumerable<string> meta = null)
         {
-            var info = new Configuration
+            var info = new Settings
             {
                 Version = version,
                 Branches = new BranchInfo

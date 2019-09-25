@@ -20,14 +20,14 @@ namespace SimpleVersion.Core.Tests.Comparers
 
         public static IEnumerable<object[]> Matching()
         {
-            yield return new[] { new Configuration(), new Configuration() };
-            yield return new[] { new Configuration { Label = { "one" } }, new Configuration { Label = { "one" } } };
-            yield return new[] { new Configuration { Version = "1.2.3", Label = { "one", "two" } }, new Configuration { Version = "1.2.3", Label = { "one", "two" } } };
+            yield return new[] { new Settings(), new Settings() };
+            yield return new[] { new Settings { Label = { "one" } }, new Settings { Label = { "one" } } };
+            yield return new[] { new Settings { Version = "1.2.3", Label = { "one", "two" } }, new Settings { Version = "1.2.3", Label = { "one", "two" } } };
         }
 
         [Theory]
         [MemberData(nameof(Matching))]
-        public void Equals_WithMatchingValues_ReturnsTrue(Configuration x, Configuration y)
+        public void Equals_WithMatchingValues_ReturnsTrue(Settings x, Settings y)
         {
             // Arrange / Act
             var result = _sut.Equals(x, y);
@@ -38,14 +38,14 @@ namespace SimpleVersion.Core.Tests.Comparers
 
         public static IEnumerable<object[]> DifferInLabel()
         {
-            yield return new[] { new Configuration(), new Configuration { Label = { "one" } } };
-            yield return new[] { new Configuration { Label = { "one" } }, new Configuration() };
-            yield return new[] { new Configuration { Label = { "one", "two" } }, new Configuration { Label = { "one", "three" } } };
+            yield return new[] { new Settings(), new Settings { Label = { "one" } } };
+            yield return new[] { new Settings { Label = { "one" } }, new Settings() };
+            yield return new[] { new Settings { Label = { "one", "two" } }, new Settings { Label = { "one", "three" } } };
         }
 
         [Theory]
         [MemberData(nameof(DifferInLabel))]
-        public void Equals_DifferInLabel_ReturnsFalse(Configuration x, Configuration y)
+        public void Equals_DifferInLabel_ReturnsFalse(Settings x, Settings y)
         {
             // Arrange / Act
             var result = _sut.Equals(x, y);
@@ -56,14 +56,14 @@ namespace SimpleVersion.Core.Tests.Comparers
 
         public static IEnumerable<object[]> DifferInVersion()
         {
-            yield return new[] { new Configuration(), new Configuration { Version = "1.2.3" } };
-            yield return new[] { new Configuration { Version = "1.2.3" }, new Configuration() };
-            yield return new[] { new Configuration { Version = "1.2.3" }, new Configuration { Version = "1.2.3.4" } };
+            yield return new[] { new Settings(), new Settings { Version = "1.2.3" } };
+            yield return new[] { new Settings { Version = "1.2.3" }, new Settings() };
+            yield return new[] { new Settings { Version = "1.2.3" }, new Settings { Version = "1.2.3.4" } };
         }
 
         [Theory]
         [MemberData(nameof(DifferInVersion))]
-        public void Equals_DifferInVersion_ReturnsFalse(Configuration x, Configuration y)
+        public void Equals_DifferInVersion_ReturnsFalse(Settings x, Settings y)
         {
             // Arrange / Act
             var result = _sut.Equals(x, y);
@@ -74,13 +74,13 @@ namespace SimpleVersion.Core.Tests.Comparers
 
         public static IEnumerable<object[]> NullValues()
         {
-            yield return new[] { new Configuration(), null };
-            yield return new[] { null, new Configuration() };
+            yield return new[] { new Settings(), null };
+            yield return new[] { null, new Settings() };
         }
 
         [Theory]
         [MemberData(nameof(NullValues))]
-        public void Equals_NullInstance_ReturnsFalse(Configuration x, Configuration y)
+        public void Equals_NullInstance_ReturnsFalse(Settings x, Settings y)
         {
             // Arrange / Act
             var result = _sut.Equals(x, y);
@@ -90,35 +90,10 @@ namespace SimpleVersion.Core.Tests.Comparers
         }
 
         [Fact]
-        public void GetHashCode_NullInstance_Throws()
-        {
-            // Arrange / Act
-            Action action = () => _sut.GetHashCode(null);
-
-            // Assert
-            action.Should().Throw<ArgumentNullException>()
-                .And.ParamName.Should().Be("configuration");
-        }
-
-        [Fact]
-        public void GetHashCode_NullVersion_Throws()
-        {
-            // Arrange
-            var config = new Configuration { Version = null };
-
-            // Act
-            Action action = () => _sut.GetHashCode(config);
-
-            // Assert
-            action.Should().Throw<ArgumentNullException>()
-                .And.ParamName.Should().Be("Version");
-        }
-
-        [Fact]
         public void GetHashCode_Returns_Hashcode()
         {
             // Arrange
-            var config = new Configuration
+            var config = new Settings
             {
                 Version = "1.2.3",
                 Label = { "hi" }

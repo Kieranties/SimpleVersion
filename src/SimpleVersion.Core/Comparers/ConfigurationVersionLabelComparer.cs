@@ -8,17 +8,17 @@ using System.Linq;
 namespace SimpleVersion.Comparers
 {
     /// <summary>
-    /// Compares <see cref="Configuration"/> version and labels.
+    /// Compares <see cref="Settings"/> version and labels.
     /// </summary>
-    public class ConfigurationVersionLabelComparer : IEqualityComparer<Configuration>
+    public class ConfigurationVersionLabelComparer : IEqualityComparer<Settings>
     {
         /// <summary>
-        /// Compares two <see cref="Configuration"/> for version and label equivalence.
+        /// Compares two <see cref="Settings"/> for version and label equivalence.
         /// </summary>
-        /// <param name="x">The first <see cref="Configuration"/> to compare.</param>
-        /// <param name="y">The second <see cref="Configuration"/> to compare.</param>
+        /// <param name="x">The first <see cref="Settings"/> to compare.</param>
+        /// <param name="y">The second <see cref="Settings"/> to compare.</param>
         /// <returns>True if equal, otherwise false.</returns>
-        public bool Equals(Configuration x, Configuration y)
+        public bool Equals(Settings x, Settings y)
         {
             if (ReferenceEquals(x, y)) return true;
 
@@ -44,9 +44,9 @@ namespace SimpleVersion.Comparers
         /// <summary>
         /// Generates a hashcode for the given configuration.
         /// </summary>
-        /// <param name="configuration">The <see cref="Configuration"/> to generate a hashcode for.</param>
+        /// <param name="configuration">The <see cref="Settings"/> to generate a hashcode for.</param>
         /// <returns>The generated hashcode.</returns>
-        public int GetHashCode(Configuration configuration)
+        public int GetHashCode(Settings configuration)
         {
             return (configuration.Version.GetHashCode() * 17) + configuration.Label.GetHashCode();
         }

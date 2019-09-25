@@ -1,8 +1,8 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using GitTools.Testing;
-using Newtonsoft.Json;
 using SimpleVersion.Model;
+using SimpleVersion.Serialization;
 using System.IO;
 
 namespace SimpleVersion.Core.Tests
@@ -16,20 +16,20 @@ namespace SimpleVersion.Core.Tests
         {
         }
 
-        public SimpleVersionRepositoryFixture(Configuration config)
+        public SimpleVersionRepositoryFixture(Settings config)
         {
             SetConfig(config);
         }
 
-        public Configuration GetConfig()
+        public Settings GetConfig()
         {
             var content = File.ReadAllText(Path.Combine(this.RepositoryPath, Constants.VersionFileName));
-            return JsonConvert.DeserializeObject<Configuration>(content);
+            return Serializer.Deserialize<Settings>(content);
         }
 
-        public void SetConfig(Configuration config, bool commit = true)
+        public void SetConfig(Settings config, bool commit = true)
         {
-            var json = JsonConvert.SerializeObject(config, Formatting.Indented);
+            var json = Serializer.Serialize(config);
             var fullPath = Path.Combine(this.RepositoryPath, Constants.VersionFileName);
             File.WriteAllText(fullPath, json);
             this.Repository.Index.Add(Constants.VersionFileName);
@@ -38,7 +38,7 @@ namespace SimpleVersion.Core.Tests
                 this.MakeACommit();
         }
 
-        private static readonly Configuration _defaultConfiguration = new Configuration
+        private static readonly Settings _defaultConfiguration = new Settings
         {
             Version = "0.1.0",
             Branches = new BranchInfo

@@ -1,12 +1,13 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <Sdk Name="Microsoft.Build.CentralPackageVersions" />
   
   <PropertyGroup Label="Coverlet properties">
     <Include>[SimpleVersion.Core]*</Include>
   </PropertyGroup>
-  
+    
   <ItemGroup>
     <PackageReference Include="GitTools.Testing" />
+    <PackageReference Include="System.Text.Json" />
   </ItemGroup>
 
   <ItemGroup>

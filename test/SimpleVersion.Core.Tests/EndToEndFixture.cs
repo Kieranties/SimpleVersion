@@ -16,7 +16,7 @@ namespace SimpleVersion.Core.Tests
         public void Override_Branches_Do_Not_Work_If_Asterisk_Used_In_Label()
         {
             // Create the configuration model
-            var config = new Model.Configuration
+            var config = new Model.Settings
             {
                 Version = "1.0.0",
                 Label = { "r*" },
@@ -30,7 +30,7 @@ namespace SimpleVersion.Core.Tests
                         },
                         Overrides =
                         {
-                            new Model.BranchConfiguration
+                            new Model.BranchSettings
                             {
                                 Match = "^refs/heads/feature/.+$",
                                 Label = new List<string> { "{shortbranchname}" }
