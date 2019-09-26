@@ -11,11 +11,6 @@ namespace SimpleVersion.Rules
     /// </summary>
     public class BranchNameTokenRule : BaseBranchNameTokenRule
     {
-        /// <summary>
-        /// Gets a default instance of the rule.
-        /// </summary>
-        public static BranchNameTokenRule Instance => _default.Value;
-
         private static readonly Lazy<BranchNameTokenRule> _default = new Lazy<BranchNameTokenRule>(() => new BranchNameTokenRule());
 
         /// <summary>
@@ -32,6 +27,11 @@ namespace SimpleVersion.Rules
         public BranchNameTokenRule(string pattern) : base(pattern)
         {
         }
+
+        /// <summary>
+        /// Gets a default instance of the rule.
+        /// </summary>
+        public static BranchNameTokenRule Instance => _default.Value;
 
         /// <inheritdoc/>
         public override string Token { get; protected set; } = "{branchname}";

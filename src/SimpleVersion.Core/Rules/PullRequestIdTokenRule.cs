@@ -13,12 +13,12 @@ namespace SimpleVersion.Rules
     /// </summary>
     public class PullRequestIdTokenRule : ITokenRule<string>
     {
+        private static readonly Lazy<PullRequestIdTokenRule> _default = new Lazy<PullRequestIdTokenRule>(() => new PullRequestIdTokenRule());
+
         /// <summary>
         /// Gets a default instance of the rule.
         /// </summary>
         public static PullRequestIdTokenRule Instance => _default.Value;
-
-        private static readonly Lazy<PullRequestIdTokenRule> _default = new Lazy<PullRequestIdTokenRule>(() => new PullRequestIdTokenRule());
 
         /// <inheritdoc/>
         public string Token => "{pr}";

@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Text.Json;
 using FluentAssertions;
 using GitTools.Testing;
 using SimpleVersion.Model;
@@ -397,8 +398,8 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 Action action = () => _sut.Apply(context);
 
                 // Assert
-                action.Should().Throw<InvalidOperationException>()
-                    .WithMessage($"Could not read '{Constants.VersionFileName}', has it been committed?");
+                action.Should().Throw<JsonException>()
+                    .And.Message.Should().Match("'T' is invalid after a single JSON value.*")
             }
         }
 

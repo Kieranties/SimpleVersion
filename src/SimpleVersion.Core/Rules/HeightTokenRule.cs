@@ -13,11 +13,6 @@ namespace SimpleVersion.Rules
     /// </summary>
     public class HeightTokenRule : ITokenRule<string>
     {
-        /// <summary>
-        /// Gets a default instance of the rule.
-        /// </summary>
-        public static HeightTokenRule Instance => _default.Value;
-
         private static readonly Lazy<HeightTokenRule> _default = new Lazy<HeightTokenRule>(() => new HeightTokenRule());
 
         /// <summary>
@@ -35,6 +30,11 @@ namespace SimpleVersion.Rules
         {
             Padded = padded;
         }
+
+        /// <summary>
+        /// Gets a default instance of the rule.
+        /// </summary>
+        public static HeightTokenRule Instance => _default.Value;
 
         /// <summary>
         /// Gets a value indicating whether padding should be applied.

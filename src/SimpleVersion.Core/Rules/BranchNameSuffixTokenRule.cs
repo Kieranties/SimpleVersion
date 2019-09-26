@@ -11,11 +11,6 @@ namespace SimpleVersion.Rules
     /// </summary>
     public class BranchNameSuffixTokenRule : BaseBranchNameTokenRule
     {
-        /// <summary>
-        /// Gets a default instance of the rule.
-        /// </summary>
-        public static BranchNameSuffixTokenRule Instance => _default.Value;
-
         private static readonly Lazy<BranchNameSuffixTokenRule> _default = new Lazy<BranchNameSuffixTokenRule>(() => new BranchNameSuffixTokenRule());
 
         /// <summary>
@@ -32,6 +27,11 @@ namespace SimpleVersion.Rules
         public BranchNameSuffixTokenRule(string pattern) : base(pattern)
         {
         }
+
+        /// <summary>
+        /// Gets a default instance of the rule.
+        /// </summary>
+        public static BranchNameSuffixTokenRule Instance => _default.Value;
 
         /// <inheritdoc/>
         public override string Token { get; protected set; } = "{branchnamesuffix}";

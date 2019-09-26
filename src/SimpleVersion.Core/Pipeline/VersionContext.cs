@@ -19,7 +19,7 @@ namespace SimpleVersion.Pipeline
         /// <param name="repository">The git repository.</param>
         public VersionContext(Git.IRepository repository)
         {
-            Repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            Repository = Assert.ArgumentNotNull(repository, nameof(repository));
             Result = SetInitialResult();
         }
 

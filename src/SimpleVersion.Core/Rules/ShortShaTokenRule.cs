@@ -14,12 +14,12 @@ namespace SimpleVersion.Rules
     /// </summary>
     public class ShortShaTokenRule : ITokenRule<string>
     {
+        private static readonly Lazy<ShortShaTokenRule> _default = new Lazy<ShortShaTokenRule>(() => new ShortShaTokenRule());
+
         /// <summary>
         /// Gets a default instance of the rule.
         /// </summary>
         public static ShortShaTokenRule Instance => _default.Value;
-
-        private static readonly Lazy<ShortShaTokenRule> _default = new Lazy<ShortShaTokenRule>(() => new ShortShaTokenRule());
 
         /// <inheritdoc/>
         public string Token => "{shortsha}";

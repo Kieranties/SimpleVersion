@@ -22,7 +22,7 @@ namespace SimpleVersion.Pipeline.Formatting
         public void Apply(IVersionContext context)
         {
             Assert.ArgumentNotNull(context, nameof(context));
-            
+
             var rules = new ITokenRule<string>[]
             {
                 new HeightTokenRule(true),

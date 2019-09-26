@@ -32,13 +32,13 @@ namespace SimpleVersion.Rules
             Pattern = new Regex(pattern, RegexOptions.IgnoreCase);
         }
 
-        /// <inheritdoc/>
-        public abstract string Token { get; protected set; }
-
         /// <summary>
         /// Gets or sets the resolved pattern used to replace non-required characters.
         /// </summary>
         public Regex Pattern { get; protected set; }
+
+        /// <inheritdoc/>
+        public abstract string Token { get; protected set; }
 
         /// <inheritdoc/>
         public virtual IEnumerable<string> Apply(IVersionContext context, IEnumerable<string> value)

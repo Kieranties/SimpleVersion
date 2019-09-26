@@ -12,6 +12,19 @@ namespace SimpleVersion.Core.Tests
     /// </summary>
     public class SimpleVersionRepositoryFixture : EmptyRepositoryFixture
     {
+        private static readonly Settings _defaultConfiguration = new Settings
+        {
+            Version = "0.1.0",
+            Branches = new BranchInfo
+            {
+                Release =
+                {
+                    "^refs/heads/master$",
+                    "^refs/heads/release/.+$"
+                }
+            }
+        };
+
         public SimpleVersionRepositoryFixture() : this(_defaultConfiguration)
         {
         }
@@ -39,18 +52,5 @@ namespace SimpleVersion.Core.Tests
                 this.MakeACommit();
             }
         }
-
-        private static readonly Settings _defaultConfiguration = new Settings
-        {
-            Version = "0.1.0",
-            Branches = new BranchInfo
-            {
-                Release =
-                {
-                    "^refs/heads/master$",
-                    "^refs/heads/release/.+$"
-                }
-            }
-        };
     }
 }
