@@ -16,7 +16,9 @@ namespace SimpleVersion.Serialization.Converters
         public override int Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             if (reader.TokenType == JsonTokenType.Number)
+            {
                 return reader.GetInt32();
+            }
 
             if (reader.TokenType == JsonTokenType.String)
             {
@@ -30,6 +32,8 @@ namespace SimpleVersion.Serialization.Converters
         /// <inheritdoc />
         public override void Write(Utf8JsonWriter writer, int value, JsonSerializerOptions options)
         {
+            Assert.ArgumentNotNull(writer, nameof(writer));
+
             writer.WriteNumberValue(value);
         }
     }

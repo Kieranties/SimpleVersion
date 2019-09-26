@@ -1,9 +1,9 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System;
 using SimpleVersion.Abstractions.Exceptions;
 using SimpleVersion.Abstractions.Pipeline;
 using SimpleVersion.Model;
-using System;
 using Git = LibGit2Sharp;
 
 namespace SimpleVersion.Pipeline
@@ -39,7 +39,9 @@ namespace SimpleVersion.Pipeline
         {
             var sha = Repository.Head.Tip?.Sha;
             if (sha == null)
+            {
                 throw new GitException(Resources.Exception_CouldNotFindBranchTip);
+            }
 
             return new VersionResult
             {

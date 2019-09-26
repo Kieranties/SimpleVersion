@@ -16,8 +16,15 @@ namespace SimpleVersion.Serialization.Converters
         /// <inheritdoc />
         public override bool CanConvert(Type typeToConvert)
         {
+            if (typeToConvert == null)
+            {
+                throw new ArgumentNullException(nameof(typeToConvert));
+            }
+
             if (!typeToConvert.IsGenericType)
+            {
                 return false;
+            }
 
             var definition = typeToConvert.GetGenericTypeDefinition();
 
@@ -28,6 +35,8 @@ namespace SimpleVersion.Serialization.Converters
         /// <inheritdoc />
         public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
         {
+            Assert.ArgumentNotNull(typeToConvert, nameof(typeToConvert));
+
             var converterType = typeof(DictionaryConverter<,>).MakeGenericType(typeToConvert.GetGenericArguments());
             return (JsonConverter)Activator.CreateInstance(converterType);
         }

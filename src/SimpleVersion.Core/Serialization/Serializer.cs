@@ -1,7 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using SimpleVersion.Serialization.Converters;
 using System.Text.Json;
+using SimpleVersion.Serialization.Converters;
 
 namespace SimpleVersion.Serialization
 {

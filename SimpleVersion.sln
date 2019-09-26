@@ -28,7 +28,6 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{385532A7-26BE-4596-9EEE-E7C3984643ED}"
 	ProjectSection(SolutionItems) = preProject
 		shared\logo.png = shared\logo.png
-		shared\SimpleVersion.ruleset = shared\SimpleVersion.ruleset
 		SimpleVersion.sln.vsspell = SimpleVersion.sln.vsspell
 		shared\stylecop.json = shared\stylecop.json
 		shared\Tests.GlobalSuppressions.cs = shared\Tests.GlobalSuppressions.cs

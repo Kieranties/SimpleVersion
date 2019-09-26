@@ -7,14 +7,13 @@ namespace SimpleVersion.Core.Tests
 {
     public class EnvironmentContext : IDisposable
     {
+        private readonly Dictionary<string, string> _initState = new Dictionary<string, string>();
+        private bool _disposedValue = false;
+
         private static readonly Dictionary<string, string> _noBuildServerVars = new Dictionary<string, string>
         {
             ["TF_BUILD"] = "False"
         };
-
-        public static EnvironmentContext NoBuildServer() => new EnvironmentContext(_noBuildServerVars);
-
-        private readonly Dictionary<string, string> _initState = new Dictionary<string, string>();
 
         public EnvironmentContext(Dictionary<string, string> state)
         {
@@ -25,7 +24,7 @@ namespace SimpleVersion.Core.Tests
             }
         }
 
-        private bool _disposedValue = false;
+        public static EnvironmentContext NoBuildServer() => new EnvironmentContext(_noBuildServerVars);
 
         public void Dispose()
         {

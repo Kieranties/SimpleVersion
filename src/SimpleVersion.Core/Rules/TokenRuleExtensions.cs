@@ -1,9 +1,9 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System.Collections.Generic;
 using SimpleVersion.Abstractions.Pipeline;
 using SimpleVersion.Abstractions.Rules;
 using SimpleVersion.Pipeline;
-using System.Collections.Generic;
 
 namespace SimpleVersion.Rules
 {
@@ -22,9 +22,16 @@ namespace SimpleVersion.Rules
         /// <returns>The value once all rules have been applied.</returns>
         public static IEnumerable<T> ApplyTokenRules<T>(this IEnumerable<T> value, IVersionContext context, IEnumerable<ITokenRule<T>> rules)
         {
+            if (rules == null)
+            {
+                return value;
+            }
+
             var next = value;
             foreach (var rule in rules)
+            {
                 next = rule.Apply(context, next);
+            }
 
             return next;
         }
@@ -39,9 +46,16 @@ namespace SimpleVersion.Rules
         /// <returns>The value once all rules have been resolved.</returns>
         public static T ResolveTokenRules<T>(this T value, IVersionContext context, IEnumerable<ITokenRule<T>> rules)
         {
+            if (rules == null)
+            {
+                return value;
+            }
+
             var next = value;
             foreach (var rule in rules)
+            {
                 next = rule.Resolve(context, next);
+            }
 
             return next;
         }

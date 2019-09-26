@@ -37,6 +37,11 @@ namespace SimpleVersion.Rules
         public override string Token { get; protected set; } = "{branchname}";
 
         /// <inheritdoc/>
-        protected override string ResolveBranchName(IVersionContext context) => context.Result.CanonicalBranchName;
+        protected override string ResolveBranchName(IVersionContext context)
+        {
+            Assert.ArgumentNotNull(context, nameof(context));
+
+            return context.Result.CanonicalBranchName;
+        }
     }
 }

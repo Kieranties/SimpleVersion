@@ -51,12 +51,16 @@ namespace SimpleVersion
         private string ResolveRepoPath(string path)
         {
             if (string.IsNullOrWhiteSpace(path))
+            {
                 throw new ArgumentException(Resources.Exception_PathMustBeProvided, nameof(path));
+            }
 
             var resolvedPath = Repository.Discover(path);
 
             if (string.IsNullOrWhiteSpace(resolvedPath))
+            {
                 throw new DirectoryNotFoundException(Resources.Exception_CouldNotFindGitRepository(path));
+            }
 
             return resolvedPath;
         }

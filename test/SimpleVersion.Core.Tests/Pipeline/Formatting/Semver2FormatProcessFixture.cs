@@ -1,11 +1,11 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System;
+using System.Collections.Generic;
 using FluentAssertions;
 using GitTools.Testing;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Pipeline.Formatting;
-using System;
-using System.Collections.Generic;
 using Xunit;
 
 namespace SimpleVersion.Core.Tests.Pipeline.Formatting
@@ -114,9 +114,13 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
                 string expected;
                 if (parts.Length > 0)
+                {
                     expected = $"{version}-c{context.Result.Sha7}+{string.Join(".", parts)}";
+                }
                 else
+                {
                     expected = $"{version}-c{context.Result.Sha7}";
+                }
 
                 // Act
                 _sut.Apply(context);
@@ -146,9 +150,13 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
                 string expected;
                 if (parts.Length > 0)
+                {
                     expected = $"{version}+{string.Join(".", parts)}";
+                }
                 else
+                {
                     expected = $"{version}";
+                }
 
                 // Act
                 _sut.Apply(context);

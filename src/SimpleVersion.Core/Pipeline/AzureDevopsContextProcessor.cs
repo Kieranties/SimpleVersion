@@ -1,8 +1,9 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System;
+using System.Text.RegularExpressions;
 using SimpleVersion.Abstractions;
 using SimpleVersion.Abstractions.Pipeline;
-using System.Text.RegularExpressions;
 
 namespace SimpleVersion.Pipeline
 {
@@ -33,6 +34,8 @@ namespace SimpleVersion.Pipeline
         /// <inheritdoc/>
         public void Apply(IVersionContext context)
         {
+            Assert.ArgumentNotNull(context, nameof(context));
+
             if (_env.GetVariable("TF_BUILD").ToBool())
             {
                 context.Result.CanonicalBranchName = _env.GetVariable("BUILD_SOURCEBRANCH");

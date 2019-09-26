@@ -1,9 +1,9 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System;
 using FluentAssertions;
 using GitTools.Testing;
 using SimpleVersion.Pipeline;
-using System;
 using Xunit;
 
 namespace SimpleVersion.Core.Tests.Pipeline

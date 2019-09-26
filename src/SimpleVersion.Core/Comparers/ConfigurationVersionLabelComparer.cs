@@ -1,9 +1,9 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using SimpleVersion.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SimpleVersion.Model;
 
 namespace SimpleVersion.Comparers
 {
@@ -20,9 +20,15 @@ namespace SimpleVersion.Comparers
         /// <returns>True if equal, otherwise false.</returns>
         public bool Equals(Settings x, Settings y)
         {
-            if (ReferenceEquals(x, y)) return true;
+            if (ReferenceEquals(x, y))
+            {
+                return true;
+            }
 
-            if (x == null || y == null) return false;
+            if (x == null || y == null)
+            {
+                return false;
+            }
 
             if (x.Version == y.Version)
             {
@@ -46,7 +52,9 @@ namespace SimpleVersion.Comparers
         /// <returns>The generated hashcode.</returns>
         public int GetHashCode(Settings configuration)
         {
-            return (configuration.Version.GetHashCode() * 17) + configuration.Label.GetHashCode();
+            Assert.ArgumentNotNull(configuration, nameof(configuration));
+
+            return (configuration.Version.GetHashCode(StringComparison.OrdinalIgnoreCase) * 17) + configuration.Label.GetHashCode();
         }
     }
 }

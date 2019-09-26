@@ -3,8 +3,8 @@
 #>
 param(
     [ValidateSet('Debug', 'Release')]
-    [String]$Configuration = $env:Configuration,
-    [String]$Version = $env:Version,
+    [String]$Configuration = 'Debug',
+    [String]$Version = '1.0.0-local',
     [String]$RootPath = $PSScriptRoot,
     [String]$ArtifactsPath = (Join-Path $RootPath 'artifacts'),
     [String]$DocsPath = (Join-Path $RootPath 'docs'),
@@ -29,14 +29,6 @@ function exec([string]$cmd) {
 
 $ErrorActionPreference = 'Stop'
 $env:DOTNET_CLI_TELEMETRY_OPTOUT = 1
-if(!$Configuration) {
-    $Configuration = 'Debug'
-    $env:Configuration = $Configuration
-}
-if(!$Version) {
-    $Version = '1.0.0-local'
-    $env:Version = $Version
-}
 if($ServeDocs) {
     $BuildDocs = $true
 }
@@ -50,9 +42,9 @@ if($Resources){
 # Build/Pack
 Remove-Item $ArtifactsPath -Recurse -Force -ErrorAction Ignore
 if(!$NoBuild) {
-    exec dotnet build
+    exec dotnet pack --configuration $Configuration /p:Version=$Version
     $distArtifacts = Join-Path $ArtifactsPath 'dist'
-    exec dotnet pack --no-restore --no-build -o $distArtifacts
+    exec dotnet pack --no-build --no-restore --configuration $Configuration --output $distArtifacts
 
     # Unit Test
     $testArtifacts = Join-Path $ArtifactsPath 'tests'

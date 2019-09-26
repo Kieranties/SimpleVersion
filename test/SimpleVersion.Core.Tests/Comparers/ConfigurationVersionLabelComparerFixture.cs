@@ -1,10 +1,10 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System;
+using System.Collections.Generic;
 using FluentAssertions;
 using SimpleVersion.Comparers;
 using SimpleVersion.Model;
-using System;
-using System.Collections.Generic;
 using Xunit;
 
 namespace SimpleVersion.Core.Tests.Comparers

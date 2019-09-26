@@ -1,8 +1,8 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System.Collections.Generic;
 using FluentAssertions;
 using SimpleVersion.Model;
-using System.Collections.Generic;
 using Xunit;
 
 namespace SimpleVersion.Abstractions.Tests.Model

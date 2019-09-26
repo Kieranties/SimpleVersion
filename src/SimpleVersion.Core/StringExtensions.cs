@@ -18,7 +18,9 @@ namespace SimpleVersion
         public static bool ToBool(this string value)
         {
             if (string.IsNullOrWhiteSpace(value))
+            {
                 return false;
+            }
 
             if (int.TryParse(value, out var intValue))
             {

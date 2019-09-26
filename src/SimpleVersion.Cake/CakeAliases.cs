@@ -1,8 +1,11 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System;
 using Cake.Core;
 using Cake.Core.Annotations;
 using SimpleVersion;
+using SimpleVersion.Abstractions;
+using SimpleVersion.Extensions;
 using SimpleVersion.Model;
 
 namespace Cake.SimpleVersion
@@ -23,8 +26,9 @@ namespace Cake.SimpleVersion
             this ICakeContext context,
             string? path = null)
         {
-            if (string.IsNullOrWhiteSpace(path))
-                path = context.Environment.WorkingDirectory.FullPath;
+            Assert.ArgumentNotNull(context, nameof(context));
+
+            path = path.DefaultIfNullOrWhiteSpace(context.Environment.WorkingDirectory.FullPath);
 
             return VersionCalculator
                 .Default()

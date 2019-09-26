@@ -1,7 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using SimpleVersion.Abstractions.Pipeline;
 using System.Collections.Generic;
+using SimpleVersion.Abstractions.Pipeline;
 
 namespace SimpleVersion.Abstractions.Rules
 {

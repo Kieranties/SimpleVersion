@@ -1,5 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System;
+using System.Diagnostics.Contracts;
 using SimpleVersion.Abstractions.Pipeline;
 using SimpleVersion.Abstractions.Rules;
 using SimpleVersion.Rules;
@@ -19,6 +21,8 @@ namespace SimpleVersion.Pipeline.Formatting
         /// <inheritdoc/>
         public void Apply(IVersionContext context)
         {
+            Assert.ArgumentNotNull(context, nameof(context));
+            
             var rules = new ITokenRule<string>[]
             {
                 new HeightTokenRule(true),
@@ -34,7 +38,9 @@ namespace SimpleVersion.Pipeline.Formatting
             var format = context.Result.Version;
 
             if (!string.IsNullOrWhiteSpace(label))
+            {
                 format += $"-{label}";
+            }
 
             context.Result.Formats[FormatKey] = format;
         }

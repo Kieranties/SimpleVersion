@@ -35,10 +35,8 @@
   </ItemGroup>
   
   <PropertyGroup Label="Build Attributes">
-    <MSBuildTreatWarningsAsErrors>false</MSBuildTreatWarningsAsErrors>
-    <MSBuildTreatWarningsAsErrors  Condition="'$(Configuration)' == 'Release'">true</MSBuildTreatWarningsAsErrors>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <TreatWarningsAsErrors Condition="'$(Configuration)' == 'Release'">true</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors Condition="$(Configuration) == 'Release'">true</TreatWarningsAsErrors>
+    <MSBuildTreatWarningsAsErrors  Condition="$(Configuration) == 'Release'">true</MSBuildTreatWarningsAsErrors>    
     <!-- NU5105 - Usage of semver 2 versioning -->
     <NoWarn>$(NoWarn);NU5105</NoWarn>
   </PropertyGroup>
@@ -47,7 +45,10 @@
     <AdditionalFiles Include="$(MSBuildThisFileDirectory)shared/stylecop.json" Link="stylecop.json" />
   </ItemGroup>
 
-  <PropertyGroup Label="Shared properties">
-    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)shared/SimpleVersion.ruleset</CodeAnalysisRuleSet>
+  <PropertyGroup>
+    <SkipDefaultEditorConfigAsAdditionalFile>true</SkipDefaultEditorConfigAsAdditionalFile>
   </PropertyGroup>
+  <ItemGroup>
+      <AdditionalFiles Include="$(MSBuildThisFileDirectory).editorconfig" />  
+  </ItemGroup>
 </Project>

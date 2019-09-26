@@ -1,8 +1,8 @@
-// Hash: 0A-A5-5D-3E-34-7D-56-6F-91-37-77-41-4F-C7-4A-69
+// Hash: BE-3E-73-D3-E7-E4-37-7C-67-EA-97-D7-12-FA-7F-60
 // Auto generated - Do not modify this file!
 // Modify  then invoke Update-Resource to recreate
 // For members that require formatting provide a csv of the argument names
-// 09/26/2019 09:37:54
+// 09/26/2019 15:30:31
 namespace SimpleVersion {
 
     /// <summary>
@@ -76,6 +76,11 @@ namespace SimpleVersion {
         ///   Looks up a localized string similar to: Path must be provided.
         /// </summary>
         internal static string Exception_PathMustBeProvided => GetString(nameof(Exception_PathMustBeProvided));
+
+        /// <summary>
+        ///   Looks up a localized string similar to: Unexpected null value
+        /// </summary>
+        internal static string Exception_UnexpectedNull => GetString(nameof(Exception_UnexpectedNull));
 
         /// <summary>
         ///    Returns the resource string for the given key

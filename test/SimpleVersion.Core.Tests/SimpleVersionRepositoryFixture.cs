@@ -1,9 +1,9 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System.IO;
 using GitTools.Testing;
 using SimpleVersion.Model;
 using SimpleVersion.Serialization;
-using System.IO;
 
 namespace SimpleVersion.Core.Tests
 {
@@ -35,7 +35,9 @@ namespace SimpleVersion.Core.Tests
             this.Repository.Index.Add(Constants.VersionFileName);
             this.Repository.Index.Write();
             if (commit)
+            {
                 this.MakeACommit();
+            }
         }
 
         private static readonly Settings _defaultConfiguration = new Settings

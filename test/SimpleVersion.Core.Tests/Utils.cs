@@ -1,7 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using SimpleVersion.Model;
 using System.Collections.Generic;
+using SimpleVersion.Model;
 
 namespace SimpleVersion.Core.Tests
 {
@@ -23,10 +23,14 @@ namespace SimpleVersion.Core.Tests
             };
 
             if (label != null)
+            {
                 info.Label.AddRange(label);
+            }
 
             if (meta != null)
+            {
                 info.Metadata.AddRange(meta);
+            }
 
             return info;
         }

@@ -24,22 +24,22 @@ namespace SimpleVersion.Pipeline
         /// <inheritdoc/>
         public void Apply(IVersionContext context)
         {
-            if (context == null)
-                throw new ArgumentNullException(nameof(context));
+            Assert.ArgumentNotNull(context, nameof(context));
 
-            if (!(context is VersionContext repoContext))
-                throw new InvalidCastException(Resources.Exception_CouldNotConvertContextType(typeof(VersionContext)));
+            if (context is VersionContext repoContext)
+            {
+                var tip = repoContext.Repository.Head?.Tip;
+                Assert.NotNull<GitException>(tip, Resources.Exception_CouldNotFindBranchTip);
 
-            var tip = repoContext.Repository.Head?.Tip;
-            if (tip == null)
-                throw new GitException(Resources.Exception_CouldNotFindBranchTip);
+                var config = GetConfiguration(tip, repoContext)
+                            ?? throw new InvalidOperationException(Resources.Exception_CouldNotReadSettingsFile(Constants.VersionFileName));
 
-            var config = GetConfiguration(tip, repoContext)
-                        ?? throw new InvalidOperationException(Resources.Exception_CouldNotReadSettingsFile(Constants.VersionFileName));
+                context.Configuration = config;
 
-            context.Configuration = config;
+                PopulateHeight(repoContext);
+            }
 
-            PopulateHeight(repoContext);
+            throw new InvalidCastException(Resources.Exception_CouldNotConvertContextType(typeof(VersionContext)));
         }
 
         private void PopulateHeight(VersionContext context)
@@ -63,7 +63,9 @@ namespace SimpleVersion.Pipeline
 
                 // If a change to the file is found, stop counting
                 if (HasVersionChange(diff, commits.Current, context))
+                {
                     break;
+                }
 
                 // Increment height
                 height++;
@@ -72,10 +74,10 @@ namespace SimpleVersion.Pipeline
             context.Result.Height = height;
         }
 
-        private static bool HasVersionChange(
-            TreeChanges diff,
-            Commit commit,
-            VersionContext context)
+        private bool HasVersionChange(
+           TreeChanges diff,
+           Commit commit,
+           VersionContext context)
         {
             if (diff.Any(d => d.Path == Constants.VersionFileName))
             {
@@ -98,26 +100,35 @@ namespace SimpleVersion.Pipeline
             return repo.Commits.QueryBy(filter).Reverse();
         }
 
-        private static Settings? GetConfiguration(Commit commit, VersionContext context)
+        private Settings? GetConfiguration(Commit commit, VersionContext context)
         {
             var gitObj = commit?.Tree[Constants.VersionFileName]?.Target;
             if (gitObj == null)
+            {
                 return null;
+            }
 
             var blob = gitObj as Blob;
             if (blob == null)
+            {
                 return null;
+            }
 
             var config = Read(blob.GetContentText());
             if (config != null)
+            {
                 ApplyConfigOverrides(config, context);
+            }
+
             return config;
         }
 
-        private static void ApplyConfigOverrides(Settings config, VersionContext context)
+        private void ApplyConfigOverrides(Settings config, VersionContext context)
         {
             if (config == null)
+            {
                 return;
+            }
 
             var match = config
                 .Branches
@@ -136,11 +147,13 @@ namespace SimpleVersion.Pipeline
             }
         }
 
-        private static List<string> ApplyParts(List<string>? baseList, List<string>? pre, List<string>? post, IDictionary<int, string>? inserts)
+        private List<string> ApplyParts(List<string>? baseList, List<string>? pre, List<string>? post, IDictionary<int, string>? inserts)
         {
             var result = new List<string>();
             if (baseList != null)
+            {
                 result.AddRange(baseList);
+            }
 
             if (inserts != null)
             {
@@ -151,15 +164,19 @@ namespace SimpleVersion.Pipeline
             }
 
             if (pre != null)
+            {
                 result.InsertRange(0, pre);
+            }
 
             if (post != null)
+            {
                 result.AddRange(post);
+            }
 
             return result;
         }
 
-        private static Settings? Read(string rawConfiguration)
+        private Settings? Read(string rawConfiguration)
         {
             Settings? result = null;
             try

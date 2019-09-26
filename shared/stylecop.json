@@ -12,12 +12,23 @@
     },
     "maintainabilityRules": {
       "topLevelTypes": [
+        "enum",
+        "delegate",
         "class",
         "interface"
-      ]
+      ]      
     },
     "layoutRules": {
       "newlineAtEndOfFile": "require"
+    },
+    "orderingRules": {
+      "elementOrder": [
+        "constant",
+        "readonly",
+        "static",
+        "accessibility",
+        "kind"
+      ]
     }
   }
 }

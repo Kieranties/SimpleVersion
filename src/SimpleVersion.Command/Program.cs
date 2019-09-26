@@ -21,8 +21,10 @@ namespace SimpleVersion.Command
             try
             {
                 var path = System.IO.Directory.GetCurrentDirectory();
-                if (args.Length > 0)
+                if (args?.Length > 0)
+                {
                     path = args[0];
+                }
 
                 var result = VersionCalculator
                     .Default()
