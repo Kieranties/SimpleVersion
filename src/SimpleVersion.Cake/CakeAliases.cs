@@ -21,14 +21,14 @@ namespace Cake.SimpleVersion
         [CakeMethodAlias]
         public static VersionResult SimpleVersion(
             this ICakeContext context,
-            string path = null)
+            string? path = null)
         {
             if (string.IsNullOrWhiteSpace(path))
                 path = context.Environment.WorkingDirectory.FullPath;
 
             return VersionCalculator
                 .Default()
-                .GetResult(path);
+                .GetResult(path!); // ! null check is completed above
         }
     }
 }

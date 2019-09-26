@@ -1,8 +1,8 @@
-// Hash: 75-63-5A-E2-18-54-3F-51-06-2C-C6-93-C3-96-7E-E9
+// Hash: 0A-A5-5D-3E-34-7D-56-6F-91-37-77-41-4F-C7-4A-69
 // Auto generated - Do not modify this file!
 // Modify  then invoke Update-Resource to recreate
 // For members that require formatting provide a csv of the argument names
-// 09/25/2019 16:47:40
+// 09/26/2019 09:37:54
 namespace SimpleVersion {
 
     /// <summary>
@@ -46,6 +46,11 @@ namespace SimpleVersion {
         ///   Looks up a localized string similar to: Could not convert given context to {0}.
         /// </summary>
         internal static string Exception_CouldNotConvertContextType(object contextType) => string.Format(Culture, GetString(nameof(Exception_CouldNotConvertContextType)), contextType);
+
+        /// <summary>
+        ///   Looks up a localized string similar to: Could not find the current branch tip. Unable to identify the current commit.
+        /// </summary>
+        internal static string Exception_CouldNotFindBranchTip => GetString(nameof(Exception_CouldNotFindBranchTip));
 
         /// <summary>
         ///   Looks up a localized string similar to: Could not find git repository at '{0}' or any parent directory.

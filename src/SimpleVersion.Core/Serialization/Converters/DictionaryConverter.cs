@@ -29,7 +29,7 @@ namespace SimpleVersion.Serialization.Converters
         public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
         {
             var converterType = typeof(DictionaryConverter<,>).MakeGenericType(typeToConvert.GetGenericArguments());
-            return Activator.CreateInstance(converterType) as JsonConverter;
+            return (JsonConverter)Activator.CreateInstance(converterType);
         }
     }
 }

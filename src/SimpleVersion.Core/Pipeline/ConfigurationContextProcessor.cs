@@ -2,15 +2,15 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
-using System.Text.Json;
 using System.Text.RegularExpressions;
 using LibGit2Sharp;
+using SimpleVersion.Abstractions.Exceptions;
 using SimpleVersion.Abstractions.Pipeline;
 using SimpleVersion.Comparers;
+using SimpleVersion.Model;
 using SimpleVersion.Serialization;
-using SimpleVersion.Serialization.Converters;
-using SVM = SimpleVersion.Model;
 
 namespace SimpleVersion.Pipeline
 {
@@ -30,7 +30,11 @@ namespace SimpleVersion.Pipeline
             if (!(context is VersionContext repoContext))
                 throw new InvalidCastException(Resources.Exception_CouldNotConvertContextType(typeof(VersionContext)));
 
-            var config = GetConfiguration(repoContext.Repository.Head?.Tip, repoContext)
+            var tip = repoContext.Repository.Head?.Tip;
+            if (tip == null)
+                throw new GitException(Resources.Exception_CouldNotFindBranchTip);
+
+            var config = GetConfiguration(tip, repoContext)
                         ?? throw new InvalidOperationException(Resources.Exception_CouldNotReadSettingsFile(Constants.VersionFileName));
 
             context.Configuration = config;
@@ -94,18 +98,23 @@ namespace SimpleVersion.Pipeline
             return repo.Commits.QueryBy(filter).Reverse();
         }
 
-        private static SVM.Settings GetConfiguration(Commit commit, VersionContext context)
+        private static Settings? GetConfiguration(Commit commit, VersionContext context)
         {
             var gitObj = commit?.Tree[Constants.VersionFileName]?.Target;
             if (gitObj == null)
                 return null;
 
-            var config = Read((gitObj as Blob).GetContentText());
-            ApplyConfigOverrides(config, context);
+            var blob = gitObj as Blob;
+            if (blob == null)
+                return null;
+
+            var config = Read(blob.GetContentText());
+            if (config != null)
+                ApplyConfigOverrides(config, context);
             return config;
         }
 
-        private static void ApplyConfigOverrides(SVM.Settings config, VersionContext context)
+        private static void ApplyConfigOverrides(Settings config, VersionContext context)
         {
             if (config == null)
                 return;
@@ -127,7 +136,7 @@ namespace SimpleVersion.Pipeline
             }
         }
 
-        private static List<string> ApplyParts(List<string> baseList, List<string> pre, List<string> post, IDictionary<int, string> inserts)
+        private static List<string> ApplyParts(List<string>? baseList, List<string>? pre, List<string>? post, IDictionary<int, string>? inserts)
         {
             var result = new List<string>();
             if (baseList != null)
@@ -150,19 +159,20 @@ namespace SimpleVersion.Pipeline
             return result;
         }
 
-        private static SVM.Settings Read(string rawConfiguration)
+        private static Settings? Read(string rawConfiguration)
         {
+            Settings? result = null;
             try
             {
-                return Serializer.Deserialize<SVM.Settings>(rawConfiguration);
+                result = Serializer.Deserialize<Settings>(rawConfiguration);
             }
-#pragma warning disable CA1031 // Do not catch general exception types
-            catch
+            finally
             {
                 // TODO handle logger of invalid parsing
-                return null;
+                Debug.WriteLine("Settings are in an incorrect format");
             }
-#pragma warning restore CA1031 // Do not catch general exception types
+
+            return result;
         }
     }
 }

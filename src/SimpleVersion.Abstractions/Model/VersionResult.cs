@@ -8,13 +8,14 @@ namespace SimpleVersion.Model
     /// <summary>
     /// Models the result object returned from version calculation.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CS8618:Non-nullable field is uninitialized. Consider declaring as nullable.", Justification = "Poco population is gradually populated")]
     public class VersionResult
     {
         private static readonly Regex _prRegex = new Regex(@"^refs\/pull\/(?<id>\d+)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
-        /// <summary>
-        /// Gets or sets the generated version.
-        /// </summary>
+                              /// <summary>
+                              /// Gets or sets the generated version.
+                              /// </summary>
         public string Version { get; set; }
 
         /// <summary>

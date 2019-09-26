@@ -121,6 +121,9 @@
     <value>Could not convert given context to {0}.</value>
     <comment>contextType</comment>
   </data>
+  <data name="Exception_CouldNotFindBranchTip" xml:space="preserve">
+    <value>Could not find the current branch tip. Unable to identify the current commit.</value>
+  </data>
   <data name="Exception_CouldNotFindGitRepository" xml:space="preserve">
     <value>Could not find git repository at '{0}' or any parent directory.</value>
     <comment>path</comment>

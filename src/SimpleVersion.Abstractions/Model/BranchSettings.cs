@@ -19,41 +19,41 @@ namespace SimpleVersion.Model
         /// <summary>
         /// Gets or sets the label parts to override in the generated version.
         /// </summary>
-        public List<string> Label { get; set; }
+        public List<string>? Label { get; set; }
 
         /// <summary>
         /// Gets or sets the label parts to insert at the start of the label in the generated version.
         /// </summary>
-        public List<string> PrefixLabel { get; set; }
+        public List<string>? PrefixLabel { get; set; }
 
         /// <summary>
         /// Gets or sets the label parts to insert at the end of the label in the generated version.
         /// </summary>
-        public List<string> PostfixLabel { get; set; }
+        public List<string>? PostfixLabel { get; set; }
 
         /// <summary>
         /// Gets or sets the label parts to insert at specific indexes of the label in the generated version.
         /// </summary>
-        public Dictionary<int, string> InsertLabel { get; set; }
+        public Dictionary<int, string>? InsertLabel { get; set; }
 
         /// <summary>
         /// Gets or sets the metadata parts to use in the generated version.
         /// </summary>
-        public List<string> Metadata { get; set; }
+        public List<string>? Metadata { get; set; }
 
         /// <summary>
         /// Gets or sets the metadata parts to insert at the start of the metadata in the generated version.
         /// </summary>
-        public List<string> PrefixMetadata { get; set; }
+        public List<string>? PrefixMetadata { get; set; }
 
         /// <summary>
         /// Gets or sets the metadata parts to insert at the end of the metadata in the generated version.
         /// </summary>
-        public List<string> PostfixMetadata { get; set; }
+        public List<string>? PostfixMetadata { get; set; }
 
         /// <summary>
         /// Gets or sets the metadata parts to insert at specific indexes of the metadata in the generated version.
         /// </summary>
-        public Dictionary<int, string> InsertMetadata { get; set; }
+        public Dictionary<int, string>? InsertMetadata { get; set; }
     }
 }
