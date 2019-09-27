@@ -70,6 +70,7 @@ namespace SimpleVersion.Core.Tests.Rules
             var sut = new HeightTokenRule(usePadding);
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
                     Result =
@@ -106,6 +107,7 @@ namespace SimpleVersion.Core.Tests.Rules
             var sut = new HeightTokenRule();
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
                         Configuration =

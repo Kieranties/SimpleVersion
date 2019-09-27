@@ -42,6 +42,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             // Arrange
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
                     Configuration = Utils.GetConfiguration(version, label: parts),
@@ -72,6 +73,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             // Arrange
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
                     Configuration = Utils.GetConfiguration(version, parts),
@@ -105,6 +107,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             // Arrange
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
                     Configuration = Utils.GetConfiguration(version, meta: parts),
@@ -141,6 +144,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             // Arrange
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
                     Configuration = Utils.GetConfiguration(version, meta: parts),

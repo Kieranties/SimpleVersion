@@ -54,12 +54,13 @@ namespace SimpleVersion.Core.Tests.Rules
             var sut = new BranchNameSuffixTokenRule();
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
                     Result =
-                {
-                    CanonicalBranchName = branchName
-                }
+                    {
+                        CanonicalBranchName = branchName
+                    }
                 };
 
                 // Act
@@ -78,12 +79,13 @@ namespace SimpleVersion.Core.Tests.Rules
             var sut = new BranchNameSuffixTokenRule(pattern);
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
                     Result =
-                {
-                    CanonicalBranchName = branchName
-                }
+                    {
+                        CanonicalBranchName = branchName
+                    }
                 };
 
                 // Act

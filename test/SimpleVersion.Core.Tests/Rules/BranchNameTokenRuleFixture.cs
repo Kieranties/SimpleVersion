@@ -54,6 +54,7 @@ namespace SimpleVersion.Core.Tests.Rules
             var sut = new BranchNameTokenRule();
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
                     Result =
@@ -78,6 +79,7 @@ namespace SimpleVersion.Core.Tests.Rules
             var sut = new BranchNameTokenRule(pattern);
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
                     Result =

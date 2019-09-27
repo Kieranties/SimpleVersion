@@ -33,23 +33,6 @@ namespace SimpleVersion.Core.Tests.Pipeline
         }
 
         [Fact]
-        public void Apply_NoCommits_ShouldThrow()
-        {
-            using (var fixture = new EmptyRepositoryFixture())
-            {
-                // Arrange
-                var context = new VersionContext(fixture.Repository);
-
-                // Act
-                Action action = () => _sut.Apply(context);
-
-                // Assert
-                action.Should().Throw<InvalidOperationException>()
-                    .WithMessage($"Could not read '{Constants.VersionFileName}', has it been committed?");
-            }
-        }
-
-        [Fact]
         public void Apply_NoCommitsForFile_ShouldThrow()
         {
             using (var fixture = new EmptyRepositoryFixture())
@@ -399,7 +382,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
 
                 // Assert
                 action.Should().Throw<JsonException>()
-                    .And.Message.Should().Match("'T' is invalid after a single JSON value.*")
+                    .And.Message.Should().Match("'T' is invalid after a single JSON value.*");
             }
         }
 

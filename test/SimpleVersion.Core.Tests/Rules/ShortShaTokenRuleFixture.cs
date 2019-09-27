@@ -36,6 +36,7 @@ namespace SimpleVersion.Core.Tests.Rules
             // Arrange
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
                     Result = Utils.GetVersionResult(10)
@@ -56,6 +57,7 @@ namespace SimpleVersion.Core.Tests.Rules
             // Arrange
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
                     Result = Utils.GetVersionResult(10)
@@ -91,6 +93,7 @@ namespace SimpleVersion.Core.Tests.Rules
             // Arrange
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
                     Configuration = Utils.GetConfiguration("1.2.3"),

@@ -34,6 +34,7 @@ namespace SimpleVersion.Core.Tests.Rules
             // Arrange
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
                 var contextResult = Utils.GetVersionResult(10);
                 contextResult.CanonicalBranchName = $"refs/pull/{id}/merge";
 
@@ -56,6 +57,7 @@ namespace SimpleVersion.Core.Tests.Rules
             // Arrange
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
                     Configuration = Utils.GetConfiguration("1.2.3"),

@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using LibGit2Sharp;
 using SimpleVersion.Abstractions.Exceptions;
@@ -152,7 +153,7 @@ namespace SimpleVersion.Pipeline
             {
                 result = Serializer.Deserialize<Settings>(rawConfiguration);
             }
-            finally
+            catch
             {
                 // TODO handle logger of invalid parsing
                 Debug.WriteLine("Settings are in an incorrect format");
