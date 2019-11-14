@@ -2,7 +2,6 @@
 
 using System;
 using SimpleVersion.Abstractions.Pipeline;
-using SimpleVersion.Pipeline;
 
 namespace SimpleVersion.Rules
 {

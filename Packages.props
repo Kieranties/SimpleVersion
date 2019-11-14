@@ -9,21 +9,21 @@
     <PackageReference Update="LibGit2Sharp"                         Version="0.25.3" />
     <PackageReference Update="LibGit2Sharp.NativeBinaries"          Version="1.0.235" />
     <PackageReference Update="System.Text.Json"                     Version="4.6.*" />
-    
+
   </ItemGroup>
 
   <ItemGroup Label="Test library packages">
-    <PackageReference Update="Microsoft.NET.Test.Sdk"               Version="16.3.*" />
-    <PackageReference Update="xunit"                                Version="2.4.*" />
-    <PackageReference Update="xunit.runner.visualstudio"            Version="2.4.*" />
-    <PackageReference Update="FluentAssertions"                     Version="5.9.*" />
-    <PackageReference Update="GitTools.Testing"                     Version="1.2.*" />
-    <PackageReference Update="NSubstitute"                          Version="4.2.*" />
+    <PackageReference Update="Microsoft.NET.Test.Sdk"               Version="16.*" />
+    <PackageReference Update="xunit"                                Version="2.*" />
+    <PackageReference Update="xunit.runner.visualstudio"            Version="2.*" />
+    <PackageReference Update="FluentAssertions"                     Version="5.*" />
+    <PackageReference Update="GitTools.Testing"                     Version="1.*" />
+    <PackageReference Update="NSubstitute"                          Version="4.*" />
   </ItemGroup>
 
   <ItemGroup Label="Global project tooling">
-    <GlobalPackageReference Include="Microsoft.CodeAnalysis.FXCopAnalyzers" Version="2.9.*" />
-    <GlobalPackageReference Include="StyleCop.Analyzers" Version="1.1.1-*" />
+    <GlobalPackageReference Include="Microsoft.CodeAnalysis.FXCopAnalyzers" Version="2.*" />
+    <GlobalPackageReference Include="StyleCop.Analyzers" Version="1.*" />
   </ItemGroup>
 
   <ItemGroup Label="Test only tooling"

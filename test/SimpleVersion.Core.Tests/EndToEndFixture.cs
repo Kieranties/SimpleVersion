@@ -1,7 +1,6 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System.Collections.Generic;
-using System.Linq;
 using FluentAssertions;
 using GitTools.Testing;
 using SimpleVersion.Pipeline.Formatting;

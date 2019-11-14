@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Text.Json;
 using System.Text.RegularExpressions;
 using LibGit2Sharp;
 using SimpleVersion.Abstractions.Exceptions;
@@ -153,7 +152,11 @@ namespace SimpleVersion.Pipeline
             {
                 result = Serializer.Deserialize<Settings>(rawConfiguration);
             }
+
+            // TODO: Re-enable rule
+#pragma warning disable CA1031 // Do not catch general exception types
             catch
+#pragma warning restore CA1031 // Do not catch general exception types
             {
                 // TODO handle logger of invalid parsing
                 Debug.WriteLine("Settings are in an incorrect format");

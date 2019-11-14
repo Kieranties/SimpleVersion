@@ -42,7 +42,7 @@ if($Resources){
 # Build/Pack
 Remove-Item $ArtifactsPath -Recurse -Force -ErrorAction Ignore
 if(!$NoBuild) {
-    exec dotnet pack --configuration $Configuration /p:Version=$Version
+    exec dotnet build --configuration $Configuration /p:Version=$Version
     $distArtifacts = Join-Path $ArtifactsPath 'dist'
     exec dotnet pack --no-build --no-restore --configuration $Configuration --output $distArtifacts
 

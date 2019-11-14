@@ -1,10 +1,8 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using System;
 using Cake.Core;
 using Cake.Core.Annotations;
 using SimpleVersion;
-using SimpleVersion.Abstractions;
 using SimpleVersion.Extensions;
 using SimpleVersion.Model;
 

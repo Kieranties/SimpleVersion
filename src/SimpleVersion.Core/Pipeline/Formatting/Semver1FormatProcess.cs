@@ -1,7 +1,5 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using System;
-using System.Diagnostics.Contracts;
 using SimpleVersion.Abstractions.Pipeline;
 using SimpleVersion.Abstractions.Rules;
 using SimpleVersion.Rules;
