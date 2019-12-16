@@ -52,7 +52,7 @@ namespace SimpleVersion.Pipeline
                 var currentTree = commit.Tree;
 
                 // Perform a diff
-                var diff = context.Repository.Diff.Compare<TreeChanges>(currentTree, prevTree);
+                var diff = context.Repository.Diff.Compare<TreeChanges>(currentTree, prevTree, new CompareOptions { Similarity = SimilarityOptions.None });
 
                 // If a change to the file is found, stop counting
                 if (HasVersionChange(diff, commit, context))
