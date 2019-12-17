@@ -90,10 +90,10 @@ namespace SimpleVersion.Pipeline
             {
                 FirstParentOnly = true,
                 IncludeReachableFrom = repo.Head,
-                SortBy = CommitSortStrategies.Reverse
+                SortBy = CommitSortStrategies.Topological
             };
 
-            return repo.Commits.QueryBy(filter).Reverse();
+            return repo.Commits.QueryBy(filter);
         }
 
         private static SVM.Configuration GetConfiguration(Commit commit, VersionContext context)
