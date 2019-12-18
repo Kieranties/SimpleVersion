@@ -38,29 +38,33 @@ namespace SimpleVersion.Pipeline
 
         private void PopulateHeight(VersionContext context)
         {
-            // Get the state of this tree to compare for diffs
-            var tipTree = context.Repository.Head.Tip.Tree;
-
             // Initialize count - The current commit counts, include offset
             var height = 1 + context.Configuration.OffSet;
 
             // skip the first commit as that is our baseline
-            var commits = GetReachableCommits(context.Repository).Skip(1).GetEnumerator();
+            var commits = GetReachableCommits(context.Repository).Skip(1);
 
-            while (commits.MoveNext())
+            // Get the state of this tree to compare for diffs
+            var prevTree = context.Repository.Head.Tip.Tree;
+            foreach (var commit in commits)
             {
                 // Get the current tree
-                var next = commits.Current.Tree;
+                var currentTree = commit.Tree;
 
                 // Perform a diff
-                var diff = context.Repository.Diff.Compare<TreeChanges>(next, tipTree);
+                var diff = context.Repository.Diff.Compare<TreeChanges>(currentTree, prevTree, new CompareOptions { Similarity = SimilarityOptions.None });
 
                 // If a change to the file is found, stop counting
-                if (HasVersionChange(diff, commits.Current, context))
+                if (HasVersionChange(diff, commit, context))
                     break;
 
                 // Increment height
                 height++;
+
+                // Use current commit as a base for next iteration, instead of accessing the tip.
+                // This way we don't re-check same commit multiple times.
+                // Must make no difference as changes have accumulative nature.
+                prevTree = currentTree;
             }
 
             context.Result.Height = height;
@@ -86,10 +90,10 @@ namespace SimpleVersion.Pipeline
             {
                 FirstParentOnly = true,
                 IncludeReachableFrom = repo.Head,
-                SortBy = CommitSortStrategies.Reverse
+                SortBy = CommitSortStrategies.Topological
             };
 
-            return repo.Commits.QueryBy(filter).Reverse();
+            return repo.Commits.QueryBy(filter);
         }
 
         private static SVM.Configuration GetConfiguration(Commit commit, VersionContext context)
