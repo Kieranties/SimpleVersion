@@ -9,3 +9,4 @@ log.txt
 /docs/api/*.yml
 /docs/api/.manifest
 coverage.json
+dotnet-install.ps1
