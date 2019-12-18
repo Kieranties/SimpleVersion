@@ -10,7 +10,6 @@
 
 	<PropertyGroup Label="Pack Customizations">
 		<!-- We pack custom assets after the publish task -->
-		<IncludeContentInPack>False</IncludeContentInPack>
 		<IncludeBuildOutput>False</IncludeBuildOutput>
 
 	</PropertyGroup>

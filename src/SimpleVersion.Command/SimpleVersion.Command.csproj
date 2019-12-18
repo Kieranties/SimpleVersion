@@ -6,6 +6,8 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <AssemblyName>SimpleVersion</AssemblyName>
+    <!-- No Target Framework dependency group-->
+    <NoWarn>$(NoWarn);NU5128</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Label="Pack Meta">

@@ -3,8 +3,8 @@
 #>
 param(
     [ValidateSet('Debug', 'Release')]
-    [String]$Configuration = $env:Configuration,
-    [String]$Version = $env:Version,
+    [String]$Configuration = 'Debug',
+    [String]$Version = '1.0.0-local',
     [String]$RootPath = $PSScriptRoot,
     [String]$ArtifactsPath = (Join-Path $RootPath 'artifacts'),
     [String]$DocsPath = (Join-Path $RootPath 'docs'),
@@ -12,8 +12,18 @@ param(
     [Switch]$NoBuild,
     [Switch]$BuildDocs,
     [Switch]$ServeDocs,
-    [String]$DocfxVersion = '2.42.0'
+    [String]$DocfxVersion = '2.42.0',
+    [string]$DotnetInstallScript = 'https://dot.net/v1/dotnet-install.ps1',
+    [string]$DotnetLocalInstallScript = (Join-Path $PSScriptRoot 'dotnet-install.ps1')
 )
+
+# Ensure we have the latest LTS installed for the user before processing further
+function CheckDotNet {
+    if(-not(Test-Path $DotnetLocalInstallScript)){
+        Invoke-WebRequest -Uri $DotnetInstallScript -OutFile $DotnetLocalInstallScript
+    }
+. $DotnetLocalInstallScript
+}
 
 function exec([string]$cmd) {
     $currentPref = $ErrorActionPreference
@@ -28,24 +38,18 @@ function exec([string]$cmd) {
 
 $ErrorActionPreference = 'Stop'
 $env:DOTNET_CLI_TELEMETRY_OPTOUT = 1
-if(!$Configuration) {
-    $Configuration = 'Debug'
-    $env:Configuration = $Configuration
-}
-if(!$Version) {
-    $Version = '1.0.0-local'
-    $env:Version = $Version
-}
 if($ServeDocs) {
     $BuildDocs = $true
 }
 
+CheckDotNet
+
 # Build/Pack
 Remove-Item $ArtifactsPath -Recurse -Force -ErrorAction Ignore
 if(!$NoBuild) {
-    exec dotnet build
+    exec dotnet build --configuration $Configuration /p:Version=$Version
     $distArtifacts = Join-Path $ArtifactsPath 'dist'
-    exec dotnet pack --no-restore --no-build -o $distArtifacts
+    exec dotnet pack --no-build --no-restore --configuration $Configuration --output $distArtifacts
 
     # Unit Test
     $testArtifacts = Join-Path $ArtifactsPath 'tests'
@@ -53,6 +57,7 @@ if(!$NoBuild) {
         ForEach-Object {
             $testArgs = @(
                 '--no-restore', '--no-build'
+                '--configuration', $Configuration
                 '--logger', 'trx'
                 '-r', $testArtifacts
                 '/p:CollectCoverage=true', "/p:MergeWith=$testArtifacts\coverage.json"
