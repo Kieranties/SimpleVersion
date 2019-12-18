@@ -170,7 +170,7 @@ only the first match (if found) is used.</p>
   }
 }
 </code></pre>
-<p>In th above example, any branch starting with <em>feature/</em> will add the branches
+<p>In the above example, any branch starting with <em>feature/</em> will add the branches
 shortname as metadata to the generated version. E.g. <em>feature/testing</em> will
 create a version of <code>0.2.0-alpha1.5.c903782+featuretesting</code> when there are five
 commits and the sha begins with <em>903782</em></p>
@@ -181,6 +181,74 @@ and have the height added into the metadata.</p>
 <p>Overrides will allow the same commit to be built with different versions
 depending on the current branch.</p>
 </div>
+<h4 id="override-properties">Override Properties</h4>
+<p>Override configuration has access to the following properties</p>
+<table>
+<thead>
+<tr>
+<th>Key</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>match</code></td>
+<td>string</td>
+<td>true</td>
+<td>Branches with a canonical branch name matching this regular expression will be overridden</td>
+</tr>
+<tr>
+<td><code>label</code></td>
+<td>string array</td>
+<td>false</td>
+<td>Overrides <code>label</code> from the base configuration</td>
+</tr>
+<tr>
+<td><code>prefixlabel</code></td>
+<td>string array</td>
+<td>false</td>
+<td>Prefixes the base configuration <code>label</code> with the given values</td>
+</tr>
+<tr>
+<td><code>postfixlabel</code></td>
+<td>string array</td>
+<td>false</td>
+<td>Postfixes the base configuration <code>label</code> with the given values</td>
+</tr>
+<tr>
+<td><code>insertlabel</code></td>
+<td>int/string dictionary</td>
+<td>false</td>
+<td>Inserts the given values into the base <code>label</code> at the index specified</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td>string array</td>
+<td>false</td>
+<td>Overrides <code>metdata</code> from the base configuration</td>
+</tr>
+<tr>
+<td><code>prefixmetadata</code></td>
+<td>string array</td>
+<td>false</td>
+<td>Prefixes the base configuration <code>metadata</code> with the given values</td>
+</tr>
+<tr>
+<td><code>postfixmetadata</code></td>
+<td>string array</td>
+<td>false</td>
+<td>Postfixes the base configuration <code>metadata</code> with the given values</td>
+</tr>
+<tr>
+<td><code>insertmetadata</code></td>
+<td>int/string dictionary</td>
+<td>false</td>
+<td>Inserts the given values into the base <code>metadata</code> at the index specified</td>
+</tr>
+</tbody>
+</table>
 <h2 id="replacement-tokens">Replacement Tokens</h2>
 <p>SimpleVersion allows specific <em>tokens</em> to be used in some properties to allow
 substitution of values during invocation.  The following tokens may be used:</p>
@@ -197,37 +265,37 @@ substitution of values during invocation.  The following tokens may be used:</p>
 <tr>
 <td>Height</td>
 <td><code>*</code></td>
-<td><code>Version</code>, <code>Label</code>, <code>Metadata</code></td>
+<td><code>version</code>, <code>label</code>, <code>metadata</code></td>
 <td>Inserts the calculated height</td>
 </tr>
 <tr>
 <td>Branch Name</td>
 <td><code>{branchname}</code></td>
-<td><code>Label</code>, <code>Metadata</code></td>
+<td><code>label</code>, <code>metadata</code></td>
 <td>Inserts the canonical branch name, stripped of non-alphanumeric characters</td>
 </tr>
 <tr>
 <td>Short Branch Name</td>
 <td><code>{shortbranchname}</code></td>
-<td><code>Label</code>, <code>Metadata</code></td>
+<td><code>label</code>, <code>metadata</code></td>
 <td>Inserts the friendly branch name, stripped of non-alphanumeric characters</td>
 </tr>
 <tr>
 <td>Branch Name Suffix</td>
 <td><code>{branchnamesuffix}</code></td>
-<td><code>Label</code>, <code>Metadata</code></td>
+<td><code>label</code>, <code>metadata</code></td>
 <td>Inserts the last segment of the canonical name of a branch</td>
 </tr>
 <tr>
 <td>Short Sha</td>
 <td><code>{shortsha}</code></td>
-<td><code>Label</code>, <code>Metadata</code></td>
+<td><code>label</code>, <code>metadata</code></td>
 <td>Inserts the first seven characters of the commit sha, prefixed with <code>c</code></td>
 </tr>
 <tr>
 <td>Pull-Request Id</td>
 <td><code>{pr}</code></td>
-<td><code>Label</code>, <code>Metadata</code></td>
+<td><code>label</code>, <code>metadata</code></td>
 <td>Inserts the id of the pull-request (or 0 by default)</td>
 </tr>
 </tbody>

@@ -127,9 +127,61 @@
   </h3>
   
   
+  <a id="SimpleVersion_Model_BranchConfiguration_InsertLabel_" data-uid="SimpleVersion.Model.BranchConfiguration.InsertLabel*"></a>
+  <h4 id="SimpleVersion_Model_BranchConfiguration_InsertLabel" data-uid="SimpleVersion.Model.BranchConfiguration.InsertLabel">InsertLabel</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the label parts to insert at specific indexes of the label in the generated version.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;int, string&gt; InsertLabel { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="SimpleVersion_Model_BranchConfiguration_InsertMetadata_" data-uid="SimpleVersion.Model.BranchConfiguration.InsertMetadata*"></a>
+  <h4 id="SimpleVersion_Model_BranchConfiguration_InsertMetadata" data-uid="SimpleVersion.Model.BranchConfiguration.InsertMetadata">InsertMetadata</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the metadata parts to insert at specific indexes of the metadata in the generated version.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Dictionary&lt;int, string&gt; InsertMetadata { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.Dictionary</span>&lt;<span class="xref">System.Int32</span>, <span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
   <a id="SimpleVersion_Model_BranchConfiguration_Label_" data-uid="SimpleVersion.Model.BranchConfiguration.Label*"></a>
   <h4 id="SimpleVersion_Model_BranchConfiguration_Label" data-uid="SimpleVersion.Model.BranchConfiguration.Label">Label</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the label parts to use in the generated version.</p>
+  <div class="markdown level1 summary"><p>Gets or sets the label parts to override in the generated version.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -182,12 +234,116 @@ identify matching to a branch to identify branch matches.</p>
   
   <a id="SimpleVersion_Model_BranchConfiguration_Metadata_" data-uid="SimpleVersion.Model.BranchConfiguration.Metadata*"></a>
   <h4 id="SimpleVersion_Model_BranchConfiguration_Metadata" data-uid="SimpleVersion.Model.BranchConfiguration.Metadata">Metadata</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the Metadata parts to use in the generated version.</p>
+  <div class="markdown level1 summary"><p>Gets or sets the metadata parts to use in the generated version.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
     <pre><code class="lang-csharp hljs">public List&lt;string&gt; Metadata { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="SimpleVersion_Model_BranchConfiguration_PostfixLabel_" data-uid="SimpleVersion.Model.BranchConfiguration.PostfixLabel*"></a>
+  <h4 id="SimpleVersion_Model_BranchConfiguration_PostfixLabel" data-uid="SimpleVersion.Model.BranchConfiguration.PostfixLabel">PostfixLabel</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the label parts to insert at the end of the label in the generated version.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; PostfixLabel { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="SimpleVersion_Model_BranchConfiguration_PostfixMetadata_" data-uid="SimpleVersion.Model.BranchConfiguration.PostfixMetadata*"></a>
+  <h4 id="SimpleVersion_Model_BranchConfiguration_PostfixMetadata" data-uid="SimpleVersion.Model.BranchConfiguration.PostfixMetadata">PostfixMetadata</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the metadata parts to insert at the end of the metadata in the generated version.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; PostfixMetadata { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="SimpleVersion_Model_BranchConfiguration_PrefixLabel_" data-uid="SimpleVersion.Model.BranchConfiguration.PrefixLabel*"></a>
+  <h4 id="SimpleVersion_Model_BranchConfiguration_PrefixLabel" data-uid="SimpleVersion.Model.BranchConfiguration.PrefixLabel">PrefixLabel</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the label parts to insert at the start of the label in the generated version.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; PrefixLabel { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="SimpleVersion_Model_BranchConfiguration_PrefixMetadata_" data-uid="SimpleVersion.Model.BranchConfiguration.PrefixMetadata*"></a>
+  <h4 id="SimpleVersion_Model_BranchConfiguration_PrefixMetadata" data-uid="SimpleVersion.Model.BranchConfiguration.PrefixMetadata">PrefixMetadata</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the metadata parts to insert at the start of the metadata in the generated version.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; PrefixMetadata { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">

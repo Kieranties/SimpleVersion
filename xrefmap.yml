@@ -251,6 +251,30 @@ references:
   commentId: Overload:SimpleVersion.Model.BranchConfiguration.#ctor
   fullName: SimpleVersion.Model.BranchConfiguration.BranchConfiguration
   nameWithType: BranchConfiguration.BranchConfiguration
+- uid: SimpleVersion.Model.BranchConfiguration.InsertLabel
+  name: InsertLabel
+  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_InsertLabel
+  commentId: P:SimpleVersion.Model.BranchConfiguration.InsertLabel
+  fullName: SimpleVersion.Model.BranchConfiguration.InsertLabel
+  nameWithType: BranchConfiguration.InsertLabel
+- uid: SimpleVersion.Model.BranchConfiguration.InsertLabel*
+  name: InsertLabel
+  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_InsertLabel_
+  commentId: Overload:SimpleVersion.Model.BranchConfiguration.InsertLabel
+  fullName: SimpleVersion.Model.BranchConfiguration.InsertLabel
+  nameWithType: BranchConfiguration.InsertLabel
+- uid: SimpleVersion.Model.BranchConfiguration.InsertMetadata
+  name: InsertMetadata
+  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_InsertMetadata
+  commentId: P:SimpleVersion.Model.BranchConfiguration.InsertMetadata
+  fullName: SimpleVersion.Model.BranchConfiguration.InsertMetadata
+  nameWithType: BranchConfiguration.InsertMetadata
+- uid: SimpleVersion.Model.BranchConfiguration.InsertMetadata*
+  name: InsertMetadata
+  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_InsertMetadata_
+  commentId: Overload:SimpleVersion.Model.BranchConfiguration.InsertMetadata
+  fullName: SimpleVersion.Model.BranchConfiguration.InsertMetadata
+  nameWithType: BranchConfiguration.InsertMetadata
 - uid: SimpleVersion.Model.BranchConfiguration.Label
   name: Label
   href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_Label
@@ -287,6 +311,54 @@ references:
   commentId: Overload:SimpleVersion.Model.BranchConfiguration.Metadata
   fullName: SimpleVersion.Model.BranchConfiguration.Metadata
   nameWithType: BranchConfiguration.Metadata
+- uid: SimpleVersion.Model.BranchConfiguration.PostfixLabel
+  name: PostfixLabel
+  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_PostfixLabel
+  commentId: P:SimpleVersion.Model.BranchConfiguration.PostfixLabel
+  fullName: SimpleVersion.Model.BranchConfiguration.PostfixLabel
+  nameWithType: BranchConfiguration.PostfixLabel
+- uid: SimpleVersion.Model.BranchConfiguration.PostfixLabel*
+  name: PostfixLabel
+  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_PostfixLabel_
+  commentId: Overload:SimpleVersion.Model.BranchConfiguration.PostfixLabel
+  fullName: SimpleVersion.Model.BranchConfiguration.PostfixLabel
+  nameWithType: BranchConfiguration.PostfixLabel
+- uid: SimpleVersion.Model.BranchConfiguration.PostfixMetadata
+  name: PostfixMetadata
+  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_PostfixMetadata
+  commentId: P:SimpleVersion.Model.BranchConfiguration.PostfixMetadata
+  fullName: SimpleVersion.Model.BranchConfiguration.PostfixMetadata
+  nameWithType: BranchConfiguration.PostfixMetadata
+- uid: SimpleVersion.Model.BranchConfiguration.PostfixMetadata*
+  name: PostfixMetadata
+  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_PostfixMetadata_
+  commentId: Overload:SimpleVersion.Model.BranchConfiguration.PostfixMetadata
+  fullName: SimpleVersion.Model.BranchConfiguration.PostfixMetadata
+  nameWithType: BranchConfiguration.PostfixMetadata
+- uid: SimpleVersion.Model.BranchConfiguration.PrefixLabel
+  name: PrefixLabel
+  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_PrefixLabel
+  commentId: P:SimpleVersion.Model.BranchConfiguration.PrefixLabel
+  fullName: SimpleVersion.Model.BranchConfiguration.PrefixLabel
+  nameWithType: BranchConfiguration.PrefixLabel
+- uid: SimpleVersion.Model.BranchConfiguration.PrefixLabel*
+  name: PrefixLabel
+  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_PrefixLabel_
+  commentId: Overload:SimpleVersion.Model.BranchConfiguration.PrefixLabel
+  fullName: SimpleVersion.Model.BranchConfiguration.PrefixLabel
+  nameWithType: BranchConfiguration.PrefixLabel
+- uid: SimpleVersion.Model.BranchConfiguration.PrefixMetadata
+  name: PrefixMetadata
+  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_PrefixMetadata
+  commentId: P:SimpleVersion.Model.BranchConfiguration.PrefixMetadata
+  fullName: SimpleVersion.Model.BranchConfiguration.PrefixMetadata
+  nameWithType: BranchConfiguration.PrefixMetadata
+- uid: SimpleVersion.Model.BranchConfiguration.PrefixMetadata*
+  name: PrefixMetadata
+  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_PrefixMetadata_
+  commentId: Overload:SimpleVersion.Model.BranchConfiguration.PrefixMetadata
+  fullName: SimpleVersion.Model.BranchConfiguration.PrefixMetadata
+  nameWithType: BranchConfiguration.PrefixMetadata
 - uid: SimpleVersion.Model.BranchInfo
   name: BranchInfo
   href: api/SimpleVersion.Model.BranchInfo.html
@@ -1379,6 +1451,21 @@ references:
   commentId: T:SimpleVersion.StringExtensions
   fullName: SimpleVersion.StringExtensions
   nameWithType: StringExtensions
+- uid: SimpleVersion.StringExtensions.FormatWith(System.String,System.Object[])
+  name: FormatWith(String, Object[])
+  href: api/SimpleVersion.StringExtensions.html#SimpleVersion_StringExtensions_FormatWith_System_String_System_Object___
+  commentId: M:SimpleVersion.StringExtensions.FormatWith(System.String,System.Object[])
+  name.vb: FormatWith(String, Object())
+  fullName: SimpleVersion.StringExtensions.FormatWith(System.String, System.Object[])
+  fullName.vb: SimpleVersion.StringExtensions.FormatWith(System.String, System.Object())
+  nameWithType: StringExtensions.FormatWith(String, Object[])
+  nameWithType.vb: StringExtensions.FormatWith(String, Object())
+- uid: SimpleVersion.StringExtensions.FormatWith*
+  name: FormatWith
+  href: api/SimpleVersion.StringExtensions.html#SimpleVersion_StringExtensions_FormatWith_
+  commentId: Overload:SimpleVersion.StringExtensions.FormatWith
+  fullName: SimpleVersion.StringExtensions.FormatWith
+  nameWithType: StringExtensions.FormatWith
 - uid: SimpleVersion.StringExtensions.ToBool(System.String)
   name: ToBool(String)
   href: api/SimpleVersion.StringExtensions.html#SimpleVersion_StringExtensions_ToBool_System_String_
