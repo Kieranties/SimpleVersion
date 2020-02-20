@@ -15,6 +15,7 @@ namespace SimpleVersion.Serialization
             WriteIndented = true,
             AllowTrailingCommas = false,
             ReadCommentHandling = JsonCommentHandling.Skip,
+            PropertyNameCaseInsensitive = true,
             Converters =
             {
                 new DictionaryConverter(),
