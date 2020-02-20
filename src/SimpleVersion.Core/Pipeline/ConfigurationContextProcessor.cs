@@ -197,6 +197,8 @@ namespace SimpleVersion.Pipeline
                 // Must make no difference as changes have accumulative nature.
                 prevTree = currentTree;
             }
+
+            context.Result.Height = height;
         }
     }
 }
