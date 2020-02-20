@@ -185,7 +185,9 @@ namespace SimpleVersion.Pipeline
 
                 // If a change to the file is found, stop counting
                 if (HasVersionChange(diff, commit, context))
+                {
                     break;
+                }
 
                 // Increment height
                 height++;
