@@ -13,8 +13,18 @@ param(
     [Switch]$BuildDocs,
     [Switch]$ServeDocs,
     [Switch]$Resources,
-    [String]$DocfxVersion = '2.42.0'
+    [String]$DocfxVersion = '2.42.0',
+    [string]$DotnetInstallScript = 'https://dot.net/v1/dotnet-install.ps1',
+    [string]$DotnetLocalInstallScript = (Join-Path $PSScriptRoot 'dotnet-install.ps1')
 )
+
+# Ensure we have the latest LTS installed for the user before processing further
+function CheckDotNet {
+    if(-not(Test-Path $DotnetLocalInstallScript)){
+        Invoke-WebRequest -Uri $DotnetInstallScript -OutFile $DotnetLocalInstallScript
+    }
+    . $DotnetLocalInstallScript
+}
 
 function exec([string]$cmd) {
     $currentPref = $ErrorActionPreference
@@ -32,6 +42,8 @@ $env:DOTNET_CLI_TELEMETRY_OPTOUT = 1
 if($ServeDocs) {
     $BuildDocs = $true
 }
+
+CheckDotNet
 
 # Resources
 if($Resources){
@@ -52,6 +64,7 @@ if(!$NoBuild) {
         ForEach-Object {
             $testArgs = @(
                 '--no-restore', '--no-build'
+                '--configuration', $Configuration
                 '--logger', 'trx'
                 '-r', $testArtifacts
                 '/p:CollectCoverage=true', "/p:MergeWith=$testArtifacts\coverage.json"
