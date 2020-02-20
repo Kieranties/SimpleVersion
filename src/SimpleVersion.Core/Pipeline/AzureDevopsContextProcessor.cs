@@ -3,6 +3,7 @@
 using System.Text.RegularExpressions;
 using SimpleVersion.Abstractions;
 using SimpleVersion.Abstractions.Pipeline;
+using SimpleVersion.Extensions;
 
 namespace SimpleVersion.Pipeline
 {
