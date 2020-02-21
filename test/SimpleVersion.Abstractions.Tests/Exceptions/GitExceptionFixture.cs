@@ -62,7 +62,5 @@ namespace SimpleVersion.Abstractions.Tests.Exceptions
             result.Message.Should().Be(value);
             result.InnerException.Should().BeSameAs(exception);
         }
-
-        
     }
 }
