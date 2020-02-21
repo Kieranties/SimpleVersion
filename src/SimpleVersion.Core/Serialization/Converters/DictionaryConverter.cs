@@ -28,8 +28,9 @@ namespace SimpleVersion.Serialization.Converters
 
             var definition = typeToConvert.GetGenericTypeDefinition();
 
-            return definition == typeof(IDictionary<,>)
-                || definition == typeof(Dictionary<,>);
+            return (definition == typeof(IDictionary<,>)
+                || definition == typeof(Dictionary<,>))
+                && typeToConvert.GetGenericArguments()[0] != typeof(string);
         }
 
         /// <inheritdoc />

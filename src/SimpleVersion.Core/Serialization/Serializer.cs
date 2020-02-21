@@ -1,6 +1,9 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System;
+using System.Text.Encodings.Web;
 using System.Text.Json;
+using System.Text.Unicode;
 using SimpleVersion.Serialization.Converters;
 
 namespace SimpleVersion.Serialization
@@ -16,6 +19,7 @@ namespace SimpleVersion.Serialization
             AllowTrailingCommas = false,
             ReadCommentHandling = JsonCommentHandling.Skip,
             PropertyNameCaseInsensitive = true,
+            Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             Converters =
             {
                 new DictionaryConverter(),
