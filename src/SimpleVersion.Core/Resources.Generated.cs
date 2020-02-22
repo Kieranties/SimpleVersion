@@ -11,6 +11,7 @@ namespace SimpleVersion {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Update-Resource", "0.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+    [global::System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
     internal class Resources {
 
         private static global::System.Resources.ResourceManager resourceMan;

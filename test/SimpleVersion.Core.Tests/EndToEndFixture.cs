@@ -20,22 +20,22 @@ namespace SimpleVersion.Core.Tests
                 Version = "1.0.0",
                 Label = { "r*" },
                 Branches =
+                {
+                    Release =
                     {
-                        Release =
+                        "^refs/heads/master$",
+                        "^refs/heads/release/.+$",
+                        "^refs/heads/feature/.+$"
+                    },
+                    Overrides =
+                    {
+                        new Model.BranchSettings
                         {
-                            "^refs/heads/master$",
-                            "^refs/heads/release/.+$",
-                            "^refs/heads/feature/.+$"
-                        },
-                        Overrides =
-                        {
-                            new Model.BranchSettings
-                            {
-                                Match = "^refs/heads/feature/.+$",
-                                Label = new List<string> { "{shortbranchname}" }
-                            }
+                            Match = "^refs/heads/feature/.+$",
+                            Label = new List<string> { "{shortbranchname}" }
                         }
                     }
+                }
             };
 
             // Arrange

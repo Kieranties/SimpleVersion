@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 namespace SimpleVersion.Model
 {
-#pragma warning disable CA2227 // Collection properties should be read only
     /// <summary>
     /// Encapsulates configuration for branches.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "Required for System.Text.Json")]
     public class BranchInfo
     {
         /// <summary>
@@ -21,5 +21,4 @@ namespace SimpleVersion.Model
         /// </summary>
         public List<BranchSettings> Overrides { get; set; } = new List<BranchSettings>();
     }
-#pragma warning restore CA2227 // Collection properties should be read only
 }

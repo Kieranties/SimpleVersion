@@ -2,13 +2,14 @@
 
 using System;
 using System.Diagnostics;
-using SimpleVersion.Extensions;
+using System.Diagnostics.CodeAnalysis;
 
 namespace SimpleVersion
 {
     /// <summary>
     /// Simple exception handling asserts.
     /// </summary>
+    [ExcludeFromCodeCoverage]
     public static class Assert
     {
         /// <summary>
@@ -25,26 +26,6 @@ namespace SimpleVersion
             if (value == null)
             {
                 throw new ArgumentNullException(name);
-            }
-
-            return value;
-        }
-
-        /// <summary>
-        /// Asserts the given value is not null.
-        /// </summary>
-        /// <typeparam name="T">The type of object being asserted.</typeparam>
-        /// <param name="value">The value to be asserted.</param>
-        /// <param name="message">The optional exception message.</param>
-        /// <exception cref="NullReferenceException">Thrown if the given value is null.</exception>
-        /// <returns>The value if not null.</returns>
-        [DebuggerStepThrough]
-        public static T NotNull<T>(T value, string? message = null)
-        {
-            if (value == null)
-            {
-                message = message.DefaultIfNullOrWhiteSpace(Resources.Exception_UnexpectedNull);
-                throw new NullReferenceException(message);
             }
 
             return value;

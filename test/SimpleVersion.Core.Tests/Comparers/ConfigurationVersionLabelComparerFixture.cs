@@ -20,6 +20,8 @@ namespace SimpleVersion.Core.Tests.Comparers
 
         public static IEnumerable<object[]> Matching()
         {
+            var sameReference = new Settings();
+            yield return new[] { sameReference, sameReference };
             yield return new[] { new Settings(), new Settings() };
             yield return new[] { new Settings { Label = { "one" } }, new Settings { Label = { "one" } } };
             yield return new[] { new Settings { Version = "1.2.3", Label = { "one", "two" } }, new Settings { Version = "1.2.3", Label = { "one", "two" } } };
@@ -41,6 +43,7 @@ namespace SimpleVersion.Core.Tests.Comparers
             yield return new[] { new Settings(), new Settings { Label = { "one" } } };
             yield return new[] { new Settings { Label = { "one" } }, new Settings() };
             yield return new[] { new Settings { Label = { "one", "two" } }, new Settings { Label = { "one", "three" } } };
+            yield return new[] { new Settings { Label = { "one", "two" } }, new Settings { Label = { "two", "one" } } };
         }
 
         [Theory]

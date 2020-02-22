@@ -12,7 +12,7 @@ namespace SimpleVersion.Core.Tests
             var info = new Settings
             {
                 Version = version,
-                Branches = new BranchInfo
+                Branches =
                 {
                     Release =
                     {

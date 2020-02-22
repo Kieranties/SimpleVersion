@@ -103,6 +103,7 @@ namespace $Namespace {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("$commandName", "0.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+    [global::System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute()]
     $AccessModifier class $ClassName {
 
         private static global::System.Resources.ResourceManager resourceMan;

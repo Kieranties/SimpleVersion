@@ -15,7 +15,7 @@ namespace SimpleVersion.Core.Tests
         private static readonly Settings _defaultConfiguration = new Settings
         {
             Version = "0.1.0",
-            Branches = new BranchInfo
+            Branches =
             {
                 Release =
                 {
