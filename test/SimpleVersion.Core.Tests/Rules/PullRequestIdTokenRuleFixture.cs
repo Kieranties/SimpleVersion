@@ -14,7 +14,7 @@ namespace SimpleVersion.Core.Tests.Rules
 
         public PullRequestIdTokenRuleFixture()
         {
-            _sut = new PullRequestIdTokenRule();
+            _sut = PullRequestIdTokenRule.Instance;
         }
 
         [Fact]
