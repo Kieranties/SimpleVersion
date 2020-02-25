@@ -7,27 +7,27 @@ This file provides various configuration options.
 Version
 -------
 
-The `Version` property allows you to specify the base version to be generated.
+The `version` property allows you to specify the base version to be generated.
 You  may set the property with a version string that consists of one to four
 dot separated digits.
 
 All of the following are accepted values:
 ```json
-"Version" : "1"
-"Version" : "1.2"
-"Version" : "1.2.3"
-"Version" : "1.2.3.4"
+"version" : "1"
+"version" : "1.2"
+"version" : "1.2.3"
+"version" : "1.2.3.4"
 ```
 
 Label
 -----
 
-The `Label` property specifies an array of labels to be included in the version.
+The `label` property specifies an array of labels to be included in the version.
 
 ```json
-"Label" : []
-"Label" : ["alpha1"]
-"Label" : ["alpha1", "test"]
+"label" : []
+"label" : ["alpha1"]
+"label" : ["alpha1", "test"]
 ```
 
 > [!NOTE]
@@ -36,13 +36,13 @@ The `Label` property specifies an array of labels to be included in the version.
 Metadata
 --------
 
-The `Metadata` property specifies an array of values to be included as metadata
+The `metadata` property specifies an array of values to be included as metadata
 in the final version.
 
 ```json
-"Metadata" : []
-"Metadata" : ["demo"]
-"Metadata" : ["demo", "sprint1"]
+"metadata" : []
+"metadata" : ["demo"]
+"metadata" : ["demo", "sprint1"]
 ```
 
 > [!WARNING]
@@ -55,22 +55,22 @@ Sometimes you may need to adjust the base value of the height. This could be
 when migrating from a previous versioning pattern, if a number of commits
 should be discounted, or any other reason.
 
-Specify the `Offset` as a numeric value to impact the base value of the height.
+Specify the `offset` as a numeric value to impact the base value of the height.
 
 ```json
-"Offset" : -5
-"Offset" : 4
+"offset" : -5
+"offset" : 4
 ```
 
 Branches
 --------
 
-The `Branches` section allows for branch specific rules and configuration to
+The `branches` section allows for branch specific rules and configuration to
 be applied based on the branch currently being built.
 
 ### Release
 
-`Release` allows for a list of regular expressions to be defined where each
+`release` allows for a list of regular expressions to be defined where each
 may match to the current branch being built. If the current branch does not match
 any of the expressions it will have the short sha of the current commit added
 to the `Labels` property prefixed with `c` (for commit).
