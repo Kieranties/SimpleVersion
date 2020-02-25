@@ -16,10 +16,7 @@ namespace SimpleVersion.Serialization.Converters
         /// <inheritdoc />
         public override bool CanConvert(Type typeToConvert)
         {
-            if (typeToConvert == null)
-            {
-                throw new ArgumentNullException(nameof(typeToConvert));
-            }
+            Assert.ArgumentNotNull(typeToConvert, nameof(typeToConvert));
 
             if (!typeToConvert.IsGenericType)
             {
@@ -37,6 +34,7 @@ namespace SimpleVersion.Serialization.Converters
         public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
         {
             Assert.ArgumentNotNull(typeToConvert, nameof(typeToConvert));
+
             if (!CanConvert(typeToConvert))
             {
                 throw new InvalidOperationException($"{typeToConvert} is not a valid type for converter {typeof(DictionaryConverter<,>)}");

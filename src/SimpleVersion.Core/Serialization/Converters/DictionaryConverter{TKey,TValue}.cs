@@ -39,15 +39,8 @@ namespace SimpleVersion.Serialization.Converters
         /// <inheritdoc />
         public override void Write(Utf8JsonWriter writer, Dictionary<TKey, TValue> value, JsonSerializerOptions options)
         {
-            if (writer == null)
-            {
-                throw new ArgumentNullException(nameof(writer));
-            }
-
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
+            Assert.ArgumentNotNull(writer, nameof(writer));
+            Assert.ArgumentNotNull(value, nameof(value));
 
             writer.WriteStartObject();
             foreach (var entry in value)
