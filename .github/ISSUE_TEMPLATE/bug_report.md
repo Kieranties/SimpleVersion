@@ -26,7 +26,7 @@ If applicable, add screenshots to help explain your problem.
 
 **Environment**
  - OS: [e.g. Windows]
- - Implementation: [e.g. Commandline, Cake, Libraries]
+ - Implementation: [e.g. Commandline, Dotnet Tool, Libraries]
  - Version [e.g. 0.1.0]
 
 **Additional context**

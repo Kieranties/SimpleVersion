@@ -1,8 +1,7 @@
 Introduction
 ============
 
-SimpleVersion is available as a cross-platform dotnet tool, a netstandard Cake
-addin, or as a collection of libraries for direct consumption in a project.
+SimpleVersion is available as a cross-platform dotnet tool and core libraries for direct consumption in a project.
 
 To get a better understanding of the values returned from invoking SimpleVersion
 see the [results documentation][results].

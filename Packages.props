@@ -5,7 +5,6 @@
     Centrally managed packages for all projects in the solution
   -->
   <ItemGroup Label="Source library packages">
-    <PackageReference Update="Cake.Core"                            Version="0.37.*" />
     <PackageReference Update="LibGit2Sharp"                         Version="0.26.*" />
     <PackageReference Update="System.Text.Json"                     Version="4.7.*" />
 
