@@ -4,8 +4,6 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputType>Exe</OutputType>
-    <!-- No Target Framework dependency group-->
-    <NoWarn>$(NoWarn);NU5128</NoWarn>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>simpleversion</ToolCommandName>
   </PropertyGroup>
