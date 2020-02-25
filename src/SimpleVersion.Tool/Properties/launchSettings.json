@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "SimpleVersion.Tool": {
+      "commandName": "Project",
+      "commandLineArgs": "$(MSBuildThisFileDirectory)"
+    }
+  }
+}

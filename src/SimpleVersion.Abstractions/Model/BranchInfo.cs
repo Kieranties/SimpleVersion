@@ -1,24 +1,24 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using System;
 using System.Collections.Generic;
 
 namespace SimpleVersion.Model
 {
     /// <summary>
-    /// Encapsulates configuration for branches.
+    /// Encapsulates information for branches.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "Required for System.Text.Json")]
     public class BranchInfo
     {
         /// <summary>
-        /// Gets the list of branches that may produce release versions.
+        /// Gets or sets the list of branches that may produce release versions.
         /// </summary>
-        public List<string> Release { get; } = new List<string>();
+        public List<string> Release { get; set; } = new List<string>();
 
         /// <summary>
-        /// Gets the configuration for branches which override the defaults.
-        /// See <see cref="BranchConfiguration"/> for further details.
+        /// Gets or sets the settings for branches which override the defaults.
+        /// See <see cref="BranchSettings"/> for further details.
         /// </summary>
-        public List<BranchConfiguration> Overrides { get; } = new List<BranchConfiguration>();
+        public List<BranchSettings> Overrides { get; set; } = new List<BranchSettings>();
     }
 }

@@ -4,12 +4,11 @@ using System.Collections.Generic;
 
 namespace SimpleVersion.Model
 {
-#pragma warning disable CA1724
     /// <summary>
-    /// Encapsulates configuration details loaded from '.simpleversion.json'.
+    /// Encapsulates settings loaded from '.simpleversion.json'.
     /// </summary>
-    public class Configuration
-#pragma warning restore CA1724
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "Required for System.Text.Json")]
+    public class Settings
     {
         /// <summary>
         /// Gets or sets the base version string.
@@ -22,14 +21,14 @@ namespace SimpleVersion.Model
         public int OffSet { get; set; } = 0;
 
         /// <summary>
-        /// Gets the label parts to use in the generated version.
+        /// Gets or sets the label parts to use in the generated version.
         /// </summary>
-        public List<string> Label { get; } = new List<string>();
+        public List<string> Label { get; set; } = new List<string>();
 
         /// <summary>
-        /// Gets the Metadata parts to use in the generated version.
+        /// Gets or sets the Metadata parts to use in the generated version.
         /// </summary>
-        public List<string> Metadata { get; } = new List<string>();
+        public List<string> Metadata { get; set; } = new List<string>();
 
         /// <summary>
         /// Gets or sets the information on branches.

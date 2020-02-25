@@ -1,11 +1,11 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using SimpleVersion.Abstractions.Pipeline;
-using SimpleVersion.Abstractions.Rules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using SimpleVersion.Abstractions.Pipeline;
+using SimpleVersion.Abstractions.Rules;
 
 namespace SimpleVersion.Rules
 {
@@ -14,12 +14,12 @@ namespace SimpleVersion.Rules
     /// </summary>
     public class ShortShaTokenRule : ITokenRule<string>
     {
+        private static readonly Lazy<ShortShaTokenRule> _default = new Lazy<ShortShaTokenRule>(() => new ShortShaTokenRule());
+
         /// <summary>
         /// Gets a default instance of the rule.
         /// </summary>
         public static ShortShaTokenRule Instance => _default.Value;
-
-        private static readonly Lazy<ShortShaTokenRule> _default = new Lazy<ShortShaTokenRule>(() => new ShortShaTokenRule());
 
         /// <inheritdoc/>
         public string Token => "{shortsha}";
@@ -27,13 +27,17 @@ namespace SimpleVersion.Rules
         /// <inheritdoc/>
         public string Resolve(IVersionContext context, string value)
         {
+            Assert.ArgumentNotNull(context, nameof(context));
+
             return Regex.Replace(value, Regex.Escape(Token), $"c{context.Result.Sha7}", RegexOptions.IgnoreCase);
         }
 
         /// <inheritdoc/>
         public IEnumerable<string> Apply(IVersionContext context, IEnumerable<string> input)
         {
-            var isRelease = context.Configuration.Branches.Release
+            Assert.ArgumentNotNull(context, nameof(context));
+
+            var isRelease = context.Settings.Branches.Release
                 .Any(x => Regex.IsMatch(context.Result.CanonicalBranchName, x));
 
             if (!isRelease && !input.Contains(Token))

@@ -5,13 +5,10 @@ VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D5992CB5-3542-41C8-BE85-F52699729C57}"
 	ProjectSection(SolutionItems) = preProject
-		src\App.props = src\App.props
 		src\Directory.Build.props = src\Directory.Build.props
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleVersion.Abstractions", "src\SimpleVersion.Abstractions\SimpleVersion.Abstractions.csproj", "{57BD2337-57AB-4F50-BAE5-796DCDC70576}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleVersion.Command", "src\SimpleVersion.Command\SimpleVersion.Command.csproj", "{87817C65-6CB4-4066-8D17-FFB347E2ADB0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{9EEF54AE-EEE2-4817-B0D0-AFAE3F52C231}"
 	ProjectSection(SolutionItems) = preProject
@@ -28,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleVersion.Cake", "src\S
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{385532A7-26BE-4596-9EEE-E7C3984643ED}"
 	ProjectSection(SolutionItems) = preProject
-		shared\SimpleVersion.ruleset = shared\SimpleVersion.ruleset
+		shared\logo.png = shared\logo.png
 		SimpleVersion.sln.vsspell = SimpleVersion.sln.vsspell
 		shared\stylecop.json = shared\stylecop.json
 		shared\Tests.GlobalSuppressions.cs = shared\Tests.GlobalSuppressions.cs
@@ -41,6 +38,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		azure-pipelines.yml = azure-pipelines.yml
 		build.ps1 = build.ps1
 		Directory.Build.props = Directory.Build.props
+		Directory.Build.targets = Directory.Build.targets
 		en-US_User.dic = en-US_User.dic
 		global.json = global.json
 		nuget.config = nuget.config
@@ -48,6 +46,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 		SimpleVersion.sln.vsspell = SimpleVersion.sln.vsspell
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleVersion.Tool", "src\SimpleVersion.Tool\SimpleVersion.Tool.csproj", "{283AA9B6-B543-43C9-B512-BA54B36799B4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,10 +59,6 @@ Global
 		{57BD2337-57AB-4F50-BAE5-796DCDC70576}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57BD2337-57AB-4F50-BAE5-796DCDC70576}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57BD2337-57AB-4F50-BAE5-796DCDC70576}.Release|Any CPU.Build.0 = Release|Any CPU
-		{87817C65-6CB4-4066-8D17-FFB347E2ADB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{87817C65-6CB4-4066-8D17-FFB347E2ADB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{87817C65-6CB4-4066-8D17-FFB347E2ADB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{87817C65-6CB4-4066-8D17-FFB347E2ADB0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C3908FD1-A959-4687-9221-C058698B126A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C3908FD1-A959-4687-9221-C058698B126A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3908FD1-A959-4687-9221-C058698B126A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -79,17 +75,21 @@ Global
 		{3A9E63F3-574A-4FB9-B00D-685AE077E0BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A9E63F3-574A-4FB9-B00D-685AE077E0BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A9E63F3-574A-4FB9-B00D-685AE077E0BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{283AA9B6-B543-43C9-B512-BA54B36799B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{283AA9B6-B543-43C9-B512-BA54B36799B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{283AA9B6-B543-43C9-B512-BA54B36799B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{283AA9B6-B543-43C9-B512-BA54B36799B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{57BD2337-57AB-4F50-BAE5-796DCDC70576} = {D5992CB5-3542-41C8-BE85-F52699729C57}
-		{87817C65-6CB4-4066-8D17-FFB347E2ADB0} = {D5992CB5-3542-41C8-BE85-F52699729C57}
 		{C3908FD1-A959-4687-9221-C058698B126A} = {D5992CB5-3542-41C8-BE85-F52699729C57}
 		{C367CC5A-5ACC-442A-8885-ED9A94A9A43E} = {9EEF54AE-EEE2-4817-B0D0-AFAE3F52C231}
 		{D95890EA-093F-4FAD-8E30-E372DD946F32} = {9EEF54AE-EEE2-4817-B0D0-AFAE3F52C231}
 		{3A9E63F3-574A-4FB9-B00D-685AE077E0BF} = {D5992CB5-3542-41C8-BE85-F52699729C57}
+		{283AA9B6-B543-43C9-B512-BA54B36799B4} = {D5992CB5-3542-41C8-BE85-F52699729C57}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E44EF3D7-AF4C-4653-A610-5F9FE30F2FA0}

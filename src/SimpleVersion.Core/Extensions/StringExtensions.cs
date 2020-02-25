@@ -1,15 +1,30 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System;
-using System.Globalization;
 
-namespace SimpleVersion
+namespace SimpleVersion.Extensions
 {
     /// <summary>
-    /// Extension methods to handle strings.
+    /// Extensions to support string handling.
     /// </summary>
     public static class StringExtensions
     {
+        /// <summary>
+        /// Returns the current value or a specified default if the value is null or white space.
+        /// </summary>
+        /// <param name="value">The value to validate to check.</param>
+        /// <param name="defaultValue">The value to return as default.</param>
+        /// <returns><paramref name="value"/> or <paramref name="defaultValue"/> if <paramref name="value"/> is null or white space.</returns>
+        public static string DefaultIfNullOrWhiteSpace(this string? value, string defaultValue)
+        {
+            if (string.IsNullOrWhiteSpace(value))
+            {
+                return defaultValue;
+            }
+
+            return value;
+        }
+
         /// <summary>
         /// Converts a string value to a boolean.
         /// </summary>
@@ -18,7 +33,9 @@ namespace SimpleVersion
         public static bool ToBool(this string value)
         {
             if (string.IsNullOrWhiteSpace(value))
+            {
                 return false;
+            }
 
             if (int.TryParse(value, out var intValue))
             {
@@ -26,17 +43,6 @@ namespace SimpleVersion
             }
 
             return bool.TrueString.Equals(value, StringComparison.OrdinalIgnoreCase);
-        }
-
-        /// <summary>
-        /// Returns a formated string using InvariantCulture.
-        /// </summary>
-        /// <param name="format">The format to be used.</param>
-        /// <param name="values">The values to use when formatting.</param>
-        /// <returns>The formatted string.</returns>
-        public static string FormatWith(this string format, params object[] values)
-        {
-            return string.Format(CultureInfo.InvariantCulture, format, values);
         }
     }
 }

@@ -5,30 +5,30 @@
     Centrally managed packages for all projects in the solution
   -->
   <ItemGroup Label="Source library packages">
-    <PackageReference Update="Cake.Core"                            Version="0.30.*" />
+    <PackageReference Update="Cake.Core"                            Version="0.34.*" />
     <PackageReference Update="LibGit2Sharp"                         Version="0.25.3" />
     <PackageReference Update="LibGit2Sharp.NativeBinaries"          Version="1.0.235" />
-    <PackageReference Update="Newtonsoft.Json"                      Version="11.0.*" />
-    <PackageReference Update="Microsoft.Packaging.Tools.Trimming"   Version="1.1.0-*" PrivateAssets="All" />
+    <PackageReference Update="System.Text.Json"                     Version="4.6.*" />
+
   </ItemGroup>
 
   <ItemGroup Label="Test library packages">
-    <PackageReference Update="Microsoft.NET.Test.Sdk"               Version="16.0.*" />
-    <PackageReference Update="xunit"                                Version="2.4.*" />
-    <PackageReference Update="xunit.runner.visualstudio"            Version="2.4.*" />
-    <PackageReference Update="FluentAssertions"                     Version="5.6.*" />
-    <PackageReference Update="GitTools.Testing"                     Version="1.2.*" />
-    <PackageReference Update="NSubstitute"                          Version="4.0.*" />
+    <PackageReference Update="Microsoft.NET.Test.Sdk"               Version="16.*" />
+    <PackageReference Update="xunit"                                Version="2.*" />
+    <PackageReference Update="xunit.runner.visualstudio"            Version="2.*" />
+    <PackageReference Update="FluentAssertions"                     Version="5.*" />
+    <PackageReference Update="GitTools.Testing"                     Version="1.*" />
+    <PackageReference Update="NSubstitute"                          Version="4.*" />
   </ItemGroup>
 
   <ItemGroup Label="Global project tooling">
-    <GlobalPackageReference Include="Microsoft.CodeAnalysis.FXCopAnalyzers" Version="2.9.*" />
-    <GlobalPackageReference Include="StyleCop.Analyzers" Version="1.1.1-*" />
+    <GlobalPackageReference Include="Microsoft.CodeAnalysis.FXCopAnalyzers" Version="2.*" />
+    <GlobalPackageReference Include="StyleCop.Analyzers" Version="1.*" />
   </ItemGroup>
 
   <ItemGroup Label="Test only tooling"
-						 Condition="$(MSBuildProjectName.EndsWith('Tests'))">
+             Condition="$(MSBuildProjectName.EndsWith('Tests'))">
     <GlobalPackageReference Include="NSubstitute.Analyzers.CSharp" Version="1.0.*" />
-    <GlobalPackageReference Include="coverlet.msbuild" Version="2.6.*" />
+    <GlobalPackageReference Include="coverlet.msbuild" Version="2.7.*" />
   </ItemGroup>
 </Project>

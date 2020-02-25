@@ -14,7 +14,7 @@ namespace SimpleVersion.Core.Tests.Rules
 
         public PullRequestIdTokenRuleFixture()
         {
-            _sut = new PullRequestIdTokenRule();
+            _sut = PullRequestIdTokenRule.Instance;
         }
 
         [Fact]
@@ -34,6 +34,7 @@ namespace SimpleVersion.Core.Tests.Rules
             // Arrange
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
                 var contextResult = Utils.GetVersionResult(10);
                 contextResult.CanonicalBranchName = $"refs/pull/{id}/merge";
 
@@ -56,9 +57,10 @@ namespace SimpleVersion.Core.Tests.Rules
             // Arrange
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
-                    Configuration = Utils.GetConfiguration("1.2.3"),
+                    Settings = Utils.GetSettings("1.2.3"),
                     Result = Utils.GetVersionResult(10)
                 };
 

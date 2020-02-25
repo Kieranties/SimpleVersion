@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <PropertyGroup Label="All package targets">
-    <TargetFramework>net461</TargetFramework>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <!-- Meta properties: https://docs.microsoft.com/en-us/dotnet/core/tools/csproj -->
@@ -33,10 +33,10 @@
     <None Include="logo.png" Condition="Exists('logo.png')" Pack="true" PackagePath="\" />
     <None Include="$(MSBuildThisFileDirectory)shared\logo.png" Condition="!Exists('logo.png')" Pack="true" PackagePath="\" />
   </ItemGroup>
-
+  
   <PropertyGroup Label="Build Attributes">
-    <MSBuildTreatWarningsAsErrors>true</MSBuildTreatWarningsAsErrors>
-    <TreatWarningsAsErrors Condition="'$(BuildingInsideVisualStudio)' != 'true'">true</TreatWarningsAsErrors>
+    <TreatWarningsAsErrors Condition="$(Configuration) == 'Release'">true</TreatWarningsAsErrors>
+    <MSBuildTreatWarningsAsErrors  Condition="$(Configuration) == 'Release'">true</MSBuildTreatWarningsAsErrors>    
     <!-- NU5105 - Usage of semver 2 versioning -->
     <NoWarn>$(NoWarn);NU5105</NoWarn>
   </PropertyGroup>
@@ -45,7 +45,10 @@
     <AdditionalFiles Include="$(MSBuildThisFileDirectory)shared/stylecop.json" Link="stylecop.json" />
   </ItemGroup>
 
-  <PropertyGroup Label="Shared properties">
-    <CodeAnalysisRuleSet>$(MSBuildThisFileDirectory)shared/SimpleVersion.ruleset</CodeAnalysisRuleSet>
+  <PropertyGroup>
+    <SkipDefaultEditorConfigAsAdditionalFile>true</SkipDefaultEditorConfigAsAdditionalFile>
   </PropertyGroup>
+  <ItemGroup>
+      <AdditionalFiles Include="$(MSBuildThisFileDirectory).editorconfig" />  
+  </ItemGroup>
 </Project>

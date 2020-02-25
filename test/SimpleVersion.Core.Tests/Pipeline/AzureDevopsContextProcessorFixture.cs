@@ -29,9 +29,11 @@ namespace SimpleVersion.Core.Tests.Pipeline
             var expectedCanonicalBranchName = "CanonicalBranchName";
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
+
                 var context = new VersionContext(fixture.Repository)
                 {
-                        Result =
+                    Result =
                     {
                         BranchName = expectedBranchName,
                         CanonicalBranchName = expectedCanonicalBranchName
@@ -58,6 +60,8 @@ namespace SimpleVersion.Core.Tests.Pipeline
             _env.GetVariable("BUILD_SOURCEBRANCH").Returns(canonical);
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
+
                 var context = new VersionContext(fixture.Repository)
                 {
                     Result =

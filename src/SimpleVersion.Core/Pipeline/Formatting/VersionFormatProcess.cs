@@ -1,8 +1,8 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System;
 using SimpleVersion.Abstractions.Pipeline;
 using SimpleVersion.Rules;
-using System;
 
 namespace SimpleVersion.Pipeline.Formatting
 {
@@ -14,7 +14,9 @@ namespace SimpleVersion.Pipeline.Formatting
         /// <inheritdoc/>
         public void Apply(IVersionContext context)
         {
-            var versionString = HeightTokenRule.Instance.Resolve(context, context.Configuration.Version);
+            Assert.ArgumentNotNull(context, nameof(context));
+
+            var versionString = HeightTokenRule.Instance.Resolve(context, context.Settings.Version);
 
             if (Version.TryParse(versionString, out var version))
             {
@@ -31,7 +33,7 @@ namespace SimpleVersion.Pipeline.Formatting
             }
             else
             {
-                throw new InvalidOperationException(Resources.InvalidVersionFormat.FormatWith(versionString));
+                throw new InvalidOperationException(Resources.Exception_InvalidVersionFormat(versionString));
             }
         }
     }

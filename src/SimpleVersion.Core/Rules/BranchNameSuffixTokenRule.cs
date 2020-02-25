@@ -1,8 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using SimpleVersion.Abstractions.Pipeline;
-using SimpleVersion.Pipeline;
 using System;
+using SimpleVersion.Abstractions.Pipeline;
 
 namespace SimpleVersion.Rules
 {
@@ -11,11 +10,6 @@ namespace SimpleVersion.Rules
     /// </summary>
     public class BranchNameSuffixTokenRule : BaseBranchNameTokenRule
     {
-        /// <summary>
-        /// Gets a default instance of the rule.
-        /// </summary>
-        public static BranchNameSuffixTokenRule Instance => _default.Value;
-
         private static readonly Lazy<BranchNameSuffixTokenRule> _default = new Lazy<BranchNameSuffixTokenRule>(() => new BranchNameSuffixTokenRule());
 
         /// <summary>
@@ -33,12 +27,19 @@ namespace SimpleVersion.Rules
         {
         }
 
+        /// <summary>
+        /// Gets a default instance of the rule.
+        /// </summary>
+        public static BranchNameSuffixTokenRule Instance => _default.Value;
+
         /// <inheritdoc/>
         public override string Token { get; protected set; } = "{branchnamesuffix}";
 
         /// <inheritdoc/>
         protected override string ResolveBranchName(IVersionContext context)
         {
+            Assert.ArgumentNotNull(context, nameof(context));
+
             return context.Result.CanonicalBranchName.Substring(context.Result.CanonicalBranchName.LastIndexOf('/') + 1);
         }
     }

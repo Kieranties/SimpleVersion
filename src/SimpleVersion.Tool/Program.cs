@@ -1,10 +1,9 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using Newtonsoft.Json;
-using SimpleVersion.Pipeline;
 using System;
+using SimpleVersion.Serialization;
 
-namespace SimpleVersion.Command
+namespace SimpleVersion.Tool
 {
     /// <summary>
     /// Command line entry point.
@@ -22,14 +21,16 @@ namespace SimpleVersion.Command
             try
             {
                 var path = System.IO.Directory.GetCurrentDirectory();
-                if (args.Length > 0)
+                if (args?.Length > 0)
+                {
                     path = args[0];
+                }
 
                 var result = VersionCalculator
                     .Default()
                     .GetResult(path);
 
-                Console.Out.WriteLine(JsonConvert.SerializeObject(result, Formatting.Indented));
+                Console.Out.WriteLine(Serializer.Serialize(result));
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)

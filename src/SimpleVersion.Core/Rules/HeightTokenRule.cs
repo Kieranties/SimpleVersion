@@ -1,10 +1,10 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using SimpleVersion.Abstractions.Pipeline;
-using SimpleVersion.Abstractions.Rules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SimpleVersion.Abstractions.Pipeline;
+using SimpleVersion.Abstractions.Rules;
 
 namespace SimpleVersion.Rules
 {
@@ -13,11 +13,6 @@ namespace SimpleVersion.Rules
     /// </summary>
     public class HeightTokenRule : ITokenRule<string>
     {
-        /// <summary>
-        /// Gets a default instance of the rule.
-        /// </summary>
-        public static HeightTokenRule Instance => _default.Value;
-
         private static readonly Lazy<HeightTokenRule> _default = new Lazy<HeightTokenRule>(() => new HeightTokenRule());
 
         /// <summary>
@@ -37,6 +32,11 @@ namespace SimpleVersion.Rules
         }
 
         /// <summary>
+        /// Gets a default instance of the rule.
+        /// </summary>
+        public static HeightTokenRule Instance => _default.Value;
+
+        /// <summary>
         /// Gets a value indicating whether padding should be applied.
         /// </summary>
         public bool Padded { get; }
@@ -47,19 +47,28 @@ namespace SimpleVersion.Rules
         /// <inheritdoc/>
         public string Resolve(IVersionContext context, string value)
         {
+            Assert.ArgumentNotNull(context, nameof(context));
+            Assert.ArgumentNotNull(value, nameof(value));
+
             if (Padded)
-                return value.Replace(Token, context.Result.HeightPadded);
+            {
+                return value.Replace(Token, context.Result.HeightPadded, StringComparison.OrdinalIgnoreCase);
+            }
             else
-                return value.Replace(Token, context.Result.Height.ToString(System.Globalization.CultureInfo.CurrentCulture));
+            {
+                return value.Replace(Token, context.Result.Height.ToString(System.Globalization.CultureInfo.CurrentCulture), StringComparison.OrdinalIgnoreCase);
+            }
         }
 
         /// <inheritdoc/>
         public IEnumerable<string> Apply(IVersionContext context, IEnumerable<string> input)
         {
-            if (!context.Configuration.Version.Contains(Token))
+            Assert.ArgumentNotNull(context, nameof(context));
+
+            if (!context.Settings.Version.Contains(Token, StringComparison.OrdinalIgnoreCase))
             {
                 var inputEntries = input.ToArray();
-                if (inputEntries.Length > 0 && !inputEntries.Any(x => x.Contains(Token)))
+                if (inputEntries.Length > 0 && !inputEntries.Any(x => x.Contains(Token, StringComparison.OrdinalIgnoreCase)))
                 {
                     return input.Concat(new[] { Token });
                 }

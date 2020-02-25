@@ -1,12 +1,37 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using FluentAssertions;
+using SimpleVersion.Extensions;
 using Xunit;
 
-namespace SimpleVersion.Core.Tests
+namespace SimpleVersion.Core.Tests.Extensions
 {
     public class StringExtensionsFixture
     {
+        [Theory]
+        [InlineData(null, "default")]
+        [InlineData("", "default")]
+        [InlineData("\t\t\t   ", "default")]
+        public void DefaultIfNullOrWhiteSpace_NullOrWhitespaceValue_ReturnsDefault(string value, string @default)
+        {
+            // Arrange / Act
+            var result = StringExtensions.DefaultIfNullOrWhiteSpace(value, @default);
+
+            // Assert
+            result.Should().Be(@default);
+        }
+
+        [Theory]
+        [InlineData("Hi!", "default")]
+        public void DefaultIfNullOrWhiteSpace_Non_NullOrWhitespaceValue_ReturnsValue(string value, string @default)
+        {
+            // Arrange / Act
+            var result = StringExtensions.DefaultIfNullOrWhiteSpace(value, @default);
+
+            // Assert
+            result.Should().Be(value);
+        }
+
         [Theory]
         [InlineData(null)]
         [InlineData("")]
@@ -43,20 +68,6 @@ namespace SimpleVersion.Core.Tests
 
             // Assert
             result.Should().BeTrue();
-        }
-
-        [Fact]
-        public void FormatWith_GivenValues_FormatsString()
-        {
-            // Arrange
-            var format = "This {0} is {1} formatted. {0}";
-            var values = new[] { "Zero", "One" };
-
-            // Act
-            var result = StringExtensions.FormatWith(format, values);
-
-            // Assert
-            result.Should().Be("This Zero is One formatted. Zero");
         }
     }
 }

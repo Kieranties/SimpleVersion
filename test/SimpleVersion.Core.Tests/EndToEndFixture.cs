@@ -1,10 +1,9 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System.Collections.Generic;
 using FluentAssertions;
 using GitTools.Testing;
-using SimpleVersion.Pipeline;
 using SimpleVersion.Pipeline.Formatting;
-using System.Collections.Generic;
 using Xunit;
 
 namespace SimpleVersion.Core.Tests
@@ -15,28 +14,28 @@ namespace SimpleVersion.Core.Tests
         [Fact]
         public void Override_Branches_Do_Not_Work_If_Asterisk_Used_In_Label()
         {
-            // Create the configuration model
-            var config = new Model.Configuration
+            // Create the settings model
+            var config = new Model.Settings
             {
                 Version = "1.0.0",
                 Label = { "r*" },
                 Branches =
+                {
+                    Release =
                     {
-                        Release =
+                        "^refs/heads/master$",
+                        "^refs/heads/release/.+$",
+                        "^refs/heads/feature/.+$"
+                    },
+                    Overrides =
+                    {
+                        new Model.BranchSettings
                         {
-                            "^refs/heads/master$",
-                            "^refs/heads/release/.+$",
-                            "^refs/heads/feature/.+$"
-                        },
-                        Overrides =
-                        {
-                            new Model.BranchConfiguration
-                            {
-                                Match = "^refs/heads/feature/.+$",
-                                Label = new List<string> { "{shortbranchname}" }
-                            }
+                            Match = "^refs/heads/feature/.+$",
+                            Label = new List<string> { "{shortbranchname}" }
                         }
                     }
+                }
             };
 
             // Arrange

@@ -117,19 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CouldNotConvertContextType" xml:space="preserve">
+  <data name="Exception_CouldNotConvertContextType" xml:space="preserve">
     <value>Could not convert given context to {0}.</value>
+    <comment>contextType</comment>
   </data>
-  <data name="CouldNotFindGitRepository" xml:space="preserve">
+  <data name="Exception_CouldNotFindBranchTip" xml:space="preserve">
+    <value>Could not find the current branch tip. Unable to identify the current commit.</value>
+  </data>
+  <data name="Exception_CouldNotFindGitRepository" xml:space="preserve">
     <value>Could not find git repository at '{0}' or any parent directory.</value>
+    <comment>path</comment>
   </data>
-  <data name="CouldNotReadSimpleVersionFile" xml:space="preserve">
+  <data name="Exception_CouldNotReadSettingsFile" xml:space="preserve">
     <value>Could not read '{0}', has it been committed?</value>
+    <comment>fileName</comment>
   </data>
-  <data name="InvalidVersionFormat" xml:space="preserve">
+  <data name="Exception_InvalidJsonToken" xml:space="preserve">
+    <value>Unexpected JsonToken '{0}' in converter {1}.</value>
+    <comment>token, converter</comment>
+  </data>
+  <data name="Exception_InvalidVersionFormat" xml:space="preserve">
     <value>Version '{0}' is not in a valid format.</value>
+    <comment>value</comment>
   </data>
-  <data name="PathMustBeProvided" xml:space="preserve">
+  <data name="Exception_PathMustBeProvided" xml:space="preserve">
     <value>Path must be provided.</value>
+  </data>
+  <data name="Exception_UnexpectedNull" xml:space="preserve">
+    <value>Unexpected null value</value>
   </data>
 </root>

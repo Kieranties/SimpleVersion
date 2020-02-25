@@ -36,8 +36,8 @@ namespace SimpleVersion
                 // Resolve build server information
                 ApplyProcessor<AzureDevopsContextProcessor>(ctx);
 
-                // Resolve configuration
-                ApplyProcessor<ConfigurationContextProcessor>(ctx);
+                // Resolve settings
+                ApplyProcessor<SettingsContextProcessor>(ctx);
 
                 // Resolve Formats
                 ApplyProcessor<VersionFormatProcess>(ctx);
@@ -51,12 +51,16 @@ namespace SimpleVersion
         private string ResolveRepoPath(string path)
         {
             if (string.IsNullOrWhiteSpace(path))
-                throw new ArgumentException(Resources.PathMustBeProvided, nameof(path));
+            {
+                throw new ArgumentException(Resources.Exception_PathMustBeProvided, nameof(path));
+            }
 
             var resolvedPath = Repository.Discover(path);
 
             if (string.IsNullOrWhiteSpace(resolvedPath))
-                throw new DirectoryNotFoundException(Resources.CouldNotFindGitRepository.FormatWith(path));
+            {
+                throw new DirectoryNotFoundException(Resources.Exception_CouldNotFindGitRepository(path));
+            }
 
             return resolvedPath;
         }

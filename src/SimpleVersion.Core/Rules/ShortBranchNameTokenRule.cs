@@ -1,8 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using SimpleVersion.Abstractions.Pipeline;
-using SimpleVersion.Pipeline;
 using System;
+using SimpleVersion.Abstractions.Pipeline;
 
 namespace SimpleVersion.Rules
 {
@@ -11,11 +10,6 @@ namespace SimpleVersion.Rules
     /// </summary>
     public class ShortBranchNameTokenRule : BaseBranchNameTokenRule
     {
-        /// <summary>
-        /// Gets a default instance of the rule.
-        /// </summary>
-        public static ShortBranchNameTokenRule Instance => _default.Value;
-
         private static readonly Lazy<ShortBranchNameTokenRule> _default = new Lazy<ShortBranchNameTokenRule>(() => new ShortBranchNameTokenRule());
 
         /// <summary>
@@ -33,10 +27,20 @@ namespace SimpleVersion.Rules
         {
         }
 
+        /// <summary>
+        /// Gets a default instance of the rule.
+        /// </summary>
+        public static ShortBranchNameTokenRule Instance => _default.Value;
+
         /// <inheritdoc/>
         public override string Token { get; protected set; } = "{shortbranchname}";
 
         /// <inheritdoc/>
-        protected override string ResolveBranchName(IVersionContext context) => context.Result.BranchName;
+        protected override string ResolveBranchName(IVersionContext context)
+        {
+            Assert.ArgumentNotNull(context, nameof(context));
+
+            return context.Result.BranchName;
+        }
     }
 }

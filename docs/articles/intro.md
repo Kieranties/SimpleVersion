@@ -1,31 +1,28 @@
 Introduction
 ============
 
-SimpleVersion is available as a command line tool (distributed via nuget), a Cake
+SimpleVersion is available as a cross-platform dotnet tool, a netstandard Cake
 addin, or as a collection of libraries for direct consumption in a project.
 
 To get a better understanding of the values returned from invoking SimpleVersion
 see the [results documentation][results].
 
-Command Line Tool
+Dotnet Tool
 -----------------
 
-The latest version of the command line tool can be found on nuget.org.
-You can install SimpleVersion.Command using `nuget.exe`:
+The latest version of the dotnet tool can be found on nuget.org.
+You can install SimpleVersion.Tool the [dotnet cli]:
 
 ```posh
-# Installs the latest version to the current directory
-nuget install SimpleVersion.Command
+# Installs the latest version as a global tool
+dotnet install -g SimpleVersion.Tool
 ```
 
-> [!NOTE]
-> Execute `nuget install -?` for additional options
-
-Once downloaded, you can invoke SimpleVersion using the `exe` under the installed
-`tools` folder.
+Once installed, you can invoke SimpleVersion in your favourite shell, optionally passing the path to your repository (defaults to current working directory)
 
 ```posh
-.\SimpleVersion.Command.<version>\tools\SimpleVersion.exe
+PS c:\MyRepo> simpleversion
+PS c:\> simpleversion ./MyRepo
 ```
 
 Cake Addin
@@ -76,3 +73,4 @@ RunTarget(target);
 
 
 [Results]: ./results.md
+[dotnet cli]: https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools

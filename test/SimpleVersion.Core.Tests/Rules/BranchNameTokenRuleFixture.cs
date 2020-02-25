@@ -1,11 +1,11 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System;
+using System.Collections.Generic;
 using FluentAssertions;
 using GitTools.Testing;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Rules;
-using System;
-using System.Collections.Generic;
 using Xunit;
 
 namespace SimpleVersion.Core.Tests.Rules
@@ -54,6 +54,7 @@ namespace SimpleVersion.Core.Tests.Rules
             var sut = new BranchNameTokenRule();
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
                     Result =
@@ -78,6 +79,7 @@ namespace SimpleVersion.Core.Tests.Rules
             var sut = new BranchNameTokenRule(pattern);
             using (var fixture = new EmptyRepositoryFixture())
             {
+                fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
                     Result =

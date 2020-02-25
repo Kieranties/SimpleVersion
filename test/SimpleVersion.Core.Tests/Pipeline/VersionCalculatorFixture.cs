@@ -1,12 +1,9 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using FluentAssertions;
-using GitTools.Testing;
-using SimpleVersion.Model;
-using SimpleVersion.Pipeline;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using FluentAssertions;
 using Xunit;
 
 namespace SimpleVersion.Core.Tests.Pipeline
@@ -31,7 +28,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
 
             // Assert
             action.Should().Throw<ArgumentException>()
-                .WithMessage("Path must be provided.\r\nParameter name: path");
+                .WithMessage("Path must be provided. (Parameter 'path')");
         }
 
         public static IEnumerable<object[]> InvalidPaths()

@@ -23,8 +23,12 @@ namespace SimpleVersion.Abstractions.Tests.Model
             sut.Height.Should().Be(0);
             sut.HeightPadded.Should().Be("0000");
             sut.Sha.Should().BeNull();
+            sut.Sha7.Should().BeNull();
             sut.BranchName.Should().BeNull();
             sut.CanonicalBranchName.Should().BeNull();
+            sut.IsPullRequest.Should().BeFalse();
+            sut.PullRequestNumber.Should().Be(0);
+            sut.RepositoryPath.Should().BeNull();
             sut.Formats.Should().BeEmpty();
         }
 
@@ -47,6 +51,17 @@ namespace SimpleVersion.Abstractions.Tests.Model
             // Assert
             sut.IsPullRequest.Should().BeTrue();
             sut.PullRequestNumber.Should().Be(124876);
+        }
+
+        [Fact]
+        public void Non_PR_Branch_Does_Not_Set_PR_Properties()
+        {
+            // Arrange / Act
+            var sut = new VersionResult { CanonicalBranchName = "refs/heads/master" };
+
+            // Assert
+            sut.IsPullRequest.Should().BeFalse();
+            sut.PullRequestNumber.Should().Be(0);
         }
 
         [Fact]

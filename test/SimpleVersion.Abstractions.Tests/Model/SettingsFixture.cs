@@ -1,19 +1,19 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System.Collections.Generic;
 using FluentAssertions;
 using SimpleVersion.Model;
-using System.Collections.Generic;
 using Xunit;
 
 namespace SimpleVersion.Abstractions.Tests.Model
 {
-    public class ConfigurationFixture
+    public class SettingsFixture
     {
         [Fact]
         public void Ctor_SetsDefaults()
         {
             // Arrange / Act
-            var sut = new Configuration();
+            var sut = new Settings();
 
             // Assert
             sut.Label.Should().BeEmpty();
@@ -27,7 +27,7 @@ namespace SimpleVersion.Abstractions.Tests.Model
         public void Equals_GivenNull_ReturnsFalse()
         {
             // Arrange
-            var sut = new Configuration();
+            var sut = new Settings();
 
             // Act
             var result = sut.Equals(null);
@@ -38,14 +38,14 @@ namespace SimpleVersion.Abstractions.Tests.Model
 
         public static IEnumerable<object[]> DifferInLabel()
         {
-            yield return new[] { new Configuration(), new Configuration { Label = { "one" } } };
-            yield return new[] { new Configuration { Label = { "one" } }, new Configuration() };
-            yield return new[] { new Configuration { Label = { "one", "two" } }, new Configuration { Label = { "one", "three" } } };
+            yield return new[] { new Settings(), new Settings { Label = { "one" } } };
+            yield return new[] { new Settings { Label = { "one" } }, new Settings() };
+            yield return new[] { new Settings { Label = { "one", "two" } }, new Settings { Label = { "one", "three" } } };
         }
 
         [Theory]
         [MemberData(nameof(DifferInLabel))]
-        public void Equals_DifferInLabel_ReturnsTrue(Configuration sut, Configuration other)
+        public void Equals_DifferInLabel_ReturnsTrue(Settings sut, Settings other)
         {
             // Arrange / Act
             var result = sut.Equals(other);

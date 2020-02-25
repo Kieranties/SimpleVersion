@@ -19,6 +19,8 @@ namespace SimpleVersion.Pipeline.Formatting
         /// <inheritdoc/>
         public void Apply(IVersionContext context)
         {
+            Assert.ArgumentNotNull(context, nameof(context));
+
             var rules = new ITokenRule<string>[]
             {
                 new HeightTokenRule(true),
@@ -28,13 +30,15 @@ namespace SimpleVersion.Pipeline.Formatting
                 BranchNameSuffixTokenRule.Instance
             };
 
-            var labelParts = context.Configuration.Label.ApplyTokenRules(context, rules);
+            var labelParts = context.Settings.Label.ApplyTokenRules(context, rules);
             var label = string.Join("-", labelParts).ResolveTokenRules(context, rules);
 
             var format = context.Result.Version;
 
             if (!string.IsNullOrWhiteSpace(label))
+            {
                 format += $"-{label}";
+            }
 
             context.Result.Formats[FormatKey] = format;
         }

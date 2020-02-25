@@ -1,10 +1,10 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using SimpleVersion.Abstractions.Pipeline;
-using SimpleVersion.Abstractions.Rules;
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using SimpleVersion.Abstractions.Pipeline;
+using SimpleVersion.Abstractions.Rules;
 
 namespace SimpleVersion.Rules
 {
@@ -13,12 +13,12 @@ namespace SimpleVersion.Rules
     /// </summary>
     public class PullRequestIdTokenRule : ITokenRule<string>
     {
+        private static readonly Lazy<PullRequestIdTokenRule> _default = new Lazy<PullRequestIdTokenRule>(() => new PullRequestIdTokenRule());
+
         /// <summary>
         /// Gets a default instance of the rule.
         /// </summary>
         public static PullRequestIdTokenRule Instance => _default.Value;
-
-        private static readonly Lazy<PullRequestIdTokenRule> _default = new Lazy<PullRequestIdTokenRule>(() => new PullRequestIdTokenRule());
 
         /// <inheritdoc/>
         public string Token => "{pr}";
@@ -26,6 +26,8 @@ namespace SimpleVersion.Rules
         /// <inheritdoc/>
         public string Resolve(IVersionContext context, string value)
         {
+            Assert.ArgumentNotNull(context, nameof(context));
+
             return Regex.Replace(value, Regex.Escape(Token), context.Result.PullRequestNumber.ToString(System.Globalization.CultureInfo.CurrentCulture), RegexOptions.IgnoreCase);
         }
 

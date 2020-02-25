@@ -3,6 +3,7 @@
 using Cake.Core;
 using Cake.Core.Annotations;
 using SimpleVersion;
+using SimpleVersion.Extensions;
 using SimpleVersion.Model;
 
 namespace Cake.SimpleVersion
@@ -21,14 +22,15 @@ namespace Cake.SimpleVersion
         [CakeMethodAlias]
         public static VersionResult SimpleVersion(
             this ICakeContext context,
-            string path = null)
+            string? path = null)
         {
-            if (string.IsNullOrWhiteSpace(path))
-                path = context.Environment.WorkingDirectory.FullPath;
+            Assert.ArgumentNotNull(context, nameof(context));
+
+            path = path.DefaultIfNullOrWhiteSpace(context.Environment.WorkingDirectory.FullPath);
 
             return VersionCalculator
                 .Default()
-                .GetResult(path);
+                .GetResult(path!); // ! null check is completed above
         }
     }
 }

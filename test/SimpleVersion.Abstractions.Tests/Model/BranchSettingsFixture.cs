@@ -6,13 +6,13 @@ using Xunit;
 
 namespace SimpleVersion.Abstractions.Tests.Model
 {
-    public class BranchConfigurationFixture
+    public class BranchSettingsFixture
     {
         [Fact]
         public void Ctor_SetsDefaults()
         {
             // Arrange / Act
-            var sut = new BranchConfiguration();
+            var sut = new BranchSettings();
 
             // Assert
             sut.Label.Should().BeNull();

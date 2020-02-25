@@ -12,18 +12,9 @@ param(
     [Switch]$NoBuild,
     [Switch]$BuildDocs,
     [Switch]$ServeDocs,
-    [String]$DocfxVersion = '2.42.0',
-    [string]$DotnetInstallScript = 'https://dot.net/v1/dotnet-install.ps1',
-    [string]$DotnetLocalInstallScript = (Join-Path $PSScriptRoot 'dotnet-install.ps1')
+    [Switch]$Resources,
+    [String]$DocfxVersion = '2.42.0'
 )
-
-# Ensure we have the latest LTS installed for the user before processing further
-function CheckDotNet {
-    if(-not(Test-Path $DotnetLocalInstallScript)){
-        Invoke-WebRequest -Uri $DotnetInstallScript -OutFile $DotnetLocalInstallScript
-    }
-. $DotnetLocalInstallScript
-}
 
 function exec([string]$cmd) {
     $currentPref = $ErrorActionPreference
@@ -42,7 +33,11 @@ if($ServeDocs) {
     $BuildDocs = $true
 }
 
-CheckDotNet
+# Resources
+if($Resources){
+    exec dotnet msbuild /t:ResourceGen
+    return
+}
 
 # Build/Pack
 Remove-Item $ArtifactsPath -Recurse -Force -ErrorAction Ignore

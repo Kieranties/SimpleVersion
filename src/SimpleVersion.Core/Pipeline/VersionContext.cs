@@ -1,8 +1,8 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using SimpleVersion.Abstractions.Exceptions;
 using SimpleVersion.Abstractions.Pipeline;
 using SimpleVersion.Model;
-using System;
 using Git = LibGit2Sharp;
 
 namespace SimpleVersion.Pipeline
@@ -18,12 +18,12 @@ namespace SimpleVersion.Pipeline
         /// <param name="repository">The git repository.</param>
         public VersionContext(Git.IRepository repository)
         {
-            Repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            Repository = Assert.ArgumentNotNull(repository, nameof(repository));
             Result = SetInitialResult();
         }
 
         /// <inheritdoc/>
-        public Configuration Configuration { get; set; } = new Configuration();
+        public Settings Settings { get; set; } = new Settings();
 
         /// <inheritdoc/>
         public VersionResult Result { get; set; }
@@ -37,12 +37,17 @@ namespace SimpleVersion.Pipeline
         private VersionResult SetInitialResult()
         {
             var sha = Repository.Head.Tip?.Sha;
+            if (sha == null)
+            {
+                throw new GitException(Resources.Exception_CouldNotFindBranchTip);
+            }
+
             return new VersionResult
             {
                 BranchName = Repository.Head.FriendlyName,
                 CanonicalBranchName = Repository.Head.CanonicalName,
                 Sha = sha,
-                Sha7 = (string.IsNullOrEmpty(sha) || sha.Length < 7) ? null : sha.Substring(0, 7)
+                Sha7 = sha.Length > 7 ? sha.Substring(0, 7) : sha
             };
         }
     }
