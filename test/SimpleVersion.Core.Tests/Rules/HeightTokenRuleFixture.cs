@@ -110,7 +110,7 @@ namespace SimpleVersion.Core.Tests.Rules
                 fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
-                        Configuration =
+                        Settings =
                     {
                         Version = version
                     }

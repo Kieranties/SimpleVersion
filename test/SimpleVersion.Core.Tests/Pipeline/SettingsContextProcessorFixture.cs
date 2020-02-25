@@ -11,13 +11,13 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests.Pipeline
 {
-    public class ConfigurationContextProcessorFixture
+    public class SettingsContextProcessorFixture
     {
-        private readonly ConfigurationContextProcessor _sut;
+        private readonly SettingsContextProcessor _sut;
 
-        public ConfigurationContextProcessorFixture()
+        public SettingsContextProcessorFixture()
         {
-            _sut = new ConfigurationContextProcessor();
+            _sut = new SettingsContextProcessor();
         }
 
         [Fact]
@@ -292,8 +292,8 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 // Act
                 _sut.Apply(context);
 
-                context.Configuration.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
-                context.Configuration.Metadata.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
+                context.Settings.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
+                context.Settings.Metadata.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
             }
         }
 
@@ -344,8 +344,8 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 // Act
                 _sut.Apply(context);
 
-                context.Configuration.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
-                context.Configuration.Metadata.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
+                context.Settings.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
+                context.Settings.Metadata.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
             }
         }
 

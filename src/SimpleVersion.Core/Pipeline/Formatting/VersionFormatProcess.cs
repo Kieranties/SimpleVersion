@@ -16,7 +16,7 @@ namespace SimpleVersion.Pipeline.Formatting
         {
             Assert.ArgumentNotNull(context, nameof(context));
 
-            var versionString = HeightTokenRule.Instance.Resolve(context, context.Configuration.Version);
+            var versionString = HeightTokenRule.Instance.Resolve(context, context.Settings.Version);
 
             if (Version.TryParse(versionString, out var version))
             {

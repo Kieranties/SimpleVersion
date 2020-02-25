@@ -10,9 +10,9 @@ namespace SimpleVersion.Abstractions.Pipeline
     public interface IVersionContext
     {
         /// <summary>
-        /// Gets or sets the resolved configuration for the repository.
+        /// Gets or sets the resolved settings for the repository.
         /// </summary>
-        Settings Configuration { get; set; }
+        Settings Settings { get; set; }
 
         /// <summary>
         /// Gets or sets the result of the version calculation.

@@ -36,8 +36,8 @@ namespace SimpleVersion
                 // Resolve build server information
                 ApplyProcessor<AzureDevopsContextProcessor>(ctx);
 
-                // Resolve configuration
-                ApplyProcessor<ConfigurationContextProcessor>(ctx);
+                // Resolve settings
+                ApplyProcessor<SettingsContextProcessor>(ctx);
 
                 // Resolve Formats
                 ApplyProcessor<VersionFormatProcess>(ctx);

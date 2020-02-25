@@ -14,7 +14,7 @@ namespace SimpleVersion.Core.Tests
         [Fact]
         public void Override_Branches_Do_Not_Work_If_Asterisk_Used_In_Label()
         {
-            // Create the configuration model
+            // Create the settings model
             var config = new Model.Settings
             {
                 Version = "1.0.0",

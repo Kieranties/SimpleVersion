@@ -50,7 +50,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
 
                 // Assert
                 sut.Repository.Should().Be(fixture.Repository);
-                sut.Configuration.Should().NotBeNull();
+                sut.Settings.Should().NotBeNull();
                 sut.Result.BranchName.Should().Be(fixture.Repository.Head.FriendlyName);
                 sut.Result.CanonicalBranchName.Should().Be(fixture.Repository.Head.CanonicalName);
                 sut.Result.Sha.Should().Be(fixture.Repository.Head.Tip.Sha);

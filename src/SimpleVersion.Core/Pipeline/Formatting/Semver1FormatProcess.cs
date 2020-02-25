@@ -30,7 +30,7 @@ namespace SimpleVersion.Pipeline.Formatting
                 BranchNameSuffixTokenRule.Instance
             };
 
-            var labelParts = context.Configuration.Label.ApplyTokenRules(context, rules);
+            var labelParts = context.Settings.Label.ApplyTokenRules(context, rules);
             var label = string.Join("-", labelParts).ResolveTokenRules(context, rules);
 
             var format = context.Result.Version;

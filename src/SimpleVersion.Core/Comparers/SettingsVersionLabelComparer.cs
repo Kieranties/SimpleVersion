@@ -10,7 +10,7 @@ namespace SimpleVersion.Comparers
     /// <summary>
     /// Compares <see cref="Settings"/> version and labels.
     /// </summary>
-    public class ConfigurationVersionLabelComparer : IEqualityComparer<Settings>
+    public class SettingsVersionLabelComparer : IEqualityComparer<Settings>
     {
         /// <summary>
         /// Compares two <see cref="Settings"/> for version and label equivalence.
@@ -46,15 +46,15 @@ namespace SimpleVersion.Comparers
         }
 
         /// <summary>
-        /// Generates a hashcode for the given configuration.
+        /// Generates a hashcode for the given settings.
         /// </summary>
-        /// <param name="configuration">The <see cref="Settings"/> to generate a hashcode for.</param>
+        /// <param name="settings">The <see cref="Settings"/> to generate a hashcode for.</param>
         /// <returns>The generated hashcode.</returns>
-        public int GetHashCode(Settings configuration)
+        public int GetHashCode(Settings settings)
         {
-            Assert.ArgumentNotNull(configuration, nameof(configuration));
+            Assert.ArgumentNotNull(settings, nameof(settings));
 
-            return (configuration.Version.GetHashCode(StringComparison.OrdinalIgnoreCase) * 17) + configuration.Label.GetHashCode();
+            return (settings.Version.GetHashCode(StringComparison.OrdinalIgnoreCase) * 17) + settings.Label.GetHashCode();
         }
     }
 }

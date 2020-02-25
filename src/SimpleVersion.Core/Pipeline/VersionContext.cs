@@ -23,7 +23,7 @@ namespace SimpleVersion.Pipeline
         }
 
         /// <inheritdoc/>
-        public Settings Configuration { get; set; } = new Settings();
+        public Settings Settings { get; set; } = new Settings();
 
         /// <inheritdoc/>
         public VersionResult Result { get; set; }

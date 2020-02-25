@@ -8,11 +8,11 @@ using SimpleVersion.Serialization;
 namespace SimpleVersion.Core.Tests
 {
     /// <summary>
-    /// Creates a repository containing an initial commit on master with some base configuration.
+    /// Creates a repository containing an initial commit on master with some base settings.
     /// </summary>
     public class SimpleVersionRepositoryFixture : EmptyRepositoryFixture
     {
-        private static readonly Settings _defaultConfiguration = new Settings
+        private static readonly Settings _defaultSettings = new Settings
         {
             Version = "0.1.0",
             Branches =
@@ -25,7 +25,7 @@ namespace SimpleVersion.Core.Tests
             }
         };
 
-        public SimpleVersionRepositoryFixture() : this(_defaultConfiguration)
+        public SimpleVersionRepositoryFixture() : this(_defaultSettings)
         {
         }
 

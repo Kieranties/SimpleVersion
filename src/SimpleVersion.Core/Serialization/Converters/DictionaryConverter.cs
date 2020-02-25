@@ -37,6 +37,10 @@ namespace SimpleVersion.Serialization.Converters
         public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
         {
             Assert.ArgumentNotNull(typeToConvert, nameof(typeToConvert));
+            if (!CanConvert(typeToConvert))
+            {
+                throw new InvalidOperationException($"{typeToConvert} is not a valid type for converter {typeof(DictionaryConverter<,>)}");
+            }
 
             var converterType = typeof(DictionaryConverter<,>).MakeGenericType(typeToConvert.GetGenericArguments());
             return (JsonConverter)Activator.CreateInstance(converterType);

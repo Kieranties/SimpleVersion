@@ -7,7 +7,7 @@ namespace SimpleVersion.Core.Tests
 {
     public static class Utils
     {
-        public static Settings GetConfiguration(string version, IEnumerable<string> label = null, IEnumerable<string> meta = null)
+        public static Settings GetSettings(string version, IEnumerable<string> label = null, IEnumerable<string> meta = null)
         {
             var info = new Settings
             {

@@ -15,11 +15,11 @@ using SimpleVersion.Serialization;
 namespace SimpleVersion.Pipeline
 {
     /// <summary>
-    /// Resolves the configuration for the version calculation.
+    /// Resolves the settings for the version calculation.
     /// </summary>
-    public class ConfigurationContextProcessor : IVersionContextProcessor
+    public class SettingsContextProcessor : IVersionContextProcessor
     {
-        private static readonly ConfigurationVersionLabelComparer _comparer = new ConfigurationVersionLabelComparer();
+        private static readonly SettingsVersionLabelComparer _comparer = new SettingsVersionLabelComparer();
 
         /// <inheritdoc/>
         public void Apply(IVersionContext context)
@@ -30,10 +30,10 @@ namespace SimpleVersion.Pipeline
             {
                 var tip = repoContext.Repository.Head?.Tip ?? throw new GitException(Resources.Exception_CouldNotFindBranchTip);
 
-                var config = GetConfiguration(tip, repoContext)
+                var config = GetSettings(tip, repoContext)
                             ?? throw new InvalidOperationException(Resources.Exception_CouldNotReadSettingsFile(Constants.VersionFileName));
 
-                context.Configuration = config;
+                context.Settings = config;
 
                 PopulateHeight(repoContext);
             }
@@ -50,8 +50,8 @@ namespace SimpleVersion.Pipeline
         {
             if (diff.Any(d => d.Path == Constants.VersionFileName))
             {
-                var commitConfig = GetConfiguration(commit, context);
-                return commitConfig != null && !_comparer.Equals(context.Configuration, commitConfig);
+                var commitConfig = GetSettings(commit, context);
+                return commitConfig != null && !_comparer.Equals(context.Settings, commitConfig);
             }
 
             return false;
@@ -69,7 +69,7 @@ namespace SimpleVersion.Pipeline
             return repo.Commits.QueryBy(filter);
         }
 
-        private static Settings? GetConfiguration(Commit commit, VersionContext context)
+        private static Settings? GetSettings(Commit commit, VersionContext context)
         {
             var gitObj = commit?.Tree[Constants.VersionFileName]?.Target;
             if (gitObj == null)
@@ -145,12 +145,12 @@ namespace SimpleVersion.Pipeline
             return result;
         }
 
-        private static Settings? Read(string rawConfiguration)
+        private static Settings? Read(string rawSettings)
         {
             Settings? result = null;
             try
             {
-                result = Serializer.Deserialize<Settings>(rawConfiguration);
+                result = Serializer.Deserialize<Settings>(rawSettings);
             }
 
             // TODO: Re-enable rule
@@ -168,7 +168,7 @@ namespace SimpleVersion.Pipeline
         private void PopulateHeight(VersionContext context)
         {
             // Initialize count - The current commit counts, include offset
-            var height = 1 + context.Configuration.OffSet;
+            var height = 1 + context.Settings.OffSet;
 
             // skip the first commit as that is our baseline
             var commits = GetReachableCommits(context.Repository).Skip(1);

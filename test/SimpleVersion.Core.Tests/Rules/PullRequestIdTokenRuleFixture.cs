@@ -60,7 +60,7 @@ namespace SimpleVersion.Core.Tests.Rules
                 fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
-                    Configuration = Utils.GetConfiguration("1.2.3"),
+                    Settings = Utils.GetSettings("1.2.3"),
                     Result = Utils.GetVersionResult(10)
                 };
 

@@ -65,7 +65,7 @@ namespace SimpleVersion.Rules
         {
             Assert.ArgumentNotNull(context, nameof(context));
 
-            if (!context.Configuration.Version.Contains(Token, StringComparison.OrdinalIgnoreCase))
+            if (!context.Settings.Version.Contains(Token, StringComparison.OrdinalIgnoreCase))
             {
                 var inputEntries = input.ToArray();
                 if (inputEntries.Length > 0 && !inputEntries.Any(x => x.Contains(Token, StringComparison.OrdinalIgnoreCase)))

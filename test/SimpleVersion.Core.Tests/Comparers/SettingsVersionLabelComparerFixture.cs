@@ -9,13 +9,13 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests.Comparers
 {
-    public class ConfigurationVersionLabelComparerFixture
+    public class SettingsVersionLabelComparerFixture
     {
-        private readonly ConfigurationVersionLabelComparer _sut;
+        private readonly SettingsVersionLabelComparer _sut;
 
-        public ConfigurationVersionLabelComparerFixture()
+        public SettingsVersionLabelComparerFixture()
         {
-            _sut = new ConfigurationVersionLabelComparer();
+            _sut = new SettingsVersionLabelComparer();
         }
 
         public static IEnumerable<object[]> Matching()
