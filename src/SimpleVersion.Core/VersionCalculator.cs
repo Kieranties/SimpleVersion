@@ -3,8 +3,6 @@
 using System;
 using System.IO;
 using LibGit2Sharp;
-using SimpleVersion.Abstractions;
-using SimpleVersion.Abstractions.Pipeline;
 using SimpleVersion.Model;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Pipeline.Formatting;

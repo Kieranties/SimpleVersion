@@ -1,7 +1,6 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using SimpleVersion.Abstractions.Exceptions;
-using SimpleVersion.Abstractions.Pipeline;
+using SimpleVersion.Exceptions;
 using SimpleVersion.Model;
 using Git = LibGit2Sharp;
 

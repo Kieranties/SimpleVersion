@@ -3,8 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using SimpleVersion.Abstractions.Pipeline;
-using SimpleVersion.Abstractions.Rules;
+using SimpleVersion.Pipeline;
 
 namespace SimpleVersion.Rules
 {

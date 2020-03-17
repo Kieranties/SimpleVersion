@@ -6,9 +6,8 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using LibGit2Sharp;
-using SimpleVersion.Abstractions.Exceptions;
-using SimpleVersion.Abstractions.Pipeline;
 using SimpleVersion.Comparers;
+using SimpleVersion.Exceptions;
 using SimpleVersion.Model;
 using SimpleVersion.Serialization;
 

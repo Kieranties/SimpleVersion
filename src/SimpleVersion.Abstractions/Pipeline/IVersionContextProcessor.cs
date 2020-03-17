@@ -1,6 +1,6 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-namespace SimpleVersion.Abstractions.Pipeline
+namespace SimpleVersion.Pipeline
 {
     /// <summary>
     /// Contract for a processor step during version calculation.
