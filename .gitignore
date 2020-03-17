@@ -4,9 +4,5 @@ packages
 bin
 obj
 integration/temp
-log.txt
 /docs/api/*.yml
 /docs/api/.manifest
-coverage.json
-dotnet-install.ps1
-tools

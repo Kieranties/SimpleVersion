@@ -1,5 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <Sdk Name="Microsoft.Build.CentralPackageVersions" />
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -11,5 +10,5 @@
   <ItemGroup>
     <ProjectReference Include="..\SimpleVersion.Core\SimpleVersion.Core.csproj" PrivateAssets="All" />
   </ItemGroup>
-  
+
 </Project>
