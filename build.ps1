@@ -4,7 +4,6 @@
 param(
     [ValidateSet('Debug', 'Release')]
     [String]$Configuration = 'Debug',
-    [String]$Version = '1.0.0-local',
     [String]$RootPath = $PSScriptRoot,
     [String]$ArtifactsPath = (Join-Path $RootPath 'artifacts'),
     [String]$DocsPath = (Join-Path $RootPath 'docs'),
@@ -15,6 +14,15 @@ param(
     [Switch]$Resources,
     [String]$DocfxVersion = '2.42.0'
 )
+
+$ErrorActionPreference = 'Stop'
+$env:DOTNET_CLI_TELEMETRY_OPTOUT = 1
+
+# Resources
+if($Resources){
+    exec dotnet msbuild /t:ResourceGen
+    return
+}
 
 function exec([string]$cmd) {
     $currentPref = $ErrorActionPreference
@@ -27,43 +35,36 @@ function exec([string]$cmd) {
     }
 }
 
-$ErrorActionPreference = 'Stop'
-$env:DOTNET_CLI_TELEMETRY_OPTOUT = 1
-if($ServeDocs) {
-    $BuildDocs = $true
-}
-
-# Resources
-if($Resources){
-    exec dotnet msbuild /t:ResourceGen
-    return
-}
-
-# Build/Pack
-Remove-Item $ArtifactsPath -Recurse -Force -ErrorAction Ignore
+# Build/Test/Pack
 if(!$NoBuild) {
-    exec dotnet build --configuration $Configuration /p:Version=$Version
+    # Clean
+    Remove-Item $ArtifactsPath -Recurse -Force -ErrorAction Ignore
+
+    # Version
+    dotnet tool restore
+    $versionDetails = exec dotnet simpleversion
+    $version = ($versionDetails | ConvertFrom-Json).Formats.Semver2
+    if($env:TF_BUILD) { Write-Output "##vso[build.updatebuildnumber]$version" }
+    
+    $dotnetArgs = @('--configuration', $Configuration, "/p:Version=$version")
+
+    # Pack
     $distArtifacts = Join-Path $ArtifactsPath 'dist'
-    exec dotnet pack --no-build --no-restore --configuration $Configuration --output $distArtifacts
+    exec dotnet pack $dotnetArgs --output $distArtifacts
 
     # Unit Test
     $testArtifacts = Join-Path $ArtifactsPath 'tests'
-    Get-ChildItem 'test' -Filter '*.csproj' -Recurse |
-        ForEach-Object {
-            $testArgs = @(
-                '--no-restore', '--no-build'
-                '--configuration', $Configuration
-                '--logger', 'trx'
-                '-r', $testArtifacts
-                '/p:CollectCoverage=true', "/p:MergeWith=$testArtifacts\coverage.json"
-                '/p:CoverletOutputFormat=\"cobertura,json\"', "/p:CoverletOutput=$testArtifacts\"
-            )
-            exec dotnet test $_.Fullname @testArgs
-        }
+    $testArgs = @(
+        '--logger', 'trx'
+        '-r', $testArtifacts
+        '/p:CollectCoverage=true', "/p:MergeWith=$testArtifacts\coverage.json"
+        '/p:CoverletOutputFormat=\"cobertura,json\"', "/p:CoverletOutput=$testArtifacts\"
+    )
+    exec dotnet test ($dotnetArgs + $testArgs)
 }
 
 # docs
-if($BuildDocs) {
+if($BuildDocs -or $ServeDocs) {
     # Install docfx
     $docfxRoot = "$PackagesPath\docfx.console\$DocFxVersion"
     $docfx = "$docfxRoot\tools\docfx.exe"
