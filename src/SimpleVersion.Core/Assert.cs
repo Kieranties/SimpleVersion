@@ -10,7 +10,7 @@ namespace SimpleVersion
     /// Simple exception handling asserts.
     /// </summary>
     [ExcludeFromCodeCoverage]
-    public static class Assert
+    internal static class Assert
     {
         /// <summary>
         /// Asserts the given argument value is not null.
@@ -21,7 +21,7 @@ namespace SimpleVersion
         /// <exception cref="ArgumentNullException">Thrown if the given value is null.</exception>
         /// <returns>The value if not null.</returns>
         [DebuggerStepThrough]
-        public static T ArgumentNotNull<T>(T value, string name)
+        internal static T ArgumentNotNull<T>(T value, string name)
         {
             if (value == null)
             {

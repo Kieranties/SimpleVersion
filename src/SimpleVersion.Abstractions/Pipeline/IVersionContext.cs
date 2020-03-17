@@ -2,7 +2,7 @@
 
 using SimpleVersion.Model;
 
-namespace SimpleVersion.Abstractions.Pipeline
+namespace SimpleVersion.Pipeline
 {
     /// <summary>
     /// Encapsulates state during version calculation.

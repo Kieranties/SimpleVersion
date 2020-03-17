@@ -2,7 +2,7 @@
 
 using System;
 
-namespace SimpleVersion.Abstractions.Exceptions
+namespace SimpleVersion.Exceptions
 {
     /// <summary>
     /// Represents a Git error within the application.

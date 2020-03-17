@@ -44,11 +44,4 @@
   <ItemGroup Label="Shared Assets">
     <AdditionalFiles Include="$(MSBuildThisFileDirectory)shared/stylecop.json" Link="stylecop.json" />
   </ItemGroup>
-
-  <PropertyGroup>
-    <SkipDefaultEditorConfigAsAdditionalFile>true</SkipDefaultEditorConfigAsAdditionalFile>
-  </PropertyGroup>
-  <ItemGroup>
-      <AdditionalFiles Include="$(MSBuildThisFileDirectory).editorconfig" />  
-  </ItemGroup>
 </Project>

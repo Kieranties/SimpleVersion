@@ -3,7 +3,7 @@
 using System;
 using FluentAssertions;
 using GitTools.Testing;
-using SimpleVersion.Abstractions.Exceptions;
+using SimpleVersion.Exceptions;
 using SimpleVersion.Pipeline;
 using Xunit;
 

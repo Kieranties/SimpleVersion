@@ -2,8 +2,6 @@
 
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using SimpleVersion.Abstractions.Pipeline;
-using SimpleVersion.Abstractions.Rules;
 using SimpleVersion.Pipeline;
 
 namespace SimpleVersion.Rules

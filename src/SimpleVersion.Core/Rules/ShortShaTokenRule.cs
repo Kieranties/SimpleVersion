@@ -4,8 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using SimpleVersion.Abstractions.Pipeline;
-using SimpleVersion.Abstractions.Rules;
+using SimpleVersion.Pipeline;
 
 namespace SimpleVersion.Rules
 {

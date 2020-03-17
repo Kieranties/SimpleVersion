@@ -3,7 +3,6 @@
 using FluentAssertions;
 using GitTools.Testing;
 using NSubstitute;
-using SimpleVersion.Abstractions;
 using SimpleVersion.Pipeline;
 using Xunit;
 

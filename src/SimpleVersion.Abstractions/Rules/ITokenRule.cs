@@ -1,9 +1,9 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System.Collections.Generic;
-using SimpleVersion.Abstractions.Pipeline;
+using SimpleVersion.Pipeline;
 
-namespace SimpleVersion.Abstractions.Rules
+namespace SimpleVersion.Rules
 {
     /// <summary>
     /// Contract for a rule which applies for a specific token.

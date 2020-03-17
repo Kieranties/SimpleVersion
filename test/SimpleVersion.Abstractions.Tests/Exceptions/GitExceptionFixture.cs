@@ -3,7 +3,7 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using SimpleVersion.Abstractions.Exceptions;
+using SimpleVersion.Exceptions;
 using Xunit;
 
 namespace SimpleVersion.Abstractions.Tests.Exceptions
@@ -45,7 +45,7 @@ namespace SimpleVersion.Abstractions.Tests.Exceptions
             var result = new GitException(null);
 
             // Assert
-            result.Message.Should().Be("Exception of type 'SimpleVersion.Abstractions.Exceptions.GitException' was thrown.");
+            result.Message.Should().Be("Exception of type 'SimpleVersion.Exceptions.GitException' was thrown.");
         }
 
         [Theory]

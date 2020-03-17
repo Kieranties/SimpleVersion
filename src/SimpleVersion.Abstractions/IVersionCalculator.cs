@@ -2,7 +2,7 @@
 
 using SimpleVersion.Model;
 
-namespace SimpleVersion.Abstractions
+namespace SimpleVersion
 {
     /// <summary>
     /// Contract for the calculation process.
