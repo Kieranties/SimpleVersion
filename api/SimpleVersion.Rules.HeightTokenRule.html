@@ -83,37 +83,13 @@
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="SimpleVersion.Abstractions.Rules.ITokenRule-1.html">ITokenRule</a>&lt;<span class="xref">System.String</span>&gt;</div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
+    <div><a class="xref" href="SimpleVersion.Rules.ITokenRule-1.html">ITokenRule</a>&lt;<span class="xref">System.String</span>&gt;</div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="SimpleVersion.Rules.html">SimpleVersion.Rules</a></h6>
   <h6><strong>Assembly</strong>: SimpleVersion.Core.dll</h6>
   <h5 id="SimpleVersion_Rules_HeightTokenRule_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class HeightTokenRule : ITokenRule&lt;string&gt;</code></pre>
+    <pre><code class="lang-csharp hljs">public class HeightTokenRule : Object, ITokenRule&lt;string&gt;</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -241,7 +217,7 @@
   
   
   <a id="SimpleVersion_Rules_HeightTokenRule_Apply_" data-uid="SimpleVersion.Rules.HeightTokenRule.Apply*"></a>
-  <h4 id="SimpleVersion_Rules_HeightTokenRule_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_System_String__" data-uid="SimpleVersion.Rules.HeightTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})">Apply(IVersionContext, IEnumerable&lt;String&gt;)</h4>
+  <h4 id="SimpleVersion_Rules_HeightTokenRule_Apply_SimpleVersion_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_System_String__" data-uid="SimpleVersion.Rules.HeightTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})">Apply(IVersionContext, IEnumerable&lt;String&gt;)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -259,7 +235,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="SimpleVersion.Abstractions.Pipeline.IVersionContext.html">IVersionContext</a></td>
+        <td><a class="xref" href="SimpleVersion.Pipeline.IVersionContext.html">IVersionContext</a></td>
         <td><span class="parametername">context</span></td>
         <td></td>
       </tr>
@@ -288,7 +264,7 @@
   
   
   <a id="SimpleVersion_Rules_HeightTokenRule_Resolve_" data-uid="SimpleVersion.Rules.HeightTokenRule.Resolve*"></a>
-  <h4 id="SimpleVersion_Rules_HeightTokenRule_Resolve_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_String_" data-uid="SimpleVersion.Rules.HeightTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.String)">Resolve(IVersionContext, String)</h4>
+  <h4 id="SimpleVersion_Rules_HeightTokenRule_Resolve_SimpleVersion_Pipeline_IVersionContext_System_String_" data-uid="SimpleVersion.Rules.HeightTokenRule.Resolve(SimpleVersion.Pipeline.IVersionContext,System.String)">Resolve(IVersionContext, String)</h4>
   <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
@@ -306,7 +282,7 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="SimpleVersion.Abstractions.Pipeline.IVersionContext.html">IVersionContext</a></td>
+        <td><a class="xref" href="SimpleVersion.Pipeline.IVersionContext.html">IVersionContext</a></td>
         <td><span class="parametername">context</span></td>
         <td></td>
       </tr>
@@ -334,11 +310,11 @@
   </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="SimpleVersion.Abstractions.Rules.ITokenRule-1.html">ITokenRule&lt;T&gt;</a>
+      <a class="xref" href="SimpleVersion.Rules.ITokenRule-1.html">ITokenRule&lt;T&gt;</a>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Abstractions_Rules_ITokenRule___0___">TokenRuleExtensions.ResolveTokenRules&lt;T&gt;(T, IVersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</a>
+      <a class="xref" href="SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Rules_ITokenRule___0___">TokenRuleExtensions.ResolveTokenRules&lt;T&gt;(T, IVersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</a>
   </div>
 </article>
           </div>

@@ -73,7 +73,7 @@
   
   <h1 id="SimpleVersion_Model_BranchInfo" data-uid="SimpleVersion.Model.BranchInfo" class="text-break">Class BranchInfo
   </h1>
-  <div class="markdown level0 summary"><p>Encapsulates configuration for branches.</p>
+  <div class="markdown level0 summary"><p>Encapsulates information for branches.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -81,35 +81,11 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">BranchInfo</span></div>
   </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
-  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="SimpleVersion.Model.html">SimpleVersion.Model</a></h6>
   <h6><strong>Assembly</strong>: SimpleVersion.Abstractions.dll</h6>
   <h5 id="SimpleVersion_Model_BranchInfo_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class BranchInfo</code></pre>
+    <pre><code class="lang-csharp hljs">public class BranchInfo : Object</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -129,13 +105,13 @@
   
   <a id="SimpleVersion_Model_BranchInfo_Overrides_" data-uid="SimpleVersion.Model.BranchInfo.Overrides*"></a>
   <h4 id="SimpleVersion_Model_BranchInfo_Overrides" data-uid="SimpleVersion.Model.BranchInfo.Overrides">Overrides</h4>
-  <div class="markdown level1 summary"><p>Gets the configuration for branches which override the defaults.
-See <a class="xref" href="SimpleVersion.Model.BranchConfiguration.html">BranchConfiguration</a> for further details.</p>
+  <div class="markdown level1 summary"><p>Gets or sets the settings for branches which override the defaults.
+See <a class="xref" href="SimpleVersion.Model.BranchSettings.html">BranchSettings</a> for further details.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;BranchConfiguration&gt; Overrides { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;BranchSettings&gt; Overrides { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -147,7 +123,7 @@ See <a class="xref" href="SimpleVersion.Model.BranchConfiguration.html">BranchCo
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="SimpleVersion.Model.BranchConfiguration.html">BranchConfiguration</a>&gt;</td>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<a class="xref" href="SimpleVersion.Model.BranchSettings.html">BranchSettings</a>&gt;</td>
         <td></td>
       </tr>
     </tbody>
@@ -156,12 +132,12 @@ See <a class="xref" href="SimpleVersion.Model.BranchConfiguration.html">BranchCo
   
   <a id="SimpleVersion_Model_BranchInfo_Release_" data-uid="SimpleVersion.Model.BranchInfo.Release*"></a>
   <h4 id="SimpleVersion_Model_BranchInfo_Release" data-uid="SimpleVersion.Model.BranchInfo.Release">Release</h4>
-  <div class="markdown level1 summary"><p>Gets the list of branches that may produce release versions.</p>
+  <div class="markdown level1 summary"><p>Gets or sets the list of branches that may produce release versions.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public List&lt;string&gt; Release { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; Release { get; set; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -180,7 +156,7 @@ See <a class="xref" href="SimpleVersion.Model.BranchConfiguration.html">BranchCo
   </table>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Abstractions_Rules_ITokenRule___0___">TokenRuleExtensions.ResolveTokenRules&lt;T&gt;(T, IVersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</a>
+      <a class="xref" href="SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Rules_ITokenRule___0___">TokenRuleExtensions.ResolveTokenRules&lt;T&gt;(T, IVersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</a>
   </div>
 </article>
           </div>

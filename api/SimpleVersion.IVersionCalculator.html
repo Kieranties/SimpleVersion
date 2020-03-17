@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IEnvironment
+    <title>Interface IVersionCalculator
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IEnvironment
+    <meta name="title" content="Interface IVersionCalculator
    ">
     <meta name="generator" content="docfx 2.42.0.0">
     
@@ -68,32 +68,33 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="SimpleVersion.IEnvironment">
+            <article class="content wrap" id="_content" data-uid="SimpleVersion.IVersionCalculator">
   
   
-  <h1 id="SimpleVersion_IEnvironment" data-uid="SimpleVersion.IEnvironment" class="text-break">Interface IEnvironment
+  <h1 id="SimpleVersion_IVersionCalculator" data-uid="SimpleVersion.IVersionCalculator" class="text-break">Interface IVersionCalculator
   </h1>
-  <div class="markdown level0 summary"><p>Contract for accessing environment variables.</p>
+  <div class="markdown level0 summary"><p>Contract for the calculation process.
+Enables collection of processes and invocation to get version results.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="SimpleVersion.html">SimpleVersion</a></h6>
   <h6><strong>Assembly</strong>: SimpleVersion.Abstractions.dll</h6>
-  <h5 id="SimpleVersion_IEnvironment_syntax">Syntax</h5>
+  <h5 id="SimpleVersion_IVersionCalculator_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IEnvironment</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IVersionCalculator</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   
   
-  <a id="SimpleVersion_IEnvironment_GetVariable_" data-uid="SimpleVersion.IEnvironment.GetVariable*"></a>
-  <h4 id="SimpleVersion_IEnvironment_GetVariable_System_String_" data-uid="SimpleVersion.IEnvironment.GetVariable(System.String)">GetVariable(String)</h4>
-  <div class="markdown level1 summary"><p>Gets the value of the given variable name.</p>
+  <a id="SimpleVersion_IVersionCalculator_GetResult_" data-uid="SimpleVersion.IVersionCalculator.GetResult*"></a>
+  <h4 id="SimpleVersion_IVersionCalculator_GetResult_System_String_" data-uid="SimpleVersion.IVersionCalculator.GetResult(System.String)">GetResult(String)</h4>
+  <div class="markdown level1 summary"><p>Invokes the chain of processors to get a <a class="xref" href="SimpleVersion.Model.VersionResult.html">VersionResult</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string GetVariable(string name)</code></pre>
+    <pre><code class="lang-csharp hljs">VersionResult GetResult(string path)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -107,8 +108,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td><p>The name of the variable to retrieve.</p>
+        <td><span class="parametername">path</span></td>
+        <td><p>The path to the repository to version.</p>
 </td>
       </tr>
     </tbody>
@@ -123,8 +124,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><p>The value of the given variable.</p>
+        <td><a class="xref" href="SimpleVersion.Model.VersionResult.html">VersionResult</a></td>
+        <td><p>The resulting <a class="xref" href="SimpleVersion.Model.VersionResult.html">VersionResult</a>.</p>
 </td>
       </tr>
     </tbody>

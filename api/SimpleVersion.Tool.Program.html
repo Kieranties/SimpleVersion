@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IEnvironment
+    <title>Class Program
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IEnvironment
+    <meta name="title" content="Class Program
    ">
     <meta name="generator" content="docfx 2.42.0.0">
     
@@ -68,32 +68,49 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="SimpleVersion.IEnvironment">
+            <article class="content wrap" id="_content" data-uid="SimpleVersion.Tool.Program">
   
   
-  <h1 id="SimpleVersion_IEnvironment" data-uid="SimpleVersion.IEnvironment" class="text-break">Interface IEnvironment
+  <h1 id="SimpleVersion_Tool_Program" data-uid="SimpleVersion.Tool.Program" class="text-break">Class Program
   </h1>
-  <div class="markdown level0 summary"><p>Contract for accessing environment variables.</p>
+  <div class="markdown level0 summary"><p>Command line entry point.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="SimpleVersion.html">SimpleVersion</a></h6>
-  <h6><strong>Assembly</strong>: SimpleVersion.Abstractions.dll</h6>
-  <h5 id="SimpleVersion_IEnvironment_syntax">Syntax</h5>
+  <div class="inheritance">
+    <h5>Inheritance</h5>
+    <div class="level0"><span class="xref">System.Object</span></div>
+    <div class="level1"><span class="xref">Program</span></div>
+  </div>
+  <h6><strong>Namespace</strong>: <a class="xref" href="SimpleVersion.Tool.html">SimpleVersion.Tool</a></h6>
+  <h6><strong>Assembly</strong>: SimpleVersion.Tool.dll</h6>
+  <h5 id="SimpleVersion_Tool_Program_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IEnvironment</code></pre>
+    <pre><code class="lang-csharp hljs">public sealed class Program : Object</code></pre>
+  </div>
+  <h3 id="constructors">Constructors
+  </h3>
+  
+  
+  <a id="SimpleVersion_Tool_Program__ctor_" data-uid="SimpleVersion.Tool.Program.#ctor*"></a>
+  <h4 id="SimpleVersion_Tool_Program__ctor" data-uid="SimpleVersion.Tool.Program.#ctor">Program()</h4>
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Program()</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
   
   
-  <a id="SimpleVersion_IEnvironment_GetVariable_" data-uid="SimpleVersion.IEnvironment.GetVariable*"></a>
-  <h4 id="SimpleVersion_IEnvironment_GetVariable_System_String_" data-uid="SimpleVersion.IEnvironment.GetVariable(System.String)">GetVariable(String)</h4>
-  <div class="markdown level1 summary"><p>Gets the value of the given variable name.</p>
+  <a id="SimpleVersion_Tool_Program_Main_" data-uid="SimpleVersion.Tool.Program.Main*"></a>
+  <h4 id="SimpleVersion_Tool_Program_Main_System_String___" data-uid="SimpleVersion.Tool.Program.Main(System.String[])">Main(String[])</h4>
+  <div class="markdown level1 summary"><p>Entry point for SimpleVersion invocation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string GetVariable(string name)</code></pre>
+    <pre><code class="lang-csharp hljs">public static int Main(string[] args)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -106,9 +123,9 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td><p>The name of the variable to retrieve.</p>
+        <td><span class="xref">System.String</span>[]</td>
+        <td><span class="parametername">args</span></td>
+        <td><p>The array of arguments.</p>
 </td>
       </tr>
     </tbody>
@@ -123,8 +140,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><p>The value of the given variable.</p>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>0 if success, otherwise an error exit code.</p>
 </td>
       </tr>
     </tbody>

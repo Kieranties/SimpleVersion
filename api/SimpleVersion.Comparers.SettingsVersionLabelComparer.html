@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class AzureDevopsContextProcessor
+    <title>Class SettingsVersionLabelComparer
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class AzureDevopsContextProcessor
+    <meta name="title" content="Class SettingsVersionLabelComparer
    ">
     <meta name="generator" content="docfx 2.42.0.0">
     
@@ -68,83 +68,53 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="SimpleVersion.Pipeline.AzureDevopsContextProcessor">
+            <article class="content wrap" id="_content" data-uid="SimpleVersion.Comparers.SettingsVersionLabelComparer">
   
   
-  <h1 id="SimpleVersion_Pipeline_AzureDevopsContextProcessor" data-uid="SimpleVersion.Pipeline.AzureDevopsContextProcessor" class="text-break">Class AzureDevopsContextProcessor
+  <h1 id="SimpleVersion_Comparers_SettingsVersionLabelComparer" data-uid="SimpleVersion.Comparers.SettingsVersionLabelComparer" class="text-break">Class SettingsVersionLabelComparer
   </h1>
-  <div class="markdown level0 summary"><p>Modifies the calculation when running in TFS/Azure Devops.</p>
+  <div class="markdown level0 summary"><p>Compares <a class="xref" href="SimpleVersion.Model.Settings.html">Settings</a> version and labels.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">AzureDevopsContextProcessor</span></div>
+    <div class="level1"><span class="xref">SettingsVersionLabelComparer</span></div>
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="SimpleVersion.Pipeline.IVersionContextProcessor.html">IVersionContextProcessor</a></div>
+    <div><span class="xref">System.Collections.Generic.IEqualityComparer</span>&lt;<a class="xref" href="SimpleVersion.Model.Settings.html">Settings</a>&gt;</div>
   </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="SimpleVersion.Pipeline.html">SimpleVersion.Pipeline</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="SimpleVersion.Comparers.html">SimpleVersion.Comparers</a></h6>
   <h6><strong>Assembly</strong>: SimpleVersion.Core.dll</h6>
-  <h5 id="SimpleVersion_Pipeline_AzureDevopsContextProcessor_syntax">Syntax</h5>
+  <h5 id="SimpleVersion_Comparers_SettingsVersionLabelComparer_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AzureDevopsContextProcessor : Object, IVersionContextProcessor</code></pre>
+    <pre><code class="lang-csharp hljs">public class SettingsVersionLabelComparer : Object, IEqualityComparer&lt;Settings&gt;</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   
   
-  <a id="SimpleVersion_Pipeline_AzureDevopsContextProcessor__ctor_" data-uid="SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor*"></a>
-  <h4 id="SimpleVersion_Pipeline_AzureDevopsContextProcessor__ctor" data-uid="SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor">AzureDevopsContextProcessor()</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="SimpleVersion.Pipeline.AzureDevopsContextProcessor.html">AzureDevopsContextProcessor</a> class.</p>
-</div>
+  <a id="SimpleVersion_Comparers_SettingsVersionLabelComparer__ctor_" data-uid="SimpleVersion.Comparers.SettingsVersionLabelComparer.#ctor*"></a>
+  <h4 id="SimpleVersion_Comparers_SettingsVersionLabelComparer__ctor" data-uid="SimpleVersion.Comparers.SettingsVersionLabelComparer.#ctor">SettingsVersionLabelComparer()</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AzureDevopsContextProcessor()</code></pre>
+    <pre><code class="lang-csharp hljs">public SettingsVersionLabelComparer()</code></pre>
   </div>
-  
-  
-  <a id="SimpleVersion_Pipeline_AzureDevopsContextProcessor__ctor_" data-uid="SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor*"></a>
-  <h4 id="SimpleVersion_Pipeline_AzureDevopsContextProcessor__ctor_SimpleVersion_IEnvironment_" data-uid="SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor(SimpleVersion.IEnvironment)">AzureDevopsContextProcessor(IEnvironment)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="SimpleVersion.Pipeline.AzureDevopsContextProcessor.html">AzureDevopsContextProcessor</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AzureDevopsContextProcessor(IEnvironment env)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="SimpleVersion.IEnvironment.html">IEnvironment</a></td>
-        <td><span class="parametername">env</span></td>
-        <td><p>The <a class="xref" href="SimpleVersion.IEnvironment.html">IEnvironment</a> for accessing environment variables.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
   <h3 id="methods">Methods
   </h3>
   
   
-  <a id="SimpleVersion_Pipeline_AzureDevopsContextProcessor_Apply_" data-uid="SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply*"></a>
-  <h4 id="SimpleVersion_Pipeline_AzureDevopsContextProcessor_Apply_SimpleVersion_Pipeline_IVersionContext_" data-uid="SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)">Apply(IVersionContext)</h4>
-  <div class="markdown level1 summary"><p>Applies the processor to the given context.</p>
+  <a id="SimpleVersion_Comparers_SettingsVersionLabelComparer_Equals_" data-uid="SimpleVersion.Comparers.SettingsVersionLabelComparer.Equals*"></a>
+  <h4 id="SimpleVersion_Comparers_SettingsVersionLabelComparer_Equals_SimpleVersion_Model_Settings_SimpleVersion_Model_Settings_" data-uid="SimpleVersion.Comparers.SettingsVersionLabelComparer.Equals(SimpleVersion.Model.Settings,SimpleVersion.Model.Settings)">Equals(Settings, Settings)</h4>
+  <div class="markdown level1 summary"><p>Compares two <a class="xref" href="SimpleVersion.Model.Settings.html">Settings</a> for version and label equivalence.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Apply(IVersionContext context)</code></pre>
+    <pre><code class="lang-csharp hljs">public bool Equals(Settings x, Settings y)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -157,16 +127,83 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="SimpleVersion.Pipeline.IVersionContext.html">IVersionContext</a></td>
-        <td><span class="parametername">context</span></td>
-        <td><p>The context of the version calculation.</p>
+        <td><a class="xref" href="SimpleVersion.Model.Settings.html">Settings</a></td>
+        <td><span class="parametername">x</span></td>
+        <td><p>The first <a class="xref" href="SimpleVersion.Model.Settings.html">Settings</a> to compare.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="SimpleVersion.Model.Settings.html">Settings</a></td>
+        <td><span class="parametername">y</span></td>
+        <td><p>The second <a class="xref" href="SimpleVersion.Model.Settings.html">Settings</a> to compare.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Boolean</span></td>
+        <td><p>True if equal, otherwise false.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="SimpleVersion_Comparers_SettingsVersionLabelComparer_GetHashCode_" data-uid="SimpleVersion.Comparers.SettingsVersionLabelComparer.GetHashCode*"></a>
+  <h4 id="SimpleVersion_Comparers_SettingsVersionLabelComparer_GetHashCode_SimpleVersion_Model_Settings_" data-uid="SimpleVersion.Comparers.SettingsVersionLabelComparer.GetHashCode(SimpleVersion.Model.Settings)">GetHashCode(Settings)</h4>
+  <div class="markdown level1 summary"><p>Generates a hashcode for the given settings.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int GetHashCode(Settings settings)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SimpleVersion.Model.Settings.html">Settings</a></td>
+        <td><span class="parametername">settings</span></td>
+        <td><p>The <a class="xref" href="SimpleVersion.Model.Settings.html">Settings</a> to generate a hashcode for.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <h5 class="returns">Returns</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td><p>The generated hashcode.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="SimpleVersion.Pipeline.IVersionContextProcessor.html">IVersionContextProcessor</a>
+      <span class="xref">System.Collections.Generic.IEqualityComparer&lt;&gt;</span>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>

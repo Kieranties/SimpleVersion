@@ -83,37 +83,13 @@
   </div>
   <div classs="implements">
     <h5>Implements</h5>
-    <div><a class="xref" href="SimpleVersion.Abstractions.Pipeline.IVersionContext.html">IVersionContext</a></div>
-  </div>
-  <div class="inheritedMembers">
-    <h5>Inherited Members</h5>
-    <div>
-      <span class="xref">System.Object.ToString()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetHashCode()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.GetType()</span>
-    </div>
-    <div>
-      <span class="xref">System.Object.MemberwiseClone()</span>
-    </div>
+    <div><a class="xref" href="SimpleVersion.Pipeline.IVersionContext.html">IVersionContext</a></div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="SimpleVersion.Pipeline.html">SimpleVersion.Pipeline</a></h6>
   <h6><strong>Assembly</strong>: SimpleVersion.Core.dll</h6>
   <h5 id="SimpleVersion_Pipeline_VersionContext_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class VersionContext : IVersionContext</code></pre>
+    <pre><code class="lang-csharp hljs">public class VersionContext : Object, IVersionContext</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -148,32 +124,6 @@
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
-  <a id="SimpleVersion_Pipeline_VersionContext_Configuration_" data-uid="SimpleVersion.Pipeline.VersionContext.Configuration*"></a>
-  <h4 id="SimpleVersion_Pipeline_VersionContext_Configuration" data-uid="SimpleVersion.Pipeline.VersionContext.Configuration">Configuration</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the resolved configuration for the repository.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Configuration Configuration { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="SimpleVersion.Model.Configuration.html">Configuration</a></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
   
   
   <a id="SimpleVersion_Pipeline_VersionContext_Repository_" data-uid="SimpleVersion.Pipeline.VersionContext.Repository*"></a>
@@ -227,13 +177,39 @@
       </tr>
     </tbody>
   </table>
+  
+  
+  <a id="SimpleVersion_Pipeline_VersionContext_Settings_" data-uid="SimpleVersion.Pipeline.VersionContext.Settings*"></a>
+  <h4 id="SimpleVersion_Pipeline_VersionContext_Settings" data-uid="SimpleVersion.Pipeline.VersionContext.Settings">Settings</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the resolved settings for the repository.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Settings Settings { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SimpleVersion.Model.Settings.html">Settings</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="implements">Implements</h3>
   <div>
-      <a class="xref" href="SimpleVersion.Abstractions.Pipeline.IVersionContext.html">IVersionContext</a>
+      <a class="xref" href="SimpleVersion.Pipeline.IVersionContext.html">IVersionContext</a>
   </div>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Abstractions_Rules_ITokenRule___0___">TokenRuleExtensions.ResolveTokenRules&lt;T&gt;(T, IVersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</a>
+      <a class="xref" href="SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Rules_ITokenRule___0___">TokenRuleExtensions.ResolveTokenRules&lt;T&gt;(T, IVersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</a>
   </div>
 </article>
           </div>

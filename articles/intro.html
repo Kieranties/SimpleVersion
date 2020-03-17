@@ -69,39 +69,41 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="introduction">Introduction</h1>
 
-<p>SimpleVersion is available as a command line tool (distributed via nuget), a Cake
-addin, or as a collection of libraries for direct consumption in a project.</p>
+<p>SimpleVersion is available as a cross-platform dotnet tool and core libraries for direct consumption in a project.</p>
 <p>To get a better understanding of the values returned from invoking SimpleVersion
 see the <a href="results.html">results documentation</a>.</p>
-<h2 id="command-line-tool">Command Line Tool</h2>
-<p>The latest version of the command line tool can be found on nuget.org.
-You can install SimpleVersion.Command using <code>nuget.exe</code>:</p>
-<pre><code class="lang-posh"># Installs the latest version to the current directory
-nuget install SimpleVersion.Command
+<h2 id="dotnet-tool">Dotnet Tool</h2>
+<p>The latest version of the dotnet tool can be found on nuget.org.
+You can install <code>SimpleVersion.Tool</code> the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools">dotnet cli</a>:</p>
+<pre><code class="lang-posh"># Installs the latest version as a global tool
+dotnet install -g SimpleVersion.Tool
 </code></pre>
-<div class="NOTE">
-<h5>Note</h5>
-<p>Execute <code>nuget install -?</code> for additional options</p>
-</div>
-<p>Once downloaded, you can invoke SimpleVersion using the <code>exe</code> under the installed
-<code>tools</code> folder.</p>
-<pre><code class="lang-posh">.\SimpleVersion.Command.&lt;version&gt;\tools\SimpleVersion.exe
+<p>Once installed, you can invoke SimpleVersion in your favourite shell, optionally passing the path to your repository (defaults to current working directory)</p>
+<pre><code class="lang-posh">PS c:\MyRepo&gt; simpleversion
+PS c:\&gt; simpleversion ./MyRepo
 </code></pre>
-<h2 id="cake-addin">Cake Addin</h2>
-<p>The <code>Cake.SimpleVersion</code> addin can be used in a Cake build script to invoke
-SimpleVersion.</p>
+<h2 id="usage-in-cake">Usage in Cake</h2>
+<p>The dotnet tool can be integrated into a Cake build script. This makes use
+of the <a href="https://www.gep13.co.uk/blog/introducing-cake.dotnettool.module">Cake.DotNetTool.Module</a> to enable installing <code>SimpleVersion.Tool</code>.</p>
+<blockquote>
+<p>You will need to run <code>.\build.ps1 --bootstrap</code> prior to running <code>.\build.ps1</code> to ensure correct installation of the tool.</p>
+</blockquote>
 <p>A simple <code>build.cake</code> can invoke the <code>SimpleVersion</code>:</p>
-<pre><code class="lang-c#">// Include the Cake addin
-#addin nuget:?package=Cake.SimpleVersion&amp;prerelease
+<pre><code class="lang-c#">// Install dotnet core tool module
+#module nuget:?package=Cake.DotNetTool.Module&amp;version=0.4.0
+// Install SimpleVersion dotnet tool
+#tool dotnet:?package=SimpleVersion.Tool&amp;version=0.3.0
+// Install newtonsoft to parse result
+#addin nuget:?package=Newtonsoft.Json&amp;version=12.0.3
+// Import newtonsoft namespace for parsing
+using Newtonsoft.Json.Linq;
+
 //////////////////////////////////////////////////////////////////////
 // ARGUMENTS
 //////////////////////////////////////////////////////////////////////
 
 var target = Argument(&quot;target&quot;, &quot;Default&quot;);
 var versionFormat = Argument(&quot;versionFormat&quot;, &quot;Semver1&quot;);
-
-// Call SimpleVersion to get version information
-var versionInfo = SimpleVersion();
 
 //////////////////////////////////////////////////////////////////////
 // TASKS
@@ -110,8 +112,18 @@ var versionInfo = SimpleVersion();
 Task(&quot;Build&quot;)
     .Does(() =&gt;
 {
-      // Display version - Access formats dictionary or other properties
-      Information($&quot;My {versionFormat} is: {versionInfo.Formats[versionFormat]}&quot;);
+    // Call SimpleVersion to get version information
+    StartProcess(
+        Context.Tools.Resolve(&quot;simpleversion.exe&quot;),
+        new ProcessSettings{ RedirectStandardOutput = true }, 
+        out var simpleVersionOut // capture output for parsing
+    );
+    
+    // Parse json result
+    dynamic simpleVersion = JObject.Parse(string.Join(&quot;&quot;, simpleVersionOut));
+
+    // Display version - Access formats dictionary or other properties
+    Information(simpleVersion.Formats[versionFormat]);
 });
 
 //////////////////////////////////////////////////////////////////////
@@ -127,6 +139,31 @@ Task(&quot;Default&quot;)
 
 RunTarget(target);
 </code></pre>
+<p>Which can then be invoked as:</p>
+<pre><code class="lang-posh">▶ .\build.ps1 --bootstrap; .\build.ps1 
+Preparing to run build script...
+Running build script...
+Preparing to run build script...
+Running build script...
+
+========================================
+Build
+========================================
+0.3.0-alpha1-0002-c6c70600
+
+========================================
+Default
+========================================
+
+Task                          Duration
+--------------------------------------------------
+Build                         00:00:00.3256116
+--------------------------------------------------
+Total:                        00:00:00.3304598
+</code></pre>
+<blockquote>
+<p>You change the arguments passed to <code>SimpleVersion</code> using the <a href="https://cakebuild.net/api/Cake.Core.IO/ProcessSettings/">ProcessSettings</a> class.</p>
+</blockquote>
 </article>
           </div>
           

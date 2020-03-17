@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Interface IEnvironment
+    <title>Interface IVersionContext
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Interface IEnvironment
+    <meta name="title" content="Interface IVersionContext
    ">
     <meta name="generator" content="docfx 2.42.0.0">
     
@@ -68,52 +68,60 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="SimpleVersion.IEnvironment">
+            <article class="content wrap" id="_content" data-uid="SimpleVersion.Pipeline.IVersionContext">
   
   
-  <h1 id="SimpleVersion_IEnvironment" data-uid="SimpleVersion.IEnvironment" class="text-break">Interface IEnvironment
+  <h1 id="SimpleVersion_Pipeline_IVersionContext" data-uid="SimpleVersion.Pipeline.IVersionContext" class="text-break">Interface IVersionContext
   </h1>
-  <div class="markdown level0 summary"><p>Contract for accessing environment variables.</p>
+  <div class="markdown level0 summary"><p>Encapsulates state during version calculation.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="SimpleVersion.html">SimpleVersion</a></h6>
+  <h6><strong>Namespace</strong>: <a class="xref" href="SimpleVersion.Pipeline.html">SimpleVersion.Pipeline</a></h6>
   <h6><strong>Assembly</strong>: SimpleVersion.Abstractions.dll</h6>
-  <h5 id="SimpleVersion_IEnvironment_syntax">Syntax</h5>
+  <h5 id="SimpleVersion_Pipeline_IVersionContext_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public interface IEnvironment</code></pre>
+    <pre><code class="lang-csharp hljs">public interface IVersionContext</code></pre>
   </div>
-  <h3 id="methods">Methods
+  <h3 id="properties">Properties
   </h3>
   
   
-  <a id="SimpleVersion_IEnvironment_GetVariable_" data-uid="SimpleVersion.IEnvironment.GetVariable*"></a>
-  <h4 id="SimpleVersion_IEnvironment_GetVariable_System_String_" data-uid="SimpleVersion.IEnvironment.GetVariable(System.String)">GetVariable(String)</h4>
-  <div class="markdown level1 summary"><p>Gets the value of the given variable name.</p>
+  <a id="SimpleVersion_Pipeline_IVersionContext_Result_" data-uid="SimpleVersion.Pipeline.IVersionContext.Result*"></a>
+  <h4 id="SimpleVersion_Pipeline_IVersionContext_Result" data-uid="SimpleVersion.Pipeline.IVersionContext.Result">Result</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the result of the version calculation.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">string GetVariable(string name)</code></pre>
+    <pre><code class="lang-csharp hljs">VersionResult Result { get; set; }</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">name</span></td>
-        <td><p>The name of the variable to retrieve.</p>
-</td>
+        <td><a class="xref" href="SimpleVersion.Model.VersionResult.html">VersionResult</a></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
-  <h5 class="returns">Returns</h5>
+  
+  
+  <a id="SimpleVersion_Pipeline_IVersionContext_Settings_" data-uid="SimpleVersion.Pipeline.IVersionContext.Settings*"></a>
+  <h4 id="SimpleVersion_Pipeline_IVersionContext_Settings" data-uid="SimpleVersion.Pipeline.IVersionContext.Settings">Settings</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the resolved settings for the repository.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">Settings Settings { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -123,9 +131,8 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">System.String</span></td>
-        <td><p>The value of the given variable.</p>
-</td>
+        <td><a class="xref" href="SimpleVersion.Model.Settings.html">Settings</a></td>
+        <td></td>
       </tr>
     </tbody>
   </table>

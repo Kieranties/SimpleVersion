@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class AzureDevopsContextProcessor
+    <title>Class Settings
    </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Class AzureDevopsContextProcessor
+    <meta name="title" content="Class Settings
    ">
     <meta name="generator" content="docfx 2.42.0.0">
     
@@ -68,106 +68,170 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="SimpleVersion.Pipeline.AzureDevopsContextProcessor">
+            <article class="content wrap" id="_content" data-uid="SimpleVersion.Model.Settings">
   
   
-  <h1 id="SimpleVersion_Pipeline_AzureDevopsContextProcessor" data-uid="SimpleVersion.Pipeline.AzureDevopsContextProcessor" class="text-break">Class AzureDevopsContextProcessor
+  <h1 id="SimpleVersion_Model_Settings" data-uid="SimpleVersion.Model.Settings" class="text-break">Class Settings
   </h1>
-  <div class="markdown level0 summary"><p>Modifies the calculation when running in TFS/Azure Devops.</p>
+  <div class="markdown level0 summary"><p>Encapsulates settings loaded from '.simpleversion.json'.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><span class="xref">System.Object</span></div>
-    <div class="level1"><span class="xref">AzureDevopsContextProcessor</span></div>
+    <div class="level1"><span class="xref">Settings</span></div>
   </div>
-  <div classs="implements">
-    <h5>Implements</h5>
-    <div><a class="xref" href="SimpleVersion.Pipeline.IVersionContextProcessor.html">IVersionContextProcessor</a></div>
-  </div>
-  <h6><strong>Namespace</strong>: <a class="xref" href="SimpleVersion.Pipeline.html">SimpleVersion.Pipeline</a></h6>
-  <h6><strong>Assembly</strong>: SimpleVersion.Core.dll</h6>
-  <h5 id="SimpleVersion_Pipeline_AzureDevopsContextProcessor_syntax">Syntax</h5>
+  <h6><strong>Namespace</strong>: <a class="xref" href="SimpleVersion.Model.html">SimpleVersion.Model</a></h6>
+  <h6><strong>Assembly</strong>: SimpleVersion.Abstractions.dll</h6>
+  <h5 id="SimpleVersion_Model_Settings_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class AzureDevopsContextProcessor : Object, IVersionContextProcessor</code></pre>
+    <pre><code class="lang-csharp hljs">public class Settings : Object</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
   
   
-  <a id="SimpleVersion_Pipeline_AzureDevopsContextProcessor__ctor_" data-uid="SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor*"></a>
-  <h4 id="SimpleVersion_Pipeline_AzureDevopsContextProcessor__ctor" data-uid="SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor">AzureDevopsContextProcessor()</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="SimpleVersion.Pipeline.AzureDevopsContextProcessor.html">AzureDevopsContextProcessor</a> class.</p>
-</div>
+  <a id="SimpleVersion_Model_Settings__ctor_" data-uid="SimpleVersion.Model.Settings.#ctor*"></a>
+  <h4 id="SimpleVersion_Model_Settings__ctor" data-uid="SimpleVersion.Model.Settings.#ctor">Settings()</h4>
+  <div class="markdown level1 summary"></div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AzureDevopsContextProcessor()</code></pre>
+    <pre><code class="lang-csharp hljs">public Settings()</code></pre>
   </div>
-  
-  
-  <a id="SimpleVersion_Pipeline_AzureDevopsContextProcessor__ctor_" data-uid="SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor*"></a>
-  <h4 id="SimpleVersion_Pipeline_AzureDevopsContextProcessor__ctor_SimpleVersion_IEnvironment_" data-uid="SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor(SimpleVersion.IEnvironment)">AzureDevopsContextProcessor(IEnvironment)</h4>
-  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="SimpleVersion.Pipeline.AzureDevopsContextProcessor.html">AzureDevopsContextProcessor</a> class.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public AzureDevopsContextProcessor(IEnvironment env)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="SimpleVersion.IEnvironment.html">IEnvironment</a></td>
-        <td><span class="parametername">env</span></td>
-        <td><p>The <a class="xref" href="SimpleVersion.IEnvironment.html">IEnvironment</a> for accessing environment variables.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h3 id="methods">Methods
+  <h3 id="properties">Properties
   </h3>
   
   
-  <a id="SimpleVersion_Pipeline_AzureDevopsContextProcessor_Apply_" data-uid="SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply*"></a>
-  <h4 id="SimpleVersion_Pipeline_AzureDevopsContextProcessor_Apply_SimpleVersion_Pipeline_IVersionContext_" data-uid="SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)">Apply(IVersionContext)</h4>
-  <div class="markdown level1 summary"><p>Applies the processor to the given context.</p>
+  <a id="SimpleVersion_Model_Settings_Branches_" data-uid="SimpleVersion.Model.Settings.Branches*"></a>
+  <h4 id="SimpleVersion_Model_Settings_Branches" data-uid="SimpleVersion.Model.Settings.Branches">Branches</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the information on branches.
+See <a class="xref" href="SimpleVersion.Model.BranchInfo.html">BranchInfo</a> for further details.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public void Apply(IVersionContext context)</code></pre>
+    <pre><code class="lang-csharp hljs">public BranchInfo Branches { get; set; }</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
         <th>Type</th>
-        <th>Name</th>
         <th>Description</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="SimpleVersion.Pipeline.IVersionContext.html">IVersionContext</a></td>
-        <td><span class="parametername">context</span></td>
-        <td><p>The context of the version calculation.</p>
-</td>
+        <td><a class="xref" href="SimpleVersion.Model.BranchInfo.html">BranchInfo</a></td>
+        <td></td>
       </tr>
     </tbody>
   </table>
-  <h3 id="implements">Implements</h3>
-  <div>
-      <a class="xref" href="SimpleVersion.Pipeline.IVersionContextProcessor.html">IVersionContextProcessor</a>
+  
+  
+  <a id="SimpleVersion_Model_Settings_Label_" data-uid="SimpleVersion.Model.Settings.Label*"></a>
+  <h4 id="SimpleVersion_Model_Settings_Label" data-uid="SimpleVersion.Model.Settings.Label">Label</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the label parts to use in the generated version.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; Label { get; set; }</code></pre>
   </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="SimpleVersion_Model_Settings_Metadata_" data-uid="SimpleVersion.Model.Settings.Metadata*"></a>
+  <h4 id="SimpleVersion_Model_Settings_Metadata" data-uid="SimpleVersion.Model.Settings.Metadata">Metadata</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the Metadata parts to use in the generated version.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public List&lt;string&gt; Metadata { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Collections.Generic.List</span>&lt;<span class="xref">System.String</span>&gt;</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="SimpleVersion_Model_Settings_OffSet_" data-uid="SimpleVersion.Model.Settings.OffSet*"></a>
+  <h4 id="SimpleVersion_Model_Settings_OffSet" data-uid="SimpleVersion.Model.Settings.OffSet">OffSet</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the offset to apply to the generated height.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int OffSet { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.Int32</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  
+  
+  <a id="SimpleVersion_Model_Settings_Version_" data-uid="SimpleVersion.Model.Settings.Version*"></a>
+  <h4 id="SimpleVersion_Model_Settings_Version" data-uid="SimpleVersion.Model.Settings.Version">Version</h4>
+  <div class="markdown level1 summary"><p>Gets or sets the base version string.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string Version { get; set; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.String</span></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
       <a class="xref" href="SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Rules_ITokenRule___0___">TokenRuleExtensions.ResolveTokenRules&lt;T&gt;(T, IVersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</a>

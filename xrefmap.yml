@@ -7,214 +7,54 @@ references:
   commentId: N:SimpleVersion
   fullName: SimpleVersion
   nameWithType: SimpleVersion
-- uid: SimpleVersion.Abstractions
-  name: SimpleVersion.Abstractions
-  href: api/SimpleVersion.Abstractions.html
-  commentId: N:SimpleVersion.Abstractions
-  fullName: SimpleVersion.Abstractions
-  nameWithType: SimpleVersion.Abstractions
-- uid: SimpleVersion.Abstractions.IEnvironment
-  name: IEnvironment
-  href: api/SimpleVersion.Abstractions.IEnvironment.html
-  commentId: T:SimpleVersion.Abstractions.IEnvironment
-  fullName: SimpleVersion.Abstractions.IEnvironment
-  nameWithType: IEnvironment
-- uid: SimpleVersion.Abstractions.IEnvironment.GetVariable(System.String)
-  name: GetVariable(String)
-  href: api/SimpleVersion.Abstractions.IEnvironment.html#SimpleVersion_Abstractions_IEnvironment_GetVariable_System_String_
-  commentId: M:SimpleVersion.Abstractions.IEnvironment.GetVariable(System.String)
-  fullName: SimpleVersion.Abstractions.IEnvironment.GetVariable(System.String)
-  nameWithType: IEnvironment.GetVariable(String)
-- uid: SimpleVersion.Abstractions.IEnvironment.GetVariable*
-  name: GetVariable
-  href: api/SimpleVersion.Abstractions.IEnvironment.html#SimpleVersion_Abstractions_IEnvironment_GetVariable_
-  commentId: Overload:SimpleVersion.Abstractions.IEnvironment.GetVariable
-  fullName: SimpleVersion.Abstractions.IEnvironment.GetVariable
-  nameWithType: IEnvironment.GetVariable
-- uid: SimpleVersion.Abstractions.IVersionCalculator
-  name: IVersionCalculator
-  href: api/SimpleVersion.Abstractions.IVersionCalculator.html
-  commentId: T:SimpleVersion.Abstractions.IVersionCalculator
-  fullName: SimpleVersion.Abstractions.IVersionCalculator
-  nameWithType: IVersionCalculator
-- uid: SimpleVersion.Abstractions.IVersionCalculator.GetResult(System.String)
-  name: GetResult(String)
-  href: api/SimpleVersion.Abstractions.IVersionCalculator.html#SimpleVersion_Abstractions_IVersionCalculator_GetResult_System_String_
-  commentId: M:SimpleVersion.Abstractions.IVersionCalculator.GetResult(System.String)
-  fullName: SimpleVersion.Abstractions.IVersionCalculator.GetResult(System.String)
-  nameWithType: IVersionCalculator.GetResult(String)
-- uid: SimpleVersion.Abstractions.IVersionCalculator.GetResult*
-  name: GetResult
-  href: api/SimpleVersion.Abstractions.IVersionCalculator.html#SimpleVersion_Abstractions_IVersionCalculator_GetResult_
-  commentId: Overload:SimpleVersion.Abstractions.IVersionCalculator.GetResult
-  fullName: SimpleVersion.Abstractions.IVersionCalculator.GetResult
-  nameWithType: IVersionCalculator.GetResult
-- uid: SimpleVersion.Abstractions.Pipeline
-  name: SimpleVersion.Abstractions.Pipeline
-  href: api/SimpleVersion.Abstractions.Pipeline.html
-  commentId: N:SimpleVersion.Abstractions.Pipeline
-  fullName: SimpleVersion.Abstractions.Pipeline
-  nameWithType: SimpleVersion.Abstractions.Pipeline
-- uid: SimpleVersion.Abstractions.Pipeline.IVersionContext
-  name: IVersionContext
-  href: api/SimpleVersion.Abstractions.Pipeline.IVersionContext.html
-  commentId: T:SimpleVersion.Abstractions.Pipeline.IVersionContext
-  fullName: SimpleVersion.Abstractions.Pipeline.IVersionContext
-  nameWithType: IVersionContext
-- uid: SimpleVersion.Abstractions.Pipeline.IVersionContext.Configuration
-  name: Configuration
-  href: api/SimpleVersion.Abstractions.Pipeline.IVersionContext.html#SimpleVersion_Abstractions_Pipeline_IVersionContext_Configuration
-  commentId: P:SimpleVersion.Abstractions.Pipeline.IVersionContext.Configuration
-  fullName: SimpleVersion.Abstractions.Pipeline.IVersionContext.Configuration
-  nameWithType: IVersionContext.Configuration
-- uid: SimpleVersion.Abstractions.Pipeline.IVersionContext.Configuration*
-  name: Configuration
-  href: api/SimpleVersion.Abstractions.Pipeline.IVersionContext.html#SimpleVersion_Abstractions_Pipeline_IVersionContext_Configuration_
-  commentId: Overload:SimpleVersion.Abstractions.Pipeline.IVersionContext.Configuration
-  fullName: SimpleVersion.Abstractions.Pipeline.IVersionContext.Configuration
-  nameWithType: IVersionContext.Configuration
-- uid: SimpleVersion.Abstractions.Pipeline.IVersionContext.Result
-  name: Result
-  href: api/SimpleVersion.Abstractions.Pipeline.IVersionContext.html#SimpleVersion_Abstractions_Pipeline_IVersionContext_Result
-  commentId: P:SimpleVersion.Abstractions.Pipeline.IVersionContext.Result
-  fullName: SimpleVersion.Abstractions.Pipeline.IVersionContext.Result
-  nameWithType: IVersionContext.Result
-- uid: SimpleVersion.Abstractions.Pipeline.IVersionContext.Result*
-  name: Result
-  href: api/SimpleVersion.Abstractions.Pipeline.IVersionContext.html#SimpleVersion_Abstractions_Pipeline_IVersionContext_Result_
-  commentId: Overload:SimpleVersion.Abstractions.Pipeline.IVersionContext.Result
-  fullName: SimpleVersion.Abstractions.Pipeline.IVersionContext.Result
-  nameWithType: IVersionContext.Result
-- uid: SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor
-  name: IVersionContextProcessor
-  href: api/SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.html
-  commentId: T:SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor
-  fullName: SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor
-  nameWithType: IVersionContextProcessor
-- uid: SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
-  name: Apply(IVersionContext)
-  href: api/SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.html#SimpleVersion_Abstractions_Pipeline_IVersionContextProcessor_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_
-  commentId: M:SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
-  fullName: SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
-  nameWithType: IVersionContextProcessor.Apply(IVersionContext)
-- uid: SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.Apply*
-  name: Apply
-  href: api/SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.html#SimpleVersion_Abstractions_Pipeline_IVersionContextProcessor_Apply_
-  commentId: Overload:SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.Apply
-  fullName: SimpleVersion.Abstractions.Pipeline.IVersionContextProcessor.Apply
-  nameWithType: IVersionContextProcessor.Apply
-- uid: SimpleVersion.Abstractions.Rules
-  name: SimpleVersion.Abstractions.Rules
-  href: api/SimpleVersion.Abstractions.Rules.html
-  commentId: N:SimpleVersion.Abstractions.Rules
-  fullName: SimpleVersion.Abstractions.Rules
-  nameWithType: SimpleVersion.Abstractions.Rules
-- uid: SimpleVersion.Abstractions.Rules.ITokenRule`1
-  name: ITokenRule<T>
-  href: api/SimpleVersion.Abstractions.Rules.ITokenRule-1.html
-  commentId: T:SimpleVersion.Abstractions.Rules.ITokenRule`1
-  name.vb: ITokenRule(Of T)
-  fullName: SimpleVersion.Abstractions.Rules.ITokenRule<T>
-  fullName.vb: SimpleVersion.Abstractions.Rules.ITokenRule(Of T)
-  nameWithType: ITokenRule<T>
-  nameWithType.vb: ITokenRule(Of T)
-- uid: SimpleVersion.Abstractions.Rules.ITokenRule`1.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{`0})
-  name: Apply(IVersionContext, IEnumerable<T>)
-  href: api/SimpleVersion.Abstractions.Rules.ITokenRule-1.html#SimpleVersion_Abstractions_Rules_ITokenRule_1_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable__0__
-  commentId: M:SimpleVersion.Abstractions.Rules.ITokenRule`1.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{`0})
-  name.vb: Apply(IVersionContext, IEnumerable(Of T))
-  fullName: SimpleVersion.Abstractions.Rules.ITokenRule<T>.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<T>)
-  fullName.vb: SimpleVersion.Abstractions.Rules.ITokenRule(Of T).Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of T))
-  nameWithType: ITokenRule<T>.Apply(IVersionContext, IEnumerable<T>)
-  nameWithType.vb: ITokenRule(Of T).Apply(IVersionContext, IEnumerable(Of T))
-- uid: SimpleVersion.Abstractions.Rules.ITokenRule`1.Apply*
-  name: Apply
-  href: api/SimpleVersion.Abstractions.Rules.ITokenRule-1.html#SimpleVersion_Abstractions_Rules_ITokenRule_1_Apply_
-  commentId: Overload:SimpleVersion.Abstractions.Rules.ITokenRule`1.Apply
-  fullName: SimpleVersion.Abstractions.Rules.ITokenRule<T>.Apply
-  fullName.vb: SimpleVersion.Abstractions.Rules.ITokenRule(Of T).Apply
-  nameWithType: ITokenRule<T>.Apply
-  nameWithType.vb: ITokenRule(Of T).Apply
-- uid: SimpleVersion.Abstractions.Rules.ITokenRule`1.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,`0)
-  name: Resolve(IVersionContext, T)
-  href: api/SimpleVersion.Abstractions.Rules.ITokenRule-1.html#SimpleVersion_Abstractions_Rules_ITokenRule_1_Resolve_SimpleVersion_Abstractions_Pipeline_IVersionContext__0_
-  commentId: M:SimpleVersion.Abstractions.Rules.ITokenRule`1.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,`0)
-  fullName: SimpleVersion.Abstractions.Rules.ITokenRule<T>.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext, T)
-  fullName.vb: SimpleVersion.Abstractions.Rules.ITokenRule(Of T).Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext, T)
-  nameWithType: ITokenRule<T>.Resolve(IVersionContext, T)
-  nameWithType.vb: ITokenRule(Of T).Resolve(IVersionContext, T)
-- uid: SimpleVersion.Abstractions.Rules.ITokenRule`1.Resolve*
-  name: Resolve
-  href: api/SimpleVersion.Abstractions.Rules.ITokenRule-1.html#SimpleVersion_Abstractions_Rules_ITokenRule_1_Resolve_
-  commentId: Overload:SimpleVersion.Abstractions.Rules.ITokenRule`1.Resolve
-  fullName: SimpleVersion.Abstractions.Rules.ITokenRule<T>.Resolve
-  fullName.vb: SimpleVersion.Abstractions.Rules.ITokenRule(Of T).Resolve
-  nameWithType: ITokenRule<T>.Resolve
-  nameWithType.vb: ITokenRule(Of T).Resolve
-- uid: SimpleVersion.Abstractions.Rules.ITokenRule`1.Token
-  name: Token
-  href: api/SimpleVersion.Abstractions.Rules.ITokenRule-1.html#SimpleVersion_Abstractions_Rules_ITokenRule_1_Token
-  commentId: P:SimpleVersion.Abstractions.Rules.ITokenRule`1.Token
-  fullName: SimpleVersion.Abstractions.Rules.ITokenRule<T>.Token
-  fullName.vb: SimpleVersion.Abstractions.Rules.ITokenRule(Of T).Token
-  nameWithType: ITokenRule<T>.Token
-  nameWithType.vb: ITokenRule(Of T).Token
-- uid: SimpleVersion.Abstractions.Rules.ITokenRule`1.Token*
-  name: Token
-  href: api/SimpleVersion.Abstractions.Rules.ITokenRule-1.html#SimpleVersion_Abstractions_Rules_ITokenRule_1_Token_
-  commentId: Overload:SimpleVersion.Abstractions.Rules.ITokenRule`1.Token
-  fullName: SimpleVersion.Abstractions.Rules.ITokenRule<T>.Token
-  fullName.vb: SimpleVersion.Abstractions.Rules.ITokenRule(Of T).Token
-  nameWithType: ITokenRule<T>.Token
-  nameWithType.vb: ITokenRule(Of T).Token
 - uid: SimpleVersion.Comparers
   name: SimpleVersion.Comparers
   href: api/SimpleVersion.Comparers.html
   commentId: N:SimpleVersion.Comparers
   fullName: SimpleVersion.Comparers
   nameWithType: SimpleVersion.Comparers
-- uid: SimpleVersion.Comparers.ConfigurationVersionLabelComparer
-  name: ConfigurationVersionLabelComparer
-  href: api/SimpleVersion.Comparers.ConfigurationVersionLabelComparer.html
-  commentId: T:SimpleVersion.Comparers.ConfigurationVersionLabelComparer
-  fullName: SimpleVersion.Comparers.ConfigurationVersionLabelComparer
-  nameWithType: ConfigurationVersionLabelComparer
-- uid: SimpleVersion.Comparers.ConfigurationVersionLabelComparer.#ctor
-  name: ConfigurationVersionLabelComparer()
-  href: api/SimpleVersion.Comparers.ConfigurationVersionLabelComparer.html#SimpleVersion_Comparers_ConfigurationVersionLabelComparer__ctor
-  commentId: M:SimpleVersion.Comparers.ConfigurationVersionLabelComparer.#ctor
-  fullName: SimpleVersion.Comparers.ConfigurationVersionLabelComparer.ConfigurationVersionLabelComparer()
-  nameWithType: ConfigurationVersionLabelComparer.ConfigurationVersionLabelComparer()
-- uid: SimpleVersion.Comparers.ConfigurationVersionLabelComparer.#ctor*
-  name: ConfigurationVersionLabelComparer
-  href: api/SimpleVersion.Comparers.ConfigurationVersionLabelComparer.html#SimpleVersion_Comparers_ConfigurationVersionLabelComparer__ctor_
-  commentId: Overload:SimpleVersion.Comparers.ConfigurationVersionLabelComparer.#ctor
-  fullName: SimpleVersion.Comparers.ConfigurationVersionLabelComparer.ConfigurationVersionLabelComparer
-  nameWithType: ConfigurationVersionLabelComparer.ConfigurationVersionLabelComparer
-- uid: SimpleVersion.Comparers.ConfigurationVersionLabelComparer.Equals(SimpleVersion.Model.Configuration,SimpleVersion.Model.Configuration)
-  name: Equals(Configuration, Configuration)
-  href: api/SimpleVersion.Comparers.ConfigurationVersionLabelComparer.html#SimpleVersion_Comparers_ConfigurationVersionLabelComparer_Equals_SimpleVersion_Model_Configuration_SimpleVersion_Model_Configuration_
-  commentId: M:SimpleVersion.Comparers.ConfigurationVersionLabelComparer.Equals(SimpleVersion.Model.Configuration,SimpleVersion.Model.Configuration)
-  fullName: SimpleVersion.Comparers.ConfigurationVersionLabelComparer.Equals(SimpleVersion.Model.Configuration, SimpleVersion.Model.Configuration)
-  nameWithType: ConfigurationVersionLabelComparer.Equals(Configuration, Configuration)
-- uid: SimpleVersion.Comparers.ConfigurationVersionLabelComparer.Equals*
+- uid: SimpleVersion.Comparers.SettingsVersionLabelComparer
+  name: SettingsVersionLabelComparer
+  href: api/SimpleVersion.Comparers.SettingsVersionLabelComparer.html
+  commentId: T:SimpleVersion.Comparers.SettingsVersionLabelComparer
+  fullName: SimpleVersion.Comparers.SettingsVersionLabelComparer
+  nameWithType: SettingsVersionLabelComparer
+- uid: SimpleVersion.Comparers.SettingsVersionLabelComparer.#ctor
+  name: SettingsVersionLabelComparer()
+  href: api/SimpleVersion.Comparers.SettingsVersionLabelComparer.html#SimpleVersion_Comparers_SettingsVersionLabelComparer__ctor
+  commentId: M:SimpleVersion.Comparers.SettingsVersionLabelComparer.#ctor
+  fullName: SimpleVersion.Comparers.SettingsVersionLabelComparer.SettingsVersionLabelComparer()
+  nameWithType: SettingsVersionLabelComparer.SettingsVersionLabelComparer()
+- uid: SimpleVersion.Comparers.SettingsVersionLabelComparer.#ctor*
+  name: SettingsVersionLabelComparer
+  href: api/SimpleVersion.Comparers.SettingsVersionLabelComparer.html#SimpleVersion_Comparers_SettingsVersionLabelComparer__ctor_
+  commentId: Overload:SimpleVersion.Comparers.SettingsVersionLabelComparer.#ctor
+  fullName: SimpleVersion.Comparers.SettingsVersionLabelComparer.SettingsVersionLabelComparer
+  nameWithType: SettingsVersionLabelComparer.SettingsVersionLabelComparer
+- uid: SimpleVersion.Comparers.SettingsVersionLabelComparer.Equals(SimpleVersion.Model.Settings,SimpleVersion.Model.Settings)
+  name: Equals(Settings, Settings)
+  href: api/SimpleVersion.Comparers.SettingsVersionLabelComparer.html#SimpleVersion_Comparers_SettingsVersionLabelComparer_Equals_SimpleVersion_Model_Settings_SimpleVersion_Model_Settings_
+  commentId: M:SimpleVersion.Comparers.SettingsVersionLabelComparer.Equals(SimpleVersion.Model.Settings,SimpleVersion.Model.Settings)
+  fullName: SimpleVersion.Comparers.SettingsVersionLabelComparer.Equals(SimpleVersion.Model.Settings, SimpleVersion.Model.Settings)
+  nameWithType: SettingsVersionLabelComparer.Equals(Settings, Settings)
+- uid: SimpleVersion.Comparers.SettingsVersionLabelComparer.Equals*
   name: Equals
-  href: api/SimpleVersion.Comparers.ConfigurationVersionLabelComparer.html#SimpleVersion_Comparers_ConfigurationVersionLabelComparer_Equals_
-  commentId: Overload:SimpleVersion.Comparers.ConfigurationVersionLabelComparer.Equals
-  fullName: SimpleVersion.Comparers.ConfigurationVersionLabelComparer.Equals
-  nameWithType: ConfigurationVersionLabelComparer.Equals
-- uid: SimpleVersion.Comparers.ConfigurationVersionLabelComparer.GetHashCode(SimpleVersion.Model.Configuration)
-  name: GetHashCode(Configuration)
-  href: api/SimpleVersion.Comparers.ConfigurationVersionLabelComparer.html#SimpleVersion_Comparers_ConfigurationVersionLabelComparer_GetHashCode_SimpleVersion_Model_Configuration_
-  commentId: M:SimpleVersion.Comparers.ConfigurationVersionLabelComparer.GetHashCode(SimpleVersion.Model.Configuration)
-  fullName: SimpleVersion.Comparers.ConfigurationVersionLabelComparer.GetHashCode(SimpleVersion.Model.Configuration)
-  nameWithType: ConfigurationVersionLabelComparer.GetHashCode(Configuration)
-- uid: SimpleVersion.Comparers.ConfigurationVersionLabelComparer.GetHashCode*
+  href: api/SimpleVersion.Comparers.SettingsVersionLabelComparer.html#SimpleVersion_Comparers_SettingsVersionLabelComparer_Equals_
+  commentId: Overload:SimpleVersion.Comparers.SettingsVersionLabelComparer.Equals
+  fullName: SimpleVersion.Comparers.SettingsVersionLabelComparer.Equals
+  nameWithType: SettingsVersionLabelComparer.Equals
+- uid: SimpleVersion.Comparers.SettingsVersionLabelComparer.GetHashCode(SimpleVersion.Model.Settings)
+  name: GetHashCode(Settings)
+  href: api/SimpleVersion.Comparers.SettingsVersionLabelComparer.html#SimpleVersion_Comparers_SettingsVersionLabelComparer_GetHashCode_SimpleVersion_Model_Settings_
+  commentId: M:SimpleVersion.Comparers.SettingsVersionLabelComparer.GetHashCode(SimpleVersion.Model.Settings)
+  fullName: SimpleVersion.Comparers.SettingsVersionLabelComparer.GetHashCode(SimpleVersion.Model.Settings)
+  nameWithType: SettingsVersionLabelComparer.GetHashCode(Settings)
+- uid: SimpleVersion.Comparers.SettingsVersionLabelComparer.GetHashCode*
   name: GetHashCode
-  href: api/SimpleVersion.Comparers.ConfigurationVersionLabelComparer.html#SimpleVersion_Comparers_ConfigurationVersionLabelComparer_GetHashCode_
-  commentId: Overload:SimpleVersion.Comparers.ConfigurationVersionLabelComparer.GetHashCode
-  fullName: SimpleVersion.Comparers.ConfigurationVersionLabelComparer.GetHashCode
-  nameWithType: ConfigurationVersionLabelComparer.GetHashCode
+  href: api/SimpleVersion.Comparers.SettingsVersionLabelComparer.html#SimpleVersion_Comparers_SettingsVersionLabelComparer_GetHashCode_
+  commentId: Overload:SimpleVersion.Comparers.SettingsVersionLabelComparer.GetHashCode
+  fullName: SimpleVersion.Comparers.SettingsVersionLabelComparer.GetHashCode
+  nameWithType: SettingsVersionLabelComparer.GetHashCode
 - uid: SimpleVersion.Constants
   name: Constants
   href: api/SimpleVersion.Constants.html
@@ -227,138 +67,120 @@ references:
   commentId: F:SimpleVersion.Constants.VersionFileName
   fullName: SimpleVersion.Constants.VersionFileName
   nameWithType: Constants.VersionFileName
+- uid: SimpleVersion.Exceptions
+  name: SimpleVersion.Exceptions
+  href: api/SimpleVersion.Exceptions.html
+  commentId: N:SimpleVersion.Exceptions
+  fullName: SimpleVersion.Exceptions
+  nameWithType: SimpleVersion.Exceptions
+- uid: SimpleVersion.Exceptions.GitException
+  name: GitException
+  href: api/SimpleVersion.Exceptions.GitException.html
+  commentId: T:SimpleVersion.Exceptions.GitException
+  fullName: SimpleVersion.Exceptions.GitException
+  nameWithType: GitException
+- uid: SimpleVersion.Exceptions.GitException.#ctor
+  name: GitException()
+  href: api/SimpleVersion.Exceptions.GitException.html#SimpleVersion_Exceptions_GitException__ctor
+  commentId: M:SimpleVersion.Exceptions.GitException.#ctor
+  fullName: SimpleVersion.Exceptions.GitException.GitException()
+  nameWithType: GitException.GitException()
+- uid: SimpleVersion.Exceptions.GitException.#ctor(System.String)
+  name: GitException(String)
+  href: api/SimpleVersion.Exceptions.GitException.html#SimpleVersion_Exceptions_GitException__ctor_System_String_
+  commentId: M:SimpleVersion.Exceptions.GitException.#ctor(System.String)
+  fullName: SimpleVersion.Exceptions.GitException.GitException(System.String)
+  nameWithType: GitException.GitException(String)
+- uid: SimpleVersion.Exceptions.GitException.#ctor(System.String,System.Exception)
+  name: GitException(String, Exception)
+  href: api/SimpleVersion.Exceptions.GitException.html#SimpleVersion_Exceptions_GitException__ctor_System_String_System_Exception_
+  commentId: M:SimpleVersion.Exceptions.GitException.#ctor(System.String,System.Exception)
+  fullName: SimpleVersion.Exceptions.GitException.GitException(System.String, System.Exception)
+  nameWithType: GitException.GitException(String, Exception)
+- uid: SimpleVersion.Exceptions.GitException.#ctor*
+  name: GitException
+  href: api/SimpleVersion.Exceptions.GitException.html#SimpleVersion_Exceptions_GitException__ctor_
+  commentId: Overload:SimpleVersion.Exceptions.GitException.#ctor
+  fullName: SimpleVersion.Exceptions.GitException.GitException
+  nameWithType: GitException.GitException
+- uid: SimpleVersion.Extensions
+  name: SimpleVersion.Extensions
+  href: api/SimpleVersion.Extensions.html
+  commentId: N:SimpleVersion.Extensions
+  fullName: SimpleVersion.Extensions
+  nameWithType: SimpleVersion.Extensions
+- uid: SimpleVersion.Extensions.StringExtensions
+  name: StringExtensions
+  href: api/SimpleVersion.Extensions.StringExtensions.html
+  commentId: T:SimpleVersion.Extensions.StringExtensions
+  fullName: SimpleVersion.Extensions.StringExtensions
+  nameWithType: StringExtensions
+- uid: SimpleVersion.Extensions.StringExtensions.DefaultIfNullOrWhiteSpace(System.String,System.String)
+  name: DefaultIfNullOrWhiteSpace(String, String)
+  href: api/SimpleVersion.Extensions.StringExtensions.html#SimpleVersion_Extensions_StringExtensions_DefaultIfNullOrWhiteSpace_System_String_System_String_
+  commentId: M:SimpleVersion.Extensions.StringExtensions.DefaultIfNullOrWhiteSpace(System.String,System.String)
+  fullName: SimpleVersion.Extensions.StringExtensions.DefaultIfNullOrWhiteSpace(System.String, System.String)
+  nameWithType: StringExtensions.DefaultIfNullOrWhiteSpace(String, String)
+- uid: SimpleVersion.Extensions.StringExtensions.DefaultIfNullOrWhiteSpace*
+  name: DefaultIfNullOrWhiteSpace
+  href: api/SimpleVersion.Extensions.StringExtensions.html#SimpleVersion_Extensions_StringExtensions_DefaultIfNullOrWhiteSpace_
+  commentId: Overload:SimpleVersion.Extensions.StringExtensions.DefaultIfNullOrWhiteSpace
+  fullName: SimpleVersion.Extensions.StringExtensions.DefaultIfNullOrWhiteSpace
+  nameWithType: StringExtensions.DefaultIfNullOrWhiteSpace
+- uid: SimpleVersion.Extensions.StringExtensions.ToBool(System.String)
+  name: ToBool(String)
+  href: api/SimpleVersion.Extensions.StringExtensions.html#SimpleVersion_Extensions_StringExtensions_ToBool_System_String_
+  commentId: M:SimpleVersion.Extensions.StringExtensions.ToBool(System.String)
+  fullName: SimpleVersion.Extensions.StringExtensions.ToBool(System.String)
+  nameWithType: StringExtensions.ToBool(String)
+- uid: SimpleVersion.Extensions.StringExtensions.ToBool*
+  name: ToBool
+  href: api/SimpleVersion.Extensions.StringExtensions.html#SimpleVersion_Extensions_StringExtensions_ToBool_
+  commentId: Overload:SimpleVersion.Extensions.StringExtensions.ToBool
+  fullName: SimpleVersion.Extensions.StringExtensions.ToBool
+  nameWithType: StringExtensions.ToBool
+- uid: SimpleVersion.IEnvironment
+  name: IEnvironment
+  href: api/SimpleVersion.IEnvironment.html
+  commentId: T:SimpleVersion.IEnvironment
+  fullName: SimpleVersion.IEnvironment
+  nameWithType: IEnvironment
+- uid: SimpleVersion.IEnvironment.GetVariable(System.String)
+  name: GetVariable(String)
+  href: api/SimpleVersion.IEnvironment.html#SimpleVersion_IEnvironment_GetVariable_System_String_
+  commentId: M:SimpleVersion.IEnvironment.GetVariable(System.String)
+  fullName: SimpleVersion.IEnvironment.GetVariable(System.String)
+  nameWithType: IEnvironment.GetVariable(String)
+- uid: SimpleVersion.IEnvironment.GetVariable*
+  name: GetVariable
+  href: api/SimpleVersion.IEnvironment.html#SimpleVersion_IEnvironment_GetVariable_
+  commentId: Overload:SimpleVersion.IEnvironment.GetVariable
+  fullName: SimpleVersion.IEnvironment.GetVariable
+  nameWithType: IEnvironment.GetVariable
+- uid: SimpleVersion.IVersionCalculator
+  name: IVersionCalculator
+  href: api/SimpleVersion.IVersionCalculator.html
+  commentId: T:SimpleVersion.IVersionCalculator
+  fullName: SimpleVersion.IVersionCalculator
+  nameWithType: IVersionCalculator
+- uid: SimpleVersion.IVersionCalculator.GetResult(System.String)
+  name: GetResult(String)
+  href: api/SimpleVersion.IVersionCalculator.html#SimpleVersion_IVersionCalculator_GetResult_System_String_
+  commentId: M:SimpleVersion.IVersionCalculator.GetResult(System.String)
+  fullName: SimpleVersion.IVersionCalculator.GetResult(System.String)
+  nameWithType: IVersionCalculator.GetResult(String)
+- uid: SimpleVersion.IVersionCalculator.GetResult*
+  name: GetResult
+  href: api/SimpleVersion.IVersionCalculator.html#SimpleVersion_IVersionCalculator_GetResult_
+  commentId: Overload:SimpleVersion.IVersionCalculator.GetResult
+  fullName: SimpleVersion.IVersionCalculator.GetResult
+  nameWithType: IVersionCalculator.GetResult
 - uid: SimpleVersion.Model
   name: SimpleVersion.Model
   href: api/SimpleVersion.Model.html
   commentId: N:SimpleVersion.Model
   fullName: SimpleVersion.Model
   nameWithType: SimpleVersion.Model
-- uid: SimpleVersion.Model.BranchConfiguration
-  name: BranchConfiguration
-  href: api/SimpleVersion.Model.BranchConfiguration.html
-  commentId: T:SimpleVersion.Model.BranchConfiguration
-  fullName: SimpleVersion.Model.BranchConfiguration
-  nameWithType: BranchConfiguration
-- uid: SimpleVersion.Model.BranchConfiguration.#ctor
-  name: BranchConfiguration()
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration__ctor
-  commentId: M:SimpleVersion.Model.BranchConfiguration.#ctor
-  fullName: SimpleVersion.Model.BranchConfiguration.BranchConfiguration()
-  nameWithType: BranchConfiguration.BranchConfiguration()
-- uid: SimpleVersion.Model.BranchConfiguration.#ctor*
-  name: BranchConfiguration
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration__ctor_
-  commentId: Overload:SimpleVersion.Model.BranchConfiguration.#ctor
-  fullName: SimpleVersion.Model.BranchConfiguration.BranchConfiguration
-  nameWithType: BranchConfiguration.BranchConfiguration
-- uid: SimpleVersion.Model.BranchConfiguration.InsertLabel
-  name: InsertLabel
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_InsertLabel
-  commentId: P:SimpleVersion.Model.BranchConfiguration.InsertLabel
-  fullName: SimpleVersion.Model.BranchConfiguration.InsertLabel
-  nameWithType: BranchConfiguration.InsertLabel
-- uid: SimpleVersion.Model.BranchConfiguration.InsertLabel*
-  name: InsertLabel
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_InsertLabel_
-  commentId: Overload:SimpleVersion.Model.BranchConfiguration.InsertLabel
-  fullName: SimpleVersion.Model.BranchConfiguration.InsertLabel
-  nameWithType: BranchConfiguration.InsertLabel
-- uid: SimpleVersion.Model.BranchConfiguration.InsertMetadata
-  name: InsertMetadata
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_InsertMetadata
-  commentId: P:SimpleVersion.Model.BranchConfiguration.InsertMetadata
-  fullName: SimpleVersion.Model.BranchConfiguration.InsertMetadata
-  nameWithType: BranchConfiguration.InsertMetadata
-- uid: SimpleVersion.Model.BranchConfiguration.InsertMetadata*
-  name: InsertMetadata
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_InsertMetadata_
-  commentId: Overload:SimpleVersion.Model.BranchConfiguration.InsertMetadata
-  fullName: SimpleVersion.Model.BranchConfiguration.InsertMetadata
-  nameWithType: BranchConfiguration.InsertMetadata
-- uid: SimpleVersion.Model.BranchConfiguration.Label
-  name: Label
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_Label
-  commentId: P:SimpleVersion.Model.BranchConfiguration.Label
-  fullName: SimpleVersion.Model.BranchConfiguration.Label
-  nameWithType: BranchConfiguration.Label
-- uid: SimpleVersion.Model.BranchConfiguration.Label*
-  name: Label
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_Label_
-  commentId: Overload:SimpleVersion.Model.BranchConfiguration.Label
-  fullName: SimpleVersion.Model.BranchConfiguration.Label
-  nameWithType: BranchConfiguration.Label
-- uid: SimpleVersion.Model.BranchConfiguration.Match
-  name: Match
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_Match
-  commentId: P:SimpleVersion.Model.BranchConfiguration.Match
-  fullName: SimpleVersion.Model.BranchConfiguration.Match
-  nameWithType: BranchConfiguration.Match
-- uid: SimpleVersion.Model.BranchConfiguration.Match*
-  name: Match
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_Match_
-  commentId: Overload:SimpleVersion.Model.BranchConfiguration.Match
-  fullName: SimpleVersion.Model.BranchConfiguration.Match
-  nameWithType: BranchConfiguration.Match
-- uid: SimpleVersion.Model.BranchConfiguration.Metadata
-  name: Metadata
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_Metadata
-  commentId: P:SimpleVersion.Model.BranchConfiguration.Metadata
-  fullName: SimpleVersion.Model.BranchConfiguration.Metadata
-  nameWithType: BranchConfiguration.Metadata
-- uid: SimpleVersion.Model.BranchConfiguration.Metadata*
-  name: Metadata
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_Metadata_
-  commentId: Overload:SimpleVersion.Model.BranchConfiguration.Metadata
-  fullName: SimpleVersion.Model.BranchConfiguration.Metadata
-  nameWithType: BranchConfiguration.Metadata
-- uid: SimpleVersion.Model.BranchConfiguration.PostfixLabel
-  name: PostfixLabel
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_PostfixLabel
-  commentId: P:SimpleVersion.Model.BranchConfiguration.PostfixLabel
-  fullName: SimpleVersion.Model.BranchConfiguration.PostfixLabel
-  nameWithType: BranchConfiguration.PostfixLabel
-- uid: SimpleVersion.Model.BranchConfiguration.PostfixLabel*
-  name: PostfixLabel
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_PostfixLabel_
-  commentId: Overload:SimpleVersion.Model.BranchConfiguration.PostfixLabel
-  fullName: SimpleVersion.Model.BranchConfiguration.PostfixLabel
-  nameWithType: BranchConfiguration.PostfixLabel
-- uid: SimpleVersion.Model.BranchConfiguration.PostfixMetadata
-  name: PostfixMetadata
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_PostfixMetadata
-  commentId: P:SimpleVersion.Model.BranchConfiguration.PostfixMetadata
-  fullName: SimpleVersion.Model.BranchConfiguration.PostfixMetadata
-  nameWithType: BranchConfiguration.PostfixMetadata
-- uid: SimpleVersion.Model.BranchConfiguration.PostfixMetadata*
-  name: PostfixMetadata
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_PostfixMetadata_
-  commentId: Overload:SimpleVersion.Model.BranchConfiguration.PostfixMetadata
-  fullName: SimpleVersion.Model.BranchConfiguration.PostfixMetadata
-  nameWithType: BranchConfiguration.PostfixMetadata
-- uid: SimpleVersion.Model.BranchConfiguration.PrefixLabel
-  name: PrefixLabel
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_PrefixLabel
-  commentId: P:SimpleVersion.Model.BranchConfiguration.PrefixLabel
-  fullName: SimpleVersion.Model.BranchConfiguration.PrefixLabel
-  nameWithType: BranchConfiguration.PrefixLabel
-- uid: SimpleVersion.Model.BranchConfiguration.PrefixLabel*
-  name: PrefixLabel
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_PrefixLabel_
-  commentId: Overload:SimpleVersion.Model.BranchConfiguration.PrefixLabel
-  fullName: SimpleVersion.Model.BranchConfiguration.PrefixLabel
-  nameWithType: BranchConfiguration.PrefixLabel
-- uid: SimpleVersion.Model.BranchConfiguration.PrefixMetadata
-  name: PrefixMetadata
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_PrefixMetadata
-  commentId: P:SimpleVersion.Model.BranchConfiguration.PrefixMetadata
-  fullName: SimpleVersion.Model.BranchConfiguration.PrefixMetadata
-  nameWithType: BranchConfiguration.PrefixMetadata
-- uid: SimpleVersion.Model.BranchConfiguration.PrefixMetadata*
-  name: PrefixMetadata
-  href: api/SimpleVersion.Model.BranchConfiguration.html#SimpleVersion_Model_BranchConfiguration_PrefixMetadata_
-  commentId: Overload:SimpleVersion.Model.BranchConfiguration.PrefixMetadata
-  fullName: SimpleVersion.Model.BranchConfiguration.PrefixMetadata
-  nameWithType: BranchConfiguration.PrefixMetadata
 - uid: SimpleVersion.Model.BranchInfo
   name: BranchInfo
   href: api/SimpleVersion.Model.BranchInfo.html
@@ -401,84 +223,210 @@ references:
   commentId: Overload:SimpleVersion.Model.BranchInfo.Release
   fullName: SimpleVersion.Model.BranchInfo.Release
   nameWithType: BranchInfo.Release
-- uid: SimpleVersion.Model.Configuration
-  name: Configuration
-  href: api/SimpleVersion.Model.Configuration.html
-  commentId: T:SimpleVersion.Model.Configuration
-  fullName: SimpleVersion.Model.Configuration
-  nameWithType: Configuration
-- uid: SimpleVersion.Model.Configuration.#ctor
-  name: Configuration()
-  href: api/SimpleVersion.Model.Configuration.html#SimpleVersion_Model_Configuration__ctor
-  commentId: M:SimpleVersion.Model.Configuration.#ctor
-  fullName: SimpleVersion.Model.Configuration.Configuration()
-  nameWithType: Configuration.Configuration()
-- uid: SimpleVersion.Model.Configuration.#ctor*
-  name: Configuration
-  href: api/SimpleVersion.Model.Configuration.html#SimpleVersion_Model_Configuration__ctor_
-  commentId: Overload:SimpleVersion.Model.Configuration.#ctor
-  fullName: SimpleVersion.Model.Configuration.Configuration
-  nameWithType: Configuration.Configuration
-- uid: SimpleVersion.Model.Configuration.Branches
-  name: Branches
-  href: api/SimpleVersion.Model.Configuration.html#SimpleVersion_Model_Configuration_Branches
-  commentId: P:SimpleVersion.Model.Configuration.Branches
-  fullName: SimpleVersion.Model.Configuration.Branches
-  nameWithType: Configuration.Branches
-- uid: SimpleVersion.Model.Configuration.Branches*
-  name: Branches
-  href: api/SimpleVersion.Model.Configuration.html#SimpleVersion_Model_Configuration_Branches_
-  commentId: Overload:SimpleVersion.Model.Configuration.Branches
-  fullName: SimpleVersion.Model.Configuration.Branches
-  nameWithType: Configuration.Branches
-- uid: SimpleVersion.Model.Configuration.Label
+- uid: SimpleVersion.Model.BranchSettings
+  name: BranchSettings
+  href: api/SimpleVersion.Model.BranchSettings.html
+  commentId: T:SimpleVersion.Model.BranchSettings
+  fullName: SimpleVersion.Model.BranchSettings
+  nameWithType: BranchSettings
+- uid: SimpleVersion.Model.BranchSettings.#ctor
+  name: BranchSettings()
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings__ctor
+  commentId: M:SimpleVersion.Model.BranchSettings.#ctor
+  fullName: SimpleVersion.Model.BranchSettings.BranchSettings()
+  nameWithType: BranchSettings.BranchSettings()
+- uid: SimpleVersion.Model.BranchSettings.#ctor*
+  name: BranchSettings
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings__ctor_
+  commentId: Overload:SimpleVersion.Model.BranchSettings.#ctor
+  fullName: SimpleVersion.Model.BranchSettings.BranchSettings
+  nameWithType: BranchSettings.BranchSettings
+- uid: SimpleVersion.Model.BranchSettings.InsertLabel
+  name: InsertLabel
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_InsertLabel
+  commentId: P:SimpleVersion.Model.BranchSettings.InsertLabel
+  fullName: SimpleVersion.Model.BranchSettings.InsertLabel
+  nameWithType: BranchSettings.InsertLabel
+- uid: SimpleVersion.Model.BranchSettings.InsertLabel*
+  name: InsertLabel
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_InsertLabel_
+  commentId: Overload:SimpleVersion.Model.BranchSettings.InsertLabel
+  fullName: SimpleVersion.Model.BranchSettings.InsertLabel
+  nameWithType: BranchSettings.InsertLabel
+- uid: SimpleVersion.Model.BranchSettings.InsertMetadata
+  name: InsertMetadata
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_InsertMetadata
+  commentId: P:SimpleVersion.Model.BranchSettings.InsertMetadata
+  fullName: SimpleVersion.Model.BranchSettings.InsertMetadata
+  nameWithType: BranchSettings.InsertMetadata
+- uid: SimpleVersion.Model.BranchSettings.InsertMetadata*
+  name: InsertMetadata
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_InsertMetadata_
+  commentId: Overload:SimpleVersion.Model.BranchSettings.InsertMetadata
+  fullName: SimpleVersion.Model.BranchSettings.InsertMetadata
+  nameWithType: BranchSettings.InsertMetadata
+- uid: SimpleVersion.Model.BranchSettings.Label
   name: Label
-  href: api/SimpleVersion.Model.Configuration.html#SimpleVersion_Model_Configuration_Label
-  commentId: P:SimpleVersion.Model.Configuration.Label
-  fullName: SimpleVersion.Model.Configuration.Label
-  nameWithType: Configuration.Label
-- uid: SimpleVersion.Model.Configuration.Label*
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_Label
+  commentId: P:SimpleVersion.Model.BranchSettings.Label
+  fullName: SimpleVersion.Model.BranchSettings.Label
+  nameWithType: BranchSettings.Label
+- uid: SimpleVersion.Model.BranchSettings.Label*
   name: Label
-  href: api/SimpleVersion.Model.Configuration.html#SimpleVersion_Model_Configuration_Label_
-  commentId: Overload:SimpleVersion.Model.Configuration.Label
-  fullName: SimpleVersion.Model.Configuration.Label
-  nameWithType: Configuration.Label
-- uid: SimpleVersion.Model.Configuration.Metadata
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_Label_
+  commentId: Overload:SimpleVersion.Model.BranchSettings.Label
+  fullName: SimpleVersion.Model.BranchSettings.Label
+  nameWithType: BranchSettings.Label
+- uid: SimpleVersion.Model.BranchSettings.Match
+  name: Match
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_Match
+  commentId: P:SimpleVersion.Model.BranchSettings.Match
+  fullName: SimpleVersion.Model.BranchSettings.Match
+  nameWithType: BranchSettings.Match
+- uid: SimpleVersion.Model.BranchSettings.Match*
+  name: Match
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_Match_
+  commentId: Overload:SimpleVersion.Model.BranchSettings.Match
+  fullName: SimpleVersion.Model.BranchSettings.Match
+  nameWithType: BranchSettings.Match
+- uid: SimpleVersion.Model.BranchSettings.Metadata
   name: Metadata
-  href: api/SimpleVersion.Model.Configuration.html#SimpleVersion_Model_Configuration_Metadata
-  commentId: P:SimpleVersion.Model.Configuration.Metadata
-  fullName: SimpleVersion.Model.Configuration.Metadata
-  nameWithType: Configuration.Metadata
-- uid: SimpleVersion.Model.Configuration.Metadata*
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_Metadata
+  commentId: P:SimpleVersion.Model.BranchSettings.Metadata
+  fullName: SimpleVersion.Model.BranchSettings.Metadata
+  nameWithType: BranchSettings.Metadata
+- uid: SimpleVersion.Model.BranchSettings.Metadata*
   name: Metadata
-  href: api/SimpleVersion.Model.Configuration.html#SimpleVersion_Model_Configuration_Metadata_
-  commentId: Overload:SimpleVersion.Model.Configuration.Metadata
-  fullName: SimpleVersion.Model.Configuration.Metadata
-  nameWithType: Configuration.Metadata
-- uid: SimpleVersion.Model.Configuration.OffSet
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_Metadata_
+  commentId: Overload:SimpleVersion.Model.BranchSettings.Metadata
+  fullName: SimpleVersion.Model.BranchSettings.Metadata
+  nameWithType: BranchSettings.Metadata
+- uid: SimpleVersion.Model.BranchSettings.PostfixLabel
+  name: PostfixLabel
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_PostfixLabel
+  commentId: P:SimpleVersion.Model.BranchSettings.PostfixLabel
+  fullName: SimpleVersion.Model.BranchSettings.PostfixLabel
+  nameWithType: BranchSettings.PostfixLabel
+- uid: SimpleVersion.Model.BranchSettings.PostfixLabel*
+  name: PostfixLabel
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_PostfixLabel_
+  commentId: Overload:SimpleVersion.Model.BranchSettings.PostfixLabel
+  fullName: SimpleVersion.Model.BranchSettings.PostfixLabel
+  nameWithType: BranchSettings.PostfixLabel
+- uid: SimpleVersion.Model.BranchSettings.PostfixMetadata
+  name: PostfixMetadata
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_PostfixMetadata
+  commentId: P:SimpleVersion.Model.BranchSettings.PostfixMetadata
+  fullName: SimpleVersion.Model.BranchSettings.PostfixMetadata
+  nameWithType: BranchSettings.PostfixMetadata
+- uid: SimpleVersion.Model.BranchSettings.PostfixMetadata*
+  name: PostfixMetadata
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_PostfixMetadata_
+  commentId: Overload:SimpleVersion.Model.BranchSettings.PostfixMetadata
+  fullName: SimpleVersion.Model.BranchSettings.PostfixMetadata
+  nameWithType: BranchSettings.PostfixMetadata
+- uid: SimpleVersion.Model.BranchSettings.PrefixLabel
+  name: PrefixLabel
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_PrefixLabel
+  commentId: P:SimpleVersion.Model.BranchSettings.PrefixLabel
+  fullName: SimpleVersion.Model.BranchSettings.PrefixLabel
+  nameWithType: BranchSettings.PrefixLabel
+- uid: SimpleVersion.Model.BranchSettings.PrefixLabel*
+  name: PrefixLabel
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_PrefixLabel_
+  commentId: Overload:SimpleVersion.Model.BranchSettings.PrefixLabel
+  fullName: SimpleVersion.Model.BranchSettings.PrefixLabel
+  nameWithType: BranchSettings.PrefixLabel
+- uid: SimpleVersion.Model.BranchSettings.PrefixMetadata
+  name: PrefixMetadata
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_PrefixMetadata
+  commentId: P:SimpleVersion.Model.BranchSettings.PrefixMetadata
+  fullName: SimpleVersion.Model.BranchSettings.PrefixMetadata
+  nameWithType: BranchSettings.PrefixMetadata
+- uid: SimpleVersion.Model.BranchSettings.PrefixMetadata*
+  name: PrefixMetadata
+  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_PrefixMetadata_
+  commentId: Overload:SimpleVersion.Model.BranchSettings.PrefixMetadata
+  fullName: SimpleVersion.Model.BranchSettings.PrefixMetadata
+  nameWithType: BranchSettings.PrefixMetadata
+- uid: SimpleVersion.Model.Settings
+  name: Settings
+  href: api/SimpleVersion.Model.Settings.html
+  commentId: T:SimpleVersion.Model.Settings
+  fullName: SimpleVersion.Model.Settings
+  nameWithType: Settings
+- uid: SimpleVersion.Model.Settings.#ctor
+  name: Settings()
+  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings__ctor
+  commentId: M:SimpleVersion.Model.Settings.#ctor
+  fullName: SimpleVersion.Model.Settings.Settings()
+  nameWithType: Settings.Settings()
+- uid: SimpleVersion.Model.Settings.#ctor*
+  name: Settings
+  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings__ctor_
+  commentId: Overload:SimpleVersion.Model.Settings.#ctor
+  fullName: SimpleVersion.Model.Settings.Settings
+  nameWithType: Settings.Settings
+- uid: SimpleVersion.Model.Settings.Branches
+  name: Branches
+  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_Branches
+  commentId: P:SimpleVersion.Model.Settings.Branches
+  fullName: SimpleVersion.Model.Settings.Branches
+  nameWithType: Settings.Branches
+- uid: SimpleVersion.Model.Settings.Branches*
+  name: Branches
+  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_Branches_
+  commentId: Overload:SimpleVersion.Model.Settings.Branches
+  fullName: SimpleVersion.Model.Settings.Branches
+  nameWithType: Settings.Branches
+- uid: SimpleVersion.Model.Settings.Label
+  name: Label
+  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_Label
+  commentId: P:SimpleVersion.Model.Settings.Label
+  fullName: SimpleVersion.Model.Settings.Label
+  nameWithType: Settings.Label
+- uid: SimpleVersion.Model.Settings.Label*
+  name: Label
+  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_Label_
+  commentId: Overload:SimpleVersion.Model.Settings.Label
+  fullName: SimpleVersion.Model.Settings.Label
+  nameWithType: Settings.Label
+- uid: SimpleVersion.Model.Settings.Metadata
+  name: Metadata
+  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_Metadata
+  commentId: P:SimpleVersion.Model.Settings.Metadata
+  fullName: SimpleVersion.Model.Settings.Metadata
+  nameWithType: Settings.Metadata
+- uid: SimpleVersion.Model.Settings.Metadata*
+  name: Metadata
+  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_Metadata_
+  commentId: Overload:SimpleVersion.Model.Settings.Metadata
+  fullName: SimpleVersion.Model.Settings.Metadata
+  nameWithType: Settings.Metadata
+- uid: SimpleVersion.Model.Settings.OffSet
   name: OffSet
-  href: api/SimpleVersion.Model.Configuration.html#SimpleVersion_Model_Configuration_OffSet
-  commentId: P:SimpleVersion.Model.Configuration.OffSet
-  fullName: SimpleVersion.Model.Configuration.OffSet
-  nameWithType: Configuration.OffSet
-- uid: SimpleVersion.Model.Configuration.OffSet*
+  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_OffSet
+  commentId: P:SimpleVersion.Model.Settings.OffSet
+  fullName: SimpleVersion.Model.Settings.OffSet
+  nameWithType: Settings.OffSet
+- uid: SimpleVersion.Model.Settings.OffSet*
   name: OffSet
-  href: api/SimpleVersion.Model.Configuration.html#SimpleVersion_Model_Configuration_OffSet_
-  commentId: Overload:SimpleVersion.Model.Configuration.OffSet
-  fullName: SimpleVersion.Model.Configuration.OffSet
-  nameWithType: Configuration.OffSet
-- uid: SimpleVersion.Model.Configuration.Version
+  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_OffSet_
+  commentId: Overload:SimpleVersion.Model.Settings.OffSet
+  fullName: SimpleVersion.Model.Settings.OffSet
+  nameWithType: Settings.OffSet
+- uid: SimpleVersion.Model.Settings.Version
   name: Version
-  href: api/SimpleVersion.Model.Configuration.html#SimpleVersion_Model_Configuration_Version
-  commentId: P:SimpleVersion.Model.Configuration.Version
-  fullName: SimpleVersion.Model.Configuration.Version
-  nameWithType: Configuration.Version
-- uid: SimpleVersion.Model.Configuration.Version*
+  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_Version
+  commentId: P:SimpleVersion.Model.Settings.Version
+  fullName: SimpleVersion.Model.Settings.Version
+  nameWithType: Settings.Version
+- uid: SimpleVersion.Model.Settings.Version*
   name: Version
-  href: api/SimpleVersion.Model.Configuration.html#SimpleVersion_Model_Configuration_Version_
-  commentId: Overload:SimpleVersion.Model.Configuration.Version
-  fullName: SimpleVersion.Model.Configuration.Version
-  nameWithType: Configuration.Version
+  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_Version_
+  commentId: Overload:SimpleVersion.Model.Settings.Version
+  fullName: SimpleVersion.Model.Settings.Version
+  nameWithType: Settings.Version
 - uid: SimpleVersion.Model.VersionResult
   name: VersionResult
   href: api/SimpleVersion.Model.VersionResult.html
@@ -695,11 +643,11 @@ references:
   commentId: M:SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor
   fullName: SimpleVersion.Pipeline.AzureDevopsContextProcessor.AzureDevopsContextProcessor()
   nameWithType: AzureDevopsContextProcessor.AzureDevopsContextProcessor()
-- uid: SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor(SimpleVersion.Abstractions.IEnvironment)
+- uid: SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor(SimpleVersion.IEnvironment)
   name: AzureDevopsContextProcessor(IEnvironment)
-  href: api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.html#SimpleVersion_Pipeline_AzureDevopsContextProcessor__ctor_SimpleVersion_Abstractions_IEnvironment_
-  commentId: M:SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor(SimpleVersion.Abstractions.IEnvironment)
-  fullName: SimpleVersion.Pipeline.AzureDevopsContextProcessor.AzureDevopsContextProcessor(SimpleVersion.Abstractions.IEnvironment)
+  href: api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.html#SimpleVersion_Pipeline_AzureDevopsContextProcessor__ctor_SimpleVersion_IEnvironment_
+  commentId: M:SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor(SimpleVersion.IEnvironment)
+  fullName: SimpleVersion.Pipeline.AzureDevopsContextProcessor.AzureDevopsContextProcessor(SimpleVersion.IEnvironment)
   nameWithType: AzureDevopsContextProcessor.AzureDevopsContextProcessor(IEnvironment)
 - uid: SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor*
   name: AzureDevopsContextProcessor
@@ -707,11 +655,11 @@ references:
   commentId: Overload:SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor
   fullName: SimpleVersion.Pipeline.AzureDevopsContextProcessor.AzureDevopsContextProcessor
   nameWithType: AzureDevopsContextProcessor.AzureDevopsContextProcessor
-- uid: SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+- uid: SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)
   name: Apply(IVersionContext)
-  href: api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.html#SimpleVersion_Pipeline_AzureDevopsContextProcessor_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_
-  commentId: M:SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
-  fullName: SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  href: api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.html#SimpleVersion_Pipeline_AzureDevopsContextProcessor_Apply_SimpleVersion_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)
   nameWithType: AzureDevopsContextProcessor.Apply(IVersionContext)
 - uid: SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply*
   name: Apply
@@ -719,36 +667,6 @@ references:
   commentId: Overload:SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply
   fullName: SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply
   nameWithType: AzureDevopsContextProcessor.Apply
-- uid: SimpleVersion.Pipeline.ConfigurationContextProcessor
-  name: ConfigurationContextProcessor
-  href: api/SimpleVersion.Pipeline.ConfigurationContextProcessor.html
-  commentId: T:SimpleVersion.Pipeline.ConfigurationContextProcessor
-  fullName: SimpleVersion.Pipeline.ConfigurationContextProcessor
-  nameWithType: ConfigurationContextProcessor
-- uid: SimpleVersion.Pipeline.ConfigurationContextProcessor.#ctor
-  name: ConfigurationContextProcessor()
-  href: api/SimpleVersion.Pipeline.ConfigurationContextProcessor.html#SimpleVersion_Pipeline_ConfigurationContextProcessor__ctor
-  commentId: M:SimpleVersion.Pipeline.ConfigurationContextProcessor.#ctor
-  fullName: SimpleVersion.Pipeline.ConfigurationContextProcessor.ConfigurationContextProcessor()
-  nameWithType: ConfigurationContextProcessor.ConfigurationContextProcessor()
-- uid: SimpleVersion.Pipeline.ConfigurationContextProcessor.#ctor*
-  name: ConfigurationContextProcessor
-  href: api/SimpleVersion.Pipeline.ConfigurationContextProcessor.html#SimpleVersion_Pipeline_ConfigurationContextProcessor__ctor_
-  commentId: Overload:SimpleVersion.Pipeline.ConfigurationContextProcessor.#ctor
-  fullName: SimpleVersion.Pipeline.ConfigurationContextProcessor.ConfigurationContextProcessor
-  nameWithType: ConfigurationContextProcessor.ConfigurationContextProcessor
-- uid: SimpleVersion.Pipeline.ConfigurationContextProcessor.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
-  name: Apply(IVersionContext)
-  href: api/SimpleVersion.Pipeline.ConfigurationContextProcessor.html#SimpleVersion_Pipeline_ConfigurationContextProcessor_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_
-  commentId: M:SimpleVersion.Pipeline.ConfigurationContextProcessor.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
-  fullName: SimpleVersion.Pipeline.ConfigurationContextProcessor.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
-  nameWithType: ConfigurationContextProcessor.Apply(IVersionContext)
-- uid: SimpleVersion.Pipeline.ConfigurationContextProcessor.Apply*
-  name: Apply
-  href: api/SimpleVersion.Pipeline.ConfigurationContextProcessor.html#SimpleVersion_Pipeline_ConfigurationContextProcessor_Apply_
-  commentId: Overload:SimpleVersion.Pipeline.ConfigurationContextProcessor.Apply
-  fullName: SimpleVersion.Pipeline.ConfigurationContextProcessor.Apply
-  nameWithType: ConfigurationContextProcessor.Apply
 - uid: SimpleVersion.Pipeline.Formatting
   name: SimpleVersion.Pipeline.Formatting
   href: api/SimpleVersion.Pipeline.Formatting.html
@@ -773,11 +691,11 @@ references:
   commentId: Overload:SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.#ctor
   fullName: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Semver1FormatProcess
   nameWithType: Semver1FormatProcess.Semver1FormatProcess
-- uid: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+- uid: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply(SimpleVersion.Pipeline.IVersionContext)
   name: Apply(IVersionContext)
-  href: api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver1FormatProcess_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_
-  commentId: M:SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
-  fullName: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  href: api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver1FormatProcess_Apply_SimpleVersion_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply(SimpleVersion.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply(SimpleVersion.Pipeline.IVersionContext)
   nameWithType: Semver1FormatProcess.Apply(IVersionContext)
 - uid: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply*
   name: Apply
@@ -809,11 +727,11 @@ references:
   commentId: Overload:SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.#ctor
   fullName: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Semver2FormatProcess
   nameWithType: Semver2FormatProcess.Semver2FormatProcess
-- uid: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+- uid: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply(SimpleVersion.Pipeline.IVersionContext)
   name: Apply(IVersionContext)
-  href: api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver2FormatProcess_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_
-  commentId: M:SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
-  fullName: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  href: api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver2FormatProcess_Apply_SimpleVersion_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply(SimpleVersion.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply(SimpleVersion.Pipeline.IVersionContext)
   nameWithType: Semver2FormatProcess.Apply(IVersionContext)
 - uid: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply*
   name: Apply
@@ -845,11 +763,11 @@ references:
   commentId: Overload:SimpleVersion.Pipeline.Formatting.VersionFormatProcess.#ctor
   fullName: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.VersionFormatProcess
   nameWithType: VersionFormatProcess.VersionFormatProcess
-- uid: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+- uid: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply(SimpleVersion.Pipeline.IVersionContext)
   name: Apply(IVersionContext)
-  href: api/SimpleVersion.Pipeline.Formatting.VersionFormatProcess.html#SimpleVersion_Pipeline_Formatting_VersionFormatProcess_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_
-  commentId: M:SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
-  fullName: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  href: api/SimpleVersion.Pipeline.Formatting.VersionFormatProcess.html#SimpleVersion_Pipeline_Formatting_VersionFormatProcess_Apply_SimpleVersion_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply(SimpleVersion.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply(SimpleVersion.Pipeline.IVersionContext)
   nameWithType: VersionFormatProcess.Apply(IVersionContext)
 - uid: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply*
   name: Apply
@@ -857,6 +775,84 @@ references:
   commentId: Overload:SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply
   fullName: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply
   nameWithType: VersionFormatProcess.Apply
+- uid: SimpleVersion.Pipeline.IVersionContext
+  name: IVersionContext
+  href: api/SimpleVersion.Pipeline.IVersionContext.html
+  commentId: T:SimpleVersion.Pipeline.IVersionContext
+  fullName: SimpleVersion.Pipeline.IVersionContext
+  nameWithType: IVersionContext
+- uid: SimpleVersion.Pipeline.IVersionContext.Result
+  name: Result
+  href: api/SimpleVersion.Pipeline.IVersionContext.html#SimpleVersion_Pipeline_IVersionContext_Result
+  commentId: P:SimpleVersion.Pipeline.IVersionContext.Result
+  fullName: SimpleVersion.Pipeline.IVersionContext.Result
+  nameWithType: IVersionContext.Result
+- uid: SimpleVersion.Pipeline.IVersionContext.Result*
+  name: Result
+  href: api/SimpleVersion.Pipeline.IVersionContext.html#SimpleVersion_Pipeline_IVersionContext_Result_
+  commentId: Overload:SimpleVersion.Pipeline.IVersionContext.Result
+  fullName: SimpleVersion.Pipeline.IVersionContext.Result
+  nameWithType: IVersionContext.Result
+- uid: SimpleVersion.Pipeline.IVersionContext.Settings
+  name: Settings
+  href: api/SimpleVersion.Pipeline.IVersionContext.html#SimpleVersion_Pipeline_IVersionContext_Settings
+  commentId: P:SimpleVersion.Pipeline.IVersionContext.Settings
+  fullName: SimpleVersion.Pipeline.IVersionContext.Settings
+  nameWithType: IVersionContext.Settings
+- uid: SimpleVersion.Pipeline.IVersionContext.Settings*
+  name: Settings
+  href: api/SimpleVersion.Pipeline.IVersionContext.html#SimpleVersion_Pipeline_IVersionContext_Settings_
+  commentId: Overload:SimpleVersion.Pipeline.IVersionContext.Settings
+  fullName: SimpleVersion.Pipeline.IVersionContext.Settings
+  nameWithType: IVersionContext.Settings
+- uid: SimpleVersion.Pipeline.IVersionContextProcessor
+  name: IVersionContextProcessor
+  href: api/SimpleVersion.Pipeline.IVersionContextProcessor.html
+  commentId: T:SimpleVersion.Pipeline.IVersionContextProcessor
+  fullName: SimpleVersion.Pipeline.IVersionContextProcessor
+  nameWithType: IVersionContextProcessor
+- uid: SimpleVersion.Pipeline.IVersionContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)
+  name: Apply(IVersionContext)
+  href: api/SimpleVersion.Pipeline.IVersionContextProcessor.html#SimpleVersion_Pipeline_IVersionContextProcessor_Apply_SimpleVersion_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Pipeline.IVersionContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Pipeline.IVersionContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)
+  nameWithType: IVersionContextProcessor.Apply(IVersionContext)
+- uid: SimpleVersion.Pipeline.IVersionContextProcessor.Apply*
+  name: Apply
+  href: api/SimpleVersion.Pipeline.IVersionContextProcessor.html#SimpleVersion_Pipeline_IVersionContextProcessor_Apply_
+  commentId: Overload:SimpleVersion.Pipeline.IVersionContextProcessor.Apply
+  fullName: SimpleVersion.Pipeline.IVersionContextProcessor.Apply
+  nameWithType: IVersionContextProcessor.Apply
+- uid: SimpleVersion.Pipeline.SettingsContextProcessor
+  name: SettingsContextProcessor
+  href: api/SimpleVersion.Pipeline.SettingsContextProcessor.html
+  commentId: T:SimpleVersion.Pipeline.SettingsContextProcessor
+  fullName: SimpleVersion.Pipeline.SettingsContextProcessor
+  nameWithType: SettingsContextProcessor
+- uid: SimpleVersion.Pipeline.SettingsContextProcessor.#ctor
+  name: SettingsContextProcessor()
+  href: api/SimpleVersion.Pipeline.SettingsContextProcessor.html#SimpleVersion_Pipeline_SettingsContextProcessor__ctor
+  commentId: M:SimpleVersion.Pipeline.SettingsContextProcessor.#ctor
+  fullName: SimpleVersion.Pipeline.SettingsContextProcessor.SettingsContextProcessor()
+  nameWithType: SettingsContextProcessor.SettingsContextProcessor()
+- uid: SimpleVersion.Pipeline.SettingsContextProcessor.#ctor*
+  name: SettingsContextProcessor
+  href: api/SimpleVersion.Pipeline.SettingsContextProcessor.html#SimpleVersion_Pipeline_SettingsContextProcessor__ctor_
+  commentId: Overload:SimpleVersion.Pipeline.SettingsContextProcessor.#ctor
+  fullName: SimpleVersion.Pipeline.SettingsContextProcessor.SettingsContextProcessor
+  nameWithType: SettingsContextProcessor.SettingsContextProcessor
+- uid: SimpleVersion.Pipeline.SettingsContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)
+  name: Apply(IVersionContext)
+  href: api/SimpleVersion.Pipeline.SettingsContextProcessor.html#SimpleVersion_Pipeline_SettingsContextProcessor_Apply_SimpleVersion_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Pipeline.SettingsContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Pipeline.SettingsContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)
+  nameWithType: SettingsContextProcessor.Apply(IVersionContext)
+- uid: SimpleVersion.Pipeline.SettingsContextProcessor.Apply*
+  name: Apply
+  href: api/SimpleVersion.Pipeline.SettingsContextProcessor.html#SimpleVersion_Pipeline_SettingsContextProcessor_Apply_
+  commentId: Overload:SimpleVersion.Pipeline.SettingsContextProcessor.Apply
+  fullName: SimpleVersion.Pipeline.SettingsContextProcessor.Apply
+  nameWithType: SettingsContextProcessor.Apply
 - uid: SimpleVersion.Pipeline.VersionContext
   name: VersionContext
   href: api/SimpleVersion.Pipeline.VersionContext.html
@@ -875,18 +871,6 @@ references:
   commentId: Overload:SimpleVersion.Pipeline.VersionContext.#ctor
   fullName: SimpleVersion.Pipeline.VersionContext.VersionContext
   nameWithType: VersionContext.VersionContext
-- uid: SimpleVersion.Pipeline.VersionContext.Configuration
-  name: Configuration
-  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Configuration
-  commentId: P:SimpleVersion.Pipeline.VersionContext.Configuration
-  fullName: SimpleVersion.Pipeline.VersionContext.Configuration
-  nameWithType: VersionContext.Configuration
-- uid: SimpleVersion.Pipeline.VersionContext.Configuration*
-  name: Configuration
-  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Configuration_
-  commentId: Overload:SimpleVersion.Pipeline.VersionContext.Configuration
-  fullName: SimpleVersion.Pipeline.VersionContext.Configuration
-  nameWithType: VersionContext.Configuration
 - uid: SimpleVersion.Pipeline.VersionContext.Repository
   name: Repository
   href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Repository
@@ -911,6 +895,18 @@ references:
   commentId: Overload:SimpleVersion.Pipeline.VersionContext.Result
   fullName: SimpleVersion.Pipeline.VersionContext.Result
   nameWithType: VersionContext.Result
+- uid: SimpleVersion.Pipeline.VersionContext.Settings
+  name: Settings
+  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Settings
+  commentId: P:SimpleVersion.Pipeline.VersionContext.Settings
+  fullName: SimpleVersion.Pipeline.VersionContext.Settings
+  nameWithType: VersionContext.Settings
+- uid: SimpleVersion.Pipeline.VersionContext.Settings*
+  name: Settings
+  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Settings_
+  commentId: Overload:SimpleVersion.Pipeline.VersionContext.Settings
+  fullName: SimpleVersion.Pipeline.VersionContext.Settings
+  nameWithType: VersionContext.Settings
 - uid: SimpleVersion.Rules
   name: SimpleVersion.Rules
   href: api/SimpleVersion.Rules.html
@@ -941,13 +937,13 @@ references:
   commentId: Overload:SimpleVersion.Rules.BaseBranchNameTokenRule.#ctor
   fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.BaseBranchNameTokenRule
   nameWithType: BaseBranchNameTokenRule.BaseBranchNameTokenRule
-- uid: SimpleVersion.Rules.BaseBranchNameTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
+- uid: SimpleVersion.Rules.BaseBranchNameTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
   name: Apply(IVersionContext, IEnumerable<String>)
-  href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_System_String__
-  commentId: M:SimpleVersion.Rules.BaseBranchNameTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
+  href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_Apply_SimpleVersion_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:SimpleVersion.Rules.BaseBranchNameTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
   name.vb: Apply(IVersionContext, IEnumerable(Of String))
-  fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<System.String>)
-  fullName.vb: SimpleVersion.Rules.BaseBranchNameTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of System.String))
+  fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<System.String>)
+  fullName.vb: SimpleVersion.Rules.BaseBranchNameTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of System.String))
   nameWithType: BaseBranchNameTokenRule.Apply(IVersionContext, IEnumerable<String>)
   nameWithType.vb: BaseBranchNameTokenRule.Apply(IVersionContext, IEnumerable(Of String))
 - uid: SimpleVersion.Rules.BaseBranchNameTokenRule.Apply*
@@ -968,11 +964,11 @@ references:
   commentId: Overload:SimpleVersion.Rules.BaseBranchNameTokenRule.Pattern
   fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.Pattern
   nameWithType: BaseBranchNameTokenRule.Pattern
-- uid: SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.String)
+- uid: SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve(SimpleVersion.Pipeline.IVersionContext,System.String)
   name: Resolve(IVersionContext, String)
-  href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_Resolve_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_String_
-  commentId: M:SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.String)
-  fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.String)
+  href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_Resolve_SimpleVersion_Pipeline_IVersionContext_System_String_
+  commentId: M:SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve(SimpleVersion.Pipeline.IVersionContext,System.String)
+  fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve(SimpleVersion.Pipeline.IVersionContext, System.String)
   nameWithType: BaseBranchNameTokenRule.Resolve(IVersionContext, String)
 - uid: SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve*
   name: Resolve
@@ -980,11 +976,11 @@ references:
   commentId: Overload:SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve
   fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve
   nameWithType: BaseBranchNameTokenRule.Resolve
-- uid: SimpleVersion.Rules.BaseBranchNameTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+- uid: SimpleVersion.Rules.BaseBranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.IVersionContext)
   name: ResolveBranchName(IVersionContext)
-  href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_ResolveBranchName_SimpleVersion_Abstractions_Pipeline_IVersionContext_
-  commentId: M:SimpleVersion.Rules.BaseBranchNameTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
-  fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_ResolveBranchName_SimpleVersion_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Rules.BaseBranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.IVersionContext)
   nameWithType: BaseBranchNameTokenRule.ResolveBranchName(IVersionContext)
 - uid: SimpleVersion.Rules.BaseBranchNameTokenRule.ResolveBranchName*
   name: ResolveBranchName
@@ -1040,11 +1036,11 @@ references:
   commentId: Overload:SimpleVersion.Rules.BranchNameSuffixTokenRule.Instance
   fullName: SimpleVersion.Rules.BranchNameSuffixTokenRule.Instance
   nameWithType: BranchNameSuffixTokenRule.Instance
-- uid: SimpleVersion.Rules.BranchNameSuffixTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+- uid: SimpleVersion.Rules.BranchNameSuffixTokenRule.ResolveBranchName(SimpleVersion.Pipeline.IVersionContext)
   name: ResolveBranchName(IVersionContext)
-  href: api/SimpleVersion.Rules.BranchNameSuffixTokenRule.html#SimpleVersion_Rules_BranchNameSuffixTokenRule_ResolveBranchName_SimpleVersion_Abstractions_Pipeline_IVersionContext_
-  commentId: M:SimpleVersion.Rules.BranchNameSuffixTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
-  fullName: SimpleVersion.Rules.BranchNameSuffixTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  href: api/SimpleVersion.Rules.BranchNameSuffixTokenRule.html#SimpleVersion_Rules_BranchNameSuffixTokenRule_ResolveBranchName_SimpleVersion_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Rules.BranchNameSuffixTokenRule.ResolveBranchName(SimpleVersion.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Rules.BranchNameSuffixTokenRule.ResolveBranchName(SimpleVersion.Pipeline.IVersionContext)
   nameWithType: BranchNameSuffixTokenRule.ResolveBranchName(IVersionContext)
 - uid: SimpleVersion.Rules.BranchNameSuffixTokenRule.ResolveBranchName*
   name: ResolveBranchName
@@ -1100,11 +1096,11 @@ references:
   commentId: Overload:SimpleVersion.Rules.BranchNameTokenRule.Instance
   fullName: SimpleVersion.Rules.BranchNameTokenRule.Instance
   nameWithType: BranchNameTokenRule.Instance
-- uid: SimpleVersion.Rules.BranchNameTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+- uid: SimpleVersion.Rules.BranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.IVersionContext)
   name: ResolveBranchName(IVersionContext)
-  href: api/SimpleVersion.Rules.BranchNameTokenRule.html#SimpleVersion_Rules_BranchNameTokenRule_ResolveBranchName_SimpleVersion_Abstractions_Pipeline_IVersionContext_
-  commentId: M:SimpleVersion.Rules.BranchNameTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
-  fullName: SimpleVersion.Rules.BranchNameTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  href: api/SimpleVersion.Rules.BranchNameTokenRule.html#SimpleVersion_Rules_BranchNameTokenRule_ResolveBranchName_SimpleVersion_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Rules.BranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Rules.BranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.IVersionContext)
   nameWithType: BranchNameTokenRule.ResolveBranchName(IVersionContext)
 - uid: SimpleVersion.Rules.BranchNameTokenRule.ResolveBranchName*
   name: ResolveBranchName
@@ -1148,13 +1144,13 @@ references:
   commentId: Overload:SimpleVersion.Rules.HeightTokenRule.#ctor
   fullName: SimpleVersion.Rules.HeightTokenRule.HeightTokenRule
   nameWithType: HeightTokenRule.HeightTokenRule
-- uid: SimpleVersion.Rules.HeightTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
+- uid: SimpleVersion.Rules.HeightTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
   name: Apply(IVersionContext, IEnumerable<String>)
-  href: api/SimpleVersion.Rules.HeightTokenRule.html#SimpleVersion_Rules_HeightTokenRule_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_System_String__
-  commentId: M:SimpleVersion.Rules.HeightTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
+  href: api/SimpleVersion.Rules.HeightTokenRule.html#SimpleVersion_Rules_HeightTokenRule_Apply_SimpleVersion_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:SimpleVersion.Rules.HeightTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
   name.vb: Apply(IVersionContext, IEnumerable(Of String))
-  fullName: SimpleVersion.Rules.HeightTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<System.String>)
-  fullName.vb: SimpleVersion.Rules.HeightTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of System.String))
+  fullName: SimpleVersion.Rules.HeightTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<System.String>)
+  fullName.vb: SimpleVersion.Rules.HeightTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of System.String))
   nameWithType: HeightTokenRule.Apply(IVersionContext, IEnumerable<String>)
   nameWithType.vb: HeightTokenRule.Apply(IVersionContext, IEnumerable(Of String))
 - uid: SimpleVersion.Rules.HeightTokenRule.Apply*
@@ -1187,11 +1183,11 @@ references:
   commentId: Overload:SimpleVersion.Rules.HeightTokenRule.Padded
   fullName: SimpleVersion.Rules.HeightTokenRule.Padded
   nameWithType: HeightTokenRule.Padded
-- uid: SimpleVersion.Rules.HeightTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.String)
+- uid: SimpleVersion.Rules.HeightTokenRule.Resolve(SimpleVersion.Pipeline.IVersionContext,System.String)
   name: Resolve(IVersionContext, String)
-  href: api/SimpleVersion.Rules.HeightTokenRule.html#SimpleVersion_Rules_HeightTokenRule_Resolve_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_String_
-  commentId: M:SimpleVersion.Rules.HeightTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.String)
-  fullName: SimpleVersion.Rules.HeightTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.String)
+  href: api/SimpleVersion.Rules.HeightTokenRule.html#SimpleVersion_Rules_HeightTokenRule_Resolve_SimpleVersion_Pipeline_IVersionContext_System_String_
+  commentId: M:SimpleVersion.Rules.HeightTokenRule.Resolve(SimpleVersion.Pipeline.IVersionContext,System.String)
+  fullName: SimpleVersion.Rules.HeightTokenRule.Resolve(SimpleVersion.Pipeline.IVersionContext, System.String)
   nameWithType: HeightTokenRule.Resolve(IVersionContext, String)
 - uid: SimpleVersion.Rules.HeightTokenRule.Resolve*
   name: Resolve
@@ -1211,6 +1207,64 @@ references:
   commentId: Overload:SimpleVersion.Rules.HeightTokenRule.Token
   fullName: SimpleVersion.Rules.HeightTokenRule.Token
   nameWithType: HeightTokenRule.Token
+- uid: SimpleVersion.Rules.ITokenRule`1
+  name: ITokenRule<T>
+  href: api/SimpleVersion.Rules.ITokenRule-1.html
+  commentId: T:SimpleVersion.Rules.ITokenRule`1
+  name.vb: ITokenRule(Of T)
+  fullName: SimpleVersion.Rules.ITokenRule<T>
+  fullName.vb: SimpleVersion.Rules.ITokenRule(Of T)
+  nameWithType: ITokenRule<T>
+  nameWithType.vb: ITokenRule(Of T)
+- uid: SimpleVersion.Rules.ITokenRule`1.Apply(SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{`0})
+  name: Apply(IVersionContext, IEnumerable<T>)
+  href: api/SimpleVersion.Rules.ITokenRule-1.html#SimpleVersion_Rules_ITokenRule_1_Apply_SimpleVersion_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable__0__
+  commentId: M:SimpleVersion.Rules.ITokenRule`1.Apply(SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{`0})
+  name.vb: Apply(IVersionContext, IEnumerable(Of T))
+  fullName: SimpleVersion.Rules.ITokenRule<T>.Apply(SimpleVersion.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<T>)
+  fullName.vb: SimpleVersion.Rules.ITokenRule(Of T).Apply(SimpleVersion.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of T))
+  nameWithType: ITokenRule<T>.Apply(IVersionContext, IEnumerable<T>)
+  nameWithType.vb: ITokenRule(Of T).Apply(IVersionContext, IEnumerable(Of T))
+- uid: SimpleVersion.Rules.ITokenRule`1.Apply*
+  name: Apply
+  href: api/SimpleVersion.Rules.ITokenRule-1.html#SimpleVersion_Rules_ITokenRule_1_Apply_
+  commentId: Overload:SimpleVersion.Rules.ITokenRule`1.Apply
+  fullName: SimpleVersion.Rules.ITokenRule<T>.Apply
+  fullName.vb: SimpleVersion.Rules.ITokenRule(Of T).Apply
+  nameWithType: ITokenRule<T>.Apply
+  nameWithType.vb: ITokenRule(Of T).Apply
+- uid: SimpleVersion.Rules.ITokenRule`1.Resolve(SimpleVersion.Pipeline.IVersionContext,`0)
+  name: Resolve(IVersionContext, T)
+  href: api/SimpleVersion.Rules.ITokenRule-1.html#SimpleVersion_Rules_ITokenRule_1_Resolve_SimpleVersion_Pipeline_IVersionContext__0_
+  commentId: M:SimpleVersion.Rules.ITokenRule`1.Resolve(SimpleVersion.Pipeline.IVersionContext,`0)
+  fullName: SimpleVersion.Rules.ITokenRule<T>.Resolve(SimpleVersion.Pipeline.IVersionContext, T)
+  fullName.vb: SimpleVersion.Rules.ITokenRule(Of T).Resolve(SimpleVersion.Pipeline.IVersionContext, T)
+  nameWithType: ITokenRule<T>.Resolve(IVersionContext, T)
+  nameWithType.vb: ITokenRule(Of T).Resolve(IVersionContext, T)
+- uid: SimpleVersion.Rules.ITokenRule`1.Resolve*
+  name: Resolve
+  href: api/SimpleVersion.Rules.ITokenRule-1.html#SimpleVersion_Rules_ITokenRule_1_Resolve_
+  commentId: Overload:SimpleVersion.Rules.ITokenRule`1.Resolve
+  fullName: SimpleVersion.Rules.ITokenRule<T>.Resolve
+  fullName.vb: SimpleVersion.Rules.ITokenRule(Of T).Resolve
+  nameWithType: ITokenRule<T>.Resolve
+  nameWithType.vb: ITokenRule(Of T).Resolve
+- uid: SimpleVersion.Rules.ITokenRule`1.Token
+  name: Token
+  href: api/SimpleVersion.Rules.ITokenRule-1.html#SimpleVersion_Rules_ITokenRule_1_Token
+  commentId: P:SimpleVersion.Rules.ITokenRule`1.Token
+  fullName: SimpleVersion.Rules.ITokenRule<T>.Token
+  fullName.vb: SimpleVersion.Rules.ITokenRule(Of T).Token
+  nameWithType: ITokenRule<T>.Token
+  nameWithType.vb: ITokenRule(Of T).Token
+- uid: SimpleVersion.Rules.ITokenRule`1.Token*
+  name: Token
+  href: api/SimpleVersion.Rules.ITokenRule-1.html#SimpleVersion_Rules_ITokenRule_1_Token_
+  commentId: Overload:SimpleVersion.Rules.ITokenRule`1.Token
+  fullName: SimpleVersion.Rules.ITokenRule<T>.Token
+  fullName.vb: SimpleVersion.Rules.ITokenRule(Of T).Token
+  nameWithType: ITokenRule<T>.Token
+  nameWithType.vb: ITokenRule(Of T).Token
 - uid: SimpleVersion.Rules.PullRequestIdTokenRule
   name: PullRequestIdTokenRule
   href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html
@@ -1229,13 +1283,13 @@ references:
   commentId: Overload:SimpleVersion.Rules.PullRequestIdTokenRule.#ctor
   fullName: SimpleVersion.Rules.PullRequestIdTokenRule.PullRequestIdTokenRule
   nameWithType: PullRequestIdTokenRule.PullRequestIdTokenRule
-- uid: SimpleVersion.Rules.PullRequestIdTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
+- uid: SimpleVersion.Rules.PullRequestIdTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
   name: Apply(IVersionContext, IEnumerable<String>)
-  href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_System_String__
-  commentId: M:SimpleVersion.Rules.PullRequestIdTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
+  href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule_Apply_SimpleVersion_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:SimpleVersion.Rules.PullRequestIdTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
   name.vb: Apply(IVersionContext, IEnumerable(Of String))
-  fullName: SimpleVersion.Rules.PullRequestIdTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<System.String>)
-  fullName.vb: SimpleVersion.Rules.PullRequestIdTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of System.String))
+  fullName: SimpleVersion.Rules.PullRequestIdTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<System.String>)
+  fullName.vb: SimpleVersion.Rules.PullRequestIdTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of System.String))
   nameWithType: PullRequestIdTokenRule.Apply(IVersionContext, IEnumerable<String>)
   nameWithType.vb: PullRequestIdTokenRule.Apply(IVersionContext, IEnumerable(Of String))
 - uid: SimpleVersion.Rules.PullRequestIdTokenRule.Apply*
@@ -1256,11 +1310,11 @@ references:
   commentId: Overload:SimpleVersion.Rules.PullRequestIdTokenRule.Instance
   fullName: SimpleVersion.Rules.PullRequestIdTokenRule.Instance
   nameWithType: PullRequestIdTokenRule.Instance
-- uid: SimpleVersion.Rules.PullRequestIdTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.String)
+- uid: SimpleVersion.Rules.PullRequestIdTokenRule.Resolve(SimpleVersion.Pipeline.IVersionContext,System.String)
   name: Resolve(IVersionContext, String)
-  href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule_Resolve_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_String_
-  commentId: M:SimpleVersion.Rules.PullRequestIdTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.String)
-  fullName: SimpleVersion.Rules.PullRequestIdTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.String)
+  href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule_Resolve_SimpleVersion_Pipeline_IVersionContext_System_String_
+  commentId: M:SimpleVersion.Rules.PullRequestIdTokenRule.Resolve(SimpleVersion.Pipeline.IVersionContext,System.String)
+  fullName: SimpleVersion.Rules.PullRequestIdTokenRule.Resolve(SimpleVersion.Pipeline.IVersionContext, System.String)
   nameWithType: PullRequestIdTokenRule.Resolve(IVersionContext, String)
 - uid: SimpleVersion.Rules.PullRequestIdTokenRule.Resolve*
   name: Resolve
@@ -1316,11 +1370,11 @@ references:
   commentId: Overload:SimpleVersion.Rules.ShortBranchNameTokenRule.Instance
   fullName: SimpleVersion.Rules.ShortBranchNameTokenRule.Instance
   nameWithType: ShortBranchNameTokenRule.Instance
-- uid: SimpleVersion.Rules.ShortBranchNameTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+- uid: SimpleVersion.Rules.ShortBranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.IVersionContext)
   name: ResolveBranchName(IVersionContext)
-  href: api/SimpleVersion.Rules.ShortBranchNameTokenRule.html#SimpleVersion_Rules_ShortBranchNameTokenRule_ResolveBranchName_SimpleVersion_Abstractions_Pipeline_IVersionContext_
-  commentId: M:SimpleVersion.Rules.ShortBranchNameTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
-  fullName: SimpleVersion.Rules.ShortBranchNameTokenRule.ResolveBranchName(SimpleVersion.Abstractions.Pipeline.IVersionContext)
+  href: api/SimpleVersion.Rules.ShortBranchNameTokenRule.html#SimpleVersion_Rules_ShortBranchNameTokenRule_ResolveBranchName_SimpleVersion_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Rules.ShortBranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Rules.ShortBranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.IVersionContext)
   nameWithType: ShortBranchNameTokenRule.ResolveBranchName(IVersionContext)
 - uid: SimpleVersion.Rules.ShortBranchNameTokenRule.ResolveBranchName*
   name: ResolveBranchName
@@ -1358,13 +1412,13 @@ references:
   commentId: Overload:SimpleVersion.Rules.ShortShaTokenRule.#ctor
   fullName: SimpleVersion.Rules.ShortShaTokenRule.ShortShaTokenRule
   nameWithType: ShortShaTokenRule.ShortShaTokenRule
-- uid: SimpleVersion.Rules.ShortShaTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
+- uid: SimpleVersion.Rules.ShortShaTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
   name: Apply(IVersionContext, IEnumerable<String>)
-  href: api/SimpleVersion.Rules.ShortShaTokenRule.html#SimpleVersion_Rules_ShortShaTokenRule_Apply_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_System_String__
-  commentId: M:SimpleVersion.Rules.ShortShaTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
+  href: api/SimpleVersion.Rules.ShortShaTokenRule.html#SimpleVersion_Rules_ShortShaTokenRule_Apply_SimpleVersion_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_System_String__
+  commentId: M:SimpleVersion.Rules.ShortShaTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
   name.vb: Apply(IVersionContext, IEnumerable(Of String))
-  fullName: SimpleVersion.Rules.ShortShaTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<System.String>)
-  fullName.vb: SimpleVersion.Rules.ShortShaTokenRule.Apply(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of System.String))
+  fullName: SimpleVersion.Rules.ShortShaTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<System.String>)
+  fullName.vb: SimpleVersion.Rules.ShortShaTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of System.String))
   nameWithType: ShortShaTokenRule.Apply(IVersionContext, IEnumerable<String>)
   nameWithType.vb: ShortShaTokenRule.Apply(IVersionContext, IEnumerable(Of String))
 - uid: SimpleVersion.Rules.ShortShaTokenRule.Apply*
@@ -1385,11 +1439,11 @@ references:
   commentId: Overload:SimpleVersion.Rules.ShortShaTokenRule.Instance
   fullName: SimpleVersion.Rules.ShortShaTokenRule.Instance
   nameWithType: ShortShaTokenRule.Instance
-- uid: SimpleVersion.Rules.ShortShaTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.String)
+- uid: SimpleVersion.Rules.ShortShaTokenRule.Resolve(SimpleVersion.Pipeline.IVersionContext,System.String)
   name: Resolve(IVersionContext, String)
-  href: api/SimpleVersion.Rules.ShortShaTokenRule.html#SimpleVersion_Rules_ShortShaTokenRule_Resolve_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_String_
-  commentId: M:SimpleVersion.Rules.ShortShaTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext,System.String)
-  fullName: SimpleVersion.Rules.ShortShaTokenRule.Resolve(SimpleVersion.Abstractions.Pipeline.IVersionContext, System.String)
+  href: api/SimpleVersion.Rules.ShortShaTokenRule.html#SimpleVersion_Rules_ShortShaTokenRule_Resolve_SimpleVersion_Pipeline_IVersionContext_System_String_
+  commentId: M:SimpleVersion.Rules.ShortShaTokenRule.Resolve(SimpleVersion.Pipeline.IVersionContext,System.String)
+  fullName: SimpleVersion.Rules.ShortShaTokenRule.Resolve(SimpleVersion.Pipeline.IVersionContext, System.String)
   nameWithType: ShortShaTokenRule.Resolve(IVersionContext, String)
 - uid: SimpleVersion.Rules.ShortShaTokenRule.Resolve*
   name: Resolve
@@ -1421,13 +1475,13 @@ references:
   commentId: Overload:SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules
   fullName: SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules
   nameWithType: TokenRuleExtensions.ApplyTokenRules
-- uid: SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules``1(System.Collections.Generic.IEnumerable{``0},SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Abstractions.Rules.ITokenRule{``0}})
+- uid: SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules``1(System.Collections.Generic.IEnumerable{``0},SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Rules.ITokenRule{``0}})
   name: ApplyTokenRules<T>(IEnumerable<T>, IVersionContext, IEnumerable<ITokenRule<T>>)
-  href: api/SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ApplyTokenRules__1_System_Collections_Generic_IEnumerable___0__SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Abstractions_Rules_ITokenRule___0___
-  commentId: M:SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules``1(System.Collections.Generic.IEnumerable{``0},SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Abstractions.Rules.ITokenRule{``0}})
+  href: api/SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ApplyTokenRules__1_System_Collections_Generic_IEnumerable___0__SimpleVersion_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Rules_ITokenRule___0___
+  commentId: M:SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules``1(System.Collections.Generic.IEnumerable{``0},SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Rules.ITokenRule{``0}})
   name.vb: ApplyTokenRules(Of T)(IEnumerable(Of T), IVersionContext, IEnumerable(Of ITokenRule(Of T)))
-  fullName: SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules<T>(System.Collections.Generic.IEnumerable<T>, SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<SimpleVersion.Abstractions.Rules.ITokenRule<T>>)
-  fullName.vb: SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules(Of T)(System.Collections.Generic.IEnumerable(Of T), SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of SimpleVersion.Abstractions.Rules.ITokenRule(Of T)))
+  fullName: SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules<T>(System.Collections.Generic.IEnumerable<T>, SimpleVersion.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<SimpleVersion.Rules.ITokenRule<T>>)
+  fullName.vb: SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules(Of T)(System.Collections.Generic.IEnumerable(Of T), SimpleVersion.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of SimpleVersion.Rules.ITokenRule(Of T)))
   nameWithType: TokenRuleExtensions.ApplyTokenRules<T>(IEnumerable<T>, IVersionContext, IEnumerable<ITokenRule<T>>)
   nameWithType.vb: TokenRuleExtensions.ApplyTokenRules(Of T)(IEnumerable(Of T), IVersionContext, IEnumerable(Of ITokenRule(Of T)))
 - uid: SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules*
@@ -1436,48 +1490,245 @@ references:
   commentId: Overload:SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules
   fullName: SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules
   nameWithType: TokenRuleExtensions.ResolveTokenRules
-- uid: SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules``1(``0,SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Abstractions.Rules.ITokenRule{``0}})
+- uid: SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules``1(``0,SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Rules.ITokenRule{``0}})
   name: ResolveTokenRules<T>(T, IVersionContext, IEnumerable<ITokenRule<T>>)
-  href: api/SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Abstractions_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Abstractions_Rules_ITokenRule___0___
-  commentId: M:SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules``1(``0,SimpleVersion.Abstractions.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Abstractions.Rules.ITokenRule{``0}})
+  href: api/SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Rules_ITokenRule___0___
+  commentId: M:SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules``1(``0,SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Rules.ITokenRule{``0}})
   name.vb: ResolveTokenRules(Of T)(T, IVersionContext, IEnumerable(Of ITokenRule(Of T)))
-  fullName: SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules<T>(T, SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<SimpleVersion.Abstractions.Rules.ITokenRule<T>>)
-  fullName.vb: SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules(Of T)(T, SimpleVersion.Abstractions.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of SimpleVersion.Abstractions.Rules.ITokenRule(Of T)))
+  fullName: SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules<T>(T, SimpleVersion.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable<SimpleVersion.Rules.ITokenRule<T>>)
+  fullName.vb: SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules(Of T)(T, SimpleVersion.Pipeline.IVersionContext, System.Collections.Generic.IEnumerable(Of SimpleVersion.Rules.ITokenRule(Of T)))
   nameWithType: TokenRuleExtensions.ResolveTokenRules<T>(T, IVersionContext, IEnumerable<ITokenRule<T>>)
   nameWithType.vb: TokenRuleExtensions.ResolveTokenRules(Of T)(T, IVersionContext, IEnumerable(Of ITokenRule(Of T)))
-- uid: SimpleVersion.StringExtensions
-  name: StringExtensions
-  href: api/SimpleVersion.StringExtensions.html
-  commentId: T:SimpleVersion.StringExtensions
-  fullName: SimpleVersion.StringExtensions
-  nameWithType: StringExtensions
-- uid: SimpleVersion.StringExtensions.FormatWith(System.String,System.Object[])
-  name: FormatWith(String, Object[])
-  href: api/SimpleVersion.StringExtensions.html#SimpleVersion_StringExtensions_FormatWith_System_String_System_Object___
-  commentId: M:SimpleVersion.StringExtensions.FormatWith(System.String,System.Object[])
-  name.vb: FormatWith(String, Object())
-  fullName: SimpleVersion.StringExtensions.FormatWith(System.String, System.Object[])
-  fullName.vb: SimpleVersion.StringExtensions.FormatWith(System.String, System.Object())
-  nameWithType: StringExtensions.FormatWith(String, Object[])
-  nameWithType.vb: StringExtensions.FormatWith(String, Object())
-- uid: SimpleVersion.StringExtensions.FormatWith*
-  name: FormatWith
-  href: api/SimpleVersion.StringExtensions.html#SimpleVersion_StringExtensions_FormatWith_
-  commentId: Overload:SimpleVersion.StringExtensions.FormatWith
-  fullName: SimpleVersion.StringExtensions.FormatWith
-  nameWithType: StringExtensions.FormatWith
-- uid: SimpleVersion.StringExtensions.ToBool(System.String)
-  name: ToBool(String)
-  href: api/SimpleVersion.StringExtensions.html#SimpleVersion_StringExtensions_ToBool_System_String_
-  commentId: M:SimpleVersion.StringExtensions.ToBool(System.String)
-  fullName: SimpleVersion.StringExtensions.ToBool(System.String)
-  nameWithType: StringExtensions.ToBool(String)
-- uid: SimpleVersion.StringExtensions.ToBool*
-  name: ToBool
-  href: api/SimpleVersion.StringExtensions.html#SimpleVersion_StringExtensions_ToBool_
-  commentId: Overload:SimpleVersion.StringExtensions.ToBool
-  fullName: SimpleVersion.StringExtensions.ToBool
-  nameWithType: StringExtensions.ToBool
+- uid: SimpleVersion.Serialization
+  name: SimpleVersion.Serialization
+  href: api/SimpleVersion.Serialization.html
+  commentId: N:SimpleVersion.Serialization
+  fullName: SimpleVersion.Serialization
+  nameWithType: SimpleVersion.Serialization
+- uid: SimpleVersion.Serialization.Converters
+  name: SimpleVersion.Serialization.Converters
+  href: api/SimpleVersion.Serialization.Converters.html
+  commentId: N:SimpleVersion.Serialization.Converters
+  fullName: SimpleVersion.Serialization.Converters
+  nameWithType: SimpleVersion.Serialization.Converters
+- uid: SimpleVersion.Serialization.Converters.DictionaryConverter
+  name: DictionaryConverter
+  href: api/SimpleVersion.Serialization.Converters.DictionaryConverter.html
+  commentId: T:SimpleVersion.Serialization.Converters.DictionaryConverter
+  fullName: SimpleVersion.Serialization.Converters.DictionaryConverter
+  nameWithType: DictionaryConverter
+- uid: SimpleVersion.Serialization.Converters.DictionaryConverter.#ctor
+  name: DictionaryConverter()
+  href: api/SimpleVersion.Serialization.Converters.DictionaryConverter.html#SimpleVersion_Serialization_Converters_DictionaryConverter__ctor
+  commentId: M:SimpleVersion.Serialization.Converters.DictionaryConverter.#ctor
+  fullName: SimpleVersion.Serialization.Converters.DictionaryConverter.DictionaryConverter()
+  nameWithType: DictionaryConverter.DictionaryConverter()
+- uid: SimpleVersion.Serialization.Converters.DictionaryConverter.#ctor*
+  name: DictionaryConverter
+  href: api/SimpleVersion.Serialization.Converters.DictionaryConverter.html#SimpleVersion_Serialization_Converters_DictionaryConverter__ctor_
+  commentId: Overload:SimpleVersion.Serialization.Converters.DictionaryConverter.#ctor
+  fullName: SimpleVersion.Serialization.Converters.DictionaryConverter.DictionaryConverter
+  nameWithType: DictionaryConverter.DictionaryConverter
+- uid: SimpleVersion.Serialization.Converters.DictionaryConverter.CanConvert(System.Type)
+  name: CanConvert(Type)
+  href: api/SimpleVersion.Serialization.Converters.DictionaryConverter.html#SimpleVersion_Serialization_Converters_DictionaryConverter_CanConvert_System_Type_
+  commentId: M:SimpleVersion.Serialization.Converters.DictionaryConverter.CanConvert(System.Type)
+  fullName: SimpleVersion.Serialization.Converters.DictionaryConverter.CanConvert(System.Type)
+  nameWithType: DictionaryConverter.CanConvert(Type)
+- uid: SimpleVersion.Serialization.Converters.DictionaryConverter.CanConvert*
+  name: CanConvert
+  href: api/SimpleVersion.Serialization.Converters.DictionaryConverter.html#SimpleVersion_Serialization_Converters_DictionaryConverter_CanConvert_
+  commentId: Overload:SimpleVersion.Serialization.Converters.DictionaryConverter.CanConvert
+  fullName: SimpleVersion.Serialization.Converters.DictionaryConverter.CanConvert
+  nameWithType: DictionaryConverter.CanConvert
+- uid: SimpleVersion.Serialization.Converters.DictionaryConverter.CreateConverter(System.Type,System.Text.Json.JsonSerializerOptions)
+  name: CreateConverter(Type, JsonSerializerOptions)
+  href: api/SimpleVersion.Serialization.Converters.DictionaryConverter.html#SimpleVersion_Serialization_Converters_DictionaryConverter_CreateConverter_System_Type_System_Text_Json_JsonSerializerOptions_
+  commentId: M:SimpleVersion.Serialization.Converters.DictionaryConverter.CreateConverter(System.Type,System.Text.Json.JsonSerializerOptions)
+  fullName: SimpleVersion.Serialization.Converters.DictionaryConverter.CreateConverter(System.Type, System.Text.Json.JsonSerializerOptions)
+  nameWithType: DictionaryConverter.CreateConverter(Type, JsonSerializerOptions)
+- uid: SimpleVersion.Serialization.Converters.DictionaryConverter.CreateConverter*
+  name: CreateConverter
+  href: api/SimpleVersion.Serialization.Converters.DictionaryConverter.html#SimpleVersion_Serialization_Converters_DictionaryConverter_CreateConverter_
+  commentId: Overload:SimpleVersion.Serialization.Converters.DictionaryConverter.CreateConverter
+  fullName: SimpleVersion.Serialization.Converters.DictionaryConverter.CreateConverter
+  nameWithType: DictionaryConverter.CreateConverter
+- uid: SimpleVersion.Serialization.Converters.DictionaryConverter`2
+  name: DictionaryConverter<TKey, TValue>
+  href: api/SimpleVersion.Serialization.Converters.DictionaryConverter-2.html
+  commentId: T:SimpleVersion.Serialization.Converters.DictionaryConverter`2
+  name.vb: DictionaryConverter(Of TKey, TValue)
+  fullName: SimpleVersion.Serialization.Converters.DictionaryConverter<TKey, TValue>
+  fullName.vb: SimpleVersion.Serialization.Converters.DictionaryConverter(Of TKey, TValue)
+  nameWithType: DictionaryConverter<TKey, TValue>
+  nameWithType.vb: DictionaryConverter(Of TKey, TValue)
+- uid: SimpleVersion.Serialization.Converters.DictionaryConverter`2.#ctor
+  name: DictionaryConverter()
+  href: api/SimpleVersion.Serialization.Converters.DictionaryConverter-2.html#SimpleVersion_Serialization_Converters_DictionaryConverter_2__ctor
+  commentId: M:SimpleVersion.Serialization.Converters.DictionaryConverter`2.#ctor
+  fullName: SimpleVersion.Serialization.Converters.DictionaryConverter<TKey, TValue>.DictionaryConverter()
+  fullName.vb: SimpleVersion.Serialization.Converters.DictionaryConverter(Of TKey, TValue).DictionaryConverter()
+  nameWithType: DictionaryConverter<TKey, TValue>.DictionaryConverter()
+  nameWithType.vb: DictionaryConverter(Of TKey, TValue).DictionaryConverter()
+- uid: SimpleVersion.Serialization.Converters.DictionaryConverter`2.#ctor*
+  name: DictionaryConverter
+  href: api/SimpleVersion.Serialization.Converters.DictionaryConverter-2.html#SimpleVersion_Serialization_Converters_DictionaryConverter_2__ctor_
+  commentId: Overload:SimpleVersion.Serialization.Converters.DictionaryConverter`2.#ctor
+  fullName: SimpleVersion.Serialization.Converters.DictionaryConverter<TKey, TValue>.DictionaryConverter
+  fullName.vb: SimpleVersion.Serialization.Converters.DictionaryConverter(Of TKey, TValue).DictionaryConverter
+  nameWithType: DictionaryConverter<TKey, TValue>.DictionaryConverter
+  nameWithType.vb: DictionaryConverter(Of TKey, TValue).DictionaryConverter
+- uid: SimpleVersion.Serialization.Converters.DictionaryConverter`2.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  name: Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  href: api/SimpleVersion.Serialization.Converters.DictionaryConverter-2.html#SimpleVersion_Serialization_Converters_DictionaryConverter_2_Read_System_Text_Json_Utf8JsonReader__System_Type_System_Text_Json_JsonSerializerOptions_
+  commentId: M:SimpleVersion.Serialization.Converters.DictionaryConverter`2.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  name.vb: Read(ByRef Utf8JsonReader, Type, JsonSerializerOptions)
+  fullName: SimpleVersion.Serialization.Converters.DictionaryConverter<TKey, TValue>.Read(ref System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  fullName.vb: SimpleVersion.Serialization.Converters.DictionaryConverter(Of TKey, TValue).Read(ByRef System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  nameWithType: DictionaryConverter<TKey, TValue>.Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  nameWithType.vb: DictionaryConverter(Of TKey, TValue).Read(ByRef Utf8JsonReader, Type, JsonSerializerOptions)
+- uid: SimpleVersion.Serialization.Converters.DictionaryConverter`2.Read*
+  name: Read
+  href: api/SimpleVersion.Serialization.Converters.DictionaryConverter-2.html#SimpleVersion_Serialization_Converters_DictionaryConverter_2_Read_
+  commentId: Overload:SimpleVersion.Serialization.Converters.DictionaryConverter`2.Read
+  fullName: SimpleVersion.Serialization.Converters.DictionaryConverter<TKey, TValue>.Read
+  fullName.vb: SimpleVersion.Serialization.Converters.DictionaryConverter(Of TKey, TValue).Read
+  nameWithType: DictionaryConverter<TKey, TValue>.Read
+  nameWithType.vb: DictionaryConverter(Of TKey, TValue).Read
+- uid: SimpleVersion.Serialization.Converters.DictionaryConverter`2.Write(System.Text.Json.Utf8JsonWriter,System.Collections.Generic.Dictionary{`0,`1},System.Text.Json.JsonSerializerOptions)
+  name: Write(Utf8JsonWriter, Dictionary<TKey, TValue>, JsonSerializerOptions)
+  href: api/SimpleVersion.Serialization.Converters.DictionaryConverter-2.html#SimpleVersion_Serialization_Converters_DictionaryConverter_2_Write_System_Text_Json_Utf8JsonWriter_System_Collections_Generic_Dictionary__0__1__System_Text_Json_JsonSerializerOptions_
+  commentId: M:SimpleVersion.Serialization.Converters.DictionaryConverter`2.Write(System.Text.Json.Utf8JsonWriter,System.Collections.Generic.Dictionary{`0,`1},System.Text.Json.JsonSerializerOptions)
+  name.vb: Write(Utf8JsonWriter, Dictionary(Of TKey, TValue), JsonSerializerOptions)
+  fullName: SimpleVersion.Serialization.Converters.DictionaryConverter<TKey, TValue>.Write(System.Text.Json.Utf8JsonWriter, System.Collections.Generic.Dictionary<TKey, TValue>, System.Text.Json.JsonSerializerOptions)
+  fullName.vb: SimpleVersion.Serialization.Converters.DictionaryConverter(Of TKey, TValue).Write(System.Text.Json.Utf8JsonWriter, System.Collections.Generic.Dictionary(Of TKey, TValue), System.Text.Json.JsonSerializerOptions)
+  nameWithType: DictionaryConverter<TKey, TValue>.Write(Utf8JsonWriter, Dictionary<TKey, TValue>, JsonSerializerOptions)
+  nameWithType.vb: DictionaryConverter(Of TKey, TValue).Write(Utf8JsonWriter, Dictionary(Of TKey, TValue), JsonSerializerOptions)
+- uid: SimpleVersion.Serialization.Converters.DictionaryConverter`2.Write*
+  name: Write
+  href: api/SimpleVersion.Serialization.Converters.DictionaryConverter-2.html#SimpleVersion_Serialization_Converters_DictionaryConverter_2_Write_
+  commentId: Overload:SimpleVersion.Serialization.Converters.DictionaryConverter`2.Write
+  fullName: SimpleVersion.Serialization.Converters.DictionaryConverter<TKey, TValue>.Write
+  fullName.vb: SimpleVersion.Serialization.Converters.DictionaryConverter(Of TKey, TValue).Write
+  nameWithType: DictionaryConverter<TKey, TValue>.Write
+  nameWithType.vb: DictionaryConverter(Of TKey, TValue).Write
+- uid: SimpleVersion.Serialization.Converters.IntConverter
+  name: IntConverter
+  href: api/SimpleVersion.Serialization.Converters.IntConverter.html
+  commentId: T:SimpleVersion.Serialization.Converters.IntConverter
+  fullName: SimpleVersion.Serialization.Converters.IntConverter
+  nameWithType: IntConverter
+- uid: SimpleVersion.Serialization.Converters.IntConverter.#ctor
+  name: IntConverter()
+  href: api/SimpleVersion.Serialization.Converters.IntConverter.html#SimpleVersion_Serialization_Converters_IntConverter__ctor
+  commentId: M:SimpleVersion.Serialization.Converters.IntConverter.#ctor
+  fullName: SimpleVersion.Serialization.Converters.IntConverter.IntConverter()
+  nameWithType: IntConverter.IntConverter()
+- uid: SimpleVersion.Serialization.Converters.IntConverter.#ctor*
+  name: IntConverter
+  href: api/SimpleVersion.Serialization.Converters.IntConverter.html#SimpleVersion_Serialization_Converters_IntConverter__ctor_
+  commentId: Overload:SimpleVersion.Serialization.Converters.IntConverter.#ctor
+  fullName: SimpleVersion.Serialization.Converters.IntConverter.IntConverter
+  nameWithType: IntConverter.IntConverter
+- uid: SimpleVersion.Serialization.Converters.IntConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  name: Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  href: api/SimpleVersion.Serialization.Converters.IntConverter.html#SimpleVersion_Serialization_Converters_IntConverter_Read_System_Text_Json_Utf8JsonReader__System_Type_System_Text_Json_JsonSerializerOptions_
+  commentId: M:SimpleVersion.Serialization.Converters.IntConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
+  name.vb: Read(ByRef Utf8JsonReader, Type, JsonSerializerOptions)
+  fullName: SimpleVersion.Serialization.Converters.IntConverter.Read(ref System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  fullName.vb: SimpleVersion.Serialization.Converters.IntConverter.Read(ByRef System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)
+  nameWithType: IntConverter.Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
+  nameWithType.vb: IntConverter.Read(ByRef Utf8JsonReader, Type, JsonSerializerOptions)
+- uid: SimpleVersion.Serialization.Converters.IntConverter.Read*
+  name: Read
+  href: api/SimpleVersion.Serialization.Converters.IntConverter.html#SimpleVersion_Serialization_Converters_IntConverter_Read_
+  commentId: Overload:SimpleVersion.Serialization.Converters.IntConverter.Read
+  fullName: SimpleVersion.Serialization.Converters.IntConverter.Read
+  nameWithType: IntConverter.Read
+- uid: SimpleVersion.Serialization.Converters.IntConverter.Write(System.Text.Json.Utf8JsonWriter,System.Int32,System.Text.Json.JsonSerializerOptions)
+  name: Write(Utf8JsonWriter, Int32, JsonSerializerOptions)
+  href: api/SimpleVersion.Serialization.Converters.IntConverter.html#SimpleVersion_Serialization_Converters_IntConverter_Write_System_Text_Json_Utf8JsonWriter_System_Int32_System_Text_Json_JsonSerializerOptions_
+  commentId: M:SimpleVersion.Serialization.Converters.IntConverter.Write(System.Text.Json.Utf8JsonWriter,System.Int32,System.Text.Json.JsonSerializerOptions)
+  fullName: SimpleVersion.Serialization.Converters.IntConverter.Write(System.Text.Json.Utf8JsonWriter, System.Int32, System.Text.Json.JsonSerializerOptions)
+  nameWithType: IntConverter.Write(Utf8JsonWriter, Int32, JsonSerializerOptions)
+- uid: SimpleVersion.Serialization.Converters.IntConverter.Write*
+  name: Write
+  href: api/SimpleVersion.Serialization.Converters.IntConverter.html#SimpleVersion_Serialization_Converters_IntConverter_Write_
+  commentId: Overload:SimpleVersion.Serialization.Converters.IntConverter.Write
+  fullName: SimpleVersion.Serialization.Converters.IntConverter.Write
+  nameWithType: IntConverter.Write
+- uid: SimpleVersion.Serialization.Serializer
+  name: Serializer
+  href: api/SimpleVersion.Serialization.Serializer.html
+  commentId: T:SimpleVersion.Serialization.Serializer
+  fullName: SimpleVersion.Serialization.Serializer
+  nameWithType: Serializer
+- uid: SimpleVersion.Serialization.Serializer.Deserialize*
+  name: Deserialize
+  href: api/SimpleVersion.Serialization.Serializer.html#SimpleVersion_Serialization_Serializer_Deserialize_
+  commentId: Overload:SimpleVersion.Serialization.Serializer.Deserialize
+  fullName: SimpleVersion.Serialization.Serializer.Deserialize
+  nameWithType: Serializer.Deserialize
+- uid: SimpleVersion.Serialization.Serializer.Deserialize``1(System.String)
+  name: Deserialize<T>(String)
+  href: api/SimpleVersion.Serialization.Serializer.html#SimpleVersion_Serialization_Serializer_Deserialize__1_System_String_
+  commentId: M:SimpleVersion.Serialization.Serializer.Deserialize``1(System.String)
+  name.vb: Deserialize(Of T)(String)
+  fullName: SimpleVersion.Serialization.Serializer.Deserialize<T>(System.String)
+  fullName.vb: SimpleVersion.Serialization.Serializer.Deserialize(Of T)(System.String)
+  nameWithType: Serializer.Deserialize<T>(String)
+  nameWithType.vb: Serializer.Deserialize(Of T)(String)
+- uid: SimpleVersion.Serialization.Serializer.Serialize(System.Object)
+  name: Serialize(Object)
+  href: api/SimpleVersion.Serialization.Serializer.html#SimpleVersion_Serialization_Serializer_Serialize_System_Object_
+  commentId: M:SimpleVersion.Serialization.Serializer.Serialize(System.Object)
+  fullName: SimpleVersion.Serialization.Serializer.Serialize(System.Object)
+  nameWithType: Serializer.Serialize(Object)
+- uid: SimpleVersion.Serialization.Serializer.Serialize*
+  name: Serialize
+  href: api/SimpleVersion.Serialization.Serializer.html#SimpleVersion_Serialization_Serializer_Serialize_
+  commentId: Overload:SimpleVersion.Serialization.Serializer.Serialize
+  fullName: SimpleVersion.Serialization.Serializer.Serialize
+  nameWithType: Serializer.Serialize
+- uid: SimpleVersion.Tool
+  name: SimpleVersion.Tool
+  href: api/SimpleVersion.Tool.html
+  commentId: N:SimpleVersion.Tool
+  fullName: SimpleVersion.Tool
+  nameWithType: SimpleVersion.Tool
+- uid: SimpleVersion.Tool.Program
+  name: Program
+  href: api/SimpleVersion.Tool.Program.html
+  commentId: T:SimpleVersion.Tool.Program
+  fullName: SimpleVersion.Tool.Program
+  nameWithType: Program
+- uid: SimpleVersion.Tool.Program.#ctor
+  name: Program()
+  href: api/SimpleVersion.Tool.Program.html#SimpleVersion_Tool_Program__ctor
+  commentId: M:SimpleVersion.Tool.Program.#ctor
+  fullName: SimpleVersion.Tool.Program.Program()
+  nameWithType: Program.Program()
+- uid: SimpleVersion.Tool.Program.#ctor*
+  name: Program
+  href: api/SimpleVersion.Tool.Program.html#SimpleVersion_Tool_Program__ctor_
+  commentId: Overload:SimpleVersion.Tool.Program.#ctor
+  fullName: SimpleVersion.Tool.Program.Program
+  nameWithType: Program.Program
+- uid: SimpleVersion.Tool.Program.Main(System.String[])
+  name: Main(String[])
+  href: api/SimpleVersion.Tool.Program.html#SimpleVersion_Tool_Program_Main_System_String___
+  commentId: M:SimpleVersion.Tool.Program.Main(System.String[])
+  name.vb: Main(String())
+  fullName: SimpleVersion.Tool.Program.Main(System.String[])
+  fullName.vb: SimpleVersion.Tool.Program.Main(System.String())
+  nameWithType: Program.Main(String[])
+  nameWithType.vb: Program.Main(String())
+- uid: SimpleVersion.Tool.Program.Main*
+  name: Main
+  href: api/SimpleVersion.Tool.Program.html#SimpleVersion_Tool_Program_Main_
+  commentId: Overload:SimpleVersion.Tool.Program.Main
+  fullName: SimpleVersion.Tool.Program.Main
+  nameWithType: Program.Main
 - uid: SimpleVersion.VersionCalculator
   name: VersionCalculator
   href: api/SimpleVersion.VersionCalculator.html

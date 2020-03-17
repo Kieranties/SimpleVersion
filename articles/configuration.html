@@ -72,31 +72,31 @@
 <p>SimpleVersion reads the <code>.simpleversion.json</code> from the root of your git repo.
 This file provides various configuration options.</p>
 <h2 id="version">Version</h2>
-<p>The <code>Version</code> property allows you to specify the base version to be generated.
+<p>The <code>version</code> property allows you to specify the base version to be generated.
 You  may set the property with a version string that consists of one to four
 dot separated digits.</p>
 <p>All of the following are accepted values:</p>
-<pre><code class="lang-json">&quot;Version&quot; : &quot;1&quot;
-&quot;Version&quot; : &quot;1.2&quot;
-&quot;Version&quot; : &quot;1.2.3&quot;
-&quot;Version&quot; : &quot;1.2.3.4&quot;
+<pre><code class="lang-json">&quot;version&quot; : &quot;1&quot;
+&quot;version&quot; : &quot;1.2&quot;
+&quot;version&quot; : &quot;1.2.3&quot;
+&quot;version&quot; : &quot;1.2.3.4&quot;
 </code></pre>
 <h2 id="label">Label</h2>
-<p>The <code>Label</code> property specifies an array of labels to be included in the version.</p>
-<pre><code class="lang-json">&quot;Label&quot; : []
-&quot;Label&quot; : [&quot;alpha1&quot;]
-&quot;Label&quot; : [&quot;alpha1&quot;, &quot;test&quot;]
+<p>The <code>label</code> property specifies an array of labels to be included in the version.</p>
+<pre><code class="lang-json">&quot;label&quot; : []
+&quot;label&quot; : [&quot;alpha1&quot;]
+&quot;label&quot; : [&quot;alpha1&quot;, &quot;test&quot;]
 </code></pre>
 <div class="NOTE">
 <h5>Note</h5>
 <p>By specifying values in the label, the version will be returned as a pre-release version.</p>
 </div>
 <h2 id="metadata">Metadata</h2>
-<p>The <code>Metadata</code> property specifies an array of values to be included as metadata
+<p>The <code>metadata</code> property specifies an array of values to be included as metadata
 in the final version.</p>
-<pre><code class="lang-json">&quot;Metadata&quot; : []
-&quot;Metadata&quot; : [&quot;demo&quot;]
-&quot;Metadata&quot; : [&quot;demo&quot;, &quot;sprint1&quot;]
+<pre><code class="lang-json">&quot;metadata&quot; : []
+&quot;metadata&quot; : [&quot;demo&quot;]
+&quot;metadata&quot; : [&quot;demo&quot;, &quot;sprint1&quot;]
 </code></pre>
 <div class="WARNING">
 <h5>Warning</h5>
@@ -106,15 +106,15 @@ in the final version.</p>
 <p>Sometimes you may need to adjust the base value of the height. This could be
 when migrating from a previous versioning pattern, if a number of commits
 should be discounted, or any other reason.</p>
-<p>Specify the <code>Offset</code> as a numeric value to impact the base value of the height.</p>
-<pre><code class="lang-json">&quot;Offset&quot; : -5
-&quot;Offset&quot; : 4
+<p>Specify the <code>offset</code> as a numeric value to impact the base value of the height.</p>
+<pre><code class="lang-json">&quot;offset&quot; : -5
+&quot;offset&quot; : 4
 </code></pre>
 <h2 id="branches">Branches</h2>
-<p>The <code>Branches</code> section allows for branch specific rules and configuration to
+<p>The <code>branches</code> section allows for branch specific rules and configuration to
 be applied based on the branch currently being built.</p>
 <h3 id="release">Release</h3>
-<p><code>Release</code> allows for a list of regular expressions to be defined where each
+<p><code>release</code> allows for a list of regular expressions to be defined where each
 may match to the current branch being built. If the current branch does not match
 any of the expressions it will have the short sha of the current commit added
 to the <code>Labels</code> property prefixed with <code>c</code> (for commit).</p>
