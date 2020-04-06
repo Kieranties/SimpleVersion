@@ -1,11 +1,11 @@
-// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+﻿// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 namespace SimpleVersion
 {
     /// <summary>
     /// Contract for accessing environment variables.
     /// </summary>
-    public interface IEnvironment
+    public interface IVersionEnvironment
     {
         /// <summary>
         /// Gets the value of the given variable name.

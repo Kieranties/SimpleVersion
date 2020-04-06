@@ -1,6 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System;
+using Microsoft.Extensions.DependencyInjection;
 using SimpleVersion.Serialization;
 
 namespace SimpleVersion.Tool
@@ -26,9 +27,13 @@ namespace SimpleVersion.Tool
                     path = args[0];
                 }
 
-                var result = VersionCalculator
-                    .Default()
-                    .GetResult(path);
+                var services = new ServiceCollection()
+                    .AddSimpleVersion()
+                    .BuildServiceProvider();
+
+                var calculator = services.GetRequiredService<IVersionCalculator>();
+
+                var result = calculator.GetResult(path);
 
                 Console.Out.WriteLine(Serializer.Serialize(result));
             }

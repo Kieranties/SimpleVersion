@@ -24,3 +24,8 @@
     "Usage",
     "CA1062:Validate arguments of public methods",
     Justification = "Tests do not require validation")]
+
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage(
+    "Performance",
+    "CA1822:Mark members as static",
+    Justification = "Tests do not require enforcement of statics")]

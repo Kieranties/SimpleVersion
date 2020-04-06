@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <PackageReference Include="GitTools.Testing" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
     <PackageReference Include="System.Text.Json" />
   </ItemGroup>
 

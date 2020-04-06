@@ -5,7 +5,7 @@ namespace SimpleVersion
     /// <summary>
     /// Enables access to environment variables.
     /// </summary>
-    public class VersioningEnvironment : IEnvironment
+    public class VersionEnvironment : IVersionEnvironment
     {
         /// <inheritdoc/>
         public string GetVariable(string name) => System.Environment.GetEnvironmentVariable(name);

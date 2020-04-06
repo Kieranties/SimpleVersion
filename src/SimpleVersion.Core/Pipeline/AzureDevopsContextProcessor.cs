@@ -11,20 +11,20 @@ namespace SimpleVersion.Pipeline
     public class AzureDevopsContextProcessor : IVersionContextProcessor
     {
         private static readonly Regex _trim = new Regex(@"^refs\/(heads\/)?", RegexOptions.IgnoreCase);
-        private readonly IEnvironment _env;
+        private readonly IVersionEnvironment _env;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AzureDevopsContextProcessor"/> class.
         /// </summary>
-        public AzureDevopsContextProcessor() : this(new VersioningEnvironment())
+        public AzureDevopsContextProcessor() : this(new VersionEnvironment())
         {
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="AzureDevopsContextProcessor"/> class.
         /// </summary>
-        /// <param name="env">The <see cref="IEnvironment"/> for accessing environment variables.</param>
-        public AzureDevopsContextProcessor(IEnvironment env)
+        /// <param name="env">The <see cref="IVersionEnvironment"/> for accessing environment variables.</param>
+        public AzureDevopsContextProcessor(IVersionEnvironment env)
         {
             _env = env;
         }

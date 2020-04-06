@@ -10,12 +10,12 @@ namespace SimpleVersion.Core.Tests.Pipeline
 {
     public class AzureDevopsContextProcessorFixture
     {
-        private readonly IEnvironment _env;
+        private readonly IVersionEnvironment _env;
         private readonly AzureDevopsContextProcessor _sut;
 
         public AzureDevopsContextProcessorFixture()
         {
-            _env = Substitute.For<IEnvironment>();
+            _env = Substitute.For<IVersionEnvironment>();
             _sut = new AzureDevopsContextProcessor(_env);
         }
 
