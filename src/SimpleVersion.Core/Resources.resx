@@ -128,7 +128,7 @@
     <value>Could not find git repository at '{0}' or any parent directory.</value>
     <comment>path</comment>
   </data>
-  <data name="Exception_CouldNotReadSettingsFile" xml:space="preserve">
+  <data name="Exception_CouldNotReadConfigurationFile" xml:space="preserve">
     <value>Could not read '{0}', has it been committed?</value>
     <comment>fileName</comment>
   </data>

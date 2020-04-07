@@ -1,6 +1,6 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using SimpleVersion.Model;
+using SimpleVersion.Configuration;
 
 namespace SimpleVersion.Pipeline
 {
@@ -10,9 +10,9 @@ namespace SimpleVersion.Pipeline
     public interface IVersionContext
     {
         /// <summary>
-        /// Gets or sets the resolved settings for the repository.
+        /// Gets or sets the resolved configuration for the repository.
         /// </summary>
-        Settings Settings { get; set; }
+        RepositoryConfiguration Configuration { get; set; }
 
         /// <summary>
         /// Gets or sets the result of the version calculation.

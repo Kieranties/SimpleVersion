@@ -3,6 +3,7 @@
 using System.Collections.Generic;
 using FluentAssertions;
 using GitTools.Testing;
+using SimpleVersion.Configuration;
 using SimpleVersion.Pipeline.Formatting;
 using Xunit;
 
@@ -14,8 +15,8 @@ namespace SimpleVersion.Core.Tests
         [Fact]
         public void Override_Branches_Do_Not_Work_If_Asterisk_Used_In_Label()
         {
-            // Create the settings model
-            var config = new Model.Settings
+            // Create the configuration model
+            var config = new RepositoryConfiguration
             {
                 Version = "1.0.0",
                 Label = { "r*" },
@@ -29,7 +30,7 @@ namespace SimpleVersion.Core.Tests
                     },
                     Overrides =
                     {
-                        new Model.BranchSettings
+                        new BranchOverrideConfiguration
                         {
                             Match = "^refs/heads/feature/.+$",
                             Label = new List<string> { "{shortbranchname}" }
@@ -64,6 +65,6 @@ namespace SimpleVersion.Core.Tests
             }
         }
 
-        private static Model.VersionResult GetResult(RepositoryFixtureBase repo) => VersionCalculator.Default().GetResult(repo.RepositoryPath);
+        private static VersionResult GetResult(RepositoryFixtureBase repo) => VersionCalculator.Default().GetResult(repo.RepositoryPath);
     }
 }

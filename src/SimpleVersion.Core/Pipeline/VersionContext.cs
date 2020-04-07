@@ -1,7 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using SimpleVersion.Configuration;
 using SimpleVersion.Exceptions;
-using SimpleVersion.Model;
 using Git = LibGit2Sharp;
 
 namespace SimpleVersion.Pipeline
@@ -22,7 +22,7 @@ namespace SimpleVersion.Pipeline
         }
 
         /// <inheritdoc/>
-        public Settings Settings { get; set; } = new Settings();
+        public RepositoryConfiguration Configuration { get; set; } = new RepositoryConfiguration();
 
         /// <inheritdoc/>
         public VersionResult Result { get; set; }

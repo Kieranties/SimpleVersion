@@ -2,13 +2,13 @@
 
 using System.Collections.Generic;
 
-namespace SimpleVersion.Model
+namespace SimpleVersion.Configuration
 {
     /// <summary>
-    /// Models the settings for a branch.
+    /// Encapsulates configuration for branch overrides.
     /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "Required for System.Text.Json")]
-    public class BranchSettings
+    public class BranchOverrideConfiguration
     {
         /// <summary>
         /// Gets or sets the regular expression string used to

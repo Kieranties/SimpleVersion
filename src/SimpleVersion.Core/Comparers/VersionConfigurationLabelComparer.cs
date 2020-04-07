@@ -3,22 +3,22 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using SimpleVersion.Model;
+using SimpleVersion.Configuration;
 
 namespace SimpleVersion.Comparers
 {
     /// <summary>
-    /// Compares <see cref="Settings"/> version and labels.
+    /// Compares <see cref="VersionConfiguration"/> version and labels.
     /// </summary>
-    public class SettingsVersionLabelComparer : IEqualityComparer<Settings>
+    public class VersionConfigurationLabelComparer : IEqualityComparer<VersionConfiguration>
     {
         /// <summary>
-        /// Compares two <see cref="Settings"/> for version and label equivalence.
+        /// Compares two <see cref="VersionConfiguration"/> for version and label equivalence.
         /// </summary>
-        /// <param name="x">The first <see cref="Settings"/> to compare.</param>
-        /// <param name="y">The second <see cref="Settings"/> to compare.</param>
+        /// <param name="x">The first <see cref="VersionConfiguration"/> to compare.</param>
+        /// <param name="y">The second <see cref="VersionConfiguration"/> to compare.</param>
         /// <returns>True if equal, otherwise false.</returns>
-        public bool Equals(Settings x, Settings y)
+        public bool Equals(VersionConfiguration x, VersionConfiguration y)
         {
             if (ReferenceEquals(x, y))
             {
@@ -46,15 +46,15 @@ namespace SimpleVersion.Comparers
         }
 
         /// <summary>
-        /// Generates a hashcode for the given settings.
+        /// Generates a hashcode for the given <paramref name="configuration"/>.
         /// </summary>
-        /// <param name="settings">The <see cref="Settings"/> to generate a hashcode for.</param>
+        /// <param name="configuration">The <see cref="VersionConfiguration"/> to generate a hashcode for.</param>
         /// <returns>The generated hashcode.</returns>
-        public int GetHashCode(Settings settings)
+        public int GetHashCode(VersionConfiguration configuration)
         {
-            Assert.ArgumentNotNull(settings, nameof(settings));
+            Assert.ArgumentNotNull(configuration, nameof(configuration));
 
-            return (settings.Version.GetHashCode(StringComparison.OrdinalIgnoreCase) * 17) + settings.Label.GetHashCode();
+            return (configuration.Version.GetHashCode(StringComparison.OrdinalIgnoreCase) * 17) + configuration.Label.GetHashCode();
         }
     }
 }

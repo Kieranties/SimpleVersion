@@ -18,12 +18,6 @@ param(
 $ErrorActionPreference = 'Stop'
 $env:DOTNET_CLI_TELEMETRY_OPTOUT = 1
 
-# Resources
-if($Resources){
-    exec dotnet msbuild /t:ResourceGen
-    return
-}
-
 function exec([string]$cmd) {
     $currentPref = $ErrorActionPreference
     $ErrorActionPreference = 'Continue'
@@ -33,6 +27,12 @@ function exec([string]$cmd) {
         Write-Error "[Error code $LASTEXITCODE] Command $cmd $args"
         exit $LASTEXITCODE
     }
+}
+
+# Resources
+if($Resources){
+    exec dotnet msbuild /t:ResourceGen
+    return
 }
 
 # Build/Test/Pack

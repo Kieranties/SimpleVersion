@@ -45,10 +45,10 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
-                    Settings = Utils.GetSettings(version, label: parts),
+                    Configuration = Utils.GetRepositoryConfiguration(version, label: parts),
                     Result = Utils.GetVersionResult(height, false)
                 };
-                context.Result.Version = context.Settings.Version;
+                context.Result.Version = context.Configuration.Version;
 
                 var divider = parts.Length > 0 ? '.' : '-';
                 var fullExpected = $"{expectedPart}{divider}c{context.Result.Sha7}";
@@ -76,10 +76,10 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
-                    Settings = Utils.GetSettings(version, parts),
+                    Configuration = Utils.GetRepositoryConfiguration(version, parts),
                     Result = Utils.GetVersionResult(height)
                 };
-                context.Result.Version = context.Settings.Version;
+                context.Result.Version = context.Configuration.Version;
 
                 // Act
                 _sut.Apply(context);
@@ -110,10 +110,10 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
-                    Settings = Utils.GetSettings(version, meta: parts),
+                    Configuration = Utils.GetRepositoryConfiguration(version, meta: parts),
                     Result = Utils.GetVersionResult(height, false)
                 };
-                context.Result.Version = context.Settings.Version;
+                context.Result.Version = context.Configuration.Version;
 
                 string expected;
                 if (parts.Length > 0)
@@ -147,10 +147,10 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
-                    Settings = Utils.GetSettings(version, meta: parts),
+                    Configuration = Utils.GetRepositoryConfiguration(version, meta: parts),
                     Result = Utils.GetVersionResult(height)
                 };
-                context.Result.Version = context.Settings.Version;
+                context.Result.Version = context.Configuration.Version;
 
                 string expected;
                 if (parts.Length > 0)

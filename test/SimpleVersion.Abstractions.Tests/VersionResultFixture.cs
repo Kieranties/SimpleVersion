@@ -1,10 +1,9 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using FluentAssertions;
-using SimpleVersion.Model;
 using Xunit;
 
-namespace SimpleVersion.Abstractions.Tests.Model
+namespace SimpleVersion.Abstractions.Tests
 {
     public class VersionResultFixture
     {

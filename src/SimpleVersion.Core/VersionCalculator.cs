@@ -3,7 +3,6 @@
 using System;
 using System.IO;
 using LibGit2Sharp;
-using SimpleVersion.Model;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Pipeline.Formatting;
 
@@ -34,8 +33,8 @@ namespace SimpleVersion
                 // Resolve build server information
                 ApplyProcessor<AzureDevopsContextProcessor>(ctx);
 
-                // Resolve settings
-                ApplyProcessor<SettingsContextProcessor>(ctx);
+                // Resolve configuration
+                ApplyProcessor<RepositoryConfigurationContextProcessor>(ctx);
 
                 // Resolve Formats
                 ApplyProcessor<VersionFormatProcess>(ctx);

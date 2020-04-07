@@ -2,13 +2,13 @@
 
 using System.Collections.Generic;
 
-namespace SimpleVersion.Model
+namespace SimpleVersion.Configuration
 {
     /// <summary>
-    /// Encapsulates settings loaded from '.simpleversion.json'.
+    /// Configuration for the version to be calculated.
     /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "Required for System.Text.Json")]
-    public class Settings
+    public class VersionConfiguration
     {
         /// <summary>
         /// Gets or sets the base version string.
@@ -29,11 +29,5 @@ namespace SimpleVersion.Model
         /// Gets or sets the Metadata parts to use in the generated version.
         /// </summary>
         public List<string> Metadata { get; set; } = new List<string>();
-
-        /// <summary>
-        /// Gets or sets the information on branches.
-        /// See <see cref="BranchInfo"/> for further details.
-        /// </summary>
-        public BranchInfo Branches { get; set; } = new BranchInfo();
     }
 }

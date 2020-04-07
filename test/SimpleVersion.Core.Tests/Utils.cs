@@ -1,15 +1,15 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System.Collections.Generic;
-using SimpleVersion.Model;
+using SimpleVersion.Configuration;
 
 namespace SimpleVersion.Core.Tests
 {
     public static class Utils
     {
-        public static Settings GetSettings(string version, IEnumerable<string> label = null, IEnumerable<string> meta = null)
+        public static RepositoryConfiguration GetRepositoryConfiguration(string version, IEnumerable<string> label = null, IEnumerable<string> meta = null)
         {
-            var info = new Settings
+            var info = new RepositoryConfiguration
             {
                 Version = version,
                 Branches =

@@ -5,19 +5,19 @@ using System.Collections.Generic;
 using System.IO;
 using FluentAssertions;
 using GitTools.Testing;
-using SimpleVersion.Model;
+using SimpleVersion.Configuration;
 using SimpleVersion.Pipeline;
 using Xunit;
 
 namespace SimpleVersion.Core.Tests.Pipeline
 {
-    public class SettingsContextProcessorFixture
+    public class RepositoryConfigurationContextProcessorFixture
     {
-        private readonly SettingsContextProcessor _sut;
+        private readonly RepositoryConfigurationContextProcessor _sut;
 
-        public SettingsContextProcessorFixture()
+        public RepositoryConfigurationContextProcessorFixture()
         {
-            _sut = new SettingsContextProcessor();
+            _sut = new RepositoryConfigurationContextProcessor();
         }
 
         [Fact]
@@ -258,14 +258,14 @@ namespace SimpleVersion.Core.Tests.Pipeline
             var expectedLabel = new List<string> { "{branchName}" };
             var expectedMeta = new List<string> { "meta" };
 
-            var config = new Settings
+            var config = new RepositoryConfiguration
             {
                 Version = "0.1.0",
                 Branches =
                 {
                     Overrides =
                     {
-                        new BranchSettings
+                        new BranchOverrideConfiguration
                         {
                             Match = "feature/other",
                             Label = expectedLabel,
@@ -292,8 +292,8 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 // Act
                 _sut.Apply(context);
 
-                context.Settings.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
-                context.Settings.Metadata.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
+                context.Configuration.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
+                context.Configuration.Metadata.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
             }
         }
 
@@ -304,7 +304,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
             var expectedLabel = new List<string> { "preL1", "preL2", "L1", "insertedL", "L2", "postL1", "postL2" };
             var expectedMeta = new List<string> { "preM1", "preM2", "M1", "insertedM", "M2", "postM1", "postM2" };
 
-            var config = new Settings
+            var config = new RepositoryConfiguration
             {
                 Version = "0.1.0",
                 Label = { "L1", "L2" },
@@ -313,7 +313,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 {
                     Overrides =
                     {
-                        new BranchSettings
+                        new BranchOverrideConfiguration
                         {
                             Match = "feature/other",
                             PrefixLabel = new List<string> { "preL1", "preL2" },
@@ -344,8 +344,8 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 // Act
                 _sut.Apply(context);
 
-                context.Settings.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
-                context.Settings.Metadata.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
+                context.Configuration.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
+                context.Configuration.Metadata.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
             }
         }
 
@@ -411,7 +411,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit(); // 7
                 fixture.MakeACommit(); // 8
 
-                var config = new Settings { Version = "0.1.0" };
+                var config = new VersionConfiguration { Version = "0.1.0" };
                 fixture.SetConfig(config);
 
                 var context = new VersionContext(fixture.Repository);

@@ -1,8 +1,8 @@
-// Hash: BE-3E-73-D3-E7-E4-37-7C-67-EA-97-D7-12-FA-7F-60
+// Hash: 33-56-F3-D8-4B-33-08-84-C8-AF-2C-54-F1-1F-EA-BE
 // Auto generated - Do not modify this file!
 // Modify  then invoke Update-Resource to recreate
 // For members that require formatting provide a csv of the argument names
-// 09/26/2019 15:30:31
+// 04/07/2020 18:21:25
 namespace SimpleVersion {
 
     /// <summary>
@@ -61,7 +61,7 @@ namespace SimpleVersion {
         /// <summary>
         ///   Looks up a localized string similar to: Could not read '{0}', has it been committed?
         /// </summary>
-        internal static string Exception_CouldNotReadSettingsFile(object fileName) => string.Format(Culture, GetString(nameof(Exception_CouldNotReadSettingsFile)), fileName);
+        internal static string Exception_CouldNotReadConfigurationFile(object fileName) => string.Format(Culture, GetString(nameof(Exception_CouldNotReadConfigurationFile)), fileName);
 
         /// <summary>
         ///   Looks up a localized string similar to: Unexpected JsonToken '{0}' in converter {1}.

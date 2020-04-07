@@ -45,10 +45,10 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
-                    Settings = Utils.GetSettings(version, label: parts),
+                    Configuration = Utils.GetRepositoryConfiguration(version, label: parts),
                     Result = Utils.GetVersionResult(height, false)
                 };
-                context.Result.Version = context.Settings.Version;
+                context.Result.Version = context.Configuration.Version;
 
                 var fullExpected = $"{expectedPart}-c{context.Result.Sha7}";
 
@@ -76,10 +76,10 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
                 var context = new VersionContext(fixture.Repository)
                 {
-                    Settings = Utils.GetSettings(version, label: parts),
+                    Configuration = Utils.GetRepositoryConfiguration(version, label: parts),
                     Result = Utils.GetVersionResult(height, true)
                 };
-                context.Result.Version = context.Settings.Version;
+                context.Result.Version = context.Configuration.Version;
 
                 // Act
                 _sut.Apply(context);

@@ -38,7 +38,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
                 var context = new VersionContext(fixture.Repository)
                 {
-                    Settings =
+                    Configuration =
                     {
                         Version = version
                     }
@@ -49,7 +49,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
                 // Asset
                 action.Should().Throw<InvalidOperationException>()
-                    .WithMessage($"Version '{context.Settings.Version}' is not in a valid format.");
+                    .WithMessage($"Version '{context.Configuration.Version}' is not in a valid format.");
             }
         }
 
@@ -78,7 +78,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
-                    Settings =
+                    Configuration =
                     {
                         Version = version
                     }
@@ -120,7 +120,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 fixture.MakeACommit();
                 var context = new VersionContext(fixture.Repository)
                 {
-                    Settings =
+                    Configuration =
                     {
                         Version = version
                     },

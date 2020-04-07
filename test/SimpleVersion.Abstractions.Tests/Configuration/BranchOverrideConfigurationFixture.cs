@@ -1,18 +1,18 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using FluentAssertions;
-using SimpleVersion.Model;
+using SimpleVersion.Configuration;
 using Xunit;
 
-namespace SimpleVersion.Abstractions.Tests.Model
+namespace SimpleVersion.Abstractions.Tests.Configuration
 {
-    public class BranchSettingsFixture
+    public class BranchOverrideConfigurationFixture
     {
         [Fact]
         public void Ctor_SetsDefaults()
         {
             // Arrange / Act
-            var sut = new BranchSettings();
+            var sut = new BranchOverrideConfiguration();
 
             // Assert
             sut.Label.Should().BeNull();
