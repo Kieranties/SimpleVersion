@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using FluentAssertions;
 using Microsoft.Extensions.DependencyInjection;
+using SimpleVersion.Environment;
 using Xunit;
 
 namespace SimpleVersion.Core.Tests.Extensions
@@ -30,8 +31,9 @@ namespace SimpleVersion.Core.Tests.Extensions
 
             // Assert
             services.Should().ContainSingle(descriptor => IsSingleton<IVersionCalculator, VersionCalculator>(descriptor));
-            services.Should().ContainSingle(descriptor => IsSingleton<IVersionEnvironment, VersionEnvironment>(descriptor));
-            services.Should().HaveCount(2);
+            services.Should().ContainSingle(descriptor => IsSingleton<IEnvironmentVariableAccessor, EnvironmentVariableAccessor>(descriptor));
+            services.Should().ContainSingle(descriptor => IsSingleton<IVersionEnvironment, AzureDevopsEnvironment>(descriptor));
+            services.Should().HaveCount(3);
         }
 
         [Fact]

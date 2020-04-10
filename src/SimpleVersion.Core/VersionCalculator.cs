@@ -30,9 +30,6 @@ namespace SimpleVersion
                 var ctx = new VersionContext(repo);
                 ctx.Result.RepositoryPath = Directory.GetParent(resolvedPath).Parent.FullName;
 
-                // Resolve build server information
-                ApplyProcessor<AzureDevopsContextProcessor>(ctx);
-
                 // Resolve configuration
                 ApplyProcessor<RepositoryConfigurationContextProcessor>(ctx);
 

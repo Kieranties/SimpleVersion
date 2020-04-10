@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using SimpleVersion;
+using SimpleVersion.Environment;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -17,8 +18,12 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             Assert.ArgumentNotNull(services, nameof(services));
 
+            // Environment
+            services.TryAddSingleton<IEnvironmentVariableAccessor, EnvironmentVariableAccessor>();
+            services.TryAddSingleton<IVersionEnvironment, AzureDevopsEnvironment>();
+
+            // Processing
             services.TryAddSingleton<IVersionCalculator, VersionCalculator>();
-            services.TryAddSingleton<IVersionEnvironment, VersionEnvironment>();
 
             return services;
         }

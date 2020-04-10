@@ -1,11 +1,11 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-namespace SimpleVersion
+namespace SimpleVersion.Environment
 {
     /// <summary>
-    /// Enables access to environment variables.
+    /// Exposes access to environment variables.
     /// </summary>
-    public class VersionEnvironment : IVersionEnvironment
+    public class EnvironmentVariableAccessor : IEnvironmentVariableAccessor
     {
         /// <inheritdoc/>
         public string GetVariable(string name) => System.Environment.GetEnvironmentVariable(name);

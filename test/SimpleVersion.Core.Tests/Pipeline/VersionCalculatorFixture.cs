@@ -33,7 +33,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
 
         public static IEnumerable<object[]> InvalidPaths()
         {
-            yield return new[] { Environment.GetLogicalDrives()[0] };
+            yield return new[] { System.Environment.GetLogicalDrives()[0] };
             yield return new[] { Path.Combine(Directory.GetCurrentDirectory(), "does not exist") };
         }
 

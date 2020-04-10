@@ -19,8 +19,8 @@ namespace SimpleVersion.Core.Tests
         {
             foreach (var entry in state)
             {
-                _initState.Add(entry.Key, Environment.GetEnvironmentVariable(entry.Key));
-                Environment.SetEnvironmentVariable(entry.Key, entry.Value);
+                _initState.Add(entry.Key, System.Environment.GetEnvironmentVariable(entry.Key));
+                System.Environment.SetEnvironmentVariable(entry.Key, entry.Value);
             }
         }
 
@@ -40,7 +40,7 @@ namespace SimpleVersion.Core.Tests
                 {
                     foreach (var entry in _initState)
                     {
-                        Environment.SetEnvironmentVariable(entry.Key, entry.Value);
+                        System.Environment.SetEnvironmentVariable(entry.Key, entry.Value);
                     }
                 }
 
