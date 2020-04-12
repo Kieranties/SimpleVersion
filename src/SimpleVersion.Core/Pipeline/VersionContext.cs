@@ -45,8 +45,7 @@ namespace SimpleVersion.Pipeline
             {
                 BranchName = Repository.Head.FriendlyName,
                 CanonicalBranchName = Repository.Head.CanonicalName,
-                Sha = sha,
-                Sha7 = sha.Length > 7 ? sha.Substring(0, 7) : sha
+                Sha = sha
             };
         }
     }

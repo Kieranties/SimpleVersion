@@ -12,6 +12,7 @@ namespace SimpleVersion
     {
         private static readonly Regex _prRegex = new Regex(@"^refs\/pull\/(?<id>\d+)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
         private string _canonicalBranchName = default!;
+        private string _sha = default!;
 
         /// <summary>
         /// Gets or sets the generated version.
@@ -51,12 +52,23 @@ namespace SimpleVersion
         /// <summary>
         /// Gets or sets the full sha of the current commit.
         /// </summary>
-        public string Sha { get; set; } = default!;
+        public string Sha
+        {
+            get => _sha;
+            set
+            {
+                _sha = value;
+                if (_sha != null)
+                {
+                    Sha7 = _sha.Length > 7 ? _sha.Substring(0, 7) : _sha;
+                }
+            }
+        }
 
         /// <summary>
-        /// Gets or sets the shortened (7 char) sha of the current commit.
+        /// Gets the shortened (7 char) sha of the current commit.
         /// </summary>
-        public string Sha7 { get; set; } = default!;
+        public string Sha7 { get; private set; } = default!;
 
         /// <summary>
         /// Gets or sets the friendly branch name of the current branch.
