@@ -2,6 +2,7 @@
 
 using FluentAssertions;
 using GitTools.Testing;
+using NSubstitute;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Rules;
 using Xunit;
@@ -37,11 +38,9 @@ namespace SimpleVersion.Core.Tests.Rules
                 fixture.MakeACommit();
                 var contextResult = Utils.GetVersionResult(10);
                 contextResult.CanonicalBranchName = $"refs/pull/{id}/merge";
+                var context = Substitute.For<IVersionContext>();
 
-                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
-                {
-                    Result = contextResult
-                };
+                context.Result.Returns(contextResult);
 
                 // Act
                 var result = _sut.Resolve(context, input);
@@ -58,11 +57,9 @@ namespace SimpleVersion.Core.Tests.Rules
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
-                {
-                    Configuration = Utils.GetRepositoryConfiguration("1.2.3"),
-                    Result = Utils.GetVersionResult(10)
-                };
+                var context = Substitute.For<IVersionContext>();
+                context.Result.Returns(Utils.GetVersionResult(10));
+                context.Configuration.Returns(Utils.GetRepositoryConfiguration("1.2.3"));
 
                 var input = new[] { "this", "will", "not", "change", "{pr}" };
 

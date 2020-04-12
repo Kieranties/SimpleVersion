@@ -13,18 +13,18 @@ namespace SimpleVersion.Pipeline
     {
         private readonly IVersionEnvironment _environment;
         private readonly IVersionRepository _repository;
-        private readonly IVersionRequestProcessor[] _processors;
+        private readonly IVersionRequestPipelineProcessor[] _processors;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="VersionRequestPipeline"/> class.
         /// </summary>
         /// <param name="environment">The <see cref="IVersionEnvironment"/> for requests.</param>
         /// <param name="repository">The <see cref="IVersionRepository"/> for requests.</param>
-        /// <param name="processors">The <see cref="IVersionRequestProcessor"/> processors for requests.</param>
+        /// <param name="processors">The <see cref="IVersionRequestPipelineProcessor"/> processors for requests.</param>
         public VersionRequestPipeline(
             IVersionEnvironment environment,
             IVersionRepository repository,
-            IEnumerable<IVersionRequestProcessor> processors)
+            IEnumerable<IVersionRequestPipelineProcessor> processors)
         {
             // TODO: Resolve environment properly
             _environment = Assert.ArgumentNotNull(environment, nameof(environment));

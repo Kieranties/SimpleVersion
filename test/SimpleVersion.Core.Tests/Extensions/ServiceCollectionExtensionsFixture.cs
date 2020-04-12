@@ -1,3 +1,5 @@
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
 using System;
 using System.Linq;
 using FluentAssertions;
@@ -51,10 +53,10 @@ namespace SimpleVersion.Core.Tests.Extensions
             result.Should().OnlyContain(x => originalServices.Contains(x));
         }
 
-        private bool IsSingleton<T, K>(ServiceDescriptor descriptor)
+        private bool IsSingleton<T, TK>(ServiceDescriptor descriptor)
         {
             return descriptor.ServiceType == typeof(T)
-                && descriptor.ImplementationType == typeof(K)
+                && descriptor.ImplementationType == typeof(TK)
                 && descriptor.Lifetime == ServiceLifetime.Singleton;
         }
     }

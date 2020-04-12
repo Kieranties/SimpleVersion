@@ -4,6 +4,7 @@ using System;
 using FluentAssertions;
 using NSubstitute;
 using SimpleVersion.Environment;
+using SimpleVersion.Pipeline;
 using Xunit;
 
 namespace SimpleVersion.Core.Tests.Environment
@@ -100,6 +101,63 @@ namespace SimpleVersion.Core.Tests.Environment
 
             // Assert
             result.Should().Be(branch);
+        }
+
+        [Fact]
+        public void Process_NullContext_Throws()
+        {
+            // Arrange
+            var sut = new AzureDevopsEnvironment(_env);
+            Action action = () => sut.Process(null);
+
+            // Act / Assert
+            action.Should().Throw<ArgumentNullException>()
+                .And.ParamName.Should().Be("context");
+        }
+
+        [Fact]
+        public void Process_NoEnvironmentSet_DoesNotSet()
+        {
+            // Arrange
+            _env.GetVariable("BUILD_SOURCEBRANCH").Returns((string)null);
+            var branchName = "branchName";
+            var canonicalBranchName = "canonical" + branchName;
+            var context = Substitute.For<IVersionContext>();
+            var result = new VersionResult
+            {
+                BranchName = branchName,
+                CanonicalBranchName = canonicalBranchName
+            };
+            context.Result.Returns(result);
+
+            var sut = new AzureDevopsEnvironment(_env);
+
+            // Act
+            sut.Process(context);
+
+            // Assert
+            result.BranchName.Should().Be(branchName);
+            result.CanonicalBranchName.Should().Be(canonicalBranchName);
+        }
+
+        [Fact]
+        public void Process_EnvironmentSet_DoesSet()
+        {
+            // Arrange
+            var canonicalBranchName = "refs/heads/master";
+            _env.GetVariable("BUILD_SOURCEBRANCH").Returns(canonicalBranchName);
+            var context = Substitute.For<IVersionContext>();
+            var result = new VersionResult();
+            context.Result.Returns(result);
+
+            var sut = new AzureDevopsEnvironment(_env);
+
+            // Act
+            sut.Process(context);
+
+            // Assert
+            result.BranchName.Should().Be("master");
+            result.CanonicalBranchName.Should().Be(canonicalBranchName);
         }
     }
 }

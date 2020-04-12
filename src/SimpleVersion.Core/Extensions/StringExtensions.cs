@@ -30,7 +30,7 @@ namespace SimpleVersion.Extensions
         /// </summary>
         /// <param name="value">The value to be converted.</param>
         /// <returns>True if 0 or "True" (case insensitive), otherwise false.</returns>
-        public static bool ToBool(this string value)
+        public static bool ToBool(this string? value)
         {
             if (string.IsNullOrWhiteSpace(value))
             {

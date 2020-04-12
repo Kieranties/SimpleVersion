@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using FluentAssertions;
 using GitTools.Testing;
+using NSubstitute;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Rules;
 using Xunit;
@@ -71,13 +72,12 @@ namespace SimpleVersion.Core.Tests.Rules
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
+                var context = Substitute.For<IVersionContext>();
+                var contextResult = new VersionResult
                 {
-                    Result =
-                    {
-                        Height = height
-                    }
+                    Height = height
                 };
+                context.Result.Returns(contextResult);
 
                 // Act
                 var result = sut.Resolve(context, input);
@@ -108,13 +108,12 @@ namespace SimpleVersion.Core.Tests.Rules
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
+                var context = Substitute.For<IVersionContext>();
+                var contextResult = new VersionResult
                 {
-                    Configuration =
-                    {
-                        Version = version
-                    }
+                    Version = version
                 };
+                context.Result.Returns(contextResult);
 
                 // Act
                 var result = sut.Apply(context, input);

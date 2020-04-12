@@ -32,7 +32,7 @@ namespace SimpleVersion.Environment
         public IEnvironmentVariableAccessor Variables { get; }
 
         /// <inheritdoc/>
-        public virtual void Process(VersionContext context)
+        public virtual void Process(IVersionContext context)
         {
             if (context == null)
             {

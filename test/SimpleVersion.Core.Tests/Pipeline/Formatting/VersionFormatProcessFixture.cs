@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using FluentAssertions;
 using GitTools.Testing;
+using NSubstitute;
+using SimpleVersion.Configuration;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Pipeline.Formatting;
 using Xunit;
@@ -36,13 +38,12 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             {
                 fixture.MakeACommit();
 
-                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
+                var context = Substitute.For<IVersionContext>();
+                var config = new VersionConfiguration
                 {
-                    Configuration =
-                    {
-                        Version = version
-                    }
+                    Version = version
                 };
+                context.Configuration.Returns(config);
 
                 // Act
                 Action action = () => _sut.Apply(context);
@@ -76,13 +77,12 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
+                var context = Substitute.For<IVersionContext>();
+                var config = new VersionConfiguration
                 {
-                    Configuration =
-                    {
-                        Version = version
-                    }
+                    Version = version
                 };
+                context.Configuration.Returns(config);
 
                 // Act
                 _sut.Apply(context);
@@ -118,17 +118,17 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
+                var context = Substitute.For<IVersionContext>();
+                var config = new VersionConfiguration
                 {
-                    Configuration =
-                    {
-                        Version = version
-                    },
-                    Result =
-                    {
-                        Height = commits
-                    }
+                    Version = version
                 };
+                context.Configuration.Returns(config);
+                var result = new VersionResult
+                {
+                    Height = commits
+                };
+                context.Result.Returns(result);
 
                 // Act
                 _sut.Apply(context);

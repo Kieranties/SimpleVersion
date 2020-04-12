@@ -20,7 +20,10 @@ namespace SimpleVersion.Environment
             : base(accessor)
         {
             CanonicalBranchName = Variables.GetVariable("BUILD_SOURCEBRANCH");
-            BranchName = _trim.Replace(CanonicalBranchName, string.Empty);
+            if (CanonicalBranchName != null)
+            {
+                BranchName = _trim.Replace(CanonicalBranchName, string.Empty);
+            }
         }
 
         /// <inheritdoc/>

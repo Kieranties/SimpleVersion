@@ -28,16 +28,16 @@ namespace SimpleVersion
             using (var repo = new Repository(resolvedPath))
             {
                 // Initialize context
-                var ctx = new VersionContext(repo);
-                ctx.Result.RepositoryPath = Directory.GetParent(resolvedPath).Parent.FullName;
+                var ctx = new VersionContext(null, null);
+                //ctx.Result.RepositoryPath = Directory.GetParent(resolvedPath).Parent.FullName;
 
-                // Resolve configuration
-                ApplyProcessor<RepositoryConfigurationContextProcessor>(ctx);
+                //// Resolve configuration
+                //ApplyProcessor<RepositoryConfigurationContextProcessor>(ctx);
 
-                // Resolve Formats
-                ApplyProcessor<VersionFormatProcess>(ctx);
-                ApplyProcessor<Semver1FormatProcess>(ctx);
-                ApplyProcessor<Semver2FormatProcess>(ctx);
+                //// Resolve Formats
+                //ApplyProcessor<VersionFormatProcess>(ctx);
+                //ApplyProcessor<Semver1FormatProcess>(ctx);
+                //ApplyProcessor<Semver2FormatProcess>(ctx);
 
                 return ctx.Result;
             }

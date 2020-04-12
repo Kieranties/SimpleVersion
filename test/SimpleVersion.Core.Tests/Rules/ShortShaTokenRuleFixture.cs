@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using FluentAssertions;
 using GitTools.Testing;
+using NSubstitute;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Rules;
 using Xunit;
@@ -37,10 +38,8 @@ namespace SimpleVersion.Core.Tests.Rules
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
-                {
-                    Result = Utils.GetVersionResult(10)
-                };
+                var context = Substitute.For<IVersionContext>();
+                context.Result.Returns(Utils.GetVersionResult(10));
 
                 // Act
                 var result = _sut.Resolve(context, input);
@@ -58,10 +57,8 @@ namespace SimpleVersion.Core.Tests.Rules
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
-                {
-                    Result = Utils.GetVersionResult(10)
-                };
+                var context = Substitute.For<IVersionContext>();
+                context.Result.Returns(Utils.GetVersionResult(10));
 
                 // Act
                 var result = _sut.Resolve(context, input);
@@ -94,11 +91,9 @@ namespace SimpleVersion.Core.Tests.Rules
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
-                {
-                    Configuration = Utils.GetRepositoryConfiguration("1.2.3"),
-                    Result = Utils.GetVersionResult(10, isRelease)
-                };
+                var context = Substitute.For<IVersionContext>();
+                context.Result.Returns(Utils.GetVersionResult(10, isRelease));
+                context.Configuration.Returns(Utils.GetRepositoryConfiguration("1.2.3"));
 
                 // Act
                 var result = _sut.Apply(context, input);

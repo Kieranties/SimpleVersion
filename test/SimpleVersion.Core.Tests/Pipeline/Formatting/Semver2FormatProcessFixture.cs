@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using FluentAssertions;
 using GitTools.Testing;
+using NSubstitute;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Pipeline.Formatting;
 using Xunit;
@@ -43,11 +44,9 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
-                {
-                    Configuration = Utils.GetRepositoryConfiguration(version, label: parts),
-                    Result = Utils.GetVersionResult(height, false)
-                };
+                var context = Substitute.For<IVersionContext>();
+                context.Configuration.Returns(Utils.GetRepositoryConfiguration(version, label: parts));
+                context.Result.Returns(Utils.GetVersionResult(height, false));
                 context.Result.Version = context.Configuration.Version;
 
                 var divider = parts.Length > 0 ? '.' : '-';
@@ -74,11 +73,9 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
-                {
-                    Configuration = Utils.GetRepositoryConfiguration(version, parts),
-                    Result = Utils.GetVersionResult(height)
-                };
+                var context = Substitute.For<IVersionContext>();
+                context.Configuration.Returns(Utils.GetRepositoryConfiguration(version, parts));
+                context.Result.Returns(Utils.GetVersionResult(height));
                 context.Result.Version = context.Configuration.Version;
 
                 // Act
@@ -108,11 +105,9 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
-                {
-                    Configuration = Utils.GetRepositoryConfiguration(version, meta: parts),
-                    Result = Utils.GetVersionResult(height, false)
-                };
+                var context = Substitute.For<IVersionContext>();
+                context.Configuration.Returns(Utils.GetRepositoryConfiguration(version, meta: parts));
+                context.Result.Returns(Utils.GetVersionResult(height, false));
                 context.Result.Version = context.Configuration.Version;
 
                 string expected;
@@ -145,11 +140,9 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
-                {
-                    Configuration = Utils.GetRepositoryConfiguration(version, meta: parts),
-                    Result = Utils.GetVersionResult(height)
-                };
+                var context = Substitute.For<IVersionContext>();
+                context.Configuration.Returns(Utils.GetRepositoryConfiguration(version, meta: parts));
+                context.Result.Returns(Utils.GetVersionResult(height));
                 context.Result.Version = context.Configuration.Version;
 
                 string expected;

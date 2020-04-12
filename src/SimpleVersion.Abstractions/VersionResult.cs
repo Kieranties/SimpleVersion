@@ -109,6 +109,11 @@ namespace SimpleVersion
         public string RepositoryPath { get; set; } = default!;
 
         /// <summary>
+        /// Gets or sets a value indicating whether the result is from a release configuration.
+        /// </summary>
+        public bool IsRelease { get; set; } = false;
+
+        /// <summary>
         /// Gets the collection of generated version strings.
         /// </summary>
         public IDictionary<string, string> Formats { get; } = new Dictionary<string, string>(System.StringComparer.OrdinalIgnoreCase);

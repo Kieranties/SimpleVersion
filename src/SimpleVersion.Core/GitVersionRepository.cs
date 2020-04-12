@@ -45,7 +45,7 @@ namespace SimpleVersion
         }
 
         /// <inheritdoc/>
-        public void Process(VersionContext context)
+        public void Process(IVersionContext context)
         {
             Assert.ArgumentNotNull(context, nameof(context));
 
@@ -62,6 +62,9 @@ namespace SimpleVersion
             context.Result.Sha = _repo.Head.Tip.Sha;
             context.Result.RepositoryPath = _repo.Info.Path;
             context.Result.Height = GetHeight(context);
+
+            context.Result.IsRelease = _configuration.Branches.Release
+                .Any(x => Regex.IsMatch(context.Result.CanonicalBranchName, x));
         }
 
         private static IRepository GetRepository(string path)
@@ -214,7 +217,7 @@ namespace SimpleVersion
         private bool HasVersionChange(
            TreeChanges diff,
            Commit commit,
-           VersionContext context)
+           IVersionContext context)
         {
             if (diff.Any(d => d.Path == Constants.ConfigurationFileName))
             {
@@ -231,7 +234,7 @@ namespace SimpleVersion
             return false;
         }
 
-        private int GetHeight(VersionContext context)
+        private int GetHeight(IVersionContext context)
         {
             // Initialize count - The current commit counts, include offset
             var height = 1 + context.Configuration.OffSet;

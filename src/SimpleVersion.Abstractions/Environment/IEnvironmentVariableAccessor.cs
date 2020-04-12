@@ -12,6 +12,6 @@ namespace SimpleVersion.Environment
         /// </summary>
         /// <param name="name">The name of the variable to retrieve.</param>
         /// <returns>The value of the given variable.</returns>
-        string GetVariable(string name);
+        string? GetVariable(string name);
     }
 }

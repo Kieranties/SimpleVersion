@@ -44,8 +44,8 @@ namespace SimpleVersion.Core.Tests
                 BranchName = branchName,
                 CanonicalBranchName = "refs/heads/" + branchName,
                 Sha = "4ca82d2c58f48007bf16d69ebf036fc4ebfdd059",
-                Sha7 = "4ca82d2",
-                Height = height
+                Height = height,
+                IsRelease = release
             };
         }
     }

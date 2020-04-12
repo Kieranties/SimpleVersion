@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using FluentAssertions;
 using GitTools.Testing;
+using NSubstitute;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Rules;
 using Xunit;
@@ -55,13 +56,12 @@ namespace SimpleVersion.Core.Tests.Rules
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
+                var context = Substitute.For<IVersionContext>();
+                var contextResult = new VersionResult
                 {
-                    Result =
-                    {
-                        CanonicalBranchName = branchName
-                    }
+                    CanonicalBranchName = branchName
                 };
+                context.Result.Returns(contextResult);
 
                 // Act
                 var result = sut.Resolve(context, input);
@@ -80,13 +80,12 @@ namespace SimpleVersion.Core.Tests.Rules
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
+                var context = Substitute.For<IVersionContext>();
+                var contextResult = new VersionResult
                 {
-                    Result =
-                    {
-                        CanonicalBranchName = branchName
-                    }
+                    CanonicalBranchName = branchName
                 };
+                context.Result.Returns(contextResult);
 
                 // Act
                 var result = sut.Resolve(context, input);
