@@ -15,7 +15,7 @@ namespace SimpleVersion.Core.Tests.Extensions
         public void AddSimpleVersion_NullServices_Throws()
         {
             // Arrange
-            Action action = () => ServiceCollectionExtensions.AddSimpleVersion(null);
+            Action action = () => ServiceCollectionExtensions.AddSimpleVersion(null, null);
 
             // Act / Assert
             action.Should().Throw<ArgumentNullException>()
@@ -29,7 +29,7 @@ namespace SimpleVersion.Core.Tests.Extensions
             var services = new ServiceCollection();
 
             // Act
-            ServiceCollectionExtensions.AddSimpleVersion(services);
+            ServiceCollectionExtensions.AddSimpleVersion(services, null);
 
             // Assert
             services.Should().ContainSingle(descriptor => IsSingleton<IVersionCalculator, VersionCalculator>(descriptor));
@@ -42,12 +42,12 @@ namespace SimpleVersion.Core.Tests.Extensions
         public void AddSimpleVersion_CollectionContainsService_DoesNotChangeRegistration()
         {
             // Arrange
-            var services = ServiceCollectionExtensions.AddSimpleVersion(new ServiceCollection());
+            var services = ServiceCollectionExtensions.AddSimpleVersion(new ServiceCollection(), null);
             var originalServices = new ServiceDescriptor[services.Count];
             services.CopyTo(originalServices, 0);
 
             // Act
-            var result = ServiceCollectionExtensions.AddSimpleVersion(services);
+            var result = ServiceCollectionExtensions.AddSimpleVersion(services, null);
 
             // Assert
             result.Should().OnlyContain(x => originalServices.Contains(x));

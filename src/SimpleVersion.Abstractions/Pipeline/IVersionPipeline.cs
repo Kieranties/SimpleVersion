@@ -5,7 +5,7 @@ namespace SimpleVersion.Pipeline
     /// <summary>
     /// Handles version requests.
     /// </summary>
-    public interface IVersionRequestPipeline
+    public interface IVersionPipeline
     {
         /// <summary>
         /// Generates a new <see cref="VersionResult"/>.

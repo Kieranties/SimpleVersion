@@ -56,8 +56,8 @@ namespace SimpleVersion.Core.Tests
 
                 // Act
                 var result = GetResult(fixture);
-                var semver1 = result.Formats[Semver1FormatProcess.FormatKey];
-                var semver2 = result.Formats[Semver2FormatProcess.FormatKey];
+                var semver1 = result.Formats[Semver1FormatProcessor.FormatKey];
+                var semver2 = result.Formats[Semver2FormatProcessor.FormatKey];
 
                 // Assert
                 semver1.Should().Be("1.0.0-featurePBI319594GitVersionDeprecation-0007");

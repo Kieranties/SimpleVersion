@@ -7,7 +7,7 @@ namespace SimpleVersion.Pipeline.Formatting
     /// <summary>
     /// Processes the Semver 1 format.
     /// </summary>
-    public class Semver1FormatProcess : IVersionContextProcessor
+    public class Semver1FormatProcessor : IVersionPipelineProcessor
     {
         /// <summary>
         /// The key used to identify this format.
@@ -15,7 +15,7 @@ namespace SimpleVersion.Pipeline.Formatting
         public const string FormatKey = "Semver1";
 
         /// <inheritdoc/>
-        public void Apply(IVersionContext context)
+        public void Process(IVersionContext context)
         {
             Assert.ArgumentNotNull(context, nameof(context));
 

@@ -5,7 +5,7 @@ namespace SimpleVersion.Pipeline
     /// <summary>
     /// Handles processing of a <see cref="VersionContext"/>.
     /// </summary>
-    public interface IVersionRequestPipelineProcessor
+    public interface IVersionPipelineProcessor
     {
         /// <summary>
         /// Processess the given <paramref name="context"/> updating

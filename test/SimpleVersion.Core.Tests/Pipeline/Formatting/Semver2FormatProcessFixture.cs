@@ -13,11 +13,11 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 {
     public class Semver2FormatProcessFixture
     {
-        private readonly Semver2FormatProcess _sut;
+        private readonly Semver2FormatProcessor _sut;
 
         public Semver2FormatProcessFixture()
         {
-            _sut = new Semver2FormatProcess();
+            _sut = new Semver2FormatProcessor();
         }
 
         public static IEnumerable<object[]> LabelParts()
@@ -34,7 +34,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
         [Theory]
         [MemberData(nameof(LabelParts))]
-        public void Apply_LabelParts_NonRelease_Is_Formatted(
+        public void Process_LabelParts_NonRelease_Is_Formatted(
             string[] parts,
             string version,
             int height,
@@ -53,7 +53,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 var fullExpected = $"{expectedPart}{divider}c{context.Result.Sha7}";
 
                 // Act
-                _sut.Apply(context);
+                _sut.Process(context);
 
                 // Assert
                 context.Result.Formats.Should().ContainKey("Semver2");
@@ -63,7 +63,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
         [Theory]
         [MemberData(nameof(LabelParts))]
-        public void Apply_LabelParts_Release_Is_Formatted(
+        public void Process_LabelParts_Release_Is_Formatted(
             string[] parts,
             string version,
             int height,
@@ -79,7 +79,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 context.Result.Version = context.Configuration.Version;
 
                 // Act
-                _sut.Apply(context);
+                _sut.Process(context);
 
                 // Assert
                 context.Result.Formats.Should().ContainKey("Semver2");
@@ -96,7 +96,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
         [Theory]
         [MemberData(nameof(MetadataParts))]
-        public void Apply_MetadataParts_NonRelease_Is_Formatted(
+        public void Process_MetadataParts_NonRelease_Is_Formatted(
             string[] parts,
             string version,
             int height)
@@ -121,7 +121,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 }
 
                 // Act
-                _sut.Apply(context);
+                _sut.Process(context);
 
                 // Assert
                 context.Result.Formats.Should().ContainKey("Semver2");
@@ -131,7 +131,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
         [Theory]
         [MemberData(nameof(MetadataParts))]
-        public void Apply_MetadataParts_Release_Is_Formatted(
+        public void Process_Parts_Release_Is_Formatted(
             string[] parts,
             string version,
             int height)
@@ -156,7 +156,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 }
 
                 // Act
-                _sut.Apply(context);
+                _sut.Process(context);
 
                 // Assert
                 context.Result.Formats.Should().ContainKey("Semver2");

@@ -14,11 +14,11 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 {
     public class VersionFormatProcessFixture
     {
-        private readonly VersionFormatProcess _sut;
+        private readonly VersionFormatProcessor _sut;
 
         public VersionFormatProcessFixture()
         {
-            _sut = new VersionFormatProcess();
+            _sut = new VersionFormatProcessor();
         }
 
         public static IEnumerable<object[]> InvalidVersions()
@@ -31,7 +31,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
         [Theory]
         [MemberData(nameof(InvalidVersions))]
-        public void Apply_InvalidVersion_Throws(string version)
+        public void Process_InvalidVersion_Throws(string version)
         {
             // Arrange
             using (var fixture = new EmptyRepositoryFixture())
@@ -46,7 +46,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 context.Configuration.Returns(config);
 
                 // Act
-                Action action = () => _sut.Apply(context);
+                Action action = () => _sut.Process(context);
 
                 // Asset
                 action.Should().Throw<InvalidOperationException>()
@@ -65,7 +65,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
         [Theory]
         [MemberData(nameof(ValidVersions))]
-        public void Apply_ValidVersions_SetsMembers(
+        public void Process_ValidVersions_SetsMembers(
             string version,
             string expectedVersion,
             int major,
@@ -85,7 +85,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 context.Configuration.Returns(config);
 
                 // Act
-                _sut.Apply(context);
+                _sut.Process(context);
 
                 // Assert
                 context.Result.Version.Should().Be(expectedVersion);
@@ -131,7 +131,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 context.Result.Returns(result);
 
                 // Act
-                _sut.Apply(context);
+                _sut.Process(context);
 
                 // Assert
                 context.Result.Version.Should().Be(expectedVersion);

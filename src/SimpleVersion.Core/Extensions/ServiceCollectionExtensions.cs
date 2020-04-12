@@ -3,6 +3,9 @@
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using SimpleVersion;
 using SimpleVersion.Environment;
+using SimpleVersion.Pipeline;
+using SimpleVersion.Pipeline.Formatting;
+using SimpleVersion.Serialization;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -15,17 +18,28 @@ namespace Microsoft.Extensions.DependencyInjection
         /// Registers defaults services.
         /// </summary>
         /// <param name="services">The <see cref="IServiceCollection"/> to be updated.</param>
+        /// <param name="path">The path to the repository.</param>
         /// <returns>An updated collection based on <paramref name="services"/>.</returns>
-        public static IServiceCollection AddSimpleVersion(this IServiceCollection services)
+        public static IServiceCollection AddSimpleVersion(
+            this IServiceCollection services,
+            string path)
         {
             Assert.ArgumentNotNull(services, nameof(services));
 
-            // Environment
+            services.AddSingleton<ISerializer, Serializer>();
+            services.AddSingleton<IVersionRepository>(
+                sp => ActivatorUtilities.CreateInstance<GitVersionRepository>(sp, path));
+
+            // TODO: Resolve environment
             services.TryAddSingleton<IEnvironmentVariableAccessor, EnvironmentVariableAccessor>();
             services.TryAddSingleton<IVersionEnvironment, AzureDevopsEnvironment>();
 
-            // Processing
-            services.TryAddSingleton<IVersionCalculator, VersionCalculator>();
+            services.AddSingleton<IVersionPipeline, VersionPipeline>();
+
+            // TODO: Order is important - validate
+            services.AddSingleton<IVersionPipelineProcessor, VersionFormatProcessor>();
+            services.AddSingleton<IVersionPipelineProcessor, Semver1FormatProcessor>();
+            services.AddSingleton<IVersionPipelineProcessor, Semver2FormatProcessor>();
 
             return services;
         }

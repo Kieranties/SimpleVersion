@@ -2,6 +2,7 @@
 
 using System;
 using Microsoft.Extensions.DependencyInjection;
+using SimpleVersion.Pipeline;
 using SimpleVersion.Serialization;
 
 namespace SimpleVersion.Tool
@@ -28,14 +29,15 @@ namespace SimpleVersion.Tool
                 }
 
                 var services = new ServiceCollection()
-                    .AddSimpleVersion()
+                    .AddSimpleVersion(path)
                     .BuildServiceProvider();
 
-                var calculator = services.GetRequiredService<IVersionCalculator>();
+                var pipeline = services.GetRequiredService<IVersionPipeline>();
 
-                var result = calculator.GetResult(path);
+                var result = pipeline.Process();
 
-                Console.Out.WriteLine(Serializer.Serialize(result));
+                var serializer = services.GetRequiredService<ISerializer>();
+                Console.Out.WriteLine(serializer.Serialize(result));
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)

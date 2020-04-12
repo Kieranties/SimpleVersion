@@ -9,22 +9,22 @@ namespace SimpleVersion.Pipeline
     /// <summary>
     /// Handles version requests.
     /// </summary>
-    public class VersionRequestPipeline : IVersionRequestPipeline
+    public class VersionPipeline : IVersionPipeline
     {
         private readonly IVersionEnvironment _environment;
         private readonly IVersionRepository _repository;
-        private readonly IVersionRequestPipelineProcessor[] _processors;
+        private readonly IVersionPipelineProcessor[] _processors;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="VersionRequestPipeline"/> class.
+        /// Initializes a new instance of the <see cref="VersionPipeline"/> class.
         /// </summary>
         /// <param name="environment">The <see cref="IVersionEnvironment"/> for requests.</param>
         /// <param name="repository">The <see cref="IVersionRepository"/> for requests.</param>
-        /// <param name="processors">The <see cref="IVersionRequestPipelineProcessor"/> processors for requests.</param>
-        public VersionRequestPipeline(
+        /// <param name="processors">The <see cref="IVersionPipelineProcessor"/> processors for requests.</param>
+        public VersionPipeline(
             IVersionEnvironment environment,
             IVersionRepository repository,
-            IEnumerable<IVersionRequestPipelineProcessor> processors)
+            IEnumerable<IVersionPipelineProcessor> processors)
         {
             // TODO: Resolve environment properly
             _environment = Assert.ArgumentNotNull(environment, nameof(environment));

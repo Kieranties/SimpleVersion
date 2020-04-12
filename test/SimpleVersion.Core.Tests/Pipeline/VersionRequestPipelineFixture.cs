@@ -27,7 +27,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
         public void Ctor_NullEnvironment_Throws()
         {
             // Arrange
-            Action action = () => new VersionRequestPipeline(null, _repository, Enumerable.Empty<IVersionRequestPipelineProcessor>());
+            Action action = () => new VersionPipeline(null, _repository, Enumerable.Empty<IVersionPipelineProcessor>());
 
             // Act / Assert
             action.Should().Throw<ArgumentNullException>()
@@ -38,7 +38,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
         public void Ctor_NullRepository_Throws()
         {
             // Arrange
-            Action action = () => new VersionRequestPipeline(_environment, null, Enumerable.Empty<IVersionRequestPipelineProcessor>());
+            Action action = () => new VersionPipeline(_environment, null, Enumerable.Empty<IVersionPipelineProcessor>());
 
             // Act / Assert
             action.Should().Throw<ArgumentNullException>()
@@ -49,7 +49,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
         public void Ctor_NullProcessors_Throws()
         {
             // Arrange
-            Action action = () => new VersionRequestPipeline(_environment, _repository, null);
+            Action action = () => new VersionPipeline(_environment, _repository, null);
 
             // Act / Assert
             action.Should().Throw<ArgumentNullException>()
@@ -60,7 +60,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
         public void Process_EmptyProcessors_ReturnsResult()
         {
             // Arrange
-            var sut = new VersionRequestPipeline(_environment, _repository, Enumerable.Empty<IVersionRequestPipelineProcessor>());
+            var sut = new VersionPipeline(_environment, _repository, Enumerable.Empty<IVersionPipelineProcessor>());
 
             // Act
             var result = sut.Process();
@@ -75,9 +75,9 @@ namespace SimpleVersion.Core.Tests.Pipeline
             // Arrange
             var processors = new[]
             {
-                Substitute.For<IVersionRequestPipelineProcessor>(),
-                Substitute.For<IVersionRequestPipelineProcessor>(),
-                Substitute.For<IVersionRequestPipelineProcessor>()
+                Substitute.For<IVersionPipelineProcessor>(),
+                Substitute.For<IVersionPipelineProcessor>(),
+                Substitute.For<IVersionPipelineProcessor>()
             };
             var calledProcessors = new List<int>();
             for (var x = 0; x < calledProcessors.Count; x++)
@@ -86,7 +86,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                                    .Do(_ => calledProcessors.Add(x));
             }
 
-            var sut = new VersionRequestPipeline(_environment, _repository, processors);
+            var sut = new VersionPipeline(_environment, _repository, processors);
 
             // Act
             sut.Process();

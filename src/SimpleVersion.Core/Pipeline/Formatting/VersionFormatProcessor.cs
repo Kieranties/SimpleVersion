@@ -8,10 +8,10 @@ namespace SimpleVersion.Pipeline.Formatting
     /// <summary>
     /// Processes the version string.
     /// </summary>
-    public class VersionFormatProcess : IVersionContextProcessor
+    public class VersionFormatProcessor : IVersionPipelineProcessor
     {
         /// <inheritdoc/>
-        public void Apply(IVersionContext context)
+        public void Process(IVersionContext context)
         {
             Assert.ArgumentNotNull(context, nameof(context));
 

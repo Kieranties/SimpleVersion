@@ -13,11 +13,11 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 {
     public class Semver1FormatProcessFixture
     {
-        private readonly Semver1FormatProcess _sut;
+        private readonly Semver1FormatProcessor _sut;
 
         public Semver1FormatProcessFixture()
         {
-            _sut = new Semver1FormatProcess();
+            _sut = new Semver1FormatProcessor();
         }
 
         public static IEnumerable<object[]> LabelParts()
@@ -34,7 +34,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
         [Theory]
         [MemberData(nameof(LabelParts))]
-        public void Apply_LabelParts_NonRelease_Is_Formatted(
+        public void Process_LabelParts_NonRelease_Is_Formatted(
             string[] parts,
             string version,
             int height,
@@ -52,7 +52,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 var fullExpected = $"{expectedPart}-c{context.Result.Sha7}";
 
                 // Act
-                _sut.Apply(context);
+                _sut.Process(context);
 
                 // Assert
                 context.Result.Formats.Should().ContainKey("Semver1");
@@ -62,7 +62,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
         [Theory]
         [MemberData(nameof(LabelParts))]
-        public void Apply_LabelParts_Release_Is_Formatted(
+        public void Process_LabelParts_Release_Is_Formatted(
             string[] parts,
             string version,
             int height,
@@ -78,7 +78,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 context.Result.Version = context.Configuration.Version;
 
                 // Act
-                _sut.Apply(context);
+                _sut.Process(context);
 
                 // Assert
                 context.Result.Formats.Should().ContainKey("Semver1");

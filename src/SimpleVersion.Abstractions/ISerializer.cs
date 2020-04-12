@@ -8,12 +8,11 @@ namespace SimpleVersion
     public interface ISerializer
     {
         /// <summary>
-        /// Serializes the given <typeparamref name="T"/>.
+        /// Serializes the given <see cref="object"/>.
         /// </summary>
-        /// <typeparam name="T">The type to serialize.</typeparam>
         /// <param name="value">The instance value.</param>
-        /// <returns>A string representation of the given <typeparamref name="T"/>.</returns>
-        string Serialize<T>(T value);
+        /// <returns>A string representation of the given <paramref name="value"/>.</returns>
+        string Serialize(object value);
 
         /// <summary>
         /// Deserialzies the given <paramref name="value"/> into an new

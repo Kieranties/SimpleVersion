@@ -8,7 +8,7 @@ namespace SimpleVersion
     /// <summary>
     /// Exposes access to repostiory information.
     /// </summary>
-    public interface IVersionRepository : IVersionRequestPipelineProcessor
+    public interface IVersionRepository : IVersionPipelineProcessor
     {
         /// <summary>
         /// Gets the <see cref="VersionConfiguration"/> for a specific branch.
