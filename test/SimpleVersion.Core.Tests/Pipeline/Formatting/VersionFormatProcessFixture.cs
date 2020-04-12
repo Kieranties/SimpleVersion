@@ -36,7 +36,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             {
                 fixture.MakeACommit();
 
-                var context = new VersionContext(fixture.Repository)
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
                 {
                     Configuration =
                     {
@@ -76,7 +76,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
                 {
                     Configuration =
                     {
@@ -118,7 +118,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
                 {
                     Configuration =
                     {

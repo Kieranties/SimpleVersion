@@ -41,14 +41,14 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit();
                 fixture.MakeACommit();
 
-                var context = new VersionContext(fixture.Repository);
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository);
 
                 // Act
                 Action action = () => _sut.Apply(context);
 
                 // Assert
                 action.Should().Throw<InvalidOperationException>()
-                    .WithMessage($"Could not read '{Constants.VersionFileName}', has it been committed?");
+                    .WithMessage($"Could not read '{Constants.ConfigurationFileName}', has it been committed?");
             }
         }
 
@@ -58,7 +58,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
             using (var fixture = new SimpleVersionRepositoryFixture())
             {
                 // Arrange
-                var context = new VersionContext(fixture.Repository);
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository);
 
                 // Act
                 _sut.Apply(context);
@@ -79,7 +79,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit();
                 fixture.MakeACommit();
 
-                var context = new VersionContext(fixture.Repository);
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository);
 
                 // Act
                 _sut.Apply(context);
@@ -105,7 +105,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 config.Metadata.Add("example");
                 fixture.SetConfig(config);
 
-                var context = new VersionContext(fixture.Repository);
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository);
 
                 // Act
                 _sut.Apply(context);
@@ -134,7 +134,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.Checkout("master");
                 fixture.MergeNoFF("feature/other");
 
-                var context = new VersionContext(fixture.Repository);
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository);
 
                 // Act
                 _sut.Apply(context);
@@ -168,7 +168,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.Checkout("master");
                 fixture.MergeNoFF("feature/other");
 
-                var context = new VersionContext(fixture.Repository);
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository);
 
                 // Act
                 _sut.Apply(context);
@@ -215,7 +215,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.Checkout("master");
                 fixture.MergeNoFF("feature/other");
 
-                var context = new VersionContext(fixture.Repository);
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository);
 
                 // Act
                 _sut.Apply(context);
@@ -241,7 +241,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit();
                 fixture.MakeACommit();
 
-                var context = new VersionContext(fixture.Repository);
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository);
 
                 // Act
                 _sut.Apply(context);
@@ -287,7 +287,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit();
                 fixture.MakeACommit();
 
-                var context = new VersionContext(fixture.Repository);
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository);
 
                 // Act
                 _sut.Apply(context);
@@ -339,7 +339,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit();
                 fixture.MakeACommit();
 
-                var context = new VersionContext(fixture.Repository);
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository);
 
                 // Act
                 _sut.Apply(context);
@@ -360,28 +360,28 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit();
 
                 // Write the version file (with parsing errors)
-                var file = Path.Combine(fixture.RepositoryPath, Constants.VersionFileName);
+                var file = Path.Combine(fixture.RepositoryPath, Constants.ConfigurationFileName);
                 using (var writer = File.AppendText(file))
                 {
                     writer.WriteLine("This will not parse");
                     writer.Flush();
                 }
 
-                fixture.Repository.Index.Add(Constants.VersionFileName);
+                fixture.Repository.Index.Add(Constants.ConfigurationFileName);
                 fixture.Repository.Index.Write();
                 fixture.MakeACommit();
                 fixture.MakeACommit();
                 fixture.MakeACommit();
                 fixture.MakeACommit();
 
-                var context = new VersionContext(fixture.Repository);
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository);
 
                 // Act
                 Action action = () => _sut.Apply(context);
 
                 // Assert
                 action.Should().Throw<InvalidOperationException>()
-                    .WithMessage($"Could not read '{Constants.VersionFileName}', has it been committed?");
+                    .WithMessage($"Could not read '{Constants.ConfigurationFileName}', has it been committed?");
             }
         }
 
@@ -396,7 +396,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit();
 
                 // Write the version file (with parsing errors)
-                var file = Path.Combine(fixture.RepositoryPath, Constants.VersionFileName);
+                var file = Path.Combine(fixture.RepositoryPath, Constants.ConfigurationFileName);
 
                 using (var writer = File.AppendText(file))
                 {
@@ -404,7 +404,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                     writer.Flush();
                 }
 
-                fixture.Repository.Index.Add(Constants.VersionFileName);
+                fixture.Repository.Index.Add(Constants.ConfigurationFileName);
                 fixture.Repository.Index.Write();
                 fixture.MakeACommit(); // 5
                 fixture.MakeACommit(); // 6
@@ -414,7 +414,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 var config = new VersionConfiguration { Version = "0.1.0" };
                 fixture.SetConfig(config);
 
-                var context = new VersionContext(fixture.Repository);
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository);
 
                 // Act
                 _sut.Apply(context);

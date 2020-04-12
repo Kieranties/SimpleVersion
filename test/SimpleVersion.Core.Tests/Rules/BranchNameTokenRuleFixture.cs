@@ -55,7 +55,7 @@ namespace SimpleVersion.Core.Tests.Rules
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
                 {
                     Result =
                     {
@@ -80,7 +80,7 @@ namespace SimpleVersion.Core.Tests.Rules
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
                 {
                     Result =
                     {

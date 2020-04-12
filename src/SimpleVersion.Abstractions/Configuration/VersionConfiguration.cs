@@ -31,6 +31,5 @@ namespace SimpleVersion.Configuration
         /// Gets or sets the Metadata parts to use in the generated version.
         /// </summary>
         public List<string> Metadata { get; set; } = new List<string>();
-
     }
 }

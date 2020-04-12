@@ -13,7 +13,7 @@
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage(
     "StyleCop.CSharp.DocumentationRules",
     "SA1600:Elements should be documented",
-    Justification = "Tests do not require documentations")]
+    Justification = "Tests do not require documentation")]
 
 [assembly: System.Diagnostics.CodeAnalysis.SuppressMessage(
     "Usage",
@@ -29,3 +29,8 @@
     "Performance",
     "CA1822:Mark members as static",
     Justification = "Tests do not require enforcement of statics")]
+
+[assembly: System.Diagnostics.CodeAnalysis.SuppressMessage(
+    "Globalization",
+    "CA1303:Do not pass literals as localized parameters",
+    Justification = "Simplifies tests")]

@@ -36,16 +36,16 @@ namespace SimpleVersion.Core.Tests
 
         public VersionConfiguration GetConfig()
         {
-            var content = File.ReadAllText(Path.Combine(this.RepositoryPath, Constants.VersionFileName));
+            var content = File.ReadAllText(Path.Combine(this.RepositoryPath, Constants.ConfigurationFileName));
             return Serializer.Deserialize<VersionConfiguration>(content);
         }
 
         public void SetConfig(VersionConfiguration config, bool commit = true)
         {
             var json = Serializer.Serialize(config);
-            var fullPath = Path.Combine(this.RepositoryPath, Constants.VersionFileName);
+            var fullPath = Path.Combine(this.RepositoryPath, Constants.ConfigurationFileName);
             File.WriteAllText(fullPath, json);
-            this.Repository.Index.Add(Constants.VersionFileName);
+            this.Repository.Index.Add(Constants.ConfigurationFileName);
             this.Repository.Index.Write();
             if (commit)
             {

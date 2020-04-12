@@ -1,3 +1,5 @@
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using SimpleVersion;
 using SimpleVersion.Environment;

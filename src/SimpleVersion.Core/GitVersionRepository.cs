@@ -10,6 +10,7 @@ using LibGit2Sharp;
 using SimpleVersion.Comparers;
 using SimpleVersion.Configuration;
 using SimpleVersion.Exceptions;
+using SimpleVersion.Pipeline;
 
 namespace SimpleVersion
 {
@@ -44,7 +45,7 @@ namespace SimpleVersion
         }
 
         /// <inheritdoc/>
-        public void UpdateContext(VersionRequestContext context)
+        public void Process(VersionContext context)
         {
             Assert.ArgumentNotNull(context, nameof(context));
 
@@ -167,7 +168,7 @@ namespace SimpleVersion
 
             if (configuration == null)
             {
-                throw new InvalidOperationException(Resources.Exception_CouldNotReadConfigurationFile(Constants.VersionFileName));
+                throw new InvalidOperationException(Resources.Exception_CouldNotReadConfigurationFile(Constants.ConfigurationFileName));
             }
 
             return configuration;
@@ -175,7 +176,7 @@ namespace SimpleVersion
 
         private RepositoryConfiguration? GetCommitConfiguration(Commit commit)
         {
-            var gitObj = commit?.Tree[Constants.VersionFileName]?.Target;
+            var gitObj = commit?.Tree[Constants.ConfigurationFileName]?.Target;
             if (gitObj == null)
             {
                 return null;
@@ -213,9 +214,9 @@ namespace SimpleVersion
         private bool HasVersionChange(
            TreeChanges diff,
            Commit commit,
-           VersionRequestContext context)
+           VersionContext context)
         {
-            if (diff.Any(d => d.Path == Constants.VersionFileName))
+            if (diff.Any(d => d.Path == Constants.ConfigurationFileName))
             {
                 var configAtCommit = GetCommitConfiguration(commit);
                 if (configAtCommit == null)
@@ -230,7 +231,7 @@ namespace SimpleVersion
             return false;
         }
 
-        private int GetHeight(VersionRequestContext context)
+        private int GetHeight(VersionContext context)
         {
             // Initialize count - The current commit counts, include offset
             var height = 1 + context.Configuration.OffSet;

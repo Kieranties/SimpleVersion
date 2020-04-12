@@ -15,7 +15,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
         public void Ctor_NullRepo_Throws()
         {
             // Arrange / Act
-            Action action = () => new VersionContext(null);
+            Action action = () => new SimpleVersion.Pipeline.VersionContext(null);
 
             // Assert
             action.Should().Throw<ArgumentNullException>()
@@ -28,7 +28,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
             using (var fixture = new EmptyRepositoryFixture())
             {
                 // Arrange
-                Action action = () => new VersionContext(fixture.Repository);
+                Action action = () => new SimpleVersion.Pipeline.VersionContext(fixture.Repository);
 
                 // Act / Assert
                 action.Should().Throw<GitException>()
@@ -46,7 +46,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
                 fixture.MakeACommit();
 
                 // Arrange / Act
-                var sut = new VersionContext(fixture.Repository);
+                var sut = new SimpleVersion.Pipeline.VersionContext(fixture.Repository);
 
                 // Assert
                 sut.Repository.Should().Be(fixture.Repository);

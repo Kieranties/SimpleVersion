@@ -37,7 +37,7 @@ namespace SimpleVersion.Core.Tests.Rules
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
                 {
                     Result = Utils.GetVersionResult(10)
                 };
@@ -58,7 +58,7 @@ namespace SimpleVersion.Core.Tests.Rules
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
                 {
                     Result = Utils.GetVersionResult(10)
                 };
@@ -94,7 +94,7 @@ namespace SimpleVersion.Core.Tests.Rules
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
                 {
                     Configuration = Utils.GetRepositoryConfiguration("1.2.3"),
                     Result = Utils.GetVersionResult(10, isRelease)

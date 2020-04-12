@@ -1,9 +1,9 @@
+// Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
+
+using System;
 using FluentAssertions;
 using NSubstitute;
 using SimpleVersion.Environment;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using Xunit;
 
 namespace SimpleVersion.Abstractions.Tests.Environment

@@ -43,7 +43,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             using (var fixture = new EmptyRepositoryFixture())
             {
                 fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
                 {
                     Configuration = Utils.GetRepositoryConfiguration(version, label: parts),
                     Result = Utils.GetVersionResult(height, false)
@@ -74,7 +74,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             {
                 fixture.MakeACommit();
 
-                var context = new VersionContext(fixture.Repository)
+                var context = new SimpleVersion.Pipeline.VersionContext(fixture.Repository)
                 {
                     Configuration = Utils.GetRepositoryConfiguration(version, label: parts),
                     Result = Utils.GetVersionResult(height, true)
