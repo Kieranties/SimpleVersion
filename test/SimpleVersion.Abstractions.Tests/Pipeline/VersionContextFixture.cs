@@ -103,7 +103,7 @@ namespace SimpleVersion.Abstractions.Tests.Pipeline
             var calledProcessors = new List<string>();
             _repository.When(r => r.Process(Arg.Any<VersionContext>()))
                        .Do(_ => calledProcessors.Add("repo"));
-            _environment.When(r => r.Process(Arg.Any<VersionContext>()))
+            _environment.When(e => e.Process(Arg.Any<VersionContext>()))
                        .Do(_ => calledProcessors.Add("env"));
 
             // Act

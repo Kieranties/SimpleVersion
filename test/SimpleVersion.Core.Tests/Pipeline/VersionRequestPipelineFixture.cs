@@ -73,17 +73,19 @@ namespace SimpleVersion.Core.Tests.Pipeline
         public void Process_WithProcessors_CallsInOrder()
         {
             // Arrange
+            var calledProcessors = new List<int>();
             var processors = new[]
             {
                 Substitute.For<IVersionPipelineProcessor>(),
                 Substitute.For<IVersionPipelineProcessor>(),
                 Substitute.For<IVersionPipelineProcessor>()
             };
-            var calledProcessors = new List<int>();
-            for (var x = 0; x < calledProcessors.Count; x++)
+
+            for (var x = 0; x < processors.Length; x++)
             {
-                processors[x].When(p => p.Process(Arg.Any<VersionContext>()))
-                                   .Do(_ => calledProcessors.Add(x));
+                var value = x;
+                processors[x].When(p => p.Process(Arg.Any<IVersionContext>()))
+                         .Do(_ => calledProcessors.Add(value));
             }
 
             var sut = new VersionPipeline(_environment, _repository, processors);

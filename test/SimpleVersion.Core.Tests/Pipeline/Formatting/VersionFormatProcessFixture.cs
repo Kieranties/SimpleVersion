@@ -43,6 +43,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 {
                     Version = version
                 };
+                context.Result.Returns(new VersionResult());
                 context.Configuration.Returns(config);
 
                 // Act
@@ -82,6 +83,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
                 {
                     Version = version
                 };
+                context.Result.Returns(new VersionResult());
                 context.Configuration.Returns(config);
 
                 // Act

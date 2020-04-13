@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using FluentAssertions;
 using GitTools.Testing;
 using NSubstitute;
+using SimpleVersion.Configuration;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Rules;
 using Xunit;
@@ -109,11 +110,12 @@ namespace SimpleVersion.Core.Tests.Rules
             {
                 fixture.MakeACommit();
                 var context = Substitute.For<IVersionContext>();
-                var contextResult = new VersionResult
+                var config = new VersionConfiguration
                 {
                     Version = version
                 };
-                context.Result.Returns(contextResult);
+                context.Configuration.Returns(config);
+                context.Result.Returns(new VersionResult());
 
                 // Act
                 var result = sut.Apply(context, input);

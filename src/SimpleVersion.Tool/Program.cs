@@ -28,16 +28,10 @@ namespace SimpleVersion.Tool
                     path = args[0];
                 }
 
-                var services = new ServiceCollection()
-                    .AddSimpleVersion(path)
-                    .BuildServiceProvider();
+                var calculator = new VersionCalculator();
+                var result = calculator.GetResult(path);
 
-                var pipeline = services.GetRequiredService<IVersionPipeline>();
-
-                var result = pipeline.Process();
-
-                var serializer = services.GetRequiredService<ISerializer>();
-                Console.Out.WriteLine(serializer.Serialize(result));
+                Console.Out.WriteLine(result.ToString());
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)

@@ -59,7 +59,7 @@ namespace SimpleVersion.Core.Tests.Rules
                 var context = Substitute.For<IVersionContext>();
                 var contextResult = new VersionResult
                 {
-                    CanonicalBranchName = branchName
+                    BranchName = branchName
                 };
                 context.Result.Returns(contextResult);
 
@@ -83,7 +83,7 @@ namespace SimpleVersion.Core.Tests.Rules
                 var context = Substitute.For<IVersionContext>();
                 var contextResult = new VersionResult
                 {
-                    CanonicalBranchName = branchName
+                    BranchName = branchName
                 };
                 context.Result.Returns(contextResult);
 
