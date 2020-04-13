@@ -1,5 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System.IO;
+
 namespace SimpleVersion
 {
     /// <summary>
@@ -9,10 +11,15 @@ namespace SimpleVersion
     public interface IVersionCalculator
     {
         /// <summary>
-        /// Invokes the chain of processors to get a <see cref="VersionResult"/>.
+        /// Gets the processed version result.
         /// </summary>
-        /// <param name="path">The path to the repository to version.</param>
-        /// <returns>The resulting <see cref="VersionResult"/>.</returns>
-        VersionResult GetResult(string path);
+        /// <returns>A comlpete <see cref="VersionResult"/> isntance.</returns>
+        VersionResult GetResult();
+
+        /// <summary>
+        /// Writes the processed version result to the <paramref name="output"/>.
+        /// </summary>
+        /// <param name="output">The writer for the result.</param>
+        void WriteResult(TextWriter output);
     }
 }

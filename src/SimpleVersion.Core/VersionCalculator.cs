@@ -1,8 +1,6 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using System;
 using System.IO;
-using LibGit2Sharp;
 using SimpleVersion.Environment;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Pipeline.Formatting;
@@ -15,17 +13,17 @@ namespace SimpleVersion
     /// </summary>
     public class VersionCalculator : IVersionCalculator
     {
-        /// <summary>
-        /// Default calculator instance.
-        /// </summary>
-        /// <returns>An instance of <see cref="VersionCalculator"/>.</returns>
-        public static VersionCalculator Default() => new VersionCalculator();
+        private readonly Serializer _serializer;
+        private readonly VersionPipeline _pipeline;
 
-        /// <inheritdoc/>
-        public VersionResult GetResult(string path)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VersionCalculator"/> class.
+        /// </summary>
+        /// <param name="path">The path for the repository.</param>
+        public VersionCalculator(string path)
         {
-            var serializer = new Serializer();
-            var repository = new GitVersionRepository(path, serializer);
+            _serializer = new Serializer();
+            var repository = new GitVersionRepository(path, _serializer);
             var environmentVariables = new EnvironmentVariableAccessor();
 
             // TODO: Resolve environment
@@ -40,9 +38,20 @@ namespace SimpleVersion
             };
 
             // TODO: Apply token rules ahead of format processing
-            var pipeline = new VersionPipeline(environment, repository, processors);
+            _pipeline = new VersionPipeline(environment, repository, processors);
+        }
 
-            return pipeline.Process();
+        /// <inheritdoc/>
+        public VersionResult GetResult() => _pipeline.Process();
+
+        /// <inheritdoc/>
+        public void WriteResult(TextWriter output)
+        {
+            Assert.ArgumentNotNull(output, nameof(output));
+
+            var result = GetResult();
+            var serialized = _serializer.Serialize(result);
+            output.WriteLine(serialized);
         }
     }
 }

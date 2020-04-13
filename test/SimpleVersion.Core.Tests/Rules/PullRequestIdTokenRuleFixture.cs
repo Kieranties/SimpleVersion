@@ -1,11 +1,9 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using FluentAssertions;
-using GitTools.Testing;
-using NSubstitute;
-using SimpleVersion.Pipeline;
 using SimpleVersion.Rules;
 using Xunit;
+using static SimpleVersion.Core.Tests.Utils;
 
 namespace SimpleVersion.Core.Tests.Rules
 {
@@ -33,42 +31,41 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Resolve_ReplacesToken_IfNeeded(string input, int id, string expected)
         {
             // Arrange
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var contextResult = Utils.GetVersionResult(10);
-                contextResult.CanonicalBranchName = $"refs/pull/{id}/merge";
-                var context = Substitute.For<IVersionContext>();
+                Result =
+                {
+                    CanonicalBranchName = $"refs/pull/{id}/merge",
+                    Height = 10
+                }
+            };
 
-                context.Result.Returns(contextResult);
+            // Act
+            var result = _sut.Resolve(context, input);
 
-                // Act
-                var result = _sut.Resolve(context, input);
-
-                // Assert
-                result.Should().Be(expected);
-            }
+            // Assert
+            result.Should().Be(expected);
         }
 
         [Fact]
         public void Apply_ReturnsInput()
         {
             // Arrange
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = Substitute.For<IVersionContext>();
-                context.Result.Returns(Utils.GetVersionResult(10));
-                context.Configuration.Returns(Utils.GetRepositoryConfiguration("1.2.3"));
+                Configuration = GetRepositoryConfiguration("1.2.3"),
+                Result =
+                {
+                    Height = 10
+                }
+            };
+            var input = new[] { "this", "will", "not", "change", "{pr}" };
 
-                var input = new[] { "this", "will", "not", "change", "{pr}" };
+            // Act
+            var result = _sut.Apply(context, input);
 
-                // Act
-                var result = _sut.Apply(context, input);
-
-                // Assert
-                result.Should().BeEquivalentTo(input, options => options.WithStrictOrdering());
-            }
+            // Assert
+            result.Should().BeEquivalentTo(input, options => options.WithStrictOrdering());
         }
     }
 }

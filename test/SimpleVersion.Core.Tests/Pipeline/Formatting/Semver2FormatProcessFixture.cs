@@ -3,11 +3,9 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using GitTools.Testing;
-using NSubstitute;
-using SimpleVersion.Pipeline;
 using SimpleVersion.Pipeline.Formatting;
 using Xunit;
+using static SimpleVersion.Core.Tests.Utils;
 
 namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 {
@@ -41,24 +39,21 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             string expectedPart)
         {
             // Arrange
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = Substitute.For<IVersionContext>();
-                context.Configuration.Returns(Utils.GetRepositoryConfiguration(version, label: parts));
-                context.Result.Returns(Utils.GetVersionResult(height, false));
-                context.Result.Version = context.Configuration.Version;
+                Configuration = GetRepositoryConfiguration(version, label: parts),
+                Result = GetVersionResult(height, version, false)
+            };
 
-                var divider = parts.Length > 0 ? '.' : '-';
-                var fullExpected = $"{expectedPart}{divider}c{context.Result.Sha7}";
+            var divider = parts.Length > 0 ? '.' : '-';
+            var fullExpected = $"{expectedPart}{divider}c{context.Result.Sha7}";
 
-                // Act
-                _sut.Process(context);
+            // Act
+            _sut.Process(context);
 
-                // Assert
-                context.Result.Formats.Should().ContainKey("Semver2");
-                context.Result.Formats["Semver2"].Should().Be(fullExpected);
-            }
+            // Assert
+            context.Result.Formats.Should().ContainKey("Semver2");
+            context.Result.Formats["Semver2"].Should().Be(fullExpected);
         }
 
         [Theory]
@@ -70,21 +65,18 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             string expected)
         {
             // Arrange
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = Substitute.For<IVersionContext>();
-                context.Configuration.Returns(Utils.GetRepositoryConfiguration(version, parts));
-                context.Result.Returns(Utils.GetVersionResult(height));
-                context.Result.Version = context.Configuration.Version;
+                Configuration = GetRepositoryConfiguration(version, parts),
+                Result = GetVersionResult(height, version)
+            };
 
-                // Act
-                _sut.Process(context);
+            // Act
+            _sut.Process(context);
 
-                // Assert
-                context.Result.Formats.Should().ContainKey("Semver2");
-                context.Result.Formats["Semver2"].Should().Be(expected);
-            }
+            // Assert
+            context.Result.Formats.Should().ContainKey("Semver2");
+            context.Result.Formats["Semver2"].Should().Be(expected);
         }
 
         public static IEnumerable<object[]> MetadataParts()
@@ -102,31 +94,28 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             int height)
         {
             // Arrange
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = Substitute.For<IVersionContext>();
-                context.Configuration.Returns(Utils.GetRepositoryConfiguration(version, meta: parts));
-                context.Result.Returns(Utils.GetVersionResult(height, false));
-                context.Result.Version = context.Configuration.Version;
+                Configuration = GetRepositoryConfiguration(version, meta: parts),
+                Result = GetVersionResult(height, version, false)
+            };
 
-                string expected;
-                if (parts.Length > 0)
-                {
-                    expected = $"{version}-c{context.Result.Sha7}+{string.Join(".", parts)}";
-                }
-                else
-                {
-                    expected = $"{version}-c{context.Result.Sha7}";
-                }
-
-                // Act
-                _sut.Process(context);
-
-                // Assert
-                context.Result.Formats.Should().ContainKey("Semver2");
-                context.Result.Formats["Semver2"].Should().Be(expected);
+            string expected;
+            if (parts.Length > 0)
+            {
+                expected = $"{version}-c{context.Result.Sha7}+{string.Join(".", parts)}";
             }
+            else
+            {
+                expected = $"{version}-c{context.Result.Sha7}";
+            }
+
+            // Act
+            _sut.Process(context);
+
+            // Assert
+            context.Result.Formats.Should().ContainKey("Semver2");
+            context.Result.Formats["Semver2"].Should().Be(expected);
         }
 
         [Theory]
@@ -137,31 +126,28 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             int height)
         {
             // Arrange
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = Substitute.For<IVersionContext>();
-                context.Configuration.Returns(Utils.GetRepositoryConfiguration(version, meta: parts));
-                context.Result.Returns(Utils.GetVersionResult(height));
-                context.Result.Version = context.Configuration.Version;
+                Configuration = GetRepositoryConfiguration(version, meta: parts),
+                Result = GetVersionResult(height, version)
+            };
 
-                string expected;
-                if (parts.Length > 0)
-                {
-                    expected = $"{version}+{string.Join(".", parts)}";
-                }
-                else
-                {
-                    expected = $"{version}";
-                }
-
-                // Act
-                _sut.Process(context);
-
-                // Assert
-                context.Result.Formats.Should().ContainKey("Semver2");
-                context.Result.Formats["Semver2"].Should().Be(expected);
+            string expected;
+            if (parts.Length > 0)
+            {
+                expected = $"{version}+{string.Join(".", parts)}";
             }
+            else
+            {
+                expected = $"{version}";
+            }
+
+            // Act
+            _sut.Process(context);
+
+            // Assert
+            context.Result.Formats.Should().ContainKey("Semver2");
+            context.Result.Formats["Semver2"].Should().Be(expected);
         }
     }
 }

@@ -3,11 +3,9 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using GitTools.Testing;
-using NSubstitute;
-using SimpleVersion.Pipeline;
 using SimpleVersion.Pipeline.Formatting;
 using Xunit;
+using static SimpleVersion.Core.Tests.Utils;
 
 namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 {
@@ -41,23 +39,20 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             string expectedPart)
         {
             // Arrange
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = Substitute.For<IVersionContext>();
-                context.Configuration.Returns(Utils.GetRepositoryConfiguration(version, label: parts));
-                context.Result.Returns(Utils.GetVersionResult(height, false));
-                context.Result.Version = context.Configuration.Version;
+                Configuration = GetRepositoryConfiguration(version, label: parts),
+                Result = GetVersionResult(height, version, false)
+            };
 
-                var fullExpected = $"{expectedPart}-c{context.Result.Sha7}";
+            var fullExpected = $"{expectedPart}-c{context.Result.Sha7}";
 
-                // Act
-                _sut.Process(context);
+            // Act
+            _sut.Process(context);
 
-                // Assert
-                context.Result.Formats.Should().ContainKey("Semver1");
-                context.Result.Formats["Semver1"].Should().Be(fullExpected);
-            }
+            // Assert
+            context.Result.Formats.Should().ContainKey("Semver1");
+            context.Result.Formats["Semver1"].Should().Be(fullExpected);
         }
 
         [Theory]
@@ -69,21 +64,18 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             string expected)
         {
             // Arrange
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = Substitute.For<IVersionContext>();
-                context.Configuration.Returns(Utils.GetRepositoryConfiguration(version, label: parts));
-                context.Result.Returns(Utils.GetVersionResult(height, true));
-                context.Result.Version = context.Configuration.Version;
+                Configuration = GetRepositoryConfiguration(version, label: parts),
+                Result = GetVersionResult(height, version, true)
+            };
 
-                // Act
-                _sut.Process(context);
+            // Act
+            _sut.Process(context);
 
-                // Assert
-                context.Result.Formats.Should().ContainKey("Semver1");
-                context.Result.Formats["Semver1"].Should().Be(expected);
-            }
+            // Assert
+            context.Result.Formats.Should().ContainKey("Semver1");
+            context.Result.Formats["Semver1"].Should().Be(expected);
         }
     }
 }

@@ -1,8 +1,6 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace SimpleVersion.Configuration
 {
