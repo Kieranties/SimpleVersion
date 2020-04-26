@@ -2,6 +2,7 @@
 
 using FluentAssertions;
 using SimpleVersion.Configuration;
+using System.Collections.Generic;
 using Xunit;
 
 namespace SimpleVersion.Abstractions.Tests.Configuration
@@ -15,15 +16,15 @@ namespace SimpleVersion.Abstractions.Tests.Configuration
             var sut = new BranchOverrideConfiguration();
 
             // Assert
-            sut.Label.Should().BeNull();
-            sut.PrefixLabel.Should().BeNull();
-            sut.PostfixLabel.Should().BeNull();
-            sut.InsertLabel.Should().BeNull();
-            sut.Match.Should().BeEmpty();
-            sut.Metadata.Should().BeNull();
-            sut.PrefixMetadata.Should().BeNull();
-            sut.PostfixMetadata.Should().BeNull();
-            sut.InsertMetadata.Should().BeNull();
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.Match), x => x.Should().BeEmpty(), "test");
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.Label), x => x.Should().BeNull(), new List<string> { "test" });
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.PrefixLabel), x => x.Should().BeNull(), new List<string> { "test" });
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.PostfixLabel), x => x.Should().BeNull(), new List<string> { "test" });
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.InsertLabel), x => x.Should().BeNull(), new Dictionary<int, string> { [1] = "test" });
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.Metadata), x => x.Should().BeNull(), new List<string> { "test" });
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.PrefixMetadata), x => x.Should().BeNull(), new List<string> { "test" });
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.PostfixMetadata), x => x.Should().BeNull(), new List<string> { "test" });
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.InsertMetadata), x => x.Should().BeNull(), new Dictionary<int, string> { [1] = "test" });
         }
     }
 }

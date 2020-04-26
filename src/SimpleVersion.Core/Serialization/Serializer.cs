@@ -16,6 +16,7 @@ namespace SimpleVersion.Serialization
             WriteIndented = true,
             AllowTrailingCommas = false,
             ReadCommentHandling = JsonCommentHandling.Skip,
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
             PropertyNameCaseInsensitive = true,
             Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
             Converters =

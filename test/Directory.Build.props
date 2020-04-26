@@ -9,6 +9,10 @@
     <NoWarn>$(NoWarn);SA0001</NoWarn>
   </PropertyGroup>
 
+  <PropertyGroup Label="Coverage">
+    <CollectCoverage>true</CollectCoverage>    
+  </PropertyGroup>
+  
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
     <PackageReference Include="xunit" />

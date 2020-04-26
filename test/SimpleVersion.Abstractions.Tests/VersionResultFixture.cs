@@ -27,7 +27,7 @@ namespace SimpleVersion.Abstractions.Tests
             sut.CanonicalBranchName.Should().BeNull();
             sut.IsPullRequest.Should().BeFalse();
             sut.PullRequestNumber.Should().Be(0);
-            sut.RepositoryPath.Should().BeNull();
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.RepositoryPath), x => x.Should().BeNull(), "test");
             sut.Formats.Should().BeEmpty();
         }
 

@@ -5,6 +5,7 @@ namespace SimpleVersion.Environment
     /// <summary>
     /// Exposes access to environment variables.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverage]
     public class EnvironmentVariableAccessor : IEnvironmentVariableAccessor
     {
         /// <inheritdoc/>

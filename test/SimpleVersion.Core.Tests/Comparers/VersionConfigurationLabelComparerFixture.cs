@@ -44,6 +44,8 @@ namespace SimpleVersion.Core.Tests.Comparers
             yield return new[] { new VersionConfiguration { Label = { "one" } }, new VersionConfiguration() };
             yield return new[] { new VersionConfiguration { Label = { "one", "two" } }, new VersionConfiguration { Label = { "one", "three" } } };
             yield return new[] { new VersionConfiguration { Label = { "one", "two" } }, new VersionConfiguration { Label = { "two", "one" } } };
+            yield return new[] { new VersionConfiguration { Label = null }, new VersionConfiguration { Label = { "one" } } };
+            yield return new[] { new VersionConfiguration { Label = { "one" } }, new VersionConfiguration { Label = null } };
         }
 
         [Theory]

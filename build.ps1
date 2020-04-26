@@ -57,10 +57,12 @@ if(!$NoBuild) {
     $testArgs = @(
         '--logger', 'trx'
         '-r', $testArtifacts
-        '/p:CollectCoverage=true', "/p:MergeWith=$testArtifacts\coverage.json"
+        "/p:MergeWith=$testArtifacts\coverage.json"
         '/p:CoverletOutputFormat=\"cobertura,json\"', "/p:CoverletOutput=$testArtifacts\"
     )
     exec dotnet test ($dotnetArgs + $testArgs)
+
+    exec dotnet reportgenerator "-reports:$(Join-Path $testArtifacts '**/*.cobertura.xml')" "-targetDir:$(Join-Path $testArtifacts 'CoverageReport')"
 }
 
 # docs

@@ -1,0 +1,57 @@
+{
+  "branches": {
+    "release": [
+      "master",
+      "release"
+    ],
+    "overrides": [
+      {
+        "match": "master",
+        "label": [
+          "a",
+          "b"
+        ],
+        "prefixLabel": [
+          "1",
+          "2"
+        ],
+        "postfixLabel": [
+          "11",
+          "22"
+        ],
+        "insertLabel": {
+          "1": "first",
+          "3": "third"
+        },
+        "metadata": [
+          "ma",
+          "mb"
+        ],
+        "prefixMetadata": [
+          "m1",
+          "m2"
+        ],
+        "postfixMetadata": [
+          "m11",
+          "m22"
+        ],
+        "insertMetadata": {
+          "1": "mfirst",
+          "3": "mthird"
+        }
+      }
+    ]
+  },
+  "version": "1.2.3.4",
+  "offSet": 10,
+  "label": [
+    "one",
+    "two",
+    "three"
+  ],
+  "metadata": [
+    "this",
+    "and",
+    "that"
+  ]
+}

@@ -16,10 +16,10 @@ namespace SimpleVersion.Abstractions.Tests.Configuration
             var sut = new VersionConfiguration();
 
             // Assert
-            sut.Label.Should().BeEmpty();
-            sut.Metadata.Should().BeEmpty();
-            sut.Version.Should().BeEmpty();
-            sut.OffSet.Should().Be(0);
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.Version), x => x.Should().BeEmpty(), "test");
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.OffSet), x => x.Should().Be(0), 50);
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.Label), x => x.Should().BeEmpty(), new List<string> { "test" });
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.Metadata), x => x.Should().BeEmpty(), new List<string> { "test" });
         }
 
         [Fact(Skip = "Needs redesign")]

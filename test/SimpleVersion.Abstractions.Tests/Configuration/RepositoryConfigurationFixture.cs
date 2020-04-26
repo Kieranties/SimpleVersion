@@ -14,12 +14,7 @@ namespace SimpleVersion.Abstractions.Tests.Configuration
             // Arrange / Act
             var sut = new RepositoryConfiguration();
 
-            // Assert
-            sut.Label.Should().BeEmpty();
-            sut.Metadata.Should().BeEmpty();
-            sut.Version.Should().BeEmpty();
-            sut.OffSet.Should().Be(0);
-            sut.Branches.Should().NotBeNull();
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.Branches), x => x.Should().NotBeNull(), new BranchConfiguration { Release = { "test" } });
         }
     }
 }
