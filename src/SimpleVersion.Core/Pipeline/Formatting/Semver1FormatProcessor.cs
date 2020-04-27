@@ -7,7 +7,7 @@ namespace SimpleVersion.Pipeline.Formatting
     /// <summary>
     /// Processes the Semver 1 format.
     /// </summary>
-    public class Semver1FormatProcessor : IVersionPipelineProcessor
+    public class Semver1FormatProcessor : IVersionProcessor
     {
         /// <summary>
         /// The key used to identify this format.

@@ -7,29 +7,24 @@ using SimpleVersion.Environment;
 namespace SimpleVersion.Pipeline
 {
     /// <summary>
-    /// Enapsulates state for a version request.
+    /// Encapsulates state for a version request.
     /// </summary>
     public class VersionContext : IVersionContext
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="VersionContext"/> class.
         /// </summary>
-        /// <param name="environment">The <see cref="IVersionEnvironment"/> for the request.</param>
-        /// <param name="repository">The <see cref="IVersionRepository"/> for the request.</param>
+        /// <param name="environment">The <see cref="IVersionEnvironment"/> for the invocation.</param>
+        /// <param name="configuration">The <see cref="VersionConfiguration"/> for the current branch.</param>
+        /// <param name="result">The <see cref="VersionResult"/> to collect final version details.</param>
         public VersionContext(
             IVersionEnvironment environment,
-            IVersionRepository repository)
+            VersionConfiguration configuration,
+            VersionResult result)
         {
             Environment = environment ?? throw new ArgumentNullException(nameof(environment));
-            if (repository == null)
-            {
-                throw new ArgumentNullException(nameof(repository));
-            }
-
-            Result = new VersionResult();
-            environment.Process(this);
-            Configuration = repository.GetConfiguration(Result.CanonicalBranchName);
-            repository.Process(this);
+            Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+            Result = result ?? throw new ArgumentNullException(nameof(result));
         }
 
         /// <inheritdoc/>

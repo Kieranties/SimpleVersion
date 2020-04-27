@@ -7,7 +7,7 @@ namespace SimpleVersion.Environment
     /// <summary>
     /// Contract for accessing environment variables for a version environment.
     /// </summary>
-    public interface IVersionEnvironment : IVersionPipelineProcessor
+    public interface IVersionEnvironment
     {
         /// <summary>
         /// Gets the canonical branch name from the environment.
@@ -23,10 +23,5 @@ namespace SimpleVersion.Environment
         /// Gets a value indicating whether the envrionment is valid for the current request.
         /// </summary>
         bool IsValid { get; }
-
-        /// <summary>
-        /// Gets the acessor for environment variables.
-        /// </summary>
-        IEnvironmentVariableAccessor Variables { get; }
     }
 }

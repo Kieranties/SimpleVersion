@@ -28,26 +28,10 @@ namespace SimpleVersion.Environment
         /// <inheritdoc/>
         public abstract bool IsValid { get; }
 
-        /// <inheritdoc/>
-        public IEnvironmentVariableAccessor Variables { get; }
-
-        /// <inheritdoc/>
-        public virtual void Process(IVersionContext context)
-        {
-            if (context == null)
-            {
-                throw new ArgumentNullException(nameof(context));
-            }
-
-            if (CanonicalBranchName != null)
-            {
-                context.Result.CanonicalBranchName = CanonicalBranchName;
-            }
-
-            if (BranchName != null)
-            {
-                context.Result.BranchName = BranchName;
-            }
-        }
+        /// <summary>
+        /// Gets the <see cref="IEnvironmentVariableAccessor"/> to access
+        /// environment variables.
+        /// </summary>
+        protected IEnvironmentVariableAccessor Variables { get; }
     }
 }

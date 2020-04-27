@@ -1,15 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <Compile Remove="Pipeline\RepositoryConfigurationContextProcessorFixture.cs" />
-    <Compile Remove="Pipeline\VersionCalculatorFixture.cs" />
-    <Compile Remove="Pipeline\VersionContextFixture.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="GitTools.Testing" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
-    <PackageReference Include="System.Text.Json" />
   </ItemGroup>
 
   <ItemGroup>

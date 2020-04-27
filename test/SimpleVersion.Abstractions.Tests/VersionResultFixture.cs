@@ -1,5 +1,6 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System.Security;
 using FluentAssertions;
 using Xunit;
 
@@ -14,21 +15,22 @@ namespace SimpleVersion.Abstractions.Tests
             var sut = new VersionResult();
 
             // Assert
-            sut.Version.Should().BeNull();
-            sut.Major.Should().Be(0);
-            sut.Minor.Should().Be(0);
-            sut.Patch.Should().Be(0);
-            sut.Revision.Should().Be(0);
-            sut.Height.Should().Be(0);
             sut.HeightPadded.Should().Be("0000");
-            sut.Sha.Should().BeNull();
             sut.Sha7.Should().BeNull();
-            sut.BranchName.Should().BeNull();
-            sut.CanonicalBranchName.Should().BeNull();
             sut.IsPullRequest.Should().BeFalse();
             sut.PullRequestNumber.Should().Be(0);
-            AssertUtils.AssertGetSetProperty(sut, nameof(sut.RepositoryPath), x => x.Should().BeNull(), "test");
             sut.Formats.Should().BeEmpty();
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.Version), x => x.Should().BeNull(), "1.2.3.4");
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.Major), x => x.Should().Be(0), 10);
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.Minor), x => x.Should().Be(0), 10);
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.Patch), x => x.Should().Be(0), 10);
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.Revision), x => x.Should().Be(0), 10);
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.Height), x => x.Should().Be(0), 10);
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.Sha), x => x.Should().BeNull(), "1234");
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.BranchName), x => x.Should().BeNull(), "master");
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.CanonicalBranchName), x => x.Should().BeNull(), "refs/heads/master");
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.RepositoryPath), x => x.Should().BeNull(), "test");
+            AssertUtils.AssertGetSetProperty(sut, nameof(sut.IsRelease), x => x.Should().BeFalse(), true);
         }
 
         [Fact]
@@ -84,6 +86,22 @@ namespace SimpleVersion.Abstractions.Tests
             // Assert
             upperResult.Should().Be(value);
             lowerResult.Should().Be(value);
+        }
+
+        [Theory]
+        [InlineData(null, null)]
+        [InlineData("1234", "1234")]
+        [InlineData("1234567890", "1234567")]
+        public void Sha7_IsSubstring_OfSha(string sha, string sha7)
+        {
+            // Arrange / Act
+            var sut = new VersionResult
+            {
+                Sha = sha
+            };
+
+            // Assert
+            sut.Sha7.Should().Be(sha7);
         }
     }
 }

@@ -31,7 +31,7 @@ namespace SimpleVersion.Abstractions.Tests.Environment
             var instance = new StubVersionEnvironment(accessor);
 
             // Assert
-            instance.Variables.Should().BeSameAs(accessor);
+            instance.VariablesWrapper.Should().BeSameAs(accessor);
         }
 
         private class StubVersionEnvironment : BaseVersionEnvironment
@@ -45,6 +45,8 @@ namespace SimpleVersion.Abstractions.Tests.Environment
             public override string BranchName => throw new NotImplementedException("Should not be tested");
 
             public override bool IsValid => throw new NotImplementedException("Should not be tested");
+
+            public IEnvironmentVariableAccessor VariablesWrapper => Variables;
         }
     }
 }

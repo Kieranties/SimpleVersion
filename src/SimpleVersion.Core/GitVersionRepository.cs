@@ -9,62 +9,77 @@ using System.Text.RegularExpressions;
 using LibGit2Sharp;
 using SimpleVersion.Comparers;
 using SimpleVersion.Configuration;
+using SimpleVersion.Environment;
 using SimpleVersion.Exceptions;
 using SimpleVersion.Pipeline;
 
 namespace SimpleVersion
 {
     /// <summary>
-    /// Represents a git repostiory.
+    /// Represents a git repository.
     /// </summary>
     public class GitVersionRepository : IVersionRepository
     {
         private static readonly VersionConfigurationLabelComparer _comparer = new VersionConfigurationLabelComparer();
 
         private readonly IRepository _repo;
+        private readonly IVersionEnvironment _environment;
         private readonly ISerializer _serializer;
-        private readonly RepositoryConfiguration _configuration;
+        private readonly IVersionProcessor[] _processors;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="GitVersionRepository"/> class.
         /// </summary>
         /// <param name="path">The path to the repository.</param>
+        /// <param name="environment">The environment for the invocation.</param>
         /// <param name="serializer">The serializer for reading documents.</param>
-        public GitVersionRepository(string path, ISerializer serializer)
+        /// <param name="processors">The processors to be called on.</param>
+        public GitVersionRepository(
+            string path,
+            IVersionEnvironment environment,
+            ISerializer serializer,
+            IEnumerable<IVersionProcessor> processors)
         {
             // Resolve the underlying repo
             _repo = GetRepository(path);
+            _environment = Assert.ArgumentNotNull(environment, nameof(environment));
             _serializer = Assert.ArgumentNotNull(serializer, nameof(serializer));
-            _configuration = GetRespositoryConfiguration();
+            _processors = Assert.ArgumentNotNull(processors, nameof(processors)).ToArray();
         }
 
         /// <inheritdoc/>
-        public VersionConfiguration GetConfiguration(string? canonicalBranchName)
+        public VersionResult GetResult()
         {
-            return GetBranchConfiguration(_configuration, canonicalBranchName ?? _repo.Head.CanonicalName);
-        }
+            // Fetch repository configuration
+            var repoConfig = GetRespositoryConfiguration();
+            var canonicalBranchName = _environment.CanonicalBranchName ?? _repo.Head.CanonicalName;
 
-        /// <inheritdoc/>
-        public void Process(IVersionContext context)
-        {
-            Assert.ArgumentNotNull(context, nameof(context));
-
-            if (context.Result.BranchName == null)
+            // Compose base result data
+            var result = new VersionResult
             {
-                context.Result.BranchName = _repo.Head.FriendlyName;
+                CanonicalBranchName = canonicalBranchName,
+                BranchName = _environment.BranchName ?? _repo.Head.FriendlyName,
+                Sha = _repo.Head.Tip.Sha,
+
+                // Value returned from repo has trailing slash so need to get parent twice.
+                RepositoryPath = Directory.GetParent(_repo.Info.Path).Parent.FullName,
+                IsRelease = repoConfig.Branches.Release.Any(x => Regex.IsMatch(canonicalBranchName, x))
+            };
+
+            // Build context for further processing
+            var branchConfig = GetBranchConfiguration(repoConfig, result.CanonicalBranchName);
+            var context = new VersionContext(_environment, branchConfig, result);
+
+            // Update height based on context
+            SetHeight(context);
+
+            // Evaluate given processors
+            foreach (var processor in _processors)
+            {
+                processor.Process(context);
             }
 
-            if (context.Result.CanonicalBranchName == null)
-            {
-                context.Result.CanonicalBranchName = _repo.Head.CanonicalName;
-            }
-
-            context.Result.Sha = _repo.Head.Tip.Sha;
-            context.Result.RepositoryPath = _repo.Info.Path;
-            context.Result.Height = GetHeight(context);
-
-            context.Result.IsRelease = _configuration.Branches.Release
-                .Any(x => Regex.IsMatch(context.Result.CanonicalBranchName, x));
+            return context.Result;
         }
 
         private static IRepository GetRepository(string path)
@@ -234,7 +249,7 @@ namespace SimpleVersion
             return false;
         }
 
-        private int GetHeight(IVersionContext context)
+        private void SetHeight(IVersionContext context)
         {
             // Initialize count - The current commit counts, include offset
             var height = 1 + context.Configuration.OffSet;
@@ -267,7 +282,7 @@ namespace SimpleVersion
                 prevTree = currentTree;
             }
 
-            return height;
+            context.Result.Height = height;
         }
     }
 }

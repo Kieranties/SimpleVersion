@@ -34,7 +34,7 @@ namespace SimpleVersion.Core.Tests.Environment
         [InlineData("")]
         [InlineData("  ")]
         [InlineData("\t\t  ")]
-        public void IsValid_EnvironmenNottSet_ReturnsFalse(string value)
+        public void IsValid_EnvironmentNotSet_ReturnsFalse(string value)
         {
             // Arrange
             _env.GetVariable("TF_BUILD").Returns(value);
@@ -44,7 +44,7 @@ namespace SimpleVersion.Core.Tests.Environment
             var result = sut.IsValid;
 
             // Assert
-            result.Should().Be(false);
+            result.Should().BeFalse();
         }
 
         [Theory]
@@ -101,63 +101,6 @@ namespace SimpleVersion.Core.Tests.Environment
 
             // Assert
             result.Should().Be(branch);
-        }
-
-        [Fact]
-        public void Process_NullContext_Throws()
-        {
-            // Arrange
-            var sut = new AzureDevopsEnvironment(_env);
-            Action action = () => sut.Process(null);
-
-            // Act / Assert
-            action.Should().Throw<ArgumentNullException>()
-                .And.ParamName.Should().Be("context");
-        }
-
-        [Fact]
-        public void Process_NoEnvironmentSet_DoesNotSet()
-        {
-            // Arrange
-            _env.GetVariable("BUILD_SOURCEBRANCH").Returns((string)null);
-            var branchName = "branchName";
-            var canonicalBranchName = "canonical" + branchName;
-            var context = Substitute.For<IVersionContext>();
-            var result = new VersionResult
-            {
-                BranchName = branchName,
-                CanonicalBranchName = canonicalBranchName
-            };
-            context.Result.Returns(result);
-
-            var sut = new AzureDevopsEnvironment(_env);
-
-            // Act
-            sut.Process(context);
-
-            // Assert
-            result.BranchName.Should().Be(branchName);
-            result.CanonicalBranchName.Should().Be(canonicalBranchName);
-        }
-
-        [Fact]
-        public void Process_EnvironmentSet_DoesSet()
-        {
-            // Arrange
-            var canonicalBranchName = "refs/heads/master";
-            _env.GetVariable("BUILD_SOURCEBRANCH").Returns(canonicalBranchName);
-            var context = Substitute.For<IVersionContext>();
-            var result = new VersionResult();
-            context.Result.Returns(result);
-
-            var sut = new AzureDevopsEnvironment(_env);
-
-            // Act
-            sut.Process(context);
-
-            // Assert
-            result.BranchName.Should().Be("master");
-            result.CanonicalBranchName.Should().Be(canonicalBranchName);
         }
     }
 }

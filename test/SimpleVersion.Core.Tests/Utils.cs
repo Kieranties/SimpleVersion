@@ -61,17 +61,6 @@ namespace SimpleVersion.Core.Tests
             };
         }
 
-        public static void WriteRepoConfig(
-            RepositoryFixtureBase fixture, RepositoryConfiguration config, ISerializer serializer)
-        {
-            var json = serializer.Serialize(config);
-            var path = Path.Combine(fixture.RepositoryPath, Constants.ConfigurationFileName);
-            File.WriteAllText(path, json);
-            fixture.Repository.Index.Add(Constants.ConfigurationFileName);
-            fixture.Repository.Index.Write();
-            fixture.MakeACommit();
-        }
-
         internal class MockVersionContext : IVersionContext
         {
             public VersionConfiguration Configuration { get; set; } = new VersionConfiguration();

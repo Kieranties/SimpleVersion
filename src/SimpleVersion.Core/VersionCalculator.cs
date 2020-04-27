@@ -1,6 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System.IO;
+using System.Linq;
 using SimpleVersion.Environment;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Pipeline.Formatting;
@@ -13,8 +14,22 @@ namespace SimpleVersion
     /// </summary>
     public class VersionCalculator : IVersionCalculator
     {
+        private static readonly EnvironmentVariableAccessor _environmentVariables = new EnvironmentVariableAccessor();
+        private static readonly IVersionEnvironment[] _environments = new IVersionEnvironment[]
+        {
+            new AzureDevopsEnvironment(_environmentVariables),
+            new DefaultVersionEnvironment(_environmentVariables)
+        };
+
+        private static readonly IVersionProcessor[] _processors = new IVersionProcessor[]
+        {
+            new VersionFormatProcessor(),
+            new Semver1FormatProcessor(),
+            new Semver2FormatProcessor()
+        };
+
         private readonly Serializer _serializer;
-        private readonly VersionPipeline _pipeline;
+        private readonly GitVersionRepository _repository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="VersionCalculator"/> class.
@@ -23,26 +38,12 @@ namespace SimpleVersion
         public VersionCalculator(string path)
         {
             _serializer = new Serializer();
-            var repository = new GitVersionRepository(path, _serializer);
-            var environmentVariables = new EnvironmentVariableAccessor();
-
-            // TODO: Resolve environment
-            var environment = new AzureDevopsEnvironment(environmentVariables);
-
-            // TODO: Populate processors
-            var processors = new IVersionPipelineProcessor[]
-            {
-                new VersionFormatProcessor(),
-                new Semver1FormatProcessor(),
-                new Semver2FormatProcessor()
-            };
-
-            // TODO: Apply token rules ahead of format processing
-            _pipeline = new VersionPipeline(environment, repository, processors);
+            var environment = _environments.First(x => x.IsValid);
+            _repository = new GitVersionRepository(path, environment, _serializer, _processors);
         }
 
         /// <inheritdoc/>
-        public VersionResult GetResult() => _pipeline.Process();
+        public VersionResult GetResult() => _repository.GetResult();
 
         /// <inheritdoc/>
         public void WriteResult(TextWriter output)
