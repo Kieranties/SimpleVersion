@@ -48,21 +48,17 @@ if(!$NoBuild) {
     
     $dotnetArgs = @('--configuration', $Configuration, "/p:Version=$version")
 
-    # Pack
-    $distArtifacts = Join-Path $ArtifactsPath 'dist'
-    exec dotnet pack $dotnetArgs --output $distArtifacts
-
     # Unit Test
     $testArtifacts = Join-Path $ArtifactsPath 'tests'
     $testArgs = @(
-        '--logger', 'trx'
         '-r', $testArtifacts
-        "/p:MergeWith=$testArtifacts\coverage.json"
-        '/p:CoverletOutputFormat=\"cobertura,json\"', "/p:CoverletOutput=$testArtifacts\"
     )
     exec dotnet test ($dotnetArgs + $testArgs)
-
     exec dotnet reportgenerator "-reports:$(Join-Path $testArtifacts '**/*.cobertura.xml')" "-targetDir:$(Join-Path $testArtifacts 'CoverageReport')"
+
+    # Pack
+    $distArtifacts = Join-Path $ArtifactsPath 'dist'
+    exec dotnet pack $dotnetArgs --output $distArtifacts --no-build
 }
 
 # docs

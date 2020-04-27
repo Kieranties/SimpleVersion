@@ -10,8 +10,14 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Coverage">
-    <CollectCoverage>true</CollectCoverage>    
+    <CollectCoverage>true</CollectCoverage>
+    <VSTestLogger>trx</VSTestLogger>
+    <VSTestCollect>XPlat Code Coverage</VSTestCollect>
   </PropertyGroup>
+
+  <ItemGroup Label="Coverage">
+    <AssemblyAttribute Include="System.Diagnostics.CodeAnalysis.ExcludeFromCodeCoverageAttribute" />
+  </ItemGroup>
   
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" />
@@ -19,6 +25,8 @@
     <PackageReference Include="xunit.runner.visualstudio" />
     <PackageReference Include="FluentAssertions" />
     <PackageReference Include="NSubstitute" />
+    <PackageReference Include="coverlet.msbuild" />
+    <PackageReference Include="coverlet.collector" />
   </ItemGroup>
 
   <ItemGroup>
