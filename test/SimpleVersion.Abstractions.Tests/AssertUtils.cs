@@ -7,21 +7,21 @@ namespace SimpleVersion.Abstractions.Tests
 {
     public static class AssertUtils
     {
-        public static void AssertGetSetProperty<T, K>(
-            T instance,
+        public static void AssertGetSetProperty<TSubject, TProperty>(
+            TSubject instance,
             string propertyName,
-            Action<K> getAssert,
-            K setValue)
+            Action<TProperty> getAssert,
+            TProperty setValue)
         {
-            var property = typeof(T).GetProperty(propertyName);
+            var property = typeof(TSubject).GetProperty(propertyName);
 
             // Assert Get
-            var value = (K)property.GetValue(instance);
+            var value = (TProperty)property.GetValue(instance);
             getAssert(value);
 
             // Assert Set
             property.SetValue(instance, setValue);
-            var newValue = (K)property.GetValue(instance);
+            var newValue = (TProperty)property.GetValue(instance);
             newValue.Should().Be(setValue);
         }
     }

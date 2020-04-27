@@ -56,7 +56,7 @@ namespace SimpleVersion.Core.Tests.Serialization
                 OffSet = 10,
                 Branches =
                 {
-                    Release = { "master", "release"},
+                    Release = { "master", "release" },
                     Overrides =
                     {
                         new BranchOverrideConfiguration

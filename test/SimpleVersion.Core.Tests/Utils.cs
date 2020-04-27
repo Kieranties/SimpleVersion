@@ -1,6 +1,9 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.CompilerServices;
+using GitTools.Testing;
 using SimpleVersion.Configuration;
 using SimpleVersion.Environment;
 using SimpleVersion.Pipeline;
@@ -56,6 +59,17 @@ namespace SimpleVersion.Core.Tests
                 IsRelease = release,
                 Version = version
             };
+        }
+
+        public static void WriteRepoConfig(
+            RepositoryFixtureBase fixture, RepositoryConfiguration config, ISerializer serializer)
+        {
+            var json = serializer.Serialize(config);
+            var path = Path.Combine(fixture.RepositoryPath, Constants.ConfigurationFileName);
+            File.WriteAllText(path, json);
+            fixture.Repository.Index.Add(Constants.ConfigurationFileName);
+            fixture.Repository.Index.Write();
+            fixture.MakeACommit();
         }
 
         internal class MockVersionContext : IVersionContext

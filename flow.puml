@@ -1,0 +1,12 @@
+@startuml
+user -> calc : simpleversion <path>
+calc -> env : Get Environment
+env -> calc : 
+calc -> repo : Get Repo(env)
+repo -> calc
+repo -> calc : New context
+calc -> repo
+calc -> processor : Apply(ctx)
+
+
+@enduml
