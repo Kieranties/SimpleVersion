@@ -101,7 +101,7 @@ _903782_
 > Release branch configuration provides a simple way to identify what may be
 > publicly shipped. If the version has a label containing the sha, you probably
 > don't want it released.  You can enable all branches to be release branches
-> using teh regular expression `.*`
+> using the regular expression `.*`
 
 ### Overrides
 
@@ -157,7 +157,7 @@ Override configuration has access to the following properties
 | `prefixlabel`     | string array          | false    | Prefixes the base configuration `label` with the given values                             |
 | `postfixlabel`    | string array          | false    | Postfixes the base configuration `label` with the given values                            |
 | `insertlabel`     | int/string dictionary | false    | Inserts the given values into the base `label` at the index specified                     |
-| `metadata`        | string array          | false    | Overrides `metdata` from the base configuration                                           |
+| `metadata`        | string array          | false    | Overrides `metadata` from the base configuration                                           |
 | `prefixmetadata`  | string array          | false    | Prefixes the base configuration `metadata` with the given values                          |
 | `postfixmetadata` | string array          | false    | Postfixes the base configuration `metadata` with the given values                         |
 | `insertmetadata`  | int/string dictionary | false    | Inserts the given values into the base `metadata` at the index specified                  |
