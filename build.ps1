@@ -51,7 +51,7 @@ if(!$NoBuild) {
     # Test
     $testArtifacts = Join-Path $ArtifactsPath 'tests'
     exec dotnet test $dotnetArgs -r $testArtifacts --no-build
-    exec dotnet reportgenerator "-reports:$(Join-Path $testArtifacts '**/*.cobertura.xml')" "-targetDir:$(Join-Path $testArtifacts 'CoverageReport')" "-reportTypes:HtmlInline_AzurePipelines_Dark"
+    exec dotnet reportgenerator "-reports:$(Join-Path $testArtifacts '**/*.cobertura.xml')" "-targetDir:$(Join-Path $testArtifacts 'CoverageReport')"
 
     # Pack
     $distArtifacts = Join-Path $ArtifactsPath 'dist'
