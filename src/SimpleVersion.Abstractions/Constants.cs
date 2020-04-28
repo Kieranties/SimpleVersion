@@ -8,8 +8,8 @@ namespace SimpleVersion
     public static class Constants
     {
         /// <summary>
-        /// The file name of the settings file.
+        /// The file name of the configuration file.
         /// </summary>
-        public const string VersionFileName = ".simpleversion.json";
+        public const string ConfigurationFileName = ".simpleversion.json";
     }
 }

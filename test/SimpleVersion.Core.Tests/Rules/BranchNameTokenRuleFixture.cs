@@ -3,10 +3,10 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using GitTools.Testing;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Rules;
 using Xunit;
+using static SimpleVersion.Core.Tests.Utils;
 
 namespace SimpleVersion.Core.Tests.Rules
 {
@@ -52,23 +52,20 @@ namespace SimpleVersion.Core.Tests.Rules
         {
             // Arrange
             var sut = new BranchNameTokenRule();
-            using (var fixture = new EmptyRepositoryFixture())
+
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
+                Result =
                 {
-                    Result =
-                    {
-                        CanonicalBranchName = branchName
-                    }
-                };
+                    CanonicalBranchName = branchName
+                }
+            };
 
-                // Act
-                var result = sut.Resolve(context, input);
+            // Act
+            var result = sut.Resolve(context, input);
 
-                // Assert
-                result.Should().Be(expected);
-            }
+            // Assert
+            result.Should().Be(expected);
         }
 
         [Theory]
@@ -77,23 +74,19 @@ namespace SimpleVersion.Core.Tests.Rules
         {
             // Arrange
             var sut = new BranchNameTokenRule(pattern);
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
+                Result =
                 {
-                    Result =
-                    {
-                        CanonicalBranchName = branchName
-                    }
-                };
+                    CanonicalBranchName = branchName
+                }
+            };
 
-                // Act
-                var result = sut.Resolve(context, input);
+            // Act
+            var result = sut.Resolve(context, input);
 
-                // Assert
-                result.Should().Be(expected);
-            }
+            // Assert
+            result.Should().Be(expected);
         }
     }
 }

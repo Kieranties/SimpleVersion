@@ -1,7 +1,6 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System;
-using SimpleVersion.Serialization;
 
 namespace SimpleVersion.Tool
 {
@@ -20,17 +19,15 @@ namespace SimpleVersion.Tool
             var exitCode = 0;
             try
             {
+                // TODO: arguments and options
                 var path = System.IO.Directory.GetCurrentDirectory();
                 if (args?.Length > 0)
                 {
                     path = args[0];
                 }
 
-                var result = VersionCalculator
-                    .Default()
-                    .GetResult(path);
-
-                Console.Out.WriteLine(Serializer.Serialize(result));
+                var calculator = new VersionCalculator(path);
+                calculator.WriteResult(Console.Out);
             }
 #pragma warning disable CA1031 // Do not catch general exception types
             catch (Exception ex)

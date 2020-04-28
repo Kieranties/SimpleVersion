@@ -1,8 +1,9 @@
 .vs
-artifacts
+.artifacts
 packages
 bin
 obj
 integration/temp
 /docs/api/*.yml
 /docs/api/.manifest
+coverage.json

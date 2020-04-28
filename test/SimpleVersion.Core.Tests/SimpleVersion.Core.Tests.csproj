@@ -2,7 +2,6 @@
 
   <ItemGroup>
     <PackageReference Include="GitTools.Testing" />
-    <PackageReference Include="System.Text.Json" />
   </ItemGroup>
 
   <ItemGroup>

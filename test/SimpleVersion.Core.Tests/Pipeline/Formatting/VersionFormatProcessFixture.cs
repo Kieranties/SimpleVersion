@@ -3,20 +3,19 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using GitTools.Testing;
-using SimpleVersion.Pipeline;
 using SimpleVersion.Pipeline.Formatting;
 using Xunit;
+using static SimpleVersion.Core.Tests.Utils;
 
 namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 {
     public class VersionFormatProcessFixture
     {
-        private readonly VersionFormatProcess _sut;
+        private readonly VersionFormatProcessor _sut;
 
         public VersionFormatProcessFixture()
         {
-            _sut = new VersionFormatProcess();
+            _sut = new VersionFormatProcessor();
         }
 
         public static IEnumerable<object[]> InvalidVersions()
@@ -29,28 +28,23 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
         [Theory]
         [MemberData(nameof(InvalidVersions))]
-        public void Apply_InvalidVersion_Throws(string version)
+        public void Process_InvalidVersion_Throws(string version)
         {
             // Arrange
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-
-                var context = new VersionContext(fixture.Repository)
+                Configuration =
                 {
-                    Settings =
-                    {
-                        Version = version
-                    }
-                };
+                    Version = version
+                }
+            };
 
-                // Act
-                Action action = () => _sut.Apply(context);
+            // Act
+            Action action = () => _sut.Process(context);
 
-                // Asset
-                action.Should().Throw<InvalidOperationException>()
-                    .WithMessage($"Version '{context.Settings.Version}' is not in a valid format.");
-            }
+            // Asset
+            action.Should().Throw<InvalidOperationException>()
+                .WithMessage($"Version '{context.Configuration.Version}' is not in a valid format.");
         }
 
         public static IEnumerable<object[]> ValidVersions()
@@ -64,7 +58,7 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
         [Theory]
         [MemberData(nameof(ValidVersions))]
-        public void Apply_ValidVersions_SetsMembers(
+        public void Process_ValidVersions_SetsMembers(
             string version,
             string expectedVersion,
             int major,
@@ -73,27 +67,23 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             int revision)
         {
             // Arrange
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
+                Configuration =
                 {
-                    Settings =
-                    {
-                        Version = version
-                    }
-                };
+                    Version = version
+                }
+            };
 
-                // Act
-                _sut.Apply(context);
+            // Act
+            _sut.Process(context);
 
-                // Assert
-                context.Result.Version.Should().Be(expectedVersion);
-                context.Result.Major.Should().Be(major);
-                context.Result.Minor.Should().Be(minor);
-                context.Result.Patch.Should().Be(patch);
-                context.Result.Revision.Should().Be(revision);
-            }
+            // Assert
+            context.Result.Version.Should().Be(expectedVersion);
+            context.Result.Major.Should().Be(major);
+            context.Result.Minor.Should().Be(minor);
+            context.Result.Patch.Should().Be(patch);
+            context.Result.Revision.Should().Be(revision);
         }
 
         [Theory]
@@ -115,31 +105,27 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
             int revision)
         {
             // Arrange
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
+                Configuration =
                 {
-                    Settings =
-                    {
-                        Version = version
-                    },
-                    Result =
-                    {
-                        Height = commits
-                    }
-                };
+                    Version = version
+                },
+                Result =
+                {
+                    Height = commits
+                }
+            };
 
-                // Act
-                _sut.Apply(context);
+            // Act
+            _sut.Process(context);
 
-                // Assert
-                context.Result.Version.Should().Be(expectedVersion);
-                context.Result.Major.Should().Be(major);
-                context.Result.Minor.Should().Be(minor);
-                context.Result.Patch.Should().Be(patch);
-                context.Result.Revision.Should().Be(revision);
-            }
+            // Assert
+            context.Result.Version.Should().Be(expectedVersion);
+            context.Result.Major.Should().Be(major);
+            context.Result.Minor.Should().Be(minor);
+            context.Result.Patch.Should().Be(patch);
+            context.Result.Revision.Should().Be(revision);
         }
     }
 }

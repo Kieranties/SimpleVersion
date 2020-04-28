@@ -4,19 +4,25 @@
 
     Centrally managed packages for all projects in the solution
   -->
+  <PropertyGroup Label="Shared Versions">
+    <_xunit>2.*</_xunit>
+  </PropertyGroup>
+  
   <ItemGroup Label="Source library packages">
-    <PackageReference Update="LibGit2Sharp"                         Version="0.26.*" />
-    <PackageReference Update="System.Text.Json"                     Version="4.7.*" />
+    <PackageReference Update="LibGit2Sharp"                                           Version="0.26.*" />
+    <PackageReference Update="System.Text.Json"                                       Version="4.7.*" />
 
   </ItemGroup>
 
   <ItemGroup Label="Test library packages">
     <PackageReference Update="Microsoft.NET.Test.Sdk"               Version="16.*" />
-    <PackageReference Update="xunit"                                Version="2.*" />
-    <PackageReference Update="xunit.runner.visualstudio"            Version="2.*" />
+    <PackageReference Update="xunit"                                Version="$(_xunit)" />
+    <PackageReference Update="xunit.runner.visualstudio"            Version="$(_xunit)" />
     <PackageReference Update="FluentAssertions"                     Version="5.*" />
     <PackageReference Update="GitTools.Testing"                     Version="1.*" />
     <PackageReference Update="NSubstitute"                          Version="4.*" />
+    <PackageReference Update="coverlet.msbuild"                     Version="2.*" />
+    <PackageReference Update="coverlet.collector"                   Version="1.*" />
   </ItemGroup>
 
   <ItemGroup Label="Global project tooling">
@@ -26,7 +32,6 @@
 
   <ItemGroup Label="Test only tooling"
              Condition="$(MSBuildProjectName.EndsWith('Tests'))">
-    <GlobalPackageReference Include="NSubstitute.Analyzers.CSharp" Version="1.*" />
-    <GlobalPackageReference Include="coverlet.msbuild" Version="2.*" />
+    <GlobalPackageReference Include="NSubstitute.Analyzers.CSharp" Version="1.*" />    
   </ItemGroup>
 </Project>

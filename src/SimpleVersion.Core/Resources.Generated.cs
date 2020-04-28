@@ -1,8 +1,8 @@
-// Hash: BE-3E-73-D3-E7-E4-37-7C-67-EA-97-D7-12-FA-7F-60
+// Hash: B6-82-57-C5-03-AD-00-BC-92-32-D8-90-A9-39-C2-C0
 // Auto generated - Do not modify this file!
 // Modify  then invoke Update-Resource to recreate
 // For members that require formatting provide a csv of the argument names
-// 09/26/2019 15:30:31
+// 04/28/2020 22:04:34
 namespace SimpleVersion {
 
     /// <summary>
@@ -44,11 +44,6 @@ namespace SimpleVersion {
         internal static global::System.Globalization.CultureInfo Culture { get; set; }
 
                 /// <summary>
-        ///   Looks up a localized string similar to: Could not convert given context to {0}.
-        /// </summary>
-        internal static string Exception_CouldNotConvertContextType(object contextType) => string.Format(Culture, GetString(nameof(Exception_CouldNotConvertContextType)), contextType);
-
-        /// <summary>
         ///   Looks up a localized string similar to: Could not find the current branch tip. Unable to identify the current commit.
         /// </summary>
         internal static string Exception_CouldNotFindBranchTip => GetString(nameof(Exception_CouldNotFindBranchTip));
@@ -59,9 +54,14 @@ namespace SimpleVersion {
         internal static string Exception_CouldNotFindGitRepository(object path) => string.Format(Culture, GetString(nameof(Exception_CouldNotFindGitRepository)), path);
 
         /// <summary>
+        ///   Looks up a localized string similar to: The branch name could not be resolved from the repository or the environment. Ensure you have checked out a branch (not a commit).
+        /// </summary>
+        internal static string Exception_CouldNotIdentifyBranchName => GetString(nameof(Exception_CouldNotIdentifyBranchName));
+
+        /// <summary>
         ///   Looks up a localized string similar to: Could not read '{0}', has it been committed?
         /// </summary>
-        internal static string Exception_CouldNotReadSettingsFile(object fileName) => string.Format(Culture, GetString(nameof(Exception_CouldNotReadSettingsFile)), fileName);
+        internal static string Exception_CouldNotReadConfigurationFile(object fileName) => string.Format(Culture, GetString(nameof(Exception_CouldNotReadConfigurationFile)), fileName);
 
         /// <summary>
         ///   Looks up a localized string similar to: Unexpected JsonToken '{0}' in converter {1}.
@@ -77,11 +77,6 @@ namespace SimpleVersion {
         ///   Looks up a localized string similar to: Path must be provided.
         /// </summary>
         internal static string Exception_PathMustBeProvided => GetString(nameof(Exception_PathMustBeProvided));
-
-        /// <summary>
-        ///   Looks up a localized string similar to: Unexpected null value
-        /// </summary>
-        internal static string Exception_UnexpectedNull => GetString(nameof(Exception_UnexpectedNull));
 
         /// <summary>
         ///    Returns the resource string for the given key

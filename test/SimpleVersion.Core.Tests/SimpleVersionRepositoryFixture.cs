@@ -2,8 +2,7 @@
 
 using System.IO;
 using GitTools.Testing;
-using SimpleVersion.Model;
-using SimpleVersion.Serialization;
+using SimpleVersion.Configuration;
 
 namespace SimpleVersion.Core.Tests
 {
@@ -12,7 +11,7 @@ namespace SimpleVersion.Core.Tests
     /// </summary>
     public class SimpleVersionRepositoryFixture : EmptyRepositoryFixture
     {
-        private static readonly Settings _defaultSettings = new Settings
+        private static readonly RepositoryConfiguration _defaultConfiguration = new RepositoryConfiguration
         {
             Version = "0.1.0",
             Branches =
@@ -25,27 +24,30 @@ namespace SimpleVersion.Core.Tests
             }
         };
 
-        public SimpleVersionRepositoryFixture() : this(_defaultSettings)
+        private readonly ISerializer _serializer;
+
+        public SimpleVersionRepositoryFixture(ISerializer serializer) : this(_defaultConfiguration, serializer)
         {
         }
 
-        public SimpleVersionRepositoryFixture(Settings config)
+        public SimpleVersionRepositoryFixture(RepositoryConfiguration config, ISerializer serializer)
         {
+            _serializer = serializer;
             SetConfig(config);
         }
 
-        public Settings GetConfig()
+        public RepositoryConfiguration GetConfig()
         {
-            var content = File.ReadAllText(Path.Combine(this.RepositoryPath, Constants.VersionFileName));
-            return Serializer.Deserialize<Settings>(content);
+            var content = File.ReadAllText(Path.Combine(this.RepositoryPath, Constants.ConfigurationFileName));
+            return _serializer.Deserialize<RepositoryConfiguration>(content);
         }
 
-        public void SetConfig(Settings config, bool commit = true)
+        public void SetConfig(RepositoryConfiguration config, bool commit = true)
         {
-            var json = Serializer.Serialize(config);
-            var fullPath = Path.Combine(this.RepositoryPath, Constants.VersionFileName);
+            var json = _serializer.Serialize(config);
+            var fullPath = Path.Combine(this.RepositoryPath, Constants.ConfigurationFileName);
             File.WriteAllText(fullPath, json);
-            this.Repository.Index.Add(Constants.VersionFileName);
+            this.Repository.Index.Add(Constants.ConfigurationFileName);
             this.Repository.Index.Write();
             if (commit)
             {

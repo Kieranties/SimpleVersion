@@ -1,11 +1,11 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using System;
 using System.IO;
-using LibGit2Sharp;
-using SimpleVersion.Model;
+using System.Linq;
+using SimpleVersion.Environment;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Pipeline.Formatting;
+using SimpleVersion.Serialization;
 
 namespace SimpleVersion
 {
@@ -14,60 +14,45 @@ namespace SimpleVersion
     /// </summary>
     public class VersionCalculator : IVersionCalculator
     {
+        private static readonly EnvironmentVariableAccessor _environmentVariables = new EnvironmentVariableAccessor();
+        private static readonly IVersionEnvironment[] _environments = new IVersionEnvironment[]
+        {
+            new AzureDevopsEnvironment(_environmentVariables),
+            new DefaultVersionEnvironment(_environmentVariables)
+        };
+
+        private static readonly IVersionProcessor[] _processors = new IVersionProcessor[]
+        {
+            new VersionFormatProcessor(),
+            new Semver1FormatProcessor(),
+            new Semver2FormatProcessor()
+        };
+
+        private readonly Serializer _serializer;
+        private readonly GitVersionRepository _repository;
+
         /// <summary>
-        /// Default calculator instance.
+        /// Initializes a new instance of the <see cref="VersionCalculator"/> class.
         /// </summary>
-        /// <returns>An instance of <see cref="VersionCalculator"/>.</returns>
-        public static VersionCalculator Default() => new VersionCalculator();
+        /// <param name="path">The path for the repository.</param>
+        public VersionCalculator(string path)
+        {
+            _serializer = new Serializer();
+            var environment = _environments.First(x => x.IsValid);
+            _repository = new GitVersionRepository(path, environment, _serializer, _processors);
+        }
 
         /// <inheritdoc/>
-        public VersionResult GetResult(string path)
+        public VersionResult GetResult() => _repository.GetResult();
+
+        /// <inheritdoc/>
+        public void WriteResult(TextWriter output)
         {
-            var resolvedPath = ResolveRepoPath(path);
+            Assert.ArgumentNotNull(output, nameof(output));
 
-            using (var repo = new Repository(resolvedPath))
-            {
-                // Initialize context
-                var ctx = new VersionContext(repo);
-                ctx.Result.RepositoryPath = Directory.GetParent(resolvedPath).Parent.FullName;
-
-                // Resolve build server information
-                ApplyProcessor<AzureDevopsContextProcessor>(ctx);
-
-                // Resolve settings
-                ApplyProcessor<SettingsContextProcessor>(ctx);
-
-                // Resolve Formats
-                ApplyProcessor<VersionFormatProcess>(ctx);
-                ApplyProcessor<Semver1FormatProcess>(ctx);
-                ApplyProcessor<Semver2FormatProcess>(ctx);
-
-                return ctx.Result;
-            }
-        }
-
-        private string ResolveRepoPath(string path)
-        {
-            if (string.IsNullOrWhiteSpace(path))
-            {
-                throw new ArgumentException(Resources.Exception_PathMustBeProvided, nameof(path));
-            }
-
-            var resolvedPath = Repository.Discover(path);
-
-            if (string.IsNullOrWhiteSpace(resolvedPath))
-            {
-                throw new DirectoryNotFoundException(Resources.Exception_CouldNotFindGitRepository(path));
-            }
-
-            return resolvedPath;
-        }
-
-        private void ApplyProcessor<T>(IVersionContext context)
-            where T : IVersionContextProcessor, new()
-        {
-            var instance = new T();
-            instance.Apply(context);
+            var result = GetResult();
+            var serialized = _serializer.Serialize(result);
+            output.WriteLine(serialized);
         }
     }
 }

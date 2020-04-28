@@ -3,20 +3,19 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using GitTools.Testing;
-using SimpleVersion.Pipeline;
 using SimpleVersion.Pipeline.Formatting;
 using Xunit;
+using static SimpleVersion.Core.Tests.Utils;
 
 namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 {
     public class Semver2FormatProcessFixture
     {
-        private readonly Semver2FormatProcess _sut;
+        private readonly Semver2FormatProcessor _sut;
 
         public Semver2FormatProcessFixture()
         {
-            _sut = new Semver2FormatProcess();
+            _sut = new Semver2FormatProcessor();
         }
 
         public static IEnumerable<object[]> LabelParts()
@@ -33,61 +32,51 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
         [Theory]
         [MemberData(nameof(LabelParts))]
-        public void Apply_LabelParts_NonRelease_Is_Formatted(
+        public void Process_LabelParts_NonRelease_Is_Formatted(
             string[] parts,
             string version,
             int height,
             string expectedPart)
         {
             // Arrange
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
-                {
-                    Settings = Utils.GetSettings(version, label: parts),
-                    Result = Utils.GetVersionResult(height, false)
-                };
-                context.Result.Version = context.Settings.Version;
+                Configuration = GetRepositoryConfiguration(version, label: parts),
+                Result = GetVersionResult(height, version, false)
+            };
 
-                var divider = parts.Length > 0 ? '.' : '-';
-                var fullExpected = $"{expectedPart}{divider}c{context.Result.Sha7}";
+            var divider = parts.Length > 0 ? '.' : '-';
+            var fullExpected = $"{expectedPart}{divider}c{context.Result.Sha7}";
 
-                // Act
-                _sut.Apply(context);
+            // Act
+            _sut.Process(context);
 
-                // Assert
-                context.Result.Formats.Should().ContainKey("Semver2");
-                context.Result.Formats["Semver2"].Should().Be(fullExpected);
-            }
+            // Assert
+            context.Result.Formats.Should().ContainKey("Semver2");
+            context.Result.Formats["Semver2"].Should().Be(fullExpected);
         }
 
         [Theory]
         [MemberData(nameof(LabelParts))]
-        public void Apply_LabelParts_Release_Is_Formatted(
+        public void Process_LabelParts_Release_Is_Formatted(
             string[] parts,
             string version,
             int height,
             string expected)
         {
             // Arrange
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
-                {
-                    Settings = Utils.GetSettings(version, parts),
-                    Result = Utils.GetVersionResult(height)
-                };
-                context.Result.Version = context.Settings.Version;
+                Configuration = GetRepositoryConfiguration(version, parts),
+                Result = GetVersionResult(height, version)
+            };
 
-                // Act
-                _sut.Apply(context);
+            // Act
+            _sut.Process(context);
 
-                // Assert
-                context.Result.Formats.Should().ContainKey("Semver2");
-                context.Result.Formats["Semver2"].Should().Be(expected);
-            }
+            // Assert
+            context.Result.Formats.Should().ContainKey("Semver2");
+            context.Result.Formats["Semver2"].Should().Be(expected);
         }
 
         public static IEnumerable<object[]> MetadataParts()
@@ -99,76 +88,66 @@ namespace SimpleVersion.Core.Tests.Pipeline.Formatting
 
         [Theory]
         [MemberData(nameof(MetadataParts))]
-        public void Apply_MetadataParts_NonRelease_Is_Formatted(
+        public void Process_MetadataParts_NonRelease_Is_Formatted(
             string[] parts,
             string version,
             int height)
         {
             // Arrange
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
-                {
-                    Settings = Utils.GetSettings(version, meta: parts),
-                    Result = Utils.GetVersionResult(height, false)
-                };
-                context.Result.Version = context.Settings.Version;
+                Configuration = GetRepositoryConfiguration(version, meta: parts),
+                Result = GetVersionResult(height, version, false)
+            };
 
-                string expected;
-                if (parts.Length > 0)
-                {
-                    expected = $"{version}-c{context.Result.Sha7}+{string.Join(".", parts)}";
-                }
-                else
-                {
-                    expected = $"{version}-c{context.Result.Sha7}";
-                }
-
-                // Act
-                _sut.Apply(context);
-
-                // Assert
-                context.Result.Formats.Should().ContainKey("Semver2");
-                context.Result.Formats["Semver2"].Should().Be(expected);
+            string expected;
+            if (parts.Length > 0)
+            {
+                expected = $"{version}-c{context.Result.Sha7}+{string.Join(".", parts)}";
             }
+            else
+            {
+                expected = $"{version}-c{context.Result.Sha7}";
+            }
+
+            // Act
+            _sut.Process(context);
+
+            // Assert
+            context.Result.Formats.Should().ContainKey("Semver2");
+            context.Result.Formats["Semver2"].Should().Be(expected);
         }
 
         [Theory]
         [MemberData(nameof(MetadataParts))]
-        public void Apply_MetadataParts_Release_Is_Formatted(
+        public void Process_Parts_Release_Is_Formatted(
             string[] parts,
             string version,
             int height)
         {
             // Arrange
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
-                {
-                    Settings = Utils.GetSettings(version, meta: parts),
-                    Result = Utils.GetVersionResult(height)
-                };
-                context.Result.Version = context.Settings.Version;
+                Configuration = GetRepositoryConfiguration(version, meta: parts),
+                Result = GetVersionResult(height, version)
+            };
 
-                string expected;
-                if (parts.Length > 0)
-                {
-                    expected = $"{version}+{string.Join(".", parts)}";
-                }
-                else
-                {
-                    expected = $"{version}";
-                }
-
-                // Act
-                _sut.Apply(context);
-
-                // Assert
-                context.Result.Formats.Should().ContainKey("Semver2");
-                context.Result.Formats["Semver2"].Should().Be(expected);
+            string expected;
+            if (parts.Length > 0)
+            {
+                expected = $"{version}+{string.Join(".", parts)}";
             }
+            else
+            {
+                expected = $"{version}";
+            }
+
+            // Act
+            _sut.Process(context);
+
+            // Assert
+            context.Result.Formats.Should().ContainKey("Semver2");
+            context.Result.Formats["Semver2"].Should().Be(expected);
         }
     }
 }

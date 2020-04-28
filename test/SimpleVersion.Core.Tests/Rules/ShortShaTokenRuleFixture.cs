@@ -3,10 +3,9 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using GitTools.Testing;
-using SimpleVersion.Pipeline;
 using SimpleVersion.Rules;
 using Xunit;
+using static SimpleVersion.Core.Tests.Utils;
 
 namespace SimpleVersion.Core.Tests.Rules
 {
@@ -34,20 +33,16 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Resolve_ReplacesToken_IfNeeded(string input, string expected)
         {
             // Arrange
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
-                {
-                    Result = Utils.GetVersionResult(10)
-                };
+                Result = Utils.GetVersionResult(10)
+            };
 
-                // Act
-                var result = _sut.Resolve(context, input);
+            // Act
+            var result = _sut.Resolve(context, input);
 
-                // Assert
-                result.Should().Be(expected);
-            }
+            // Assert
+            result.Should().Be(expected);
         }
 
         [Theory]
@@ -55,20 +50,16 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Resolve_ReplacesToken2_IfNeeded(string input, string expected)
         {
             // Arrange
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
-                {
-                    Result = Utils.GetVersionResult(10)
-                };
+                Result = GetVersionResult(10)
+            };
 
-                // Act
-                var result = _sut.Resolve(context, input);
+            // Act
+            var result = _sut.Resolve(context, input);
 
-                // Assert
-                result.Should().Be(expected);
-            }
+            // Assert
+            result.Should().Be(expected);
         }
 
         public static IEnumerable<object[]> ApplyData()
@@ -91,21 +82,17 @@ namespace SimpleVersion.Core.Tests.Rules
         public void Apply_AppendsToken_IfNeeded(bool isRelease, IEnumerable<string> input, IEnumerable<string> expected)
         {
             // Arrange
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
-                {
-                    Settings = Utils.GetSettings("1.2.3"),
-                    Result = Utils.GetVersionResult(10, isRelease)
-                };
+                Configuration = GetRepositoryConfiguration("1.2.3"),
+                Result = GetVersionResult(10, release: isRelease)
+            };
 
-                // Act
-                var result = _sut.Apply(context, input);
+            // Act
+            var result = _sut.Apply(context, input);
 
-                // Assert
-                result.Should().BeEquivalentTo(expected, options => options.WithStrictOrdering());
-            }
+            // Assert
+            result.Should().BeEquivalentTo(expected, options => options.WithStrictOrdering());
         }
     }
 }

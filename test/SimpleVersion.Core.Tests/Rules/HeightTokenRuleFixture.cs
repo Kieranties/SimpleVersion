@@ -3,10 +3,9 @@
 using System;
 using System.Collections.Generic;
 using FluentAssertions;
-using GitTools.Testing;
-using SimpleVersion.Pipeline;
 using SimpleVersion.Rules;
 using Xunit;
+using static SimpleVersion.Core.Tests.Utils;
 
 namespace SimpleVersion.Core.Tests.Rules
 {
@@ -68,23 +67,19 @@ namespace SimpleVersion.Core.Tests.Rules
         {
             // Arrange
             var sut = new HeightTokenRule(usePadding);
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
+                Result =
                 {
-                    Result =
-                    {
-                        Height = height
-                    }
-                };
+                    Height = height
+                }
+            };
 
-                // Act
-                var result = sut.Resolve(context, input);
+            // Act
+            var result = sut.Resolve(context, input);
 
-                // Assert
-                result.Should().Be(expected);
-            }
+            // Assert
+            result.Should().Be(expected);
         }
 
         public static IEnumerable<object[]> ApplyData()
@@ -105,23 +100,19 @@ namespace SimpleVersion.Core.Tests.Rules
         {
             // Arrange
             var sut = new HeightTokenRule();
-            using (var fixture = new EmptyRepositoryFixture())
+            var context = new MockVersionContext
             {
-                fixture.MakeACommit();
-                var context = new VersionContext(fixture.Repository)
+                Configuration =
                 {
-                        Settings =
-                    {
-                        Version = version
-                    }
-                };
+                    Version = version
+                }
+            };
 
-                // Act
-                var result = sut.Apply(context, input);
+            // Act
+            var result = sut.Apply(context, input);
 
-                // Assert
-                result.Should().BeEquivalentTo(expected, options => options.WithStrictOrdering());
-            }
+            // Assert
+            result.Should().BeEquivalentTo(expected, options => options.WithStrictOrdering());
         }
     }
 }

@@ -117,10 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Exception_CouldNotConvertContextType" xml:space="preserve">
-    <value>Could not convert given context to {0}.</value>
-    <comment>contextType</comment>
-  </data>
   <data name="Exception_CouldNotFindBranchTip" xml:space="preserve">
     <value>Could not find the current branch tip. Unable to identify the current commit.</value>
   </data>
@@ -128,7 +124,10 @@
     <value>Could not find git repository at '{0}' or any parent directory.</value>
     <comment>path</comment>
   </data>
-  <data name="Exception_CouldNotReadSettingsFile" xml:space="preserve">
+  <data name="Exception_CouldNotIdentifyBranchName" xml:space="preserve">
+    <value>The branch name could not be resolved from the repository or the environment. Ensure you have checked out a branch (not a commit).</value>
+  </data>
+  <data name="Exception_CouldNotReadConfigurationFile" xml:space="preserve">
     <value>Could not read '{0}', has it been committed?</value>
     <comment>fileName</comment>
   </data>
@@ -142,8 +141,5 @@
   </data>
   <data name="Exception_PathMustBeProvided" xml:space="preserve">
     <value>Path must be provided.</value>
-  </data>
-  <data name="Exception_UnexpectedNull" xml:space="preserve">
-    <value>Unexpected null value</value>
   </data>
 </root>

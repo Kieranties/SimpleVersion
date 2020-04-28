@@ -36,10 +36,7 @@ namespace SimpleVersion.Rules
         {
             Assert.ArgumentNotNull(context, nameof(context));
 
-            var isRelease = context.Settings.Branches.Release
-                .Any(x => Regex.IsMatch(context.Result.CanonicalBranchName, x));
-
-            if (!isRelease && !input.Contains(Token))
+            if (!context.Result.IsRelease && !input.Contains(Token))
             {
                 return input.Concat(new[] { Token });
             }
