@@ -22,7 +22,7 @@ variables:
   ArtifactsPath: $(Build.ArtifactStagingDirectory)
 
 jobs:
-- job: Build Assets
+- job: 'Build_Assets'
   pool:
     vmImage: windows-latest
   steps:
