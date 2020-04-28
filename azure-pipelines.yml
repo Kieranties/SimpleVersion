@@ -50,15 +50,17 @@ jobs:
       reportDirectory: '$(ArtifactsPath)/coveragereport'
 
   # Quality check the build
-  - task: mspremier.BuildQualityChecks.QualityChecks-task.BuildQualityChecks@5
+  - task: BuildQualityChecks@6
     displayName: 'Checks: Quality'
     inputs:
       checkWarnings: true
-      showStatistics: true
+      warningFailOption: 'fixed'
+      warningThreshold: '0'
+      evaluateTaskWarnings: false
       checkCoverage: true
-      coverageFailOption: fixed
-      coverageThreshold: 90
-      coverageType: branches
+      coverageFailOption: 'fixed'
+      coverageType: 'branches'
+      coverageThreshold: '90'
 
   # Handle artifacts
   - task: PublishBuildArtifacts@1
