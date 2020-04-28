@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using FluentAssertions;
 using GitTools.Testing;
+using LibGit2Sharp;
 using NSubstitute;
 using SimpleVersion.Configuration;
 using SimpleVersion.Environment;
@@ -133,6 +134,72 @@ namespace SimpleVersion.Core.Tests
             // Assert
             action.Should().Throw<InvalidOperationException>()
                 .And.Message.Should().Be($"Could not read '{Constants.ConfigurationFileName}', has it been committed?");
+        }
+
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("   \t\t")]
+        [InlineData("(no branch)")]
+        public void GetResult_InvalidCanonicalName_Throws(string branchName)
+        {
+            using var fixture = new SimpleVersionRepositoryFixture(_serializer);
+            _environment.CanonicalBranchName.Returns(branchName);
+            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+
+            // set to headless state
+            var commit = fixture.Repository.Head.Tip;
+            Commands.Checkout(fixture.Repository, fixture.Repository.Head.Tip);
+
+            // Act
+            Action action = () => sut.GetResult();
+
+            // Assert
+            action.Should().Throw<GitException>()
+                .And.Message.Should().Be("The branch name could not be resolved from the repository or the environment. Ensure you have checked out a branch (not a commit).");
+        }
+
+        [Fact]
+        public void GetResult_EmptyProcessors_ReturnsResult()
+        {
+            // Arrange
+            using var fixture = new SimpleVersionRepositoryFixture(_serializer);
+            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+
+            // Act
+            var result = sut.GetResult();
+
+            // Assert
+            result.Should().NotBeNull();
+        }
+
+        [Fact]
+        public void GetResult_WithProcessors_CallsInOrder()
+        {
+            // Arrange
+            var calledProcessors = new List<int>();
+            var processors = new[]
+            {
+                Substitute.For<IVersionProcessor>(),
+                Substitute.For<IVersionProcessor>(),
+                Substitute.For<IVersionProcessor>()
+            };
+
+            for (var x = 0; x < processors.Length; x++)
+            {
+                var value = x;
+                processors[x].When(p => p.Process(Arg.Any<IVersionContext>()))
+                         .Do(_ => calledProcessors.Add(value));
+            }
+
+            using var fixture = new SimpleVersionRepositoryFixture(_serializer);
+            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, processors);
+
+            // Act
+            var result = sut.GetResult();
+
+            // Assert
+            calledProcessors.Should().ContainInOrder(0, 1, 2);
         }
 
         [Fact]
@@ -426,7 +493,7 @@ namespace SimpleVersion.Core.Tests
             result.CanonicalBranchName.Should().Be("refs/heads/feature/other");
         }
 
-        [Fact(Skip = "Move to E2E")]
+        [Fact]
         public void GetResult_BranchOverride_AppliesOverride()
         {
             // Arrange
@@ -462,16 +529,22 @@ namespace SimpleVersion.Core.Tests
             fixture.MakeACommit();
             fixture.MakeACommit();
 
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            // Use a processor to capture the configuation during processing.
+            var processor = Substitute.For<IVersionProcessor>();
+            VersionContext context = null;
+            processor.When(x => x.Process(Arg.Any<VersionContext>()))
+                .Do(call => context = call.Arg<VersionContext>());
+
+            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, new[] { processor });
 
             // Act
             var result = sut.GetResult();
 
-            // context.Configuration.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
-            // context.Configuration.Metadata.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
+            context.Configuration.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
+            context.Configuration.Metadata.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
         }
 
-        [Fact(Skip = "Move to E2E")]
+        [Fact]
         public void GetResult_AdvancedBranchOverride_AppliesOverride()
         {
             // Arrange
@@ -512,13 +585,19 @@ namespace SimpleVersion.Core.Tests
             fixture.MakeACommit();
             fixture.MakeACommit();
 
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            // Use a processor to capture the configuation during processing.
+            var processor = Substitute.For<IVersionProcessor>();
+            VersionContext context = null;
+            processor.When(x => x.Process(Arg.Any<VersionContext>()))
+                .Do(call => context = call.Arg<VersionContext>());
+
+            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, new[] { processor });
 
             // Act
             var result = sut.GetResult();
 
-            // context.Configuration.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
-            // context.Configuration.Metadata.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
+            context.Configuration.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
+            context.Configuration.Metadata.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
         }
 
         [Fact]

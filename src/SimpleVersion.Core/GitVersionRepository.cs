@@ -20,6 +20,7 @@ namespace SimpleVersion
     /// </summary>
     public class GitVersionRepository : IVersionRepository
     {
+        private const string _noBranchCheckedOut = "(no branch)";
         private static readonly VersionConfigurationLabelComparer _comparer = new VersionConfigurationLabelComparer();
 
         private readonly IRepository _repo;
@@ -101,6 +102,11 @@ namespace SimpleVersion
 
         private static VersionConfiguration GetBranchConfiguration(RepositoryConfiguration config, string branchName)
         {
+            if (string.IsNullOrWhiteSpace(branchName) || branchName == _noBranchCheckedOut)
+            {
+                throw new GitException(Resources.Exception_CouldNotIdentifyBranchName);
+            }
+
             var match = config
                 .Branches
                 .Overrides
@@ -175,7 +181,7 @@ namespace SimpleVersion
 
         private RepositoryConfiguration GetRespositoryConfiguration()
         {
-            var commit = _repo.Head?.Tip;
+            var commit = _repo.Head.Tip;
 
             if (commit == null)
             {
@@ -194,13 +200,8 @@ namespace SimpleVersion
 
         private RepositoryConfiguration? GetCommitConfiguration(Commit commit)
         {
-            var gitObj = commit?.Tree[Constants.ConfigurationFileName]?.Target;
-            if (gitObj == null)
-            {
-                return null;
-            }
-
-            var blob = gitObj as Blob;
+            var gitObj = commit.Tree[Constants.ConfigurationFileName]?.Target;
+            var blob = gitObj?.Peel<Blob>();
             if (blob == null)
             {
                 return null;
