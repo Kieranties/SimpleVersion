@@ -1,6 +1,6 @@
 {
-  "version": "0.3.0",
-  "label": [ "alpha1" ],
+  "version": "0.4.0",
+  "label": [ "alpha", "1" ],
   "branches": {
     "release": [
       "^refs/heads/master$",
@@ -10,7 +10,7 @@
     "overrides": [
       {
         "match": "^refs/heads/feature/.+$",
-        "Metadata": [ "{shortbranchname}" ]
+        "metadata": [ "{shortbranchname}" ]
       },
       {
         "match": "^refs/heads/release/.+$",
