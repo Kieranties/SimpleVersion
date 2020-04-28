@@ -22,6 +22,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageIcon>logo.png</PackageIcon>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageVersion>$([System.Text.RegularExpressions.Regex]::Match($(Version), '^[^\+]+').Value)</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup Label="Package Meta">
