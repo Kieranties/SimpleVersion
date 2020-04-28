@@ -20,6 +20,7 @@ variables:
   DOTNET_CLI_TELEMETRY_OPTOUT: true
   Configuration: Release
   ArtifactsPath: $(Build.ArtifactStagingDirectory)
+  disable.coverage.autogenerate: true
 
 jobs:
 - job: 'Build_Assets'
@@ -50,15 +51,17 @@ jobs:
       reportDirectory: '$(ArtifactsPath)/coveragereport'
 
   # Quality check the build
-  - task: mspremier.BuildQualityChecks.QualityChecks-task.BuildQualityChecks@5
+  - task: BuildQualityChecks@6
     displayName: 'Checks: Quality'
     inputs:
       checkWarnings: true
+      warningFailOption: 'fixed'
+      warningThreshold: '0'
       showStatistics: true
       checkCoverage: true
-      coverageFailOption: fixed
-      coverageThreshold: 90
-      coverageType: branches
+      coverageFailOption: 'fixed'
+      coverageType: 'branches'
+      coverageThreshold: '90'
 
   # Handle artifacts
   - task: PublishBuildArtifacts@1
