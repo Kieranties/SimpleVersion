@@ -1,3 +1,6 @@
+#Requires -Version 7.0
+using namespace System.IO
+
 <#
     Local build script to perform build and test validation
 #>
@@ -5,7 +8,7 @@ param(
     [ValidateSet('Debug', 'Release')]
     [String]$Configuration = 'Debug',
     [String]$RootPath = $PSScriptRoot,
-    [String]$ArtifactsPath = (Join-Path $RootPath 'artifacts'),
+    [String]$ArtifactsPath = (Join-Path $RootPath '.artifacts'),
     [String]$DocsPath = (Join-Path $RootPath 'docs'),
     [String]$PackagesPath = (Join-Path $RootPath 'packages'),
     [Switch]$NoBuild,
@@ -15,19 +18,9 @@ param(
     [String]$DocfxVersion = '2.42.0'
 )
 
-$ErrorActionPreference = 'Stop'
-$env:DOTNET_CLI_TELEMETRY_OPTOUT = 1
+. ([Path]::Combine($PSScriptRoot, 'build', 'scripts', 'Utils.ps1'))
 
-function exec([string]$cmd) {
-    $currentPref = $ErrorActionPreference
-    $ErrorActionPreference = 'Continue'
-    & $cmd @args
-    $ErrorActionPreference = $currentPref
-    if($LASTEXITCODE -ne 0) {
-        Write-Error "[Error code $LASTEXITCODE] Command $cmd $args"
-        exit $LASTEXITCODE
-    }
-}
+$ErrorActionPreference = 'Stop'
 
 # Resources
 if($Resources){
@@ -37,23 +30,27 @@ if($Resources){
 
 # Build/Test/Pack
 if(!$NoBuild) {
+    
     # Clean
     Remove-Item $ArtifactsPath -Recurse -Force -ErrorAction Ignore
 
-    # Version
+    # Restore Tools
     dotnet tool restore
+
+    # Version
     $versionDetails = exec dotnet simpleversion
     $version = ($versionDetails | ConvertFrom-Json).Formats.Semver2
     if($env:TF_BUILD) { Write-Output "##vso[build.updatebuildnumber]$version" }
     
+    # Default Args
     $dotnetArgs = @('--configuration', $Configuration, "/p:Version=$version")
 
-    # Unit Test
+    # Build
+    exec dotnet build $dotnetArgs
+
+    # Test
     $testArtifacts = Join-Path $ArtifactsPath 'tests'
-    $testArgs = @(
-        '-r', $testArtifacts
-    )
-    exec dotnet test ($dotnetArgs + $testArgs)
+    exec dotnet test $dotnetArgs -r $testArtifacts --no-build
     exec dotnet reportgenerator "-reports:$(Join-Path $testArtifacts '**/*.cobertura.xml')" "-targetDir:$(Join-Path $testArtifacts 'CoverageReport')"
 
     # Pack

@@ -17,36 +17,37 @@ pr:
 variables:
   TreatWarningsAsErrors: true
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
-  DOTNET_CLI_TELEMETRY_OPTOUT: false
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
   Configuration: Release
-  ArtifactsDir: $(Build.ArtifactStagingDirectory)
+  ArtifactsPath: $(Build.ArtifactStagingDirectory)
 
 jobs:
-- job: Windows
+- job: Build Assets
   pool:
     vmImage: windows-latest
   steps:
 
   # Build
-  - powershell: ./build.ps1 -BuildDocs -ArtifactsPath $(ArtifactsDir) -Configuration $(Configuration)
-    displayName: 'Build'
+  - pwsh: ./build.ps1 -BuildDocs -ArtifactsPath $(ArtifactsPath) -Configuration $(Configuration)
+    displayName: 'Build and Test'
 
   # Publish test results
   - task: PublishTestResults@2
     displayName: 'Tests: Publish unit tests'
-    continueOnError: true
+    condition: succeededOrFailed()
     inputs:
       testRunTitle: Unit Tests
       testRunner: vstest
-      testResultsFiles: '$(ArtifactsDir)/**/*.trx'
+      testResultsFiles: '$(ArtifactsPath)/**/*.trx'
 
   # Publish coverage
   - task: PublishCodeCoverageResults@1
     displayName: "Tests: Publish unit test coverage"
-    continueOnError: true
+    condition: succeededOrFailed()
     inputs:
       codeCoverageTool: Cobertura
-      summaryFileLocation: '$(ArtifactsDir)/**/*.cobertura.xml'
+      summaryFileLocation: '$(ArtifactsPath)/**/*.cobertura.xml'
+      reportDirectory: '$(ArtifactsPath)/coveragereport'
 
   # Quality check the build
   - task: mspremier.BuildQualityChecks.QualityChecks-task.BuildQualityChecks@5
@@ -64,7 +65,7 @@ jobs:
     displayName: "Artifacts: Publish"
     condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
     inputs:
-      PathtoPublish: $(ArtifactsDir)
+      PathtoPublish: $(ArtifactsPath)
       ArtifactName: Artifacts
       ArtifactType: Container
 
@@ -73,7 +74,7 @@ jobs:
     condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
     inputs:
       command: push
-      packagesToPush: $(ArtifactsDir)/**/*.nupkg
+      packagesToPush: $(ArtifactsPath)/**/*.nupkg
       nuGetFeedType: internal
       publishVstsFeed: SimpleVersion
       feedsToUse: nuget.config
