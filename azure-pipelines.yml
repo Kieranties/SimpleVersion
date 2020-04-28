@@ -56,7 +56,7 @@ jobs:
       checkWarnings: true
       warningFailOption: 'fixed'
       warningThreshold: '0'
-      evaluateTaskWarnings: false
+      showStatistics: true
       checkCoverage: true
       coverageFailOption: 'fixed'
       coverageType: 'branches'
