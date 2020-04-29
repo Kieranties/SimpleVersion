@@ -20,7 +20,7 @@ namespace SimpleVersion.Environment
         string? BranchName { get; }
 
         /// <summary>
-        /// Gets a value indicating whether the envrionment is valid for the current request.
+        /// Gets a value indicating whether the environment is valid for the current request.
         /// </summary>
         bool IsValid { get; }
     }

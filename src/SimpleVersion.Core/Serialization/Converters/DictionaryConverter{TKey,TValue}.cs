@@ -9,7 +9,7 @@ namespace SimpleVersion.Serialization.Converters
 {
     /// <summary>
     /// Enables reading/writing a dictionary as JSON.
-    /// Implemnted to support reading/writing non-standard keys.
+    /// Implemented to support reading/writing non-standard keys.
     /// </summary>
     /// <typeparam name="TKey">The type of the key.</typeparam>
     /// <typeparam name="TValue">The value type.</typeparam>

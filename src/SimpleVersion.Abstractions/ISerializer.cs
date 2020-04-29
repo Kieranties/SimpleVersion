@@ -15,7 +15,7 @@ namespace SimpleVersion
         string Serialize(object value);
 
         /// <summary>
-        /// Deserialzies the given <paramref name="value"/> into an new
+        /// Deserializes the given <paramref name="value"/> into an new
         /// instance of <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">The type to deserialize.</typeparam>
