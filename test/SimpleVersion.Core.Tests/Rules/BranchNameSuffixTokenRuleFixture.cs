@@ -68,7 +68,7 @@ namespace SimpleVersion.Core.Tests.Rules
         }
 
         [Theory]
-        [InlineData("master", "{branchNameSuffix}", "[mr]", "aste")] // cSpell:ignore aste // Ignore Spelling: aste
+        [InlineData("master", "{branchNameSuffix}", "[mr]", "aste")] // Ignore Spelling: mr,aste
         public void Resolve_CustomPattern_Replaces_BranchName(string branchName, string input, string pattern, string expected)
         {
             // Arrange

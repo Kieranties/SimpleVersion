@@ -5,7 +5,7 @@ using SimpleVersion.Pipeline;
 namespace SimpleVersion
 {
     /// <summary>
-    /// Exposes access to repostiory information.
+    /// Exposes access to repository information.
     /// </summary>
     public interface IVersionRepository
     {

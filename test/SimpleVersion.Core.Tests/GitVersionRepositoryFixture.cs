@@ -529,7 +529,7 @@ namespace SimpleVersion.Core.Tests
             fixture.MakeACommit();
             fixture.MakeACommit();
 
-            // Use a processor to capture the configuation during processing.
+            // Use a processor to capture the configuration during processing.
             var processor = Substitute.For<IVersionProcessor>();
             VersionContext context = null;
             processor.When(x => x.Process(Arg.Any<VersionContext>()))
@@ -585,7 +585,7 @@ namespace SimpleVersion.Core.Tests
             fixture.MakeACommit();
             fixture.MakeACommit();
 
-            // Use a processor to capture the configuation during processing.
+            // Use a processor to capture the configuration during processing.
             var processor = Substitute.For<IVersionProcessor>();
             VersionContext context = null;
             processor.When(x => x.Process(Arg.Any<VersionContext>()))

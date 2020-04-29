@@ -13,7 +13,7 @@ namespace SimpleVersion
         /// <summary>
         /// Gets the processed version result.
         /// </summary>
-        /// <returns>A comlpete <see cref="VersionResult"/> isntance.</returns>
+        /// <returns>A complete <see cref="VersionResult"/> instance.</returns>
         VersionResult GetResult();
 
         /// <summary>

@@ -23,8 +23,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleVersion.Abstractions.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{385532A7-26BE-4596-9EEE-E7C3984643ED}"
 	ProjectSection(SolutionItems) = preProject
+		shared\en-US_User.dic = shared\en-US_User.dic
 		shared\logo.png = shared\logo.png
-		SimpleVersion.sln.vsspell = SimpleVersion.sln.vsspell
 		shared\stylecop.json = shared\stylecop.json
 		shared\Tests.GlobalSuppressions.cs = shared\Tests.GlobalSuppressions.cs
 	EndProjectSection
@@ -46,6 +46,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleVersion.Tool", "src\SimpleVersion.Tool\SimpleVersion.Tool.csproj", "{283AA9B6-B543-43C9-B512-BA54B36799B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{E4B38DC5-F211-41C6-A6F7-4589CFACF43E}"
+	ProjectSection(SolutionItems) = preProject
+		.github\CODE_OF_CONDUCT.md = .github\CODE_OF_CONDUCT.md
+		.github\CODEOWNERS.md = .github\CODEOWNERS.md
+		.github\CONTRIBUTING.md = .github\CONTRIBUTING.md
+		.github\pull_request_template.md = .github\pull_request_template.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ISSUE_TEMPLATE", "ISSUE_TEMPLATE", "{9FCE6A65-2C58-4615-B74F-F787706A5896}"
+	ProjectSection(SolutionItems) = preProject
+		.github\ISSUE_TEMPLATE\bug_report.md = .github\ISSUE_TEMPLATE\bug_report.md
+		.github\ISSUE_TEMPLATE\feature_request.md = .github\ISSUE_TEMPLATE\feature_request.md
+		.github\ISSUE_TEMPLATE\information-request.md = .github\ISSUE_TEMPLATE\information-request.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,6 +98,7 @@ Global
 		{C367CC5A-5ACC-442A-8885-ED9A94A9A43E} = {9EEF54AE-EEE2-4817-B0D0-AFAE3F52C231}
 		{D95890EA-093F-4FAD-8E30-E372DD946F32} = {9EEF54AE-EEE2-4817-B0D0-AFAE3F52C231}
 		{283AA9B6-B543-43C9-B512-BA54B36799B4} = {D5992CB5-3542-41C8-BE85-F52699729C57}
+		{9FCE6A65-2C58-4615-B74F-F787706A5896} = {E4B38DC5-F211-41C6-A6F7-4589CFACF43E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E44EF3D7-AF4C-4653-A610-5F9FE30F2FA0}

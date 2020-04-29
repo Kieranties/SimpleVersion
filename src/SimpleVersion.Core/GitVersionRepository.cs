@@ -41,7 +41,7 @@ namespace SimpleVersion
             ISerializer serializer,
             IEnumerable<IVersionProcessor> processors)
         {
-            // Resolve the underlying repo
+            // Resolve the underlying repository
             _repo = GetRepository(path);
             _environment = Assert.ArgumentNotNull(environment, nameof(environment));
             _serializer = Assert.ArgumentNotNull(serializer, nameof(serializer));
@@ -62,7 +62,7 @@ namespace SimpleVersion
                 BranchName = _environment.BranchName ?? _repo.Head.FriendlyName,
                 Sha = _repo.Head.Tip.Sha,
 
-                // Value returned from repo has trailing slash so need to get parent twice.
+                // Value returned from repository has trailing slash so need to get parent twice.
                 RepositoryPath = Directory.GetParent(_repo.Info.Path).Parent.FullName,
                 IsRelease = repoConfig.Branches.Release.Any(x => Regex.IsMatch(canonicalBranchName, x))
             };
@@ -258,14 +258,14 @@ namespace SimpleVersion
             // skip the first commit as that is our baseline
             var commits = GetReachableCommits().Skip(1);
 
-            // Get the state of this tree to compare for diffs
+            // Get the state of this tree for commit comparison
             var prevTree = _repo.Head.Tip.Tree;
             foreach (var commit in commits)
             {
                 // Get the current tree
                 var currentTree = commit.Tree;
 
-                // Perform a diff
+                // Compare current and previous trees
                 var diff = _repo.Diff.Compare<TreeChanges>(currentTree, prevTree, new CompareOptions { Similarity = SimilarityOptions.None });
 
                 // If a change to the file is found, stop counting

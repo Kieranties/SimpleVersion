@@ -8,7 +8,7 @@ namespace SimpleVersion.Pipeline
     public interface IVersionProcessor
     {
         /// <summary>
-        /// Processess the given <paramref name="context"/> updating
+        /// Process the given <paramref name="context"/> updating
         /// its state if needed.
         /// </summary>
         /// <param name="context">The <see cref="IVersionContext"/> to process.</param>

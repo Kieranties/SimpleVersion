@@ -27,8 +27,8 @@ Contributions
 Contributions, pull-requests, issues, and any other communications on the project
 are most welcome!  Please use one of the [issue templates] to get going.
 
-[NugetRel]:         https://www.nuget.org/packages?q=simpleversion&prerel=false
-[NugetPre]:         https://www.nuget.org/packages?q=simpleversion
+[NugetRel]:         https://www.nuget.org/packages?q=SimpleVersion&prerel=false
+[NugetPre]:         https://www.nuget.org/packages?q=SimpleVersion
 [AzureRelease]:     https://dev.azure.com/Kieranties/SimpleVersion/_build?definitionId=1
 [License]:          https://kieranties.mit-license.org/
 [Docs]:             https://simpleversion.kieranties.com
