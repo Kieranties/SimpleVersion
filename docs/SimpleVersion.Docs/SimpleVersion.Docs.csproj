@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <DebugType>None</DebugType>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <CopyBuildOutputToPublishDirectory>false</CopyBuildOutputToPublishDirectory>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <OutputPath Condition="'$(OutputPath)' ==''">bin</OutputPath>
+
+    <!-- DocFx build causes errors... -->
+    <BuildDocFx>false</BuildDocFx>
+    <DocFxLogLevel>Error</DocFxLogLevel>
+    <ServeDocs Condition="'$(ServeDocs)' == ''">false</ServeDocs>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="docfx.console" />
+  </ItemGroup>
+
+  <Target Name="DocFxBuild" AfterTargets="Publish">
+    <Message Importance="High" Text="[Docs]: Building metadata" />
+    <Exec Command="&quot;$(BuildDocToolPath)&quot; metadata &quot;$(DocfxConfigFile)&quot; --loglevel $(DocFxLogLevel)" />
+
+    <Message Importance="High" Text="[Docs]: Building site at - $(PublishDir)" />
+    <Exec Command="&quot;$(BuildDocToolPath)&quot; build &quot;$(DocfxConfigFile)&quot; -o &quot;$([System.IO.Path]::GetFullPath('$(PublishDir)').TrimEnd('\'))&quot; --loglevel $(DocFxLogLevel)" />
+
+    <CallTarget Targets="DocFxServe" />
+  </Target>
+
+  <Target Name="DocFxServe" Condition="'$(ServeDocs)' == 'true'">
+    <Message Importance="High" Text="[Docs]: Serving site at - $(PublishDir)" />
+    <Exec Command="start cmd /c &quot;&quot;$(BuildDocToolPath)&quot; serve &quot;$(PublishDir)&quot;" />
+  </Target>
+</Project>
