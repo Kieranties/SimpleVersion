@@ -35,7 +35,7 @@ for guidance on writing tests.
 
 ### Package References
 
-To ensure dependendencies are kept in sync across the projects, the `Microsoft.Build.CentralPackageVersions` SDK is used to enable versions to be
+To ensure dependencies are kept in sync across the projects, the `Microsoft.Build.CentralPackageVersions` SDK is used to enable versions to be
 tracked in a single location. When creating a new project, add `<Sdk Name="Microsoft.Build.CentralPackageVersions" />`
 as the first node under the `<Project>`.
 
@@ -50,13 +50,13 @@ Then add the `PackageReference` to the `*.csproj` where the package will be used
 
 ### String Resources
 
-This project utilises a custom process to generate classes to manage string localisation.
-To localise strings within a library:
+This project utilizes a custom process to generate classes to manage string localization.
+To localize strings within a library:
 
 1. Create a resx file with _no culture extension_ (e.g. `Resources.rex` **not** `Resources.en.resx`)
 2. In the relevant csproj _remove_ the auto added designer class
-3. In the relevant csproj _replace_ the metadata for the rex file with `<UseResourceGen>true</UseResourceGen>`
-4. Run `build.ps1 -Resources` from the root of the repo.
+3. In the relevant csproj _replace_ the metadata for the resx file with `<UseResourceGen>true</UseResourceGen>`
+4. Run `build.ps1 -Resources` from the root of the repository.
 
 > Additional metadata tokens may be set (the defaults should be sufficient) See `Directory.Build.targets` for details
 When ever you make a change to your resource file, re-run `build.ps1 -Resources`.
@@ -85,7 +85,7 @@ Workflow with Git
 ### Commit Messages
 
 This project follows conventional commit practices.  This aims to provide clear
-and concise information for each commit being added to the repo.
+and concise information for each commit being added to the repository.
 
 > For more information see: https://www.conventionalcommits.org
 

@@ -46,6 +46,7 @@ namespace SimpleVersion.Core.Tests.Serialization
             result.Should().BeEquivalentTo(expected);
         }
 
+        // Ignore spelling: mb,mfirst,mthird
         private static RepositoryConfiguration GetConfiguration()
         {
             return new RepositoryConfiguration
