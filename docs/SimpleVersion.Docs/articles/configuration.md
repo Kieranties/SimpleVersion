@@ -1,7 +1,7 @@
 Configuration
 =============
 
-SimpleVersion reads the `.simpleversion.json` from the root of your git repo.
+SimpleVersion reads the `.simpleversion.json` from the root of your git repository.
 This file provides various configuration options.
 
 Version

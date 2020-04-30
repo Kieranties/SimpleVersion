@@ -16,6 +16,7 @@
   </AdditionalDictionaryFolders>
   <IgnoredFilePatterns>
     <FilePattern>*.resx</FilePattern>
+    <FilePattern>api\*.yml</FilePattern>
   </IgnoredFilePatterns>
   <ExclusionExpressions>
     <Expression Match="https?:\/\/.+(?# Url)" Options="IgnoreCase, Singleline" />

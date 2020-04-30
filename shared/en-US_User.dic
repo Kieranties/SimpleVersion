@@ -1,7 +1,9 @@
 accessor
+addin
 args
 branchname
 branchnamesuffix
+cli
 commandline
 csproj
 csv
@@ -14,11 +16,15 @@ fallback
 github
 globalization
 hashcode
+json
 Kieranties
 metadata
+namespace
+newtonsoft
 nuget
 offline
 online
+pre
 resx
 screenshots
 semver

@@ -17,7 +17,7 @@ You can install `SimpleVersion.Tool` the [dotnet cli]:
 dotnet install -g SimpleVersion.Tool
 ```
 
-Once installed, you can invoke SimpleVersion in your favourite shell, optionally passing the path to your repository (defaults to current working directory)
+Once installed, you can invoke SimpleVersion in your favorite shell, optionally passing the path to your repository (defaults to current working directory)
 
 ```posh
 PS c:\MyRepo> simpleversion
