@@ -23,6 +23,7 @@ namespace SimpleVersion.Docs
         {
             var settings = new JsonSchemaGeneratorSettings
             {
+                FlattenInheritanceHierarchy = true,
                 SerializerSettings = new JsonSerializerSettings
                 {
                   ContractResolver = new DefaultContractResolver
