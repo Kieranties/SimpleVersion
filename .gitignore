@@ -7,4 +7,4 @@ integration/temp
 /docs/api/*.yml
 /docs/api/.manifest
 coverage.json
-/docs/SimpleVersion.Docs/api/
+/src/SimpleVersion.Docs/site/api/

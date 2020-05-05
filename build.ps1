@@ -13,7 +13,7 @@ param(
 )
 
 . ([Path]::Combine($PSScriptRoot, 'build', 'scripts', 'Utils.ps1'))
-$docsProject = [Path]::Combine($PSScriptRoot, 'docs', 'SimpleVersion.Docs')
+$docsProject = [Path]::Combine($PSScriptRoot, 'src', 'SimpleVersion.Docs')
 
 $ErrorActionPreference = 'Stop'
 
