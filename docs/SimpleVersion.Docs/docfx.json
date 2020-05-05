@@ -27,7 +27,7 @@
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
     "template": ["default", "./theme"],
-    "postProcessors": [],
+    "postProcessors": ["ExtractSearchIndex"],
     "markdownEngineName": "markdig",
     "noLangKeyword": false,
     "keepFileLink": false,
@@ -36,7 +36,8 @@
     "globalMetadata": {
       "_appFaviconPath": "images/log.png",
       "_appLogoPath": "images/logo.png",
-      "_appName": "SimpleVersion"
+      "_appName": "SimpleVersion",
+      "_enableSearch": "true"
     }
   }
 }
