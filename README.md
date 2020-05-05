@@ -1,8 +1,9 @@
 SimpleVersion
 =============
-[![Nuget](https://img.shields.io/nuget/v/SimpleVersion.Core.svg?logo=nuget)][NugetRel]
+[![Nuget](https://img.shields.io/nuget/v/SimpleVersion.Core.svg?logo=nuget&color=blue)][NugetRel]
 [![Nuget (with prereleases)](https://img.shields.io/nuget/vpre/SimpleVersion.Core.svg?logo=nuget)][NugetPre]
-[![Azure DevOps tests (branch)](https://img.shields.io/azure-devops/tests/Kieranties/SimpleVersion/1/master.svg?logo=azuredevops)][AzureRelease]
+[![Build Status](https://dev.azure.com/Kieranties/SimpleVersion/_apis/build/status/Kieranties.SimpleVersion?branchName=master)][AzureRelease]
+[![GitHub issues](https://img.shields.io/github/issues/Kieranties/Simpleversion.svg?logo=github)][Issues]
 [![License](https://img.shields.io/github/license/Kieranties/SimpleVersion.svg?logo=github)][License]
 
 SimpleVersion aims to simplify how you version the artifacts of your git repository.
@@ -21,15 +22,25 @@ To build SimpleVersion locally, run `build.ps1` from the root of the repository:
 > .\build.ps1 -BuildDocs -ServeDocs # Runs a full builds and serves the docs site
 ```
 
+Issues
+------
+
+Raise and issue using one of the [templates] and it'll get automatically added to the [backlog].
+
 Contributions
 -------------
 
-Contributions, pull-requests, issues, and any other communications on the project
-are most welcome!  Please use one of the [issue templates] to get going.
+Thinking of implementing or fixing something? Great! Contributions and pull-requests are most welcome.
 
-[NugetRel]:         https://www.nuget.org/packages?q=SimpleVersion&prerel=false
-[NugetPre]:         https://www.nuget.org/packages?q=SimpleVersion
-[AzureRelease]:     https://dev.azure.com/Kieranties/SimpleVersion/_build?definitionId=1
-[License]:          https://kieranties.mit-license.org/
-[Docs]:             https://simpleversion.kieranties.com
-[Issue Templates]:  https://github.com/Kieranties/SimpleVersion/issues/new/choose
+Please take a look at the [Contributing Guide] and [Code of Conduct] before submitting your pull request.
+
+[NugetRel]:           https://www.nuget.org/packages?q=simpleversion&prerel=false
+[NugetPre]:           https://www.nuget.org/packages?q=simpleversion
+[AzureRelease]:       https://dev.azure.com/Kieranties/SimpleVersion/_build/latest?definitionId=1&branchName=master
+[License]:            https://kieranties.mit-license.org/
+[Issues]:             https://github.com/kieranties/simpleversion/issues
+[Docs]:               https://simpleversion.kieranties.com
+[templates]:          https://github.com/Kieranties/SimpleVersion/issues/new/choose
+[Contributing Guide]: https://github.com/Kieranties/SimpleVersion/blob/master/.github/CONTRIBUTING.md
+[Code of Conduct]:    https://github.com/Kieranties/SimpleVersion/blob/master/.github/CODE_OF_CONDUCT.md
+[backlog]:            https://github.com/Kieranties/SimpleVersion/projects/3

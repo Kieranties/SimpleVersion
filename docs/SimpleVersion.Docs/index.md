@@ -80,3 +80,4 @@ The height will be reset to 0 when SimpleVersion detects a change to either the
 [License]:        https://kieranties.mit-license.org/
 [FeatureBacklog]: https://github.com/kieranties/simpleversion/issues?q=is%3Aissue+is%3Aopen+label%3A%22%3Asparkles%3A+feature%22
 [Issues]:         https://github.com/kieranties/simpleversion/issues
+[Semver2]:        https://semver.org/spec/v2.0.0.html
