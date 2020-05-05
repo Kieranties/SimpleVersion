@@ -8,7 +8,6 @@ param(
     [ValidateSet('Debug', 'Release')]
     [String]$Configuration = 'Debug',
     [String]$ArtifactsPath = (Join-Path $PSScriptRoot '.artifacts'),
-    [Switch]$BuildDocs,
     [Switch]$ServeDocs = $false,
     [Switch]$Resources
 )

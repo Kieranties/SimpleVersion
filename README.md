@@ -17,9 +17,8 @@ Build
 
 To build SimpleVersion locally, run `build.ps1` from the root of the repository:
 ```ps
-> .\build.ps1                       # => Runs a full build with unit tests
-> .\build.ps1 -BuildDocs            # => Runs a full build and creates the docs site
-> .\build.ps1 -BuildDocs -ServeDocs # Runs a full builds and serves the docs site
+> .\build.ps1            # => Builds libraries, docs site, runs tests, prepares assets
+> .\build.ps1 -ServeDocs # => Builds libraries, docs site, then serves docs site on http://localhost:8080
 ```
 
 Issues

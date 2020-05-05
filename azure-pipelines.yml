@@ -23,13 +23,14 @@ variables:
   disable.coverage.autogenerate: true
 
 jobs:
-- job: 'Build_Assets'
+- job: 'build_test_pack'
+  displayName: "Core Build"
   pool:
     vmImage: windows-latest
   steps:
 
   # Build
-  - pwsh: ./build.ps1 -BuildDocs -ArtifactsPath $(ArtifactsPath) -Configuration $(Configuration)
+  - pwsh: ./build.ps1 -ArtifactsPath $(ArtifactsPath) -Configuration $(Configuration)
     displayName: 'Build and Test'
 
   # Publish test results
@@ -48,7 +49,7 @@ jobs:
     inputs:
       codeCoverageTool: Cobertura
       summaryFileLocation: '$(ArtifactsPath)/**/*.cobertura.xml'
-      reportDirectory: '$(ArtifactsPath)/coveragereport'
+      reportDirectory: '$(ArtifactsPath)/tests/coveragereport'
 
   # Quality check the build
   - task: BuildQualityChecks@6
