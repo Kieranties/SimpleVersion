@@ -21,7 +21,7 @@
     ],
     "resource": [
       {
-        "files": ["images/**", "theme/**"]
+        "files": ["images/**", "theme/**", "schema/**"]
       }
     ],
     "globalMetadataFiles": [],

@@ -4,7 +4,8 @@ packages
 bin
 obj
 integration/temp
-/docs/api/*.yml
-/docs/api/.manifest
 coverage.json
-/src/SimpleVersion.Docs/site/api/
+**/site/api/*.yml
+**/site/api/.manifest
+**/site/manifest.json
+**/site/schema/latest.json

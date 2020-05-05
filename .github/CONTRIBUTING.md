@@ -106,6 +106,8 @@ The `<type>` should be *one* of the following:
 + `chore` - Trivial/Arbitrary task
 + `test` - Adding tests
 + `improvement` - Improving the implementation of existing code.
++ `ci` - Supporting the CI process.
++ `build` - A build specific change.
 
 The `<description>` should briefly describe the changes being addressed.
 

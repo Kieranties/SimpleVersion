@@ -14,14 +14,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="docfx.console" PrivateAssets="All" />
+    <PackageReference Include="docfx.console" />
     <PackageReference Include="NJsonSchema" />
+    <PackageReference Update="@(PackageReference)" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="../**/*.csproj" PrivateAssets="All" />
     <ProjectReference Remove="$(MSBuildThisFile)" />
   </ItemGroup>
+
+  <Target Name="GenerateSchema" AfterTargets="Build">
+    <!-- Generate the schema and add to site assets -->
+    <Exec Command="dotnet $(OutputPath)/$(AssemblyName).dll $(MSBuildThisFileDirectory)site/schema/latest.json" />
+  </Target>
 
   <Target Name="DocFxBuild" AfterTargets="Publish">
     <Message Importance="High" Text="[Docs]: Building metadata" />

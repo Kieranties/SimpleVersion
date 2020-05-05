@@ -33,6 +33,7 @@ namespace SimpleVersion.Docs
             };
 
             var schema = JsonSchema.FromType(type, settings);
+            Directory.CreateDirectory(Directory.GetParent(path).FullName);
             File.WriteAllText(path, schema.ToJson());
         }
     }
