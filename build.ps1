@@ -49,7 +49,7 @@ if ($ServeDocs) {
 # Test
 $testArtifacts = Join-Path $ArtifactsPath 'tests'
 exec dotnet test $dotnetArgs --results-directory $testArtifacts --no-build
-exec dotnet reportgenerator "-reports:$(Join-Path $testArtifacts '**/*.cobertura.xml')" "-targetDir:$(Join-Path $testArtifacts 'CoverageReport')"
+exec dotnet reportgenerator "-reports:$(Join-Path $testArtifacts '**/*.cobertura.xml')" "-targetDir:$(Join-Path $testArtifacts 'CoverageReport')" "-reporttypes:HtmlInline_AzurePipelines"
 
 # Pack
 $distArtifacts = Join-Path $ArtifactsPath 'dist'
