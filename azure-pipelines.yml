@@ -27,8 +27,8 @@ jobs:
   displayName: "Core Build"
   pool:
     vmImage: windows-latest
-  steps:
 
+  steps:
   # Build
   - pwsh: ./build.ps1 -ArtifactsPath $(ArtifactsPath) -Configuration $(Configuration)
     displayName: 'Build and Test'
@@ -65,13 +65,15 @@ jobs:
       coverageThreshold: '90'
 
   # Handle artifacts
-  - task: PublishBuildArtifacts@1
-    displayName: "Artifacts: Publish"
-    condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
-    inputs:
-      PathtoPublish: $(ArtifactsPath)
-      ArtifactName: Artifacts
-      ArtifactType: Container
+  - publish: $(ArtifactsPath)/docs
+    displayName: "Artifacts: Publish Docs"
+    condition: succeeded()
+    artifact: docs
+
+  - publish: $(ArtifactsPath)/dist
+    displayName: "Artifacts: Publish Dist"
+    condition: succeeded()
+    artifact: dist
 
   - task: NuGetCommand@2
     displayName: "Artifacts: Push Packages"
@@ -82,3 +84,5 @@ jobs:
       nuGetFeedType: internal
       publishVstsFeed: SimpleVersion
       feedsToUse: nuget.config
+
+# TODO - Jobs for Integration testing
