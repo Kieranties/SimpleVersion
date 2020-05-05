@@ -3,8 +3,9 @@
     {
       "src": [
         {
-          "files": "**/bin/**/Simpleversion*dll",
-          "src" : "../src"
+          "files": ["**.csproj"],
+          "src": "../../src",
+          "exclude": ["**/bin/**", "**/obj/**"]
         }
       ],
       "dest": "api",
@@ -15,30 +16,18 @@
   "build": {
     "content": [
       {
-        "files": [
-          "api/**.{yml,md}",
-          "articles/**.{yml,md}",
-          "*.{yml,md}"
-        ]
+        "files": ["api/**.{yml,md}", "articles/**.{yml,md}", "*.{yml,md}"]
       }
     ],
     "resource": [
       {
-        "files": [
-          "images/**",
-          "theme/**"
-        ]
+        "files": ["images/**", "theme/**"]
       }
     ],
-    "overwrite":  "apidoc/**.md",
-    "dest": "obj/site",
     "globalMetadataFiles": [],
     "fileMetadataFiles": [],
-    "template": [
-      "default",
-      "./theme"
-    ],
-    "postProcessors": [],
+    "template": ["default", "./theme"],
+    "postProcessors": ["ExtractSearchIndex"],
     "markdownEngineName": "markdig",
     "noLangKeyword": false,
     "keepFileLink": false,
@@ -47,7 +36,8 @@
     "globalMetadata": {
       "_appFaviconPath": "images/log.png",
       "_appLogoPath": "images/logo.png",
-      "_appName": "SimpleVersion"
+      "_appName": "SimpleVersion",
+      "_enableSearch": "true"
     }
   }
 }

@@ -7,21 +7,50 @@ To get a better understanding of the values returned from invoking SimpleVersion
 see the [results documentation][results].
 
 Dotnet Tool
------------------
+-----------
 
 The latest version of the dotnet tool can be found on nuget.org.
-You can install `SimpleVersion.Tool` the [dotnet cli]:
+You can install `SimpleVersion.Tool` using the [dotnet cli]:
 
-```posh
+```ps
 # Installs the latest version as a global tool
-dotnet install -g SimpleVersion.Tool
+dotnet tool install SimpleVersion.Tool -g
+
+# Or a specific version
+dotnet tool install SimpleVersion.Tool -g --version 0.3.0-alpha1.2
 ```
 
-Once installed, you can invoke SimpleVersion in your favourite shell, optionally passing the path to your repository (defaults to current working directory)
+Once installed, you can invoke SimpleVersion in your favorite shell, optionally passing the path to your repository (defaults to current working directory)
 
-```posh
+```ps
 PS c:\MyRepo> simpleversion
 PS c:\> simpleversion ./MyRepo
+```
+
+### Local Tools
+
+Beginning with net core 3.0, you can install [tools locally] to a project. Doing so enables persistance of the tool version along side the
+code base.  Run the following from the root of your project to install and run as a local tool:
+
+```ps
+# Create a tool manifest
+PS c:\MyRepo> dotnet new tool-manifest
+
+# Add the tool
+PS c:\MyRepo> dotnet tool install SimpleVersion.Tool
+
+# Or a specific version
+PS c:\MyRepo> dotnet tool install SimpleVersion.Tool --version 0.3.0-alpha1.2
+```
+
+Local tools can be invoked after they have been restored:
+
+```ps
+# Restore
+PS c:\MyRepo> dotnet tool restore
+
+# Run
+PS c:\MyRepo> dotnet simpleversion
 ```
 
 Usage in Cake
@@ -86,8 +115,8 @@ RunTarget(target);
 ```
 Which can then be invoked as:
 
-```posh
-▶ .\build.ps1 --bootstrap; .\build.ps1 
+```ps
+PS  .\build.ps1 --bootstrap; .\build.ps1 
 Preparing to run build script...
 Running build script...
 Preparing to run build script...
@@ -112,5 +141,6 @@ Total:                        00:00:00.3304598
 
 [Results]: ./results.md
 [dotnet cli]: https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools
+[tools locally]: https://docs.microsoft.com/en-us/dotnet/core/tools/local-tools-how-to-use
 [Cake.DotNetTool.Module]: https://www.gep13.co.uk/blog/introducing-cake.dotnettool.module
 [ProcessSettings]: https://cakebuild.net/api/Cake.Core.IO/ProcessSettings/

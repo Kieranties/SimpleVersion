@@ -36,10 +36,9 @@ for guidance on writing tests.
 ### Package References
 
 To ensure dependencies are kept in sync across the projects, the `Microsoft.Build.CentralPackageVersions` SDK is used to enable versions to be
-tracked in a single location. When creating a new project, add `<Sdk Name="Microsoft.Build.CentralPackageVersions" />`
-as the first node under the `<Project>`.
+tracked in a single location.
 
-When adding a reference to a package, first add the `PackageReference` to
+When adding a reference to a _new_ package, first add the `PackageReference` to
 `Packages.props` with the specified version to be used.
 
 > Note: Use `Update` instead of include in the reference.
@@ -98,7 +97,7 @@ When writing a commit message, the message should be written in the format:
 [optional footer]
 ```
 
-The `\<type>` should be *one* of the following:
+The `<type>` should be *one* of the following:
 
 + `fix` - Resolving a bug
 + `feat` (or `feature`) - Implementing a new feature
@@ -108,16 +107,16 @@ The `\<type>` should be *one* of the following:
 + `test` - Adding tests
 + `improvement` - Improving the implementation of existing code.
 
-The `\<description>` should briefly describe the changes being addressed.
+The `<description>` should briefly describe the changes being addressed.
 
 The optional `scope` can be added to allow greater clarity on the change being
 committed, e.g.: `fix(config): Return co
 
 Additional information should be added in the optional `body`. Any issues that
-are resolved in the commit should be set flagged using `Fixes #\<issueid>`
+are resolved in the commit should be set flagged using `Fixes #<issueid>`
 
 The footer should be used to identify breaking changes.  Any commit may contain
-a breaking change.  It should be identified with `BREAKING CHANGE: \<description>`
+a breaking change.  It should be identified with `BREAKING CHANGE: <description>`
 
 #### Examples:
 ```
@@ -152,4 +151,6 @@ approver will clean things up.
 Contact
 -------
 
-If you have any queries, just ping @Kieranties
+If you have any queries, just raise a [question].
+
+[question]: https://github.com/Kieranties/SimpleVersion/issues/new/choose
