@@ -77,7 +77,7 @@ jobs:
 
   - task: NuGetCommand@2
     displayName: "Artifacts: Push Packages"
-    condition: succeeded(), ne(variables['build.reason'], 'PullRequest'))
+    condition: and(succeeded(), ne(variables['build.reason'], 'PullRequest'))
     inputs:
       command: push
       packagesToPush: $(ArtifactsPath)/**/*.nupkg
