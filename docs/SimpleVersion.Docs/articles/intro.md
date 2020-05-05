@@ -12,7 +12,7 @@ Dotnet Tool
 The latest version of the dotnet tool can be found on nuget.org.
 You can install `SimpleVersion.Tool` using the [dotnet cli]:
 
-```posh
+```ps
 # Installs the latest version as a global tool
 dotnet tool install SimpleVersion.Tool -g
 
@@ -22,7 +22,7 @@ dotnet tool install SimpleVersion.Tool -g --version 0.3.0-alpha1.2
 
 Once installed, you can invoke SimpleVersion in your favorite shell, optionally passing the path to your repository (defaults to current working directory)
 
-```posh
+```ps
 PS c:\MyRepo> simpleversion
 PS c:\> simpleversion ./MyRepo
 ```
@@ -32,7 +32,7 @@ PS c:\> simpleversion ./MyRepo
 Beginning with net core 3.0, you can install [tools locally] to a project. Doing so enables persistance of the tool version along side the
 code base.  Run the following from the root of your project to install and run as a local tool:
 
-```posh
+```ps
 # Create a tool manifest
 PS c:\MyRepo> dotnet new tool-manifest
 
@@ -45,7 +45,7 @@ PS c:\MyRepo> dotnet tool install SimpleVersion.Tool --version 0.3.0-alpha1.2
 
 Local tools can be invoked after they have been restored:
 
-```posh
+```ps
 # Restore
 PS c:\MyRepo> dotnet tool restore
 
@@ -115,7 +115,7 @@ RunTarget(target);
 ```
 Which can then be invoked as:
 
-```posh
+```ps
 PS  .\build.ps1 --bootstrap; .\build.ps1 
 Preparing to run build script...
 Running build script...
