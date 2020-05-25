@@ -32,6 +32,7 @@ The `label` property specifies an array of labels to be included in the version.
 
 > [!NOTE]
 > By specifying values in the label, the version will be returned as a pre-release version.
+> If there is a pre-release label, the height will be appended to label.
 
 Metadata
 --------
@@ -55,7 +56,7 @@ Sometimes you may need to adjust the base value of the height. This could be
 when migrating from a previous versioning pattern, if a number of commits
 should be discounted, or any other reason.
 
-Specify the `offset` as a numeric value to impact the base value of the height.
+Specify the `offset` as a numeric value to impact the base value of the height:
 
 ```json
 "offset" : -5
@@ -73,7 +74,7 @@ be applied based on the branch currently being built.
 `release` allows for a list of regular expressions to be defined where each
 may match to the current branch being built. If the current branch does not match
 any of the expressions it will have the short sha of the current commit added
-to the `Labels` property prefixed with `c` (for commit).
+to the `label` property prefixed with `c` (for commit).
 
 ```json
 {
@@ -90,23 +91,23 @@ to the `Labels` property prefixed with `c` (for commit).
 ```
 
 In the above example, any branch called _master_, starting with _preview/_ or
-starting with _release/_ will **not** have the short sha appended. Generating a
+starting with _release/_ will **not** have the short sha appended, generating a
 Semver2 version of `0.1.0-alpha2.5` when there are five commits.
 
 All other branches will append the short sha, generating a Semver2 version of
 `0.1.0-alpha2.5.c903782` when there are five commits and the sha begins with
-_903782_
+_903782_.
 
 > [!NOTE]
 > Release branch configuration provides a simple way to identify what may be
 > publicly shipped. If the version has a label containing the sha, you probably
 > don't want it released.  You can enable all branches to be release branches
-> using the regular expression `.*`
+> using the regular expression `.*`.
 
 ### Overrides
 
 Overrides allow for certain elements of the version to be reconfigured based
-on the branch being built.  Overrides are matched by a regular expression where
+on the branch being built. Overrides are matched by a regular expression where
 only the first match (if found) is used.
 
 ```json
@@ -137,7 +138,7 @@ only the first match (if found) is used.
 In the above example, any branch starting with _feature/_ will add the branches
 shortname as metadata to the generated version. E.g. _feature/testing_ will
 create a version of `0.2.0-alpha1.5.c903782+featuretesting` when there are five
-commits and the sha begins with _903782_
+commits and the sha begins with _903782_.
 
 Additionally, any branch beginning with _release/_ will strip the release label
 and have the height added into the metadata.
@@ -157,7 +158,7 @@ Override configuration has access to the following properties
 | `prefixlabel`     | string array          | false    | Prefixes the base configuration `label` with the given values                             |
 | `postfixlabel`    | string array          | false    | Postfixes the base configuration `label` with the given values                            |
 | `insertlabel`     | int/string dictionary | false    | Inserts the given values into the base `label` at the index specified                     |
-| `metadata`        | string array          | false    | Overrides `metadata` from the base configuration                                           |
+| `metadata`        | string array          | false    | Overrides `metadata` from the base configuration                                          |
 | `prefixmetadata`  | string array          | false    | Prefixes the base configuration `metadata` with the given values                          |
 | `postfixmetadata` | string array          | false    | Postfixes the base configuration `metadata` with the given values                         |
 | `insertmetadata`  | int/string dictionary | false    | Inserts the given values into the base `metadata` at the index specified                  |
@@ -170,11 +171,11 @@ SimpleVersion allows specific _tokens_ to be used in some properties to allow
 substitution of values during invocation.  The following tokens may be used:
 
 
-| Name               | Token                | Where                          | Description                                                                |
-| ------------------ | -------------------- | ------------------------------ | -------------------------------------------------------------------------- |
-| Height             | `*`                  | `version`, `label`, `metadata` | Inserts the calculated height                                              |
-| Branch Name        | `{branchname}`       | `label`, `metadata`            | Inserts the canonical branch name, stripped of non-alphanumeric characters |
-| Short Branch Name  | `{shortbranchname}`  | `label`, `metadata`            | Inserts the friendly branch name, stripped of non-alphanumeric characters  |
-| Branch Name Suffix | `{branchnamesuffix}` | `label`, `metadata`            | Inserts the last segment of the canonical name of a branch                 |
-| Short Sha          | `{shortsha}`         | `label`, `metadata`            | Inserts the first seven characters of the commit sha, prefixed with `c`    |
-| Pull-Request Id    | `{pr}`               | `label`, `metadata`            | Inserts the id of the pull-request (or 0 by default)                       |
+| Name               | Token                | Where                          | Description                                                                          |
+| ------------------ | -------------------- | ------------------------------ | ------------------------------------------------------------------------------------ |
+| Height             | `*`                  | `version`, `label`, `metadata` | Inserts the calculated height                                                        |
+| Branch Name        | `{branchname}`       | `label`, `metadata`            | Inserts the canonical branch name, stripped of non-alphanumeric characters           |
+| Short Branch Name  | `{shortbranchname}`  | `label`, `metadata`            | Inserts the friendly branch name, stripped of non-alphanumeric characters            |
+| Branch Name Suffix | `{branchnamesuffix}` | `label`, `metadata`            | Inserts the last segment of the canonical name of a branch                           |
+| Short Sha          | `{shortsha}`         | `label`, `metadata`            | Inserts the first seven characters of the commit sha, prefixed with `c` (for commit) |
+| Pull-Request Id    | `{pr}`               | `label`, `metadata`            | Inserts the id of the pull-request (or 0 by default)                                 |
