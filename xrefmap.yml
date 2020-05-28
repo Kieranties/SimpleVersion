@@ -13,60 +13,564 @@ references:
   commentId: N:SimpleVersion.Comparers
   fullName: SimpleVersion.Comparers
   nameWithType: SimpleVersion.Comparers
-- uid: SimpleVersion.Comparers.SettingsVersionLabelComparer
-  name: SettingsVersionLabelComparer
-  href: api/SimpleVersion.Comparers.SettingsVersionLabelComparer.html
-  commentId: T:SimpleVersion.Comparers.SettingsVersionLabelComparer
-  fullName: SimpleVersion.Comparers.SettingsVersionLabelComparer
-  nameWithType: SettingsVersionLabelComparer
-- uid: SimpleVersion.Comparers.SettingsVersionLabelComparer.#ctor
-  name: SettingsVersionLabelComparer()
-  href: api/SimpleVersion.Comparers.SettingsVersionLabelComparer.html#SimpleVersion_Comparers_SettingsVersionLabelComparer__ctor
-  commentId: M:SimpleVersion.Comparers.SettingsVersionLabelComparer.#ctor
-  fullName: SimpleVersion.Comparers.SettingsVersionLabelComparer.SettingsVersionLabelComparer()
-  nameWithType: SettingsVersionLabelComparer.SettingsVersionLabelComparer()
-- uid: SimpleVersion.Comparers.SettingsVersionLabelComparer.#ctor*
-  name: SettingsVersionLabelComparer
-  href: api/SimpleVersion.Comparers.SettingsVersionLabelComparer.html#SimpleVersion_Comparers_SettingsVersionLabelComparer__ctor_
-  commentId: Overload:SimpleVersion.Comparers.SettingsVersionLabelComparer.#ctor
-  fullName: SimpleVersion.Comparers.SettingsVersionLabelComparer.SettingsVersionLabelComparer
-  nameWithType: SettingsVersionLabelComparer.SettingsVersionLabelComparer
-- uid: SimpleVersion.Comparers.SettingsVersionLabelComparer.Equals(SimpleVersion.Model.Settings,SimpleVersion.Model.Settings)
-  name: Equals(Settings, Settings)
-  href: api/SimpleVersion.Comparers.SettingsVersionLabelComparer.html#SimpleVersion_Comparers_SettingsVersionLabelComparer_Equals_SimpleVersion_Model_Settings_SimpleVersion_Model_Settings_
-  commentId: M:SimpleVersion.Comparers.SettingsVersionLabelComparer.Equals(SimpleVersion.Model.Settings,SimpleVersion.Model.Settings)
-  fullName: SimpleVersion.Comparers.SettingsVersionLabelComparer.Equals(SimpleVersion.Model.Settings, SimpleVersion.Model.Settings)
-  nameWithType: SettingsVersionLabelComparer.Equals(Settings, Settings)
-- uid: SimpleVersion.Comparers.SettingsVersionLabelComparer.Equals*
+- uid: SimpleVersion.Comparers.VersionConfigurationLabelComparer
+  name: VersionConfigurationLabelComparer
+  href: api/SimpleVersion.Comparers.VersionConfigurationLabelComparer.html
+  commentId: T:SimpleVersion.Comparers.VersionConfigurationLabelComparer
+  fullName: SimpleVersion.Comparers.VersionConfigurationLabelComparer
+  nameWithType: VersionConfigurationLabelComparer
+- uid: SimpleVersion.Comparers.VersionConfigurationLabelComparer.Equals(SimpleVersion.Configuration.VersionConfiguration,SimpleVersion.Configuration.VersionConfiguration)
+  name: Equals(VersionConfiguration, VersionConfiguration)
+  href: api/SimpleVersion.Comparers.VersionConfigurationLabelComparer.html#SimpleVersion_Comparers_VersionConfigurationLabelComparer_Equals_SimpleVersion_Configuration_VersionConfiguration_SimpleVersion_Configuration_VersionConfiguration_
+  commentId: M:SimpleVersion.Comparers.VersionConfigurationLabelComparer.Equals(SimpleVersion.Configuration.VersionConfiguration,SimpleVersion.Configuration.VersionConfiguration)
+  fullName: SimpleVersion.Comparers.VersionConfigurationLabelComparer.Equals(SimpleVersion.Configuration.VersionConfiguration, SimpleVersion.Configuration.VersionConfiguration)
+  nameWithType: VersionConfigurationLabelComparer.Equals(VersionConfiguration, VersionConfiguration)
+- uid: SimpleVersion.Comparers.VersionConfigurationLabelComparer.Equals*
   name: Equals
-  href: api/SimpleVersion.Comparers.SettingsVersionLabelComparer.html#SimpleVersion_Comparers_SettingsVersionLabelComparer_Equals_
-  commentId: Overload:SimpleVersion.Comparers.SettingsVersionLabelComparer.Equals
-  fullName: SimpleVersion.Comparers.SettingsVersionLabelComparer.Equals
-  nameWithType: SettingsVersionLabelComparer.Equals
-- uid: SimpleVersion.Comparers.SettingsVersionLabelComparer.GetHashCode(SimpleVersion.Model.Settings)
-  name: GetHashCode(Settings)
-  href: api/SimpleVersion.Comparers.SettingsVersionLabelComparer.html#SimpleVersion_Comparers_SettingsVersionLabelComparer_GetHashCode_SimpleVersion_Model_Settings_
-  commentId: M:SimpleVersion.Comparers.SettingsVersionLabelComparer.GetHashCode(SimpleVersion.Model.Settings)
-  fullName: SimpleVersion.Comparers.SettingsVersionLabelComparer.GetHashCode(SimpleVersion.Model.Settings)
-  nameWithType: SettingsVersionLabelComparer.GetHashCode(Settings)
-- uid: SimpleVersion.Comparers.SettingsVersionLabelComparer.GetHashCode*
+  href: api/SimpleVersion.Comparers.VersionConfigurationLabelComparer.html#SimpleVersion_Comparers_VersionConfigurationLabelComparer_Equals_
+  commentId: Overload:SimpleVersion.Comparers.VersionConfigurationLabelComparer.Equals
+  isSpec: "True"
+  fullName: SimpleVersion.Comparers.VersionConfigurationLabelComparer.Equals
+  nameWithType: VersionConfigurationLabelComparer.Equals
+- uid: SimpleVersion.Comparers.VersionConfigurationLabelComparer.GetHashCode(SimpleVersion.Configuration.VersionConfiguration)
+  name: GetHashCode(VersionConfiguration)
+  href: api/SimpleVersion.Comparers.VersionConfigurationLabelComparer.html#SimpleVersion_Comparers_VersionConfigurationLabelComparer_GetHashCode_SimpleVersion_Configuration_VersionConfiguration_
+  commentId: M:SimpleVersion.Comparers.VersionConfigurationLabelComparer.GetHashCode(SimpleVersion.Configuration.VersionConfiguration)
+  fullName: SimpleVersion.Comparers.VersionConfigurationLabelComparer.GetHashCode(SimpleVersion.Configuration.VersionConfiguration)
+  nameWithType: VersionConfigurationLabelComparer.GetHashCode(VersionConfiguration)
+- uid: SimpleVersion.Comparers.VersionConfigurationLabelComparer.GetHashCode*
   name: GetHashCode
-  href: api/SimpleVersion.Comparers.SettingsVersionLabelComparer.html#SimpleVersion_Comparers_SettingsVersionLabelComparer_GetHashCode_
-  commentId: Overload:SimpleVersion.Comparers.SettingsVersionLabelComparer.GetHashCode
-  fullName: SimpleVersion.Comparers.SettingsVersionLabelComparer.GetHashCode
-  nameWithType: SettingsVersionLabelComparer.GetHashCode
+  href: api/SimpleVersion.Comparers.VersionConfigurationLabelComparer.html#SimpleVersion_Comparers_VersionConfigurationLabelComparer_GetHashCode_
+  commentId: Overload:SimpleVersion.Comparers.VersionConfigurationLabelComparer.GetHashCode
+  isSpec: "True"
+  fullName: SimpleVersion.Comparers.VersionConfigurationLabelComparer.GetHashCode
+  nameWithType: VersionConfigurationLabelComparer.GetHashCode
+- uid: SimpleVersion.Configuration
+  name: SimpleVersion.Configuration
+  href: api/SimpleVersion.Configuration.html
+  commentId: N:SimpleVersion.Configuration
+  fullName: SimpleVersion.Configuration
+  nameWithType: SimpleVersion.Configuration
+- uid: SimpleVersion.Configuration.BranchConfiguration
+  name: BranchConfiguration
+  href: api/SimpleVersion.Configuration.BranchConfiguration.html
+  commentId: T:SimpleVersion.Configuration.BranchConfiguration
+  fullName: SimpleVersion.Configuration.BranchConfiguration
+  nameWithType: BranchConfiguration
+- uid: SimpleVersion.Configuration.BranchConfiguration.Overrides
+  name: Overrides
+  href: api/SimpleVersion.Configuration.BranchConfiguration.html#SimpleVersion_Configuration_BranchConfiguration_Overrides
+  commentId: P:SimpleVersion.Configuration.BranchConfiguration.Overrides
+  fullName: SimpleVersion.Configuration.BranchConfiguration.Overrides
+  nameWithType: BranchConfiguration.Overrides
+- uid: SimpleVersion.Configuration.BranchConfiguration.Overrides*
+  name: Overrides
+  href: api/SimpleVersion.Configuration.BranchConfiguration.html#SimpleVersion_Configuration_BranchConfiguration_Overrides_
+  commentId: Overload:SimpleVersion.Configuration.BranchConfiguration.Overrides
+  isSpec: "True"
+  fullName: SimpleVersion.Configuration.BranchConfiguration.Overrides
+  nameWithType: BranchConfiguration.Overrides
+- uid: SimpleVersion.Configuration.BranchConfiguration.Release
+  name: Release
+  href: api/SimpleVersion.Configuration.BranchConfiguration.html#SimpleVersion_Configuration_BranchConfiguration_Release
+  commentId: P:SimpleVersion.Configuration.BranchConfiguration.Release
+  fullName: SimpleVersion.Configuration.BranchConfiguration.Release
+  nameWithType: BranchConfiguration.Release
+- uid: SimpleVersion.Configuration.BranchConfiguration.Release*
+  name: Release
+  href: api/SimpleVersion.Configuration.BranchConfiguration.html#SimpleVersion_Configuration_BranchConfiguration_Release_
+  commentId: Overload:SimpleVersion.Configuration.BranchConfiguration.Release
+  isSpec: "True"
+  fullName: SimpleVersion.Configuration.BranchConfiguration.Release
+  nameWithType: BranchConfiguration.Release
+- uid: SimpleVersion.Configuration.BranchOverrideConfiguration
+  name: BranchOverrideConfiguration
+  href: api/SimpleVersion.Configuration.BranchOverrideConfiguration.html
+  commentId: T:SimpleVersion.Configuration.BranchOverrideConfiguration
+  fullName: SimpleVersion.Configuration.BranchOverrideConfiguration
+  nameWithType: BranchOverrideConfiguration
+- uid: SimpleVersion.Configuration.BranchOverrideConfiguration.InsertLabel
+  name: InsertLabel
+  href: api/SimpleVersion.Configuration.BranchOverrideConfiguration.html#SimpleVersion_Configuration_BranchOverrideConfiguration_InsertLabel
+  commentId: P:SimpleVersion.Configuration.BranchOverrideConfiguration.InsertLabel
+  fullName: SimpleVersion.Configuration.BranchOverrideConfiguration.InsertLabel
+  nameWithType: BranchOverrideConfiguration.InsertLabel
+- uid: SimpleVersion.Configuration.BranchOverrideConfiguration.InsertLabel*
+  name: InsertLabel
+  href: api/SimpleVersion.Configuration.BranchOverrideConfiguration.html#SimpleVersion_Configuration_BranchOverrideConfiguration_InsertLabel_
+  commentId: Overload:SimpleVersion.Configuration.BranchOverrideConfiguration.InsertLabel
+  isSpec: "True"
+  fullName: SimpleVersion.Configuration.BranchOverrideConfiguration.InsertLabel
+  nameWithType: BranchOverrideConfiguration.InsertLabel
+- uid: SimpleVersion.Configuration.BranchOverrideConfiguration.InsertMetadata
+  name: InsertMetadata
+  href: api/SimpleVersion.Configuration.BranchOverrideConfiguration.html#SimpleVersion_Configuration_BranchOverrideConfiguration_InsertMetadata
+  commentId: P:SimpleVersion.Configuration.BranchOverrideConfiguration.InsertMetadata
+  fullName: SimpleVersion.Configuration.BranchOverrideConfiguration.InsertMetadata
+  nameWithType: BranchOverrideConfiguration.InsertMetadata
+- uid: SimpleVersion.Configuration.BranchOverrideConfiguration.InsertMetadata*
+  name: InsertMetadata
+  href: api/SimpleVersion.Configuration.BranchOverrideConfiguration.html#SimpleVersion_Configuration_BranchOverrideConfiguration_InsertMetadata_
+  commentId: Overload:SimpleVersion.Configuration.BranchOverrideConfiguration.InsertMetadata
+  isSpec: "True"
+  fullName: SimpleVersion.Configuration.BranchOverrideConfiguration.InsertMetadata
+  nameWithType: BranchOverrideConfiguration.InsertMetadata
+- uid: SimpleVersion.Configuration.BranchOverrideConfiguration.Label
+  name: Label
+  href: api/SimpleVersion.Configuration.BranchOverrideConfiguration.html#SimpleVersion_Configuration_BranchOverrideConfiguration_Label
+  commentId: P:SimpleVersion.Configuration.BranchOverrideConfiguration.Label
+  fullName: SimpleVersion.Configuration.BranchOverrideConfiguration.Label
+  nameWithType: BranchOverrideConfiguration.Label
+- uid: SimpleVersion.Configuration.BranchOverrideConfiguration.Label*
+  name: Label
+  href: api/SimpleVersion.Configuration.BranchOverrideConfiguration.html#SimpleVersion_Configuration_BranchOverrideConfiguration_Label_
+  commentId: Overload:SimpleVersion.Configuration.BranchOverrideConfiguration.Label
+  isSpec: "True"
+  fullName: SimpleVersion.Configuration.BranchOverrideConfiguration.Label
+  nameWithType: BranchOverrideConfiguration.Label
+- uid: SimpleVersion.Configuration.BranchOverrideConfiguration.Match
+  name: Match
+  href: api/SimpleVersion.Configuration.BranchOverrideConfiguration.html#SimpleVersion_Configuration_BranchOverrideConfiguration_Match
+  commentId: P:SimpleVersion.Configuration.BranchOverrideConfiguration.Match
+  fullName: SimpleVersion.Configuration.BranchOverrideConfiguration.Match
+  nameWithType: BranchOverrideConfiguration.Match
+- uid: SimpleVersion.Configuration.BranchOverrideConfiguration.Match*
+  name: Match
+  href: api/SimpleVersion.Configuration.BranchOverrideConfiguration.html#SimpleVersion_Configuration_BranchOverrideConfiguration_Match_
+  commentId: Overload:SimpleVersion.Configuration.BranchOverrideConfiguration.Match
+  isSpec: "True"
+  fullName: SimpleVersion.Configuration.BranchOverrideConfiguration.Match
+  nameWithType: BranchOverrideConfiguration.Match
+- uid: SimpleVersion.Configuration.BranchOverrideConfiguration.Metadata
+  name: Metadata
+  href: api/SimpleVersion.Configuration.BranchOverrideConfiguration.html#SimpleVersion_Configuration_BranchOverrideConfiguration_Metadata
+  commentId: P:SimpleVersion.Configuration.BranchOverrideConfiguration.Metadata
+  fullName: SimpleVersion.Configuration.BranchOverrideConfiguration.Metadata
+  nameWithType: BranchOverrideConfiguration.Metadata
+- uid: SimpleVersion.Configuration.BranchOverrideConfiguration.Metadata*
+  name: Metadata
+  href: api/SimpleVersion.Configuration.BranchOverrideConfiguration.html#SimpleVersion_Configuration_BranchOverrideConfiguration_Metadata_
+  commentId: Overload:SimpleVersion.Configuration.BranchOverrideConfiguration.Metadata
+  isSpec: "True"
+  fullName: SimpleVersion.Configuration.BranchOverrideConfiguration.Metadata
+  nameWithType: BranchOverrideConfiguration.Metadata
+- uid: SimpleVersion.Configuration.BranchOverrideConfiguration.PostfixLabel
+  name: PostfixLabel
+  href: api/SimpleVersion.Configuration.BranchOverrideConfiguration.html#SimpleVersion_Configuration_BranchOverrideConfiguration_PostfixLabel
+  commentId: P:SimpleVersion.Configuration.BranchOverrideConfiguration.PostfixLabel
+  fullName: SimpleVersion.Configuration.BranchOverrideConfiguration.PostfixLabel
+  nameWithType: BranchOverrideConfiguration.PostfixLabel
+- uid: SimpleVersion.Configuration.BranchOverrideConfiguration.PostfixLabel*
+  name: PostfixLabel
+  href: api/SimpleVersion.Configuration.BranchOverrideConfiguration.html#SimpleVersion_Configuration_BranchOverrideConfiguration_PostfixLabel_
+  commentId: Overload:SimpleVersion.Configuration.BranchOverrideConfiguration.PostfixLabel
+  isSpec: "True"
+  fullName: SimpleVersion.Configuration.BranchOverrideConfiguration.PostfixLabel
+  nameWithType: BranchOverrideConfiguration.PostfixLabel
+- uid: SimpleVersion.Configuration.BranchOverrideConfiguration.PostfixMetadata
+  name: PostfixMetadata
+  href: api/SimpleVersion.Configuration.BranchOverrideConfiguration.html#SimpleVersion_Configuration_BranchOverrideConfiguration_PostfixMetadata
+  commentId: P:SimpleVersion.Configuration.BranchOverrideConfiguration.PostfixMetadata
+  fullName: SimpleVersion.Configuration.BranchOverrideConfiguration.PostfixMetadata
+  nameWithType: BranchOverrideConfiguration.PostfixMetadata
+- uid: SimpleVersion.Configuration.BranchOverrideConfiguration.PostfixMetadata*
+  name: PostfixMetadata
+  href: api/SimpleVersion.Configuration.BranchOverrideConfiguration.html#SimpleVersion_Configuration_BranchOverrideConfiguration_PostfixMetadata_
+  commentId: Overload:SimpleVersion.Configuration.BranchOverrideConfiguration.PostfixMetadata
+  isSpec: "True"
+  fullName: SimpleVersion.Configuration.BranchOverrideConfiguration.PostfixMetadata
+  nameWithType: BranchOverrideConfiguration.PostfixMetadata
+- uid: SimpleVersion.Configuration.BranchOverrideConfiguration.PrefixLabel
+  name: PrefixLabel
+  href: api/SimpleVersion.Configuration.BranchOverrideConfiguration.html#SimpleVersion_Configuration_BranchOverrideConfiguration_PrefixLabel
+  commentId: P:SimpleVersion.Configuration.BranchOverrideConfiguration.PrefixLabel
+  fullName: SimpleVersion.Configuration.BranchOverrideConfiguration.PrefixLabel
+  nameWithType: BranchOverrideConfiguration.PrefixLabel
+- uid: SimpleVersion.Configuration.BranchOverrideConfiguration.PrefixLabel*
+  name: PrefixLabel
+  href: api/SimpleVersion.Configuration.BranchOverrideConfiguration.html#SimpleVersion_Configuration_BranchOverrideConfiguration_PrefixLabel_
+  commentId: Overload:SimpleVersion.Configuration.BranchOverrideConfiguration.PrefixLabel
+  isSpec: "True"
+  fullName: SimpleVersion.Configuration.BranchOverrideConfiguration.PrefixLabel
+  nameWithType: BranchOverrideConfiguration.PrefixLabel
+- uid: SimpleVersion.Configuration.BranchOverrideConfiguration.PrefixMetadata
+  name: PrefixMetadata
+  href: api/SimpleVersion.Configuration.BranchOverrideConfiguration.html#SimpleVersion_Configuration_BranchOverrideConfiguration_PrefixMetadata
+  commentId: P:SimpleVersion.Configuration.BranchOverrideConfiguration.PrefixMetadata
+  fullName: SimpleVersion.Configuration.BranchOverrideConfiguration.PrefixMetadata
+  nameWithType: BranchOverrideConfiguration.PrefixMetadata
+- uid: SimpleVersion.Configuration.BranchOverrideConfiguration.PrefixMetadata*
+  name: PrefixMetadata
+  href: api/SimpleVersion.Configuration.BranchOverrideConfiguration.html#SimpleVersion_Configuration_BranchOverrideConfiguration_PrefixMetadata_
+  commentId: Overload:SimpleVersion.Configuration.BranchOverrideConfiguration.PrefixMetadata
+  isSpec: "True"
+  fullName: SimpleVersion.Configuration.BranchOverrideConfiguration.PrefixMetadata
+  nameWithType: BranchOverrideConfiguration.PrefixMetadata
+- uid: SimpleVersion.Configuration.RepositoryConfiguration
+  name: RepositoryConfiguration
+  href: api/SimpleVersion.Configuration.RepositoryConfiguration.html
+  commentId: T:SimpleVersion.Configuration.RepositoryConfiguration
+  fullName: SimpleVersion.Configuration.RepositoryConfiguration
+  nameWithType: RepositoryConfiguration
+- uid: SimpleVersion.Configuration.RepositoryConfiguration.Branches
+  name: Branches
+  href: api/SimpleVersion.Configuration.RepositoryConfiguration.html#SimpleVersion_Configuration_RepositoryConfiguration_Branches
+  commentId: P:SimpleVersion.Configuration.RepositoryConfiguration.Branches
+  fullName: SimpleVersion.Configuration.RepositoryConfiguration.Branches
+  nameWithType: RepositoryConfiguration.Branches
+- uid: SimpleVersion.Configuration.RepositoryConfiguration.Branches*
+  name: Branches
+  href: api/SimpleVersion.Configuration.RepositoryConfiguration.html#SimpleVersion_Configuration_RepositoryConfiguration_Branches_
+  commentId: Overload:SimpleVersion.Configuration.RepositoryConfiguration.Branches
+  isSpec: "True"
+  fullName: SimpleVersion.Configuration.RepositoryConfiguration.Branches
+  nameWithType: RepositoryConfiguration.Branches
+- uid: SimpleVersion.Configuration.VersionConfiguration
+  name: VersionConfiguration
+  href: api/SimpleVersion.Configuration.VersionConfiguration.html
+  commentId: T:SimpleVersion.Configuration.VersionConfiguration
+  fullName: SimpleVersion.Configuration.VersionConfiguration
+  nameWithType: VersionConfiguration
+- uid: SimpleVersion.Configuration.VersionConfiguration.Label
+  name: Label
+  href: api/SimpleVersion.Configuration.VersionConfiguration.html#SimpleVersion_Configuration_VersionConfiguration_Label
+  commentId: P:SimpleVersion.Configuration.VersionConfiguration.Label
+  fullName: SimpleVersion.Configuration.VersionConfiguration.Label
+  nameWithType: VersionConfiguration.Label
+- uid: SimpleVersion.Configuration.VersionConfiguration.Label*
+  name: Label
+  href: api/SimpleVersion.Configuration.VersionConfiguration.html#SimpleVersion_Configuration_VersionConfiguration_Label_
+  commentId: Overload:SimpleVersion.Configuration.VersionConfiguration.Label
+  isSpec: "True"
+  fullName: SimpleVersion.Configuration.VersionConfiguration.Label
+  nameWithType: VersionConfiguration.Label
+- uid: SimpleVersion.Configuration.VersionConfiguration.Metadata
+  name: Metadata
+  href: api/SimpleVersion.Configuration.VersionConfiguration.html#SimpleVersion_Configuration_VersionConfiguration_Metadata
+  commentId: P:SimpleVersion.Configuration.VersionConfiguration.Metadata
+  fullName: SimpleVersion.Configuration.VersionConfiguration.Metadata
+  nameWithType: VersionConfiguration.Metadata
+- uid: SimpleVersion.Configuration.VersionConfiguration.Metadata*
+  name: Metadata
+  href: api/SimpleVersion.Configuration.VersionConfiguration.html#SimpleVersion_Configuration_VersionConfiguration_Metadata_
+  commentId: Overload:SimpleVersion.Configuration.VersionConfiguration.Metadata
+  isSpec: "True"
+  fullName: SimpleVersion.Configuration.VersionConfiguration.Metadata
+  nameWithType: VersionConfiguration.Metadata
+- uid: SimpleVersion.Configuration.VersionConfiguration.OffSet
+  name: OffSet
+  href: api/SimpleVersion.Configuration.VersionConfiguration.html#SimpleVersion_Configuration_VersionConfiguration_OffSet
+  commentId: P:SimpleVersion.Configuration.VersionConfiguration.OffSet
+  fullName: SimpleVersion.Configuration.VersionConfiguration.OffSet
+  nameWithType: VersionConfiguration.OffSet
+- uid: SimpleVersion.Configuration.VersionConfiguration.OffSet*
+  name: OffSet
+  href: api/SimpleVersion.Configuration.VersionConfiguration.html#SimpleVersion_Configuration_VersionConfiguration_OffSet_
+  commentId: Overload:SimpleVersion.Configuration.VersionConfiguration.OffSet
+  isSpec: "True"
+  fullName: SimpleVersion.Configuration.VersionConfiguration.OffSet
+  nameWithType: VersionConfiguration.OffSet
+- uid: SimpleVersion.Configuration.VersionConfiguration.Version
+  name: Version
+  href: api/SimpleVersion.Configuration.VersionConfiguration.html#SimpleVersion_Configuration_VersionConfiguration_Version
+  commentId: P:SimpleVersion.Configuration.VersionConfiguration.Version
+  fullName: SimpleVersion.Configuration.VersionConfiguration.Version
+  nameWithType: VersionConfiguration.Version
+- uid: SimpleVersion.Configuration.VersionConfiguration.Version*
+  name: Version
+  href: api/SimpleVersion.Configuration.VersionConfiguration.html#SimpleVersion_Configuration_VersionConfiguration_Version_
+  commentId: Overload:SimpleVersion.Configuration.VersionConfiguration.Version
+  isSpec: "True"
+  fullName: SimpleVersion.Configuration.VersionConfiguration.Version
+  nameWithType: VersionConfiguration.Version
 - uid: SimpleVersion.Constants
   name: Constants
   href: api/SimpleVersion.Constants.html
   commentId: T:SimpleVersion.Constants
   fullName: SimpleVersion.Constants
   nameWithType: Constants
-- uid: SimpleVersion.Constants.VersionFileName
-  name: VersionFileName
-  href: api/SimpleVersion.Constants.html#SimpleVersion_Constants_VersionFileName
-  commentId: F:SimpleVersion.Constants.VersionFileName
-  fullName: SimpleVersion.Constants.VersionFileName
-  nameWithType: Constants.VersionFileName
+- uid: SimpleVersion.Constants.ConfigurationFileName
+  name: ConfigurationFileName
+  href: api/SimpleVersion.Constants.html#SimpleVersion_Constants_ConfigurationFileName
+  commentId: F:SimpleVersion.Constants.ConfigurationFileName
+  fullName: SimpleVersion.Constants.ConfigurationFileName
+  nameWithType: Constants.ConfigurationFileName
+- uid: SimpleVersion.Environment
+  name: SimpleVersion.Environment
+  href: api/SimpleVersion.Environment.html
+  commentId: N:SimpleVersion.Environment
+  fullName: SimpleVersion.Environment
+  nameWithType: SimpleVersion.Environment
+- uid: SimpleVersion.Environment.AzureDevopsEnvironment
+  name: AzureDevopsEnvironment
+  href: api/SimpleVersion.Environment.AzureDevopsEnvironment.html
+  commentId: T:SimpleVersion.Environment.AzureDevopsEnvironment
+  fullName: SimpleVersion.Environment.AzureDevopsEnvironment
+  nameWithType: AzureDevopsEnvironment
+- uid: SimpleVersion.Environment.AzureDevopsEnvironment.#ctor(SimpleVersion.Environment.IEnvironmentVariableAccessor)
+  name: AzureDevopsEnvironment(IEnvironmentVariableAccessor)
+  href: api/SimpleVersion.Environment.AzureDevopsEnvironment.html#SimpleVersion_Environment_AzureDevopsEnvironment__ctor_SimpleVersion_Environment_IEnvironmentVariableAccessor_
+  commentId: M:SimpleVersion.Environment.AzureDevopsEnvironment.#ctor(SimpleVersion.Environment.IEnvironmentVariableAccessor)
+  fullName: SimpleVersion.Environment.AzureDevopsEnvironment.AzureDevopsEnvironment(SimpleVersion.Environment.IEnvironmentVariableAccessor)
+  nameWithType: AzureDevopsEnvironment.AzureDevopsEnvironment(IEnvironmentVariableAccessor)
+- uid: SimpleVersion.Environment.AzureDevopsEnvironment.#ctor*
+  name: AzureDevopsEnvironment
+  href: api/SimpleVersion.Environment.AzureDevopsEnvironment.html#SimpleVersion_Environment_AzureDevopsEnvironment__ctor_
+  commentId: Overload:SimpleVersion.Environment.AzureDevopsEnvironment.#ctor
+  isSpec: "True"
+  fullName: SimpleVersion.Environment.AzureDevopsEnvironment.AzureDevopsEnvironment
+  nameWithType: AzureDevopsEnvironment.AzureDevopsEnvironment
+- uid: SimpleVersion.Environment.AzureDevopsEnvironment.BranchName
+  name: BranchName
+  href: api/SimpleVersion.Environment.AzureDevopsEnvironment.html#SimpleVersion_Environment_AzureDevopsEnvironment_BranchName
+  commentId: P:SimpleVersion.Environment.AzureDevopsEnvironment.BranchName
+  fullName: SimpleVersion.Environment.AzureDevopsEnvironment.BranchName
+  nameWithType: AzureDevopsEnvironment.BranchName
+- uid: SimpleVersion.Environment.AzureDevopsEnvironment.BranchName*
+  name: BranchName
+  href: api/SimpleVersion.Environment.AzureDevopsEnvironment.html#SimpleVersion_Environment_AzureDevopsEnvironment_BranchName_
+  commentId: Overload:SimpleVersion.Environment.AzureDevopsEnvironment.BranchName
+  isSpec: "True"
+  fullName: SimpleVersion.Environment.AzureDevopsEnvironment.BranchName
+  nameWithType: AzureDevopsEnvironment.BranchName
+- uid: SimpleVersion.Environment.AzureDevopsEnvironment.CanonicalBranchName
+  name: CanonicalBranchName
+  href: api/SimpleVersion.Environment.AzureDevopsEnvironment.html#SimpleVersion_Environment_AzureDevopsEnvironment_CanonicalBranchName
+  commentId: P:SimpleVersion.Environment.AzureDevopsEnvironment.CanonicalBranchName
+  fullName: SimpleVersion.Environment.AzureDevopsEnvironment.CanonicalBranchName
+  nameWithType: AzureDevopsEnvironment.CanonicalBranchName
+- uid: SimpleVersion.Environment.AzureDevopsEnvironment.CanonicalBranchName*
+  name: CanonicalBranchName
+  href: api/SimpleVersion.Environment.AzureDevopsEnvironment.html#SimpleVersion_Environment_AzureDevopsEnvironment_CanonicalBranchName_
+  commentId: Overload:SimpleVersion.Environment.AzureDevopsEnvironment.CanonicalBranchName
+  isSpec: "True"
+  fullName: SimpleVersion.Environment.AzureDevopsEnvironment.CanonicalBranchName
+  nameWithType: AzureDevopsEnvironment.CanonicalBranchName
+- uid: SimpleVersion.Environment.AzureDevopsEnvironment.IsValid
+  name: IsValid
+  href: api/SimpleVersion.Environment.AzureDevopsEnvironment.html#SimpleVersion_Environment_AzureDevopsEnvironment_IsValid
+  commentId: P:SimpleVersion.Environment.AzureDevopsEnvironment.IsValid
+  fullName: SimpleVersion.Environment.AzureDevopsEnvironment.IsValid
+  nameWithType: AzureDevopsEnvironment.IsValid
+- uid: SimpleVersion.Environment.AzureDevopsEnvironment.IsValid*
+  name: IsValid
+  href: api/SimpleVersion.Environment.AzureDevopsEnvironment.html#SimpleVersion_Environment_AzureDevopsEnvironment_IsValid_
+  commentId: Overload:SimpleVersion.Environment.AzureDevopsEnvironment.IsValid
+  isSpec: "True"
+  fullName: SimpleVersion.Environment.AzureDevopsEnvironment.IsValid
+  nameWithType: AzureDevopsEnvironment.IsValid
+- uid: SimpleVersion.Environment.BaseVersionEnvironment
+  name: BaseVersionEnvironment
+  href: api/SimpleVersion.Environment.BaseVersionEnvironment.html
+  commentId: T:SimpleVersion.Environment.BaseVersionEnvironment
+  fullName: SimpleVersion.Environment.BaseVersionEnvironment
+  nameWithType: BaseVersionEnvironment
+- uid: SimpleVersion.Environment.BaseVersionEnvironment.#ctor(SimpleVersion.Environment.IEnvironmentVariableAccessor)
+  name: BaseVersionEnvironment(IEnvironmentVariableAccessor)
+  href: api/SimpleVersion.Environment.BaseVersionEnvironment.html#SimpleVersion_Environment_BaseVersionEnvironment__ctor_SimpleVersion_Environment_IEnvironmentVariableAccessor_
+  commentId: M:SimpleVersion.Environment.BaseVersionEnvironment.#ctor(SimpleVersion.Environment.IEnvironmentVariableAccessor)
+  fullName: SimpleVersion.Environment.BaseVersionEnvironment.BaseVersionEnvironment(SimpleVersion.Environment.IEnvironmentVariableAccessor)
+  nameWithType: BaseVersionEnvironment.BaseVersionEnvironment(IEnvironmentVariableAccessor)
+- uid: SimpleVersion.Environment.BaseVersionEnvironment.#ctor*
+  name: BaseVersionEnvironment
+  href: api/SimpleVersion.Environment.BaseVersionEnvironment.html#SimpleVersion_Environment_BaseVersionEnvironment__ctor_
+  commentId: Overload:SimpleVersion.Environment.BaseVersionEnvironment.#ctor
+  isSpec: "True"
+  fullName: SimpleVersion.Environment.BaseVersionEnvironment.BaseVersionEnvironment
+  nameWithType: BaseVersionEnvironment.BaseVersionEnvironment
+- uid: SimpleVersion.Environment.BaseVersionEnvironment.BranchName
+  name: BranchName
+  href: api/SimpleVersion.Environment.BaseVersionEnvironment.html#SimpleVersion_Environment_BaseVersionEnvironment_BranchName
+  commentId: P:SimpleVersion.Environment.BaseVersionEnvironment.BranchName
+  fullName: SimpleVersion.Environment.BaseVersionEnvironment.BranchName
+  nameWithType: BaseVersionEnvironment.BranchName
+- uid: SimpleVersion.Environment.BaseVersionEnvironment.BranchName*
+  name: BranchName
+  href: api/SimpleVersion.Environment.BaseVersionEnvironment.html#SimpleVersion_Environment_BaseVersionEnvironment_BranchName_
+  commentId: Overload:SimpleVersion.Environment.BaseVersionEnvironment.BranchName
+  isSpec: "True"
+  fullName: SimpleVersion.Environment.BaseVersionEnvironment.BranchName
+  nameWithType: BaseVersionEnvironment.BranchName
+- uid: SimpleVersion.Environment.BaseVersionEnvironment.CanonicalBranchName
+  name: CanonicalBranchName
+  href: api/SimpleVersion.Environment.BaseVersionEnvironment.html#SimpleVersion_Environment_BaseVersionEnvironment_CanonicalBranchName
+  commentId: P:SimpleVersion.Environment.BaseVersionEnvironment.CanonicalBranchName
+  fullName: SimpleVersion.Environment.BaseVersionEnvironment.CanonicalBranchName
+  nameWithType: BaseVersionEnvironment.CanonicalBranchName
+- uid: SimpleVersion.Environment.BaseVersionEnvironment.CanonicalBranchName*
+  name: CanonicalBranchName
+  href: api/SimpleVersion.Environment.BaseVersionEnvironment.html#SimpleVersion_Environment_BaseVersionEnvironment_CanonicalBranchName_
+  commentId: Overload:SimpleVersion.Environment.BaseVersionEnvironment.CanonicalBranchName
+  isSpec: "True"
+  fullName: SimpleVersion.Environment.BaseVersionEnvironment.CanonicalBranchName
+  nameWithType: BaseVersionEnvironment.CanonicalBranchName
+- uid: SimpleVersion.Environment.BaseVersionEnvironment.IsValid
+  name: IsValid
+  href: api/SimpleVersion.Environment.BaseVersionEnvironment.html#SimpleVersion_Environment_BaseVersionEnvironment_IsValid
+  commentId: P:SimpleVersion.Environment.BaseVersionEnvironment.IsValid
+  fullName: SimpleVersion.Environment.BaseVersionEnvironment.IsValid
+  nameWithType: BaseVersionEnvironment.IsValid
+- uid: SimpleVersion.Environment.BaseVersionEnvironment.IsValid*
+  name: IsValid
+  href: api/SimpleVersion.Environment.BaseVersionEnvironment.html#SimpleVersion_Environment_BaseVersionEnvironment_IsValid_
+  commentId: Overload:SimpleVersion.Environment.BaseVersionEnvironment.IsValid
+  isSpec: "True"
+  fullName: SimpleVersion.Environment.BaseVersionEnvironment.IsValid
+  nameWithType: BaseVersionEnvironment.IsValid
+- uid: SimpleVersion.Environment.BaseVersionEnvironment.Variables
+  name: Variables
+  href: api/SimpleVersion.Environment.BaseVersionEnvironment.html#SimpleVersion_Environment_BaseVersionEnvironment_Variables
+  commentId: P:SimpleVersion.Environment.BaseVersionEnvironment.Variables
+  fullName: SimpleVersion.Environment.BaseVersionEnvironment.Variables
+  nameWithType: BaseVersionEnvironment.Variables
+- uid: SimpleVersion.Environment.BaseVersionEnvironment.Variables*
+  name: Variables
+  href: api/SimpleVersion.Environment.BaseVersionEnvironment.html#SimpleVersion_Environment_BaseVersionEnvironment_Variables_
+  commentId: Overload:SimpleVersion.Environment.BaseVersionEnvironment.Variables
+  isSpec: "True"
+  fullName: SimpleVersion.Environment.BaseVersionEnvironment.Variables
+  nameWithType: BaseVersionEnvironment.Variables
+- uid: SimpleVersion.Environment.DefaultVersionEnvironment
+  name: DefaultVersionEnvironment
+  href: api/SimpleVersion.Environment.DefaultVersionEnvironment.html
+  commentId: T:SimpleVersion.Environment.DefaultVersionEnvironment
+  fullName: SimpleVersion.Environment.DefaultVersionEnvironment
+  nameWithType: DefaultVersionEnvironment
+- uid: SimpleVersion.Environment.DefaultVersionEnvironment.#ctor(SimpleVersion.Environment.IEnvironmentVariableAccessor)
+  name: DefaultVersionEnvironment(IEnvironmentVariableAccessor)
+  href: api/SimpleVersion.Environment.DefaultVersionEnvironment.html#SimpleVersion_Environment_DefaultVersionEnvironment__ctor_SimpleVersion_Environment_IEnvironmentVariableAccessor_
+  commentId: M:SimpleVersion.Environment.DefaultVersionEnvironment.#ctor(SimpleVersion.Environment.IEnvironmentVariableAccessor)
+  fullName: SimpleVersion.Environment.DefaultVersionEnvironment.DefaultVersionEnvironment(SimpleVersion.Environment.IEnvironmentVariableAccessor)
+  nameWithType: DefaultVersionEnvironment.DefaultVersionEnvironment(IEnvironmentVariableAccessor)
+- uid: SimpleVersion.Environment.DefaultVersionEnvironment.#ctor*
+  name: DefaultVersionEnvironment
+  href: api/SimpleVersion.Environment.DefaultVersionEnvironment.html#SimpleVersion_Environment_DefaultVersionEnvironment__ctor_
+  commentId: Overload:SimpleVersion.Environment.DefaultVersionEnvironment.#ctor
+  isSpec: "True"
+  fullName: SimpleVersion.Environment.DefaultVersionEnvironment.DefaultVersionEnvironment
+  nameWithType: DefaultVersionEnvironment.DefaultVersionEnvironment
+- uid: SimpleVersion.Environment.DefaultVersionEnvironment.BranchName
+  name: BranchName
+  href: api/SimpleVersion.Environment.DefaultVersionEnvironment.html#SimpleVersion_Environment_DefaultVersionEnvironment_BranchName
+  commentId: P:SimpleVersion.Environment.DefaultVersionEnvironment.BranchName
+  fullName: SimpleVersion.Environment.DefaultVersionEnvironment.BranchName
+  nameWithType: DefaultVersionEnvironment.BranchName
+- uid: SimpleVersion.Environment.DefaultVersionEnvironment.BranchName*
+  name: BranchName
+  href: api/SimpleVersion.Environment.DefaultVersionEnvironment.html#SimpleVersion_Environment_DefaultVersionEnvironment_BranchName_
+  commentId: Overload:SimpleVersion.Environment.DefaultVersionEnvironment.BranchName
+  isSpec: "True"
+  fullName: SimpleVersion.Environment.DefaultVersionEnvironment.BranchName
+  nameWithType: DefaultVersionEnvironment.BranchName
+- uid: SimpleVersion.Environment.DefaultVersionEnvironment.CanonicalBranchName
+  name: CanonicalBranchName
+  href: api/SimpleVersion.Environment.DefaultVersionEnvironment.html#SimpleVersion_Environment_DefaultVersionEnvironment_CanonicalBranchName
+  commentId: P:SimpleVersion.Environment.DefaultVersionEnvironment.CanonicalBranchName
+  fullName: SimpleVersion.Environment.DefaultVersionEnvironment.CanonicalBranchName
+  nameWithType: DefaultVersionEnvironment.CanonicalBranchName
+- uid: SimpleVersion.Environment.DefaultVersionEnvironment.CanonicalBranchName*
+  name: CanonicalBranchName
+  href: api/SimpleVersion.Environment.DefaultVersionEnvironment.html#SimpleVersion_Environment_DefaultVersionEnvironment_CanonicalBranchName_
+  commentId: Overload:SimpleVersion.Environment.DefaultVersionEnvironment.CanonicalBranchName
+  isSpec: "True"
+  fullName: SimpleVersion.Environment.DefaultVersionEnvironment.CanonicalBranchName
+  nameWithType: DefaultVersionEnvironment.CanonicalBranchName
+- uid: SimpleVersion.Environment.DefaultVersionEnvironment.IsValid
+  name: IsValid
+  href: api/SimpleVersion.Environment.DefaultVersionEnvironment.html#SimpleVersion_Environment_DefaultVersionEnvironment_IsValid
+  commentId: P:SimpleVersion.Environment.DefaultVersionEnvironment.IsValid
+  fullName: SimpleVersion.Environment.DefaultVersionEnvironment.IsValid
+  nameWithType: DefaultVersionEnvironment.IsValid
+- uid: SimpleVersion.Environment.DefaultVersionEnvironment.IsValid*
+  name: IsValid
+  href: api/SimpleVersion.Environment.DefaultVersionEnvironment.html#SimpleVersion_Environment_DefaultVersionEnvironment_IsValid_
+  commentId: Overload:SimpleVersion.Environment.DefaultVersionEnvironment.IsValid
+  isSpec: "True"
+  fullName: SimpleVersion.Environment.DefaultVersionEnvironment.IsValid
+  nameWithType: DefaultVersionEnvironment.IsValid
+- uid: SimpleVersion.Environment.EnvironmentVariableAccessor
+  name: EnvironmentVariableAccessor
+  href: api/SimpleVersion.Environment.EnvironmentVariableAccessor.html
+  commentId: T:SimpleVersion.Environment.EnvironmentVariableAccessor
+  fullName: SimpleVersion.Environment.EnvironmentVariableAccessor
+  nameWithType: EnvironmentVariableAccessor
+- uid: SimpleVersion.Environment.EnvironmentVariableAccessor.GetVariable(System.String)
+  name: GetVariable(String)
+  href: api/SimpleVersion.Environment.EnvironmentVariableAccessor.html#SimpleVersion_Environment_EnvironmentVariableAccessor_GetVariable_System_String_
+  commentId: M:SimpleVersion.Environment.EnvironmentVariableAccessor.GetVariable(System.String)
+  fullName: SimpleVersion.Environment.EnvironmentVariableAccessor.GetVariable(System.String)
+  nameWithType: EnvironmentVariableAccessor.GetVariable(String)
+- uid: SimpleVersion.Environment.EnvironmentVariableAccessor.GetVariable*
+  name: GetVariable
+  href: api/SimpleVersion.Environment.EnvironmentVariableAccessor.html#SimpleVersion_Environment_EnvironmentVariableAccessor_GetVariable_
+  commentId: Overload:SimpleVersion.Environment.EnvironmentVariableAccessor.GetVariable
+  isSpec: "True"
+  fullName: SimpleVersion.Environment.EnvironmentVariableAccessor.GetVariable
+  nameWithType: EnvironmentVariableAccessor.GetVariable
+- uid: SimpleVersion.Environment.IEnvironmentVariableAccessor
+  name: IEnvironmentVariableAccessor
+  href: api/SimpleVersion.Environment.IEnvironmentVariableAccessor.html
+  commentId: T:SimpleVersion.Environment.IEnvironmentVariableAccessor
+  fullName: SimpleVersion.Environment.IEnvironmentVariableAccessor
+  nameWithType: IEnvironmentVariableAccessor
+- uid: SimpleVersion.Environment.IEnvironmentVariableAccessor.GetVariable(System.String)
+  name: GetVariable(String)
+  href: api/SimpleVersion.Environment.IEnvironmentVariableAccessor.html#SimpleVersion_Environment_IEnvironmentVariableAccessor_GetVariable_System_String_
+  commentId: M:SimpleVersion.Environment.IEnvironmentVariableAccessor.GetVariable(System.String)
+  fullName: SimpleVersion.Environment.IEnvironmentVariableAccessor.GetVariable(System.String)
+  nameWithType: IEnvironmentVariableAccessor.GetVariable(String)
+- uid: SimpleVersion.Environment.IEnvironmentVariableAccessor.GetVariable*
+  name: GetVariable
+  href: api/SimpleVersion.Environment.IEnvironmentVariableAccessor.html#SimpleVersion_Environment_IEnvironmentVariableAccessor_GetVariable_
+  commentId: Overload:SimpleVersion.Environment.IEnvironmentVariableAccessor.GetVariable
+  isSpec: "True"
+  fullName: SimpleVersion.Environment.IEnvironmentVariableAccessor.GetVariable
+  nameWithType: IEnvironmentVariableAccessor.GetVariable
+- uid: SimpleVersion.Environment.IVersionEnvironment
+  name: IVersionEnvironment
+  href: api/SimpleVersion.Environment.IVersionEnvironment.html
+  commentId: T:SimpleVersion.Environment.IVersionEnvironment
+  fullName: SimpleVersion.Environment.IVersionEnvironment
+  nameWithType: IVersionEnvironment
+- uid: SimpleVersion.Environment.IVersionEnvironment.BranchName
+  name: BranchName
+  href: api/SimpleVersion.Environment.IVersionEnvironment.html#SimpleVersion_Environment_IVersionEnvironment_BranchName
+  commentId: P:SimpleVersion.Environment.IVersionEnvironment.BranchName
+  fullName: SimpleVersion.Environment.IVersionEnvironment.BranchName
+  nameWithType: IVersionEnvironment.BranchName
+- uid: SimpleVersion.Environment.IVersionEnvironment.BranchName*
+  name: BranchName
+  href: api/SimpleVersion.Environment.IVersionEnvironment.html#SimpleVersion_Environment_IVersionEnvironment_BranchName_
+  commentId: Overload:SimpleVersion.Environment.IVersionEnvironment.BranchName
+  isSpec: "True"
+  fullName: SimpleVersion.Environment.IVersionEnvironment.BranchName
+  nameWithType: IVersionEnvironment.BranchName
+- uid: SimpleVersion.Environment.IVersionEnvironment.CanonicalBranchName
+  name: CanonicalBranchName
+  href: api/SimpleVersion.Environment.IVersionEnvironment.html#SimpleVersion_Environment_IVersionEnvironment_CanonicalBranchName
+  commentId: P:SimpleVersion.Environment.IVersionEnvironment.CanonicalBranchName
+  fullName: SimpleVersion.Environment.IVersionEnvironment.CanonicalBranchName
+  nameWithType: IVersionEnvironment.CanonicalBranchName
+- uid: SimpleVersion.Environment.IVersionEnvironment.CanonicalBranchName*
+  name: CanonicalBranchName
+  href: api/SimpleVersion.Environment.IVersionEnvironment.html#SimpleVersion_Environment_IVersionEnvironment_CanonicalBranchName_
+  commentId: Overload:SimpleVersion.Environment.IVersionEnvironment.CanonicalBranchName
+  isSpec: "True"
+  fullName: SimpleVersion.Environment.IVersionEnvironment.CanonicalBranchName
+  nameWithType: IVersionEnvironment.CanonicalBranchName
+- uid: SimpleVersion.Environment.IVersionEnvironment.IsValid
+  name: IsValid
+  href: api/SimpleVersion.Environment.IVersionEnvironment.html#SimpleVersion_Environment_IVersionEnvironment_IsValid
+  commentId: P:SimpleVersion.Environment.IVersionEnvironment.IsValid
+  fullName: SimpleVersion.Environment.IVersionEnvironment.IsValid
+  nameWithType: IVersionEnvironment.IsValid
+- uid: SimpleVersion.Environment.IVersionEnvironment.IsValid*
+  name: IsValid
+  href: api/SimpleVersion.Environment.IVersionEnvironment.html#SimpleVersion_Environment_IVersionEnvironment_IsValid_
+  commentId: Overload:SimpleVersion.Environment.IVersionEnvironment.IsValid
+  isSpec: "True"
+  fullName: SimpleVersion.Environment.IVersionEnvironment.IsValid
+  nameWithType: IVersionEnvironment.IsValid
 - uid: SimpleVersion.Exceptions
   name: SimpleVersion.Exceptions
   href: api/SimpleVersion.Exceptions.html
@@ -101,6 +605,7 @@ references:
   name: GitException
   href: api/SimpleVersion.Exceptions.GitException.html#SimpleVersion_Exceptions_GitException__ctor_
   commentId: Overload:SimpleVersion.Exceptions.GitException.#ctor
+  isSpec: "True"
   fullName: SimpleVersion.Exceptions.GitException.GitException
   nameWithType: GitException.GitException
 - uid: SimpleVersion.Extensions
@@ -125,6 +630,7 @@ references:
   name: DefaultIfNullOrWhiteSpace
   href: api/SimpleVersion.Extensions.StringExtensions.html#SimpleVersion_Extensions_StringExtensions_DefaultIfNullOrWhiteSpace_
   commentId: Overload:SimpleVersion.Extensions.StringExtensions.DefaultIfNullOrWhiteSpace
+  isSpec: "True"
   fullName: SimpleVersion.Extensions.StringExtensions.DefaultIfNullOrWhiteSpace
   nameWithType: StringExtensions.DefaultIfNullOrWhiteSpace
 - uid: SimpleVersion.Extensions.StringExtensions.ToBool(System.String)
@@ -137,650 +643,243 @@ references:
   name: ToBool
   href: api/SimpleVersion.Extensions.StringExtensions.html#SimpleVersion_Extensions_StringExtensions_ToBool_
   commentId: Overload:SimpleVersion.Extensions.StringExtensions.ToBool
+  isSpec: "True"
   fullName: SimpleVersion.Extensions.StringExtensions.ToBool
   nameWithType: StringExtensions.ToBool
-- uid: SimpleVersion.IEnvironment
-  name: IEnvironment
-  href: api/SimpleVersion.IEnvironment.html
-  commentId: T:SimpleVersion.IEnvironment
-  fullName: SimpleVersion.IEnvironment
-  nameWithType: IEnvironment
-- uid: SimpleVersion.IEnvironment.GetVariable(System.String)
-  name: GetVariable(String)
-  href: api/SimpleVersion.IEnvironment.html#SimpleVersion_IEnvironment_GetVariable_System_String_
-  commentId: M:SimpleVersion.IEnvironment.GetVariable(System.String)
-  fullName: SimpleVersion.IEnvironment.GetVariable(System.String)
-  nameWithType: IEnvironment.GetVariable(String)
-- uid: SimpleVersion.IEnvironment.GetVariable*
-  name: GetVariable
-  href: api/SimpleVersion.IEnvironment.html#SimpleVersion_IEnvironment_GetVariable_
-  commentId: Overload:SimpleVersion.IEnvironment.GetVariable
-  fullName: SimpleVersion.IEnvironment.GetVariable
-  nameWithType: IEnvironment.GetVariable
+- uid: SimpleVersion.GitVersionRepository
+  name: GitVersionRepository
+  href: api/SimpleVersion.GitVersionRepository.html
+  commentId: T:SimpleVersion.GitVersionRepository
+  fullName: SimpleVersion.GitVersionRepository
+  nameWithType: GitVersionRepository
+- uid: SimpleVersion.GitVersionRepository.#ctor(System.String,SimpleVersion.Environment.IVersionEnvironment,SimpleVersion.ISerializer,System.Collections.Generic.IEnumerable{SimpleVersion.Pipeline.IVersionProcessor})
+  name: GitVersionRepository(String, IVersionEnvironment, ISerializer, IEnumerable<IVersionProcessor>)
+  href: api/SimpleVersion.GitVersionRepository.html#SimpleVersion_GitVersionRepository__ctor_System_String_SimpleVersion_Environment_IVersionEnvironment_SimpleVersion_ISerializer_System_Collections_Generic_IEnumerable_SimpleVersion_Pipeline_IVersionProcessor__
+  commentId: M:SimpleVersion.GitVersionRepository.#ctor(System.String,SimpleVersion.Environment.IVersionEnvironment,SimpleVersion.ISerializer,System.Collections.Generic.IEnumerable{SimpleVersion.Pipeline.IVersionProcessor})
+  name.vb: GitVersionRepository(String, IVersionEnvironment, ISerializer, IEnumerable(Of IVersionProcessor))
+  fullName: SimpleVersion.GitVersionRepository.GitVersionRepository(System.String, SimpleVersion.Environment.IVersionEnvironment, SimpleVersion.ISerializer, System.Collections.Generic.IEnumerable<SimpleVersion.Pipeline.IVersionProcessor>)
+  fullName.vb: SimpleVersion.GitVersionRepository.GitVersionRepository(System.String, SimpleVersion.Environment.IVersionEnvironment, SimpleVersion.ISerializer, System.Collections.Generic.IEnumerable(Of SimpleVersion.Pipeline.IVersionProcessor))
+  nameWithType: GitVersionRepository.GitVersionRepository(String, IVersionEnvironment, ISerializer, IEnumerable<IVersionProcessor>)
+  nameWithType.vb: GitVersionRepository.GitVersionRepository(String, IVersionEnvironment, ISerializer, IEnumerable(Of IVersionProcessor))
+- uid: SimpleVersion.GitVersionRepository.#ctor*
+  name: GitVersionRepository
+  href: api/SimpleVersion.GitVersionRepository.html#SimpleVersion_GitVersionRepository__ctor_
+  commentId: Overload:SimpleVersion.GitVersionRepository.#ctor
+  isSpec: "True"
+  fullName: SimpleVersion.GitVersionRepository.GitVersionRepository
+  nameWithType: GitVersionRepository.GitVersionRepository
+- uid: SimpleVersion.GitVersionRepository.GetResult
+  name: GetResult()
+  href: api/SimpleVersion.GitVersionRepository.html#SimpleVersion_GitVersionRepository_GetResult
+  commentId: M:SimpleVersion.GitVersionRepository.GetResult
+  fullName: SimpleVersion.GitVersionRepository.GetResult()
+  nameWithType: GitVersionRepository.GetResult()
+- uid: SimpleVersion.GitVersionRepository.GetResult*
+  name: GetResult
+  href: api/SimpleVersion.GitVersionRepository.html#SimpleVersion_GitVersionRepository_GetResult_
+  commentId: Overload:SimpleVersion.GitVersionRepository.GetResult
+  isSpec: "True"
+  fullName: SimpleVersion.GitVersionRepository.GetResult
+  nameWithType: GitVersionRepository.GetResult
+- uid: SimpleVersion.ISerializer
+  name: ISerializer
+  href: api/SimpleVersion.ISerializer.html
+  commentId: T:SimpleVersion.ISerializer
+  fullName: SimpleVersion.ISerializer
+  nameWithType: ISerializer
+- uid: SimpleVersion.ISerializer.Deserialize*
+  name: Deserialize
+  href: api/SimpleVersion.ISerializer.html#SimpleVersion_ISerializer_Deserialize_
+  commentId: Overload:SimpleVersion.ISerializer.Deserialize
+  isSpec: "True"
+  fullName: SimpleVersion.ISerializer.Deserialize
+  nameWithType: ISerializer.Deserialize
+- uid: SimpleVersion.ISerializer.Deserialize``1(System.String)
+  name: Deserialize<T>(String)
+  href: api/SimpleVersion.ISerializer.html#SimpleVersion_ISerializer_Deserialize__1_System_String_
+  commentId: M:SimpleVersion.ISerializer.Deserialize``1(System.String)
+  name.vb: Deserialize(Of T)(String)
+  fullName: SimpleVersion.ISerializer.Deserialize<T>(System.String)
+  fullName.vb: SimpleVersion.ISerializer.Deserialize(Of T)(System.String)
+  nameWithType: ISerializer.Deserialize<T>(String)
+  nameWithType.vb: ISerializer.Deserialize(Of T)(String)
+- uid: SimpleVersion.ISerializer.Serialize(System.Object)
+  name: Serialize(Object)
+  href: api/SimpleVersion.ISerializer.html#SimpleVersion_ISerializer_Serialize_System_Object_
+  commentId: M:SimpleVersion.ISerializer.Serialize(System.Object)
+  fullName: SimpleVersion.ISerializer.Serialize(System.Object)
+  nameWithType: ISerializer.Serialize(Object)
+- uid: SimpleVersion.ISerializer.Serialize*
+  name: Serialize
+  href: api/SimpleVersion.ISerializer.html#SimpleVersion_ISerializer_Serialize_
+  commentId: Overload:SimpleVersion.ISerializer.Serialize
+  isSpec: "True"
+  fullName: SimpleVersion.ISerializer.Serialize
+  nameWithType: ISerializer.Serialize
 - uid: SimpleVersion.IVersionCalculator
   name: IVersionCalculator
   href: api/SimpleVersion.IVersionCalculator.html
   commentId: T:SimpleVersion.IVersionCalculator
   fullName: SimpleVersion.IVersionCalculator
   nameWithType: IVersionCalculator
-- uid: SimpleVersion.IVersionCalculator.GetResult(System.String)
-  name: GetResult(String)
-  href: api/SimpleVersion.IVersionCalculator.html#SimpleVersion_IVersionCalculator_GetResult_System_String_
-  commentId: M:SimpleVersion.IVersionCalculator.GetResult(System.String)
-  fullName: SimpleVersion.IVersionCalculator.GetResult(System.String)
-  nameWithType: IVersionCalculator.GetResult(String)
+- uid: SimpleVersion.IVersionCalculator.GetResult
+  name: GetResult()
+  href: api/SimpleVersion.IVersionCalculator.html#SimpleVersion_IVersionCalculator_GetResult
+  commentId: M:SimpleVersion.IVersionCalculator.GetResult
+  fullName: SimpleVersion.IVersionCalculator.GetResult()
+  nameWithType: IVersionCalculator.GetResult()
 - uid: SimpleVersion.IVersionCalculator.GetResult*
   name: GetResult
   href: api/SimpleVersion.IVersionCalculator.html#SimpleVersion_IVersionCalculator_GetResult_
   commentId: Overload:SimpleVersion.IVersionCalculator.GetResult
+  isSpec: "True"
   fullName: SimpleVersion.IVersionCalculator.GetResult
   nameWithType: IVersionCalculator.GetResult
-- uid: SimpleVersion.Model
-  name: SimpleVersion.Model
-  href: api/SimpleVersion.Model.html
-  commentId: N:SimpleVersion.Model
-  fullName: SimpleVersion.Model
-  nameWithType: SimpleVersion.Model
-- uid: SimpleVersion.Model.BranchInfo
-  name: BranchInfo
-  href: api/SimpleVersion.Model.BranchInfo.html
-  commentId: T:SimpleVersion.Model.BranchInfo
-  fullName: SimpleVersion.Model.BranchInfo
-  nameWithType: BranchInfo
-- uid: SimpleVersion.Model.BranchInfo.#ctor
-  name: BranchInfo()
-  href: api/SimpleVersion.Model.BranchInfo.html#SimpleVersion_Model_BranchInfo__ctor
-  commentId: M:SimpleVersion.Model.BranchInfo.#ctor
-  fullName: SimpleVersion.Model.BranchInfo.BranchInfo()
-  nameWithType: BranchInfo.BranchInfo()
-- uid: SimpleVersion.Model.BranchInfo.#ctor*
-  name: BranchInfo
-  href: api/SimpleVersion.Model.BranchInfo.html#SimpleVersion_Model_BranchInfo__ctor_
-  commentId: Overload:SimpleVersion.Model.BranchInfo.#ctor
-  fullName: SimpleVersion.Model.BranchInfo.BranchInfo
-  nameWithType: BranchInfo.BranchInfo
-- uid: SimpleVersion.Model.BranchInfo.Overrides
-  name: Overrides
-  href: api/SimpleVersion.Model.BranchInfo.html#SimpleVersion_Model_BranchInfo_Overrides
-  commentId: P:SimpleVersion.Model.BranchInfo.Overrides
-  fullName: SimpleVersion.Model.BranchInfo.Overrides
-  nameWithType: BranchInfo.Overrides
-- uid: SimpleVersion.Model.BranchInfo.Overrides*
-  name: Overrides
-  href: api/SimpleVersion.Model.BranchInfo.html#SimpleVersion_Model_BranchInfo_Overrides_
-  commentId: Overload:SimpleVersion.Model.BranchInfo.Overrides
-  fullName: SimpleVersion.Model.BranchInfo.Overrides
-  nameWithType: BranchInfo.Overrides
-- uid: SimpleVersion.Model.BranchInfo.Release
-  name: Release
-  href: api/SimpleVersion.Model.BranchInfo.html#SimpleVersion_Model_BranchInfo_Release
-  commentId: P:SimpleVersion.Model.BranchInfo.Release
-  fullName: SimpleVersion.Model.BranchInfo.Release
-  nameWithType: BranchInfo.Release
-- uid: SimpleVersion.Model.BranchInfo.Release*
-  name: Release
-  href: api/SimpleVersion.Model.BranchInfo.html#SimpleVersion_Model_BranchInfo_Release_
-  commentId: Overload:SimpleVersion.Model.BranchInfo.Release
-  fullName: SimpleVersion.Model.BranchInfo.Release
-  nameWithType: BranchInfo.Release
-- uid: SimpleVersion.Model.BranchSettings
-  name: BranchSettings
-  href: api/SimpleVersion.Model.BranchSettings.html
-  commentId: T:SimpleVersion.Model.BranchSettings
-  fullName: SimpleVersion.Model.BranchSettings
-  nameWithType: BranchSettings
-- uid: SimpleVersion.Model.BranchSettings.#ctor
-  name: BranchSettings()
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings__ctor
-  commentId: M:SimpleVersion.Model.BranchSettings.#ctor
-  fullName: SimpleVersion.Model.BranchSettings.BranchSettings()
-  nameWithType: BranchSettings.BranchSettings()
-- uid: SimpleVersion.Model.BranchSettings.#ctor*
-  name: BranchSettings
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings__ctor_
-  commentId: Overload:SimpleVersion.Model.BranchSettings.#ctor
-  fullName: SimpleVersion.Model.BranchSettings.BranchSettings
-  nameWithType: BranchSettings.BranchSettings
-- uid: SimpleVersion.Model.BranchSettings.InsertLabel
-  name: InsertLabel
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_InsertLabel
-  commentId: P:SimpleVersion.Model.BranchSettings.InsertLabel
-  fullName: SimpleVersion.Model.BranchSettings.InsertLabel
-  nameWithType: BranchSettings.InsertLabel
-- uid: SimpleVersion.Model.BranchSettings.InsertLabel*
-  name: InsertLabel
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_InsertLabel_
-  commentId: Overload:SimpleVersion.Model.BranchSettings.InsertLabel
-  fullName: SimpleVersion.Model.BranchSettings.InsertLabel
-  nameWithType: BranchSettings.InsertLabel
-- uid: SimpleVersion.Model.BranchSettings.InsertMetadata
-  name: InsertMetadata
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_InsertMetadata
-  commentId: P:SimpleVersion.Model.BranchSettings.InsertMetadata
-  fullName: SimpleVersion.Model.BranchSettings.InsertMetadata
-  nameWithType: BranchSettings.InsertMetadata
-- uid: SimpleVersion.Model.BranchSettings.InsertMetadata*
-  name: InsertMetadata
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_InsertMetadata_
-  commentId: Overload:SimpleVersion.Model.BranchSettings.InsertMetadata
-  fullName: SimpleVersion.Model.BranchSettings.InsertMetadata
-  nameWithType: BranchSettings.InsertMetadata
-- uid: SimpleVersion.Model.BranchSettings.Label
-  name: Label
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_Label
-  commentId: P:SimpleVersion.Model.BranchSettings.Label
-  fullName: SimpleVersion.Model.BranchSettings.Label
-  nameWithType: BranchSettings.Label
-- uid: SimpleVersion.Model.BranchSettings.Label*
-  name: Label
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_Label_
-  commentId: Overload:SimpleVersion.Model.BranchSettings.Label
-  fullName: SimpleVersion.Model.BranchSettings.Label
-  nameWithType: BranchSettings.Label
-- uid: SimpleVersion.Model.BranchSettings.Match
-  name: Match
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_Match
-  commentId: P:SimpleVersion.Model.BranchSettings.Match
-  fullName: SimpleVersion.Model.BranchSettings.Match
-  nameWithType: BranchSettings.Match
-- uid: SimpleVersion.Model.BranchSettings.Match*
-  name: Match
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_Match_
-  commentId: Overload:SimpleVersion.Model.BranchSettings.Match
-  fullName: SimpleVersion.Model.BranchSettings.Match
-  nameWithType: BranchSettings.Match
-- uid: SimpleVersion.Model.BranchSettings.Metadata
-  name: Metadata
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_Metadata
-  commentId: P:SimpleVersion.Model.BranchSettings.Metadata
-  fullName: SimpleVersion.Model.BranchSettings.Metadata
-  nameWithType: BranchSettings.Metadata
-- uid: SimpleVersion.Model.BranchSettings.Metadata*
-  name: Metadata
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_Metadata_
-  commentId: Overload:SimpleVersion.Model.BranchSettings.Metadata
-  fullName: SimpleVersion.Model.BranchSettings.Metadata
-  nameWithType: BranchSettings.Metadata
-- uid: SimpleVersion.Model.BranchSettings.PostfixLabel
-  name: PostfixLabel
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_PostfixLabel
-  commentId: P:SimpleVersion.Model.BranchSettings.PostfixLabel
-  fullName: SimpleVersion.Model.BranchSettings.PostfixLabel
-  nameWithType: BranchSettings.PostfixLabel
-- uid: SimpleVersion.Model.BranchSettings.PostfixLabel*
-  name: PostfixLabel
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_PostfixLabel_
-  commentId: Overload:SimpleVersion.Model.BranchSettings.PostfixLabel
-  fullName: SimpleVersion.Model.BranchSettings.PostfixLabel
-  nameWithType: BranchSettings.PostfixLabel
-- uid: SimpleVersion.Model.BranchSettings.PostfixMetadata
-  name: PostfixMetadata
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_PostfixMetadata
-  commentId: P:SimpleVersion.Model.BranchSettings.PostfixMetadata
-  fullName: SimpleVersion.Model.BranchSettings.PostfixMetadata
-  nameWithType: BranchSettings.PostfixMetadata
-- uid: SimpleVersion.Model.BranchSettings.PostfixMetadata*
-  name: PostfixMetadata
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_PostfixMetadata_
-  commentId: Overload:SimpleVersion.Model.BranchSettings.PostfixMetadata
-  fullName: SimpleVersion.Model.BranchSettings.PostfixMetadata
-  nameWithType: BranchSettings.PostfixMetadata
-- uid: SimpleVersion.Model.BranchSettings.PrefixLabel
-  name: PrefixLabel
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_PrefixLabel
-  commentId: P:SimpleVersion.Model.BranchSettings.PrefixLabel
-  fullName: SimpleVersion.Model.BranchSettings.PrefixLabel
-  nameWithType: BranchSettings.PrefixLabel
-- uid: SimpleVersion.Model.BranchSettings.PrefixLabel*
-  name: PrefixLabel
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_PrefixLabel_
-  commentId: Overload:SimpleVersion.Model.BranchSettings.PrefixLabel
-  fullName: SimpleVersion.Model.BranchSettings.PrefixLabel
-  nameWithType: BranchSettings.PrefixLabel
-- uid: SimpleVersion.Model.BranchSettings.PrefixMetadata
-  name: PrefixMetadata
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_PrefixMetadata
-  commentId: P:SimpleVersion.Model.BranchSettings.PrefixMetadata
-  fullName: SimpleVersion.Model.BranchSettings.PrefixMetadata
-  nameWithType: BranchSettings.PrefixMetadata
-- uid: SimpleVersion.Model.BranchSettings.PrefixMetadata*
-  name: PrefixMetadata
-  href: api/SimpleVersion.Model.BranchSettings.html#SimpleVersion_Model_BranchSettings_PrefixMetadata_
-  commentId: Overload:SimpleVersion.Model.BranchSettings.PrefixMetadata
-  fullName: SimpleVersion.Model.BranchSettings.PrefixMetadata
-  nameWithType: BranchSettings.PrefixMetadata
-- uid: SimpleVersion.Model.Settings
-  name: Settings
-  href: api/SimpleVersion.Model.Settings.html
-  commentId: T:SimpleVersion.Model.Settings
-  fullName: SimpleVersion.Model.Settings
-  nameWithType: Settings
-- uid: SimpleVersion.Model.Settings.#ctor
-  name: Settings()
-  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings__ctor
-  commentId: M:SimpleVersion.Model.Settings.#ctor
-  fullName: SimpleVersion.Model.Settings.Settings()
-  nameWithType: Settings.Settings()
-- uid: SimpleVersion.Model.Settings.#ctor*
-  name: Settings
-  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings__ctor_
-  commentId: Overload:SimpleVersion.Model.Settings.#ctor
-  fullName: SimpleVersion.Model.Settings.Settings
-  nameWithType: Settings.Settings
-- uid: SimpleVersion.Model.Settings.Branches
-  name: Branches
-  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_Branches
-  commentId: P:SimpleVersion.Model.Settings.Branches
-  fullName: SimpleVersion.Model.Settings.Branches
-  nameWithType: Settings.Branches
-- uid: SimpleVersion.Model.Settings.Branches*
-  name: Branches
-  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_Branches_
-  commentId: Overload:SimpleVersion.Model.Settings.Branches
-  fullName: SimpleVersion.Model.Settings.Branches
-  nameWithType: Settings.Branches
-- uid: SimpleVersion.Model.Settings.Label
-  name: Label
-  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_Label
-  commentId: P:SimpleVersion.Model.Settings.Label
-  fullName: SimpleVersion.Model.Settings.Label
-  nameWithType: Settings.Label
-- uid: SimpleVersion.Model.Settings.Label*
-  name: Label
-  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_Label_
-  commentId: Overload:SimpleVersion.Model.Settings.Label
-  fullName: SimpleVersion.Model.Settings.Label
-  nameWithType: Settings.Label
-- uid: SimpleVersion.Model.Settings.Metadata
-  name: Metadata
-  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_Metadata
-  commentId: P:SimpleVersion.Model.Settings.Metadata
-  fullName: SimpleVersion.Model.Settings.Metadata
-  nameWithType: Settings.Metadata
-- uid: SimpleVersion.Model.Settings.Metadata*
-  name: Metadata
-  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_Metadata_
-  commentId: Overload:SimpleVersion.Model.Settings.Metadata
-  fullName: SimpleVersion.Model.Settings.Metadata
-  nameWithType: Settings.Metadata
-- uid: SimpleVersion.Model.Settings.OffSet
-  name: OffSet
-  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_OffSet
-  commentId: P:SimpleVersion.Model.Settings.OffSet
-  fullName: SimpleVersion.Model.Settings.OffSet
-  nameWithType: Settings.OffSet
-- uid: SimpleVersion.Model.Settings.OffSet*
-  name: OffSet
-  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_OffSet_
-  commentId: Overload:SimpleVersion.Model.Settings.OffSet
-  fullName: SimpleVersion.Model.Settings.OffSet
-  nameWithType: Settings.OffSet
-- uid: SimpleVersion.Model.Settings.Version
-  name: Version
-  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_Version
-  commentId: P:SimpleVersion.Model.Settings.Version
-  fullName: SimpleVersion.Model.Settings.Version
-  nameWithType: Settings.Version
-- uid: SimpleVersion.Model.Settings.Version*
-  name: Version
-  href: api/SimpleVersion.Model.Settings.html#SimpleVersion_Model_Settings_Version_
-  commentId: Overload:SimpleVersion.Model.Settings.Version
-  fullName: SimpleVersion.Model.Settings.Version
-  nameWithType: Settings.Version
-- uid: SimpleVersion.Model.VersionResult
-  name: VersionResult
-  href: api/SimpleVersion.Model.VersionResult.html
-  commentId: T:SimpleVersion.Model.VersionResult
-  fullName: SimpleVersion.Model.VersionResult
-  nameWithType: VersionResult
-- uid: SimpleVersion.Model.VersionResult.#ctor
-  name: VersionResult()
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult__ctor
-  commentId: M:SimpleVersion.Model.VersionResult.#ctor
-  fullName: SimpleVersion.Model.VersionResult.VersionResult()
-  nameWithType: VersionResult.VersionResult()
-- uid: SimpleVersion.Model.VersionResult.#ctor*
-  name: VersionResult
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult__ctor_
-  commentId: Overload:SimpleVersion.Model.VersionResult.#ctor
-  fullName: SimpleVersion.Model.VersionResult.VersionResult
-  nameWithType: VersionResult.VersionResult
-- uid: SimpleVersion.Model.VersionResult.BranchName
-  name: BranchName
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_BranchName
-  commentId: P:SimpleVersion.Model.VersionResult.BranchName
-  fullName: SimpleVersion.Model.VersionResult.BranchName
-  nameWithType: VersionResult.BranchName
-- uid: SimpleVersion.Model.VersionResult.BranchName*
-  name: BranchName
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_BranchName_
-  commentId: Overload:SimpleVersion.Model.VersionResult.BranchName
-  fullName: SimpleVersion.Model.VersionResult.BranchName
-  nameWithType: VersionResult.BranchName
-- uid: SimpleVersion.Model.VersionResult.CanonicalBranchName
-  name: CanonicalBranchName
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_CanonicalBranchName
-  commentId: P:SimpleVersion.Model.VersionResult.CanonicalBranchName
-  fullName: SimpleVersion.Model.VersionResult.CanonicalBranchName
-  nameWithType: VersionResult.CanonicalBranchName
-- uid: SimpleVersion.Model.VersionResult.CanonicalBranchName*
-  name: CanonicalBranchName
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_CanonicalBranchName_
-  commentId: Overload:SimpleVersion.Model.VersionResult.CanonicalBranchName
-  fullName: SimpleVersion.Model.VersionResult.CanonicalBranchName
-  nameWithType: VersionResult.CanonicalBranchName
-- uid: SimpleVersion.Model.VersionResult.Formats
-  name: Formats
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Formats
-  commentId: P:SimpleVersion.Model.VersionResult.Formats
-  fullName: SimpleVersion.Model.VersionResult.Formats
-  nameWithType: VersionResult.Formats
-- uid: SimpleVersion.Model.VersionResult.Formats*
-  name: Formats
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Formats_
-  commentId: Overload:SimpleVersion.Model.VersionResult.Formats
-  fullName: SimpleVersion.Model.VersionResult.Formats
-  nameWithType: VersionResult.Formats
-- uid: SimpleVersion.Model.VersionResult.Height
-  name: Height
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Height
-  commentId: P:SimpleVersion.Model.VersionResult.Height
-  fullName: SimpleVersion.Model.VersionResult.Height
-  nameWithType: VersionResult.Height
-- uid: SimpleVersion.Model.VersionResult.Height*
-  name: Height
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Height_
-  commentId: Overload:SimpleVersion.Model.VersionResult.Height
-  fullName: SimpleVersion.Model.VersionResult.Height
-  nameWithType: VersionResult.Height
-- uid: SimpleVersion.Model.VersionResult.HeightPadded
-  name: HeightPadded
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_HeightPadded
-  commentId: P:SimpleVersion.Model.VersionResult.HeightPadded
-  fullName: SimpleVersion.Model.VersionResult.HeightPadded
-  nameWithType: VersionResult.HeightPadded
-- uid: SimpleVersion.Model.VersionResult.HeightPadded*
-  name: HeightPadded
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_HeightPadded_
-  commentId: Overload:SimpleVersion.Model.VersionResult.HeightPadded
-  fullName: SimpleVersion.Model.VersionResult.HeightPadded
-  nameWithType: VersionResult.HeightPadded
-- uid: SimpleVersion.Model.VersionResult.IsPullRequest
-  name: IsPullRequest
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_IsPullRequest
-  commentId: P:SimpleVersion.Model.VersionResult.IsPullRequest
-  fullName: SimpleVersion.Model.VersionResult.IsPullRequest
-  nameWithType: VersionResult.IsPullRequest
-- uid: SimpleVersion.Model.VersionResult.IsPullRequest*
-  name: IsPullRequest
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_IsPullRequest_
-  commentId: Overload:SimpleVersion.Model.VersionResult.IsPullRequest
-  fullName: SimpleVersion.Model.VersionResult.IsPullRequest
-  nameWithType: VersionResult.IsPullRequest
-- uid: SimpleVersion.Model.VersionResult.Major
-  name: Major
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Major
-  commentId: P:SimpleVersion.Model.VersionResult.Major
-  fullName: SimpleVersion.Model.VersionResult.Major
-  nameWithType: VersionResult.Major
-- uid: SimpleVersion.Model.VersionResult.Major*
-  name: Major
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Major_
-  commentId: Overload:SimpleVersion.Model.VersionResult.Major
-  fullName: SimpleVersion.Model.VersionResult.Major
-  nameWithType: VersionResult.Major
-- uid: SimpleVersion.Model.VersionResult.Minor
-  name: Minor
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Minor
-  commentId: P:SimpleVersion.Model.VersionResult.Minor
-  fullName: SimpleVersion.Model.VersionResult.Minor
-  nameWithType: VersionResult.Minor
-- uid: SimpleVersion.Model.VersionResult.Minor*
-  name: Minor
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Minor_
-  commentId: Overload:SimpleVersion.Model.VersionResult.Minor
-  fullName: SimpleVersion.Model.VersionResult.Minor
-  nameWithType: VersionResult.Minor
-- uid: SimpleVersion.Model.VersionResult.Patch
-  name: Patch
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Patch
-  commentId: P:SimpleVersion.Model.VersionResult.Patch
-  fullName: SimpleVersion.Model.VersionResult.Patch
-  nameWithType: VersionResult.Patch
-- uid: SimpleVersion.Model.VersionResult.Patch*
-  name: Patch
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Patch_
-  commentId: Overload:SimpleVersion.Model.VersionResult.Patch
-  fullName: SimpleVersion.Model.VersionResult.Patch
-  nameWithType: VersionResult.Patch
-- uid: SimpleVersion.Model.VersionResult.PullRequestNumber
-  name: PullRequestNumber
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_PullRequestNumber
-  commentId: P:SimpleVersion.Model.VersionResult.PullRequestNumber
-  fullName: SimpleVersion.Model.VersionResult.PullRequestNumber
-  nameWithType: VersionResult.PullRequestNumber
-- uid: SimpleVersion.Model.VersionResult.PullRequestNumber*
-  name: PullRequestNumber
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_PullRequestNumber_
-  commentId: Overload:SimpleVersion.Model.VersionResult.PullRequestNumber
-  fullName: SimpleVersion.Model.VersionResult.PullRequestNumber
-  nameWithType: VersionResult.PullRequestNumber
-- uid: SimpleVersion.Model.VersionResult.RepositoryPath
-  name: RepositoryPath
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_RepositoryPath
-  commentId: P:SimpleVersion.Model.VersionResult.RepositoryPath
-  fullName: SimpleVersion.Model.VersionResult.RepositoryPath
-  nameWithType: VersionResult.RepositoryPath
-- uid: SimpleVersion.Model.VersionResult.RepositoryPath*
-  name: RepositoryPath
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_RepositoryPath_
-  commentId: Overload:SimpleVersion.Model.VersionResult.RepositoryPath
-  fullName: SimpleVersion.Model.VersionResult.RepositoryPath
-  nameWithType: VersionResult.RepositoryPath
-- uid: SimpleVersion.Model.VersionResult.Revision
-  name: Revision
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Revision
-  commentId: P:SimpleVersion.Model.VersionResult.Revision
-  fullName: SimpleVersion.Model.VersionResult.Revision
-  nameWithType: VersionResult.Revision
-- uid: SimpleVersion.Model.VersionResult.Revision*
-  name: Revision
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Revision_
-  commentId: Overload:SimpleVersion.Model.VersionResult.Revision
-  fullName: SimpleVersion.Model.VersionResult.Revision
-  nameWithType: VersionResult.Revision
-- uid: SimpleVersion.Model.VersionResult.Sha
-  name: Sha
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Sha
-  commentId: P:SimpleVersion.Model.VersionResult.Sha
-  fullName: SimpleVersion.Model.VersionResult.Sha
-  nameWithType: VersionResult.Sha
-- uid: SimpleVersion.Model.VersionResult.Sha*
-  name: Sha
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Sha_
-  commentId: Overload:SimpleVersion.Model.VersionResult.Sha
-  fullName: SimpleVersion.Model.VersionResult.Sha
-  nameWithType: VersionResult.Sha
-- uid: SimpleVersion.Model.VersionResult.Sha7
-  name: Sha7
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Sha7
-  commentId: P:SimpleVersion.Model.VersionResult.Sha7
-  fullName: SimpleVersion.Model.VersionResult.Sha7
-  nameWithType: VersionResult.Sha7
-- uid: SimpleVersion.Model.VersionResult.Sha7*
-  name: Sha7
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Sha7_
-  commentId: Overload:SimpleVersion.Model.VersionResult.Sha7
-  fullName: SimpleVersion.Model.VersionResult.Sha7
-  nameWithType: VersionResult.Sha7
-- uid: SimpleVersion.Model.VersionResult.Version
-  name: Version
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Version
-  commentId: P:SimpleVersion.Model.VersionResult.Version
-  fullName: SimpleVersion.Model.VersionResult.Version
-  nameWithType: VersionResult.Version
-- uid: SimpleVersion.Model.VersionResult.Version*
-  name: Version
-  href: api/SimpleVersion.Model.VersionResult.html#SimpleVersion_Model_VersionResult_Version_
-  commentId: Overload:SimpleVersion.Model.VersionResult.Version
-  fullName: SimpleVersion.Model.VersionResult.Version
-  nameWithType: VersionResult.Version
+- uid: SimpleVersion.IVersionCalculator.WriteResult(System.IO.TextWriter)
+  name: WriteResult(TextWriter)
+  href: api/SimpleVersion.IVersionCalculator.html#SimpleVersion_IVersionCalculator_WriteResult_System_IO_TextWriter_
+  commentId: M:SimpleVersion.IVersionCalculator.WriteResult(System.IO.TextWriter)
+  fullName: SimpleVersion.IVersionCalculator.WriteResult(System.IO.TextWriter)
+  nameWithType: IVersionCalculator.WriteResult(TextWriter)
+- uid: SimpleVersion.IVersionCalculator.WriteResult*
+  name: WriteResult
+  href: api/SimpleVersion.IVersionCalculator.html#SimpleVersion_IVersionCalculator_WriteResult_
+  commentId: Overload:SimpleVersion.IVersionCalculator.WriteResult
+  isSpec: "True"
+  fullName: SimpleVersion.IVersionCalculator.WriteResult
+  nameWithType: IVersionCalculator.WriteResult
+- uid: SimpleVersion.IVersionRepository
+  name: IVersionRepository
+  href: api/SimpleVersion.IVersionRepository.html
+  commentId: T:SimpleVersion.IVersionRepository
+  fullName: SimpleVersion.IVersionRepository
+  nameWithType: IVersionRepository
+- uid: SimpleVersion.IVersionRepository.GetResult
+  name: GetResult()
+  href: api/SimpleVersion.IVersionRepository.html#SimpleVersion_IVersionRepository_GetResult
+  commentId: M:SimpleVersion.IVersionRepository.GetResult
+  fullName: SimpleVersion.IVersionRepository.GetResult()
+  nameWithType: IVersionRepository.GetResult()
+- uid: SimpleVersion.IVersionRepository.GetResult*
+  name: GetResult
+  href: api/SimpleVersion.IVersionRepository.html#SimpleVersion_IVersionRepository_GetResult_
+  commentId: Overload:SimpleVersion.IVersionRepository.GetResult
+  isSpec: "True"
+  fullName: SimpleVersion.IVersionRepository.GetResult
+  nameWithType: IVersionRepository.GetResult
 - uid: SimpleVersion.Pipeline
   name: SimpleVersion.Pipeline
   href: api/SimpleVersion.Pipeline.html
   commentId: N:SimpleVersion.Pipeline
   fullName: SimpleVersion.Pipeline
   nameWithType: SimpleVersion.Pipeline
-- uid: SimpleVersion.Pipeline.AzureDevopsContextProcessor
-  name: AzureDevopsContextProcessor
-  href: api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.html
-  commentId: T:SimpleVersion.Pipeline.AzureDevopsContextProcessor
-  fullName: SimpleVersion.Pipeline.AzureDevopsContextProcessor
-  nameWithType: AzureDevopsContextProcessor
-- uid: SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor
-  name: AzureDevopsContextProcessor()
-  href: api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.html#SimpleVersion_Pipeline_AzureDevopsContextProcessor__ctor
-  commentId: M:SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor
-  fullName: SimpleVersion.Pipeline.AzureDevopsContextProcessor.AzureDevopsContextProcessor()
-  nameWithType: AzureDevopsContextProcessor.AzureDevopsContextProcessor()
-- uid: SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor(SimpleVersion.IEnvironment)
-  name: AzureDevopsContextProcessor(IEnvironment)
-  href: api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.html#SimpleVersion_Pipeline_AzureDevopsContextProcessor__ctor_SimpleVersion_IEnvironment_
-  commentId: M:SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor(SimpleVersion.IEnvironment)
-  fullName: SimpleVersion.Pipeline.AzureDevopsContextProcessor.AzureDevopsContextProcessor(SimpleVersion.IEnvironment)
-  nameWithType: AzureDevopsContextProcessor.AzureDevopsContextProcessor(IEnvironment)
-- uid: SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor*
-  name: AzureDevopsContextProcessor
-  href: api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.html#SimpleVersion_Pipeline_AzureDevopsContextProcessor__ctor_
-  commentId: Overload:SimpleVersion.Pipeline.AzureDevopsContextProcessor.#ctor
-  fullName: SimpleVersion.Pipeline.AzureDevopsContextProcessor.AzureDevopsContextProcessor
-  nameWithType: AzureDevopsContextProcessor.AzureDevopsContextProcessor
-- uid: SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)
-  name: Apply(IVersionContext)
-  href: api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.html#SimpleVersion_Pipeline_AzureDevopsContextProcessor_Apply_SimpleVersion_Pipeline_IVersionContext_
-  commentId: M:SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)
-  fullName: SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)
-  nameWithType: AzureDevopsContextProcessor.Apply(IVersionContext)
-- uid: SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply*
-  name: Apply
-  href: api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.html#SimpleVersion_Pipeline_AzureDevopsContextProcessor_Apply_
-  commentId: Overload:SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply
-  fullName: SimpleVersion.Pipeline.AzureDevopsContextProcessor.Apply
-  nameWithType: AzureDevopsContextProcessor.Apply
 - uid: SimpleVersion.Pipeline.Formatting
   name: SimpleVersion.Pipeline.Formatting
   href: api/SimpleVersion.Pipeline.Formatting.html
   commentId: N:SimpleVersion.Pipeline.Formatting
   fullName: SimpleVersion.Pipeline.Formatting
   nameWithType: SimpleVersion.Pipeline.Formatting
-- uid: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess
-  name: Semver1FormatProcess
-  href: api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.html
-  commentId: T:SimpleVersion.Pipeline.Formatting.Semver1FormatProcess
-  fullName: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess
-  nameWithType: Semver1FormatProcess
-- uid: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.#ctor
-  name: Semver1FormatProcess()
-  href: api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver1FormatProcess__ctor
-  commentId: M:SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.#ctor
-  fullName: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Semver1FormatProcess()
-  nameWithType: Semver1FormatProcess.Semver1FormatProcess()
-- uid: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.#ctor*
-  name: Semver1FormatProcess
-  href: api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver1FormatProcess__ctor_
-  commentId: Overload:SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.#ctor
-  fullName: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Semver1FormatProcess
-  nameWithType: Semver1FormatProcess.Semver1FormatProcess
-- uid: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply(SimpleVersion.Pipeline.IVersionContext)
-  name: Apply(IVersionContext)
-  href: api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver1FormatProcess_Apply_SimpleVersion_Pipeline_IVersionContext_
-  commentId: M:SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply(SimpleVersion.Pipeline.IVersionContext)
-  fullName: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply(SimpleVersion.Pipeline.IVersionContext)
-  nameWithType: Semver1FormatProcess.Apply(IVersionContext)
-- uid: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply*
-  name: Apply
-  href: api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver1FormatProcess_Apply_
-  commentId: Overload:SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply
-  fullName: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.Apply
-  nameWithType: Semver1FormatProcess.Apply
-- uid: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.FormatKey
+- uid: SimpleVersion.Pipeline.Formatting.Semver1FormatProcessor
+  name: Semver1FormatProcessor
+  href: api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcessor.html
+  commentId: T:SimpleVersion.Pipeline.Formatting.Semver1FormatProcessor
+  fullName: SimpleVersion.Pipeline.Formatting.Semver1FormatProcessor
+  nameWithType: Semver1FormatProcessor
+- uid: SimpleVersion.Pipeline.Formatting.Semver1FormatProcessor.FormatKey
   name: FormatKey
-  href: api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver1FormatProcess_FormatKey
-  commentId: F:SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.FormatKey
-  fullName: SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.FormatKey
-  nameWithType: Semver1FormatProcess.FormatKey
-- uid: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess
-  name: Semver2FormatProcess
-  href: api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.html
-  commentId: T:SimpleVersion.Pipeline.Formatting.Semver2FormatProcess
-  fullName: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess
-  nameWithType: Semver2FormatProcess
-- uid: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.#ctor
-  name: Semver2FormatProcess()
-  href: api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver2FormatProcess__ctor
-  commentId: M:SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.#ctor
-  fullName: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Semver2FormatProcess()
-  nameWithType: Semver2FormatProcess.Semver2FormatProcess()
-- uid: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.#ctor*
-  name: Semver2FormatProcess
-  href: api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver2FormatProcess__ctor_
-  commentId: Overload:SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.#ctor
-  fullName: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Semver2FormatProcess
-  nameWithType: Semver2FormatProcess.Semver2FormatProcess
-- uid: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply(SimpleVersion.Pipeline.IVersionContext)
-  name: Apply(IVersionContext)
-  href: api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver2FormatProcess_Apply_SimpleVersion_Pipeline_IVersionContext_
-  commentId: M:SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply(SimpleVersion.Pipeline.IVersionContext)
-  fullName: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply(SimpleVersion.Pipeline.IVersionContext)
-  nameWithType: Semver2FormatProcess.Apply(IVersionContext)
-- uid: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply*
-  name: Apply
-  href: api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver2FormatProcess_Apply_
-  commentId: Overload:SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply
-  fullName: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.Apply
-  nameWithType: Semver2FormatProcess.Apply
-- uid: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.FormatKey
+  href: api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcessor.html#SimpleVersion_Pipeline_Formatting_Semver1FormatProcessor_FormatKey
+  commentId: F:SimpleVersion.Pipeline.Formatting.Semver1FormatProcessor.FormatKey
+  fullName: SimpleVersion.Pipeline.Formatting.Semver1FormatProcessor.FormatKey
+  nameWithType: Semver1FormatProcessor.FormatKey
+- uid: SimpleVersion.Pipeline.Formatting.Semver1FormatProcessor.Process(SimpleVersion.Pipeline.IVersionContext)
+  name: Process(IVersionContext)
+  href: api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcessor.html#SimpleVersion_Pipeline_Formatting_Semver1FormatProcessor_Process_SimpleVersion_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Pipeline.Formatting.Semver1FormatProcessor.Process(SimpleVersion.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Pipeline.Formatting.Semver1FormatProcessor.Process(SimpleVersion.Pipeline.IVersionContext)
+  nameWithType: Semver1FormatProcessor.Process(IVersionContext)
+- uid: SimpleVersion.Pipeline.Formatting.Semver1FormatProcessor.Process*
+  name: Process
+  href: api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcessor.html#SimpleVersion_Pipeline_Formatting_Semver1FormatProcessor_Process_
+  commentId: Overload:SimpleVersion.Pipeline.Formatting.Semver1FormatProcessor.Process
+  isSpec: "True"
+  fullName: SimpleVersion.Pipeline.Formatting.Semver1FormatProcessor.Process
+  nameWithType: Semver1FormatProcessor.Process
+- uid: SimpleVersion.Pipeline.Formatting.Semver2FormatProcessor
+  name: Semver2FormatProcessor
+  href: api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcessor.html
+  commentId: T:SimpleVersion.Pipeline.Formatting.Semver2FormatProcessor
+  fullName: SimpleVersion.Pipeline.Formatting.Semver2FormatProcessor
+  nameWithType: Semver2FormatProcessor
+- uid: SimpleVersion.Pipeline.Formatting.Semver2FormatProcessor.FormatKey
   name: FormatKey
-  href: api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.html#SimpleVersion_Pipeline_Formatting_Semver2FormatProcess_FormatKey
-  commentId: F:SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.FormatKey
-  fullName: SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.FormatKey
-  nameWithType: Semver2FormatProcess.FormatKey
-- uid: SimpleVersion.Pipeline.Formatting.VersionFormatProcess
-  name: VersionFormatProcess
-  href: api/SimpleVersion.Pipeline.Formatting.VersionFormatProcess.html
-  commentId: T:SimpleVersion.Pipeline.Formatting.VersionFormatProcess
-  fullName: SimpleVersion.Pipeline.Formatting.VersionFormatProcess
-  nameWithType: VersionFormatProcess
-- uid: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.#ctor
-  name: VersionFormatProcess()
-  href: api/SimpleVersion.Pipeline.Formatting.VersionFormatProcess.html#SimpleVersion_Pipeline_Formatting_VersionFormatProcess__ctor
-  commentId: M:SimpleVersion.Pipeline.Formatting.VersionFormatProcess.#ctor
-  fullName: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.VersionFormatProcess()
-  nameWithType: VersionFormatProcess.VersionFormatProcess()
-- uid: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.#ctor*
-  name: VersionFormatProcess
-  href: api/SimpleVersion.Pipeline.Formatting.VersionFormatProcess.html#SimpleVersion_Pipeline_Formatting_VersionFormatProcess__ctor_
-  commentId: Overload:SimpleVersion.Pipeline.Formatting.VersionFormatProcess.#ctor
-  fullName: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.VersionFormatProcess
-  nameWithType: VersionFormatProcess.VersionFormatProcess
-- uid: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply(SimpleVersion.Pipeline.IVersionContext)
-  name: Apply(IVersionContext)
-  href: api/SimpleVersion.Pipeline.Formatting.VersionFormatProcess.html#SimpleVersion_Pipeline_Formatting_VersionFormatProcess_Apply_SimpleVersion_Pipeline_IVersionContext_
-  commentId: M:SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply(SimpleVersion.Pipeline.IVersionContext)
-  fullName: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply(SimpleVersion.Pipeline.IVersionContext)
-  nameWithType: VersionFormatProcess.Apply(IVersionContext)
-- uid: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply*
-  name: Apply
-  href: api/SimpleVersion.Pipeline.Formatting.VersionFormatProcess.html#SimpleVersion_Pipeline_Formatting_VersionFormatProcess_Apply_
-  commentId: Overload:SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply
-  fullName: SimpleVersion.Pipeline.Formatting.VersionFormatProcess.Apply
-  nameWithType: VersionFormatProcess.Apply
+  href: api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcessor.html#SimpleVersion_Pipeline_Formatting_Semver2FormatProcessor_FormatKey
+  commentId: F:SimpleVersion.Pipeline.Formatting.Semver2FormatProcessor.FormatKey
+  fullName: SimpleVersion.Pipeline.Formatting.Semver2FormatProcessor.FormatKey
+  nameWithType: Semver2FormatProcessor.FormatKey
+- uid: SimpleVersion.Pipeline.Formatting.Semver2FormatProcessor.Process(SimpleVersion.Pipeline.IVersionContext)
+  name: Process(IVersionContext)
+  href: api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcessor.html#SimpleVersion_Pipeline_Formatting_Semver2FormatProcessor_Process_SimpleVersion_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Pipeline.Formatting.Semver2FormatProcessor.Process(SimpleVersion.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Pipeline.Formatting.Semver2FormatProcessor.Process(SimpleVersion.Pipeline.IVersionContext)
+  nameWithType: Semver2FormatProcessor.Process(IVersionContext)
+- uid: SimpleVersion.Pipeline.Formatting.Semver2FormatProcessor.Process*
+  name: Process
+  href: api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcessor.html#SimpleVersion_Pipeline_Formatting_Semver2FormatProcessor_Process_
+  commentId: Overload:SimpleVersion.Pipeline.Formatting.Semver2FormatProcessor.Process
+  isSpec: "True"
+  fullName: SimpleVersion.Pipeline.Formatting.Semver2FormatProcessor.Process
+  nameWithType: Semver2FormatProcessor.Process
+- uid: SimpleVersion.Pipeline.Formatting.VersionFormatProcessor
+  name: VersionFormatProcessor
+  href: api/SimpleVersion.Pipeline.Formatting.VersionFormatProcessor.html
+  commentId: T:SimpleVersion.Pipeline.Formatting.VersionFormatProcessor
+  fullName: SimpleVersion.Pipeline.Formatting.VersionFormatProcessor
+  nameWithType: VersionFormatProcessor
+- uid: SimpleVersion.Pipeline.Formatting.VersionFormatProcessor.Process(SimpleVersion.Pipeline.IVersionContext)
+  name: Process(IVersionContext)
+  href: api/SimpleVersion.Pipeline.Formatting.VersionFormatProcessor.html#SimpleVersion_Pipeline_Formatting_VersionFormatProcessor_Process_SimpleVersion_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Pipeline.Formatting.VersionFormatProcessor.Process(SimpleVersion.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Pipeline.Formatting.VersionFormatProcessor.Process(SimpleVersion.Pipeline.IVersionContext)
+  nameWithType: VersionFormatProcessor.Process(IVersionContext)
+- uid: SimpleVersion.Pipeline.Formatting.VersionFormatProcessor.Process*
+  name: Process
+  href: api/SimpleVersion.Pipeline.Formatting.VersionFormatProcessor.html#SimpleVersion_Pipeline_Formatting_VersionFormatProcessor_Process_
+  commentId: Overload:SimpleVersion.Pipeline.Formatting.VersionFormatProcessor.Process
+  isSpec: "True"
+  fullName: SimpleVersion.Pipeline.Formatting.VersionFormatProcessor.Process
+  nameWithType: VersionFormatProcessor.Process
 - uid: SimpleVersion.Pipeline.IVersionContext
   name: IVersionContext
   href: api/SimpleVersion.Pipeline.IVersionContext.html
   commentId: T:SimpleVersion.Pipeline.IVersionContext
   fullName: SimpleVersion.Pipeline.IVersionContext
   nameWithType: IVersionContext
+- uid: SimpleVersion.Pipeline.IVersionContext.Configuration
+  name: Configuration
+  href: api/SimpleVersion.Pipeline.IVersionContext.html#SimpleVersion_Pipeline_IVersionContext_Configuration
+  commentId: P:SimpleVersion.Pipeline.IVersionContext.Configuration
+  fullName: SimpleVersion.Pipeline.IVersionContext.Configuration
+  nameWithType: IVersionContext.Configuration
+- uid: SimpleVersion.Pipeline.IVersionContext.Configuration*
+  name: Configuration
+  href: api/SimpleVersion.Pipeline.IVersionContext.html#SimpleVersion_Pipeline_IVersionContext_Configuration_
+  commentId: Overload:SimpleVersion.Pipeline.IVersionContext.Configuration
+  isSpec: "True"
+  fullName: SimpleVersion.Pipeline.IVersionContext.Configuration
+  nameWithType: IVersionContext.Configuration
+- uid: SimpleVersion.Pipeline.IVersionContext.Environment
+  name: Environment
+  href: api/SimpleVersion.Pipeline.IVersionContext.html#SimpleVersion_Pipeline_IVersionContext_Environment
+  commentId: P:SimpleVersion.Pipeline.IVersionContext.Environment
+  fullName: SimpleVersion.Pipeline.IVersionContext.Environment
+  nameWithType: IVersionContext.Environment
+- uid: SimpleVersion.Pipeline.IVersionContext.Environment*
+  name: Environment
+  href: api/SimpleVersion.Pipeline.IVersionContext.html#SimpleVersion_Pipeline_IVersionContext_Environment_
+  commentId: Overload:SimpleVersion.Pipeline.IVersionContext.Environment
+  isSpec: "True"
+  fullName: SimpleVersion.Pipeline.IVersionContext.Environment
+  nameWithType: IVersionContext.Environment
 - uid: SimpleVersion.Pipeline.IVersionContext.Result
   name: Result
   href: api/SimpleVersion.Pipeline.IVersionContext.html#SimpleVersion_Pipeline_IVersionContext_Result
@@ -791,98 +890,73 @@ references:
   name: Result
   href: api/SimpleVersion.Pipeline.IVersionContext.html#SimpleVersion_Pipeline_IVersionContext_Result_
   commentId: Overload:SimpleVersion.Pipeline.IVersionContext.Result
+  isSpec: "True"
   fullName: SimpleVersion.Pipeline.IVersionContext.Result
   nameWithType: IVersionContext.Result
-- uid: SimpleVersion.Pipeline.IVersionContext.Settings
-  name: Settings
-  href: api/SimpleVersion.Pipeline.IVersionContext.html#SimpleVersion_Pipeline_IVersionContext_Settings
-  commentId: P:SimpleVersion.Pipeline.IVersionContext.Settings
-  fullName: SimpleVersion.Pipeline.IVersionContext.Settings
-  nameWithType: IVersionContext.Settings
-- uid: SimpleVersion.Pipeline.IVersionContext.Settings*
-  name: Settings
-  href: api/SimpleVersion.Pipeline.IVersionContext.html#SimpleVersion_Pipeline_IVersionContext_Settings_
-  commentId: Overload:SimpleVersion.Pipeline.IVersionContext.Settings
-  fullName: SimpleVersion.Pipeline.IVersionContext.Settings
-  nameWithType: IVersionContext.Settings
-- uid: SimpleVersion.Pipeline.IVersionContextProcessor
-  name: IVersionContextProcessor
-  href: api/SimpleVersion.Pipeline.IVersionContextProcessor.html
-  commentId: T:SimpleVersion.Pipeline.IVersionContextProcessor
-  fullName: SimpleVersion.Pipeline.IVersionContextProcessor
-  nameWithType: IVersionContextProcessor
-- uid: SimpleVersion.Pipeline.IVersionContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)
-  name: Apply(IVersionContext)
-  href: api/SimpleVersion.Pipeline.IVersionContextProcessor.html#SimpleVersion_Pipeline_IVersionContextProcessor_Apply_SimpleVersion_Pipeline_IVersionContext_
-  commentId: M:SimpleVersion.Pipeline.IVersionContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)
-  fullName: SimpleVersion.Pipeline.IVersionContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)
-  nameWithType: IVersionContextProcessor.Apply(IVersionContext)
-- uid: SimpleVersion.Pipeline.IVersionContextProcessor.Apply*
-  name: Apply
-  href: api/SimpleVersion.Pipeline.IVersionContextProcessor.html#SimpleVersion_Pipeline_IVersionContextProcessor_Apply_
-  commentId: Overload:SimpleVersion.Pipeline.IVersionContextProcessor.Apply
-  fullName: SimpleVersion.Pipeline.IVersionContextProcessor.Apply
-  nameWithType: IVersionContextProcessor.Apply
-- uid: SimpleVersion.Pipeline.SettingsContextProcessor
-  name: SettingsContextProcessor
-  href: api/SimpleVersion.Pipeline.SettingsContextProcessor.html
-  commentId: T:SimpleVersion.Pipeline.SettingsContextProcessor
-  fullName: SimpleVersion.Pipeline.SettingsContextProcessor
-  nameWithType: SettingsContextProcessor
-- uid: SimpleVersion.Pipeline.SettingsContextProcessor.#ctor
-  name: SettingsContextProcessor()
-  href: api/SimpleVersion.Pipeline.SettingsContextProcessor.html#SimpleVersion_Pipeline_SettingsContextProcessor__ctor
-  commentId: M:SimpleVersion.Pipeline.SettingsContextProcessor.#ctor
-  fullName: SimpleVersion.Pipeline.SettingsContextProcessor.SettingsContextProcessor()
-  nameWithType: SettingsContextProcessor.SettingsContextProcessor()
-- uid: SimpleVersion.Pipeline.SettingsContextProcessor.#ctor*
-  name: SettingsContextProcessor
-  href: api/SimpleVersion.Pipeline.SettingsContextProcessor.html#SimpleVersion_Pipeline_SettingsContextProcessor__ctor_
-  commentId: Overload:SimpleVersion.Pipeline.SettingsContextProcessor.#ctor
-  fullName: SimpleVersion.Pipeline.SettingsContextProcessor.SettingsContextProcessor
-  nameWithType: SettingsContextProcessor.SettingsContextProcessor
-- uid: SimpleVersion.Pipeline.SettingsContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)
-  name: Apply(IVersionContext)
-  href: api/SimpleVersion.Pipeline.SettingsContextProcessor.html#SimpleVersion_Pipeline_SettingsContextProcessor_Apply_SimpleVersion_Pipeline_IVersionContext_
-  commentId: M:SimpleVersion.Pipeline.SettingsContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)
-  fullName: SimpleVersion.Pipeline.SettingsContextProcessor.Apply(SimpleVersion.Pipeline.IVersionContext)
-  nameWithType: SettingsContextProcessor.Apply(IVersionContext)
-- uid: SimpleVersion.Pipeline.SettingsContextProcessor.Apply*
-  name: Apply
-  href: api/SimpleVersion.Pipeline.SettingsContextProcessor.html#SimpleVersion_Pipeline_SettingsContextProcessor_Apply_
-  commentId: Overload:SimpleVersion.Pipeline.SettingsContextProcessor.Apply
-  fullName: SimpleVersion.Pipeline.SettingsContextProcessor.Apply
-  nameWithType: SettingsContextProcessor.Apply
+- uid: SimpleVersion.Pipeline.IVersionProcessor
+  name: IVersionProcessor
+  href: api/SimpleVersion.Pipeline.IVersionProcessor.html
+  commentId: T:SimpleVersion.Pipeline.IVersionProcessor
+  fullName: SimpleVersion.Pipeline.IVersionProcessor
+  nameWithType: IVersionProcessor
+- uid: SimpleVersion.Pipeline.IVersionProcessor.Process(SimpleVersion.Pipeline.IVersionContext)
+  name: Process(IVersionContext)
+  href: api/SimpleVersion.Pipeline.IVersionProcessor.html#SimpleVersion_Pipeline_IVersionProcessor_Process_SimpleVersion_Pipeline_IVersionContext_
+  commentId: M:SimpleVersion.Pipeline.IVersionProcessor.Process(SimpleVersion.Pipeline.IVersionContext)
+  fullName: SimpleVersion.Pipeline.IVersionProcessor.Process(SimpleVersion.Pipeline.IVersionContext)
+  nameWithType: IVersionProcessor.Process(IVersionContext)
+- uid: SimpleVersion.Pipeline.IVersionProcessor.Process*
+  name: Process
+  href: api/SimpleVersion.Pipeline.IVersionProcessor.html#SimpleVersion_Pipeline_IVersionProcessor_Process_
+  commentId: Overload:SimpleVersion.Pipeline.IVersionProcessor.Process
+  isSpec: "True"
+  fullName: SimpleVersion.Pipeline.IVersionProcessor.Process
+  nameWithType: IVersionProcessor.Process
 - uid: SimpleVersion.Pipeline.VersionContext
   name: VersionContext
   href: api/SimpleVersion.Pipeline.VersionContext.html
   commentId: T:SimpleVersion.Pipeline.VersionContext
   fullName: SimpleVersion.Pipeline.VersionContext
   nameWithType: VersionContext
-- uid: SimpleVersion.Pipeline.VersionContext.#ctor(LibGit2Sharp.IRepository)
-  name: VersionContext(IRepository)
-  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext__ctor_LibGit2Sharp_IRepository_
-  commentId: M:SimpleVersion.Pipeline.VersionContext.#ctor(LibGit2Sharp.IRepository)
-  fullName: SimpleVersion.Pipeline.VersionContext.VersionContext(LibGit2Sharp.IRepository)
-  nameWithType: VersionContext.VersionContext(IRepository)
+- uid: SimpleVersion.Pipeline.VersionContext.#ctor(SimpleVersion.Environment.IVersionEnvironment,SimpleVersion.Configuration.VersionConfiguration,SimpleVersion.VersionResult)
+  name: VersionContext(IVersionEnvironment, VersionConfiguration, VersionResult)
+  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext__ctor_SimpleVersion_Environment_IVersionEnvironment_SimpleVersion_Configuration_VersionConfiguration_SimpleVersion_VersionResult_
+  commentId: M:SimpleVersion.Pipeline.VersionContext.#ctor(SimpleVersion.Environment.IVersionEnvironment,SimpleVersion.Configuration.VersionConfiguration,SimpleVersion.VersionResult)
+  fullName: SimpleVersion.Pipeline.VersionContext.VersionContext(SimpleVersion.Environment.IVersionEnvironment, SimpleVersion.Configuration.VersionConfiguration, SimpleVersion.VersionResult)
+  nameWithType: VersionContext.VersionContext(IVersionEnvironment, VersionConfiguration, VersionResult)
 - uid: SimpleVersion.Pipeline.VersionContext.#ctor*
   name: VersionContext
   href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext__ctor_
   commentId: Overload:SimpleVersion.Pipeline.VersionContext.#ctor
+  isSpec: "True"
   fullName: SimpleVersion.Pipeline.VersionContext.VersionContext
   nameWithType: VersionContext.VersionContext
-- uid: SimpleVersion.Pipeline.VersionContext.Repository
-  name: Repository
-  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Repository
-  commentId: P:SimpleVersion.Pipeline.VersionContext.Repository
-  fullName: SimpleVersion.Pipeline.VersionContext.Repository
-  nameWithType: VersionContext.Repository
-- uid: SimpleVersion.Pipeline.VersionContext.Repository*
-  name: Repository
-  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Repository_
-  commentId: Overload:SimpleVersion.Pipeline.VersionContext.Repository
-  fullName: SimpleVersion.Pipeline.VersionContext.Repository
-  nameWithType: VersionContext.Repository
+- uid: SimpleVersion.Pipeline.VersionContext.Configuration
+  name: Configuration
+  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Configuration
+  commentId: P:SimpleVersion.Pipeline.VersionContext.Configuration
+  fullName: SimpleVersion.Pipeline.VersionContext.Configuration
+  nameWithType: VersionContext.Configuration
+- uid: SimpleVersion.Pipeline.VersionContext.Configuration*
+  name: Configuration
+  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Configuration_
+  commentId: Overload:SimpleVersion.Pipeline.VersionContext.Configuration
+  isSpec: "True"
+  fullName: SimpleVersion.Pipeline.VersionContext.Configuration
+  nameWithType: VersionContext.Configuration
+- uid: SimpleVersion.Pipeline.VersionContext.Environment
+  name: Environment
+  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Environment
+  commentId: P:SimpleVersion.Pipeline.VersionContext.Environment
+  fullName: SimpleVersion.Pipeline.VersionContext.Environment
+  nameWithType: VersionContext.Environment
+- uid: SimpleVersion.Pipeline.VersionContext.Environment*
+  name: Environment
+  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Environment_
+  commentId: Overload:SimpleVersion.Pipeline.VersionContext.Environment
+  isSpec: "True"
+  fullName: SimpleVersion.Pipeline.VersionContext.Environment
+  nameWithType: VersionContext.Environment
 - uid: SimpleVersion.Pipeline.VersionContext.Result
   name: Result
   href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Result
@@ -893,20 +967,9 @@ references:
   name: Result
   href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Result_
   commentId: Overload:SimpleVersion.Pipeline.VersionContext.Result
+  isSpec: "True"
   fullName: SimpleVersion.Pipeline.VersionContext.Result
   nameWithType: VersionContext.Result
-- uid: SimpleVersion.Pipeline.VersionContext.Settings
-  name: Settings
-  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Settings
-  commentId: P:SimpleVersion.Pipeline.VersionContext.Settings
-  fullName: SimpleVersion.Pipeline.VersionContext.Settings
-  nameWithType: VersionContext.Settings
-- uid: SimpleVersion.Pipeline.VersionContext.Settings*
-  name: Settings
-  href: api/SimpleVersion.Pipeline.VersionContext.html#SimpleVersion_Pipeline_VersionContext_Settings_
-  commentId: Overload:SimpleVersion.Pipeline.VersionContext.Settings
-  fullName: SimpleVersion.Pipeline.VersionContext.Settings
-  nameWithType: VersionContext.Settings
 - uid: SimpleVersion.Rules
   name: SimpleVersion.Rules
   href: api/SimpleVersion.Rules.html
@@ -935,6 +998,7 @@ references:
   name: BaseBranchNameTokenRule
   href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule__ctor_
   commentId: Overload:SimpleVersion.Rules.BaseBranchNameTokenRule.#ctor
+  isSpec: "True"
   fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.BaseBranchNameTokenRule
   nameWithType: BaseBranchNameTokenRule.BaseBranchNameTokenRule
 - uid: SimpleVersion.Rules.BaseBranchNameTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
@@ -950,6 +1014,7 @@ references:
   name: Apply
   href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_Apply_
   commentId: Overload:SimpleVersion.Rules.BaseBranchNameTokenRule.Apply
+  isSpec: "True"
   fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.Apply
   nameWithType: BaseBranchNameTokenRule.Apply
 - uid: SimpleVersion.Rules.BaseBranchNameTokenRule.Pattern
@@ -962,6 +1027,7 @@ references:
   name: Pattern
   href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_Pattern_
   commentId: Overload:SimpleVersion.Rules.BaseBranchNameTokenRule.Pattern
+  isSpec: "True"
   fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.Pattern
   nameWithType: BaseBranchNameTokenRule.Pattern
 - uid: SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve(SimpleVersion.Pipeline.IVersionContext,System.String)
@@ -974,6 +1040,7 @@ references:
   name: Resolve
   href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_Resolve_
   commentId: Overload:SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve
+  isSpec: "True"
   fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.Resolve
   nameWithType: BaseBranchNameTokenRule.Resolve
 - uid: SimpleVersion.Rules.BaseBranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.IVersionContext)
@@ -986,6 +1053,7 @@ references:
   name: ResolveBranchName
   href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_ResolveBranchName_
   commentId: Overload:SimpleVersion.Rules.BaseBranchNameTokenRule.ResolveBranchName
+  isSpec: "True"
   fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.ResolveBranchName
   nameWithType: BaseBranchNameTokenRule.ResolveBranchName
 - uid: SimpleVersion.Rules.BaseBranchNameTokenRule.Token
@@ -998,6 +1066,7 @@ references:
   name: Token
   href: api/SimpleVersion.Rules.BaseBranchNameTokenRule.html#SimpleVersion_Rules_BaseBranchNameTokenRule_Token_
   commentId: Overload:SimpleVersion.Rules.BaseBranchNameTokenRule.Token
+  isSpec: "True"
   fullName: SimpleVersion.Rules.BaseBranchNameTokenRule.Token
   nameWithType: BaseBranchNameTokenRule.Token
 - uid: SimpleVersion.Rules.BranchNameSuffixTokenRule
@@ -1022,6 +1091,7 @@ references:
   name: BranchNameSuffixTokenRule
   href: api/SimpleVersion.Rules.BranchNameSuffixTokenRule.html#SimpleVersion_Rules_BranchNameSuffixTokenRule__ctor_
   commentId: Overload:SimpleVersion.Rules.BranchNameSuffixTokenRule.#ctor
+  isSpec: "True"
   fullName: SimpleVersion.Rules.BranchNameSuffixTokenRule.BranchNameSuffixTokenRule
   nameWithType: BranchNameSuffixTokenRule.BranchNameSuffixTokenRule
 - uid: SimpleVersion.Rules.BranchNameSuffixTokenRule.Instance
@@ -1034,6 +1104,7 @@ references:
   name: Instance
   href: api/SimpleVersion.Rules.BranchNameSuffixTokenRule.html#SimpleVersion_Rules_BranchNameSuffixTokenRule_Instance_
   commentId: Overload:SimpleVersion.Rules.BranchNameSuffixTokenRule.Instance
+  isSpec: "True"
   fullName: SimpleVersion.Rules.BranchNameSuffixTokenRule.Instance
   nameWithType: BranchNameSuffixTokenRule.Instance
 - uid: SimpleVersion.Rules.BranchNameSuffixTokenRule.ResolveBranchName(SimpleVersion.Pipeline.IVersionContext)
@@ -1046,6 +1117,7 @@ references:
   name: ResolveBranchName
   href: api/SimpleVersion.Rules.BranchNameSuffixTokenRule.html#SimpleVersion_Rules_BranchNameSuffixTokenRule_ResolveBranchName_
   commentId: Overload:SimpleVersion.Rules.BranchNameSuffixTokenRule.ResolveBranchName
+  isSpec: "True"
   fullName: SimpleVersion.Rules.BranchNameSuffixTokenRule.ResolveBranchName
   nameWithType: BranchNameSuffixTokenRule.ResolveBranchName
 - uid: SimpleVersion.Rules.BranchNameSuffixTokenRule.Token
@@ -1058,6 +1130,7 @@ references:
   name: Token
   href: api/SimpleVersion.Rules.BranchNameSuffixTokenRule.html#SimpleVersion_Rules_BranchNameSuffixTokenRule_Token_
   commentId: Overload:SimpleVersion.Rules.BranchNameSuffixTokenRule.Token
+  isSpec: "True"
   fullName: SimpleVersion.Rules.BranchNameSuffixTokenRule.Token
   nameWithType: BranchNameSuffixTokenRule.Token
 - uid: SimpleVersion.Rules.BranchNameTokenRule
@@ -1082,6 +1155,7 @@ references:
   name: BranchNameTokenRule
   href: api/SimpleVersion.Rules.BranchNameTokenRule.html#SimpleVersion_Rules_BranchNameTokenRule__ctor_
   commentId: Overload:SimpleVersion.Rules.BranchNameTokenRule.#ctor
+  isSpec: "True"
   fullName: SimpleVersion.Rules.BranchNameTokenRule.BranchNameTokenRule
   nameWithType: BranchNameTokenRule.BranchNameTokenRule
 - uid: SimpleVersion.Rules.BranchNameTokenRule.Instance
@@ -1094,6 +1168,7 @@ references:
   name: Instance
   href: api/SimpleVersion.Rules.BranchNameTokenRule.html#SimpleVersion_Rules_BranchNameTokenRule_Instance_
   commentId: Overload:SimpleVersion.Rules.BranchNameTokenRule.Instance
+  isSpec: "True"
   fullName: SimpleVersion.Rules.BranchNameTokenRule.Instance
   nameWithType: BranchNameTokenRule.Instance
 - uid: SimpleVersion.Rules.BranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.IVersionContext)
@@ -1106,6 +1181,7 @@ references:
   name: ResolveBranchName
   href: api/SimpleVersion.Rules.BranchNameTokenRule.html#SimpleVersion_Rules_BranchNameTokenRule_ResolveBranchName_
   commentId: Overload:SimpleVersion.Rules.BranchNameTokenRule.ResolveBranchName
+  isSpec: "True"
   fullName: SimpleVersion.Rules.BranchNameTokenRule.ResolveBranchName
   nameWithType: BranchNameTokenRule.ResolveBranchName
 - uid: SimpleVersion.Rules.BranchNameTokenRule.Token
@@ -1118,6 +1194,7 @@ references:
   name: Token
   href: api/SimpleVersion.Rules.BranchNameTokenRule.html#SimpleVersion_Rules_BranchNameTokenRule_Token_
   commentId: Overload:SimpleVersion.Rules.BranchNameTokenRule.Token
+  isSpec: "True"
   fullName: SimpleVersion.Rules.BranchNameTokenRule.Token
   nameWithType: BranchNameTokenRule.Token
 - uid: SimpleVersion.Rules.HeightTokenRule
@@ -1142,6 +1219,7 @@ references:
   name: HeightTokenRule
   href: api/SimpleVersion.Rules.HeightTokenRule.html#SimpleVersion_Rules_HeightTokenRule__ctor_
   commentId: Overload:SimpleVersion.Rules.HeightTokenRule.#ctor
+  isSpec: "True"
   fullName: SimpleVersion.Rules.HeightTokenRule.HeightTokenRule
   nameWithType: HeightTokenRule.HeightTokenRule
 - uid: SimpleVersion.Rules.HeightTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
@@ -1157,6 +1235,7 @@ references:
   name: Apply
   href: api/SimpleVersion.Rules.HeightTokenRule.html#SimpleVersion_Rules_HeightTokenRule_Apply_
   commentId: Overload:SimpleVersion.Rules.HeightTokenRule.Apply
+  isSpec: "True"
   fullName: SimpleVersion.Rules.HeightTokenRule.Apply
   nameWithType: HeightTokenRule.Apply
 - uid: SimpleVersion.Rules.HeightTokenRule.Instance
@@ -1169,6 +1248,7 @@ references:
   name: Instance
   href: api/SimpleVersion.Rules.HeightTokenRule.html#SimpleVersion_Rules_HeightTokenRule_Instance_
   commentId: Overload:SimpleVersion.Rules.HeightTokenRule.Instance
+  isSpec: "True"
   fullName: SimpleVersion.Rules.HeightTokenRule.Instance
   nameWithType: HeightTokenRule.Instance
 - uid: SimpleVersion.Rules.HeightTokenRule.Padded
@@ -1181,6 +1261,7 @@ references:
   name: Padded
   href: api/SimpleVersion.Rules.HeightTokenRule.html#SimpleVersion_Rules_HeightTokenRule_Padded_
   commentId: Overload:SimpleVersion.Rules.HeightTokenRule.Padded
+  isSpec: "True"
   fullName: SimpleVersion.Rules.HeightTokenRule.Padded
   nameWithType: HeightTokenRule.Padded
 - uid: SimpleVersion.Rules.HeightTokenRule.Resolve(SimpleVersion.Pipeline.IVersionContext,System.String)
@@ -1193,6 +1274,7 @@ references:
   name: Resolve
   href: api/SimpleVersion.Rules.HeightTokenRule.html#SimpleVersion_Rules_HeightTokenRule_Resolve_
   commentId: Overload:SimpleVersion.Rules.HeightTokenRule.Resolve
+  isSpec: "True"
   fullName: SimpleVersion.Rules.HeightTokenRule.Resolve
   nameWithType: HeightTokenRule.Resolve
 - uid: SimpleVersion.Rules.HeightTokenRule.Token
@@ -1205,6 +1287,7 @@ references:
   name: Token
   href: api/SimpleVersion.Rules.HeightTokenRule.html#SimpleVersion_Rules_HeightTokenRule_Token_
   commentId: Overload:SimpleVersion.Rules.HeightTokenRule.Token
+  isSpec: "True"
   fullName: SimpleVersion.Rules.HeightTokenRule.Token
   nameWithType: HeightTokenRule.Token
 - uid: SimpleVersion.Rules.ITokenRule`1
@@ -1229,6 +1312,7 @@ references:
   name: Apply
   href: api/SimpleVersion.Rules.ITokenRule-1.html#SimpleVersion_Rules_ITokenRule_1_Apply_
   commentId: Overload:SimpleVersion.Rules.ITokenRule`1.Apply
+  isSpec: "True"
   fullName: SimpleVersion.Rules.ITokenRule<T>.Apply
   fullName.vb: SimpleVersion.Rules.ITokenRule(Of T).Apply
   nameWithType: ITokenRule<T>.Apply
@@ -1245,6 +1329,7 @@ references:
   name: Resolve
   href: api/SimpleVersion.Rules.ITokenRule-1.html#SimpleVersion_Rules_ITokenRule_1_Resolve_
   commentId: Overload:SimpleVersion.Rules.ITokenRule`1.Resolve
+  isSpec: "True"
   fullName: SimpleVersion.Rules.ITokenRule<T>.Resolve
   fullName.vb: SimpleVersion.Rules.ITokenRule(Of T).Resolve
   nameWithType: ITokenRule<T>.Resolve
@@ -1261,6 +1346,7 @@ references:
   name: Token
   href: api/SimpleVersion.Rules.ITokenRule-1.html#SimpleVersion_Rules_ITokenRule_1_Token_
   commentId: Overload:SimpleVersion.Rules.ITokenRule`1.Token
+  isSpec: "True"
   fullName: SimpleVersion.Rules.ITokenRule<T>.Token
   fullName.vb: SimpleVersion.Rules.ITokenRule(Of T).Token
   nameWithType: ITokenRule<T>.Token
@@ -1271,18 +1357,6 @@ references:
   commentId: T:SimpleVersion.Rules.PullRequestIdTokenRule
   fullName: SimpleVersion.Rules.PullRequestIdTokenRule
   nameWithType: PullRequestIdTokenRule
-- uid: SimpleVersion.Rules.PullRequestIdTokenRule.#ctor
-  name: PullRequestIdTokenRule()
-  href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule__ctor
-  commentId: M:SimpleVersion.Rules.PullRequestIdTokenRule.#ctor
-  fullName: SimpleVersion.Rules.PullRequestIdTokenRule.PullRequestIdTokenRule()
-  nameWithType: PullRequestIdTokenRule.PullRequestIdTokenRule()
-- uid: SimpleVersion.Rules.PullRequestIdTokenRule.#ctor*
-  name: PullRequestIdTokenRule
-  href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule__ctor_
-  commentId: Overload:SimpleVersion.Rules.PullRequestIdTokenRule.#ctor
-  fullName: SimpleVersion.Rules.PullRequestIdTokenRule.PullRequestIdTokenRule
-  nameWithType: PullRequestIdTokenRule.PullRequestIdTokenRule
 - uid: SimpleVersion.Rules.PullRequestIdTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
   name: Apply(IVersionContext, IEnumerable<String>)
   href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule_Apply_SimpleVersion_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_System_String__
@@ -1296,6 +1370,7 @@ references:
   name: Apply
   href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule_Apply_
   commentId: Overload:SimpleVersion.Rules.PullRequestIdTokenRule.Apply
+  isSpec: "True"
   fullName: SimpleVersion.Rules.PullRequestIdTokenRule.Apply
   nameWithType: PullRequestIdTokenRule.Apply
 - uid: SimpleVersion.Rules.PullRequestIdTokenRule.Instance
@@ -1308,6 +1383,7 @@ references:
   name: Instance
   href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule_Instance_
   commentId: Overload:SimpleVersion.Rules.PullRequestIdTokenRule.Instance
+  isSpec: "True"
   fullName: SimpleVersion.Rules.PullRequestIdTokenRule.Instance
   nameWithType: PullRequestIdTokenRule.Instance
 - uid: SimpleVersion.Rules.PullRequestIdTokenRule.Resolve(SimpleVersion.Pipeline.IVersionContext,System.String)
@@ -1320,6 +1396,7 @@ references:
   name: Resolve
   href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule_Resolve_
   commentId: Overload:SimpleVersion.Rules.PullRequestIdTokenRule.Resolve
+  isSpec: "True"
   fullName: SimpleVersion.Rules.PullRequestIdTokenRule.Resolve
   nameWithType: PullRequestIdTokenRule.Resolve
 - uid: SimpleVersion.Rules.PullRequestIdTokenRule.Token
@@ -1332,6 +1409,7 @@ references:
   name: Token
   href: api/SimpleVersion.Rules.PullRequestIdTokenRule.html#SimpleVersion_Rules_PullRequestIdTokenRule_Token_
   commentId: Overload:SimpleVersion.Rules.PullRequestIdTokenRule.Token
+  isSpec: "True"
   fullName: SimpleVersion.Rules.PullRequestIdTokenRule.Token
   nameWithType: PullRequestIdTokenRule.Token
 - uid: SimpleVersion.Rules.ShortBranchNameTokenRule
@@ -1356,6 +1434,7 @@ references:
   name: ShortBranchNameTokenRule
   href: api/SimpleVersion.Rules.ShortBranchNameTokenRule.html#SimpleVersion_Rules_ShortBranchNameTokenRule__ctor_
   commentId: Overload:SimpleVersion.Rules.ShortBranchNameTokenRule.#ctor
+  isSpec: "True"
   fullName: SimpleVersion.Rules.ShortBranchNameTokenRule.ShortBranchNameTokenRule
   nameWithType: ShortBranchNameTokenRule.ShortBranchNameTokenRule
 - uid: SimpleVersion.Rules.ShortBranchNameTokenRule.Instance
@@ -1368,6 +1447,7 @@ references:
   name: Instance
   href: api/SimpleVersion.Rules.ShortBranchNameTokenRule.html#SimpleVersion_Rules_ShortBranchNameTokenRule_Instance_
   commentId: Overload:SimpleVersion.Rules.ShortBranchNameTokenRule.Instance
+  isSpec: "True"
   fullName: SimpleVersion.Rules.ShortBranchNameTokenRule.Instance
   nameWithType: ShortBranchNameTokenRule.Instance
 - uid: SimpleVersion.Rules.ShortBranchNameTokenRule.ResolveBranchName(SimpleVersion.Pipeline.IVersionContext)
@@ -1380,6 +1460,7 @@ references:
   name: ResolveBranchName
   href: api/SimpleVersion.Rules.ShortBranchNameTokenRule.html#SimpleVersion_Rules_ShortBranchNameTokenRule_ResolveBranchName_
   commentId: Overload:SimpleVersion.Rules.ShortBranchNameTokenRule.ResolveBranchName
+  isSpec: "True"
   fullName: SimpleVersion.Rules.ShortBranchNameTokenRule.ResolveBranchName
   nameWithType: ShortBranchNameTokenRule.ResolveBranchName
 - uid: SimpleVersion.Rules.ShortBranchNameTokenRule.Token
@@ -1392,6 +1473,7 @@ references:
   name: Token
   href: api/SimpleVersion.Rules.ShortBranchNameTokenRule.html#SimpleVersion_Rules_ShortBranchNameTokenRule_Token_
   commentId: Overload:SimpleVersion.Rules.ShortBranchNameTokenRule.Token
+  isSpec: "True"
   fullName: SimpleVersion.Rules.ShortBranchNameTokenRule.Token
   nameWithType: ShortBranchNameTokenRule.Token
 - uid: SimpleVersion.Rules.ShortShaTokenRule
@@ -1400,18 +1482,6 @@ references:
   commentId: T:SimpleVersion.Rules.ShortShaTokenRule
   fullName: SimpleVersion.Rules.ShortShaTokenRule
   nameWithType: ShortShaTokenRule
-- uid: SimpleVersion.Rules.ShortShaTokenRule.#ctor
-  name: ShortShaTokenRule()
-  href: api/SimpleVersion.Rules.ShortShaTokenRule.html#SimpleVersion_Rules_ShortShaTokenRule__ctor
-  commentId: M:SimpleVersion.Rules.ShortShaTokenRule.#ctor
-  fullName: SimpleVersion.Rules.ShortShaTokenRule.ShortShaTokenRule()
-  nameWithType: ShortShaTokenRule.ShortShaTokenRule()
-- uid: SimpleVersion.Rules.ShortShaTokenRule.#ctor*
-  name: ShortShaTokenRule
-  href: api/SimpleVersion.Rules.ShortShaTokenRule.html#SimpleVersion_Rules_ShortShaTokenRule__ctor_
-  commentId: Overload:SimpleVersion.Rules.ShortShaTokenRule.#ctor
-  fullName: SimpleVersion.Rules.ShortShaTokenRule.ShortShaTokenRule
-  nameWithType: ShortShaTokenRule.ShortShaTokenRule
 - uid: SimpleVersion.Rules.ShortShaTokenRule.Apply(SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{System.String})
   name: Apply(IVersionContext, IEnumerable<String>)
   href: api/SimpleVersion.Rules.ShortShaTokenRule.html#SimpleVersion_Rules_ShortShaTokenRule_Apply_SimpleVersion_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_System_String__
@@ -1425,6 +1495,7 @@ references:
   name: Apply
   href: api/SimpleVersion.Rules.ShortShaTokenRule.html#SimpleVersion_Rules_ShortShaTokenRule_Apply_
   commentId: Overload:SimpleVersion.Rules.ShortShaTokenRule.Apply
+  isSpec: "True"
   fullName: SimpleVersion.Rules.ShortShaTokenRule.Apply
   nameWithType: ShortShaTokenRule.Apply
 - uid: SimpleVersion.Rules.ShortShaTokenRule.Instance
@@ -1437,6 +1508,7 @@ references:
   name: Instance
   href: api/SimpleVersion.Rules.ShortShaTokenRule.html#SimpleVersion_Rules_ShortShaTokenRule_Instance_
   commentId: Overload:SimpleVersion.Rules.ShortShaTokenRule.Instance
+  isSpec: "True"
   fullName: SimpleVersion.Rules.ShortShaTokenRule.Instance
   nameWithType: ShortShaTokenRule.Instance
 - uid: SimpleVersion.Rules.ShortShaTokenRule.Resolve(SimpleVersion.Pipeline.IVersionContext,System.String)
@@ -1449,6 +1521,7 @@ references:
   name: Resolve
   href: api/SimpleVersion.Rules.ShortShaTokenRule.html#SimpleVersion_Rules_ShortShaTokenRule_Resolve_
   commentId: Overload:SimpleVersion.Rules.ShortShaTokenRule.Resolve
+  isSpec: "True"
   fullName: SimpleVersion.Rules.ShortShaTokenRule.Resolve
   nameWithType: ShortShaTokenRule.Resolve
 - uid: SimpleVersion.Rules.ShortShaTokenRule.Token
@@ -1461,6 +1534,7 @@ references:
   name: Token
   href: api/SimpleVersion.Rules.ShortShaTokenRule.html#SimpleVersion_Rules_ShortShaTokenRule_Token_
   commentId: Overload:SimpleVersion.Rules.ShortShaTokenRule.Token
+  isSpec: "True"
   fullName: SimpleVersion.Rules.ShortShaTokenRule.Token
   nameWithType: ShortShaTokenRule.Token
 - uid: SimpleVersion.Rules.TokenRuleExtensions
@@ -1473,6 +1547,7 @@ references:
   name: ApplyTokenRules
   href: api/SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ApplyTokenRules_
   commentId: Overload:SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules
+  isSpec: "True"
   fullName: SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules
   nameWithType: TokenRuleExtensions.ApplyTokenRules
 - uid: SimpleVersion.Rules.TokenRuleExtensions.ApplyTokenRules``1(System.Collections.Generic.IEnumerable{``0},SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Rules.ITokenRule{``0}})
@@ -1488,6 +1563,7 @@ references:
   name: ResolveTokenRules
   href: api/SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules_
   commentId: Overload:SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules
+  isSpec: "True"
   fullName: SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules
   nameWithType: TokenRuleExtensions.ResolveTokenRules
 - uid: SimpleVersion.Rules.TokenRuleExtensions.ResolveTokenRules``1(``0,SimpleVersion.Pipeline.IVersionContext,System.Collections.Generic.IEnumerable{SimpleVersion.Rules.ITokenRule{``0}})
@@ -1517,18 +1593,6 @@ references:
   commentId: T:SimpleVersion.Serialization.Converters.DictionaryConverter
   fullName: SimpleVersion.Serialization.Converters.DictionaryConverter
   nameWithType: DictionaryConverter
-- uid: SimpleVersion.Serialization.Converters.DictionaryConverter.#ctor
-  name: DictionaryConverter()
-  href: api/SimpleVersion.Serialization.Converters.DictionaryConverter.html#SimpleVersion_Serialization_Converters_DictionaryConverter__ctor
-  commentId: M:SimpleVersion.Serialization.Converters.DictionaryConverter.#ctor
-  fullName: SimpleVersion.Serialization.Converters.DictionaryConverter.DictionaryConverter()
-  nameWithType: DictionaryConverter.DictionaryConverter()
-- uid: SimpleVersion.Serialization.Converters.DictionaryConverter.#ctor*
-  name: DictionaryConverter
-  href: api/SimpleVersion.Serialization.Converters.DictionaryConverter.html#SimpleVersion_Serialization_Converters_DictionaryConverter__ctor_
-  commentId: Overload:SimpleVersion.Serialization.Converters.DictionaryConverter.#ctor
-  fullName: SimpleVersion.Serialization.Converters.DictionaryConverter.DictionaryConverter
-  nameWithType: DictionaryConverter.DictionaryConverter
 - uid: SimpleVersion.Serialization.Converters.DictionaryConverter.CanConvert(System.Type)
   name: CanConvert(Type)
   href: api/SimpleVersion.Serialization.Converters.DictionaryConverter.html#SimpleVersion_Serialization_Converters_DictionaryConverter_CanConvert_System_Type_
@@ -1539,6 +1603,7 @@ references:
   name: CanConvert
   href: api/SimpleVersion.Serialization.Converters.DictionaryConverter.html#SimpleVersion_Serialization_Converters_DictionaryConverter_CanConvert_
   commentId: Overload:SimpleVersion.Serialization.Converters.DictionaryConverter.CanConvert
+  isSpec: "True"
   fullName: SimpleVersion.Serialization.Converters.DictionaryConverter.CanConvert
   nameWithType: DictionaryConverter.CanConvert
 - uid: SimpleVersion.Serialization.Converters.DictionaryConverter.CreateConverter(System.Type,System.Text.Json.JsonSerializerOptions)
@@ -1551,6 +1616,7 @@ references:
   name: CreateConverter
   href: api/SimpleVersion.Serialization.Converters.DictionaryConverter.html#SimpleVersion_Serialization_Converters_DictionaryConverter_CreateConverter_
   commentId: Overload:SimpleVersion.Serialization.Converters.DictionaryConverter.CreateConverter
+  isSpec: "True"
   fullName: SimpleVersion.Serialization.Converters.DictionaryConverter.CreateConverter
   nameWithType: DictionaryConverter.CreateConverter
 - uid: SimpleVersion.Serialization.Converters.DictionaryConverter`2
@@ -1562,22 +1628,6 @@ references:
   fullName.vb: SimpleVersion.Serialization.Converters.DictionaryConverter(Of TKey, TValue)
   nameWithType: DictionaryConverter<TKey, TValue>
   nameWithType.vb: DictionaryConverter(Of TKey, TValue)
-- uid: SimpleVersion.Serialization.Converters.DictionaryConverter`2.#ctor
-  name: DictionaryConverter()
-  href: api/SimpleVersion.Serialization.Converters.DictionaryConverter-2.html#SimpleVersion_Serialization_Converters_DictionaryConverter_2__ctor
-  commentId: M:SimpleVersion.Serialization.Converters.DictionaryConverter`2.#ctor
-  fullName: SimpleVersion.Serialization.Converters.DictionaryConverter<TKey, TValue>.DictionaryConverter()
-  fullName.vb: SimpleVersion.Serialization.Converters.DictionaryConverter(Of TKey, TValue).DictionaryConverter()
-  nameWithType: DictionaryConverter<TKey, TValue>.DictionaryConverter()
-  nameWithType.vb: DictionaryConverter(Of TKey, TValue).DictionaryConverter()
-- uid: SimpleVersion.Serialization.Converters.DictionaryConverter`2.#ctor*
-  name: DictionaryConverter
-  href: api/SimpleVersion.Serialization.Converters.DictionaryConverter-2.html#SimpleVersion_Serialization_Converters_DictionaryConverter_2__ctor_
-  commentId: Overload:SimpleVersion.Serialization.Converters.DictionaryConverter`2.#ctor
-  fullName: SimpleVersion.Serialization.Converters.DictionaryConverter<TKey, TValue>.DictionaryConverter
-  fullName.vb: SimpleVersion.Serialization.Converters.DictionaryConverter(Of TKey, TValue).DictionaryConverter
-  nameWithType: DictionaryConverter<TKey, TValue>.DictionaryConverter
-  nameWithType.vb: DictionaryConverter(Of TKey, TValue).DictionaryConverter
 - uid: SimpleVersion.Serialization.Converters.DictionaryConverter`2.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
   name: Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
   href: api/SimpleVersion.Serialization.Converters.DictionaryConverter-2.html#SimpleVersion_Serialization_Converters_DictionaryConverter_2_Read_System_Text_Json_Utf8JsonReader__System_Type_System_Text_Json_JsonSerializerOptions_
@@ -1591,6 +1641,7 @@ references:
   name: Read
   href: api/SimpleVersion.Serialization.Converters.DictionaryConverter-2.html#SimpleVersion_Serialization_Converters_DictionaryConverter_2_Read_
   commentId: Overload:SimpleVersion.Serialization.Converters.DictionaryConverter`2.Read
+  isSpec: "True"
   fullName: SimpleVersion.Serialization.Converters.DictionaryConverter<TKey, TValue>.Read
   fullName.vb: SimpleVersion.Serialization.Converters.DictionaryConverter(Of TKey, TValue).Read
   nameWithType: DictionaryConverter<TKey, TValue>.Read
@@ -1608,6 +1659,7 @@ references:
   name: Write
   href: api/SimpleVersion.Serialization.Converters.DictionaryConverter-2.html#SimpleVersion_Serialization_Converters_DictionaryConverter_2_Write_
   commentId: Overload:SimpleVersion.Serialization.Converters.DictionaryConverter`2.Write
+  isSpec: "True"
   fullName: SimpleVersion.Serialization.Converters.DictionaryConverter<TKey, TValue>.Write
   fullName.vb: SimpleVersion.Serialization.Converters.DictionaryConverter(Of TKey, TValue).Write
   nameWithType: DictionaryConverter<TKey, TValue>.Write
@@ -1618,18 +1670,6 @@ references:
   commentId: T:SimpleVersion.Serialization.Converters.IntConverter
   fullName: SimpleVersion.Serialization.Converters.IntConverter
   nameWithType: IntConverter
-- uid: SimpleVersion.Serialization.Converters.IntConverter.#ctor
-  name: IntConverter()
-  href: api/SimpleVersion.Serialization.Converters.IntConverter.html#SimpleVersion_Serialization_Converters_IntConverter__ctor
-  commentId: M:SimpleVersion.Serialization.Converters.IntConverter.#ctor
-  fullName: SimpleVersion.Serialization.Converters.IntConverter.IntConverter()
-  nameWithType: IntConverter.IntConverter()
-- uid: SimpleVersion.Serialization.Converters.IntConverter.#ctor*
-  name: IntConverter
-  href: api/SimpleVersion.Serialization.Converters.IntConverter.html#SimpleVersion_Serialization_Converters_IntConverter__ctor_
-  commentId: Overload:SimpleVersion.Serialization.Converters.IntConverter.#ctor
-  fullName: SimpleVersion.Serialization.Converters.IntConverter.IntConverter
-  nameWithType: IntConverter.IntConverter
 - uid: SimpleVersion.Serialization.Converters.IntConverter.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)
   name: Read(ref Utf8JsonReader, Type, JsonSerializerOptions)
   href: api/SimpleVersion.Serialization.Converters.IntConverter.html#SimpleVersion_Serialization_Converters_IntConverter_Read_System_Text_Json_Utf8JsonReader__System_Type_System_Text_Json_JsonSerializerOptions_
@@ -1643,6 +1683,7 @@ references:
   name: Read
   href: api/SimpleVersion.Serialization.Converters.IntConverter.html#SimpleVersion_Serialization_Converters_IntConverter_Read_
   commentId: Overload:SimpleVersion.Serialization.Converters.IntConverter.Read
+  isSpec: "True"
   fullName: SimpleVersion.Serialization.Converters.IntConverter.Read
   nameWithType: IntConverter.Read
 - uid: SimpleVersion.Serialization.Converters.IntConverter.Write(System.Text.Json.Utf8JsonWriter,System.Int32,System.Text.Json.JsonSerializerOptions)
@@ -1655,6 +1696,7 @@ references:
   name: Write
   href: api/SimpleVersion.Serialization.Converters.IntConverter.html#SimpleVersion_Serialization_Converters_IntConverter_Write_
   commentId: Overload:SimpleVersion.Serialization.Converters.IntConverter.Write
+  isSpec: "True"
   fullName: SimpleVersion.Serialization.Converters.IntConverter.Write
   nameWithType: IntConverter.Write
 - uid: SimpleVersion.Serialization.Serializer
@@ -1667,6 +1709,7 @@ references:
   name: Deserialize
   href: api/SimpleVersion.Serialization.Serializer.html#SimpleVersion_Serialization_Serializer_Deserialize_
   commentId: Overload:SimpleVersion.Serialization.Serializer.Deserialize
+  isSpec: "True"
   fullName: SimpleVersion.Serialization.Serializer.Deserialize
   nameWithType: Serializer.Deserialize
 - uid: SimpleVersion.Serialization.Serializer.Deserialize``1(System.String)
@@ -1688,6 +1731,7 @@ references:
   name: Serialize
   href: api/SimpleVersion.Serialization.Serializer.html#SimpleVersion_Serialization_Serializer_Serialize_
   commentId: Overload:SimpleVersion.Serialization.Serializer.Serialize
+  isSpec: "True"
   fullName: SimpleVersion.Serialization.Serializer.Serialize
   nameWithType: Serializer.Serialize
 - uid: SimpleVersion.Tool
@@ -1702,18 +1746,6 @@ references:
   commentId: T:SimpleVersion.Tool.Program
   fullName: SimpleVersion.Tool.Program
   nameWithType: Program
-- uid: SimpleVersion.Tool.Program.#ctor
-  name: Program()
-  href: api/SimpleVersion.Tool.Program.html#SimpleVersion_Tool_Program__ctor
-  commentId: M:SimpleVersion.Tool.Program.#ctor
-  fullName: SimpleVersion.Tool.Program.Program()
-  nameWithType: Program.Program()
-- uid: SimpleVersion.Tool.Program.#ctor*
-  name: Program
-  href: api/SimpleVersion.Tool.Program.html#SimpleVersion_Tool_Program__ctor_
-  commentId: Overload:SimpleVersion.Tool.Program.#ctor
-  fullName: SimpleVersion.Tool.Program.Program
-  nameWithType: Program.Program
 - uid: SimpleVersion.Tool.Program.Main(System.String[])
   name: Main(String[])
   href: api/SimpleVersion.Tool.Program.html#SimpleVersion_Tool_Program_Main_System_String___
@@ -1727,6 +1759,7 @@ references:
   name: Main
   href: api/SimpleVersion.Tool.Program.html#SimpleVersion_Tool_Program_Main_
   commentId: Overload:SimpleVersion.Tool.Program.Main
+  isSpec: "True"
   fullName: SimpleVersion.Tool.Program.Main
   nameWithType: Program.Main
 - uid: SimpleVersion.VersionCalculator
@@ -1735,69 +1768,256 @@ references:
   commentId: T:SimpleVersion.VersionCalculator
   fullName: SimpleVersion.VersionCalculator
   nameWithType: VersionCalculator
-- uid: SimpleVersion.VersionCalculator.#ctor
-  name: VersionCalculator()
-  href: api/SimpleVersion.VersionCalculator.html#SimpleVersion_VersionCalculator__ctor
-  commentId: M:SimpleVersion.VersionCalculator.#ctor
-  fullName: SimpleVersion.VersionCalculator.VersionCalculator()
-  nameWithType: VersionCalculator.VersionCalculator()
+- uid: SimpleVersion.VersionCalculator.#ctor(System.String)
+  name: VersionCalculator(String)
+  href: api/SimpleVersion.VersionCalculator.html#SimpleVersion_VersionCalculator__ctor_System_String_
+  commentId: M:SimpleVersion.VersionCalculator.#ctor(System.String)
+  fullName: SimpleVersion.VersionCalculator.VersionCalculator(System.String)
+  nameWithType: VersionCalculator.VersionCalculator(String)
 - uid: SimpleVersion.VersionCalculator.#ctor*
   name: VersionCalculator
   href: api/SimpleVersion.VersionCalculator.html#SimpleVersion_VersionCalculator__ctor_
   commentId: Overload:SimpleVersion.VersionCalculator.#ctor
+  isSpec: "True"
   fullName: SimpleVersion.VersionCalculator.VersionCalculator
   nameWithType: VersionCalculator.VersionCalculator
-- uid: SimpleVersion.VersionCalculator.Default
-  name: Default()
-  href: api/SimpleVersion.VersionCalculator.html#SimpleVersion_VersionCalculator_Default
-  commentId: M:SimpleVersion.VersionCalculator.Default
-  fullName: SimpleVersion.VersionCalculator.Default()
-  nameWithType: VersionCalculator.Default()
-- uid: SimpleVersion.VersionCalculator.Default*
-  name: Default
-  href: api/SimpleVersion.VersionCalculator.html#SimpleVersion_VersionCalculator_Default_
-  commentId: Overload:SimpleVersion.VersionCalculator.Default
-  fullName: SimpleVersion.VersionCalculator.Default
-  nameWithType: VersionCalculator.Default
-- uid: SimpleVersion.VersionCalculator.GetResult(System.String)
-  name: GetResult(String)
-  href: api/SimpleVersion.VersionCalculator.html#SimpleVersion_VersionCalculator_GetResult_System_String_
-  commentId: M:SimpleVersion.VersionCalculator.GetResult(System.String)
-  fullName: SimpleVersion.VersionCalculator.GetResult(System.String)
-  nameWithType: VersionCalculator.GetResult(String)
+- uid: SimpleVersion.VersionCalculator.GetResult
+  name: GetResult()
+  href: api/SimpleVersion.VersionCalculator.html#SimpleVersion_VersionCalculator_GetResult
+  commentId: M:SimpleVersion.VersionCalculator.GetResult
+  fullName: SimpleVersion.VersionCalculator.GetResult()
+  nameWithType: VersionCalculator.GetResult()
 - uid: SimpleVersion.VersionCalculator.GetResult*
   name: GetResult
   href: api/SimpleVersion.VersionCalculator.html#SimpleVersion_VersionCalculator_GetResult_
   commentId: Overload:SimpleVersion.VersionCalculator.GetResult
+  isSpec: "True"
   fullName: SimpleVersion.VersionCalculator.GetResult
   nameWithType: VersionCalculator.GetResult
-- uid: SimpleVersion.VersioningEnvironment
-  name: VersioningEnvironment
-  href: api/SimpleVersion.VersioningEnvironment.html
-  commentId: T:SimpleVersion.VersioningEnvironment
-  fullName: SimpleVersion.VersioningEnvironment
-  nameWithType: VersioningEnvironment
-- uid: SimpleVersion.VersioningEnvironment.#ctor
-  name: VersioningEnvironment()
-  href: api/SimpleVersion.VersioningEnvironment.html#SimpleVersion_VersioningEnvironment__ctor
-  commentId: M:SimpleVersion.VersioningEnvironment.#ctor
-  fullName: SimpleVersion.VersioningEnvironment.VersioningEnvironment()
-  nameWithType: VersioningEnvironment.VersioningEnvironment()
-- uid: SimpleVersion.VersioningEnvironment.#ctor*
-  name: VersioningEnvironment
-  href: api/SimpleVersion.VersioningEnvironment.html#SimpleVersion_VersioningEnvironment__ctor_
-  commentId: Overload:SimpleVersion.VersioningEnvironment.#ctor
-  fullName: SimpleVersion.VersioningEnvironment.VersioningEnvironment
-  nameWithType: VersioningEnvironment.VersioningEnvironment
-- uid: SimpleVersion.VersioningEnvironment.GetVariable(System.String)
-  name: GetVariable(String)
-  href: api/SimpleVersion.VersioningEnvironment.html#SimpleVersion_VersioningEnvironment_GetVariable_System_String_
-  commentId: M:SimpleVersion.VersioningEnvironment.GetVariable(System.String)
-  fullName: SimpleVersion.VersioningEnvironment.GetVariable(System.String)
-  nameWithType: VersioningEnvironment.GetVariable(String)
-- uid: SimpleVersion.VersioningEnvironment.GetVariable*
-  name: GetVariable
-  href: api/SimpleVersion.VersioningEnvironment.html#SimpleVersion_VersioningEnvironment_GetVariable_
-  commentId: Overload:SimpleVersion.VersioningEnvironment.GetVariable
-  fullName: SimpleVersion.VersioningEnvironment.GetVariable
-  nameWithType: VersioningEnvironment.GetVariable
+- uid: SimpleVersion.VersionCalculator.WriteResult(System.IO.TextWriter)
+  name: WriteResult(TextWriter)
+  href: api/SimpleVersion.VersionCalculator.html#SimpleVersion_VersionCalculator_WriteResult_System_IO_TextWriter_
+  commentId: M:SimpleVersion.VersionCalculator.WriteResult(System.IO.TextWriter)
+  fullName: SimpleVersion.VersionCalculator.WriteResult(System.IO.TextWriter)
+  nameWithType: VersionCalculator.WriteResult(TextWriter)
+- uid: SimpleVersion.VersionCalculator.WriteResult*
+  name: WriteResult
+  href: api/SimpleVersion.VersionCalculator.html#SimpleVersion_VersionCalculator_WriteResult_
+  commentId: Overload:SimpleVersion.VersionCalculator.WriteResult
+  isSpec: "True"
+  fullName: SimpleVersion.VersionCalculator.WriteResult
+  nameWithType: VersionCalculator.WriteResult
+- uid: SimpleVersion.VersionResult
+  name: VersionResult
+  href: api/SimpleVersion.VersionResult.html
+  commentId: T:SimpleVersion.VersionResult
+  fullName: SimpleVersion.VersionResult
+  nameWithType: VersionResult
+- uid: SimpleVersion.VersionResult.BranchName
+  name: BranchName
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_BranchName
+  commentId: P:SimpleVersion.VersionResult.BranchName
+  fullName: SimpleVersion.VersionResult.BranchName
+  nameWithType: VersionResult.BranchName
+- uid: SimpleVersion.VersionResult.BranchName*
+  name: BranchName
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_BranchName_
+  commentId: Overload:SimpleVersion.VersionResult.BranchName
+  isSpec: "True"
+  fullName: SimpleVersion.VersionResult.BranchName
+  nameWithType: VersionResult.BranchName
+- uid: SimpleVersion.VersionResult.CanonicalBranchName
+  name: CanonicalBranchName
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_CanonicalBranchName
+  commentId: P:SimpleVersion.VersionResult.CanonicalBranchName
+  fullName: SimpleVersion.VersionResult.CanonicalBranchName
+  nameWithType: VersionResult.CanonicalBranchName
+- uid: SimpleVersion.VersionResult.CanonicalBranchName*
+  name: CanonicalBranchName
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_CanonicalBranchName_
+  commentId: Overload:SimpleVersion.VersionResult.CanonicalBranchName
+  isSpec: "True"
+  fullName: SimpleVersion.VersionResult.CanonicalBranchName
+  nameWithType: VersionResult.CanonicalBranchName
+- uid: SimpleVersion.VersionResult.Formats
+  name: Formats
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_Formats
+  commentId: P:SimpleVersion.VersionResult.Formats
+  fullName: SimpleVersion.VersionResult.Formats
+  nameWithType: VersionResult.Formats
+- uid: SimpleVersion.VersionResult.Formats*
+  name: Formats
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_Formats_
+  commentId: Overload:SimpleVersion.VersionResult.Formats
+  isSpec: "True"
+  fullName: SimpleVersion.VersionResult.Formats
+  nameWithType: VersionResult.Formats
+- uid: SimpleVersion.VersionResult.Height
+  name: Height
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_Height
+  commentId: P:SimpleVersion.VersionResult.Height
+  fullName: SimpleVersion.VersionResult.Height
+  nameWithType: VersionResult.Height
+- uid: SimpleVersion.VersionResult.Height*
+  name: Height
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_Height_
+  commentId: Overload:SimpleVersion.VersionResult.Height
+  isSpec: "True"
+  fullName: SimpleVersion.VersionResult.Height
+  nameWithType: VersionResult.Height
+- uid: SimpleVersion.VersionResult.HeightPadded
+  name: HeightPadded
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_HeightPadded
+  commentId: P:SimpleVersion.VersionResult.HeightPadded
+  fullName: SimpleVersion.VersionResult.HeightPadded
+  nameWithType: VersionResult.HeightPadded
+- uid: SimpleVersion.VersionResult.HeightPadded*
+  name: HeightPadded
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_HeightPadded_
+  commentId: Overload:SimpleVersion.VersionResult.HeightPadded
+  isSpec: "True"
+  fullName: SimpleVersion.VersionResult.HeightPadded
+  nameWithType: VersionResult.HeightPadded
+- uid: SimpleVersion.VersionResult.IsPullRequest
+  name: IsPullRequest
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_IsPullRequest
+  commentId: P:SimpleVersion.VersionResult.IsPullRequest
+  fullName: SimpleVersion.VersionResult.IsPullRequest
+  nameWithType: VersionResult.IsPullRequest
+- uid: SimpleVersion.VersionResult.IsPullRequest*
+  name: IsPullRequest
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_IsPullRequest_
+  commentId: Overload:SimpleVersion.VersionResult.IsPullRequest
+  isSpec: "True"
+  fullName: SimpleVersion.VersionResult.IsPullRequest
+  nameWithType: VersionResult.IsPullRequest
+- uid: SimpleVersion.VersionResult.IsRelease
+  name: IsRelease
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_IsRelease
+  commentId: P:SimpleVersion.VersionResult.IsRelease
+  fullName: SimpleVersion.VersionResult.IsRelease
+  nameWithType: VersionResult.IsRelease
+- uid: SimpleVersion.VersionResult.IsRelease*
+  name: IsRelease
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_IsRelease_
+  commentId: Overload:SimpleVersion.VersionResult.IsRelease
+  isSpec: "True"
+  fullName: SimpleVersion.VersionResult.IsRelease
+  nameWithType: VersionResult.IsRelease
+- uid: SimpleVersion.VersionResult.Major
+  name: Major
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_Major
+  commentId: P:SimpleVersion.VersionResult.Major
+  fullName: SimpleVersion.VersionResult.Major
+  nameWithType: VersionResult.Major
+- uid: SimpleVersion.VersionResult.Major*
+  name: Major
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_Major_
+  commentId: Overload:SimpleVersion.VersionResult.Major
+  isSpec: "True"
+  fullName: SimpleVersion.VersionResult.Major
+  nameWithType: VersionResult.Major
+- uid: SimpleVersion.VersionResult.Minor
+  name: Minor
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_Minor
+  commentId: P:SimpleVersion.VersionResult.Minor
+  fullName: SimpleVersion.VersionResult.Minor
+  nameWithType: VersionResult.Minor
+- uid: SimpleVersion.VersionResult.Minor*
+  name: Minor
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_Minor_
+  commentId: Overload:SimpleVersion.VersionResult.Minor
+  isSpec: "True"
+  fullName: SimpleVersion.VersionResult.Minor
+  nameWithType: VersionResult.Minor
+- uid: SimpleVersion.VersionResult.Patch
+  name: Patch
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_Patch
+  commentId: P:SimpleVersion.VersionResult.Patch
+  fullName: SimpleVersion.VersionResult.Patch
+  nameWithType: VersionResult.Patch
+- uid: SimpleVersion.VersionResult.Patch*
+  name: Patch
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_Patch_
+  commentId: Overload:SimpleVersion.VersionResult.Patch
+  isSpec: "True"
+  fullName: SimpleVersion.VersionResult.Patch
+  nameWithType: VersionResult.Patch
+- uid: SimpleVersion.VersionResult.PullRequestNumber
+  name: PullRequestNumber
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_PullRequestNumber
+  commentId: P:SimpleVersion.VersionResult.PullRequestNumber
+  fullName: SimpleVersion.VersionResult.PullRequestNumber
+  nameWithType: VersionResult.PullRequestNumber
+- uid: SimpleVersion.VersionResult.PullRequestNumber*
+  name: PullRequestNumber
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_PullRequestNumber_
+  commentId: Overload:SimpleVersion.VersionResult.PullRequestNumber
+  isSpec: "True"
+  fullName: SimpleVersion.VersionResult.PullRequestNumber
+  nameWithType: VersionResult.PullRequestNumber
+- uid: SimpleVersion.VersionResult.RepositoryPath
+  name: RepositoryPath
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_RepositoryPath
+  commentId: P:SimpleVersion.VersionResult.RepositoryPath
+  fullName: SimpleVersion.VersionResult.RepositoryPath
+  nameWithType: VersionResult.RepositoryPath
+- uid: SimpleVersion.VersionResult.RepositoryPath*
+  name: RepositoryPath
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_RepositoryPath_
+  commentId: Overload:SimpleVersion.VersionResult.RepositoryPath
+  isSpec: "True"
+  fullName: SimpleVersion.VersionResult.RepositoryPath
+  nameWithType: VersionResult.RepositoryPath
+- uid: SimpleVersion.VersionResult.Revision
+  name: Revision
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_Revision
+  commentId: P:SimpleVersion.VersionResult.Revision
+  fullName: SimpleVersion.VersionResult.Revision
+  nameWithType: VersionResult.Revision
+- uid: SimpleVersion.VersionResult.Revision*
+  name: Revision
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_Revision_
+  commentId: Overload:SimpleVersion.VersionResult.Revision
+  isSpec: "True"
+  fullName: SimpleVersion.VersionResult.Revision
+  nameWithType: VersionResult.Revision
+- uid: SimpleVersion.VersionResult.Sha
+  name: Sha
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_Sha
+  commentId: P:SimpleVersion.VersionResult.Sha
+  fullName: SimpleVersion.VersionResult.Sha
+  nameWithType: VersionResult.Sha
+- uid: SimpleVersion.VersionResult.Sha*
+  name: Sha
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_Sha_
+  commentId: Overload:SimpleVersion.VersionResult.Sha
+  isSpec: "True"
+  fullName: SimpleVersion.VersionResult.Sha
+  nameWithType: VersionResult.Sha
+- uid: SimpleVersion.VersionResult.Sha7
+  name: Sha7
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_Sha7
+  commentId: P:SimpleVersion.VersionResult.Sha7
+  fullName: SimpleVersion.VersionResult.Sha7
+  nameWithType: VersionResult.Sha7
+- uid: SimpleVersion.VersionResult.Sha7*
+  name: Sha7
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_Sha7_
+  commentId: Overload:SimpleVersion.VersionResult.Sha7
+  isSpec: "True"
+  fullName: SimpleVersion.VersionResult.Sha7
+  nameWithType: VersionResult.Sha7
+- uid: SimpleVersion.VersionResult.Version
+  name: Version
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_Version
+  commentId: P:SimpleVersion.VersionResult.Version
+  fullName: SimpleVersion.VersionResult.Version
+  nameWithType: VersionResult.Version
+- uid: SimpleVersion.VersionResult.Version*
+  name: Version
+  href: api/SimpleVersion.VersionResult.html#SimpleVersion_VersionResult_Version_
+  commentId: Overload:SimpleVersion.VersionResult.Version
+  isSpec: "True"
+  fullName: SimpleVersion.VersionResult.Version
+  nameWithType: VersionResult.Version

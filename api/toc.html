@@ -4,6 +4,7 @@
     <div class="sidefilter">
       <form class="toc-filter">
         <span class="glyphicon glyphicon-filter filter-icon"></span>
+        <span class="glyphicon glyphicon-remove clear-icon" id="toc_filter_clear"></span>
         <input type="text" id="toc_filter_input" placeholder="Enter here to filter..." onkeypress="if(event.keyCode==13) {return false;}">
       </form>
     </div>
@@ -20,16 +21,22 @@
                               <a href="SimpleVersion.Constants.html" name="" title="Constants">Constants</a>
                           </li>
                           <li>
-                              <a href="SimpleVersion.IEnvironment.html" name="" title="IEnvironment">IEnvironment</a>
+                              <a href="SimpleVersion.GitVersionRepository.html" name="" title="GitVersionRepository">GitVersionRepository</a>
+                          </li>
+                          <li>
+                              <a href="SimpleVersion.ISerializer.html" name="" title="ISerializer">ISerializer</a>
                           </li>
                           <li>
                               <a href="SimpleVersion.IVersionCalculator.html" name="" title="IVersionCalculator">IVersionCalculator</a>
                           </li>
                           <li>
+                              <a href="SimpleVersion.IVersionRepository.html" name="" title="IVersionRepository">IVersionRepository</a>
+                          </li>
+                          <li>
                               <a href="SimpleVersion.VersionCalculator.html" name="" title="VersionCalculator">VersionCalculator</a>
                           </li>
                           <li>
-                              <a href="SimpleVersion.VersioningEnvironment.html" name="" title="VersioningEnvironment">VersioningEnvironment</a>
+                              <a href="SimpleVersion.VersionResult.html" name="" title="VersionResult">VersionResult</a>
                           </li>
                     </ul>
                 </li>
@@ -39,7 +46,51 @@
                     
                     <ul class="nav level2">
                           <li>
-                              <a href="SimpleVersion.Comparers.SettingsVersionLabelComparer.html" name="" title="SettingsVersionLabelComparer">SettingsVersionLabelComparer</a>
+                              <a href="SimpleVersion.Comparers.VersionConfigurationLabelComparer.html" name="" title="VersionConfigurationLabelComparer">VersionConfigurationLabelComparer</a>
+                          </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="expand-stub"></span>
+                    <a href="SimpleVersion.Configuration.html" name="" title="SimpleVersion.Configuration">SimpleVersion.Configuration</a>
+                    
+                    <ul class="nav level2">
+                          <li>
+                              <a href="SimpleVersion.Configuration.BranchConfiguration.html" name="" title="BranchConfiguration">BranchConfiguration</a>
+                          </li>
+                          <li>
+                              <a href="SimpleVersion.Configuration.BranchOverrideConfiguration.html" name="" title="BranchOverrideConfiguration">BranchOverrideConfiguration</a>
+                          </li>
+                          <li>
+                              <a href="SimpleVersion.Configuration.RepositoryConfiguration.html" name="" title="RepositoryConfiguration">RepositoryConfiguration</a>
+                          </li>
+                          <li>
+                              <a href="SimpleVersion.Configuration.VersionConfiguration.html" name="" title="VersionConfiguration">VersionConfiguration</a>
+                          </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="expand-stub"></span>
+                    <a href="SimpleVersion.Environment.html" name="" title="SimpleVersion.Environment">SimpleVersion.Environment</a>
+                    
+                    <ul class="nav level2">
+                          <li>
+                              <a href="SimpleVersion.Environment.AzureDevopsEnvironment.html" name="" title="AzureDevopsEnvironment">AzureDevopsEnvironment</a>
+                          </li>
+                          <li>
+                              <a href="SimpleVersion.Environment.BaseVersionEnvironment.html" name="" title="BaseVersionEnvironment">BaseVersionEnvironment</a>
+                          </li>
+                          <li>
+                              <a href="SimpleVersion.Environment.DefaultVersionEnvironment.html" name="" title="DefaultVersionEnvironment">DefaultVersionEnvironment</a>
+                          </li>
+                          <li>
+                              <a href="SimpleVersion.Environment.EnvironmentVariableAccessor.html" name="" title="EnvironmentVariableAccessor">EnvironmentVariableAccessor</a>
+                          </li>
+                          <li>
+                              <a href="SimpleVersion.Environment.IEnvironmentVariableAccessor.html" name="" title="IEnvironmentVariableAccessor">IEnvironmentVariableAccessor</a>
+                          </li>
+                          <li>
+                              <a href="SimpleVersion.Environment.IVersionEnvironment.html" name="" title="IVersionEnvironment">IVersionEnvironment</a>
                           </li>
                     </ul>
                 </li>
@@ -65,39 +116,14 @@
                 </li>
                 <li>
                     <span class="expand-stub"></span>
-                    <a href="SimpleVersion.Model.html" name="" title="SimpleVersion.Model">SimpleVersion.Model</a>
-                    
-                    <ul class="nav level2">
-                          <li>
-                              <a href="SimpleVersion.Model.BranchInfo.html" name="" title="BranchInfo">BranchInfo</a>
-                          </li>
-                          <li>
-                              <a href="SimpleVersion.Model.BranchSettings.html" name="" title="BranchSettings">BranchSettings</a>
-                          </li>
-                          <li>
-                              <a href="SimpleVersion.Model.Settings.html" name="" title="Settings">Settings</a>
-                          </li>
-                          <li>
-                              <a href="SimpleVersion.Model.VersionResult.html" name="" title="VersionResult">VersionResult</a>
-                          </li>
-                    </ul>
-                </li>
-                <li>
-                    <span class="expand-stub"></span>
                     <a href="SimpleVersion.Pipeline.html" name="" title="SimpleVersion.Pipeline">SimpleVersion.Pipeline</a>
                     
                     <ul class="nav level2">
                           <li>
-                              <a href="SimpleVersion.Pipeline.AzureDevopsContextProcessor.html" name="" title="AzureDevopsContextProcessor">AzureDevopsContextProcessor</a>
-                          </li>
-                          <li>
                               <a href="SimpleVersion.Pipeline.IVersionContext.html" name="" title="IVersionContext">IVersionContext</a>
                           </li>
                           <li>
-                              <a href="SimpleVersion.Pipeline.IVersionContextProcessor.html" name="" title="IVersionContextProcessor">IVersionContextProcessor</a>
-                          </li>
-                          <li>
-                              <a href="SimpleVersion.Pipeline.SettingsContextProcessor.html" name="" title="SettingsContextProcessor">SettingsContextProcessor</a>
+                              <a href="SimpleVersion.Pipeline.IVersionProcessor.html" name="" title="IVersionProcessor">IVersionProcessor</a>
                           </li>
                           <li>
                               <a href="SimpleVersion.Pipeline.VersionContext.html" name="" title="VersionContext">VersionContext</a>
@@ -110,13 +136,13 @@
                     
                     <ul class="nav level2">
                           <li>
-                              <a href="SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.html" name="" title="Semver1FormatProcess">Semver1FormatProcess</a>
+                              <a href="SimpleVersion.Pipeline.Formatting.Semver1FormatProcessor.html" name="" title="Semver1FormatProcessor">Semver1FormatProcessor</a>
                           </li>
                           <li>
-                              <a href="SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.html" name="" title="Semver2FormatProcess">Semver2FormatProcess</a>
+                              <a href="SimpleVersion.Pipeline.Formatting.Semver2FormatProcessor.html" name="" title="Semver2FormatProcessor">Semver2FormatProcessor</a>
                           </li>
                           <li>
-                              <a href="SimpleVersion.Pipeline.Formatting.VersionFormatProcess.html" name="" title="VersionFormatProcess">VersionFormatProcess</a>
+                              <a href="SimpleVersion.Pipeline.Formatting.VersionFormatProcessor.html" name="" title="VersionFormatProcessor">VersionFormatProcessor</a>
                           </li>
                     </ul>
                 </li>

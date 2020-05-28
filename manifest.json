@@ -1,15 +1,24 @@
 {
   "homepages": [],
-  "source_base_path": "D:/a/1/s/docs",
+  "source_base_path": "D:/a/1/s/src/SimpleVersion.Docs/site",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
+      "type": "Resource",
+      "output": {
+        "resource": {
+          "relative_path": "index.json"
+        }
+      },
+      "is_incremental": false
+    },
+    {
       "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Comparers.SettingsVersionLabelComparer.yml",
+      "source_relative_path": "api/SimpleVersion.Comparers.VersionConfigurationLabelComparer.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SimpleVersion.Comparers.SettingsVersionLabelComparer.html",
-          "hash": "RXzFw0Pga2GvQsFEQrfP0A=="
+          "relative_path": "api/SimpleVersion.Comparers.VersionConfigurationLabelComparer.html",
+          "hash": "UIeapzJknmr/jAostk8WGg=="
         }
       },
       "is_incremental": false,
@@ -21,7 +30,67 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Comparers.html",
-          "hash": "XZCpcdvVaVadgv7mTZXMww=="
+          "hash": "S84ZpcCo8c+4NF+pBTa/Iw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Configuration.BranchConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Configuration.BranchConfiguration.html",
+          "hash": "y5gmOzs8MqCWhtWWtl9TTA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Configuration.BranchOverrideConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Configuration.BranchOverrideConfiguration.html",
+          "hash": "tChXgGnBjwdHbfZHIaDN4Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Configuration.RepositoryConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Configuration.RepositoryConfiguration.html",
+          "hash": "wgjx36i7bQ/umqRSWS1Tow=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Configuration.VersionConfiguration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Configuration.VersionConfiguration.html",
+          "hash": "JvWEDXh8tD0K3nT3geAvRA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Configuration.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Configuration.html",
+          "hash": "tyBKUKwOFnURPkDDz8NbfQ=="
         }
       },
       "is_incremental": false,
@@ -33,7 +102,91 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Constants.html",
-          "hash": "yvgqtgxXQzG866VZyQ6gTw=="
+          "hash": "IhEZWm0fxtSfvZuMAT3EdA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Environment.AzureDevopsEnvironment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Environment.AzureDevopsEnvironment.html",
+          "hash": "EHVVhtAIVgjOT4IFDm5hkg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Environment.BaseVersionEnvironment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Environment.BaseVersionEnvironment.html",
+          "hash": "WA0J9R7moO8ltgiTwQxaiw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Environment.DefaultVersionEnvironment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Environment.DefaultVersionEnvironment.html",
+          "hash": "HRTE2WDPkaudZ1kmu/oA1Q=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Environment.EnvironmentVariableAccessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Environment.EnvironmentVariableAccessor.html",
+          "hash": "yQ9QsmlyyjjZGOlQbVYSUA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Environment.IEnvironmentVariableAccessor.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Environment.IEnvironmentVariableAccessor.html",
+          "hash": "0i7Y71+Gylc7wE45nDNqNw=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Environment.IVersionEnvironment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Environment.IVersionEnvironment.html",
+          "hash": "yvZLjDTfQTDTKG4Kl4PyWg=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.Environment.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.Environment.html",
+          "hash": "EKgPUmqZjozBnKSoeiKYxg=="
         }
       },
       "is_incremental": false,
@@ -45,7 +198,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Exceptions.GitException.html",
-          "hash": "wqYhBC9Qtom60Ch8xqjOWw=="
+          "hash": "+lUyxOsgSLY2ObyxAKHBFw=="
         }
       },
       "is_incremental": false,
@@ -57,7 +210,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Exceptions.html",
-          "hash": "n5NqZbfouhF8oocoEH5kEA=="
+          "hash": "MEeLqpRmhfzG5kd+6Ehe2w=="
         }
       },
       "is_incremental": false,
@@ -69,7 +222,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Extensions.StringExtensions.html",
-          "hash": "Wj9MheNhyae/oqO6oarjWQ=="
+          "hash": "eUJCXGPG7R1JHZOGUV3Pmw=="
         }
       },
       "is_incremental": false,
@@ -81,7 +234,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Extensions.html",
-          "hash": "Q0Pi1tVQEu/6QgKMqm5gHw=="
+          "hash": "Sp2E5aCerhZvApNLoErkGQ=="
         }
       },
       "is_incremental": false,
@@ -89,11 +242,23 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.IEnvironment.yml",
+      "source_relative_path": "api/SimpleVersion.GitVersionRepository.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SimpleVersion.IEnvironment.html",
-          "hash": "K6zU8olaJoB6jO9rXHbKPg=="
+          "relative_path": "api/SimpleVersion.GitVersionRepository.html",
+          "hash": "iYs0ZgbAhmbcZJmZ2NIWuA=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "api/SimpleVersion.ISerializer.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/SimpleVersion.ISerializer.html",
+          "hash": "ULiwVrE48F+HzEusqi2uWQ=="
         }
       },
       "is_incremental": false,
@@ -105,7 +270,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.IVersionCalculator.html",
-          "hash": "63HWdmNSqGlu9fYR/zoznw=="
+          "hash": "GlPD1Xi9TyZv8xaDA0Y8pw=="
         }
       },
       "is_incremental": false,
@@ -113,11 +278,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Model.BranchInfo.yml",
+      "source_relative_path": "api/SimpleVersion.IVersionRepository.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SimpleVersion.Model.BranchInfo.html",
-          "hash": "urIX3O2A59JQNkyJzWRYDA=="
+          "relative_path": "api/SimpleVersion.IVersionRepository.html",
+          "hash": "tg1n7ZCRMuQ/K7zGgqY+5Q=="
         }
       },
       "is_incremental": false,
@@ -125,11 +290,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Model.BranchSettings.yml",
+      "source_relative_path": "api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcessor.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SimpleVersion.Model.BranchSettings.html",
-          "hash": "6Q+kfdoNeaUuVfAshA4IMw=="
+          "relative_path": "api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcessor.html",
+          "hash": "WyxMAZmSIIYrCSsGxlBkFg=="
         }
       },
       "is_incremental": false,
@@ -137,11 +302,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Model.Settings.yml",
+      "source_relative_path": "api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcessor.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SimpleVersion.Model.Settings.html",
-          "hash": "oqjdLJBIvLSVNjtaa1EtFg=="
+          "relative_path": "api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcessor.html",
+          "hash": "UC/SxWm0MzEZCUwO4DBDRQ=="
         }
       },
       "is_incremental": false,
@@ -149,71 +314,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Model.VersionResult.yml",
+      "source_relative_path": "api/SimpleVersion.Pipeline.Formatting.VersionFormatProcessor.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SimpleVersion.Model.VersionResult.html",
-          "hash": "04Z5zLSaGv7iVkjeuEUNLA=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Model.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SimpleVersion.Model.html",
-          "hash": "43ZtHN2ljixEjSt14VILBw=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SimpleVersion.Pipeline.AzureDevopsContextProcessor.html",
-          "hash": "uqISbECPaxuWsuR0rC4StQ=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SimpleVersion.Pipeline.Formatting.Semver1FormatProcess.html",
-          "hash": "MXIN7QVaZhWdxTcLFWsZ6g=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SimpleVersion.Pipeline.Formatting.Semver2FormatProcess.html",
-          "hash": "zjyrH47IvKkuhZ1XQJaKeg=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Pipeline.Formatting.VersionFormatProcess.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SimpleVersion.Pipeline.Formatting.VersionFormatProcess.html",
-          "hash": "FL4icKqyNqOVBd1HH3jyXw=="
+          "relative_path": "api/SimpleVersion.Pipeline.Formatting.VersionFormatProcessor.html",
+          "hash": "R5OoCYGHRL+fzavp2fBa3w=="
         }
       },
       "is_incremental": false,
@@ -225,7 +330,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Pipeline.Formatting.html",
-          "hash": "MhZTV3J55eobqR49i/lFew=="
+          "hash": "CnqaZNdzHjs+itFyPLxOgA=="
         }
       },
       "is_incremental": false,
@@ -237,7 +342,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Pipeline.IVersionContext.html",
-          "hash": "R5wsZtBWpcoMVfB2wL7XIQ=="
+          "hash": "MI416zZ6otOyFVAHCrxx/g=="
         }
       },
       "is_incremental": false,
@@ -245,23 +350,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Pipeline.IVersionContextProcessor.yml",
+      "source_relative_path": "api/SimpleVersion.Pipeline.IVersionProcessor.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SimpleVersion.Pipeline.IVersionContextProcessor.html",
-          "hash": "H0d3ShXoZov7/6aYawK24g=="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.Pipeline.SettingsContextProcessor.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/SimpleVersion.Pipeline.SettingsContextProcessor.html",
-          "hash": "iul9eaC/6iwR4q9ugPLV1Q=="
+          "relative_path": "api/SimpleVersion.Pipeline.IVersionProcessor.html",
+          "hash": "FeKgR/lUYRPzMd1emNoS8g=="
         }
       },
       "is_incremental": false,
@@ -273,7 +366,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Pipeline.VersionContext.html",
-          "hash": "usbiONfuWkY9Fs0paIESNQ=="
+          "hash": "PCKk/QhZ5vdPMIYFjTYM9Q=="
         }
       },
       "is_incremental": false,
@@ -285,7 +378,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Pipeline.html",
-          "hash": "3L1pAm+6F8VR2zPlPIdfbQ=="
+          "hash": "5EWqKuB4uhs4EGLTzcpqig=="
         }
       },
       "is_incremental": false,
@@ -297,7 +390,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Rules.BaseBranchNameTokenRule.html",
-          "hash": "9sbrPBe7NY9qzAZvza4DGg=="
+          "hash": "EmXJcf7km/oFIgpJqiIlIA=="
         }
       },
       "is_incremental": false,
@@ -309,7 +402,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Rules.BranchNameSuffixTokenRule.html",
-          "hash": "9Z+Lm+0yj8YNR4ocjFTbkg=="
+          "hash": "8waXuWrqEBOJzsXR4+GVuA=="
         }
       },
       "is_incremental": false,
@@ -321,7 +414,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Rules.BranchNameTokenRule.html",
-          "hash": "rEjrZYD0IKG/pTS9e1U2bA=="
+          "hash": "6fOiEIwb1he2bOHFZEHrWA=="
         }
       },
       "is_incremental": false,
@@ -333,7 +426,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Rules.HeightTokenRule.html",
-          "hash": "yk+s/Ew2BeXMb3nlH4Hghg=="
+          "hash": "YHtCqN7j3vg5VbKtGJBrgw=="
         }
       },
       "is_incremental": false,
@@ -345,7 +438,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Rules.ITokenRule-1.html",
-          "hash": "6wQOgvqsxsDThEl4n3LVfg=="
+          "hash": "nES3urjHpKdWGAsex5XIKA=="
         }
       },
       "is_incremental": false,
@@ -357,7 +450,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Rules.PullRequestIdTokenRule.html",
-          "hash": "YuBECHUUsBZoGCHX5MEZ1Q=="
+          "hash": "F67J0RTqRW/AR9PQDRV5ww=="
         }
       },
       "is_incremental": false,
@@ -369,7 +462,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Rules.ShortBranchNameTokenRule.html",
-          "hash": "o6i0EcwQNsGNWVxSUAA7vg=="
+          "hash": "xt1tyrUkApug4X/BZ6VNhg=="
         }
       },
       "is_incremental": false,
@@ -381,7 +474,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Rules.ShortShaTokenRule.html",
-          "hash": "Pk4BsTCpzMMHOGXcKFOkBQ=="
+          "hash": "XE4x5TtyAZnBbXIjveDDKw=="
         }
       },
       "is_incremental": false,
@@ -393,7 +486,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Rules.TokenRuleExtensions.html",
-          "hash": "JRznU6nrxLW5l3LVByWH8Q=="
+          "hash": "jeMNgyCNb0FmbktklD0/vw=="
         }
       },
       "is_incremental": false,
@@ -405,7 +498,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Rules.html",
-          "hash": "CEUChA0JrPRiTi3VLoyIug=="
+          "hash": "8uLBi94AjFDxqloV47+qag=="
         }
       },
       "is_incremental": false,
@@ -417,7 +510,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Serialization.Converters.DictionaryConverter-2.html",
-          "hash": "X8pqqiEXl9lZRHMx1TAG4w=="
+          "hash": "F1lfldmDvaRcxST1wvZViA=="
         }
       },
       "is_incremental": false,
@@ -429,7 +522,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Serialization.Converters.DictionaryConverter.html",
-          "hash": "MSizEEafaY2UbAO3tZkqyA=="
+          "hash": "TCX4g3jvyGdFo65ukeaUXA=="
         }
       },
       "is_incremental": false,
@@ -441,7 +534,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Serialization.Converters.IntConverter.html",
-          "hash": "+ibYDRnZ8rYeZGgoBfKfMA=="
+          "hash": "BNl3/u/qVdE4u/hOuP3lQQ=="
         }
       },
       "is_incremental": false,
@@ -453,7 +546,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Serialization.Converters.html",
-          "hash": "9UVEAmMwL3plb7rNmVqwnA=="
+          "hash": "9XwwPzo6a6p7NLcdnr7YGQ=="
         }
       },
       "is_incremental": false,
@@ -465,7 +558,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Serialization.Serializer.html",
-          "hash": "lTP4LoT1rcO8rXApJgHbFg=="
+          "hash": "SAXXxJl6kb0EjhOpSqNBWw=="
         }
       },
       "is_incremental": false,
@@ -477,7 +570,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Serialization.html",
-          "hash": "ui1Clju+iCsCkKL8EbrWjw=="
+          "hash": "XSt27UPuYgD3SjrXBaUR9w=="
         }
       },
       "is_incremental": false,
@@ -489,7 +582,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Tool.Program.html",
-          "hash": "GiRzX7DWMMVtLycDGYgrQQ=="
+          "hash": "ZZCMocc6qFW7Y7L7IfgDgg=="
         }
       },
       "is_incremental": false,
@@ -501,7 +594,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.Tool.html",
-          "hash": "N/TxNFFRl2cmNDTY6PSflg=="
+          "hash": "9BjcqcriE3ZyGJI+UgvKSg=="
         }
       },
       "is_incremental": false,
@@ -513,7 +606,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.VersionCalculator.html",
-          "hash": "cX16j7fKrHXN/GNhXPqgqA=="
+          "hash": "sv+a5BGcO6pzcRtYP9CHTw=="
         }
       },
       "is_incremental": false,
@@ -521,11 +614,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "api/SimpleVersion.VersioningEnvironment.yml",
+      "source_relative_path": "api/SimpleVersion.VersionResult.yml",
       "output": {
         ".html": {
-          "relative_path": "api/SimpleVersion.VersioningEnvironment.html",
-          "hash": "hseaYqh648Ur2TyIu5DwVA=="
+          "relative_path": "api/SimpleVersion.VersionResult.html",
+          "hash": "2OvoGrQOxOJ0jqOSVqyv5A=="
         }
       },
       "is_incremental": false,
@@ -537,7 +630,7 @@
       "output": {
         ".html": {
           "relative_path": "api/SimpleVersion.html",
-          "hash": "xZsoV0lFWl44cghC+ehD2w=="
+          "hash": "6gTHNeG3Ic34w/79I3WiuQ=="
         }
       },
       "is_incremental": false,
@@ -549,7 +642,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "Xz129OEItT0eBe5ymXUoVQ=="
+          "hash": "0GPM6kj64+bkkx6fpdKZIA=="
         }
       },
       "is_incremental": false,
@@ -561,7 +654,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/configuration.html",
-          "hash": "6IIkzCMl3Ke3TqAR3Ky0dA=="
+          "hash": "mAhAKfzgE7dsBhXdAsq61g=="
         }
       },
       "is_incremental": false,
@@ -573,7 +666,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/intro.html",
-          "hash": "1/UVvGWbaz1rr+6Lhb9tPw=="
+          "hash": "WYVPqYZENI3Hq2W/n9lOAw=="
         }
       },
       "is_incremental": false,
@@ -585,7 +678,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/results.html",
-          "hash": "uYLVKFvJcmnrQdbhCXDxYg=="
+          "hash": "8wgT9FglhhS2qK9ztJ85NA=="
         }
       },
       "is_incremental": false,
@@ -597,7 +690,7 @@
       "output": {
         ".html": {
           "relative_path": "articles/toc.html",
-          "hash": "Xanu+N5cj8V9uyaBnt/j/Q=="
+          "hash": "FslSrb/eBoiu/u4phCR3Hw=="
         }
       },
       "is_incremental": false,
@@ -620,7 +713,18 @@
       "output": {
         ".html": {
           "relative_path": "index.html",
-          "hash": "6GDcXSl6YlvRg5Pzew1J9Q=="
+          "hash": "lMLr3P5zsJaQ6njDirw6QQ=="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "schema/unstable.json",
+      "output": {
+        "resource": {
+          "relative_path": "schema/unstable.json"
         }
       },
       "is_incremental": false,
@@ -643,7 +747,7 @@
       "output": {
         ".html": {
           "relative_path": "toc.html",
-          "hash": "8bZKtOzWsQxZq38xqpG+Tw=="
+          "hash": "ZtxLIBxdDhPD6FPpCDpThw=="
         }
       },
       "is_incremental": false,
@@ -670,7 +774,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 45,
+          "total_file_count": 52,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
@@ -692,7 +796,7 @@
     {
       "status": {
         "can_incremental": false,
-        "details": "Cannot support incremental post processing, the reason is: last post processor info is null.",
+        "details": "Cannot support incremental post processing, the reason is: should not trace intermediate info.",
         "incrementalPhase": "postProcessing",
         "total_file_count": 0,
         "skipped_file_count": 0

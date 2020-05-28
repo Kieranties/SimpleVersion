@@ -1,0 +1,157 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "RepositoryConfiguration",
+  "type": "object",
+  "description": "Encapsulates configuration loaded from '.simpleversion.json'.",
+  "additionalProperties": false,
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "Gets or sets the base version string."
+    },
+    "offSet": {
+      "type": "integer",
+      "description": "Gets or sets the offset to apply to the generated height.",
+      "format": "int32"
+    },
+    "label": {
+      "type": "array",
+      "description": "Gets or sets the label parts to use in the generated version.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "metadata": {
+      "type": "array",
+      "description": "Gets or sets the Metadata parts to use in the generated version.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "branches": {
+      "description": "Gets or sets the information on branches.\nSee BranchConfiguration for further details.",
+      "oneOf": [
+        {
+          "$ref": "#/definitions/BranchConfiguration"
+        }
+      ]
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "definitions": {
+    "BranchConfiguration": {
+      "type": "object",
+      "description": "Encapsulates configuration for branches.",
+      "additionalProperties": false,
+      "properties": {
+        "release": {
+          "type": "array",
+          "description": "Gets or sets the list of branches that may produce release versions.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "overrides": {
+          "type": "array",
+          "description": "Gets or sets the configuration for branches which override the defaults.\nSee BranchOverrideConfiguration for further details.",
+          "items": {
+            "$ref": "#/definitions/BranchOverrideConfiguration"
+          }
+        }
+      }
+    },
+    "BranchOverrideConfiguration": {
+      "type": "object",
+      "description": "Encapsulates configuration for branch overrides.",
+      "additionalProperties": false,
+      "properties": {
+        "match": {
+          "type": "string",
+          "description": "Gets or sets the regular expression string used to\nidentify matching to a branch to identify branch matches."
+        },
+        "label": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Gets or sets the label parts to override in the generated version.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "prefixLabel": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Gets or sets the label parts to insert at the start of the label in the generated version.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "postfixLabel": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Gets or sets the label parts to insert at the end of the label in the generated version.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "insertLabel": {
+          "type": [
+            "null",
+            "object"
+          ],
+          "description": "Gets or sets the label parts to insert at specific indexes of the label in the generated version.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "metadata": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Gets or sets the metadata parts to use in the generated version.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "prefixMetadata": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Gets or sets the metadata parts to insert at the start of the metadata in the generated version.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "postfixMetadata": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "description": "Gets or sets the metadata parts to insert at the end of the metadata in the generated version.",
+          "items": {
+            "type": "string"
+          }
+        },
+        "insertMetadata": {
+          "type": [
+            "null",
+            "object"
+          ],
+          "description": "Gets or sets the metadata parts to insert at specific indexes of the metadata in the generated version.",
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

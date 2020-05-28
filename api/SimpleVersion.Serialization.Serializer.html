@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class Serializer
    ">
-    <meta name="generator" content="docfx 2.42.0.0">
+    <meta name="generator" content="docfx 2.52.0.0">
     
     <link rel="shortcut icon" href="../images/log.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -19,7 +19,7 @@
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
     
-    
+    <meta property="docfx:rel" content="../">
     
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -58,6 +58,16 @@
           </div>
         </div>
       </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
       <div role="main" class="container body-content hide-when-search">
         
         <div class="sidenav hide-when-search">
@@ -81,24 +91,58 @@
     <div class="level0"><span class="xref">System.Object</span></div>
     <div class="level1"><span class="xref">Serializer</span></div>
   </div>
+  <div classs="implements">
+    <h5>Implements</h5>
+    <div><a class="xref" href="SimpleVersion.ISerializer.html">ISerializer</a></div>
+  </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="SimpleVersion.Serialization.html">SimpleVersion.Serialization</a></h6>
   <h6><strong>Assembly</strong>: SimpleVersion.Core.dll</h6>
   <h5 id="SimpleVersion_Serialization_Serializer_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class Serializer : Object</code></pre>
+    <pre><code class="lang-csharp hljs">public class Serializer : ISerializer</code></pre>
   </div>
   <h3 id="methods">Methods
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Kieranties/SimpleVersion/new/master/apiSpec/new?filename=SimpleVersion_Serialization_Serializer_Deserialize__1_System_String_.md&amp;value=---%0Auid%3A%20SimpleVersion.Serialization.Serializer.Deserialize%60%601(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Core/Serialization/Serializer.cs/#L30">View Source</a>
+  </span>
   <a id="SimpleVersion_Serialization_Serializer_Deserialize_" data-uid="SimpleVersion.Serialization.Serializer.Deserialize*"></a>
   <h4 id="SimpleVersion_Serialization_Serializer_Deserialize__1_System_String_" data-uid="SimpleVersion.Serialization.Serializer.Deserialize``1(System.String)">Deserialize&lt;T&gt;(String)</h4>
-  <div class="markdown level1 summary"><p>Returns an instance of <code data-dev-comment-type="typeparamref" class="typeparamref">T</code> based on the given <code data-dev-comment-type="paramref" class="paramref">json</code>.</p>
+  <div class="markdown level1 summary"><p>Deserializes the given <code data-dev-comment-type="paramref" class="paramref">value</code> into an new
+instance of <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static T Deserialize&lt;T&gt;(string json)</code></pre>
+    <pre><code class="lang-csharp hljs">public T Deserialize&lt;T&gt;(string value)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -112,8 +156,8 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><span class="parametername">json</span></td>
-        <td><p>The JSON value of the object.</p>
+        <td><span class="parametername">value</span></td>
+        <td><p>A string representation of <code data-dev-comment-type="typeparamref" class="typeparamref">T</code>.</p>
 </td>
       </tr>
     </tbody>
@@ -129,7 +173,7 @@
     <tbody>
       <tr>
         <td><span class="xref">T</span></td>
-        <td><p>An instance of <code data-dev-comment-type="typeparamref" class="typeparamref">T</code> with the values of <code data-dev-comment-type="paramref" class="paramref">json</code>.</p>
+        <td><p>An new instance of <code data-dev-comment-type="typeparamref" class="typeparamref">T</code> populated from <code data-dev-comment-type="paramref" class="paramref">value</code>.</p>
 </td>
       </tr>
     </tbody>
@@ -145,21 +189,26 @@
     <tbody>
       <tr>
         <td><span class="parametername">T</span></td>
-        <td><p>The type of object to be returned.</p>
+        <td><p>The type to deserialize.</p>
 </td>
       </tr>
     </tbody>
   </table>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Kieranties/SimpleVersion/new/master/apiSpec/new?filename=SimpleVersion_Serialization_Serializer_Serialize_System_Object_.md&amp;value=---%0Auid%3A%20SimpleVersion.Serialization.Serializer.Serialize(System.Object)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Core/Serialization/Serializer.cs/#L33">View Source</a>
+  </span>
   <a id="SimpleVersion_Serialization_Serializer_Serialize_" data-uid="SimpleVersion.Serialization.Serializer.Serialize*"></a>
   <h4 id="SimpleVersion_Serialization_Serializer_Serialize_System_Object_" data-uid="SimpleVersion.Serialization.Serializer.Serialize(System.Object)">Serialize(Object)</h4>
-  <div class="markdown level1 summary"><p>Returns a JSON string of the given <code data-dev-comment-type="paramref" class="paramref">value</code>.</p>
+  <div class="markdown level1 summary"><p>Serializes the given <span class="xref">System.Object</span>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static string Serialize(object value)</code></pre>
+    <pre><code class="lang-csharp hljs">public string Serialize(object value)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -174,7 +223,7 @@
       <tr>
         <td><span class="xref">System.Object</span></td>
         <td><span class="parametername">value</span></td>
-        <td><p>The object to be serialized.</p>
+        <td><p>The instance value.</p>
 </td>
       </tr>
     </tbody>
@@ -190,11 +239,19 @@
     <tbody>
       <tr>
         <td><span class="xref">System.String</span></td>
-        <td><p>The JSON string.</p>
+        <td><p>A string representation of the given <code data-dev-comment-type="paramref" class="paramref">value</code>.</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h3 id="implements">Implements</h3>
+  <div>
+      <a class="xref" href="SimpleVersion.ISerializer.html">ISerializer</a>
+  </div>
+  <h3 id="extensionmethods">Extension Methods</h3>
+  <div>
+      <a class="xref" href="SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Rules_ITokenRule___0___">TokenRuleExtensions.ResolveTokenRules&lt;T&gt;(T, IVersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</a>
+  </div>
 </article>
           </div>
           
@@ -202,6 +259,12 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Kieranties/SimpleVersion/new/master/apiSpec/new?filename=SimpleVersion_Serialization_Serializer.md&amp;value=---%0Auid%3A%20SimpleVersion.Serialization.Serializer%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Core/Serialization/Serializer.cs/#L12" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class VersionContext
    ">
-    <meta name="generator" content="docfx 2.42.0.0">
+    <meta name="generator" content="docfx 2.52.0.0">
     
     <link rel="shortcut icon" href="../images/log.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -19,7 +19,7 @@
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
     
-    
+    <meta property="docfx:rel" content="../">
     
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -58,6 +58,16 @@
           </div>
         </div>
       </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
       <div role="main" class="container body-content hide-when-search">
         
         <div class="sidenav hide-when-search">
@@ -73,7 +83,7 @@
   
   <h1 id="SimpleVersion_Pipeline_VersionContext" data-uid="SimpleVersion.Pipeline.VersionContext" class="text-break">Class VersionContext
   </h1>
-  <div class="markdown level0 summary"><p>Version context for Git repositories.</p>
+  <div class="markdown level0 summary"><p>Encapsulates state for a version request.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
@@ -85,24 +95,53 @@
     <h5>Implements</h5>
     <div><a class="xref" href="SimpleVersion.Pipeline.IVersionContext.html">IVersionContext</a></div>
   </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="SimpleVersion.Pipeline.html">SimpleVersion.Pipeline</a></h6>
-  <h6><strong>Assembly</strong>: SimpleVersion.Core.dll</h6>
+  <h6><strong>Assembly</strong>: SimpleVersion.Abstractions.dll</h6>
   <h5 id="SimpleVersion_Pipeline_VersionContext_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class VersionContext : Object, IVersionContext</code></pre>
+    <pre><code class="lang-csharp hljs">public class VersionContext : IVersionContext</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Kieranties/SimpleVersion/new/master/apiSpec/new?filename=SimpleVersion_Pipeline_VersionContext__ctor_SimpleVersion_Environment_IVersionEnvironment_SimpleVersion_Configuration_VersionConfiguration_SimpleVersion_VersionResult_.md&amp;value=---%0Auid%3A%20SimpleVersion.Pipeline.VersionContext.%23ctor(SimpleVersion.Environment.IVersionEnvironment%2CSimpleVersion.Configuration.VersionConfiguration%2CSimpleVersion.VersionResult)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Abstractions/Pipeline/VersionContext.cs/#L20">View Source</a>
+  </span>
   <a id="SimpleVersion_Pipeline_VersionContext__ctor_" data-uid="SimpleVersion.Pipeline.VersionContext.#ctor*"></a>
-  <h4 id="SimpleVersion_Pipeline_VersionContext__ctor_LibGit2Sharp_IRepository_" data-uid="SimpleVersion.Pipeline.VersionContext.#ctor(LibGit2Sharp.IRepository)">VersionContext(IRepository)</h4>
+  <h4 id="SimpleVersion_Pipeline_VersionContext__ctor_SimpleVersion_Environment_IVersionEnvironment_SimpleVersion_Configuration_VersionConfiguration_SimpleVersion_VersionResult_" data-uid="SimpleVersion.Pipeline.VersionContext.#ctor(SimpleVersion.Environment.IVersionEnvironment,SimpleVersion.Configuration.VersionConfiguration,SimpleVersion.VersionResult)">VersionContext(IVersionEnvironment, VersionConfiguration, VersionResult)</h4>
   <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="SimpleVersion.Pipeline.VersionContext.html">VersionContext</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public VersionContext(IRepository repository)</code></pre>
+    <pre><code class="lang-csharp hljs">public VersionContext(IVersionEnvironment environment, VersionConfiguration configuration, VersionResult result)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -115,25 +154,42 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">LibGit2Sharp.IRepository</span></td>
-        <td><span class="parametername">repository</span></td>
-        <td><p>The git repository.</p>
+        <td><a class="xref" href="SimpleVersion.Environment.IVersionEnvironment.html">IVersionEnvironment</a></td>
+        <td><span class="parametername">environment</span></td>
+        <td><p>The <a class="xref" href="SimpleVersion.Environment.IVersionEnvironment.html">IVersionEnvironment</a> for the invocation.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="SimpleVersion.Configuration.VersionConfiguration.html">VersionConfiguration</a></td>
+        <td><span class="parametername">configuration</span></td>
+        <td><p>The <a class="xref" href="SimpleVersion.Configuration.VersionConfiguration.html">VersionConfiguration</a> for the current branch.</p>
+</td>
+      </tr>
+      <tr>
+        <td><a class="xref" href="SimpleVersion.VersionResult.html">VersionResult</a></td>
+        <td><span class="parametername">result</span></td>
+        <td><p>The <a class="xref" href="SimpleVersion.VersionResult.html">VersionResult</a> to collect final version details.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="properties">Properties
   </h3>
-  
-  
-  <a id="SimpleVersion_Pipeline_VersionContext_Repository_" data-uid="SimpleVersion.Pipeline.VersionContext.Repository*"></a>
-  <h4 id="SimpleVersion_Pipeline_VersionContext_Repository" data-uid="SimpleVersion.Pipeline.VersionContext.Repository">Repository</h4>
-  <div class="markdown level1 summary"><p>Gets and instance of the current repository.</p>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Kieranties/SimpleVersion/new/master/apiSpec/new?filename=SimpleVersion_Pipeline_VersionContext_Configuration.md&amp;value=---%0Auid%3A%20SimpleVersion.Pipeline.VersionContext.Configuration%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Abstractions/Pipeline/VersionContext.cs/#L34">View Source</a>
+  </span>
+  <a id="SimpleVersion_Pipeline_VersionContext_Configuration_" data-uid="SimpleVersion.Pipeline.VersionContext.Configuration*"></a>
+  <h4 id="SimpleVersion_Pipeline_VersionContext_Configuration" data-uid="SimpleVersion.Pipeline.VersionContext.Configuration">Configuration</h4>
+  <div class="markdown level1 summary"><p>Gets the <a class="xref" href="SimpleVersion.Configuration.VersionConfiguration.html">VersionConfiguration</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public IRepository Repository { get; }</code></pre>
+    <pre><code class="lang-csharp hljs">public VersionConfiguration Configuration { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -145,48 +201,26 @@
     </thead>
     <tbody>
       <tr>
-        <td><span class="xref">LibGit2Sharp.IRepository</span></td>
-        <td><p>The current <span class="xref">LibGit2Sharp.Repository</span> being versioned.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="SimpleVersion_Pipeline_VersionContext_Result_" data-uid="SimpleVersion.Pipeline.VersionContext.Result*"></a>
-  <h4 id="SimpleVersion_Pipeline_VersionContext_Result" data-uid="SimpleVersion.Pipeline.VersionContext.Result">Result</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the result of the version calculation.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public VersionResult Result { get; set; }</code></pre>
-  </div>
-  <h5 class="propertyValue">Property Value</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="SimpleVersion.Model.VersionResult.html">VersionResult</a></td>
+        <td><a class="xref" href="SimpleVersion.Configuration.VersionConfiguration.html">VersionConfiguration</a></td>
         <td></td>
       </tr>
     </tbody>
   </table>
-  
-  
-  <a id="SimpleVersion_Pipeline_VersionContext_Settings_" data-uid="SimpleVersion.Pipeline.VersionContext.Settings*"></a>
-  <h4 id="SimpleVersion_Pipeline_VersionContext_Settings" data-uid="SimpleVersion.Pipeline.VersionContext.Settings">Settings</h4>
-  <div class="markdown level1 summary"><p>Gets or sets the resolved settings for the repository.</p>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Kieranties/SimpleVersion/new/master/apiSpec/new?filename=SimpleVersion_Pipeline_VersionContext_Environment.md&amp;value=---%0Auid%3A%20SimpleVersion.Pipeline.VersionContext.Environment%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Abstractions/Pipeline/VersionContext.cs/#L31">View Source</a>
+  </span>
+  <a id="SimpleVersion_Pipeline_VersionContext_Environment_" data-uid="SimpleVersion.Pipeline.VersionContext.Environment*"></a>
+  <h4 id="SimpleVersion_Pipeline_VersionContext_Environment" data-uid="SimpleVersion.Pipeline.VersionContext.Environment">Environment</h4>
+  <div class="markdown level1 summary"><p>Gets the <a class="xref" href="SimpleVersion.Environment.IVersionEnvironment.html">IVersionEnvironment</a>.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public Settings Settings { get; set; }</code></pre>
+    <pre><code class="lang-csharp hljs">public IVersionEnvironment Environment { get; }</code></pre>
   </div>
   <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -198,7 +232,38 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="SimpleVersion.Model.Settings.html">Settings</a></td>
+        <td><a class="xref" href="SimpleVersion.Environment.IVersionEnvironment.html">IVersionEnvironment</a></td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Kieranties/SimpleVersion/new/master/apiSpec/new?filename=SimpleVersion_Pipeline_VersionContext_Result.md&amp;value=---%0Auid%3A%20SimpleVersion.Pipeline.VersionContext.Result%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Abstractions/Pipeline/VersionContext.cs/#L37">View Source</a>
+  </span>
+  <a id="SimpleVersion_Pipeline_VersionContext_Result_" data-uid="SimpleVersion.Pipeline.VersionContext.Result*"></a>
+  <h4 id="SimpleVersion_Pipeline_VersionContext_Result" data-uid="SimpleVersion.Pipeline.VersionContext.Result">Result</h4>
+  <div class="markdown level1 summary"><p>Gets the <a class="xref" href="SimpleVersion.VersionResult.html">VersionResult</a>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public VersionResult Result { get; }</code></pre>
+  </div>
+  <h5 class="propertyValue">Property Value</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a class="xref" href="SimpleVersion.VersionResult.html">VersionResult</a></td>
         <td></td>
       </tr>
     </tbody>
@@ -218,6 +283,12 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Kieranties/SimpleVersion/new/master/apiSpec/new?filename=SimpleVersion_Pipeline_VersionContext.md&amp;value=---%0Auid%3A%20SimpleVersion.Pipeline.VersionContext%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Abstractions/Pipeline/VersionContext.cs/#L12" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

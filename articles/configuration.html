@@ -8,7 +8,7 @@
     <title>Configuration </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Configuration ">
-    <meta name="generator" content="docfx 2.42.0.0">
+    <meta name="generator" content="docfx 2.52.0.0">
     
     <link rel="shortcut icon" href="../images/log.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -17,7 +17,7 @@
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
     
-    
+    <meta property="docfx:rel" content="../">
     
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -56,6 +56,16 @@
           </div>
         </div>
       </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
       <div role="main" class="container body-content hide-when-search">
         
         <div class="sidenav hide-when-search">
@@ -69,7 +79,7 @@
             <article class="content wrap" id="_content" data-uid="">
 <h1 id="configuration">Configuration</h1>
 
-<p>SimpleVersion reads the <code>.simpleversion.json</code> from the root of your git repo.
+<p>SimpleVersion reads the <code>.simpleversion.json</code> from the root of your git repository.
 This file provides various configuration options.</p>
 <h2 id="version">Version</h2>
 <p>The <code>version</code> property allows you to specify the base version to be generated.
@@ -89,7 +99,8 @@ dot separated digits.</p>
 </code></pre>
 <div class="NOTE">
 <h5>Note</h5>
-<p>By specifying values in the label, the version will be returned as a pre-release version.</p>
+<p>By specifying values in the label, the version will be returned as a pre-release version.
+If there is a pre-release label, the height will be appended to label.</p>
 </div>
 <h2 id="metadata">Metadata</h2>
 <p>The <code>metadata</code> property specifies an array of values to be included as metadata
@@ -106,7 +117,7 @@ in the final version.</p>
 <p>Sometimes you may need to adjust the base value of the height. This could be
 when migrating from a previous versioning pattern, if a number of commits
 should be discounted, or any other reason.</p>
-<p>Specify the <code>offset</code> as a numeric value to impact the base value of the height.</p>
+<p>Specify the <code>offset</code> as a numeric value to impact the base value of the height:</p>
 <pre><code class="lang-json">&quot;offset&quot; : -5
 &quot;offset&quot; : 4
 </code></pre>
@@ -117,7 +128,7 @@ be applied based on the branch currently being built.</p>
 <p><code>release</code> allows for a list of regular expressions to be defined where each
 may match to the current branch being built. If the current branch does not match
 any of the expressions it will have the short sha of the current commit added
-to the <code>Labels</code> property prefixed with <code>c</code> (for commit).</p>
+to the <code>label</code> property prefixed with <code>c</code> (for commit).</p>
 <pre><code class="lang-json">{
   &quot;version&quot;: &quot;0.1.0&quot;,
   &quot;label&quot;: [ &quot;alpha2&quot; ],
@@ -131,21 +142,21 @@ to the <code>Labels</code> property prefixed with <code>c</code> (for commit).</
 }
 </code></pre>
 <p>In the above example, any branch called <em>master</em>, starting with <em>preview/</em> or
-starting with <em>release/</em> will <strong>not</strong> have the short sha appended. Generating a
+starting with <em>release/</em> will <strong>not</strong> have the short sha appended, generating a
 Semver2 version of <code>0.1.0-alpha2.5</code> when there are five commits.</p>
 <p>All other branches will append the short sha, generating a Semver2 version of
 <code>0.1.0-alpha2.5.c903782</code> when there are five commits and the sha begins with
-<em>903782</em></p>
+<em>903782</em>.</p>
 <div class="NOTE">
 <h5>Note</h5>
 <p>Release branch configuration provides a simple way to identify what may be
 publicly shipped. If the version has a label containing the sha, you probably
 don't want it released.  You can enable all branches to be release branches
-using teh regular expression <code>.*</code></p>
+using the regular expression <code>.*</code>.</p>
 </div>
 <h3 id="overrides">Overrides</h3>
 <p>Overrides allow for certain elements of the version to be reconfigured based
-on the branch being built.  Overrides are matched by a regular expression where
+on the branch being built. Overrides are matched by a regular expression where
 only the first match (if found) is used.</p>
 <pre><code class="lang-json">{
   &quot;version&quot;: &quot;0.2.0&quot;,
@@ -173,7 +184,7 @@ only the first match (if found) is used.</p>
 <p>In the above example, any branch starting with <em>feature/</em> will add the branches
 shortname as metadata to the generated version. E.g. <em>feature/testing</em> will
 create a version of <code>0.2.0-alpha1.5.c903782+featuretesting</code> when there are five
-commits and the sha begins with <em>903782</em></p>
+commits and the sha begins with <em>903782</em>.</p>
 <p>Additionally, any branch beginning with <em>release/</em> will strip the release label
 and have the height added into the metadata.</p>
 <div class="WARNING">
@@ -227,7 +238,7 @@ depending on the current branch.</p>
 <td><code>metadata</code></td>
 <td>string array</td>
 <td>false</td>
-<td>Overrides <code>metdata</code> from the base configuration</td>
+<td>Overrides <code>metadata</code> from the base configuration</td>
 </tr>
 <tr>
 <td><code>prefixmetadata</code></td>
@@ -290,7 +301,7 @@ substitution of values during invocation.  The following tokens may be used:</p>
 <td>Short Sha</td>
 <td><code>{shortsha}</code></td>
 <td><code>label</code>, <code>metadata</code></td>
-<td>Inserts the first seven characters of the commit sha, prefixed with <code>c</code></td>
+<td>Inserts the first seven characters of the commit sha, prefixed with <code>c</code> (for commit)</td>
 </tr>
 <tr>
 <td>Pull-Request Id</td>
@@ -308,7 +319,7 @@ substitution of values during invocation.  The following tokens may be used:</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/docs/articles/configuration.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Docs/site/articles/configuration.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

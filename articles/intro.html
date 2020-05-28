@@ -8,7 +8,7 @@
     <title>Introduction </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Introduction ">
-    <meta name="generator" content="docfx 2.42.0.0">
+    <meta name="generator" content="docfx 2.52.0.0">
     
     <link rel="shortcut icon" href="../images/log.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -17,7 +17,7 @@
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
     
-    
+    <meta property="docfx:rel" content="../">
     
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -56,6 +56,16 @@
           </div>
         </div>
       </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
       <div role="main" class="container body-content hide-when-search">
         
         <div class="sidenav hide-when-search">
@@ -74,13 +84,35 @@
 see the <a href="results.html">results documentation</a>.</p>
 <h2 id="dotnet-tool">Dotnet Tool</h2>
 <p>The latest version of the dotnet tool can be found on nuget.org.
-You can install <code>SimpleVersion.Tool</code> the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools">dotnet cli</a>:</p>
-<pre><code class="lang-posh"># Installs the latest version as a global tool
-dotnet install -g SimpleVersion.Tool
+You can install <code>SimpleVersion.Tool</code> using the <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools">dotnet cli</a>:</p>
+<pre><code class="lang-ps"># Installs the latest version as a global tool
+dotnet tool install SimpleVersion.Tool -g
+
+# Or a specific version
+dotnet tool install SimpleVersion.Tool -g --version 0.3.0-alpha1.2
 </code></pre>
-<p>Once installed, you can invoke SimpleVersion in your favourite shell, optionally passing the path to your repository (defaults to current working directory)</p>
-<pre><code class="lang-posh">PS c:\MyRepo&gt; simpleversion
+<p>Once installed, you can invoke SimpleVersion in your favorite shell, optionally passing the path to your repository (defaults to current working directory)</p>
+<pre><code class="lang-ps">PS c:\MyRepo&gt; simpleversion
 PS c:\&gt; simpleversion ./MyRepo
+</code></pre>
+<h3 id="local-tools">Local Tools</h3>
+<p>Beginning with net core 3.0, you can install <a href="https://docs.microsoft.com/en-us/dotnet/core/tools/local-tools-how-to-use">tools locally</a> to a project. Doing so enables persistance of the tool version along side the
+code base.  Run the following from the root of your project to install and run as a local tool:</p>
+<pre><code class="lang-ps"># Create a tool manifest
+PS c:\MyRepo&gt; dotnet new tool-manifest
+
+# Add the tool
+PS c:\MyRepo&gt; dotnet tool install SimpleVersion.Tool
+
+# Or a specific version
+PS c:\MyRepo&gt; dotnet tool install SimpleVersion.Tool --version 0.3.0-alpha1.2
+</code></pre>
+<p>Local tools can be invoked after they have been restored:</p>
+<pre><code class="lang-ps"># Restore
+PS c:\MyRepo&gt; dotnet tool restore
+
+# Run
+PS c:\MyRepo&gt; dotnet simpleversion
 </code></pre>
 <h2 id="usage-in-cake">Usage in Cake</h2>
 <p>The dotnet tool can be integrated into a Cake build script. This makes use
@@ -140,7 +172,7 @@ Task(&quot;Default&quot;)
 RunTarget(target);
 </code></pre>
 <p>Which can then be invoked as:</p>
-<pre><code class="lang-posh">▶ .\build.ps1 --bootstrap; .\build.ps1 
+<pre><code class="lang-ps">PS  .\build.ps1 --bootstrap; .\build.ps1 
 Preparing to run build script...
 Running build script...
 Preparing to run build script...
@@ -172,7 +204,7 @@ Total:                        00:00:00.3304598
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/docs/articles/intro.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Docs/site/articles/intro.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

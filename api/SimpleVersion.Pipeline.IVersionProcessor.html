@@ -10,16 +10,16 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Interface IVersionProcessor
    ">
-    <meta name="generator" content="docfx 2.42.0.0">
+    <meta name="generator" content="docfx 2.52.0.0">
     
-    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="shortcut icon" href="../images/log.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
     <link rel="stylesheet" href="../styles/docfx.css">
     <link rel="stylesheet" href="../styles/main.css">
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
     
-    
+    <meta property="docfx:rel" content="../">
     
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -35,8 +35,9 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
+              
               <a class="navbar-brand" href="../index.html">
-                <img id="logo" style="height:40px;padding-top:15px;" src="../images/logo.png" alt="">
+                <img id="logo" class="svg" src="../images/logo.png" alt="SimpleVersion">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -57,6 +58,16 @@
           </div>
         </div>
       </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
       <div role="main" class="container body-content hide-when-search">
         
         <div class="sidenav hide-when-search">
@@ -72,7 +83,7 @@
   
   <h1 id="SimpleVersion_Pipeline_IVersionProcessor" data-uid="SimpleVersion.Pipeline.IVersionProcessor" class="text-break">Interface IVersionProcessor
   </h1>
-  <div class="markdown level0 summary"><p>Contract for a processor step during version calculation.</p>
+  <div class="markdown level0 summary"><p>Handles processing of a <a class="xref" href="SimpleVersion.Pipeline.VersionContext.html">VersionContext</a>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <h6><strong>Namespace</strong>: <a class="xref" href="SimpleVersion.Pipeline.html">SimpleVersion.Pipeline</a></h6>
@@ -83,16 +94,22 @@
   </div>
   <h3 id="methods">Methods
   </h3>
-  
-  
-  <a id="SimpleVersion_Pipeline_IVersionProcessor_Apply_" data-uid="SimpleVersion.Pipeline.IVersionProcessor.Apply*"></a>
-  <h4 id="SimpleVersion_Pipeline_IVersionProcessor_Apply_SimpleVersion_Pipeline_VersionContext_" data-uid="SimpleVersion.Pipeline.IVersionProcessor.Apply(SimpleVersion.Pipeline.VersionContext)">Apply(VersionContext)</h4>
-  <div class="markdown level1 summary"><p>Applies the processor to the current <a class="xref" href="SimpleVersion.Pipeline.VersionContext.html">VersionContext</a>.</p>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Kieranties/SimpleVersion/new/master/apiSpec/new?filename=SimpleVersion_Pipeline_IVersionProcessor_Process_SimpleVersion_Pipeline_IVersionContext_.md&amp;value=---%0Auid%3A%20SimpleVersion.Pipeline.IVersionProcessor.Process(SimpleVersion.Pipeline.IVersionContext)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Abstractions/Pipeline/IVersionProcessor.cs/#L15">View Source</a>
+  </span>
+  <a id="SimpleVersion_Pipeline_IVersionProcessor_Process_" data-uid="SimpleVersion.Pipeline.IVersionProcessor.Process*"></a>
+  <h4 id="SimpleVersion_Pipeline_IVersionProcessor_Process_SimpleVersion_Pipeline_IVersionContext_" data-uid="SimpleVersion.Pipeline.IVersionProcessor.Process(SimpleVersion.Pipeline.IVersionContext)">Process(IVersionContext)</h4>
+  <div class="markdown level1 summary"><p>Process the given <code data-dev-comment-type="paramref" class="paramref">context</code> updating
+its state if needed.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">void Apply(VersionContext context)</code></pre>
+    <pre><code class="lang-csharp hljs">void Process(IVersionContext context)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -105,16 +122,16 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="SimpleVersion.Pipeline.VersionContext.html">VersionContext</a></td>
+        <td><a class="xref" href="SimpleVersion.Pipeline.IVersionContext.html">IVersionContext</a></td>
         <td><span class="parametername">context</span></td>
-        <td><p>The <a class="xref" href="SimpleVersion.Pipeline.VersionContext.html">VersionContext</a> of the calculation.</p>
+        <td><p>The <a class="xref" href="SimpleVersion.Pipeline.IVersionContext.html">IVersionContext</a> to process.</p>
 </td>
       </tr>
     </tbody>
   </table>
   <h3 id="extensionmethods">Extension Methods</h3>
   <div>
-      <a class="xref" href="SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Pipeline_VersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Rules_ITokenRule___0___">TokenRuleExtensions.ResolveTokenRules&lt;T&gt;(T, VersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</a>
+      <a class="xref" href="SimpleVersion.Rules.TokenRuleExtensions.html#SimpleVersion_Rules_TokenRuleExtensions_ResolveTokenRules__1___0_SimpleVersion_Pipeline_IVersionContext_System_Collections_Generic_IEnumerable_SimpleVersion_Rules_ITokenRule___0___">TokenRuleExtensions.ResolveTokenRules&lt;T&gt;(T, IVersionContext, IEnumerable&lt;ITokenRule&lt;T&gt;&gt;)</a>
   </div>
 </article>
           </div>
@@ -123,6 +140,12 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Kieranties/SimpleVersion/new/master/apiSpec/new?filename=SimpleVersion_Pipeline_IVersionProcessor.md&amp;value=---%0Auid%3A%20SimpleVersion.Pipeline.IVersionProcessor%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Abstractions/Pipeline/IVersionProcessor.cs/#L8" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

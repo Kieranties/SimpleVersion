@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class VersionCalculator
    ">
-    <meta name="generator" content="docfx 2.42.0.0">
+    <meta name="generator" content="docfx 2.52.0.0">
     
     <link rel="shortcut icon" href="../images/log.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -19,7 +19,7 @@
     <meta property="docfx:navrel" content="../toc.html">
     <meta property="docfx:tocrel" content="toc.html">
     
-    
+    <meta property="docfx:rel" content="../">
     
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -58,6 +58,16 @@
           </div>
         </div>
       </header>
+      <div class="container body-content">
+        
+        <div id="search-results">
+          <div class="search-list"></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination"></ul>
+        </div>
+      </div>
       <div role="main" class="container body-content hide-when-search">
         
         <div class="sidenav hide-when-search">
@@ -85,63 +95,53 @@
     <h5>Implements</h5>
     <div><a class="xref" href="SimpleVersion.IVersionCalculator.html">IVersionCalculator</a></div>
   </div>
+  <div class="inheritedMembers">
+    <h5>Inherited Members</h5>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.Equals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetHashCode()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.GetType()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.MemberwiseClone()</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ReferenceEquals(System.Object, System.Object)</span>
+    </div>
+    <div>
+      <span class="xref">System.Object.ToString()</span>
+    </div>
+  </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="SimpleVersion.html">SimpleVersion</a></h6>
   <h6><strong>Assembly</strong>: SimpleVersion.Core.dll</h6>
   <h5 id="SimpleVersion_VersionCalculator_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class VersionCalculator : Object, IVersionCalculator</code></pre>
+    <pre><code class="lang-csharp hljs">public class VersionCalculator : IVersionCalculator</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
-  
-  
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Kieranties/SimpleVersion/new/master/apiSpec/new?filename=SimpleVersion_VersionCalculator__ctor_System_String_.md&amp;value=---%0Auid%3A%20SimpleVersion.VersionCalculator.%23ctor(System.String)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Core/VersionCalculator.cs/#L38">View Source</a>
+  </span>
   <a id="SimpleVersion_VersionCalculator__ctor_" data-uid="SimpleVersion.VersionCalculator.#ctor*"></a>
-  <h4 id="SimpleVersion_VersionCalculator__ctor" data-uid="SimpleVersion.VersionCalculator.#ctor">VersionCalculator()</h4>
-  <div class="markdown level1 summary"></div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public VersionCalculator()</code></pre>
-  </div>
-  <h3 id="methods">Methods
-  </h3>
-  
-  
-  <a id="SimpleVersion_VersionCalculator_Default_" data-uid="SimpleVersion.VersionCalculator.Default*"></a>
-  <h4 id="SimpleVersion_VersionCalculator_Default" data-uid="SimpleVersion.VersionCalculator.Default">Default()</h4>
-  <div class="markdown level1 summary"><p>Default calculator instance.</p>
+  <h4 id="SimpleVersion_VersionCalculator__ctor_System_String_" data-uid="SimpleVersion.VersionCalculator.#ctor(System.String)">VersionCalculator(String)</h4>
+  <div class="markdown level1 summary"><p>Initializes a new instance of the <a class="xref" href="SimpleVersion.VersionCalculator.html">VersionCalculator</a> class.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="decalaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static VersionCalculator Default()</code></pre>
-  </div>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="SimpleVersion.VersionCalculator.html">VersionCalculator</a></td>
-        <td><p>An instance of <a class="xref" href="SimpleVersion.VersionCalculator.html">VersionCalculator</a>.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  
-  
-  <a id="SimpleVersion_VersionCalculator_GetResult_" data-uid="SimpleVersion.VersionCalculator.GetResult*"></a>
-  <h4 id="SimpleVersion_VersionCalculator_GetResult_System_String_" data-uid="SimpleVersion.VersionCalculator.GetResult(System.String)">GetResult(String)</h4>
-  <div class="markdown level1 summary"><p>Invokes the chain of processors to get a <a class="xref" href="SimpleVersion.Model.VersionResult.html">VersionResult</a>.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="decalaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public VersionResult GetResult(string path)</code></pre>
+    <pre><code class="lang-csharp hljs">public VersionCalculator(string path)</code></pre>
   </div>
   <h5 class="parameters">Parameters</h5>
   <table class="table table-bordered table-striped table-condensed">
@@ -156,11 +156,29 @@
       <tr>
         <td><span class="xref">System.String</span></td>
         <td><span class="parametername">path</span></td>
-        <td><p>The path to the repository to version.</p>
+        <td><p>The path for the repository.</p>
 </td>
       </tr>
     </tbody>
   </table>
+  <h3 id="methods">Methods
+  </h3>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Kieranties/SimpleVersion/new/master/apiSpec/new?filename=SimpleVersion_VersionCalculator_GetResult.md&amp;value=---%0Auid%3A%20SimpleVersion.VersionCalculator.GetResult%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Core/VersionCalculator.cs/#L46">View Source</a>
+  </span>
+  <a id="SimpleVersion_VersionCalculator_GetResult_" data-uid="SimpleVersion.VersionCalculator.GetResult*"></a>
+  <h4 id="SimpleVersion_VersionCalculator_GetResult" data-uid="SimpleVersion.VersionCalculator.GetResult">GetResult()</h4>
+  <div class="markdown level1 summary"><p>Gets the processed version result.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public VersionResult GetResult()</code></pre>
+  </div>
   <h5 class="returns">Returns</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
@@ -171,8 +189,42 @@
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="SimpleVersion.Model.VersionResult.html">VersionResult</a></td>
-        <td><p>The resulting <a class="xref" href="SimpleVersion.Model.VersionResult.html">VersionResult</a>.</p>
+        <td><a class="xref" href="SimpleVersion.VersionResult.html">VersionResult</a></td>
+        <td><p>A complete <a class="xref" href="SimpleVersion.VersionResult.html">VersionResult</a> instance.</p>
+</td>
+      </tr>
+    </tbody>
+  </table>
+  <span class="small pull-right mobile-hide">
+    <span class="divider">|</span>
+    <a href="https://github.com/Kieranties/SimpleVersion/new/master/apiSpec/new?filename=SimpleVersion_VersionCalculator_WriteResult_System_IO_TextWriter_.md&amp;value=---%0Auid%3A%20SimpleVersion.VersionCalculator.WriteResult(System.IO.TextWriter)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+  </span>
+  <span class="small pull-right mobile-hide">
+    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Core/VersionCalculator.cs/#L49">View Source</a>
+  </span>
+  <a id="SimpleVersion_VersionCalculator_WriteResult_" data-uid="SimpleVersion.VersionCalculator.WriteResult*"></a>
+  <h4 id="SimpleVersion_VersionCalculator_WriteResult_System_IO_TextWriter_" data-uid="SimpleVersion.VersionCalculator.WriteResult(System.IO.TextWriter)">WriteResult(TextWriter)</h4>
+  <div class="markdown level1 summary"><p>Writes the processed version result to the <code data-dev-comment-type="paramref" class="paramref">output</code>.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+  <h5 class="decalaration">Declaration</h5>
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void WriteResult(TextWriter output)</code></pre>
+  </div>
+  <h5 class="parameters">Parameters</h5>
+  <table class="table table-bordered table-striped table-condensed">
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="xref">System.IO.TextWriter</span></td>
+        <td><span class="parametername">output</span></td>
+        <td><p>The writer for the result.</p>
 </td>
       </tr>
     </tbody>
@@ -192,6 +244,12 @@
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/Kieranties/SimpleVersion/new/master/apiSpec/new?filename=SimpleVersion_VersionCalculator.md&amp;value=---%0Auid%3A%20SimpleVersion.VersionCalculator%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Core/VersionCalculator.cs/#L15" class="contribution-link">View Source</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
