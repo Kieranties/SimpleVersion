@@ -26,14 +26,15 @@ namespace SimpleVersion.Docs
                 FlattenInheritanceHierarchy = true,
                 SerializerSettings = new JsonSerializerSettings
                 {
-                  ContractResolver = new DefaultContractResolver
-                  {
-                      NamingStrategy = new CamelCaseNamingStrategy()
-                  }
+                    ContractResolver = new DefaultContractResolver
+                    {
+                        NamingStrategy = new CamelCaseNamingStrategy()
+                    }
                 }
             };
 
             var schema = JsonSchema.FromType(type, settings);
+            schema.Properties.Add("$schema", new JsonSchemaProperty { Type = JsonObjectType.String });
             Directory.CreateDirectory(Directory.GetParent(path).FullName);
             File.WriteAllText(path, schema.ToJson());
         }
