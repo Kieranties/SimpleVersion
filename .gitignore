@@ -8,4 +8,4 @@ coverage.json
 **/site/api/*.yml
 **/site/api/.manifest
 **/site/manifest.json
-**/site/schema/latest.json
+**/site/schema/

@@ -1,5 +1,5 @@
 {
-  "$schema": "http://localhost:8080/schema/latest.json",
+  "$schema": "http://simpleversion.kieranties.com/schema/unstable.json",
   "version": "0.4.0",
   "branches": {
     "release": [".+"],

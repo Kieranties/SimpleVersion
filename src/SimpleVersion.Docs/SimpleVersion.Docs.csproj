@@ -26,7 +26,12 @@
 
   <Target Name="GenerateSchema" AfterTargets="Build">
     <!-- Generate the schema and add to site assets -->
-    <Exec Command="dotnet $(OutputPath)/$(AssemblyName).dll $(MSBuildThisFileDirectory)site/schema/latest.json" />
+    <PropertyGroup>
+      <FileName>latest</FileName>
+      <FileName Condition="$(Version.Contains('-'))">unstable</FileName>
+    </PropertyGroup>
+    
+    <Exec Command="dotnet $(OutputPath)/$(AssemblyName).dll $(MSBuildThisFileDirectory)site/schema/$(FileName).json" />
   </Target>
 
   <Target Name="DocFxBuild" AfterTargets="Publish">

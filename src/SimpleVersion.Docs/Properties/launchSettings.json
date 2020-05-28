@@ -2,7 +2,7 @@
   "profiles": {
     "SimpleVersion.Docs": {
       "commandName": "Project",
-      "commandLineArgs": "$(MSBuildThisFileDirectory)site/schema/latest.json"
+      "commandLineArgs": "$(MSBuildThisFileDirectory)site/schema/local.json"
     }
   }
 }
