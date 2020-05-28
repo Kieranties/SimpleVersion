@@ -6,7 +6,6 @@ trigger:
     - release/*
   paths:
     exclude:
-    - docs/*
     - .github/*
     - README.md
 
@@ -65,7 +64,7 @@ jobs:
       coverageThreshold: '90'
 
   # Handle artifacts
-  - publish: $(ArtifactsPath)/docs
+  - publish: $(ArtifactsPath)/docs/site
     displayName: "Artifacts: Publish Docs"
     condition: succeeded()
     artifact: docs

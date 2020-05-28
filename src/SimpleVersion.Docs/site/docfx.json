@@ -4,8 +4,8 @@
       "src": [
         {
           "files": ["**.csproj"],
-          "src": "../../src",
-          "exclude": ["**/bin/**", "**/obj/**"]
+          "src": "../../",
+          "exclude": ["**/bin/**", "**/obj/**", "**/SimpleVersion.Docs/**"]
         }
       ],
       "dest": "api",
@@ -21,7 +21,7 @@
     ],
     "resource": [
       {
-        "files": ["images/**", "theme/**"]
+        "files": ["images/**", "theme/**", "schema/**"]
       }
     ],
     "globalMetadataFiles": [],

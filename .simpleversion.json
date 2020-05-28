@@ -1,4 +1,5 @@
 {
+  "$schema": "http://simpleversion.kieranties.com/schema/unstable.json",
   "version": "0.4.0",
   "branches": {
     "release": [".+"],
