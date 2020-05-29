@@ -9,16 +9,18 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests.Tokens
 {
-    public class ShaTokenFixture
+    public class ShaTokenHandlerFixture
     {
-        private readonly ShaToken _sut;
+        private readonly ShaTokenHandler _sut;
         private readonly IVersionContext _context;
+        private readonly ITokenEvaluator _evaluator;
 
-        public ShaTokenFixture()
+        public ShaTokenHandlerFixture()
         {
-            _sut = new ShaToken();
+            _sut = new ShaTokenHandler();
             _context = Substitute.For<IVersionContext>();
             _context.Result.Returns(new VersionResult());
+            _evaluator = Substitute.For<ITokenEvaluator>();
         }
 
         [Fact]
@@ -26,7 +28,6 @@ namespace SimpleVersion.Core.Tests.Tokens
         {
             // Assert
             _sut.Key.Should().Be("sha");
-            _sut.Usage.Should().Be(TokenUsages.Any);
         }
 
         [Theory]
@@ -40,7 +41,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             _context.Result.Sha = expected;
 
             // Act
-            var result = _sut.Process(option, _context);
+            var result = _sut.Process(option, _context, _evaluator);
 
             // Assert
             result.Should().Be(expected);
@@ -57,7 +58,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             _context.Result.Sha = expected;
 
             // Act
-            var result = _sut.Process(option, _context);
+            var result = _sut.Process(option, _context, _evaluator);
 
             // Assert
             result.Should().Be(expected);
@@ -67,7 +68,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_NullContext_Throws()
         {
             // Arrange
-            Action action = () => _sut.Process(null, null);
+            Action action = () => _sut.Process(null, null, _evaluator);
 
             // Act / Assert
             action.Should().Throw<ArgumentNullException>()
@@ -82,7 +83,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             // Arrange
             var sha = "b49710eeebbf5dbf8e60d35b7340732aab18531d";
             _context.Result.Sha = sha;
-            Action action = () => _sut.Process(option, _context);
+            Action action = () => _sut.Process(option, _context, _evaluator);
 
             // Act / Assert
             action.Should().Throw<InvalidOperationException>()
@@ -98,7 +99,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             _context.Result.Sha = expected;
 
             // Act
-            var result = _sut.Process(option.ToString(), _context);
+            var result = _sut.Process(option.ToString(), _context, _evaluator);
 
             // Assert
             result.Should().Be(expected);
@@ -112,7 +113,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             // Arrange
             var sha = "b49710eeebbf5dbf8e60d35b7340732aab18531d";
             _context.Result.Sha = sha;
-            Action action = () => _sut.Process(option, _context);
+            Action action = () => _sut.Process(option, _context, _evaluator);
 
             // Act / Assert
             action.Should().Throw<InvalidOperationException>()

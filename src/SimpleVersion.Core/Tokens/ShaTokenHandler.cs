@@ -8,16 +8,13 @@ namespace SimpleVersion.Tokens
     /// <summary>
     /// Exposes the git sha as a token for consumption.
     /// </summary>
-    public class ShaToken : IToken
+    public class ShaTokenHandler : ITokenHandler
     {
         /// <inheritdoc/>
         public string Key => "sha";
 
         /// <inheritdoc/>
-        public TokenUsages Usage => TokenUsages.Any;
-
-        /// <inheritdoc/>
-        public string Process(string? option, IVersionContext context)
+        public string Process(string? option, IVersionContext context, ITokenEvaluator evaluator)
         {
             Assert.ArgumentNotNull(context, nameof(context));
 
