@@ -9,78 +9,55 @@ using System.Text.RegularExpressions;
 using LibGit2Sharp;
 using SimpleVersion.Comparers;
 using SimpleVersion.Configuration;
-using SimpleVersion.Environment;
 using SimpleVersion.Exceptions;
 using SimpleVersion.Pipeline;
 
 namespace SimpleVersion
 {
     /// <summary>
-    /// Represents a git repository.
+    /// Process a git repository and applies to <see cref="VersionContext"/>.
     /// </summary>
-    public class GitVersionRepository : IVersionRepository
+    public class GitRepositoryVersionProcessor : IVersionProcessor
     {
         private const string _noBranchCheckedOut = "(no branch)";
         private static readonly VersionConfigurationLabelComparer _comparer = new VersionConfigurationLabelComparer();
 
-        private readonly IRepository _repo;
-        private readonly IVersionEnvironment _environment;
         private readonly ISerializer _serializer;
-        private readonly IVersionProcessor[] _processors;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="GitVersionRepository"/> class.
+        /// Initializes a new instance of the <see cref="GitRepositoryVersionProcessor"/> class.
         /// </summary>
-        /// <param name="path">The path to the repository.</param>
-        /// <param name="environment">The environment for the invocation.</param>
         /// <param name="serializer">The serializer for reading documents.</param>
-        /// <param name="processors">The processors to be called on.</param>
-        public GitVersionRepository(
-            string path,
-            IVersionEnvironment environment,
-            ISerializer serializer,
-            IEnumerable<IVersionProcessor> processors)
+        public GitRepositoryVersionProcessor(ISerializer serializer)
         {
-            // Resolve the underlying repository
-            _repo = GetRepository(path);
-            _environment = Assert.ArgumentNotNull(environment, nameof(environment));
             _serializer = Assert.ArgumentNotNull(serializer, nameof(serializer));
-            _processors = Assert.ArgumentNotNull(processors, nameof(processors)).ToArray();
         }
 
         /// <inheritdoc/>
-        public VersionResult GetResult()
+        public void Process(IVersionContext context)
         {
+            Assert.ArgumentNotNull(context, nameof(context));
+
             // Fetch repository configuration
-            var repoConfig = GetRespositoryConfiguration();
-            var canonicalBranchName = _environment.CanonicalBranchName ?? _repo.Head.CanonicalName;
+            using var repo = GetRepository(context.WorkingDirectory);
+            var repoConfig = GetRespositoryConfiguration(repo);
+            var canonicalBranchName = context.Environment.CanonicalBranchName ?? repo.Head.CanonicalName;
 
             // Compose base result data
-            var result = new VersionResult
-            {
-                CanonicalBranchName = canonicalBranchName,
-                BranchName = _environment.BranchName ?? _repo.Head.FriendlyName,
-                Sha = _repo.Head.Tip.Sha,
+            context.Result.CanonicalBranchName = canonicalBranchName;
+            context.Result.BranchName = context.Environment.BranchName ?? repo.Head.FriendlyName;
+            context.Result.Sha = repo.Head.Tip.Sha;
 
-                // Value returned from repository has trailing slash so need to get parent twice.
-                RepositoryPath = Directory.GetParent(_repo.Info.Path).Parent.FullName,
-                IsRelease = repoConfig.Branches.Release.Any(x => Regex.IsMatch(canonicalBranchName, x))
-            };
+            // Value returned from repository has trailing slash so need to get parent twice.
+            context.Result.RepositoryPath = Directory.GetParent(repo.Info.Path).Parent.FullName;
+            context.Result.IsRelease = repoConfig.Branches.Release.Any(x => Regex.IsMatch(canonicalBranchName, x));
+
 
             // Build context for further processing
-            var branchConfig = GetBranchConfiguration(repoConfig, result.CanonicalBranchName);
-            var context = new VersionContext(_environment, branchConfig, result);
+            context.Configuration = GetBranchConfiguration(repoConfig, canonicalBranchName);
 
             // Update height based on context
-            SetHeight(context);
-
-            // Evaluate given processors
-            foreach (var processor in _processors)
-            {
-                processor.Process(context);
-            }
-
-            return context.Result;
+            SetHeight(context, repo);
         }
 
         private static IRepository GetRepository(string path)
@@ -167,21 +144,21 @@ namespace SimpleVersion
             return result;
         }
 
-        private IEnumerable<Commit> GetReachableCommits()
+        private IEnumerable<Commit> GetReachableCommits(IRepository repo)
         {
             var filter = new CommitFilter
             {
                 FirstParentOnly = true,
-                IncludeReachableFrom = _repo.Head,
+                IncludeReachableFrom = repo.Head,
                 SortBy = CommitSortStrategies.Topological
             };
 
-            return _repo.Commits.QueryBy(filter);
+            return repo.Commits.QueryBy(filter);
         }
 
-        private RepositoryConfiguration GetRespositoryConfiguration()
+        private RepositoryConfiguration GetRespositoryConfiguration(IRepository repo)
         {
-            var commit = _repo.Head.Tip;
+            var commit = repo.Head.Tip;
 
             if (commit == null)
             {
@@ -250,23 +227,23 @@ namespace SimpleVersion
             return false;
         }
 
-        private void SetHeight(IVersionContext context)
+        private void SetHeight(IVersionContext context, IRepository repo)
         {
             // Initialize count - The current commit counts, include offset
             var height = 1 + context.Configuration.OffSet;
 
             // skip the first commit as that is our baseline
-            var commits = GetReachableCommits().Skip(1);
+            var commits = GetReachableCommits(repo).Skip(1);
 
             // Get the state of this tree for commit comparison
-            var prevTree = _repo.Head.Tip.Tree;
+            var prevTree = repo.Head.Tip.Tree;
             foreach (var commit in commits)
             {
                 // Get the current tree
                 var currentTree = commit.Tree;
 
                 // Compare current and previous trees
-                var diff = _repo.Diff.Compare<TreeChanges>(currentTree, prevTree, new CompareOptions { Similarity = SimilarityOptions.None });
+                var diff = repo.Diff.Compare<TreeChanges>(currentTree, prevTree, new CompareOptions { Similarity = SimilarityOptions.None });
 
                 // If a change to the file is found, stop counting
                 if (HasVersionChange(diff, commit, context))

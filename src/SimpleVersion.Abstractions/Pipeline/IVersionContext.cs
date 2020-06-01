@@ -11,14 +11,19 @@ namespace SimpleVersion.Pipeline
     public interface IVersionContext
     {
         /// <summary>
-        /// Gets the <see cref="VersionConfiguration"/>.
+        /// Gets or sets the <see cref="VersionConfiguration"/>.
         /// </summary>
-        VersionConfiguration Configuration { get; }
+        VersionConfiguration Configuration { get; set; }
 
         /// <summary>
-        /// Gets the <see cref="IVersionEnvironment"/>.
+        /// Gets or sets the <see cref="IVersionEnvironment"/>.
         /// </summary>
-        IVersionEnvironment Environment { get; }
+        IVersionEnvironment Environment { get; set; }
+
+        /// <summary>
+        /// Gets the working directory.
+        /// </summary>
+        string WorkingDirectory { get; }
 
         /// <summary>
         /// Gets the <see cref="VersionResult"/>.

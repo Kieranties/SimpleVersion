@@ -1,11 +1,11 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System.IO;
-using System.Linq;
 using SimpleVersion.Environment;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Pipeline.Formatting;
 using SimpleVersion.Serialization;
+using SimpleVersion.Tokens;
 
 namespace SimpleVersion
 {
@@ -14,6 +14,7 @@ namespace SimpleVersion
     /// </summary>
     public class VersionCalculator : IVersionCalculator
     {
+        private static readonly Serializer _serializer = new Serializer();
         private static readonly EnvironmentVariableAccessor _environmentVariables = new EnvironmentVariableAccessor();
         private static readonly IVersionEnvironment[] _environments = new IVersionEnvironment[]
         {
@@ -23,13 +24,19 @@ namespace SimpleVersion
 
         private static readonly IVersionProcessor[] _processors = new IVersionProcessor[]
         {
+            new EnvironmentVersionProcessor(_environments),
+            new GitRepositoryVersionProcessor(_serializer),
             new VersionFormatProcessor(),
-            new Semver1FormatProcessor(),
-            new Semver2FormatProcessor()
+            new FormatsVersionProcessor(new TokenEvaluator(new ITokenHandler[]
+            {
+                new LabelTokenHandler(),
+                new SemverTokenHandler(),
+                new ShaTokenHandler(),
+                new VersionTokenHandler()
+            }))
         };
 
-        private readonly Serializer _serializer;
-        private readonly GitVersionRepository _repository;
+        private readonly string _path;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="VersionCalculator"/> class.
@@ -37,13 +44,20 @@ namespace SimpleVersion
         /// <param name="path">The path for the repository.</param>
         public VersionCalculator(string path)
         {
-            _serializer = new Serializer();
-            var environment = _environments.First(x => x.IsValid);
-            _repository = new GitVersionRepository(path, environment, _serializer, _processors);
+            _path = path;
         }
 
         /// <inheritdoc/>
-        public VersionResult GetResult() => _repository.GetResult();
+        public VersionResult GetResult()
+        {
+            var ctx = new VersionContext(_path);
+            foreach (var proc in _processors)
+            {
+                proc.Process(ctx);
+            }
+
+            return ctx.Result;
+        }
 
         /// <inheritdoc/>
         public void WriteResult(TextWriter output)
