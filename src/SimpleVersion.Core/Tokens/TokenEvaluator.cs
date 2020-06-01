@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using SimpleVersion.Pipeline;
 
@@ -13,7 +14,7 @@ namespace SimpleVersion.Tokens
     /// </summary>
     public class TokenEvaluator : ITokenEvaluator
     {
-        private static readonly Regex _tokenFormat = new Regex(@"\{(?<key>[\w]+)(?:\:(?<option>.+))?\}", RegexOptions.IgnoreCase | RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static readonly Regex _regex = new Regex(@"{(?<key>\*|\w+)(?:\:(?<option>(?:[^\}]|\}(?=\}))*))?\}|(?<height>\*)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private readonly IEnumerable<ITokenHandler> _handlers;
 
         /// <summary>
@@ -28,31 +29,63 @@ namespace SimpleVersion.Tokens
         /// <inheritdoc />
         public string Process(string tokenString, IVersionContext context)
         {
-            var (key, option) = ParseTokenString(tokenString);
-            var token = _handlers.FirstOrDefault(t => t.Key == key);
-
-            if (token == null)
-            {
-                throw new Exception($"Could not find token handler for request: {tokenString}");
-            }
-
-            return token.Process(option, context, this);
-        }
-
-        private (string key, string? option) ParseTokenString(string tokenString)
-        {
             if (string.IsNullOrWhiteSpace(tokenString))
             {
-                throw new ArgumentOutOfRangeException(nameof(tokenString));
+                return tokenString;
             }
 
-            var match = _tokenFormat.Match(tokenString);
-            if (!match.Success)
+            var charPointer = 0;
+            var matches = _regex.Matches(tokenString);
+
+            var result = new StringBuilder();
+
+            // local function to consume unmatched strings
+            void ConsumeNonToken(int upToIndex)
             {
-                throw new Exception($"Invalid token string: {tokenString}");
+                if (charPointer < upToIndex)
+                {
+                    result.Append(tokenString.Substring(charPointer, upToIndex - charPointer));
+                }
             }
 
-            return (match.Groups["key"].Value, match.Groups["option"]?.Value);
+            foreach (Match match in matches)
+            {
+                // Ensure we have consumed up to this token
+                ConsumeNonToken(match.Index);
+
+                string? handlerKey = null;
+                if (match.Groups["key"].Success)
+                {
+                    handlerKey = match.Groups["key"].Value;
+                }
+                else
+                {
+                    handlerKey = match.Groups["height"].Value;
+                }
+
+                if (handlerKey == null)
+                {
+                    throw new Exception($"Invalid token match for request: {tokenString}");
+                }
+
+                var handler = _handlers.FirstOrDefault(t => t.Key == handlerKey);
+
+                if (handler == null)
+                {
+                    throw new Exception($"Could not find token handler for request: {tokenString}");
+                }
+
+                var option = match.Groups["option"].Value;
+                result.Append(handler.Process(option, context, this));
+
+                // consume token
+                charPointer = match.Index + match.Length;
+            }
+
+            // Ensure we consume any final string
+            ConsumeNonToken(tokenString.Length);
+
+            return result.ToString();
         }
     }
 }
