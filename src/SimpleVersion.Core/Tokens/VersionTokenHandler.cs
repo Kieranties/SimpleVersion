@@ -30,7 +30,7 @@ namespace SimpleVersion.Tokens
             {
                 int num;
 
-                if (c == 'r' && context.Result.Revision < 0)
+                if (c == 'r' && context.Result.Revision < 1)
                 {
                     continue;
                 }
@@ -42,7 +42,7 @@ namespace SimpleVersion.Tokens
                     'p' => context.Result.Patch,
                     'r' => context.Result.Revision,
                     'R' => context.Result.Revision,
-                    _ => throw new Exception($"Invalid option: {c}")
+                    _ => throw new InvalidOperationException($"Invalid character '{c}' in version option [{optionValue}].")
                 };
 
                 versionParts.Add(num);
