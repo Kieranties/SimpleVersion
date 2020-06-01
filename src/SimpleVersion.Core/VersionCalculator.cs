@@ -22,18 +22,20 @@ namespace SimpleVersion
             new DefaultVersionEnvironment(_environmentVariables)
         };
 
+        private static readonly ITokenEvaluator _evaluator = new TokenEvaluator(new ITokenHandler[]
+        {
+            new LabelTokenHandler(),
+            new SemverTokenHandler(),
+            new ShaTokenHandler(),
+            new VersionTokenHandler()
+        });
+
         private static readonly IVersionProcessor[] _processors = new IVersionProcessor[]
         {
             new EnvironmentVersionProcessor(_environments),
             new GitRepositoryVersionProcessor(_serializer),
-            new VersionFormatProcessor(),
-            new FormatsVersionProcessor(new TokenEvaluator(new ITokenHandler[]
-            {
-                new LabelTokenHandler(),
-                new SemverTokenHandler(),
-                new ShaTokenHandler(),
-                new VersionTokenHandler()
-            }))
+            new VersionVersionProcessor(_evaluator),
+            new FormatsVersionProcessor(_evaluator)
         };
 
         private readonly string _path;

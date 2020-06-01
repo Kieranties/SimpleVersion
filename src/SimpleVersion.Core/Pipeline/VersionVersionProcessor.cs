@@ -1,21 +1,32 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System;
-using SimpleVersion.Rules;
+using SimpleVersion.Tokens;
 
 namespace SimpleVersion.Pipeline.Formatting
 {
     /// <summary>
     /// Processes the version string.
     /// </summary>
-    public class VersionFormatProcessor : IVersionProcessor
+    public class VersionVersionProcessor : IVersionProcessor
     {
+        private readonly ITokenEvaluator _evaluator;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="VersionVersionProcessor"/> class.
+        /// </summary>
+        /// <param name="evaluator">The <see cref="ITokenEvaluator"/> to process tokens.</param>
+        public VersionVersionProcessor(ITokenEvaluator evaluator)
+        {
+            _evaluator = evaluator;
+        }
+
         /// <inheritdoc/>
         public void Process(IVersionContext context)
         {
             Assert.ArgumentNotNull(context, nameof(context));
 
-            var versionString = HeightTokenRule.Instance.Resolve(context, context.Configuration.Version);
+            var versionString = _evaluator.Process(context.Configuration.Version, context);
 
             if (Version.TryParse(versionString, out var version))
             {
@@ -23,10 +34,8 @@ namespace SimpleVersion.Pipeline.Formatting
                 context.Result.Minor = version.Minor > -1 ? version.Minor : 0;
                 context.Result.Patch = version.Build > -1 ? version.Build : 0;
 
-                context.Result.Version = $"{context.Result.Major}.{context.Result.Minor}.{context.Result.Patch}";
                 if (version.Revision > -1)
                 {
-                    context.Result.Version += $".{version.Revision}";
                     context.Result.Revision = version.Revision;
                 }
             }
