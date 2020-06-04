@@ -24,9 +24,12 @@ namespace SimpleVersion
 
         private static readonly ITokenEvaluator _evaluator = new TokenEvaluator(new ITokenHandler[]
         {
+            new BranchNameTokenHandler(),
             new LabelTokenHandler(),
+            new PrTokenHandler(),
             new SemverTokenHandler(),
             new ShaTokenHandler(),
+            new ShortBranchNameTokenHandler(),
             new VersionTokenHandler()
         });
 

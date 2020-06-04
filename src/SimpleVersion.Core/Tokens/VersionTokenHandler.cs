@@ -7,7 +7,7 @@ using SimpleVersion.Pipeline;
 namespace SimpleVersion.Tokens
 {
     /// <summary>
-    /// Handles the collection of the version string.
+    /// Handles the formatting of the version string.
     /// </summary>
     public class VersionTokenHandler : ITokenHandler
     {
