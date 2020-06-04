@@ -1,5 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System;
+using System.IO;
 using SimpleVersion.Configuration;
 using SimpleVersion.Environment;
 
@@ -16,6 +18,16 @@ namespace SimpleVersion.Pipeline
         /// <param name="workingDirectory">The working directory of the version request.</param>
         public VersionContext(string workingDirectory)
         {
+            if (string.IsNullOrWhiteSpace(workingDirectory))
+            {
+                throw new ArgumentOutOfRangeException(nameof(workingDirectory), $"'{workingDirectory}' is not a valid working directory.");
+            }
+
+            if (!Directory.Exists(workingDirectory))
+            {
+                throw new DirectoryNotFoundException($"Could not find directory '{workingDirectory}'");
+            }
+
             WorkingDirectory = workingDirectory;
         }
 

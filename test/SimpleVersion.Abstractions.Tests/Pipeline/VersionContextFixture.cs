@@ -1,11 +1,8 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System;
-using System.Collections.Generic;
+using System.IO;
 using FluentAssertions;
-using NSubstitute;
-using SimpleVersion.Configuration;
-using SimpleVersion.Environment;
 using SimpleVersion.Pipeline;
 using Xunit;
 
@@ -13,60 +10,46 @@ namespace SimpleVersion.Abstractions.Tests.Pipeline
 {
     public class VersionContextFixture
     {
-        private readonly IVersionEnvironment _environment;
-        private readonly VersionConfiguration _config;
-        private readonly VersionResult _result;
-
-        public VersionContextFixture()
-        {
-            _environment = Substitute.For<IVersionEnvironment>();
-            _config = new VersionConfiguration();
-            _result = new VersionResult();
-        }
-
-        [Fact]
-        public void Ctor_NullEnvironment_Throws()
+        [Theory]
+        [InlineData("")]
+        [InlineData("  ")]
+        [InlineData("\t\t  ")]
+        public void Ctor_InvalidValue_Throws(string value)
         {
             // Arrange
-            Action action = () => new VersionContext(null, _config, _result);
+            Action action = () => new VersionContext(value);
 
             // Act / Assert
-            action.Should().Throw<ArgumentNullException>()
-                .And.ParamName.Should().Be("environment");
+            action.Should().Throw<ArgumentOutOfRangeException>()
+                .WithMessage($"'{value}' is not a valid working directory. (Parameter 'workingDirectory')")
+                .And.ParamName.Should().Be("workingDirectory");
         }
 
-        [Fact]
-        public void Ctor_NullConfiguration_Throws()
+        [Theory]
+        [InlineData("/this/is/not/a/path")]
+        public void Ctor_InvalidPath_Throws(string value)
         {
             // Arrange
-            Action action = () => new VersionContext(_environment, null, _result);
+            Action action = () => new VersionContext(value);
 
             // Act / Assert
-            action.Should().Throw<ArgumentNullException>()
-                .And.ParamName.Should().Be("configuration");
-        }
-
-        [Fact]
-        public void Ctor_NullResult_Throws()
-        {
-            // Arrange
-            Action action = () => new VersionContext(_environment, _config, null);
-
-            // Act / Assert
-            action.Should().Throw<ArgumentNullException>()
-                .And.ParamName.Should().Be("result");
+            action.Should().Throw<DirectoryNotFoundException>()
+                .WithMessage($"Could not find directory '{value}'");
         }
 
         [Fact]
         public void Ctor_ValidParameters_SetsEnvironment()
         {
+            var path = System.Environment.CurrentDirectory;
+
             // Arrange / Act
-            var sut = new VersionContext(_environment, _config, _result);
+            var sut = new VersionContext(path);
 
             // Assert
-            sut.Environment.Should().BeSameAs(_environment);
-            sut.Configuration.Should().BeSameAs(_config);
-            sut.Result.Should().BeSameAs(_result);
+            sut.Environment.Should().BeNull();
+            sut.Configuration.Should().BeNull();
+            sut.Result.Should().NotBeNull();
+            sut.WorkingDirectory.Should().Be(path);
         }
     }
 }
