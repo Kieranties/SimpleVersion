@@ -1,6 +1,5 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using SimpleVersion.Environment;
@@ -13,14 +12,18 @@ namespace SimpleVersion.Pipeline
     public class EnvironmentVersionProcessor : IVersionProcessor
     {
         private readonly IEnumerable<IVersionEnvironment> _environments;
+        private readonly DefaultVersionEnvironment _fallback;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EnvironmentVersionProcessor"/> class.
         /// </summary>
         /// <param name="environments">The environments that may apply.</param>
-        public EnvironmentVersionProcessor(IEnumerable<IVersionEnvironment> environments)
+        public EnvironmentVersionProcessor(
+            IEnumerable<IVersionEnvironment> environments,
+            DefaultVersionEnvironment fallbackEnvironment)
         {
-            _environments = environments;
+            _environments = Assert.ArgumentNotNull(environments, nameof(environments));
+            _fallback = Assert.ArgumentNotNull(fallbackEnvironment, nameof(fallbackEnvironment));
         }
 
         /// <inheritdoc/>
@@ -28,7 +31,7 @@ namespace SimpleVersion.Pipeline
         {
             Assert.ArgumentNotNull(context, nameof(context));
 
-            context.Environment = _environments.First(x => x.IsValid);
+            context.Environment = _environments.FirstOrDefault(x => x.IsValid) ?? _fallback;
         }
     }
 }

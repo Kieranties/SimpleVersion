@@ -1,6 +1,12 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System;
+using Microsoft.Extensions.DependencyInjection;
+using SimpleVersion.Environment;
+using SimpleVersion.Pipeline;
+using SimpleVersion.Pipeline.Formatting;
+using SimpleVersion.Serialization;
+using SimpleVersion.Tokens;
 
 namespace SimpleVersion.Tool
 {
@@ -25,7 +31,7 @@ namespace SimpleVersion.Tool
                     path = args[0];
                 }
 
-                var calculator = new VersionCalculator(path);
+                var calculator = ResolveCalculator(path);
                 calculator.WriteResult(Console.Out);
             }
 #pragma warning disable CA1031 // Do not catch general exception types
@@ -39,6 +45,30 @@ namespace SimpleVersion.Tool
                 System.Environment.ExitCode = exitCode;
             }
 #pragma warning restore CA1031 // Do not catch general exception types
+        }
+
+        private static IVersionCalculator ResolveCalculator(string path)
+        {
+            var services = new ServiceCollection()
+                .AddSingleton<IVersionCalculator>(sp => ActivatorUtilities.CreateInstance<VersionCalculator>(sp, path))
+                .AddSingleton<ISerializer, Serializer>()
+                .AddSingleton<IEnvironmentVariableAccessor, EnvironmentVariableAccessor>()
+                .AddSingleton<IVersionEnvironment, AzureDevopsEnvironment>()
+                .AddSingleton<DefaultVersionEnvironment>()
+                .AddSingleton<ITokenEvaluator, TokenEvaluator>()
+                .AddSingleton<ITokenHandler, BranchNameTokenHandler>()
+                .AddSingleton<ITokenHandler, LabelTokenHandler>()
+                .AddSingleton<ITokenHandler, SemverTokenHandler>()
+                .AddSingleton<ITokenHandler, ShaTokenHandler>()
+                .AddSingleton<ITokenHandler, ShortBranchNameTokenHandler>()
+                .AddSingleton<ITokenHandler, VersionTokenHandler>()
+                .AddSingleton<IVersionProcessor, EnvironmentVersionProcessor>()
+                .AddSingleton<IVersionProcessor, GitRepositoryVersionProcessor>()
+                .AddSingleton<IVersionProcessor, VersionVersionProcessor>()
+                .AddSingleton<IVersionProcessor, FormatsVersionProcessor>()
+                .BuildServiceProvider();
+
+            return services.GetRequiredService<IVersionCalculator>();
         }
     }
 }

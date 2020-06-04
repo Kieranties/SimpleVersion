@@ -52,7 +52,6 @@ namespace SimpleVersion
             context.Result.RepositoryPath = Directory.GetParent(repo.Info.Path).Parent.FullName;
             context.Result.IsRelease = repoConfig.Branches.Release.Any(x => Regex.IsMatch(canonicalBranchName, x));
 
-
             // Build context for further processing
             context.Configuration = GetBranchConfiguration(repoConfig, canonicalBranchName);
 
@@ -144,7 +143,7 @@ namespace SimpleVersion
             return result;
         }
 
-        private IEnumerable<Commit> GetReachableCommits(IRepository repo)
+        private static IEnumerable<Commit> GetReachableCommits(IRepository repo)
         {
             var filter = new CommitFilter
             {

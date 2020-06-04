@@ -1,11 +1,8 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System.Collections.Generic;
 using System.IO;
-using SimpleVersion.Environment;
 using SimpleVersion.Pipeline;
-using SimpleVersion.Pipeline.Formatting;
-using SimpleVersion.Serialization;
-using SimpleVersion.Tokens;
 
 namespace SimpleVersion
 {
@@ -14,42 +11,24 @@ namespace SimpleVersion
     /// </summary>
     public class VersionCalculator : IVersionCalculator
     {
-        private static readonly Serializer _serializer = new Serializer();
-        private static readonly EnvironmentVariableAccessor _environmentVariables = new EnvironmentVariableAccessor();
-        private static readonly IVersionEnvironment[] _environments = new IVersionEnvironment[]
-        {
-            new AzureDevopsEnvironment(_environmentVariables),
-            new DefaultVersionEnvironment(_environmentVariables)
-        };
-
-        private static readonly ITokenEvaluator _evaluator = new TokenEvaluator(new ITokenHandler[]
-        {
-            new BranchNameTokenHandler(),
-            new LabelTokenHandler(),
-            new PrTokenHandler(),
-            new SemverTokenHandler(),
-            new ShaTokenHandler(),
-            new ShortBranchNameTokenHandler(),
-            new VersionTokenHandler()
-        });
-
-        private static readonly IVersionProcessor[] _processors = new IVersionProcessor[]
-        {
-            new EnvironmentVersionProcessor(_environments),
-            new GitRepositoryVersionProcessor(_serializer),
-            new VersionVersionProcessor(_evaluator),
-            new FormatsVersionProcessor(_evaluator)
-        };
-
         private readonly string _path;
+        private readonly IEnumerable<IVersionProcessor> _processors;
+        private readonly ISerializer _serializer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="VersionCalculator"/> class.
         /// </summary>
         /// <param name="path">The path for the repository.</param>
-        public VersionCalculator(string path)
+        /// <param name="processors">The processors to generate version info.</param>
+        /// <param name="serializer">The serializer to write output.</param>
+        public VersionCalculator(
+            string path,
+            IEnumerable<IVersionProcessor> processors,
+            ISerializer serializer)
         {
             _path = path;
+            _processors = Assert.ArgumentNotNull(processors, nameof(processors));
+            _serializer = Assert.ArgumentNotNull(serializer, nameof(serializer));
         }
 
         /// <inheritdoc/>
