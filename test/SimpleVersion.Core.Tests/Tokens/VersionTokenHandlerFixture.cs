@@ -19,7 +19,9 @@ namespace SimpleVersion.Core.Tests.Tokens
         {
             _sut = new VersionTokenHandler();
             _context = Substitute.For<IVersionContext>();
+            _context.Result.Returns(new VersionResult());
             _evaluator = Substitute.For<ITokenEvaluator>();
+
         }
 
         [Fact]

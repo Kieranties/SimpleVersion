@@ -45,6 +45,15 @@ namespace SimpleVersion.Tokens
                 result += $"-{label}";
             }
 
+            if (specVersion == 2)
+            {
+                var metadata = evaluator.Process("{metadata:.}", context);
+                if (!string.IsNullOrWhiteSpace(metadata))
+                {
+                    result += $"+{metadata}";
+                }
+            }
+
             return result;
         }
     }

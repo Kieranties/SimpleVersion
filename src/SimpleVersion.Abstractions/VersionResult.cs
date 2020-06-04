@@ -1,7 +1,6 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System.Collections.Generic;
-using System.Text.RegularExpressions;
 
 namespace SimpleVersion
 {
@@ -10,8 +9,6 @@ namespace SimpleVersion
     /// </summary>
     public class VersionResult
     {
-        private static readonly Regex _prRegex = new Regex(@"^refs\/pull\/(?<id>\d+)", RegexOptions.Compiled | RegexOptions.IgnoreCase);
-        private string _canonicalBranchName = default!;
         private string _sha = default!;
 
         /// <summary>
@@ -78,30 +75,17 @@ namespace SimpleVersion
         /// <summary>
         /// Gets or sets the full canonical name of the current branch.
         /// </summary>
-        public string CanonicalBranchName
-        {
-            get => _canonicalBranchName;
-            set
-            {
-                _canonicalBranchName = value;
-                if (_canonicalBranchName != null)
-                {
-                    var match = _prRegex.Match(_canonicalBranchName);
-                    IsPullRequest = match.Success;
-                    PullRequestNumber = IsPullRequest && int.TryParse(match.Groups["id"].Value, out var id) ? id : 0;
-                }
-            }
-        }
+        public string CanonicalBranchName { get; set; } = default!;
 
         /// <summary>
         /// Gets a value indicating whether the current branch is a pull request.
         /// </summary>
-        public bool IsPullRequest { get; private set; }
+        public bool IsPullRequest => PullRequestNumber > 0;
 
         /// <summary>
-        /// Gets the pull request number (if the current branch is a pull request).
+        /// Gets or sets the pull request number (if the current branch is a pull request).
         /// </summary>
-        public int PullRequestNumber { get; private set; }
+        public int PullRequestNumber { get; set; } = 0;
 
         /// <summary>
         /// Gets or sets the path to the repository.

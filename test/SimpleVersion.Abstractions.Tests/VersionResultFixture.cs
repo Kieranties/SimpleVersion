@@ -1,6 +1,5 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using System.Security;
 using FluentAssertions;
 using Xunit;
 
@@ -41,17 +40,6 @@ namespace SimpleVersion.Abstractions.Tests
 
             // Assert
             sut.HeightPadded.Should().Be("0040");
-        }
-
-        [Fact]
-        public void PR_Branch_Sets_PR_Properties()
-        {
-            // Arrange / Act
-            var sut = new VersionResult { CanonicalBranchName = "refs/pull/124876/merge" };
-
-            // Assert
-            sut.IsPullRequest.Should().BeTrue();
-            sut.PullRequestNumber.Should().Be(124876);
         }
 
         [Fact]

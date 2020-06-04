@@ -5,19 +5,19 @@ using SimpleVersion.Pipeline;
 namespace SimpleVersion.Tokens
 {
     /// <summary>
-    /// Legacy handler for short branch name.
+    /// ELegacy handler for short sha token.
     /// </summary>
-    public class ShortBranchNameTokenHandler : BranchNameTokenHandler
+    public class ShortShaTokenHandler : ITokenHandler
     {
         /// <inheritdoc/>
-        public override string Key => "shortbranchname";
+        public string Key => "shortsha";
 
         /// <inheritdoc/>
-        public override string Process(string? optionValue, IVersionContext context, ITokenEvaluator evaluator)
+        public string Process(string? option, IVersionContext context, ITokenEvaluator evaluator)
         {
             Assert.ArgumentNotNull(evaluator, nameof(evaluator));
 
-            return evaluator.Process("{branchname:short}", context);
+            return evaluator.Process("{sha:7}", context);
         }
     }
 }

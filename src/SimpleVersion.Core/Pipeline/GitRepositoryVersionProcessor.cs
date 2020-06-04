@@ -41,11 +41,23 @@ namespace SimpleVersion
             // Fetch repository configuration
             using var repo = GetRepository(context.WorkingDirectory);
             var repoConfig = GetRespositoryConfiguration(repo);
-            var canonicalBranchName = context.Environment.CanonicalBranchName ?? repo.Head.CanonicalName;
+
+            // Set branches
+            var canonicalBranchName = context.Environment?.CanonicalBranchName;
+
+            if (string.IsNullOrWhiteSpace(canonicalBranchName))
+            {
+                canonicalBranchName = repo.Head.CanonicalName;
+            }
+
+            context.Result.BranchName = context.Environment?.BranchName!;
+            if (string.IsNullOrWhiteSpace(context.Result.BranchName))
+            {
+                context.Result.BranchName = repo.Head.FriendlyName;
+            }
 
             // Compose base result data
             context.Result.CanonicalBranchName = canonicalBranchName;
-            context.Result.BranchName = context.Environment.BranchName ?? repo.Head.FriendlyName;
             context.Result.Sha = repo.Head.Tip.Sha;
 
             // Value returned from repository has trailing slash so need to get parent twice.

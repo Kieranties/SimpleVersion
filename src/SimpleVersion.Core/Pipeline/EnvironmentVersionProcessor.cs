@@ -18,6 +18,7 @@ namespace SimpleVersion.Pipeline
         /// Initializes a new instance of the <see cref="EnvironmentVersionProcessor"/> class.
         /// </summary>
         /// <param name="environments">The environments that may apply.</param>
+        /// <param name="fallbackEnvironment">The environment to use when no others are valid.</param>
         public EnvironmentVersionProcessor(
             IEnumerable<IVersionEnvironment> environments,
             DefaultVersionEnvironment fallbackEnvironment)

@@ -4,7 +4,6 @@ using System;
 using FluentAssertions;
 using NSubstitute;
 using SimpleVersion.Environment;
-using SimpleVersion.Pipeline;
 using Xunit;
 
 namespace SimpleVersion.Core.Tests.Environment

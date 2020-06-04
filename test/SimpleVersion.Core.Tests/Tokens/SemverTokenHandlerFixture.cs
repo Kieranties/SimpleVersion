@@ -1,10 +1,10 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System;
 using FluentAssertions;
 using NSubstitute;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Tokens;
-using System;
 using Xunit;
 
 namespace SimpleVersion.Core.Tests.Tokens
@@ -19,11 +19,11 @@ namespace SimpleVersion.Core.Tests.Tokens
         {
             _sut = new SemverTokenHandler();
             _context = Substitute.For<IVersionContext>();
+            _context.Result.Returns(new VersionResult());
             _evaluator = Substitute.For<ITokenEvaluator>();
-            _evaluator.Process("{version}", _context)
-                .Returns("version");
-            _evaluator.Process(Arg.Is<string>(x => x.Contains("label")), _context)
-                .Returns("label");
+            _evaluator.Process("{version}", _context).Returns("version");
+            _evaluator.Process(Arg.Is<string>(x => x.Contains("label")), _context).Returns("label");
+            _context.Result.IsRelease = true;
         }
 
         [Fact]
@@ -78,10 +78,8 @@ namespace SimpleVersion.Core.Tests.Tokens
             // Arrange
             var label = "somelabel";
             var version = "1.2.3";
-            _evaluator.Process("{version}", _context)
-                .Returns(version);
-            _evaluator.Process($"{{label:{delimiter}}}", _context)
-                .Returns(label);
+            _evaluator.Process("{version}", _context).Returns(version);
+            _evaluator.Process($"{{label:{delimiter}}}", _context).Returns(label);
 
             var expected = $"{version}-{label}";
 
@@ -100,16 +98,62 @@ namespace SimpleVersion.Core.Tests.Tokens
             // Arrange
             string label = null;
             var version = "1.2.3";
-            _evaluator.Process("{version}", _context)
-                .Returns(version);
-            _evaluator.Process($"{{label:{delimiter}}}", _context)
-                .Returns(label);
+            _evaluator.Process("{version}", _context).Returns(version);
+            _evaluator.Process($"{{label:{delimiter}}}", _context).Returns(label);
 
             // Act
             var result = _sut.Process(optionValue, _context, _evaluator);
 
             // Assert
             result.Should().Be(version);
+        }
+
+        [Fact]
+        public void Process_Semver1_DoesNotProcessMetadata()
+        {
+            // Act
+            _sut.Process("1", _context, _evaluator);
+
+            // Assert
+            _evaluator.DidNotReceive().Process(Arg.Is<string>(x => x.Contains("metadata")), _context);
+        }
+
+        [Fact]
+        public void Process_HasLabelAndMetadata_ReturnsVersionLabelAndMetadata()
+        {
+            // Arrange
+            var label = "somelabel";
+            var metadata = "meta.data";
+            var version = "1.2.3";
+            _evaluator.Process("{version}", _context).Returns(version);
+            _evaluator.Process("{label:.}", _context).Returns(label);
+            _evaluator.Process("{metadata:.}", _context).Returns(metadata);
+
+            var expected = $"{version}-{label}+{metadata}";
+
+            // Act
+            var result = _sut.Process("2", _context, _evaluator);
+
+            // Assert
+            result.Should().Be(expected);
+        }
+
+        [Fact]
+        public void Process_NoLabelIncludesMetadata_ReturnsVersionAndMetadata()
+        {
+            // Arrange
+            string label = null;
+            var metadata = "meta.data";
+            var version = "1.2.3";
+            _evaluator.Process("{version}", _context).Returns(version);
+            _evaluator.Process("{label:.}", _context).Returns(label);
+            _evaluator.Process("{metadata:.}", _context).Returns(metadata);
+
+            // Act
+            var result = _sut.Process("2", _context, _evaluator);
+
+            // Assert
+            result.Should().Be("1.2.3+meta.data");
         }
     }
 }

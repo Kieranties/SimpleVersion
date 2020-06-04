@@ -3,44 +3,44 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using FluentAssertions;
 using GitTools.Testing;
 using LibGit2Sharp;
 using NSubstitute;
 using SimpleVersion.Configuration;
-using SimpleVersion.Environment;
 using SimpleVersion.Exceptions;
 using SimpleVersion.Pipeline;
 using SimpleVersion.Serialization;
 using Xunit;
-using static SimpleVersion.Core.Tests.Utils;
 
-namespace SimpleVersion.Core.Tests
+namespace SimpleVersion.Core.Tests.Pipeline
 {
-    public class GitVersionRepositoryFixture
+    public class GitRepositoryVersionProcessorFixture
     {
-        private readonly IVersionEnvironment _environment;
         private readonly ISerializer _serializer;
+        private readonly IVersionContext _context;
 
-        public GitVersionRepositoryFixture()
+        public GitRepositoryVersionProcessorFixture()
         {
-            _environment = Substitute.For<IVersionEnvironment>();
-            _environment.CanonicalBranchName.Returns((string)null);
-            _environment.BranchName.Returns((string)null);
             _serializer = new Serializer();
+            _context = Substitute.For<IVersionContext>();
+            _context.Result.Returns(new VersionResult());
         }
 
         [Theory]
         [InlineData(null)]
         [InlineData("")]
         [InlineData("   \t\t")]
-        public void Ctor_EmptyPath_Throws(string path)
+        public void Process_EmptyWorkingDirectory_Throws(string path)
         {
             // Arrange
-            Action action = () => new GitVersionRepository(path, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            _context.WorkingDirectory.Returns(path);
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
-            // Act / Assert
+            // Act
+            Action action = () => sut.Process(_context);
+
+            // Assert
             action.Should().Throw<ArgumentException>()
                 .WithMessage("Path must be provided. (Parameter 'path')");
         }
@@ -53,10 +53,14 @@ namespace SimpleVersion.Core.Tests
 
         [Theory]
         [MemberData(nameof(InvalidPaths))]
-        public void Ctor_InvalidPath_Throws(string path)
+        public void Ctor_InvalidWorkingDirecotory_Throws(string path)
         {
-            // Arrange / Act
-            Action action = () => new GitVersionRepository(path, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            // Arrange
+            _context.WorkingDirectory.Returns(path);
+            var sut = new GitRepositoryVersionProcessor(_serializer);
+
+            // Act
+            Action action = () => sut.Process(_context);
 
             // Assert
             action.Should().Throw<DirectoryNotFoundException>()
@@ -64,27 +68,10 @@ namespace SimpleVersion.Core.Tests
         }
 
         [Fact]
-        public void Ctor_Null_Environment_Throws()
-        {
-            // Arrange
-            using var fixture = new EmptyRepositoryFixture();
-
-            // Act
-            Action action = () => new GitVersionRepository(fixture.RepositoryPath, null, _serializer, Enumerable.Empty<IVersionProcessor>());
-
-            // Assert
-            action.Should().Throw<ArgumentNullException>()
-                .And.ParamName.Should().Be("environment");
-        }
-
-        [Fact]
         public void Ctor_Null_Serializer_Throws()
         {
-            // Arrange
-            using var fixture = new EmptyRepositoryFixture();
-
             // Act
-            Action action = () => new GitVersionRepository(fixture.RepositoryPath, _environment, null, Enumerable.Empty<IVersionProcessor>());
+            Action action = () => new GitRepositoryVersionProcessor(null);
 
             // Assert
             action.Should().Throw<ArgumentNullException>()
@@ -92,28 +79,15 @@ namespace SimpleVersion.Core.Tests
         }
 
         [Fact]
-        public void Ctor_Null_Processors_Throws()
-        {
-            // Arrange
-            using var fixture = new EmptyRepositoryFixture();
-
-            // Act
-            Action action = () => new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, null);
-
-            // Assert
-            action.Should().Throw<ArgumentNullException>()
-                .And.ParamName.Should().Be("processors");
-        }
-
-        [Fact]
         public void GetResult_NoCommits_Throws()
         {
             // Arrange
             using var fixture = new EmptyRepositoryFixture();
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             // Act
-            Action action = () => sut.GetResult();
+            Action action = () => sut.Process(_context);
 
             // Assert
             action.Should().Throw<GitException>()
@@ -126,10 +100,11 @@ namespace SimpleVersion.Core.Tests
             // Arrange
             using var fixture = new EmptyRepositoryFixture();
             fixture.MakeACommit();
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             // Act
-            Action action = () => sut.GetResult();
+            Action action = () => sut.Process(_context);
 
             // Assert
             action.Should().Throw<InvalidOperationException>()
@@ -144,15 +119,16 @@ namespace SimpleVersion.Core.Tests
         public void GetResult_InvalidCanonicalName_Throws(string branchName)
         {
             using var fixture = new SimpleVersionRepositoryFixture(_serializer);
-            _environment.CanonicalBranchName.Returns(branchName);
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            _context.Environment.CanonicalBranchName.Returns(branchName);
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             // set to headless state
             var commit = fixture.Repository.Head.Tip;
             Commands.Checkout(fixture.Repository, fixture.Repository.Head.Tip);
 
             // Act
-            Action action = () => sut.GetResult();
+            Action action = () => sut.Process(_context);
 
             // Assert
             action.Should().Throw<GitException>()
@@ -160,63 +136,21 @@ namespace SimpleVersion.Core.Tests
         }
 
         [Fact]
-        public void GetResult_EmptyProcessors_ReturnsResult()
-        {
-            // Arrange
-            using var fixture = new SimpleVersionRepositoryFixture(_serializer);
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
-
-            // Act
-            var result = sut.GetResult();
-
-            // Assert
-            result.Should().NotBeNull();
-        }
-
-        [Fact]
-        public void GetResult_WithProcessors_CallsInOrder()
-        {
-            // Arrange
-            var calledProcessors = new List<int>();
-            var processors = new[]
-            {
-                Substitute.For<IVersionProcessor>(),
-                Substitute.For<IVersionProcessor>(),
-                Substitute.For<IVersionProcessor>()
-            };
-
-            for (var x = 0; x < processors.Length; x++)
-            {
-                var value = x;
-                processors[x].When(p => p.Process(Arg.Any<IVersionContext>()))
-                         .Do(_ => calledProcessors.Add(value));
-            }
-
-            using var fixture = new SimpleVersionRepositoryFixture(_serializer);
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, processors);
-
-            // Act
-            var result = sut.GetResult();
-
-            // Assert
-            calledProcessors.Should().ContainInOrder(0, 1, 2);
-        }
-
-        [Fact]
         public void GetResult_EnvironmentCanonicalBranchName_UsesEnvironmentValueInResult()
         {
             // Arrange
             using var fixture = new SimpleVersionRepositoryFixture(_serializer);
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
             var expected = "FROMENV";
-            _environment.CanonicalBranchName.Returns(expected);
+            _context.Environment.CanonicalBranchName.Returns(expected);
 
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             // Act
-            var result = sut.GetResult();
+            sut.Process(_context);
 
             // Assert
-            result.CanonicalBranchName.Should().Be(expected);
+            _context.Result.CanonicalBranchName.Should().Be(expected);
         }
 
         [Fact]
@@ -224,16 +158,17 @@ namespace SimpleVersion.Core.Tests
         {
             // Arrange
             using var fixture = new SimpleVersionRepositoryFixture(_serializer);
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
             var expected = "FROMENV";
-            _environment.BranchName.Returns(expected);
+            _context.Environment.BranchName.Returns(expected);
 
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             // Act
-            var result = sut.GetResult();
+            sut.Process(_context);
 
             // Assert
-            result.BranchName.Should().Be(expected);
+            _context.Result.BranchName.Should().Be(expected);
         }
 
         [Fact]
@@ -241,13 +176,14 @@ namespace SimpleVersion.Core.Tests
         {
             // Arrange
             using var fixture = new SimpleVersionRepositoryFixture(_serializer);
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             // Act
-            var result = sut.GetResult();
+            sut.Process(_context);
 
             // Assert
-            result.CanonicalBranchName.Should().Be(fixture.Repository.Head.CanonicalName);
+            _context.Result.CanonicalBranchName.Should().Be(fixture.Repository.Head.CanonicalName);
         }
 
         [Fact]
@@ -255,13 +191,14 @@ namespace SimpleVersion.Core.Tests
         {
             // Arrange
             using var fixture = new SimpleVersionRepositoryFixture(_serializer);
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             // Act
-            var result = sut.GetResult();
+            sut.Process(_context);
 
             // Assert
-            result.BranchName.Should().Be(fixture.Repository.Head.FriendlyName);
+            _context.Result.BranchName.Should().Be(fixture.Repository.Head.FriendlyName);
         }
 
         [Fact]
@@ -269,13 +206,14 @@ namespace SimpleVersion.Core.Tests
         {
             // Arrange
             using var fixture = new SimpleVersionRepositoryFixture(_serializer);
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             // Act
-            var result = sut.GetResult();
+            sut.Process(_context);
 
             // Assert
-            result.Sha.Should().Be(fixture.Repository.Head.Tip.Sha);
+            _context.Result.Sha.Should().Be(fixture.Repository.Head.Tip.Sha);
         }
 
         [Fact]
@@ -283,13 +221,14 @@ namespace SimpleVersion.Core.Tests
         {
             // Arrange
             using var fixture = new SimpleVersionRepositoryFixture(_serializer);
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             // Act
-            var result = sut.GetResult();
+            sut.Process(_context);
 
             // Assert
-            result.RepositoryPath.Should().Be(fixture.RepositoryPath);
+            _context.Result.RepositoryPath.Should().Be(fixture.RepositoryPath);
         }
 
         [Theory]
@@ -299,15 +238,16 @@ namespace SimpleVersion.Core.Tests
         {
             // Arrange
             using var fixture = new SimpleVersionRepositoryFixture(_serializer);
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             fixture.BranchTo(branchName);
 
             // Act
-            var result = sut.GetResult();
+            sut.Process(_context);
 
             // Assert
-            result.IsRelease.Should().Be(isRelease);
+            _context.Result.IsRelease.Should().Be(isRelease);
         }
 
         [Fact]
@@ -315,13 +255,14 @@ namespace SimpleVersion.Core.Tests
         {
             // Arrange
             using var fixture = new SimpleVersionRepositoryFixture(_serializer);
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             // Act
-            var result = sut.GetResult();
+            sut.Process(_context);
 
             // Assert
-            result.Height.Should().Be(1);
+            _context.Result.Height.Should().Be(1);
         }
 
         [Fact]
@@ -329,7 +270,8 @@ namespace SimpleVersion.Core.Tests
         {
             // Arrange
             using var fixture = new SimpleVersionRepositoryFixture(_serializer);
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             fixture.MakeACommit();
             fixture.MakeACommit();
@@ -337,10 +279,10 @@ namespace SimpleVersion.Core.Tests
             fixture.MakeACommit();
 
             // Act
-            var result = sut.GetResult();
+            sut.Process(_context);
 
             // Assert
-            result.Height.Should().Be(5);
+            _context.Result.Height.Should().Be(5);
         }
 
         [Fact]
@@ -348,6 +290,7 @@ namespace SimpleVersion.Core.Tests
         {
             // Arrange
             using var fixture = new SimpleVersionRepositoryFixture(_serializer);
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
 
             fixture.MakeACommit();
             fixture.MakeACommit();
@@ -358,13 +301,13 @@ namespace SimpleVersion.Core.Tests
             config.Metadata.Add("example");
             fixture.SetConfig(config);
 
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             // Act
-            var result = sut.GetResult();
+            sut.Process(_context);
 
             // Assert
-            result.Height.Should().Be(6);
+            _context.Result.Height.Should().Be(6);
         }
 
         [Fact]
@@ -372,6 +315,8 @@ namespace SimpleVersion.Core.Tests
         {
             // Arrange
             using var fixture = new SimpleVersionRepositoryFixture(_serializer);
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
+
             fixture.MakeACommit();
             fixture.MakeACommit();
             fixture.MakeACommit();
@@ -385,12 +330,12 @@ namespace SimpleVersion.Core.Tests
             fixture.Checkout("master");
             fixture.MergeNoFF("feature/other");
 
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             // Act
-            var result = sut.GetResult();
+            sut.Process(_context);
 
-            result.Height.Should().Be(6);
+            _context.Result.Height.Should().Be(6);
         }
 
         [Fact]
@@ -398,6 +343,8 @@ namespace SimpleVersion.Core.Tests
         {
             // Arrange
             using var fixture = new SimpleVersionRepositoryFixture(_serializer);
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
+
             var config = fixture.GetConfig();
 
             fixture.MakeACommit();
@@ -417,12 +364,12 @@ namespace SimpleVersion.Core.Tests
             fixture.Checkout("master");
             fixture.MergeNoFF("feature/other");
 
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             // Act
-            var result = sut.GetResult();
+            sut.Process(_context);
 
-            result.Height.Should().Be(1);
+            _context.Result.Height.Should().Be(1);
         }
 
         [Fact]
@@ -430,6 +377,8 @@ namespace SimpleVersion.Core.Tests
         {
             // Arrange
             using var fixture = new SimpleVersionRepositoryFixture(_serializer);
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
+
             var config = fixture.GetConfig();
 
             fixture.MakeACommit();
@@ -461,12 +410,12 @@ namespace SimpleVersion.Core.Tests
             fixture.Checkout("master");
             fixture.MergeNoFF("feature/other");
 
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             // Act
-            var result = sut.GetResult();
+            sut.Process(_context);
 
-            result.Height.Should().Be(1);
+            _context.Result.Height.Should().Be(1);
         }
 
         [Fact]
@@ -474,6 +423,8 @@ namespace SimpleVersion.Core.Tests
         {
             // Arrange
             using var fixture = new SimpleVersionRepositoryFixture(_serializer);
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
+
             fixture.MakeACommit();
             fixture.MakeACommit();
             fixture.MakeACommit();
@@ -484,13 +435,13 @@ namespace SimpleVersion.Core.Tests
             fixture.MakeACommit();
             fixture.MakeACommit();
 
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             // Act
-            var result = sut.GetResult();
+            sut.Process(_context);
 
-            result.BranchName.Should().Be("feature/other");
-            result.CanonicalBranchName.Should().Be("refs/heads/feature/other");
+            _context.Result.BranchName.Should().Be("feature/other");
+            _context.Result.CanonicalBranchName.Should().Be("refs/heads/feature/other");
         }
 
         [Fact]
@@ -518,6 +469,7 @@ namespace SimpleVersion.Core.Tests
             };
 
             using var fixture = new SimpleVersionRepositoryFixture(config, _serializer);
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
 
             fixture.MakeACommit();
             fixture.MakeACommit();
@@ -529,19 +481,13 @@ namespace SimpleVersion.Core.Tests
             fixture.MakeACommit();
             fixture.MakeACommit();
 
-            // Use a processor to capture the configuration during processing.
-            var processor = Substitute.For<IVersionProcessor>();
-            VersionContext context = null;
-            processor.When(x => x.Process(Arg.Any<VersionContext>()))
-                .Do(call => context = call.Arg<VersionContext>());
-
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, new[] { processor });
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             // Act
-            var result = sut.GetResult();
+            sut.Process(_context);
 
-            context.Configuration.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
-            context.Configuration.Metadata.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
+            _context.Configuration.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
+            _context.Configuration.Metadata.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
         }
 
         [Fact]
@@ -575,6 +521,8 @@ namespace SimpleVersion.Core.Tests
             };
 
             using var fixture = new SimpleVersionRepositoryFixture(config, _serializer);
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
+
             fixture.MakeACommit();
             fixture.MakeACommit();
             fixture.MakeACommit();
@@ -585,19 +533,13 @@ namespace SimpleVersion.Core.Tests
             fixture.MakeACommit();
             fixture.MakeACommit();
 
-            // Use a processor to capture the configuration during processing.
-            var processor = Substitute.For<IVersionProcessor>();
-            VersionContext context = null;
-            processor.When(x => x.Process(Arg.Any<VersionContext>()))
-                .Do(call => context = call.Arg<VersionContext>());
-
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, new[] { processor });
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             // Act
-            var result = sut.GetResult();
+            sut.Process(_context);
 
-            context.Configuration.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
-            context.Configuration.Metadata.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
+            _context.Configuration.Label.Should().BeEquivalentTo(expectedLabel, options => options.WithStrictOrdering());
+            _context.Configuration.Metadata.Should().BeEquivalentTo(expectedMeta, options => options.WithStrictOrdering());
         }
 
         [Fact]
@@ -605,6 +547,8 @@ namespace SimpleVersion.Core.Tests
         {
             // Arrange
             using var fixture = new SimpleVersionRepositoryFixture(_serializer);
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
+
             fixture.MakeACommit();
             fixture.MakeACommit();
             fixture.MakeACommit();
@@ -624,10 +568,10 @@ namespace SimpleVersion.Core.Tests
             fixture.MakeACommit();
             fixture.MakeACommit();
 
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             // Act
-            Action action = () => sut.GetResult();
+            Action action = () => sut.Process(_context);
 
             // Assert
             action.Should().Throw<InvalidOperationException>()
@@ -639,6 +583,8 @@ namespace SimpleVersion.Core.Tests
         {
             // Arrange
             using var fixture = new SimpleVersionRepositoryFixture(_serializer);
+            _context.WorkingDirectory.Returns(fixture.RepositoryPath);
+
             fixture.MakeACommit();
             fixture.MakeACommit();
             fixture.MakeACommit();
@@ -662,12 +608,12 @@ namespace SimpleVersion.Core.Tests
             var config = new RepositoryConfiguration { Version = "0.1.0" };
             fixture.SetConfig(config);
 
-            var sut = new GitVersionRepository(fixture.RepositoryPath, _environment, _serializer, Enumerable.Empty<IVersionProcessor>());
+            var sut = new GitRepositoryVersionProcessor(_serializer);
 
             // Act
-            var result = sut.GetResult();
+            sut.Process(_context);
 
-            result.Height.Should().Be(9);
+            _context.Result.Height.Should().Be(9);
         }
     }
 }

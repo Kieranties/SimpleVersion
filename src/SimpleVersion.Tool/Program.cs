@@ -62,6 +62,8 @@ namespace SimpleVersion.Tool
                 .AddSingleton<ITokenHandler, ShaTokenHandler>()
                 .AddSingleton<ITokenHandler, ShortBranchNameTokenHandler>()
                 .AddSingleton<ITokenHandler, VersionTokenHandler>()
+                .AddSingleton<ITokenHandler, MetadataTokenHandler>()
+                .AddSingleton<ITokenHandler, ShortShaTokenHandler>()
                 .AddSingleton<IVersionProcessor, EnvironmentVersionProcessor>()
                 .AddSingleton<IVersionProcessor, GitRepositoryVersionProcessor>()
                 .AddSingleton<IVersionProcessor, VersionVersionProcessor>()

@@ -18,7 +18,7 @@ namespace SimpleVersion.Pipeline.Formatting
         /// <param name="evaluator">The <see cref="ITokenEvaluator"/> to process tokens.</param>
         public VersionVersionProcessor(ITokenEvaluator evaluator)
         {
-            _evaluator = evaluator;
+            _evaluator = Assert.ArgumentNotNull(evaluator, nameof(evaluator));
         }
 
         /// <inheritdoc/>
@@ -41,7 +41,7 @@ namespace SimpleVersion.Pipeline.Formatting
             }
             else
             {
-                throw new InvalidOperationException(Resources.Exception_InvalidVersionFormat(versionString));
+                throw new InvalidOperationException(Resources.Exception_InvalidVersionFormat(context.Configuration.Version));
             }
         }
     }

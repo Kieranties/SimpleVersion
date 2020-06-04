@@ -6,12 +6,12 @@ using SimpleVersion.Pipeline;
 namespace SimpleVersion.Tokens
 {
     /// <summary>
-    /// Handles formatting of label parts.
+    /// Handles formatting of metadata parts.
     /// </summary>
-    public class LabelTokenHandler : ITokenHandler
+    public class MetadataTokenHandler : ITokenHandler
     {
         /// <inheritdoc/>
-        public string Key => "label";
+        public string Key => "metadata";
 
         /// <inheritdoc/>
         public string Process(string? optionValue, IVersionContext context, ITokenEvaluator evaluator)
@@ -24,13 +24,9 @@ namespace SimpleVersion.Tokens
                 optionValue = ".";
             }
 
-            var parts = context.Configuration.Label.Select(l => evaluator.Process(l, context)).ToList();
-            if (!context.Result.IsRelease)
-            {
-                parts.Add(evaluator.Process("c{sha:7}", context));
-            }
-
-            return string.Join(optionValue, parts);
+            return string.Join(optionValue, context.Configuration.Metadata
+                .Select(l => evaluator.Process(l, context))
+                .ToList());
         }
     }
 }
