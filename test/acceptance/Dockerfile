@@ -1,5 +1,9 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-alpine
 
+RUN apk add git
+RUN git config --global user.email "simpleversion-acceptance@example.com"
+RUN git config --global user.name "SV Acceptance"
+
 ARG SIMPLEVERSION_VERSION
 COPY . /dist
 RUN dotnet tool install SimpleVersion.Tool --version ${SIMPLEVERSION_VERSION} -g --add-source /dist
