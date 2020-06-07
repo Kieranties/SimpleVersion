@@ -9,3 +9,5 @@ coverage.json
 **/site/api/.manifest
 **/site/manifest.json
 **/site/schema/
+testResults.xml
+coverage.xml

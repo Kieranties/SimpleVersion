@@ -38,7 +38,7 @@ jobs:
     condition: succeededOrFailed()
     inputs:
       testRunTitle: Unit Tests
-      testRunner: vstest
+      testResultsFormat: VSTest
       testResultsFiles: '$(ArtifactsPath)/**/*.trx'
 
   # Publish coverage
@@ -49,6 +49,16 @@ jobs:
       codeCoverageTool: Cobertura
       summaryFileLocation: '$(ArtifactsPath)/**/*.cobertura.xml'
       reportDirectory: '$(ArtifactsPath)/tests/coveragereport'
+
+  # Publish acceptance results
+  - task: PublishTestResults@2
+    displayName: 'Tests: Publish acceptance tests'
+    condition: succeededOrFailed()
+    inputs:
+      testRunTitle: Acceptance Tests
+      testResultsFormat: NUnit
+      testResultsFiles: '$(ArtifactsPath)/**/acceptanceResults.xml'
+      failTaskOnFailedTests: true
 
   # Quality check the build
   - task: BuildQualityChecks@6

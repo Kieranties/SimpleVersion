@@ -33,7 +33,7 @@ dotnet tool restore
 $versionDetails = exec dotnet simpleversion
 $version = ($versionDetails | ConvertFrom-Json).Formats.Semver2
 if ($env:TF_BUILD) { Write-Output "##vso[build.updatebuildnumber]$version" }
- 
+
 # Default Args
 $dotnetArgs = @('--configuration', $Configuration, "/p:Version=$version")
 
@@ -54,3 +54,10 @@ exec dotnet reportgenerator "-reports:$(Join-Path $testArtifacts '**/*.cobertura
 # Pack
 $distArtifacts = Join-Path $ArtifactsPath 'dist'
 exec dotnet pack $dotnetArgs --output $distArtifacts --no-build
+
+# Acceptance
+$acceptanceRoot = [Path]::Combine($PSScriptRoot, 'test', 'acceptance')
+$acceptanceDocker = Join-Path $acceptanceRoot 'Dockerfile'
+docker build --build-arg "SIMPLEVERSION_VERSION=${version}" --tag simpleversion-acceptance -f $acceptanceDocker $distArtifacts
+docker run -v "${acceptanceRoot}:/tests" simpleversion-acceptance
+Copy-Item (Join-Path $acceptanceRoot 'testResults.xml') (Join-Path $testArtifacts 'acceptanceResults.xml')
