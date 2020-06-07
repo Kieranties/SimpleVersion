@@ -20,13 +20,7 @@
     <Exec Condition="'@(NeedsGeneration)' != ''"
       ContinueOnError="false"
       ConsoleToMsBuild="true"
-      Command="pwsh -NoProfile -ExecutionPolicy Unrestricted ^
-        -File $(MSBuildThisFileDirectory)build/scripts/GenerateResource.ps1 ^
-        $([System.IO.Path]::GetFullPath(%(NeedsGeneration.Identity))) ^
-        %(NeedsGeneration.GeneratedFileName) ^
-        %(NeedsGeneration.Namespace) ^
-        %(NeedsGeneration.ClassName) ^
-        %(NeedsGeneration.AccessModifier)">
+      Command="pwsh -NoProfile -ExecutionPolicy Unrestricted -File $(MSBuildThisFileDirectory)build/scripts/GenerateResource.ps1 $([System.IO.Path]::GetFullPath(%(NeedsGeneration.Identity))) %(NeedsGeneration.GeneratedFileName) %(NeedsGeneration.Namespace) %(NeedsGeneration.ClassName) %(NeedsGeneration.AccessModifier)">
       <Output TaskParameter="ConsoleOutput" PropertyName="OutputOfExec" />
     </Exec>
   </Target>
@@ -40,10 +34,7 @@
     <Exec Condition="'@(NeedsGeneration)' != ''"
       ContinueOnError="false"
       ConsoleToMsBuild="true"
-      Command="pwsh -NoProfile -ExecutionPolicy Unrestricted ^
-        -File $(MSBuildThisFileDirectory)build/scripts/ValidateResource.ps1 ^
-        $([System.IO.Path]::GetFullPath(%(NeedsGeneration.Identity))) ^
-        %(NeedsGeneration.GeneratedFileName)">
+      Command="pwsh -NoProfile -ExecutionPolicy Unrestricted -File $(MSBuildThisFileDirectory)build/scripts/ValidateResource.ps1 $([System.IO.Path]::GetFullPath(%(NeedsGeneration.Identity))) %(NeedsGeneration.GeneratedFileName)">
     </Exec>
   </Target>
 
