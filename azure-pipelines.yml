@@ -25,7 +25,7 @@ jobs:
 - job: 'build_test_pack'
   displayName: "Core Build"
   pool:
-    vmImage: windows-latest
+    vmImage: ubuntu-latest
 
   steps:
   # Build
