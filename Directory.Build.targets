@@ -1,7 +1,7 @@
 <Project>
   <!-- Ensure the targets for Central package management are imported -->
   <Import Project="Sdk.targets" Sdk="Microsoft.Build.CentralPackageVersions"/>
-  
+
   <ItemDefinitionGroup>
     <NeedsGeneration>
       <GeneratedFileName>%(Filename).Generated.cs</GeneratedFileName>
@@ -21,7 +21,7 @@
       ContinueOnError="false"
       ConsoleToMsBuild="true"
       Command="powershell.exe -NoProfile -ExecutionPolicy Unrestricted ^
-        -File $(MSBuildThisFileDirectory)build//scripts/GenerateResource.ps1 ^
+        -File $(MSBuildThisFileDirectory)build/scripts/GenerateResource.ps1 ^
         $([System.IO.Path]::GetFullPath(%(NeedsGeneration.Identity))) ^
         %(NeedsGeneration.GeneratedFileName) ^
         %(NeedsGeneration.Namespace) ^
