@@ -1,8 +1,21 @@
 #Requires -Module @{ ModuleName='Pester'; ModuleVersion='5.0' }
 
+function New-GitRepository {
+
+    $path = Join-Path $TestDrive (Get-Random)
+    New-Item $path -ItemType Directory > $null
+    git init $path
+    @{
+        Path = $path
+    }
+}
+
 function Invoke-SimpleVersion {
     param(
         [Parameter(ValueFromRemainingArguments)]
+        # [AllowEmptyCollection()]
+        # [AllowEmptyString()]
+        # [AllowNull()]
         [string[]]$Parameters
     )
 
@@ -19,7 +32,7 @@ function Invoke-SimpleVersion {
     try {
         $output = simpleversion $Parameters 2> $errFile
         if($output) {
-            $result.Output = ConvertFrom-Json $output
+            $result.Output = $output | ConvertFrom-Json
         }
         $result.Success = $true
     } finally {
@@ -34,18 +47,29 @@ function Invoke-SimpleVersion {
 function BeError{
     param(
         $ActualValue,
-        [string]$Message = $null,
+        [string]$Message,
         [int]$ExitCode = 1,
-        [switch]$Negate
+        [switch]$Negate = $false
     )
 
-    $negatedStub = $negate ? 'not ' : ''
+    $negatedStub = $negate ? ' not' : ''
+    $Message = "[Error] $Message"
     $assertMessages = @()
-    if($ActualValue.ExitCode -ne $ExitCode) {
-        $assertMessages += "Result exit code '$($ActualValue.ExitCode)' should ${negatedStub}match '${ExitCode}'"
+
+    $exitCodeMatch = $ActualValue.ExitCode -ne $ExitCode
+    $mesageMatch = $ActualValue.Error -ne $Message
+    $emptyOutput = [string]::IsNullOrEmpty($ActualValue.Output)
+
+    if($exitCodeMatch -ne $Negate) {
+        $assertMessages += "Exit code '$($ActualValue.ExitCode)' should${negatedStub} match '${ExitCode}'"
     }
-    if($Message -and $ActualValue.ErrorMessage -ne $ErrorMessage) {
-        $assertMessages += "Result error message '$($ActualValue.ErrorMessage)' should ${negatedStub}match '${Message}'"
+
+    if($mesageMatch -ne $Negate) {
+        $assertMessages += "Error message '$($ActualValue.Error)' should${negatedStub} match '${Message}'"
+    }
+
+    if($emptyOutput -eq $Negate) {
+        $assertMessages += "Output should${negatedStub} be empty"
     }
 
 

@@ -3,19 +3,97 @@ BeforeAll {
 }
 
 Describe "Repository" {
-    Context "Not Found" {
-        It 'Writes error if repository cannot be found at current path or parent' {
+
+    Context "When invalid path" {
+        It 'Writes error for white space path' {
+            $path = "`t`t  "
+            $expectedError = "Path must be provided. (Parameter 'path')"
+            Invoke-Simpleversion $path | Should -BeError $expectedError
+        }
+
+        It 'Writes error for non-directory path' {
+            $testFile = Join-Path $TestDrive "$(Get-Random).txt"
+            New-Item $testFile -ItemType File > $null
+            $expectedError = "Could not find git repository at '${testFile}' or any parent directory."
+            Invoke-Simpleversion $testFile | Should -BeError $expectedError
+        }
+
+        It 'Writes error for non-existing path' {
+            $testPath = Join-Path $TestDrive (Get-Random)
+            $expectedError = "Could not find git repository at '${testPath}' or any parent directory."
+            Invoke-Simpleversion $testPath | Should -BeError $expectedError
+        }
+    }
+
+    Context "When missing" {
+        BeforeAll {
+            $path = Get-Item '~' | Select-Object -ExpandProperty FullName
+            $expectedError = "Could not find git repository at '${path}' or any parent directory."
+        }
+
+        It 'Writes error if not found in working directory or parent' {
             try {
-                $path = Get-Item '~' | Select-Object -ExpandProperty FullName
                 Push-Location $path
-                Invoke-SimpleVersion | Should -BeError "[Error] Could not find git repository at '${path}' or any parent directory."
+                Invoke-SimpleVersion | Should -BeError $expectedError
             } finally {
                 Pop-Location
             }
         }
-        It 'Writes error if repository cannot be found at specified path' {
-            $path = Get-Item '~' | Select-Object -ExpandProperty FullName
-            Invoke-Simpleversion $path | Should -BeError -Message "[Error] Could not find git repository at '${path}' or any parent directory."
+
+        It 'Writes error if not found at specified path' {
+            Invoke-Simpleversion $path | Should -BeError $expectedError
+        }
+    }
+
+    Context "When exists" {
+        Context "With no commits" {
+            BeforeEach {
+                $repo = New-GitRepository
+                $expectedError = 'Could not find the current branch tip. Unable to identify the current commit.'
+            }
+
+            It "Writes error when in the working directory" {
+                try {
+                    Push-Location $repo.Path
+                    Invoke-SimpleVersion | Should -BeError $expectedError
+                } finally {
+                    Pop-Location
+                }
+            }
+
+            It "Writes error when in a parent directory" {
+                $child = New-Item (Join-Path $repo.Path (Get-Random)) -ItemType Directory
+                Invoke-Simpleversion $child.FullName | Should -BeError $expectedError
+            }
+        }
+
+        Context "With no configuration" {
+            BeforeEach {
+                $repo = New-GitRepository
+                try {
+                    # TODO: Move to util command
+                    Push-Location $repo.path
+                    git commit -m 'init' --allow-empty
+                } finally {
+                    Pop-Location
+                }
+
+                $expectedError = "Could not read '.simpleversion.json', has it been committed?"
+            }
+
+            It "Writes error when in the working directory" {
+                try {
+                    Push-Location $repo.Path
+                    Invoke-SimpleVersion | Should -BeError $expectedError
+                } finally {
+                    Pop-Location
+                }
+            }
+
+            It "Writes error when in a parent directory" {
+                $child = New-Item (Join-Path $repo.Path (Get-Random)) -ItemType Directory
+                Invoke-Simpleversion $child.FullName | Should -BeError $expectedError
+            }
         }
     }
 }
