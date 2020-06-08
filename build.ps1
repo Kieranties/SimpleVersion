@@ -54,10 +54,3 @@ exec dotnet reportgenerator "-reports:$(Join-Path $testArtifacts '**/*.cobertura
 # Pack
 $distArtifacts = Join-Path $ArtifactsPath 'dist'
 exec dotnet pack $dotnetArgs --output $distArtifacts --no-build
-
-# Acceptance
-$acceptanceRoot = [Path]::Combine($PSScriptRoot, 'test', 'acceptance')
-$acceptanceDocker = Join-Path $acceptanceRoot 'Dockerfile'
-docker build --build-arg "SIMPLEVERSION_VERSION=${version}" --tag simpleversion-acceptance -f $acceptanceDocker $distArtifacts
-docker run -v "${acceptanceRoot}:/tests" simpleversion-acceptance
-Copy-Item (Join-Path $acceptanceRoot 'testResults.xml') (Join-Path $testArtifacts 'acceptanceResults.xml')
