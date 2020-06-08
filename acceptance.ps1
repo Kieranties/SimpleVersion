@@ -5,7 +5,8 @@ using namespace System.IO
     Local build script to perform acceptance testing
 #>
 param(
-    [String]$ArtifactsPath = (Join-Path $PSScriptRoot '.artifacts')
+    [String]$ArtifactsPath = (Join-Path $PSScriptRoot '.artifacts'),
+    [Switch]$NoBuild
 )
 
 $ErrorActionPreference = 'Stop'
@@ -20,8 +21,11 @@ if(-not $version) {
 
 $acceptanceRoot = [Path]::Combine($PSScriptRoot, 'test', 'acceptance')
 $acceptanceDocker = Join-Path $acceptanceRoot 'Dockerfile'
-docker build --build-arg "SIMPLEVERSION_VERSION=${version}" --tag simpleversion-acceptance -f $acceptanceDocker $distPath
-docker run -v "${acceptanceRoot}:/tests" simpleversion-acceptance
+$tag = "simpleversion-acceptance-${version}"
+if(-not $NoBuild) {
+    docker build --build-arg "SIMPLEVERSION_VERSION=${version}" --tag $tag -f $acceptanceDocker $distPath --no-cache
+}
+docker run -v "${acceptanceRoot}:/tests" $tag
 $testOutput = Join-Path $ArtifactsPath 'test'
 New-Item $testOutput -ItemType Directory -Force > $null
 Copy-Item (Join-Path $acceptanceRoot 'testResults.xml') (Join-Path $testOutput 'acceptanceResults.xml')
