@@ -22,4 +22,6 @@ $acceptanceRoot = [Path]::Combine($PSScriptRoot, 'test', 'acceptance')
 $acceptanceDocker = Join-Path $acceptanceRoot 'Dockerfile'
 docker build --build-arg "SIMPLEVERSION_VERSION=${version}" --tag simpleversion-acceptance -f $acceptanceDocker $distPath
 docker run -v "${acceptanceRoot}:/tests" simpleversion-acceptance
-Copy-Item (Join-Path $acceptanceRoot 'testResults.xml') ([Path]::Combine($ArtifactsPath, 'test', 'acceptanceResults.xml'))
+$testOutput = Join-Path $ArtifactsPath 'test'
+New-Item $testOutput -ItemType Directory -Force > $null
+Copy-Item (Join-Path $acceptanceRoot 'testResults.xml') (Join-Path $testOutput 'acceptanceResults.xml')
