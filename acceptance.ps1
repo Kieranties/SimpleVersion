@@ -8,8 +8,6 @@ param(
     [String]$ArtifactsPath = (Join-Path $PSScriptRoot '.artifacts')
 )
 
-. ([Path]::Combine($PSScriptRoot, 'build', 'scripts', 'Utils.ps1'))
-
 $ErrorActionPreference = 'Stop'
 
 $distPath = Join-Path $ArtifactsPath 'dist'
@@ -22,6 +20,6 @@ if(-not $version) {
 
 $acceptanceRoot = [Path]::Combine($PSScriptRoot, 'test', 'acceptance')
 $acceptanceDocker = Join-Path $acceptanceRoot 'Dockerfile'
-exec docker build --build-arg "SIMPLEVERSION_VERSION=${version}" --tag simpleversion-acceptance -f $acceptanceDocker $distPath
-exec docker run -v "${acceptanceRoot}:/tests" simpleversion-acceptance
+docker build --build-arg "SIMPLEVERSION_VERSION=${version}" --tag simpleversion-acceptance -f $acceptanceDocker $distPath
+docker run -v "${acceptanceRoot}:/tests" simpleversion-acceptance
 Copy-Item (Join-Path $acceptanceRoot 'testResults.xml') ([Path]::Combine($ArtifactsPath, 'test', 'acceptanceResults.xml'))
