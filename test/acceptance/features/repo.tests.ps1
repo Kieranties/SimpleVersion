@@ -48,13 +48,13 @@ Describe "Repository" {
     Context "When exists" {
         Context "With no commits" {
             BeforeEach {
-                $repo = New-GitRepository
+                $repo = New-Repository
                 $expectedError = 'Could not find the current branch tip. Unable to identify the current commit.'
             }
 
             It "Writes error when in the working directory" {
                 try {
-                    Push-Location $repo.Path
+                    Push-Location $repo
                     Invoke-SimpleVersion | Should -BeError $expectedError
                 } finally {
                     Pop-Location
@@ -62,20 +62,15 @@ Describe "Repository" {
             }
 
             It "Writes error when in a parent directory" {
-                $child = New-Item (Join-Path $repo.Path (Get-Random)) -ItemType Directory
+                $child = New-Item (Join-Path $repo (Get-Random)) -ItemType Directory
                 Invoke-Simpleversion $child.FullName | Should -BeError $expectedError
             }
         }
 
         Context "With no configuration" {
             BeforeEach {
-                $repo = New-GitRepository
-                try {
-                    # TODO: Move to util command
-                    Push-Location $repo.path
+                $repo = New-Repository {
                     git commit -m 'init' --allow-empty
-                } finally {
-                    Pop-Location
                 }
 
                 $expectedError = "Could not read '.simpleversion.json', has it been committed?"
@@ -83,7 +78,7 @@ Describe "Repository" {
 
             It "Writes error when in the working directory" {
                 try {
-                    Push-Location $repo.Path
+                    Push-Location $repo
                     Invoke-SimpleVersion | Should -BeError $expectedError
                 } finally {
                     Pop-Location
@@ -91,7 +86,7 @@ Describe "Repository" {
             }
 
             It "Writes error when in a parent directory" {
-                $child = New-Item (Join-Path $repo.Path (Get-Random)) -ItemType Directory
+                $child = New-Item (Join-Path $repo (Get-Random)) -ItemType Directory
                 Invoke-Simpleversion $child.FullName | Should -BeError $expectedError
             }
         }

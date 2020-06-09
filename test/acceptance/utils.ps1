@@ -1,21 +1,76 @@
 #Requires -Module @{ ModuleName='Pester'; ModuleVersion='5.0' }
 
-function New-GitRepository {
+function Use-Path {
+    param(
+        [Parameter(Mandatory)]
+        [string]$Path,
+        [scriptblock]$Action
+    )
+
+    try {
+        Push-Location $Path
+        $Action.Invoke()
+    } finally {
+        Pop-Location
+    }
+}
+
+function Get-Sha {
+    param(
+        [Parameter(Mandatory)]
+        [string]$Path,
+        [switch]$Short
+    )
+
+    $result = Use-Path $repo { git rev-parse HEAD }
+    if($Short) {
+        $result = $result.Substring(0, 7)
+    }
+
+    $result
+}
+
+function Set-Configuration {
+    param(
+        [Parameter(Mandatory, ParameterSetName = 'default')]
+        [AllowNull()]
+        [string]$Value,
+        [Parameter(Mandatory, ParameterSetName = 'object')]
+        [PSObject]$Object
+    )
+
+    $fullPath = Join-Path $pwd '.simpleversion.json'
+    if('object' -eq $PSCmdlet.ParameterSetName) {
+        $Value = ConvertTo-Json $Object -Depth 100
+    }
+    Set-Content -Path $fullPath -Value $Value
+}
+
+function Get-Configuration {
+
+    $fullPath = Join-Path $pwd '.simpleversion.json'
+    Get-Content $fullPath -Raw | ConvertFrom-Json
+}
+
+function New-Repository {
+    param(
+        [scriptblock]$Actions = $null
+    )
 
     $path = Join-Path $TestDrive (Get-Random)
     New-Item $path -ItemType Directory > $null
-    git init $path
-    @{
-        Path = $path
+    # TODO: git logs
+    git init $path > $null
+
+    if($Actions) {
+        Use-Path $path $Actions > $null
     }
+    return $path
 }
 
 function Invoke-SimpleVersion {
     param(
         [Parameter(ValueFromRemainingArguments)]
-        # [AllowEmptyCollection()]
-        # [AllowEmptyString()]
-        # [AllowNull()]
         [string[]]$Parameters
     )
 
@@ -72,9 +127,13 @@ function BeError{
         $assertMessages += "Output should${negatedStub} be empty"
     }
 
+    $succeeded = $assertMessages.Count -eq 0
+    if(-not $succeeded -and -not $PSBoundParameters['Message']) {
+        $assertMessages += $ActualValue.Error
+    }
 
     return [PSObject]@{
-        Succeeded      = ($assertMessages.Count -eq 0)
+        Succeeded      = $succeeded
         FailureMessage = ($assertMessages -join [Environment]::NewLine)
     }
 }
