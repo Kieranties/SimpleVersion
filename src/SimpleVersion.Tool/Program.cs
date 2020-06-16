@@ -13,8 +13,7 @@ namespace SimpleVersion.Tool
         /// Entry point for SimpleVersion invocation.
         /// </summary>
         /// <param name="args">The array of arguments.</param>
-        /// <returns>0 if success, otherwise an error exit code.</returns>
-        public static int Main(string[] args)
+        public static void Main(string[] args)
         {
             var exitCode = 0;
             try
@@ -33,11 +32,13 @@ namespace SimpleVersion.Tool
             catch (Exception ex)
             {
                 Console.Error.WriteLine($"[Error] {ex.Message}");
-                exitCode = -1;
+                exitCode = 1;
+            }
+            finally
+            {
+                System.Environment.ExitCode = exitCode;
             }
 #pragma warning restore CA1031 // Do not catch general exception types
-
-            return exitCode;
         }
     }
 }

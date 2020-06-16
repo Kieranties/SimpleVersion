@@ -12,5 +12,5 @@ param(
     [String]$AccessModifier
 )
 
-Import-Module $PSScriptRoot\ManageResources.psm1 -Force
+Import-Module (Join-Path $PSScriptRoot ManageResources.psm1) -Force
 Update-Resource $ResourcePath $GeneratedFileName $Namespace $ClassName $AccessModifier

@@ -1,7 +1,7 @@
 # Description
 <!-- Provide a detailed description of the changes in this PR -->
 
-<!--  
+<!--
     Provide one or more issues this PR fixes
 Fixes #<num>
 -->
@@ -18,6 +18,7 @@ Fixes #<num>
 # Quality Checks
 <!-- Please update each entry that applies with '[x]' -->
 - [ ] Unit tests have been added/updated
+- [ ] Acceptance tests have been added/updated
 - [ ] Local builds/testing are successful
 - [ ] Code coverage has not decreased
 - [ ] Code comments have been provided (where appropriate)

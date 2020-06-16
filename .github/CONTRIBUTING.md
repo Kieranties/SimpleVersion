@@ -24,6 +24,26 @@ and strictly applied when built for Release.
 Before you complete a pull-request, make sure you have no warnings or errors,
 otherwise your pull-request build **will** fail.
 
+Building and Testing
+--------------------
+
+### Building
+
+The project should build with `dotnet build`.
+> Sadly this does require windows right now to build the docs site.
+
+For a full build/test cycle that is also ran on the CI server run `.\build.ps1`
+
+You should be able to build under any IDE that supports dotnet core.
+
+### Testing
+
+Unit tests should run with `dotnet test` and report code coverage in the console.
+When running `.\build.ps1` you'll be able to view the generated html report under `.\.artifacts\tests\CodeCoverage`
+
+[Pester] acceptance tests require [Docker] to be running and to support linux containers.
+After running `.\build.ps1` run `.\acceptance.ps1`
+
 Code Quality
 ------------
 
@@ -32,6 +52,12 @@ Code Quality
 All code changes require tests to cover the changes.  This could be updating
 existing tests are adding new tests for new features.  See the test projects
 for guidance on writing tests.
+
+### Acceptance Tests
+
+[Pester] is used to run tests which validate an actual user-story/interaction.
+The tests are found under `.\test\acceptance\features` and should be updated
+for new/changes in functionality.
 
 ### Package References
 
@@ -156,3 +182,5 @@ Contact
 If you have any queries, just raise a [question].
 
 [question]: https://github.com/Kieranties/SimpleVersion/issues/new/choose
+[Pester]: https://github.com/pester/Pester
+[Docker]: https://www.docker.com/products/docker-desktop

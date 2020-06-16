@@ -33,7 +33,7 @@ dotnet tool restore
 $versionDetails = exec dotnet simpleversion
 $version = ($versionDetails | ConvertFrom-Json).Formats.Semver2
 if ($env:TF_BUILD) { Write-Output "##vso[build.updatebuildnumber]$version" }
- 
+
 # Default Args
 $dotnetArgs = @('--configuration', $Configuration, "/p:Version=$version")
 

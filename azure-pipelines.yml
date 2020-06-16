@@ -38,7 +38,7 @@ jobs:
     condition: succeededOrFailed()
     inputs:
       testRunTitle: Unit Tests
-      testRunner: vstest
+      testResultsFormat: VSTest
       testResultsFiles: '$(ArtifactsPath)/**/*.trx'
 
   # Publish coverage
@@ -83,5 +83,30 @@ jobs:
       nuGetFeedType: internal
       publishVstsFeed: SimpleVersion
       feedsToUse: nuget.config
+
+- job: 'acceptance'
+  displayName: "Acceptance Test"
+  dependsOn: build_test_pack
+  pool:
+    vmImage: ubuntu-latest
+
+  steps:
+  - download: current
+    artifact: dist
+
+  # Run acceptance tests
+  - pwsh: ./acceptance.ps1 -ArtifactsPath $(Pipeline.Workspace)
+    displayName: 'Tests: Run acceptance tests'
+
+  # Publish acceptance results
+  - task: PublishTestResults@2
+    displayName: 'Tests: Publish acceptance tests'
+    condition: succeededOrFailed()
+    inputs:
+      testRunTitle: Acceptance Tests
+      testResultsFormat: NUnit
+      testResultsFiles: '$(Pipeline.Workspace)/**/acceptanceResults.xml'
+      failTaskOnFailedTests: true
+
 
 # TODO - Jobs for Integration testing
