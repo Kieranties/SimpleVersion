@@ -4,11 +4,11 @@ RUN apk add git \
     && git config --global user.email "simpleversion-acceptance@example.com" \
     && git config --global user.name "SV Acceptance"
 
-RUN pwsh -Command Install-Module Pester -Force -RequiredVersion 5.0.2
+RUN ["pwsh", "-Command", "$ProgressPreference = 'Ignore'; Install-Module Pester -Force -RequiredVersion 5.0.2"]
 
 ENV PATH="${PATH}:/root/.dotnet/tools"
 
-ENTRYPOINT ["pwsh", "-Command", "Invoke-Pester -Output Detailed -CI"]
+ENTRYPOINT ["pwsh", "-Command", "Import-Module Pester; $PesterPreference = [PesterConfiguration]::Default; $PesterPreference.Should.ErrorAction = 'Continue'; Invoke-Pester -Output Detailed -CI"]
 
 WORKDIR /tests
 
