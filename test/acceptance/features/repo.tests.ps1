@@ -7,20 +7,20 @@ Describe "Repository" {
     Context "When invalid path" {
         It 'Writes error for white space path' {
             $path = "`t`t  "
-            $expectedError = "Path must be provided. (Parameter 'path')"
+            $expectedError = "'${path}' is not a valid working directory. (Parameter 'workingDirectory')"
             Invoke-Simpleversion $path | Should -BeError $expectedError
         }
 
         It 'Writes error for non-directory path' {
             $testFile = Join-Path $TestDrive "$(Get-Random).txt"
             New-Item $testFile -ItemType File > $null
-            $expectedError = "Could not find git repository at '${testFile}' or any parent directory."
+            $expectedError = "Could not find directory '${testFile}'"
             Invoke-Simpleversion $testFile | Should -BeError $expectedError
         }
 
         It 'Writes error for non-existing path' {
             $testPath = Join-Path $TestDrive (Get-Random)
-            $expectedError = "Could not find git repository at '${testPath}' or any parent directory."
+            $expectedError = "Could not find directory '${testPath}'"
             Invoke-Simpleversion $testPath | Should -BeError $expectedError
         }
     }
