@@ -6,7 +6,7 @@ using namespace System.IO
 #>
 param(
     [String]$ArtifactsPath = (Join-Path $PSScriptRoot '.artifacts'),
-    [Switch]$NoBuild
+    [Switch]$ForceBuild
 )
 
 $ErrorActionPreference = 'Stop'
@@ -22,9 +22,17 @@ if(-not $version) {
 $acceptanceRoot = [Path]::Combine($PSScriptRoot, 'test', 'acceptance')
 $acceptanceDocker = Join-Path $acceptanceRoot 'Dockerfile'
 $tag = "simpleversion-acceptance:${version}"
-if(-not $NoBuild) {
-    docker build --build-arg "SIMPLEVERSION_VERSION=${version}" --tag $tag -f $acceptanceDocker $distPath --no-cache
+$dockerBuildArgs = @(
+    'build'
+    '--build-arg', "SIMPLEVERSION_VERSION=${version}"
+    '--tag', $tag
+    '-f', $acceptanceDocker
+    $distPath
+)
+if($ForceBuild) {
+    $dockerBuildArgs += '--no-cache'
 }
+docker $dockerBuildArgs
 docker run -v "${acceptanceRoot}:/tests" $tag
 $testOutput = Join-Path $ArtifactsPath 'tests'
 New-Item $testOutput -ItemType Directory -Force > $null
