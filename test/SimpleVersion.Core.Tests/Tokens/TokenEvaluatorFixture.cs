@@ -112,5 +112,28 @@ namespace SimpleVersion.Core.Tests.Tokens
             tokenHandler.Received(1).Process(expectedOption, context, sut);
             result.Should().Be("result");
         }
+
+        [Fact]
+        public void Process_MultipleTokens_CallsHandlers()
+        {
+            // Arrange
+            var context = Substitute.For<IVersionContext>();
+            var handlers = Enumerable.Range(1, 3)
+                .Select(n =>
+                {
+                    var handler = Substitute.For<ITokenHandler>();
+                    handler.Key.Returns($"t{n}");
+                    handler.Process(Arg.Any<string>(), Arg.Any<IVersionContext>(), Arg.Any<ITokenEvaluator>()).Returns(n.ToString());
+                    return handler;
+                });
+
+            var sut = new TokenEvaluator(handlers);
+
+            // Act
+            var result = sut.Process("{t1}-{t2}-{t3}{t3}", context);
+
+            // Assert
+            result.Should().Be("1-2-33");
+        }
     }
 }
