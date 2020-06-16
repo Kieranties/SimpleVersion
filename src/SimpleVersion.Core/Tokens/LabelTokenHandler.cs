@@ -24,13 +24,16 @@ namespace SimpleVersion.Tokens
                 optionValue = ".";
             }
 
-            var parts = context.Configuration.Label.Select(l => evaluator.Process(l, context)).ToList();
-            if (!context.Result.IsRelease)
-            {
-                parts.Add(evaluator.Process("c{sha:7}", context));
-            }
+            // TODO: Need logic to identify/add tokens into a string through strong typing
+            // TODO: Identify better place for application of logic to label changes
+            var parts = context.Configuration.Label;
+            var needsHeight = !context.Configuration.Label.Any(x => x.Contains("*", System.StringComparison.OrdinalIgnoreCase)); // TODO: not explicit enough                       
+            if (needsHeight) { parts.Add("*"); }
 
-            return string.Join(optionValue, parts);
+            var needsSha = !context.Result.IsRelease && context.Configuration.Label.Any(x => x.Contains("sha", System.StringComparison.OrdinalIgnoreCase)); // TODO: not explicit enough
+            if (needsSha) { parts.Add("c{sha:7}"); }
+
+            return string.Join(optionValue, parts.Select(l => evaluator.Process(l, context)));
         }
     }
 }

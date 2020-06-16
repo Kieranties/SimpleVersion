@@ -17,7 +17,7 @@ namespace SimpleVersion.Tokens
         {
             Assert.ArgumentNotNull(evaluator, nameof(evaluator));
 
-            return evaluator.Process("{sha:7}", context);
+            return evaluator.Process("c{sha:7}", context);
         }
     }
 }
