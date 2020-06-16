@@ -48,11 +48,14 @@ namespace SimpleVersion.Core.Tests.Tokens
                 .And.ParamName.Should().Be("evaluator");
         }
 
-        [Fact]
-        public void Process_NullOption_UsesDefault()
+        [Theory]
+        [InlineData(null)]
+        [InlineData("")]
+        [InlineData("\t\t   ")]
+        public void Process_NullOrEmptyOption_UsesDefault(string optionValue)
         {
             // Act
-            _sut.Process(null, _context, _evaluator);
+            _sut.Process(optionValue, _context, _evaluator);
 
             // Assert
             _evaluator.Received(1).Process("{label:.}", _context);
@@ -68,6 +71,30 @@ namespace SimpleVersion.Core.Tests.Tokens
 
             // Assert
             _evaluator.Received(1).Process($"{{label:{delimiter}}}", _context);
+        }
+
+        [Theory]
+        [InlineData("test")]
+        [InlineData("1+1")]
+        public void Process_NonIntegerOption_Throws(string optionValue)
+        {
+            // Arrange
+            Action action = () => _sut.Process(optionValue, _context, _evaluator);
+
+            // Act / Assert
+            action.Should().Throw<InvalidOperationException>()
+                .WithMessage($"Could not parse value semver option {optionValue}");
+        }
+
+        [Fact]
+        public void Process_InvalidOption_Throws()
+        {
+            // Arrange
+            Action action = () => _sut.Process("12", _context, _evaluator);
+
+            // Act / Assert
+            action.Should().Throw<InvalidOperationException>()
+                .WithMessage("'12' is not a valid semver version");
         }
 
         [Theory]

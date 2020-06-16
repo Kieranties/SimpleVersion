@@ -20,11 +20,11 @@ namespace SimpleVersion.Tokens
             Assert.ArgumentNotNull(evaluator, nameof(evaluator));
 
             var specVersion = 2;
-            if (optionValue != null)
+            if (!string.IsNullOrWhiteSpace(optionValue))
             {
                 if (!int.TryParse(optionValue, out specVersion))
                 {
-                    throw new ArgumentException($"Could not parse value {optionValue}", optionValue);
+                    throw new InvalidOperationException($"Could not parse value semver option {optionValue}");
                 }
             }
 
@@ -32,7 +32,7 @@ namespace SimpleVersion.Tokens
             {
                 1 => '-',
                 2 => '.',
-                _ => throw new ArgumentOutOfRangeException(nameof(optionValue))
+                _ => throw new InvalidOperationException($"'{optionValue}' is not a valid semver version")
             };
 
             var version = evaluator.Process("{version}", context);
