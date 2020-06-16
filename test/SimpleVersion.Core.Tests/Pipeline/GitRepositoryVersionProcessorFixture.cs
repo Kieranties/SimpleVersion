@@ -53,7 +53,7 @@ namespace SimpleVersion.Core.Tests.Pipeline
 
         [Theory]
         [MemberData(nameof(InvalidPaths))]
-        public void Ctor_InvalidWorkingDirecotory_Throws(string path)
+        public void Ctor_InvalidWorkingDirectory_Throws(string path)
         {
             // Arrange
             _context.WorkingDirectory.Returns(path);
