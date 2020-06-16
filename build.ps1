@@ -9,7 +9,8 @@ param(
     [String]$Configuration = 'Debug',
     [String]$ArtifactsPath = (Join-Path $PSScriptRoot '.artifacts'),
     [Switch]$ServeDocs = $false,
-    [Switch]$Resources
+    [Switch]$Resources = $false,
+    [Switch]$PackOnly = $false
 )
 
 . ([Path]::Combine($PSScriptRoot, 'build', 'scripts', 'Utils.ps1'))
@@ -40,16 +41,18 @@ $dotnetArgs = @('--configuration', $Configuration, "/p:Version=$version")
 # Build
 exec dotnet build $dotnetArgs
 
-# Docs
-exec dotnet publish $docsProject $dotnetArgs -o "${ArtifactsPath}/docs" /p:ServeDocs=$ServeDocs
-if ($ServeDocs) {
-    return
-}
+if(-not $PackOnly) {
+    # Docs
+    exec dotnet publish $docsProject $dotnetArgs -o "${ArtifactsPath}/docs" /p:ServeDocs=$ServeDocs
+    if ($ServeDocs) {
+        return
+    }
 
-# Test
-$testArtifacts = Join-Path $ArtifactsPath 'tests'
-exec dotnet test $dotnetArgs --results-directory $testArtifacts --no-build
-exec dotnet reportgenerator "-reports:$(Join-Path $testArtifacts '**/*.cobertura.xml')" "-targetDir:$(Join-Path $testArtifacts 'CoverageReport')" "-reporttypes:HtmlInline_AzurePipelines"
+    # Test
+    $testArtifacts = Join-Path $ArtifactsPath 'tests'
+    exec dotnet test $dotnetArgs --results-directory $testArtifacts --no-build
+    exec dotnet reportgenerator "-reports:$(Join-Path $testArtifacts '**/*.cobertura.xml')" "-targetDir:$(Join-Path $testArtifacts 'CoverageReport')" "-reporttypes:HtmlInline_AzurePipelines"
+}
 
 # Pack
 $distArtifacts = Join-Path $ArtifactsPath 'dist'
