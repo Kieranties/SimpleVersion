@@ -11,3 +11,5 @@ coverage.json
 **/site/schema/
 testResults.xml
 coverage.xml
+coverage.cobertura.xml
+*.trx
