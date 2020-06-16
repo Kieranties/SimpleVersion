@@ -22,6 +22,7 @@ Describe "Single Branch" {
 
         $result = Invoke-SimpleVersion $repo
 
+        $result | Should -Not -BeError
         $result.Output.Version | Should -Be '0.1.0'
         $result.Output.Major | Should -Be 0
         $result.Output.Minor | Should -Be 1
@@ -45,6 +46,7 @@ Describe "Single Branch" {
 
         $result = Invoke-SimpleVersion $repo
 
+        $result | Should -Not -BeError
         $result.Output.Version | Should -Be '0.1.0'
         $result.Output.Major | Should -Be 0
         $result.Output.Minor | Should -Be 1
@@ -73,6 +75,7 @@ Describe "Single Branch" {
 
         $result = Invoke-SimpleVersion $repo
 
+        $result | Should -Not -BeError
         $result.Output.Version | Should -Be '1.0.0'
         $result.Output.Major | Should -Be 1
         $result.Output.Minor | Should -Be 0
