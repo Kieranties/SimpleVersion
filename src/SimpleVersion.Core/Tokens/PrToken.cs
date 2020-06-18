@@ -8,15 +8,16 @@ namespace SimpleVersion.Tokens
     /// <summary>
     /// Handles formatting of the PR.
     /// </summary>
-    public class PrTokenHandler : ITokenHandler
+    public class PrToken : BaseToken
     {
         /// <inheritdoc/>
-        public string Key => "pr";
+        public override string Key => "pr";
 
         /// <inheritdoc/>
-        public string Process(string? optionValue, IVersionContext context, ITokenEvaluator evaluator)
+        public override string Evaluate(IVersionContext context, ITokenEvaluator evaluator)
         {
             Assert.ArgumentNotNull(context, nameof(context));
+
             if (context.Result.IsPullRequest)
             {
                 return context.Result.PullRequestNumber.ToString(CultureInfo.InvariantCulture);

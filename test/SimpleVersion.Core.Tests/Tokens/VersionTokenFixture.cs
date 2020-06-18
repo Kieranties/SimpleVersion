@@ -9,15 +9,15 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests.Tokens
 {
-    public class VersionTokenHandlerFixture
+    public class VersionTokenFixture
     {
-        private readonly VersionTokenHandler _sut;
+        private readonly VersionToken _sut;
         private readonly IVersionContext _context;
         private readonly ITokenEvaluator _evaluator;
 
-        public VersionTokenHandlerFixture()
+        public VersionTokenFixture()
         {
-            _sut = new VersionTokenHandler();
+            _sut = new VersionToken();
             _context = Substitute.For<IVersionContext>();
             _context.Result.Returns(new VersionResult());
             _evaluator = Substitute.For<ITokenEvaluator>();
@@ -35,7 +35,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_NullContext_Throws()
         {
             // Arrange
-            Action action = () => _sut.Process(null, null, _evaluator);
+            Action action = () => _sut.EvaluateWithOption(null, null, _evaluator);
 
             // Act / Assert
             action.Should().Throw<ArgumentNullException>()
@@ -74,7 +74,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             _context.Result.Returns(version);
 
             // Act
-            var result = _sut.Process(optionValue, _context, null);
+            var result = _sut.EvaluateWithOption(optionValue, _context, null);
 
             // Assert
             result.Should().Be(expected);
@@ -84,7 +84,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_InvalidOption_Throws()
         {
             // Arrange
-            Action action = () => _sut.Process("1.2.3.4", _context, _evaluator);
+            Action action = () => _sut.EvaluateWithOption("1.2.3.4", _context, _evaluator);
 
             // Act / Assert
             action.Should().Throw<InvalidOperationException>()

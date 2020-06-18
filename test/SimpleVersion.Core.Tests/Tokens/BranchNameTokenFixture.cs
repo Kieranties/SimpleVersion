@@ -9,15 +9,15 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests.Tokens
 {
-    public class BranchNameTokenHandlerFixture
+    public class BranchNameTokenFixture
     {
-        private readonly BranchNameTokenHandler _sut;
+        private readonly BranchNameToken _sut;
         private readonly IVersionContext _context;
         private readonly ITokenEvaluator _evaluator;
 
-        public BranchNameTokenHandlerFixture()
+        public BranchNameTokenFixture()
         {
-            _sut = new BranchNameTokenHandler();
+            _sut = new BranchNameToken();
             _context = Substitute.For<IVersionContext>();
             _context.Result.Returns(new VersionResult());
             _evaluator = Substitute.For<ITokenEvaluator>();
@@ -34,7 +34,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_NullContext_Throws()
         {
             // Arrange
-            Action action = () => _sut.Process(null, null, _evaluator);
+            Action action = () => _sut.EvaluateWithOption(null, null, _evaluator);
 
             // Act / Assert
             action.Should().Throw<ArgumentNullException>()
@@ -46,7 +46,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         {
             // Arrange
             _context.Result.CanonicalBranchName = "test";
-            Action action = () => _sut.Process(null, _context, null);
+            Action action = () => _sut.EvaluateWithOption(null, _context, null);
 
             // Act / Assert
             action.Should().NotThrow();
@@ -58,7 +58,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             // Arrange
             _context.Result.CanonicalBranchName = null;
             _context.Result.BranchName = null;
-            Action action = () => _sut.Process(null, _context, null);
+            Action action = () => _sut.EvaluateWithOption(null, _context, null);
 
             // Act / Assert
             action.Should().Throw<InvalidOperationException>()
@@ -76,7 +76,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             _context.Result.CanonicalBranchName = branch;
 
             // Act
-            var result = _sut.Process(option, _context, _evaluator);
+            var result = _sut.EvaluateWithOption(option, _context, _evaluator);
 
             // Assert
             result.Should().Be(expected);
@@ -93,7 +93,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             _context.Result.CanonicalBranchName = branch;
 
             // Act
-            var result = _sut.Process(option, _context, _evaluator);
+            var result = _sut.EvaluateWithOption(option, _context, _evaluator);
 
             // Assert
             result.Should().Be(expected);
@@ -110,7 +110,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             _context.Result.BranchName = branch;
 
             // Act
-            var result = _sut.Process(option, _context, _evaluator);
+            var result = _sut.EvaluateWithOption(option, _context, _evaluator);
 
             // Assert
             result.Should().Be(expected);

@@ -10,18 +10,17 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests.Tokens
 {
-    public class LabelTokenHandlerFixture
+    public class MetadataTokenFixture
     {
-        private readonly LabelTokenHandler _sut;
+        private readonly MetadataToken _sut;
         private readonly IVersionContext _context;
         private readonly ITokenEvaluator _evaluator;
 
-        public LabelTokenHandlerFixture()
+        public MetadataTokenFixture()
         {
-            _sut = new LabelTokenHandler();
+            _sut = new MetadataToken();
             _context = Substitute.For<IVersionContext>();
             _context.Result.Returns(new VersionResult());
-            _context.Result.IsRelease = true;
             _evaluator = Substitute.For<ITokenEvaluator>();
             _evaluator.Process(Arg.Any<string>(), Arg.Any<IVersionContext>())
                 .Returns(call => call.Arg<string>());
@@ -31,14 +30,14 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Ctor_SetsKey()
         {
             // Act / Assert
-            _sut.Key.Should().Be("label");
+            _sut.Key.Should().Be("metadata");
         }
 
         [Fact]
         public void Process_NullContext_Throws()
         {
             // Arrange
-            Action action = () => _sut.Process(null, null, _evaluator);
+            Action action = () => _sut.EvaluateWithOption(null, null, _evaluator);
 
             // Assert
             action.Should().Throw<ArgumentNullException>()
@@ -49,7 +48,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_NullEvaluator_Throws()
         {
             // Arrange
-            Action action = () => _sut.Process(null, _context, null);
+            Action action = () => _sut.EvaluateWithOption(null, _context, null);
 
             // Assert
             action.Should().Throw<ArgumentNullException>()
@@ -62,12 +61,12 @@ namespace SimpleVersion.Core.Tests.Tokens
             // Arrange
             var config = new VersionConfiguration
             {
-                Label = { "alpha", "beta", "gamma" }
+                Metadata = { "alpha", "beta", "gamma" }
             };
             _context.Configuration.Returns(config);
 
             // Act
-            var result = _sut.Process(null, _context, _evaluator);
+            var result = _sut.EvaluateWithOption(null, _context, _evaluator);
 
             // Assert
             result.Should().Be("alpha.beta.gamma");
@@ -81,14 +80,14 @@ namespace SimpleVersion.Core.Tests.Tokens
             // Arrange
             var config = new VersionConfiguration
             {
-                Label = { "alpha", "beta", "gamma" }
+                Metadata = { "alpha", "beta", "gamma" }
             };
             _context.Configuration.Returns(config);
 
-            var expected = string.Join(option, config.Label);
+            var expected = string.Join(option, config.Metadata);
 
             // Act
-            var result = _sut.Process(option, _context, _evaluator);
+            var result = _sut.EvaluateWithOption(option, _context, _evaluator);
 
             // Assert
             result.Should().Be(expected);
@@ -103,43 +102,14 @@ namespace SimpleVersion.Core.Tests.Tokens
             // Arrange
             var config = new VersionConfiguration
             {
-                Label = { "alpha", "beta", "gamma" }
+                Metadata = { "alpha", "beta", "gamma" }
             };
             _context.Configuration.Returns(config);
 
-            var expected = string.Join(option, config.Label);
+            var expected = string.Join(option, config.Metadata);
 
             // Act
-            var result = _sut.Process(option, _context, _evaluator);
-
-            // Assert
-            result.Should().Be(expected);
-        }
-
-        [Fact]
-        public void Process_PreRelease_AppendsSha7()
-        {
-            // Arrange
-            _evaluator.Process("c{sha:7}", _context).Returns("c4ca82d2");
-
-            var config = new VersionConfiguration
-            {
-                Label = { "alpha", "beta", "gamma" }
-            };
-
-            var versionResult = new VersionResult
-            {
-                Sha = "4ca82d2c58f48007bf16d69ebf036fc4ebfdd059",
-                IsRelease = false
-            };
-
-            _context.Configuration.Returns(config);
-            _context.Result.Returns(versionResult);
-
-            var expected = "alpha-beta-gamma-c4ca82d2";
-
-            // Act
-            var result = _sut.Process("-", _context, _evaluator);
+            var result = _sut.EvaluateWithOption(option, _context, _evaluator);
 
             // Assert
             result.Should().Be(expected);

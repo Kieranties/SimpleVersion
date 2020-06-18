@@ -26,11 +26,9 @@ namespace SimpleVersion.Pipeline
             Assert.ArgumentNotNull(context, nameof(context));
 
             // TODO: Enable discovery
-            context.Result.Formats["semver1"] = _evaluator.Process("{semver:1}", context);
-            context.Result.Formats["semver2"] = _evaluator.Process("{semver:2}", context);
-
-            // TODO: Improve application
-            context.Result.Version = _evaluator.Process("{version}", context);
+            context.Result.Formats["semver1"] = _evaluator.Process<SemverToken>(SemverToken.Options.Semver1, context);
+            context.Result.Formats["semver2"] = _evaluator.Process<SemverToken>(SemverToken.Options.Semver2, context);
+            context.Result.Version = _evaluator.Process<VersionToken>(context);
         }
     }
 }

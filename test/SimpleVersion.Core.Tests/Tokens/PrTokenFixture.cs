@@ -9,14 +9,14 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests.Tokens
 {
-    public class PrTokenHandlerFixture
+    public class PrTokenFixture
     {
-        private readonly PrTokenHandler _sut;
+        private readonly PrToken _sut;
         private readonly IVersionContext _context;
 
-        public PrTokenHandlerFixture()
+        public PrTokenFixture()
         {
-            _sut = new PrTokenHandler();
+            _sut = new PrToken();
             _context = Substitute.For<IVersionContext>();
             _context.Result.Returns(new VersionResult());
         }
@@ -32,7 +32,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_NullContext_Throws()
         {
             // Arrange
-            Action action = () => _sut.Process(null, null, Substitute.For<ITokenEvaluator>());
+            Action action = () => _sut.EvaluateWithOption(null, null, Substitute.For<ITokenEvaluator>());
 
             // Act / Assert
             action.Should().Throw<ArgumentNullException>()
@@ -43,7 +43,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_NullEvaluator_DoesNotThrow()
         {
             // Arrange
-            Action action = () => _sut.Process(null, _context, null);
+            Action action = () => _sut.EvaluateWithOption(null, _context, null);
 
             // Act / Assert
             action.Should().NotThrow();
@@ -56,7 +56,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             _context.Result.PullRequestNumber = 5;
 
             // Act
-            var result = _sut.Process(null, _context, null);
+            var result = _sut.EvaluateWithOption(null, _context, null);
 
             // Assert
             result.Should().Be("5");
@@ -71,7 +71,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             _context.Result.PullRequestNumber = number;
 
             // Act
-            var result = _sut.Process(null, _context, null);
+            var result = _sut.EvaluateWithOption(null, _context, null);
 
             // Assert
             result.Should().Be(string.Empty);

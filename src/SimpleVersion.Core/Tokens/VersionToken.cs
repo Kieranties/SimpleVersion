@@ -9,20 +9,35 @@ namespace SimpleVersion.Tokens
     /// <summary>
     /// Handles the formatting of the version string.
     /// </summary>
-    public class VersionTokenHandler : ITokenHandler
+    public class VersionToken : BaseToken
     {
-        /// <inheritdoc/>
-        public string Key => "version";
+        public static class Options
+        {
+            public const string Major = "M";
+            public const string Minor = "m";
+            public const string Patch = "p";
+            public const string RevisionIfSet = "r";
+            public const string Revision = "R";
+            public const string Default = "Mmpr";
+        }
 
         /// <inheritdoc/>
-        public string Process(string? optionValue, IVersionContext context, ITokenEvaluator evaluator)
+        public override string Key => "version";
+
+        /// <inheritdoc/>
+        public override bool SupportsOptions => true;
+
+        /// <inheritdoc/>
+        public override string Evaluate(IVersionContext context, ITokenEvaluator evaluator)
+        {
+            return EvaluateWithOption(Options.Default, context, evaluator);
+        }
+
+        /// <inheritdoc/>
+        protected override string EvaluateWithOptionImpl(string optionValue, IVersionContext context, ITokenEvaluator evaluator)
         {
             Assert.ArgumentNotNull(context, nameof(context));
-
-            if (string.IsNullOrWhiteSpace(optionValue))
-            {
-                optionValue = "Mmpr";
-            }
+            Assert.ArgumentNotNull(optionValue, nameof(optionValue));
 
             var versionParts = new List<int>();
 

@@ -9,15 +9,15 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests.Tokens
 {
-    public class HeightTokenHandlerFixture
+    public class HeightTokenFixture
     {
-        private readonly HeightTokenHandler _sut;
+        private readonly HeightToken _sut;
         private readonly IVersionContext _context;
         private readonly ITokenEvaluator _evaluator;
 
-        public HeightTokenHandlerFixture()
+        public HeightTokenFixture()
         {
-            _sut = new HeightTokenHandler();
+            _sut = new HeightToken();
             _context = Substitute.For<IVersionContext>();
             _context.Result.Returns(new VersionResult());
             _evaluator = Substitute.For<ITokenEvaluator>();
@@ -35,7 +35,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_NullContext_Throws()
         {
             // Arrange
-            Action action = () => _sut.Process(null, null, _evaluator);
+            Action action = () => _sut.EvaluateWithOption(null, null, _evaluator);
 
             // Act / Assert
             action.Should().Throw<ArgumentNullException>()
@@ -61,7 +61,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             _context.Result.Returns(version);
 
             // Act
-            var result = _sut.Process(optionValue, _context, null);
+            var result = _sut.EvaluateWithOption(optionValue, _context, null);
 
             // Assert
             result.Should().Be(expected);
@@ -71,7 +71,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_InvalidOption_Throws()
         {
             // Arrange
-            Action action = () => _sut.Process("thing", _context, _evaluator);
+            Action action = () => _sut.EvaluateWithOption("thing", _context, _evaluator);
 
             // Act / Assert
             action.Should().Throw<InvalidOperationException>()

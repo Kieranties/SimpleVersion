@@ -9,21 +9,24 @@ using SimpleVersion.Pipeline;
 
 namespace SimpleVersion.Tokens
 {
+    // TODO: Handle circular token parsing (e.g. {label} => "a", "{label}", "b")
+
     /// <summary>
     /// Handles evaluation of a token string.
     /// </summary>
     public class TokenEvaluator : ITokenEvaluator
     {
         private static readonly Regex _regex = new Regex(@"{(?<key>\*|\w+)(?:\:(?<option>(?:[^\}]|\}(?=\}))*))?\}|(?<height>\*)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private readonly IEnumerable<ITokenHandler> _handlers;
+        private readonly Dictionary<string, IToken> _tokenCache;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenEvaluator"/> class.
         /// </summary>
-        /// <param name="handlers">The collection of <see cref="ITokenHandler"/> for processing a token string.</param>
-        public TokenEvaluator(IEnumerable<ITokenHandler> handlers)
+        /// <param name="tokens">The collection of <see cref="IToken"/> for processing a token string.</param>
+        public TokenEvaluator(IEnumerable<IToken> tokens)
         {
-            _handlers = Assert.ArgumentNotNull(handlers, nameof(handlers));
+            _tokenCache = Assert.ArgumentNotNull(tokens, nameof(tokens))
+                .ToDictionary(t => t.Key, StringComparer.OrdinalIgnoreCase);
         }
 
         /// <inheritdoc />
@@ -44,7 +47,7 @@ namespace SimpleVersion.Tokens
             {
                 if (charPointer < upToIndex)
                 {
-                    result.Append(tokenString.Substring(charPointer, upToIndex - charPointer));
+                    result.Append(tokenString[charPointer..upToIndex]);
                 }
             }
 
@@ -53,30 +56,32 @@ namespace SimpleVersion.Tokens
                 // Ensure we have consumed up to this token
                 ConsumeNonToken(match.Index);
 
-                string? handlerKey = null;
+                string? tokenKey = null;
                 if (match.Groups["key"].Success)
                 {
-                    handlerKey = match.Groups["key"].Value;
+                    tokenKey = match.Groups["key"].Value;
                 }
                 else
                 {
-                    handlerKey = match.Groups["height"].Value;
+                    tokenKey = match.Groups["height"].Value;
                 }
 
-                if (handlerKey == null)
+                if (tokenKey == null)
                 {
                     throw new Exception($"Invalid token match for request: {tokenString}");
                 }
 
-                var handler = _handlers.FirstOrDefault(t => t.Key == handlerKey);
-
-                if (handler == null)
+                if (!_tokenCache.TryGetValue(tokenKey, out var token))
                 {
                     throw new Exception($"Could not find token handler for request: {tokenString}");
                 }
 
-                var option = match.Groups["option"].Value;
-                result.Append(handler.Process(option, context, this));
+                var optionGroup = match.Groups["option"];
+                var tokenResult = optionGroup.Success
+                    ? token.EvaluateWithOption(optionGroup.Value, context, this)
+                    : token.Evaluate(context, this);
+
+                result.Append(tokenResult);
 
                 // consume token
                 charPointer = match.Index + match.Length;
@@ -86,6 +91,24 @@ namespace SimpleVersion.Tokens
             ConsumeNonToken(tokenString.Length);
 
             return result.ToString();
+        }
+
+        /// <inheritdoc />
+        public string Process<TToken>(IVersionContext context)
+            where TToken : IToken
+        {
+            var token = _tokenCache.Values.OfType<TToken>().Single();
+
+            return Process($"{{{token.Key}}}", context);
+        }
+
+        /// <inheritdoc />
+        public string Process<TToken>(string optionValue, IVersionContext context)
+            where TToken : IToken
+        {
+            var token = _tokenCache.Values.OfType<TToken>().Single();
+
+            return Process($"{{{token.Key}:{optionValue}}}", context);
         }
     }
 }

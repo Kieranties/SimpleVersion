@@ -9,15 +9,15 @@ using Xunit;
 
 namespace SimpleVersion.Core.Tests.Tokens
 {
-    public class SemverTokenHandlerFixture
+    public class SemverTokenFixture
     {
-        private readonly SemverTokenHandler _sut;
+        private readonly SemverToken _sut;
         private readonly IVersionContext _context;
         private readonly ITokenEvaluator _evaluator;
 
-        public SemverTokenHandlerFixture()
+        public SemverTokenFixture()
         {
-            _sut = new SemverTokenHandler();
+            _sut = new SemverToken();
             _context = Substitute.For<IVersionContext>();
             _context.Result.Returns(new VersionResult());
             _evaluator = Substitute.For<ITokenEvaluator>();
@@ -30,7 +30,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_NullContext_Throws()
         {
             // Arrange
-            Action action = () => _sut.Process(null, null, _evaluator);
+            Action action = () => _sut.EvaluateWithOption(null, null, _evaluator);
 
             // Assert
             action.Should().Throw<ArgumentNullException>()
@@ -41,7 +41,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_NullEvaluator_Throws()
         {
             // Arrange
-            Action action = () => _sut.Process(null, _context, null);
+            Action action = () => _sut.EvaluateWithOption(null, _context, null);
 
             // Assert
             action.Should().Throw<ArgumentNullException>()
@@ -55,7 +55,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_NullOrEmptyOption_UsesDefault(string optionValue)
         {
             // Act
-            _sut.Process(optionValue, _context, _evaluator);
+            _sut.EvaluateWithOption(optionValue, _context, _evaluator);
 
             // Assert
             _evaluator.Received(1).Process("{label:.}", _context);
@@ -67,7 +67,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_AllowedOption_UsesExpectedDelimiter(string optionValue, string delimiter)
         {
             // Act
-            _sut.Process(optionValue, _context, _evaluator);
+            _sut.EvaluateWithOption(optionValue, _context, _evaluator);
 
             // Assert
             _evaluator.Received(1).Process($"{{label:{delimiter}}}", _context);
@@ -79,7 +79,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_NonIntegerOption_Throws(string optionValue)
         {
             // Arrange
-            Action action = () => _sut.Process(optionValue, _context, _evaluator);
+            Action action = () => _sut.EvaluateWithOption(optionValue, _context, _evaluator);
 
             // Act / Assert
             action.Should().Throw<InvalidOperationException>()
@@ -90,7 +90,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_InvalidOption_Throws()
         {
             // Arrange
-            Action action = () => _sut.Process("12", _context, _evaluator);
+            Action action = () => _sut.EvaluateWithOption("12", _context, _evaluator);
 
             // Act / Assert
             action.Should().Throw<InvalidOperationException>()
@@ -111,7 +111,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             var expected = $"{version}-{label}";
 
             // Act
-            var result = _sut.Process(optionValue, _context, _evaluator);
+            var result = _sut.EvaluateWithOption(optionValue, _context, _evaluator);
 
             // Assert
             result.Should().Be(expected);
@@ -129,7 +129,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             _evaluator.Process($"{{label:{delimiter}}}", _context).Returns(label);
 
             // Act
-            var result = _sut.Process(optionValue, _context, _evaluator);
+            var result = _sut.EvaluateWithOption(optionValue, _context, _evaluator);
 
             // Assert
             result.Should().Be(version);
@@ -139,7 +139,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_Semver1_DoesNotProcessMetadata()
         {
             // Act
-            _sut.Process("1", _context, _evaluator);
+            _sut.EvaluateWithOption("1", _context, _evaluator);
 
             // Assert
             _evaluator.DidNotReceive().Process(Arg.Is<string>(x => x.Contains("metadata")), _context);
@@ -159,7 +159,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             var expected = $"{version}-{label}+{metadata}";
 
             // Act
-            var result = _sut.Process("2", _context, _evaluator);
+            var result = _sut.EvaluateWithOption("2", _context, _evaluator);
 
             // Assert
             result.Should().Be(expected);
@@ -177,7 +177,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             _evaluator.Process("{metadata:.}", _context).Returns(metadata);
 
             // Act
-            var result = _sut.Process("2", _context, _evaluator);
+            var result = _sut.EvaluateWithOption("2", _context, _evaluator);
 
             // Assert
             result.Should().Be("1.2.3+meta.data");
