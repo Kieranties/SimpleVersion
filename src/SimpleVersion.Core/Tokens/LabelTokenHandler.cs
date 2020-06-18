@@ -24,14 +24,7 @@ namespace SimpleVersion.Tokens
                 optionValue = ".";
             }
 
-            // TODO: Need logic to identify/add tokens into a string through strong typing
-            // TODO: Identify better place for application of logic to label changes
             var parts = context.Configuration.Label;
-            var needsHeight = !context.Configuration.Label.Any(x => x.Contains("*", System.StringComparison.OrdinalIgnoreCase)); // TODO: not explicit enough                       
-            if (needsHeight) { parts.Add("*"); }
-
-            var needsSha = !context.Result.IsRelease && context.Configuration.Label.Any(x => x.Contains("sha", System.StringComparison.OrdinalIgnoreCase)); // TODO: not explicit enough
-            if (needsSha) { parts.Add("c{sha:7}"); }
 
             return string.Join(optionValue, parts.Select(l => evaluator.Process(l, context)));
         }

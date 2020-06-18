@@ -1,6 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System;
+using System.Linq;
 using SimpleVersion.Pipeline;
 
 namespace SimpleVersion.Tokens
@@ -37,6 +38,23 @@ namespace SimpleVersion.Tokens
 
             var version = evaluator.Process("{version}", context);
             var label = evaluator.Process($"{{label:{joinChar}}}", context);
+
+            // if we have a label and it does not contain the height, it needs to be added
+            var needsHeight = !string.IsNullOrEmpty(label) && !context.Configuration.Label.Any(x => x.Contains("*", StringComparison.OrdinalIgnoreCase));
+            if (needsHeight)
+            {
+                var padding = specVersion == 1 ? 4 : 0;
+                var height = evaluator.Process($"{{*:{padding}}}", context);
+                label = string.Join(joinChar, label, height);
+            }
+
+            // if we have is release and it does not contain the sha
+            var needsSha = !context.Result.IsRelease && context.Configuration.Label.Any(x => x.Contains("sha", System.StringComparison.OrdinalIgnoreCase)); // TODO: not explicit enough
+            if (needsSha)
+            {
+                var sha = evaluator.Process("c{sha:7}", context);
+                label = string.Join(joinChar, label, sha);
+            }
 
             var result = version;
 
