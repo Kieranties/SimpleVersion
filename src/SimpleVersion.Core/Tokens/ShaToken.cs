@@ -8,29 +8,18 @@ namespace SimpleVersion.Tokens
     /// <summary>
     /// Exposes the git sha as a token for consumption.
     /// </summary>
-    public class ShaToken : BaseToken
+    [Token(_tokenKey, DefaultOption = _fullOption, Description = "Provides parsing of the commit sha.")]
+    [TokenValueOption(_fullOption, Description = "Returns the full commit sha.")]
+    [TokenValueOption(_shortOption, Alias = _shortOption + _tokenKey, Description = "Returns the first seven characters of the commit sha.")]
+    [TokenFallbackOption("Provide a number greater than 0 to return up to that many characters from the commit sha.")]
+    public class ShaToken : IToken
     {
-        public static class Options
-        {
-            public const string Full = "full";
-            public const string Short = "short";
-            public const string Default = Full;
-        }
+        private const string _tokenKey = "sha";
+        private const string _fullOption = "full";
+        internal const string _shortOption = "short";
 
         /// <inheritdoc/>
-        public override string Key => "sha";
-
-        /// <inheritdoc/>
-        public override bool SupportsOptions => true;
-
-        /// <inheritdoc/>
-        public override string Evaluate(IVersionContext context, ITokenEvaluator evaluator)
-        {
-            return EvaluateWithOption(Options.Default, context, evaluator);
-        }
-
-        /// <inheritdoc/>
-        protected override string EvaluateWithOptionImpl(string optionValue, IVersionContext context, ITokenEvaluator evaluator)
+        public string Evaluate(string optionValue, IVersionContext context, ITokenEvaluator evaluator)
         {
             Assert.ArgumentNotNull(optionValue, nameof(optionValue));
             Assert.ArgumentNotNull(context, nameof(context));
@@ -49,8 +38,8 @@ namespace SimpleVersion.Tokens
 
             var length = optionValue.ToLowerInvariant() switch
             {
-                Options.Default => result.Length,
-                Options.Short => 7,
+                _fullOption => result.Length,
+                _shortOption => 7,
                 _ => ParseOptionAsInt()
             };
 

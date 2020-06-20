@@ -8,27 +8,16 @@ namespace SimpleVersion.Tokens
     /// <summary>
     /// Handles formatting of label parts.
     /// </summary>
-    public class LabelToken : BaseToken
+    [Token(_tokenKey, DefaultOption = _dotOption, Description = "Provides parsing of the version label.")]
+    [TokenValueOption(_dotOption, Description = "Joins the label parts into a string separated with the '.' character.")]
+    [TokenFallbackOption("Joins the label parts into a string separated with the given value.")]
+    public class LabelToken : IToken
     {
-        public static class Options
-        {
-            public const string Default = ".";
-        }
+        private const string _tokenKey = "label";
+        private const string _dotOption = ".";
 
         /// <inheritdoc/>
-        public override string Key => "label";
-
-        /// <inheritdoc/>
-        public override bool SupportsOptions => true;
-
-        /// <inheritdoc/>
-        public override string Evaluate(IVersionContext context, ITokenEvaluator evaluator)
-        {
-            return EvaluateWithOption(Options.Default, context, evaluator);
-        }
-
-        /// <inheritdoc/>
-        protected override string EvaluateWithOptionImpl(string optionValue, IVersionContext context, ITokenEvaluator evaluator)
+        public string Evaluate(string optionValue, IVersionContext context, ITokenEvaluator evaluator)
         {
             Assert.ArgumentNotNull(optionValue, nameof(optionValue));
             Assert.ArgumentNotNull(context, nameof(context));

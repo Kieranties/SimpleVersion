@@ -10,42 +10,31 @@ namespace SimpleVersion.Tokens
     /// <summary>
     /// Handles formatting the branch name.
     /// </summary>
-    public class BranchNameToken : BaseToken
+    [Token(_tokenKey, DefaultOption = _canonOption, Description = "Provides parsing of the branch name.")]
+    [TokenValueOption(_canonOption, Description = "Returns the full canonical branch name.")]
+    [TokenValueOption(_suffixOption, Description = "Returns the branch name suffix.")]
+    [TokenValueOption(_shortOption, Alias = _shortOption + _tokenKey, Description = "Returns a shortened branch name.")]
+    public class BranchNameToken : IToken
     {
-        public static class Options
-        {
-            public const string Short = "short";
-            public const string Suffix = "suffix";
-            public const string Canon = "canon";
-            public const string Default = Canon;
-        }
+        private const string _tokenKey = "branchname";
+        private const string _canonOption = "canon";
+        private const string _suffixOption = "suffix";
+        private const string _shortOption = "short";
 
         private static readonly Regex _regex = new Regex("[^a-z0-9]", RegexOptions.Compiled);
 
         /// <inheritdoc/>
-        public override string Key => "branchname";
-
-        /// <inheritdoc/>
-        public override bool SupportsOptions => true;
-
-        /// <inheritdoc/>
-        public override string Evaluate(IVersionContext context, ITokenEvaluator evaluator)
-        {
-            return EvaluateWithOption(Options.Default, context, evaluator);
-        }
-
-        /// <inheritdoc/>
-        protected override string EvaluateWithOptionImpl(string optionValue, IVersionContext context, ITokenEvaluator evaluator)
+        public string Evaluate(string optionValue, IVersionContext context, ITokenEvaluator evaluator)
         {
             Assert.ArgumentNotNull(optionValue, nameof(optionValue));
             Assert.ArgumentNotNull(context, nameof(context));
 
             var branchName = optionValue.ToLowerInvariant() switch
             {
-                Options.Short => context.Result.BranchName,
-                Options.Suffix => context.Result.CanonicalBranchName.Substring(context.Result.CanonicalBranchName.LastIndexOf('/') + 1),
-                Options.Default => context.Result.CanonicalBranchName,
-                _ => throw new InvalidOperationException($"Invalid option '{optionValue}' for token '{Key}'")
+                _shortOption => context.Result.BranchName,
+                _suffixOption => context.Result.CanonicalBranchName.Substring(context.Result.CanonicalBranchName.LastIndexOf('/') + 1),
+                _canonOption => context.Result.CanonicalBranchName,
+                _ => throw new InvalidOperationException($"Invalid option '{optionValue}' for token '{_tokenKey}'")
             };
 
             if (string.IsNullOrWhiteSpace(branchName))

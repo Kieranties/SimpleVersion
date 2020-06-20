@@ -9,29 +9,17 @@ namespace SimpleVersion.Tokens
     /// <summary>
     /// Handles formatting of a Semver version.
     /// </summary>
-    public class SemverToken : BaseToken
+    [Token(_tokenKey, DefaultOption = _v2Option, Description = "Provides parsing of full semver compatible versions.")]
+    [TokenValueOption(_v1Option, Description = "Returns a semver v1 formatted string.")]
+    [TokenValueOption(_v2Option, Description = "Returns a semver v2 formatted string.")]
+    public class SemverToken : IToken
     {
-        public static class Options
-        {
-            public const string Semver1 = "1";
-            public const string Semver2 = "2";
-            public const string Default = Semver2;
-        }
+        private const string _tokenKey = "semver";
+        internal const string _v1Option = "1";
+        internal const string _v2Option = "2";
 
         /// <inheritdoc/>
-        public override string Key => "semver";
-
-        /// <inheritdoc/>
-        public override bool SupportsOptions => true;
-
-        /// <inheritdoc/>
-        public override string Evaluate(IVersionContext context, ITokenEvaluator evaluator)
-        {
-            return EvaluateWithOption(Options.Default, context, evaluator);
-        }
-
-        /// <inheritdoc/>
-        protected override string EvaluateWithOptionImpl(string optionValue, IVersionContext context, ITokenEvaluator evaluator)
+        public string Evaluate(string optionValue, IVersionContext context, ITokenEvaluator evaluator)
         {
             Assert.ArgumentNotNull(optionValue, nameof(optionValue));
             Assert.ArgumentNotNull(context, nameof(context));
@@ -39,8 +27,8 @@ namespace SimpleVersion.Tokens
 
             var joinChar = optionValue switch
             {
-                Options.Semver1 => "-",
-                Options.Semver2 => ".",
+                _v1Option => "-",
+                _v2Option => ".",
                 _ => throw new InvalidOperationException($"'{optionValue}' is not a valid semver version")
             };
 
@@ -53,8 +41,11 @@ namespace SimpleVersion.Tokens
             var needsHeight = !string.IsNullOrEmpty(label) && !context.Configuration.Label.Any(x => x.Contains("*", StringComparison.OrdinalIgnoreCase));
             if (needsHeight)
             {
-                var padding = optionValue == Options.Semver1 ? "4" : HeightToken.Options.Default;
-                var height = evaluator.Process<HeightToken>(padding, context);
+                var height = optionValue switch
+                {
+                    _v1Option => evaluator.Process<HeightToken>("4", context),
+                    _ => evaluator.Process<HeightToken>(context)
+                }; 
                 label = string.Join(joinChar, label, height);
             }
 
@@ -62,7 +53,7 @@ namespace SimpleVersion.Tokens
             var needsSha = !context.Result.IsRelease && context.Configuration.Label.Any(x => x.Contains("sha", System.StringComparison.OrdinalIgnoreCase)); // TODO: not explicit enough
             if (needsSha)
             {
-                var sha = evaluator.Process<ShortShaToken>(context);
+                var sha = evaluator.Process<ShaToken>(ShaToken._shortOption, context);
                 label = string.Join(joinChar, label, sha);
             }
 
@@ -73,7 +64,7 @@ namespace SimpleVersion.Tokens
                 result += $"-{label}";
             }
 
-            if (optionValue == Options.Semver2)
+            if (optionValue == _v2Option)
             {
                 var metadata = evaluator.Process<MetadataToken>(context);
                 if (!string.IsNullOrWhiteSpace(metadata))

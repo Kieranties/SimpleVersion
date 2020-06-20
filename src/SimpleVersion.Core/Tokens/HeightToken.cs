@@ -9,27 +9,16 @@ namespace SimpleVersion.Tokens
     /// <summary>
     /// Handles token replacement for height.
     /// </summary>
-    public class HeightToken : BaseToken
+    [Token(_tokenKey, DefaultOption = _noPaddingOption, Description = "Provides parsing of the commit height.")]
+    [TokenValueOption(_noPaddingOption, Description = "Performs no padding when returning the height.")]
+    [TokenFallbackOption("Provide a number greater than 0 to pad the returned height to that many digits.")]
+    public class HeightToken : IToken
     {
-        public static class Options
-        {
-            public const string Default = "0";
-        }
-
-        /// <inheritdoc />
-        public override string Key => "*";
+        private const string _tokenKey = "*";
+        private const string _noPaddingOption = "0";
 
         /// <inheritdoc/>
-        public override bool SupportsOptions => true;
-
-        /// <inheritdoc/>
-        public override string Evaluate(IVersionContext context, ITokenEvaluator evaluator)
-        {
-            return EvaluateWithOption(Options.Default, context, evaluator);
-        }
-
-        /// <inheritdoc/>
-        protected override string EvaluateWithOptionImpl(string optionValue, IVersionContext context, ITokenEvaluator evaluator)
+        public string Evaluate(string optionValue, IVersionContext context, ITokenEvaluator evaluator)
         {
             Assert.ArgumentNotNull(context, nameof(context));
 

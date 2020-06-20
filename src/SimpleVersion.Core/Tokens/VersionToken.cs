@@ -9,32 +9,25 @@ namespace SimpleVersion.Tokens
     /// <summary>
     /// Handles the formatting of the version string.
     /// </summary>
-    public class VersionToken : BaseToken
+    [Token("version", DefaultOption = _defaultOption, Description = "Provides parsing of the version string.")]
+    [TokenValueOption(_majorOption, Description = "Returns the major part of the version string.")]
+    [TokenValueOption(_minorOption, Description = "Returns the minor part of the version string.")]
+    [TokenValueOption(_patchOption, Description = "Returns the patch part of the version string.")]
+    [TokenValueOption(_revisionOption, Description = "Returns the revision part of the version string.")]
+    [TokenValueOption(_revisionIfSetOption, Description = "Returns the revision part of the version string if it is set in configuration.")]
+    [TokenValueOption(_defaultOption, Description = "Returns the major.minor.patch version string with revision if set in configuration.")]
+    [TokenFallbackOption("Provide any combination of the option values.")]
+    public class VersionToken : IToken
     {
-        public static class Options
-        {
-            public const string Major = "M";
-            public const string Minor = "m";
-            public const string Patch = "p";
-            public const string RevisionIfSet = "r";
-            public const string Revision = "R";
-            public const string Default = "Mmpr";
-        }
+        private const string _majorOption = "M";
+        private const string _minorOption = "m";
+        private const string _patchOption = "p";
+        private const string _revisionIfSetOption = "r";
+        private const string _revisionOption = "R";
+        private const string _defaultOption = "Mmpr";
 
         /// <inheritdoc/>
-        public override string Key => "version";
-
-        /// <inheritdoc/>
-        public override bool SupportsOptions => true;
-
-        /// <inheritdoc/>
-        public override string Evaluate(IVersionContext context, ITokenEvaluator evaluator)
-        {
-            return EvaluateWithOption(Options.Default, context, evaluator);
-        }
-
-        /// <inheritdoc/>
-        protected override string EvaluateWithOptionImpl(string optionValue, IVersionContext context, ITokenEvaluator evaluator)
+        public string Evaluate(string optionValue, IVersionContext context, ITokenEvaluator evaluator)
         {
             Assert.ArgumentNotNull(context, nameof(context));
             Assert.ArgumentNotNull(optionValue, nameof(optionValue));
@@ -45,18 +38,18 @@ namespace SimpleVersion.Tokens
             {
                 int num;
 
-                if (c == 'r' && context.Result.Revision < 1)
+                if (c == _revisionIfSetOption[0] && context.Result.Revision < 1)
                 {
                     continue;
                 }
 
-                num = c switch
+                num = c.ToString() switch
                 {
-                    'M' => context.Result.Major,
-                    'm' => context.Result.Minor,
-                    'p' => context.Result.Patch,
-                    'r' => context.Result.Revision,
-                    'R' => context.Result.Revision,
+                    _majorOption => context.Result.Major,
+                    _minorOption => context.Result.Minor,
+                    _patchOption => context.Result.Patch,
+                    _revisionIfSetOption => context.Result.Revision,
+                    _revisionOption => context.Result.Revision,
                     _ => throw new InvalidOperationException($"Invalid character '{c}' in version option [{optionValue}].")
                 };
 

@@ -8,13 +8,11 @@ namespace SimpleVersion.Tokens
     /// <summary>
     /// Handles formatting of the PR.
     /// </summary>
-    public class PrToken : BaseToken
+    [Token("pr", Description = "Provides parsing of the pull-request number.")]
+    public class PrToken : IToken
     {
         /// <inheritdoc/>
-        public override string Key => "pr";
-
-        /// <inheritdoc/>
-        public override string Evaluate(IVersionContext context, ITokenEvaluator evaluator)
+        public string Evaluate(string optionValue, IVersionContext context, ITokenEvaluator evaluator)
         {
             Assert.ArgumentNotNull(context, nameof(context));
 
