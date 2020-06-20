@@ -38,7 +38,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_NullContext_Throws()
         {
             // Arrange
-            Action action = () => _sut.EvaluateWithOption(null, null, _evaluator);
+            Action action = () => _sut.EvaluateWithOption(LabelToken.Options.Default, null, _evaluator);
 
             // Assert
             action.Should().Throw<ArgumentNullException>()
@@ -49,7 +49,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_NullEvaluator_Throws()
         {
             // Arrange
-            Action action = () => _sut.EvaluateWithOption(null, _context, null);
+            Action action = () => _sut.EvaluateWithOption(LabelToken.Options.Default, _context, null);
 
             // Assert
             action.Should().Throw<ArgumentNullException>()
@@ -57,7 +57,18 @@ namespace SimpleVersion.Core.Tests.Tokens
         }
 
         [Fact]
-        public void Process_NullOption_UsesDefault()
+        public void Process_Null_Throws()
+        {
+            // Arrange
+            Action action = () => _sut.EvaluateWithOption(null, _context, _evaluator);
+
+            // Assert
+            action.Should().Throw<ArgumentNullException>()
+                .And.ParamName.Should().Be("optionValue");
+        }
+
+        [Fact]
+        public void Process_DefaultOption_UsesDefault()
         {
             // Arrange
             var config = new VersionConfiguration
@@ -67,7 +78,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             _context.Configuration.Returns(config);
 
             // Act
-            var result = _sut.EvaluateWithOption(null, _context, _evaluator);
+            var result = _sut.EvaluateWithOption(LabelToken.Options.Default, _context, _evaluator);
 
             // Assert
             result.Should().Be("alpha.beta.gamma");
@@ -111,35 +122,6 @@ namespace SimpleVersion.Core.Tests.Tokens
 
             // Act
             var result = _sut.EvaluateWithOption(option, _context, _evaluator);
-
-            // Assert
-            result.Should().Be(expected);
-        }
-
-        [Fact]
-        public void Process_PreRelease_AppendsSha7()
-        {
-            // Arrange
-            _evaluator.Process("c{sha:7}", _context).Returns("c4ca82d2");
-
-            var config = new VersionConfiguration
-            {
-                Label = { "alpha", "beta", "gamma" }
-            };
-
-            var versionResult = new VersionResult
-            {
-                Sha = "4ca82d2c58f48007bf16d69ebf036fc4ebfdd059",
-                IsRelease = false
-            };
-
-            _context.Configuration.Returns(config);
-            _context.Result.Returns(versionResult);
-
-            var expected = "alpha-beta-gamma-c4ca82d2";
-
-            // Act
-            var result = _sut.EvaluateWithOption("-", _context, _evaluator);
 
             // Assert
             result.Should().Be(expected);

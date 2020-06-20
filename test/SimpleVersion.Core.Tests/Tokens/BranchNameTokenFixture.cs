@@ -34,7 +34,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_NullContext_Throws()
         {
             // Arrange
-            Action action = () => _sut.EvaluateWithOption(null, null, _evaluator);
+            Action action = () => _sut.EvaluateWithOption(BranchNameToken.Options.Default, null, _evaluator);
 
             // Act / Assert
             action.Should().Throw<ArgumentNullException>()
@@ -46,7 +46,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         {
             // Arrange
             _context.Result.CanonicalBranchName = "test";
-            Action action = () => _sut.EvaluateWithOption(null, _context, null);
+            Action action = () => _sut.EvaluateWithOption(BranchNameToken.Options.Default, _context, null);
 
             // Act / Assert
             action.Should().NotThrow();
@@ -58,7 +58,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             // Arrange
             _context.Result.CanonicalBranchName = null;
             _context.Result.BranchName = null;
-            Action action = () => _sut.EvaluateWithOption(null, _context, null);
+            Action action = () => _sut.EvaluateWithOption(BranchNameToken.Options.Default, _context, null);
 
             // Act / Assert
             action.Should().Throw<InvalidOperationException>()
@@ -66,20 +66,18 @@ namespace SimpleVersion.Core.Tests.Tokens
         }
 
         [Theory]
-        [InlineData("", "refs/heads/master", "refsheadsmaster")] // Ignore spelling: refsheadsmaster
-        [InlineData("  ", "refs/heads/master", "refsheadsmaster")]
-        [InlineData("\t\t  ", "refs/heads/release/1.0", "refsheadsrelease10")]
-        [InlineData("random string", "refs/heads/release-1.0", "refsheadsrelease10")]
-        public void Process_InvalidOption_ReturnsFormattedCanonical(string option, string branch, string expected)
+        [InlineData("")]
+        [InlineData("  ")]
+        [InlineData("\t\t  ")]
+        [InlineData("random string")]
+        public void Process_InvalidOption_Throws(string option)
         {
             // Arrange
-            _context.Result.CanonicalBranchName = branch;
+            Action action = () => _sut.EvaluateWithOption(option, _context, _evaluator);
 
-            // Act
-            var result = _sut.EvaluateWithOption(option, _context, _evaluator);
-
-            // Assert
-            result.Should().Be(expected);
+            // Act / Assert
+            action.Should().Throw<InvalidOperationException>()
+                .WithMessage($"Invalid option '{option}' for token 'branchname'");
         }
 
         [Theory]

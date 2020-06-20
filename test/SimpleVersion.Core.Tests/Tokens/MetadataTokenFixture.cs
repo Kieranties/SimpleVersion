@@ -37,7 +37,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_NullContext_Throws()
         {
             // Arrange
-            Action action = () => _sut.EvaluateWithOption(null, null, _evaluator);
+            Action action = () => _sut.EvaluateWithOption(MetadataToken.Options.Default, null, _evaluator);
 
             // Assert
             action.Should().Throw<ArgumentNullException>()
@@ -48,7 +48,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_NullEvaluator_Throws()
         {
             // Arrange
-            Action action = () => _sut.EvaluateWithOption(null, _context, null);
+            Action action = () => _sut.EvaluateWithOption(MetadataToken.Options.Default, _context, null);
 
             // Assert
             action.Should().Throw<ArgumentNullException>()
@@ -56,7 +56,18 @@ namespace SimpleVersion.Core.Tests.Tokens
         }
 
         [Fact]
-        public void Process_NullOption_UsesDefault()
+        public void Process_NullOption_UsesThrows()
+        {
+            // Arrange
+            Action action = () => _sut.EvaluateWithOption(null, _context, _evaluator);
+
+            // Assert
+            action.Should().Throw<ArgumentNullException>()
+                .And.ParamName.Should().Be("optionValue");
+        }
+
+        [Fact]
+        public void Process_DefaultOption_UsesDefault()
         {
             // Arrange
             var config = new VersionConfiguration
@@ -66,7 +77,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             _context.Configuration.Returns(config);
 
             // Act
-            var result = _sut.EvaluateWithOption(null, _context, _evaluator);
+            var result = _sut.EvaluateWithOption(MetadataToken.Options.Default, _context, _evaluator);
 
             // Assert
             result.Should().Be("alpha.beta.gamma");

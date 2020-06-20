@@ -45,7 +45,7 @@ namespace SimpleVersion.Tokens
                 Options.Short => context.Result.BranchName,
                 Options.Suffix => context.Result.CanonicalBranchName.Substring(context.Result.CanonicalBranchName.LastIndexOf('/') + 1),
                 Options.Default => context.Result.CanonicalBranchName,
-                _ => throw new InvalidOperationException($"Invalid option '{optionValue}' for token '{Key}")
+                _ => throw new InvalidOperationException($"Invalid option '{optionValue}' for token '{Key}'")
             };
 
             if (string.IsNullOrWhiteSpace(branchName))

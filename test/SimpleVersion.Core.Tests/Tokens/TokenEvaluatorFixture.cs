@@ -20,7 +20,7 @@ namespace SimpleVersion.Core.Tests.Tokens
 
             // Act / Assert
             action.Should().Throw<ArgumentNullException>()
-                .And.ParamName.Should().Be("handlers");
+                .And.ParamName.Should().Be("tokens");
         }
 
         [Theory]
@@ -71,45 +71,57 @@ namespace SimpleVersion.Core.Tests.Tokens
         }
 
         [Theory]
-        [InlineData("{example}", "example", "")]
+        [InlineData("{example}", "example", null)]
         [InlineData("{example:7}", "example", "7")]
         [InlineData("{example:hh:mm:dd}", "example", "hh:mm:dd")]
         public void Process_MatchedHandler_CallsHandler(string tokenString, string key, string expectedOption)
         {
             // Arrange
             var context = Substitute.For<IVersionContext>();
-            var Token = Substitute.For<IToken>();
-            Token.Key.Returns(key);
-            Token.EvaluateWithOption(expectedOption, Arg.Any<IVersionContext>(), Arg.Any<ITokenEvaluator>()).Returns("result");
+            var token = Substitute.For<IToken>();
+            token.Key.Returns(key);
+            if (string.IsNullOrEmpty(expectedOption))
+            {
+                token.Evaluate(Arg.Any<IVersionContext>(), Arg.Any<ITokenEvaluator>()).Returns("result");
+            }
+            else
+            {
+                token.EvaluateWithOption(expectedOption, Arg.Any<IVersionContext>(), Arg.Any<ITokenEvaluator>()).Returns("result");
+            }
 
-            var sut = new TokenEvaluator(new[] { Token });
+            var sut = new TokenEvaluator(new[] { token });
 
             // Act
             var result = sut.Process(tokenString, context);
 
             // Assert
-            Token.Received(1).EvaluateWithOption(expectedOption, context, sut);
             result.Should().Be("result");
         }
 
         [Theory]
-        [InlineData("*", "*", "")]
+        [InlineData("*", "*", null)]
         [InlineData("{*:7}", "*", "7")]
         public void Process_HeightTokenSpecialCase_CallsHandler(string tokenString, string key, string expectedOption)
         {
             // Arrange
             var context = Substitute.For<IVersionContext>();
-            var Token = Substitute.For<IToken>();
-            Token.Key.Returns(key);
-            Token.EvaluateWithOption(expectedOption, Arg.Any<IVersionContext>(), Arg.Any<ITokenEvaluator>()).Returns("result");
+            var token = Substitute.For<IToken>();
+            token.Key.Returns(key);
+            if (string.IsNullOrEmpty(expectedOption))
+            {
+                token.Evaluate(Arg.Any<IVersionContext>(), Arg.Any<ITokenEvaluator>()).Returns("result");
+            }
+            else
+            {
+                token.EvaluateWithOption(expectedOption, Arg.Any<IVersionContext>(), Arg.Any<ITokenEvaluator>()).Returns("result");
+            }
 
-            var sut = new TokenEvaluator(new[] { Token });
+            var sut = new TokenEvaluator(new[] { token });
 
             // Act
             var result = sut.Process(tokenString, context);
 
             // Assert
-            Token.Received(1).EvaluateWithOption(expectedOption, context, sut);
             result.Should().Be("result");
         }
 
@@ -123,7 +135,7 @@ namespace SimpleVersion.Core.Tests.Tokens
                 {
                     var handler = Substitute.For<IToken>();
                     handler.Key.Returns($"t{n}");
-                    handler.EvaluateWithOption(Arg.Any<string>(), Arg.Any<IVersionContext>(), Arg.Any<ITokenEvaluator>()).Returns(n.ToString());
+                    handler.Evaluate(Arg.Any<IVersionContext>(), Arg.Any<ITokenEvaluator>()).Returns(n.ToString());
                     return handler;
                 });
 

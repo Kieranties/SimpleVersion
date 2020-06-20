@@ -31,27 +31,30 @@ namespace SimpleVersion.Core.Tests.Tokens
         }
 
         [Theory]
-        [InlineData(null)]
         [InlineData("")]
         [InlineData("\t\t  ")]
-        public void Process_NoOption_ReturnsSha(string option)
+        [InlineData("this is a string")]
+        [InlineData("10/20")]
+        [InlineData("0")]
+        [InlineData("-1")]
+        public void Process_InvalidOption_Throws(string option)
         {
-            // Arrange
-            var expected = "b49710eeebbf5dbf8e60d35b7340732aab18531d";
-            _context.Result.Sha = expected;
-
-            // Act
-            var result = _sut.EvaluateWithOption(option, _context, _evaluator);
+            // Arrange / Act
+            Action action = () => _sut.EvaluateWithOption(option, _context, _evaluator);
 
             // Assert
-            result.Should().Be(expected);
+            action.Should().Throw<InvalidOperationException>()
+                .WithMessage($"Invalid sha option '{option}'.  Expected an integer greater than 0, 'full', or 'short'.");
         }
 
         [Theory]
         [InlineData("1", "b")]
         [InlineData("7", "b49710e")]
+        [InlineData(ShaToken.Options.Short, "b49710e")]
         [InlineData("0010", "b49710eeeb")]
         [InlineData("40", "b49710eeebbf5dbf8e60d35b7340732aab18531d")]
+        [InlineData(ShaToken.Options.Full, "b49710eeebbf5dbf8e60d35b7340732aab18531d")]
+        [InlineData(ShaToken.Options.Default, "b49710eeebbf5dbf8e60d35b7340732aab18531d")]
         public void Process_OptionValid_ReturnsShaSubstring(string option, string expected)
         {
             // Arrange
@@ -61,63 +64,33 @@ namespace SimpleVersion.Core.Tests.Tokens
             var result = _sut.EvaluateWithOption(option, _context, _evaluator);
 
             // Assert
-            result.Should().Be(expected);
+            result.Should().Be("c" + expected);
         }
 
         [Fact]
         public void Process_NullContext_Throws()
         {
             // Arrange
-            Action action = () => _sut.EvaluateWithOption(null, null, _evaluator);
+            Action action = () => _sut.EvaluateWithOption(ShaToken.Options.Default, null, _evaluator);
 
             // Act / Assert
             action.Should().Throw<ArgumentNullException>()
                 .And.ParamName.Should().Be("context");
         }
 
-        [Theory]
-        [InlineData("0")]
-        [InlineData("-1")]
-        public void Process_OptionLessThan1_Throws(string option)
-        {
-            // Arrange
-            var sha = "b49710eeebbf5dbf8e60d35b7340732aab18531d";
-            _context.Result.Sha = sha;
-            Action action = () => _sut.EvaluateWithOption(option, _context, _evaluator);
-
-            // Act / Assert
-            action.Should().Throw<InvalidOperationException>()
-                .WithMessage($"Invalid sha substring length {option}.  Expected an integer greater than 0.");
-        }
-
         [Fact]
         public void Process_OptionGreaterThanLength_Returns()
         {
             // Arrange
-            var expected = "b49710eeebbf5dbf8e60d35b7340732aab18531d";
-            var option = expected.Length + 10;
-            _context.Result.Sha = expected;
+            var sha = "b49710eeebbf5dbf8e60d35b7340732aab18531d";
+            var option = sha.Length + 10;
+            _context.Result.Sha = sha;
 
             // Act
             var result = _sut.EvaluateWithOption(option.ToString(), _context, _evaluator);
 
             // Assert
-            result.Should().Be(expected);
-        }
-
-        [Theory]
-        [InlineData("this is a string")]
-        [InlineData("10/20")]
-        public void Process_OptionInvalid_Throws(string option)
-        {
-            // Arrange
-            var sha = "b49710eeebbf5dbf8e60d35b7340732aab18531d";
-            _context.Result.Sha = sha;
-            Action action = () => _sut.EvaluateWithOption(option, _context, _evaluator);
-
-            // Act / Assert
-            action.Should().Throw<InvalidOperationException>()
-                .WithMessage($"Invalid sha substring length {option}.  Expected an integer greater than 0.");
+            result.Should().Be("c" + sha);
         }
     }
 }

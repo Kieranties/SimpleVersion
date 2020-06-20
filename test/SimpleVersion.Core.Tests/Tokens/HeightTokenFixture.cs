@@ -43,9 +43,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         }
 
         [Theory]
-        [InlineData(null, 1, "1")]
-        [InlineData("", 10, "10")]
-        [InlineData("\t\t   ", 500, "500")]
+        [InlineData(HeightToken.Options.Default, 1, "1")]
         [InlineData("0", 500, "500")]
         [InlineData("1", 500, "500")]
         [InlineData("2", 500, "500")]

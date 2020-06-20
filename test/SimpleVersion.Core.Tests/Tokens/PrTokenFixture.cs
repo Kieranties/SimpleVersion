@@ -32,7 +32,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_NullContext_Throws()
         {
             // Arrange
-            Action action = () => _sut.EvaluateWithOption(null, null, Substitute.For<ITokenEvaluator>());
+            Action action = () => _sut.Evaluate(null, Substitute.For<ITokenEvaluator>());
 
             // Act / Assert
             action.Should().Throw<ArgumentNullException>()
@@ -43,7 +43,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         public void Process_NullEvaluator_DoesNotThrow()
         {
             // Arrange
-            Action action = () => _sut.EvaluateWithOption(null, _context, null);
+            Action action = () => _sut.Evaluate(_context, null);
 
             // Act / Assert
             action.Should().NotThrow();
@@ -56,7 +56,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             _context.Result.PullRequestNumber = 5;
 
             // Act
-            var result = _sut.EvaluateWithOption(null, _context, null);
+            var result = _sut.Evaluate(_context, null);
 
             // Assert
             result.Should().Be("5");
@@ -71,7 +71,7 @@ namespace SimpleVersion.Core.Tests.Tokens
             _context.Result.PullRequestNumber = number;
 
             // Act
-            var result = _sut.EvaluateWithOption(null, _context, null);
+            var result = _sut.Evaluate(_context, null);
 
             // Assert
             result.Should().Be(string.Empty);

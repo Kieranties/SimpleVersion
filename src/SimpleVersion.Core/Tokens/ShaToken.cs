@@ -39,13 +39,8 @@ namespace SimpleVersion.Tokens
 
             int ParseOptionAsInt()
             {
-                if (int.TryParse(optionValue, out var length))
+                if (int.TryParse(optionValue, out var length) && length > 0)
                 {
-                    if (length < 1)
-                    {
-                        throw new InvalidOperationException($"Invalid sha option {optionValue}.  Expected an integer greater than 0.");
-                    }
-
                     return Math.Min(length, result.Length);
                 }
 
