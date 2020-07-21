@@ -9,26 +9,25 @@ namespace SimpleVersion.Tokens
     /// <summary>
     /// Handles token replacement for height.
     /// </summary>
-    [Token(_tokenKey, DefaultOption = _noPaddingOption, Description = "Provides parsing of the commit height.")]
-    [TokenValueOption(_noPaddingOption, Description = "Performs no padding when returning the height.")]
-    [TokenFallbackOption("Provide a number greater than 0 to pad the returned height to that many digits.")]
-    public class HeightToken : IToken
+    public class HeightToken : ITokenRequestHandler<HeightTokenRequest>
     {
-        private const string _tokenKey = "*";
-        private const string _noPaddingOption = "0";
-
         /// <inheritdoc/>
-        public string Evaluate(string optionValue, IVersionContext context, ITokenEvaluator evaluator)
+        public string Evaluate(HeightTokenRequest request, IVersionContext context, ITokenEvaluator evaluator)
         {
-            Assert.ArgumentNotNull(context, nameof(context));
+            // assert valid request
+            var height = context.Result.Height.ToString(CultureInfo.InvariantCulture);
+            return height.PadLeft(request.Padding, '0');
+        }
+    }
 
-            if (int.TryParse(optionValue, out var padding))
-            {
-                var height = context.Result.Height.ToString(CultureInfo.InvariantCulture);
-                return height.PadLeft(padding, '0');
-            }
+    [Token("*", Description = "Provides parsing of the commit height.")]
+    public class HeightTokenRequest : ITokenRequest
+    {
+        public int Padding { get; set; } = 0;
 
-            throw new InvalidOperationException($"Invalid option for height token: '{optionValue}'");
+        public void Parse(string optionValue)
+        {
+
         }
     }
 }

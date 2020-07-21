@@ -9,31 +9,30 @@ namespace SimpleVersion.Tokens
     /// <summary>
     /// Handles formatting of a Semver version.
     /// </summary>
-    [Token(_tokenKey, DefaultOption = _v2Option, Description = "Provides parsing of full semver compatible versions.")]
     [TokenValueOption(_v1Option, Description = "Returns a semver v1 formatted string.")]
     [TokenValueOption(_v2Option, Description = "Returns a semver v2 formatted string.")]
-    public class SemverToken : IToken
+    public class SemverToken : ITokenRequestHandler<SemverTokenRequest>
     {
         private const string _tokenKey = "semver";
-        internal const string _v1Option = "1";
-        internal const string _v2Option = "2";
+        private const string _v1Option = "1";
+        private const string _v2Option = "2";
 
         /// <inheritdoc/>
-        public string Evaluate(string optionValue, IVersionContext context, ITokenEvaluator evaluator)
+        public string Evaluate(SemverTokenRequest request, IVersionContext context, ITokenEvaluator evaluator)
         {
-            Assert.ArgumentNotNull(optionValue, nameof(optionValue));
+            Assert.ArgumentNotNull(request, nameof(request));
             Assert.ArgumentNotNull(context, nameof(context));
             Assert.ArgumentNotNull(evaluator, nameof(evaluator));
 
-            var joinChar = optionValue switch
+            var joinChar = request.Version switch
             {
-                _v1Option => "-",
-                _v2Option => ".",
-                _ => throw new InvalidOperationException($"'{optionValue}' is not a valid semver version")
+                1 => "-",
+                2 => ".",
+                _ => throw new InvalidOperationException($"'{request.Version}' is not a valid semver version")
             };
 
-            var version = evaluator.Process<VersionToken>(context);
-            var label = evaluator.Process<LabelToken>(joinChar, context);
+            var version = evaluator.Process(new VersionTokenRequest(), context);
+            var label = evaluator.Process(new LabelTokenRequest { Separator = joinChar }, context);
 
             // TODO: move checks for token to evaluator
 
@@ -41,10 +40,10 @@ namespace SimpleVersion.Tokens
             var needsHeight = !string.IsNullOrEmpty(label) && !context.Configuration.Label.Any(x => x.Contains("*", StringComparison.OrdinalIgnoreCase));
             if (needsHeight)
             {
-                var height = optionValue switch
+                var height = request.Version switch
                 {
-                    _v1Option => evaluator.Process<HeightToken>("4", context),
-                    _ => evaluator.Process<HeightToken>(context)
+                    1 => evaluator.Process(new HeightTokenRequest { Padding = 4 }, context),
+                    _ => evaluator.Process(new HeightTokenRequest(), context)
                 }; 
                 label = string.Join(joinChar, label, height);
             }
@@ -53,7 +52,7 @@ namespace SimpleVersion.Tokens
             var needsSha = !context.Result.IsRelease && context.Configuration.Label.Any(x => x.Contains("sha", System.StringComparison.OrdinalIgnoreCase)); // TODO: not explicit enough
             if (needsSha)
             {
-                var sha = evaluator.Process<ShaToken>(ShaToken._shortOption, context);
+                var sha = evaluator.Process(new ShaTokenRequest { Length = 7 }, context);
                 label = string.Join(joinChar, label, sha);
             }
 
@@ -64,9 +63,9 @@ namespace SimpleVersion.Tokens
                 result += $"-{label}";
             }
 
-            if (optionValue == _v2Option)
+            if (request.Version == 2)
             {
-                var metadata = evaluator.Process<MetadataToken>(context);
+                var metadata = evaluator.Process(new MetadataTokenRequest(), context);
                 if (!string.IsNullOrWhiteSpace(metadata))
                 {
                     result += $"+{metadata}";
@@ -74,6 +73,18 @@ namespace SimpleVersion.Tokens
             }
 
             return result;
+        }
+    }
+
+
+    [Token("semver", Description = "Provides parsing of full semver compatible versions.")]
+    public class SemverTokenRequest : ITokenRequest
+    {
+        public int Version { get; set; } = 2;
+
+        public void Parse(string optionValue)
+        {
+
         }
     }
 }

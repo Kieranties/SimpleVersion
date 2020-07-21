@@ -8,11 +8,10 @@ namespace SimpleVersion.Tokens
     /// <summary>
     /// Handles formatting of the PR.
     /// </summary>
-    [Token("pr", Description = "Provides parsing of the pull-request number.")]
-    public class PrToken : IToken
+    public class PrToken : ITokenRequestHandler<PrTokenRequest>
     {
         /// <inheritdoc/>
-        public string Evaluate(string optionValue, IVersionContext context, ITokenEvaluator evaluator)
+        public string Evaluate(PrTokenRequest request, IVersionContext context, ITokenEvaluator evaluator)
         {
             Assert.ArgumentNotNull(context, nameof(context));
 
@@ -22,6 +21,15 @@ namespace SimpleVersion.Tokens
             }
 
             return string.Empty;
+        }
+    }
+
+    [Token("pr", Description = "Provides parsing of the pull-request number.")]
+    public class PrTokenRequest : ITokenRequest
+    {
+        public void Parse(string optionValue)
+        {
+
         }
     }
 }

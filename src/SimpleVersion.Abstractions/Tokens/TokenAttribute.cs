@@ -1,20 +1,16 @@
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace SimpleVersion.Tokens
 {
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public class TokenAttribute : Attribute
     {
-        public TokenAttribute(string name)
+        public TokenAttribute(string key)
         {
-            Name = name;
+            Key = key;
         }
 
-        public string Name { get; }
-
-        public string DefaultOption { get; set; }
+        public string Key { get; }
 
         public string Description { get; set; }
     }

@@ -8,23 +8,32 @@ namespace SimpleVersion.Tokens
     /// <summary>
     /// Handles formatting of label parts.
     /// </summary>
-    [Token(_tokenKey, DefaultOption = _dotOption, Description = "Provides parsing of the version label.")]
     [TokenValueOption(_dotOption, Description = "Joins the label parts into a string separated with the '.' character.")]
     [TokenFallbackOption("Joins the label parts into a string separated with the given value.")]
-    public class LabelToken : IToken
+    public class LabelToken : ITokenRequestHandler<LabelTokenRequest>
     {
-        private const string _tokenKey = "label";
         private const string _dotOption = ".";
 
         /// <inheritdoc/>
-        public string Evaluate(string optionValue, IVersionContext context, ITokenEvaluator evaluator)
+        public string Evaluate(LabelTokenRequest request, IVersionContext context, ITokenEvaluator evaluator)
         {
-            Assert.ArgumentNotNull(optionValue, nameof(optionValue));
+            Assert.ArgumentNotNull(request, nameof(request));
             Assert.ArgumentNotNull(context, nameof(context));
             Assert.ArgumentNotNull(evaluator, nameof(evaluator));
 
-            var parts = context.Configuration.Label.Select(l => evaluator.Process(l, context));
-            return string.Join(optionValue, parts);
+            var parts = context.Configuration.Label.Select(l => evaluator.Parse(l, context));
+            return string.Join(request.Separator, parts);
+        }
+    }
+
+    [Token("label", Description = "Provides parsing of the version label.")]
+    public class LabelTokenRequest : ITokenRequest
+    {
+        public string Separator { get; set; } = ".";
+
+        public void Parse(string optionValue)
+        {
+
         }
     }
 }

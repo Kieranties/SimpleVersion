@@ -15,25 +15,14 @@ namespace SimpleVersion.Tokens
         /// <param name="tokenString">The string which contains tokens.</param>
         /// <param name="context">The <see cref="IVersionContext"/> for the current request.</param>
         /// <returns>The resolved string value.</returns>
-        string Process(string tokenString, IVersionContext context);
+        string Parse(string tokenString, IVersionContext context);
 
         /// <summary>
         /// Evaluates the context for a specific token.
         /// </summary>
-        /// <typeparam name="TToken">The type of token to evaluate.</typeparam>
+        /// <param name="request">The token request to be completed.</param>
         /// <param name="context">The <see cref="IVersionContext"/> for the current request.</param>
         /// <returns>The resolved string value.</returns>
-        public string Process<TToken>(IVersionContext context)
-            where TToken : IToken;
-
-        /// <summary>
-        /// Evaluates the context for a specific token.
-        /// </summary>
-        /// <typeparam name="TToken">The type of token to evaluate.</typeparam>
-        /// <param name="optionValue">The option to pass to the token.</param>
-        /// <param name="context">The <see cref="IVersionContext"/> for the current request.</param>
-        /// <returns>The resolved string value.</returns>
-        public string Process<TToken>(string optionValue, IVersionContext context)
-            where TToken : IToken;
+        public string Process(ITokenRequest request, IVersionContext context);
     }
 }

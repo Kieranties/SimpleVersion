@@ -9,7 +9,6 @@ namespace SimpleVersion.Tokens
     /// <summary>
     /// Handles the formatting of the version string.
     /// </summary>
-    [Token("version", DefaultOption = _defaultOption, Description = "Provides parsing of the version string.")]
     [TokenValueOption(_majorOption, Description = "Returns the major part of the version string.")]
     [TokenValueOption(_minorOption, Description = "Returns the minor part of the version string.")]
     [TokenValueOption(_patchOption, Description = "Returns the patch part of the version string.")]
@@ -17,7 +16,7 @@ namespace SimpleVersion.Tokens
     [TokenValueOption(_revisionIfSetOption, Description = "Returns the revision part of the version string if it is set in configuration.")]
     [TokenValueOption(_defaultOption, Description = "Returns the major.minor.patch version string with revision if set in configuration.")]
     [TokenFallbackOption("Provide any combination of the option values.")]
-    public class VersionToken : IToken
+    public class VersionToken : ITokenRequestHandler<VersionTokenRequest>
     {
         private const string _majorOption = "M";
         private const string _minorOption = "m";
@@ -27,14 +26,14 @@ namespace SimpleVersion.Tokens
         private const string _defaultOption = "Mmpr";
 
         /// <inheritdoc/>
-        public string Evaluate(string optionValue, IVersionContext context, ITokenEvaluator evaluator)
+        public string Evaluate(VersionTokenRequest request, IVersionContext context, ITokenEvaluator evaluator)
         {
             Assert.ArgumentNotNull(context, nameof(context));
-            Assert.ArgumentNotNull(optionValue, nameof(optionValue));
+            Assert.ArgumentNotNull(request, nameof(request));
 
             var versionParts = new List<int>();
 
-            foreach (var c in optionValue)
+            foreach (var c in request.Format)
             {
                 int num;
 
@@ -50,13 +49,24 @@ namespace SimpleVersion.Tokens
                     _patchOption => context.Result.Patch,
                     _revisionIfSetOption => context.Result.Revision,
                     _revisionOption => context.Result.Revision,
-                    _ => throw new InvalidOperationException($"Invalid character '{c}' in version option [{optionValue}].")
+                    _ => throw new InvalidOperationException($"Invalid character '{c}' in version option [{request.Format}].")
                 };
 
                 versionParts.Add(num);
             }
 
             return string.Join('.', versionParts);
+        }
+    }
+
+    [Token("version", Description = "Provides parsing of the version string.")]
+    public class VersionTokenRequest : ITokenRequest
+    {
+        public string Format { get; set; } = "Mmpr";
+
+        public void Parse(string optionValue)
+        {
+
         }
     }
 }

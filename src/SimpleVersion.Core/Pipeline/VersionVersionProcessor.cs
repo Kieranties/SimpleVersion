@@ -26,7 +26,7 @@ namespace SimpleVersion.Pipeline.Formatting
         {
             Assert.ArgumentNotNull(context, nameof(context));
 
-            var versionString = _evaluator.Process(context.Configuration.Version, context);
+            var versionString = _evaluator.Parse(context.Configuration.Version, context);
 
             if (Version.TryParse(versionString, out var version))
             {

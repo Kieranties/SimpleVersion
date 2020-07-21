@@ -1,11 +1,12 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using SimpleVersion.Pipeline;
+using SimpleVersion.Extensions;
+using System.Collections.Generic;
 
 namespace SimpleVersion.Tokens
 {
@@ -17,20 +18,36 @@ namespace SimpleVersion.Tokens
     public class TokenEvaluator : ITokenEvaluator
     {
         private static readonly Regex _regex = new Regex(@"{(?<key>\*|\w+)(?:\:(?<option>(?:[^\}]|\}(?=\}))*))?\}|(?<height>\*)", RegexOptions.Compiled | RegexOptions.CultureInvariant);
-        private readonly Dictionary<string, IToken> _tokenCache;
+        private readonly IServiceProvider _services;
+        private readonly Dictionary<string, Type> _cache;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TokenEvaluator"/> class.
         /// </summary>
         /// <param name="tokens">The collection of <see cref="IToken"/> for processing a token string.</param>
-        public TokenEvaluator(IEnumerable<IToken> tokens)
+        public TokenEvaluator(IServiceProvider services)
         {
-            _tokenCache = Assert.ArgumentNotNull(tokens, nameof(tokens))
-                .ToDictionary(t => t.Key, StringComparer.OrdinalIgnoreCase);
+            _services = services;
+
+            var types = this.GetType()
+                .Assembly
+                .GetTypes()
+                .Where(t => t.FindInterfaces((c, _) => c == typeof(ITokenRequest), null).Any());
+
+            // TODO: built smarter cache/factory
+            _cache = types
+                .ToDictionary(
+                    t =>
+                    {
+                        var attrs = t.GetCustomAttributes(typeof(TokenAttribute), false).OfType<TokenAttribute>();
+                        return attrs.Single().Key;
+
+                    },
+                    StringComparer.OrdinalIgnoreCase);
         }
 
         /// <inheritdoc />
-        public string Process(string tokenString, IVersionContext context)
+        public string Parse(string tokenString, IVersionContext context)
         {
             if (string.IsNullOrWhiteSpace(tokenString))
             {
@@ -71,15 +88,16 @@ namespace SimpleVersion.Tokens
                     throw new Exception($"Invalid token match for request: {tokenString}");
                 }
 
-                if (!_tokenCache.TryGetValue(tokenKey, out var token))
+                if (!_cache.TryGetValue(tokenKey, out var requestType))
                 {
                     throw new Exception($"Could not find token handler for request: {tokenString}");
                 }
 
                 var optionGroup = match.Groups["option"];
-                var tokenResult = optionGroup.Success
-                    ? token.EvaluateWithOption(optionGroup.Value, context, this)
-                    : token.Evaluate(context, this);
+                var token = Activator.CreateInstance(requestType) as ITokenRequest;
+                token.Parse(optionGroup.Value);
+
+                var tokenResult = Process(token, context);
 
                 result.Append(tokenResult);
 
@@ -94,21 +112,14 @@ namespace SimpleVersion.Tokens
         }
 
         /// <inheritdoc />
-        public string Process<TToken>(IVersionContext context)
-            where TToken : IToken
+        public string Process(ITokenRequest request, IVersionContext context)
         {
-            var token = _tokenCache.Values.OfType<TToken>().Single();
-
-            return Process($"{{{token.Key}}}", context);
-        }
-
-        /// <inheritdoc />
-        public string Process<TToken>(string optionValue, IVersionContext context)
-            where TToken : IToken
-        {
-            var token = _tokenCache.Values.OfType<TToken>().Single();
-
-            return Process($"{{{token.Key}:{optionValue}}}", context);
+            // TODO: less mess
+            var handlerType = typeof(ITokenRequestHandler<>).MakeGenericType(request.GetType());
+            var handler = _services.GetService(handlerType);
+            return (string)handlerType
+                .GetMethod("Evaluate")
+                .Invoke(handler, new object[] { request, context, this });
         }
     }
 }

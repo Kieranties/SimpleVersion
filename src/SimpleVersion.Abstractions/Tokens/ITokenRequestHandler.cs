@@ -8,15 +8,17 @@ namespace SimpleVersion.Tokens
     /// Represents a token which can be replaced for a value
     /// evaluated from the current version context.
     /// </summary>
-    public interface IToken
+    /// <typeparam name="TRequest">The request model.</typeparam>
+    public interface ITokenRequestHandler<in TRequest>
+        where TRequest : ITokenRequest
     {
         /// <summary>
         /// When called will return a value based on the given option.
         /// </summary>
-        /// <param name="optionValue">The option value to modify the result.</param>
+        /// <param name="request">The request details.</param>
         /// <param name="context">The current version context.</param>
         /// <param name="evaluator">The <see cref="ITokenEvaluator"/> for chained evaluation.</param>
         /// <returns>A value resolved for this token.</returns>
-        public string Evaluate(string optionValue, IVersionContext context, ITokenEvaluator evaluator);
+        public string Evaluate(TRequest request, IVersionContext context, ITokenEvaluator evaluator);
     }
 }
