@@ -21,12 +21,4 @@ namespace SimpleVersion.Tokens
             return string.Join(request.Separator, parts);
         }
     }
-
-    [Token("metadata", Description = "Provides parsing of the version metadata.")]
-    public class MetadataTokenRequest : ITokenRequest
-    {
-        public string Separator { get; set; } = ".";
-
-        public void Parse(string optionValue) => this.Separator = optionValue;
-    }
 }
