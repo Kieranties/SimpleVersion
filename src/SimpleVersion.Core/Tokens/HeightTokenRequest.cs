@@ -25,14 +25,7 @@ namespace SimpleVersion.Tokens
 
             if (int.TryParse(optionValue, out var result))
             {
-                if (result < 0)
-                {
-                    throw new InvalidOperationException("Value must be zero or greater");
-                }
-                else
-                {
-                    this.Padding = result;
-                }
+                SetPaddingIfValid(result);
             }
             else
             {
