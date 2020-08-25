@@ -12,25 +12,38 @@ namespace SimpleVersion.Core.Tests.Tokens
     public class SemverTokenFixture
     {
         private readonly SemverToken _sut;
+        private readonly SemverTokenRequest _request;
         private readonly IVersionContext _context;
         private readonly ITokenEvaluator _evaluator;
 
         public SemverTokenFixture()
         {
             _sut = new SemverToken();
+            _request = new SemverTokenRequest();
             _context = Substitute.For<IVersionContext>();
             _context.Result.Returns(new VersionResult());
             _evaluator = Substitute.For<ITokenEvaluator>();
-            _evaluator.Process<VersionToken>(_context).Returns("version");
-            _evaluator.Process<LabelToken>(Arg.Any<string>(), _context).Returns("label");
+            _evaluator.Process(Arg.Any<VersionTokenRequest>(), _context).Returns("version");
+            _evaluator.Process(Arg.Any<LabelTokenRequest>(), _context).Returns("label");
             _context.Result.IsRelease = true;
         }
 
         [Fact]
-        public void Process_NullContext_Throws()
+        public void Evaluate_NullRequest_Throws()
         {
             // Arrange
-            Action action = () => _sut.EvaluateWithOption(SemverToken.Options.Default, null, _evaluator);
+            Action action = () => _sut.Evaluate(null, _context, _evaluator);
+
+            // Act / Assert
+            action.Should().Throw<ArgumentNullException>()
+                .And.ParamName.Should().Be("request");
+        }
+
+        [Fact]
+        public void Evaluate_NullContext_Throws()
+        {
+            // Arrange
+            Action action = () => _sut.Evaluate(_request, null, _evaluator);
 
             // Assert
             action.Should().Throw<ArgumentNullException>()
@@ -38,73 +51,36 @@ namespace SimpleVersion.Core.Tests.Tokens
         }
 
         [Fact]
-        public void Process_NullEvaluator_Throws()
+        public void Evaluate_NullEvaluator_Throws()
         {
             // Arrange
-            Action action = () => _sut.EvaluateWithOption(SemverToken.Options.Default, _context, null);
+            Action action = () => _sut.Evaluate(_request, _context, null);
 
             // Assert
             action.Should().Throw<ArgumentNullException>()
                 .And.ParamName.Should().Be("evaluator");
         }
 
-        [Fact]
-        public void Process_NullOption_Throws()
-        {
-            // Arrange
-            Action action = () => _sut.EvaluateWithOption(null, _context, _evaluator);
-
-            // Act / Assert
-            action.Should().Throw<ArgumentNullException>()
-                .And.ParamName.Should().Be("optionValue");
-        }
-
         [Theory]
-        [InlineData("")]
-        [InlineData("\t\t   ")]
-        [InlineData("12")]
-        public void Process_InvalidOption_Throws(string optionValue)
-        {
-            // Arrange
-            Action action = () => _sut.EvaluateWithOption(optionValue, _context, _evaluator);
-
-            // Act / Assert
-            action.Should().Throw<InvalidOperationException>()
-                .WithMessage($"'{optionValue}' is not a valid semver version");
-        }
-
-        [Theory]
-        [InlineData("1", "-")]
-        [InlineData("2", ".")]
-        public void Process_AllowedOption_UsesExpectedDelimiter(string optionValue, string delimiter)
+        [InlineData(1, "-")]
+        [InlineData(2, ".")]
+        public void Evaluate_AllowedOption_UsesExpectedDelimiter(int option, string delimiter)
         {
             // Arrange
             _context.Configuration = new Configuration.VersionConfiguration();
+            _request.Version = option;
 
             // Act
-            _sut.EvaluateWithOption(optionValue, _context, _evaluator);
+            _sut.Evaluate(_request, _context, _evaluator);
 
             // Assert
-            _evaluator.Received(1).Process<LabelToken>(delimiter, _context);
+            _evaluator.Received(1).Process(Arg.Is<LabelTokenRequest>(t => t.Separator == delimiter), _context);
         }
 
         [Theory]
-        [InlineData("test")]
-        [InlineData("1+1")]
-        public void Process_NonIntegerOption_Throws(string optionValue)
-        {
-            // Arrange
-            Action action = () => _sut.EvaluateWithOption(optionValue, _context, _evaluator);
-
-            // Act / Assert
-            action.Should().Throw<InvalidOperationException>()
-                .WithMessage($"'{optionValue}' is not a valid semver version");
-        }
-
-        [Theory]
-        [InlineData("1", "-")]
-        [InlineData("2", ".")]
-        public void Process_HasLabel_ReturnsLabel(string optionValue, string delimiter)
+        [InlineData(1, "-")]
+        [InlineData(2, ".")]
+        public void Evaluate_HasLabel_ReturnsLabel(int option, string delimiter)
         {
             // Arrange
             var version = "1.2.3";
@@ -115,56 +91,60 @@ namespace SimpleVersion.Core.Tests.Tokens
                 Label = { label },
                 Version = version
             };
+            _request.Version = option;
 
-            _evaluator.Process<VersionToken>(_context).Returns(version);
-            _evaluator.Process<HeightToken>(Arg.Any<string>(), _context).Returns(height);
-            _evaluator.Process<LabelToken>(delimiter, _context).Returns(label);
-            _evaluator.Process<MetadataToken>(_context).Returns((string)null);
+            _evaluator.Process(Arg.Any<VersionTokenRequest>(), _context).Returns(version);
+            _evaluator.Process(Arg.Any<HeightTokenRequest>(), _context).Returns(height);
+            _evaluator.Process(Arg.Any<LabelTokenRequest>(), _context).Returns(label);
+            _evaluator.Process(Arg.Any<MetadataTokenRequest>(), _context).Returns((string)null);
 
             var expected = $"{version}-{label}{delimiter}{height}";
 
             // Act
-            var result = _sut.EvaluateWithOption(optionValue, _context, _evaluator);
+            var result = _sut.Evaluate(_request, _context, _evaluator);
 
             // Assert
             result.Should().Be(expected);
         }
 
         [Theory]
-        [InlineData("1", "-")]
-        [InlineData("2", ".")]
-        public void Process_NoLabel_ReturnsOnlyVersion(string optionValue, string delimiter)
+        [InlineData(1)]
+        [InlineData(2)]
+        public void Evaluate_NoLabel_ReturnsOnlyVersion(int option)
         {
             // Arrange
             string label = null;
             var version = "1.2.3";
-            _evaluator.Process<VersionToken>(_context).Returns(version);
-            _evaluator.Process<LabelToken>(delimiter, _context).Returns(label);
+            _request.Version = option;
+
+            _evaluator.Process(Arg.Any<VersionTokenRequest>(), _context).Returns(version);
+            _evaluator.Process(Arg.Any<LabelTokenRequest>(), _context).Returns(label);
 
             // Act
-            var result = _sut.EvaluateWithOption(optionValue, _context, _evaluator);
+            var result = _sut.Evaluate(_request, _context, _evaluator);
 
             // Assert
             result.Should().Be(version);
         }
 
         [Fact]
-        public void Process_Semver1_DoesNotProcessMetadata()
+        public void Evaluate_Semver1_DoesNotProcessMetadata()
         {
             // Arrange
-            _evaluator.Process<VersionToken>(_context).Returns((string)null);
-            _evaluator.Process<HeightToken>(Arg.Any<string>(), _context).Returns((string)null);
-            _evaluator.Process<LabelToken>(Arg.Any<string>(), _context).Returns((string)null);
+            _evaluator.Process(Arg.Any<VersionTokenRequest>(), _context).Returns((string)null);
+            _evaluator.Process(Arg.Any<HeightTokenRequest>(), _context).Returns((string)null);
+            _evaluator.Process(Arg.Any<LabelTokenRequest>(), _context).Returns((string)null);
+            _request.Version = 1;
 
             // Act
-            _sut.EvaluateWithOption("1", _context, _evaluator);
+            _sut.Evaluate(_request, _context, _evaluator);
 
             // Assert
-            _evaluator.DidNotReceive().Process<MetadataToken>(_context);
+            _evaluator.DidNotReceive().Process(Arg.Any<MetadataTokenRequest>(), _context);
         }
 
         [Fact]
-        public void Process_HasLabelAndMetadata_ReturnsVersionLabelAndMetadata()
+        public void Evaluate_HasLabelAndMetadata_ReturnsVersionLabelAndMetadata()
         {
             // Arrange
             var version = "1.2.3";
@@ -177,23 +157,25 @@ namespace SimpleVersion.Core.Tests.Tokens
                 Metadata = { meta },
                 Version = version
             };
+            _request.Version = 2;
 
-            _evaluator.Process<VersionToken>(_context).Returns(version);
-            _evaluator.Process<HeightToken>(HeightToken.Options.Default, _context).Returns(height);
-            _evaluator.Process<LabelToken>(LabelToken.Options.Default, _context).Returns(label);
-            _evaluator.Process<MetadataToken>(_context).Returns(meta);
+            _evaluator.Process(Arg.Any<VersionTokenRequest>(), _context).Returns(version);
+            _evaluator.Process(Arg.Any<HeightTokenRequest>(), _context).Returns(height);
+            _evaluator.Process(Arg.Any<LabelTokenRequest>(), _context).Returns(label);
+            _evaluator.Process(Arg.Any<MetadataTokenRequest>(), _context).Returns(meta);
+
 
             var expected = $"{version}-{label}.{height}+{meta}";
 
             // Act
-            var result = _sut.EvaluateWithOption(SemverToken.Options.Semver2, _context, _evaluator);
+            var result = _sut.Evaluate(_request, _context, _evaluator);
 
             // Assert
             result.Should().Be(expected);
         }
 
         [Fact]
-        public void Process_NoLabelIncludesMetadata_ReturnsVersionAndMetadata()
+        public void Evaluate_NoLabelIncludesMetadata_ReturnsVersionAndMetadata()
         {
             // Arrange
             var version = "1.2.3";
@@ -203,13 +185,14 @@ namespace SimpleVersion.Core.Tests.Tokens
                 Metadata = { meta },
                 Version = version
             };
+            _request.Version = 2;
 
-            _evaluator.Process<VersionToken>(_context).Returns(version);
-            _evaluator.Process<LabelToken>(LabelToken.Options.Default, _context).Returns((string)null);
-            _evaluator.Process<MetadataToken>(_context).Returns(meta);
+            _evaluator.Process(Arg.Any<VersionTokenRequest>(), _context).Returns(version);
+            _evaluator.Process(Arg.Any<LabelTokenRequest>(), _context).Returns((string)null);
+            _evaluator.Process(Arg.Any<MetadataTokenRequest>(), _context).Returns(meta);
 
             // Act
-            var result = _sut.EvaluateWithOption(SemverToken.Options.Semver2, _context, _evaluator);
+            var result = _sut.Evaluate(_request, _context, _evaluator);
 
             // Assert
             result.Should().Be($"{version}+{meta}");

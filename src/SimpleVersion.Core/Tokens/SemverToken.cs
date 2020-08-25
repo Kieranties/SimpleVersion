@@ -69,26 +69,4 @@ namespace SimpleVersion.Tokens
             return result;
         }
     }
-
-
-    [Token("semver", Description = "Provides parsing of full semver compatible versions.")]
-    public class SemverTokenRequest : ITokenRequest
-    {
-        public int Version { get; set; } = 2;
-
-        public void Parse(string optionValue)
-        {
-            if(int.TryParse(optionValue, out var result))
-            {
-                if(result < 1 || result > 2)
-                {
-                    throw new ArgumentOutOfRangeException("Values must be 1 or 2");
-                }
-
-                Version = result;
-            }
-
-            throw new ArgumentException("Invalid value");
-        }
-    }
 }
