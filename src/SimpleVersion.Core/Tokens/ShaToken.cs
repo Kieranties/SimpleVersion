@@ -1,7 +1,7 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
-using SimpleVersion.Pipeline;
 using System;
+using SimpleVersion.Pipeline;
 
 namespace SimpleVersion.Tokens
 {
@@ -19,37 +19,6 @@ namespace SimpleVersion.Tokens
             var result = context.Result.Sha;
 
             return "c" + result.Substring(0, request.Length);
-        }
-    }
-
-    [Token("sha", Description = "Provides parsing of the commit sha.")]
-    public class ShaTokenRequest : ITokenRequest
-    {
-        // TODO: handle 'short', 'full', greater than 0;
-        public int Length { get; set; } = 40;
-
-        public void Parse(string optionValue)
-        {
-            if(int.TryParse(optionValue, out var result))
-            {
-                if(result < 1 || result > 40)
-                {
-                    throw new ArgumentOutOfRangeException("Must be between 1 and 40");
-                }
-
-                Length = result;
-            }
-
-            throw new ArgumentException("Invalid value");
-        }
-    }
-
-    [Token("shortsha", Description = "Provides parsing of the commit sha.")]
-    public class ShortShaTokenRequest : ShaTokenRequest
-    {
-        public ShortShaTokenRequest()
-        {
-            Length = 7;
         }
     }
 }
