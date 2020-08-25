@@ -21,21 +21,24 @@ namespace SimpleVersion.Core.Tests.Tokens
             _context = Substitute.For<IVersionContext>();
             _context.Result.Returns(new VersionResult());
             _evaluator = Substitute.For<ITokenEvaluator>();
-
         }
 
         [Fact]
-        public void Ctor_SetsKey()
-        {
-            // Act / Assert
-            _sut.Key.Should().Be("*");
-        }
-
-        [Fact]
-        public void Process_NullContext_Throws()
+        public void Evaluate_NullRequest_Throws()
         {
             // Arrange
-            Action action = () => _sut.EvaluateWithOption(null, null, _evaluator);
+            Action action = () => _sut.Evaluate(null, _context, _evaluator);
+
+            // Act / Assert
+            action.Should().Throw<ArgumentNullException>()
+                .And.ParamName.Should().Be("request");
+        }
+
+        [Fact]
+        public void Evaluate_NullContext_Throws()
+        {
+            // Arrange
+            Action action = () => _sut.Evaluate(new HeightTokenRequest(), null, _evaluator);
 
             // Act / Assert
             action.Should().Throw<ArgumentNullException>()
@@ -43,13 +46,12 @@ namespace SimpleVersion.Core.Tests.Tokens
         }
 
         [Theory]
-        [InlineData(HeightToken.Options.Default, 1, "1")]
-        [InlineData("0", 500, "500")]
-        [InlineData("1", 500, "500")]
-        [InlineData("2", 500, "500")]
-        [InlineData("3", 500, "500")]
-        [InlineData("4", 500, "0500")]
-        public void Process_OptionValue_ReturnsExpected(string optionValue, int height, string expected)
+        [InlineData(0, 500, "500")]
+        [InlineData(1, 500, "500")]
+        [InlineData(2, 500, "500")]
+        [InlineData(3, 500, "500")]
+        [InlineData(4, 500, "0500")]
+        public void Evaluate_OptionValue_ReturnsExpected(int padding, int height, string expected)
         {
             // Arrange
             var version = new VersionResult
@@ -57,23 +59,13 @@ namespace SimpleVersion.Core.Tests.Tokens
                 Height = height
             };
             _context.Result.Returns(version);
+            var request = new HeightTokenRequest { Padding = padding };
 
             // Act
-            var result = _sut.EvaluateWithOption(optionValue, _context, null);
+            var result = _sut.Evaluate(request, _context, null);
 
             // Assert
             result.Should().Be(expected);
-        }
-
-        [Fact]
-        public void Process_InvalidOption_Throws()
-        {
-            // Arrange
-            Action action = () => _sut.EvaluateWithOption("thing", _context, _evaluator);
-
-            // Act / Assert
-            action.Should().Throw<InvalidOperationException>()
-                .WithMessage("Invalid option for height token: 'thing'");
         }
     }
 }
