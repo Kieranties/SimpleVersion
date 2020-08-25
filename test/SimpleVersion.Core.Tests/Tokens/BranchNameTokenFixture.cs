@@ -12,29 +12,35 @@ namespace SimpleVersion.Core.Tests.Tokens
     public class BranchNameTokenFixture
     {
         private readonly BranchNameToken _sut;
+        private readonly BranchNameTokenRequest _request;
         private readonly IVersionContext _context;
         private readonly ITokenEvaluator _evaluator;
 
         public BranchNameTokenFixture()
         {
             _sut = new BranchNameToken();
+            _request = new BranchNameTokenRequest();
             _context = Substitute.For<IVersionContext>();
             _context.Result.Returns(new VersionResult());
             _evaluator = Substitute.For<ITokenEvaluator>();
         }
 
         [Fact]
-        public void Ctor_SetsKey()
+        public void Evaluate_NullRequest_Throws()
         {
+            // Arrange
+            Action action = () => _sut.Evaluate(null, _context, _evaluator);
+
             // Act / Assert
-            _sut.Key.Should().Be("branchname");
+            action.Should().Throw<ArgumentNullException>()
+                .And.ParamName.Should().Be("request");
         }
 
         [Fact]
-        public void Process_NullContext_Throws()
+        public void Evaluate_NullContext_Throws()
         {
             // Arrange
-            Action action = () => _sut.EvaluateWithOption(BranchNameToken.Options.Default, null, _evaluator);
+            Action action = () => _sut.Evaluate(_request, null, _evaluator);
 
             // Act / Assert
             action.Should().Throw<ArgumentNullException>()
@@ -42,73 +48,88 @@ namespace SimpleVersion.Core.Tests.Tokens
         }
 
         [Fact]
-        public void Process_NullEvaluator_DoesNotThrow()
+        public void Evaluate_NullEvaluator_DoesNotThrow()
         {
             // Arrange
             _context.Result.CanonicalBranchName = "test";
-            Action action = () => _sut.EvaluateWithOption(BranchNameToken.Options.Default, _context, null);
+            Action action = () => _sut.Evaluate(_request, _context, null);
 
             // Act / Assert
             action.Should().NotThrow();
         }
 
         [Fact]
-        public void Process_NoBranchNameSet_Throws()
+        public void Evaluate_NoBranchNameSet_Throws()
         {
             // Arrange
             _context.Result.CanonicalBranchName = null;
             _context.Result.BranchName = null;
-            Action action = () => _sut.EvaluateWithOption(BranchNameToken.Options.Default, _context, null);
+            Action action = () => _sut.Evaluate(_request, _context, null);
 
             // Act / Assert
             action.Should().Throw<InvalidOperationException>()
                 .WithMessage("Branch name has not been set.");
         }
 
-        [Theory]
-        [InlineData("")]
-        [InlineData("  ")]
-        [InlineData("\t\t  ")]
-        [InlineData("random string")]
-        public void Process_InvalidOption_Throws(string option)
+        [Fact]
+        public void Evaluate_InvalidOption_Throws()
         {
             // Arrange
-            Action action = () => _sut.EvaluateWithOption(option, _context, _evaluator);
+            _request.BranchName = (BranchNameOption)50;
+
+            Action action = () => _sut.Evaluate(_request, _context, _evaluator);
 
             // Act / Assert
             action.Should().Throw<InvalidOperationException>()
-                .WithMessage($"Invalid option '{option}' for token 'branchname'");
+                .WithMessage($"Invalid option '{_request.BranchName}'");
         }
 
         [Theory]
-        [InlineData("suffix", "refs/heads/master", "master")]
-        [InlineData("SUFFIX", "refs/heads/master", "master")]
-        [InlineData("Suffix", "refs/heads/release/1.0", "10")]
-        [InlineData("SuFfIx", "refs/heads/release-1.0", "release10")]
-        public void Process_Suffix_ReturnsFormattedSuffix(string option, string branch, string expected)
+        [InlineData("refs/heads/master", "refsheadsmaster")]
+        [InlineData("refs/heads/release/1.0", "refsheadsrelease10")]
+        [InlineData("refs/heads/release-1.0", "refsheadsrelease10")]
+        public void Evaluate_Canonical_ReturnsFormattedBranchName(string branch, string expected)
         {
             // Arrange
             _context.Result.CanonicalBranchName = branch;
+            _request.BranchName = BranchNameOption.Canonical;
 
             // Act
-            var result = _sut.EvaluateWithOption(option, _context, _evaluator);
+            var result = _sut.Evaluate(_request, _context, _evaluator);
 
             // Assert
             result.Should().Be(expected);
         }
 
         [Theory]
-        [InlineData("short", "master", "master")]
-        [InlineData("SHORT", "master", "master")]
-        [InlineData("Short", "release/1.0", "release10")]
-        [InlineData("ShOrT", "release-1.0", "release10")]
-        public void Process_Short_ReturnsFormattedBranchName(string option, string branch, string expected)
+        [InlineData("refs/heads/master", "master")]
+        [InlineData("refs/heads/release/1.0", "10")]
+        [InlineData("refs/heads/release-1.0", "release10")]
+        public void Evaluate_Suffix_ReturnsFormattedSuffix(string branch, string expected)
+        {
+            // Arrange
+            _context.Result.CanonicalBranchName = branch;
+            _request.BranchName = BranchNameOption.Suffix;
+
+            // Act
+            var result = _sut.Evaluate(_request, _context, _evaluator);
+
+            // Assert
+            result.Should().Be(expected);
+        }
+
+        [Theory]
+        [InlineData("master", "master")]
+        [InlineData("release/1.0", "release10")]
+        [InlineData("release-1.0", "release10")]
+        public void Evaluate_Short_ReturnsFormattedBranchName(string branch, string expected)
         {
             // Arrange
             _context.Result.BranchName = branch;
+            _request.BranchName = BranchNameOption.Short;
 
             // Act
-            var result = _sut.EvaluateWithOption(option, _context, _evaluator);
+            var result = _sut.Evaluate(_request, _context, _evaluator);
 
             // Assert
             result.Should().Be(expected);

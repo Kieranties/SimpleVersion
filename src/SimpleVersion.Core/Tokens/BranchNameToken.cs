@@ -35,46 +35,4 @@ namespace SimpleVersion.Tokens
             return _regex.Replace(branchName, string.Empty);
         }
     }
-
-    public enum BranchNameOption
-    {
-        Short,
-        Suffix,
-        Canonical
-    }
-
-    [Token("branchname", Description = "Provides parsing of the branch name.")]
-    public class BranchNameTokenRequest : ITokenRequest
-    {
-        public BranchNameOption BranchName { get; set; } = BranchNameOption.Canonical;
-
-        public virtual void Parse(string optionValue)
-        {
-            if (Enum.TryParse<BranchNameOption>(optionValue, out var result))
-            {
-                this.BranchName = result;
-            }
-            else
-            {
-                throw new ArgumentOutOfRangeException("Invalid value");
-            }
-        }
-    }
-
-    [Token("shortbranchname", Description = "Provides parsing of the branch name.")]
-    public class ShortBranchNameTokenRequest : BranchNameTokenRequest
-    {
-        public ShortBranchNameTokenRequest()
-        {
-            BranchName = BranchNameOption.Short;
-        }
-
-        public override void Parse(string optionValue)
-        {
-            if (!string.IsNullOrWhiteSpace(optionValue))
-            {
-                throw new InvalidOperationException($"{nameof(ShortBranchNameTokenRequest)} does not support options");
-            }
-        }
-    }
 }
