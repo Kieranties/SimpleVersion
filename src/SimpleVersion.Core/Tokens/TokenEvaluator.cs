@@ -1,12 +1,11 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using SimpleVersion.Pipeline;
-using SimpleVersion.Extensions;
-using System.Collections.Generic;
 
 namespace SimpleVersion.Tokens
 {
@@ -93,8 +92,8 @@ namespace SimpleVersion.Tokens
                     throw new Exception($"Could not find token handler for request: {tokenString}");
                 }
 
-                var optionGroup = match.Groups["option"];
                 var token = Activator.CreateInstance(requestType) as ITokenRequest;
+                var optionGroup = match.Groups["option"];
                 token.Parse(optionGroup.Value);
 
                 var tokenResult = Process(token, context);

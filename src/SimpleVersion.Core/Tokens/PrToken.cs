@@ -1,5 +1,6 @@
 // Licensed under the MIT license. See https://kieranties.mit-license.org/ for full license information.
 
+using System;
 using System.Globalization;
 using SimpleVersion.Pipeline;
 
@@ -29,7 +30,10 @@ namespace SimpleVersion.Tokens
     {
         public void Parse(string optionValue)
         {
-
+            if(!string.IsNullOrWhiteSpace(optionValue))
+            {
+                throw new InvalidOperationException("Option values not supported.");
+            }
         }
     }
 }

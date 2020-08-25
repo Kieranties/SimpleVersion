@@ -9,14 +9,8 @@ namespace SimpleVersion.Tokens
     /// <summary>
     /// Handles formatting of a Semver version.
     /// </summary>
-    [TokenValueOption(_v1Option, Description = "Returns a semver v1 formatted string.")]
-    [TokenValueOption(_v2Option, Description = "Returns a semver v2 formatted string.")]
     public class SemverToken : ITokenRequestHandler<SemverTokenRequest>
     {
-        private const string _tokenKey = "semver";
-        private const string _v1Option = "1";
-        private const string _v2Option = "2";
-
         /// <inheritdoc/>
         public string Evaluate(SemverTokenRequest request, IVersionContext context, ITokenEvaluator evaluator)
         {
@@ -84,7 +78,17 @@ namespace SimpleVersion.Tokens
 
         public void Parse(string optionValue)
         {
+            if(int.TryParse(optionValue, out var result))
+            {
+                if(result < 1 || result > 2)
+                {
+                    throw new ArgumentOutOfRangeException("Values must be 1 or 2");
+                }
 
+                Version = result;
+            }
+
+            throw new ArgumentException("Invalid value");
         }
     }
 }

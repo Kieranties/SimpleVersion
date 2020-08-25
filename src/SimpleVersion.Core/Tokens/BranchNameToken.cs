@@ -9,16 +9,8 @@ namespace SimpleVersion.Tokens
     /// <summary>
     /// Handles formatting the branch name.
     /// </summary>
-    [TokenValueOption(_canonOption, Description = "Returns the full canonical branch name.")]
-    [TokenValueOption(_suffixOption, Description = "Returns the branch name suffix.")]
-    [TokenValueOption(_shortOption, Alias = _shortOption + _tokenKey, Description = "Returns a shortened branch name.")]
     public class BranchNameToken : ITokenRequestHandler<BranchNameTokenRequest>
     {
-        private const string _tokenKey = "branchname";
-        private const string _canonOption = "canon";
-        private const string _suffixOption = "suffix";
-        private const string _shortOption = "short";
-
         private static readonly Regex _regex = new Regex("[^a-z0-9]", RegexOptions.Compiled);
 
         /// <inheritdoc/>
@@ -32,7 +24,7 @@ namespace SimpleVersion.Tokens
                 BranchNameOption.Short => context.Result.BranchName,
                 BranchNameOption.Suffix => context.Result.CanonicalBranchName.Substring(context.Result.CanonicalBranchName.LastIndexOf('/') + 1),
                 BranchNameOption.Canonical => context.Result.CanonicalBranchName,
-                _ => throw new InvalidOperationException($"Invalid option '{request.BranchName}' for token '{_tokenKey}'")
+                _ => throw new InvalidOperationException($"Invalid option '{request.BranchName}'")
             };
 
             if (string.IsNullOrWhiteSpace(branchName))
@@ -56,8 +48,16 @@ namespace SimpleVersion.Tokens
     {
         public BranchNameOption BranchName { get; set; } = BranchNameOption.Canonical;
 
-        public void Parse(string optionValue)
+        public virtual void Parse(string optionValue)
         {
+            if (Enum.TryParse<BranchNameOption>(optionValue, out var result))
+            {
+                this.BranchName = result;
+            }
+            else
+            {
+                throw new ArgumentOutOfRangeException("Invalid value");
+            }
         }
     }
 
@@ -67,6 +67,14 @@ namespace SimpleVersion.Tokens
         public ShortBranchNameTokenRequest()
         {
             BranchName = BranchNameOption.Short;
+        }
+
+        public override void Parse(string optionValue)
+        {
+            if (!string.IsNullOrWhiteSpace(optionValue))
+            {
+                throw new InvalidOperationException($"{nameof(ShortBranchNameTokenRequest)} does not support options");
+            }
         }
     }
 }

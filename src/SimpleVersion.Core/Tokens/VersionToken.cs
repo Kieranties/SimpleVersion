@@ -3,19 +3,13 @@
 using System;
 using System.Collections.Generic;
 using SimpleVersion.Pipeline;
+using System.Linq;
 
 namespace SimpleVersion.Tokens
 {
     /// <summary>
     /// Handles the formatting of the version string.
     /// </summary>
-    [TokenValueOption(_majorOption, Description = "Returns the major part of the version string.")]
-    [TokenValueOption(_minorOption, Description = "Returns the minor part of the version string.")]
-    [TokenValueOption(_patchOption, Description = "Returns the patch part of the version string.")]
-    [TokenValueOption(_revisionOption, Description = "Returns the revision part of the version string.")]
-    [TokenValueOption(_revisionIfSetOption, Description = "Returns the revision part of the version string if it is set in configuration.")]
-    [TokenValueOption(_defaultOption, Description = "Returns the major.minor.patch version string with revision if set in configuration.")]
-    [TokenFallbackOption("Provide any combination of the option values.")]
     public class VersionToken : ITokenRequestHandler<VersionTokenRequest>
     {
         private const string _majorOption = "M";
@@ -23,7 +17,6 @@ namespace SimpleVersion.Tokens
         private const string _patchOption = "p";
         private const string _revisionIfSetOption = "r";
         private const string _revisionOption = "R";
-        private const string _defaultOption = "Mmpr";
 
         /// <inheritdoc/>
         public string Evaluate(VersionTokenRequest request, IVersionContext context, ITokenEvaluator evaluator)
@@ -62,10 +55,26 @@ namespace SimpleVersion.Tokens
     [Token("version", Description = "Provides parsing of the version string.")]
     public class VersionTokenRequest : ITokenRequest
     {
+        private static readonly char[] _allowed = new[] { 'M', 'm', 'p', 'r', 'R' };
+
         public string Format { get; set; } = "Mmpr";
 
         public void Parse(string optionValue)
         {
+            if (string.IsNullOrWhiteSpace(optionValue))
+            {
+                return;
+            }
+
+            var set = new HashSet<char>();
+            var valid = optionValue
+                .ToHashSet()
+                .All(c => _allowed.Contains(c));
+
+            if(!valid)
+            {
+                throw new InvalidOperationException("Invalid value");
+            }
 
         }
     }

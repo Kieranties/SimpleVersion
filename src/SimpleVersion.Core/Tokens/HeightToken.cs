@@ -27,7 +27,21 @@ namespace SimpleVersion.Tokens
 
         public void Parse(string optionValue)
         {
-
+            if(int.TryParse(optionValue, out var result))
+            {
+                if (result < 0)
+                {
+                    throw new ArgumentOutOfRangeException("Value must be zero or greater");
+                }
+                else
+                {
+                    this.Padding = result;
+                }
+            }
+            else
+            {
+                throw new ArgumentException("Invalid value");
+            }
         }
     }
 }

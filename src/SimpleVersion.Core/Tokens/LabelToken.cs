@@ -8,12 +8,8 @@ namespace SimpleVersion.Tokens
     /// <summary>
     /// Handles formatting of label parts.
     /// </summary>
-    [TokenValueOption(_dotOption, Description = "Joins the label parts into a string separated with the '.' character.")]
-    [TokenFallbackOption("Joins the label parts into a string separated with the given value.")]
     public class LabelToken : ITokenRequestHandler<LabelTokenRequest>
     {
-        private const string _dotOption = ".";
-
         /// <inheritdoc/>
         public string Evaluate(LabelTokenRequest request, IVersionContext context, ITokenEvaluator evaluator)
         {
@@ -31,9 +27,6 @@ namespace SimpleVersion.Tokens
     {
         public string Separator { get; set; } = ".";
 
-        public void Parse(string optionValue)
-        {
-
-        }
+        public void Parse(string optionValue) => this.Separator = optionValue;
     }
 }
