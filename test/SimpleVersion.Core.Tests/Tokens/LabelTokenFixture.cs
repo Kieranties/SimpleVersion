@@ -13,32 +13,38 @@ namespace SimpleVersion.Core.Tests.Tokens
     public class LabelTokenFixture
     {
         private readonly LabelToken _sut;
+        private readonly LabelTokenRequest _request;
         private readonly IVersionContext _context;
         private readonly ITokenEvaluator _evaluator;
 
         public LabelTokenFixture()
         {
             _sut = new LabelToken();
+            _request = new LabelTokenRequest();
             _context = Substitute.For<IVersionContext>();
             _context.Result.Returns(new VersionResult());
             _context.Result.IsRelease = true;
             _evaluator = Substitute.For<ITokenEvaluator>();
-            _evaluator.Process(Arg.Any<string>(), Arg.Any<IVersionContext>())
+            _evaluator.Parse(Arg.Any<string>(), Arg.Any<IVersionContext>())
                 .Returns(call => call.Arg<string>());
         }
 
         [Fact]
-        public void Ctor_SetsKey()
+        public void Evaluate_NullRequest_Throws()
         {
-            // Act / Assert
-            _sut.Key.Should().Be("label");
+            // Arrange
+            Action action = () => _sut.Evaluate(null, _context, _evaluator);
+
+            // Assert
+            action.Should().Throw<ArgumentNullException>()
+                .And.ParamName.Should().Be("request");
         }
 
         [Fact]
-        public void Process_NullContext_Throws()
+        public void Evaluate_NullContext_Throws()
         {
             // Arrange
-            Action action = () => _sut.EvaluateWithOption(LabelToken.Options.Default, null, _evaluator);
+            Action action = () => _sut.Evaluate(_request, null, _evaluator);
 
             // Assert
             action.Should().Throw<ArgumentNullException>()
@@ -46,10 +52,10 @@ namespace SimpleVersion.Core.Tests.Tokens
         }
 
         [Fact]
-        public void Process_NullEvaluator_Throws()
+        public void Evaluate_NullEvaluator_Throws()
         {
             // Arrange
-            Action action = () => _sut.EvaluateWithOption(LabelToken.Options.Default, _context, null);
+            Action action = () => _sut.Evaluate(_request, _context, null);
 
             // Assert
             action.Should().Throw<ArgumentNullException>()
@@ -57,18 +63,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         }
 
         [Fact]
-        public void Process_Null_Throws()
-        {
-            // Arrange
-            Action action = () => _sut.EvaluateWithOption(null, _context, _evaluator);
-
-            // Assert
-            action.Should().Throw<ArgumentNullException>()
-                .And.ParamName.Should().Be("optionValue");
-        }
-
-        [Fact]
-        public void Process_DefaultOption_UsesDefault()
+        public void Evaluate_DefaultOption_UsesDefault()
         {
             // Arrange
             var config = new VersionConfiguration
@@ -78,16 +73,17 @@ namespace SimpleVersion.Core.Tests.Tokens
             _context.Configuration.Returns(config);
 
             // Act
-            var result = _sut.EvaluateWithOption(LabelToken.Options.Default, _context, _evaluator);
+            var result = _sut.Evaluate(_request, _context, _evaluator);
 
             // Assert
             result.Should().Be("alpha.beta.gamma");
         }
 
         [Theory]
+        [InlineData(null)]
         [InlineData("")]
         [InlineData("\t\t  ")]
-        public void Process_WhitespaceOption_ReturnsJoined(string option)
+        public void Evaluate_WhitespaceOption_ReturnsJoined(string option)
         {
             // Arrange
             var config = new VersionConfiguration
@@ -95,11 +91,12 @@ namespace SimpleVersion.Core.Tests.Tokens
                 Label = { "alpha", "beta", "gamma" }
             };
             _context.Configuration.Returns(config);
+            _request.Separator = option;
 
             var expected = string.Join(option, config.Label);
 
             // Act
-            var result = _sut.EvaluateWithOption(option, _context, _evaluator);
+            var result = _sut.Evaluate(_request, _context, _evaluator);
 
             // Assert
             result.Should().Be(expected);
@@ -109,7 +106,7 @@ namespace SimpleVersion.Core.Tests.Tokens
         [InlineData(".thi")]
         [InlineData("-")]
         [InlineData("test")]
-        public void Process_StringOption_ReturnsJoined(string option)
+        public void Evaluate_StringOption_ReturnsJoined(string option)
         {
             // Arrange
             var config = new VersionConfiguration
@@ -117,11 +114,12 @@ namespace SimpleVersion.Core.Tests.Tokens
                 Label = { "alpha", "beta", "gamma" }
             };
             _context.Configuration.Returns(config);
+            _request.Separator = option;
 
             var expected = string.Join(option, config.Label);
 
             // Act
-            var result = _sut.EvaluateWithOption(option, _context, _evaluator);
+            var result = _sut.Evaluate(_request, _context, _evaluator);
 
             // Assert
             result.Should().Be(expected);
