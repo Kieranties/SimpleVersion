@@ -31,11 +31,7 @@ jobs:
   # Build
   - pwsh: ./build.ps1 -ArtifactsPath $(ArtifactsPath) -Configuration $(Configuration)
     displayName: 'Build and Test'
-  - task: WhiteSource@21
-    inputs:
-      cwd: '$(System.DefaultWorkingDirectory)'
-      projectName: '$(Build.Branchname)'
-
+  
   # Publish test results
   - task: PublishTestResults@2
     displayName: 'Tests: Publish unit tests'
