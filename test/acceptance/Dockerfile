@@ -8,7 +8,7 @@ ARG SIMPLEVERSION_VERSION
 COPY . /dist
 # Force copying of native lib into root of tool - don't pollute LD_LIBRARY_PATH
 RUN dotnet tool install SimpleVersion.Tool --version ${SIMPLEVERSION_VERSION} -g --add-source /dist \
-    && cp /root/.dotnet/tools/.store/simpleversion.tool/${SIMPLEVERSION_VERSION}/simpleversion.tool/${SIMPLEVERSION_VERSION}/tools/netcoreapp3.1/any/runtimes/alpine.3.9-x64/native/* /root/.dotnet/tools/.store/simpleversion.tool/${SIMPLEVERSION_VERSION}/simpleversion.tool/${SIMPLEVERSION_VERSION}/tools/netcoreapp3.1/any
+    && cp /root/.dotnet/tools/.store/simpleversion.tool/${SIMPLEVERSION_VERSION}/simpleversion.tool/${SIMPLEVERSION_VERSION}/tools/netcoreapp3.1/any/runtimes/linux-x64/native/* /root/.dotnet/tools/.store/simpleversion.tool/${SIMPLEVERSION_VERSION}/simpleversion.tool/${SIMPLEVERSION_VERSION}/tools/netcoreapp3.1/any
 
 ENV PATH="${PATH}:/root/.dotnet/tools"
 
