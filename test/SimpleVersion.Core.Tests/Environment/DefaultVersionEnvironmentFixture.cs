@@ -66,5 +66,20 @@ namespace SimpleVersion.Core.Tests.Environment
             // Assert
             result.Should().BeNull();
         }
+
+        [Fact]
+        public void BranchName_OverrideSet_ReturnsOverride()
+        {
+            // Arrange
+            var expectedName = "OVERRIDE";
+            _env.GetVariable("simpleversion.sourcebranch").Returns(expectedName);
+            var sut = new DefaultVersionEnvironment(_env);
+
+            // Act
+            var result = sut.BranchName;
+
+            // Assert
+            result.Should().Be(expectedName);
+        }
     }
 }

@@ -102,5 +102,25 @@ namespace SimpleVersion.Core.Tests.Environment
             // Assert
             result.Should().Be(branch);
         }
+
+        [Theory]
+        [InlineData("refs/heads/master")]
+        [InlineData("refs/heads/release/1.0/master")]
+        [InlineData("refs/pull/10/merge")]
+        public void BranchName_OverrideSet_ReturnsOverride(string canonical)
+        {
+            // Arrange
+            var expectedName = "override";
+            _env.GetVariable("simpleversion.sourcebranch").Returns(expectedName);
+            _env.GetVariable("BUILD_SOURCEBRANCH").Returns(canonical);
+
+            var sut = new AzureDevopsEnvironment(_env);
+
+            // Act
+            var result = sut.BranchName;
+
+            // Assert
+            result.Should().Be(expectedName);
+        }
     }
 }
