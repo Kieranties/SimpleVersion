@@ -2,5 +2,7 @@
   href: intro.md
 - name: Configuration
   href: configuration.md
+- name: Environments
+  href: environments.md
 - name: Results
   href: results.md
