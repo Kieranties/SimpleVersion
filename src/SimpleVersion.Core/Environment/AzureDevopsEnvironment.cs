@@ -10,8 +10,6 @@ namespace SimpleVersion.Environment
     /// </summary>
     public class AzureDevopsEnvironment : BaseVersionEnvironment
     {
-        private static readonly Regex _trim = new Regex(@"^refs\/(heads\/)?", RegexOptions.IgnoreCase);
-
         /// <summary>
         /// Initializes a new instance of the <see cref="AzureDevopsEnvironment"/> class.
         /// </summary>
@@ -19,18 +17,15 @@ namespace SimpleVersion.Environment
         public AzureDevopsEnvironment(IEnvironmentVariableAccessor accessor)
             : base(accessor)
         {
-            CanonicalBranchName = Variables.GetVariable("BUILD_SOURCEBRANCH");
-            if (CanonicalBranchName != null)
+            if (string.IsNullOrWhiteSpace(CanonicalBranchName))
             {
-                BranchName = _trim.Replace(CanonicalBranchName, string.Empty);
+                CanonicalBranchName = Variables.GetVariable("BUILD_SOURCEBRANCH");
+                if (CanonicalBranchName != null)
+                {
+                    BranchName = CanonicalBranchTrimmer.Replace(CanonicalBranchName, string.Empty);
+                }
             }
         }
-
-        /// <inheritdoc/>
-        public override string? CanonicalBranchName { get; }
-
-        /// <inheritdoc/>
-        public override string? BranchName { get; }
 
         /// <inheritdoc/>
         public override bool IsValid => Variables.GetVariable("TF_BUILD").ToBool();

@@ -13,3 +13,4 @@ testResults.xml
 coverage.xml
 coverage.cobertura.xml
 *.trx
+*.DotSettings.user
