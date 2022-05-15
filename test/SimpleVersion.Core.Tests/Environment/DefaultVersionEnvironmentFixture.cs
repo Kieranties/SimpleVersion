@@ -15,6 +15,7 @@ namespace SimpleVersion.Core.Tests.Environment
         public DefaultVersionEnvironmentFixture()
         {
             _env = Substitute.For<IEnvironmentVariableAccessor>();
+            _env.GetVariable("simpleversion.sourcebranch").Returns((string)null);
         }
 
         [Fact]
