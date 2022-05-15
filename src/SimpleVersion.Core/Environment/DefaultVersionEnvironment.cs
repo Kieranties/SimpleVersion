@@ -16,12 +16,6 @@ namespace SimpleVersion.Environment
         }
 
         /// <inheritdoc/>
-        public override string? CanonicalBranchName => null;
-
-        /// <inheritdoc/>
-        public override string? BranchName => null;
-
-        /// <inheritdoc/>
         public override bool IsValid => true;
     }
 }

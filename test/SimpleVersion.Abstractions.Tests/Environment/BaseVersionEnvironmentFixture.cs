@@ -34,15 +34,27 @@ namespace SimpleVersion.Abstractions.Tests.Environment
             instance.VariablesWrapper.Should().BeSameAs(accessor);
         }
 
+        [Fact]
+        public void BranchName_OverrideSet_ReturnsOverride()
+        {
+            // Arrange
+            var expectedName = "OVERRIDE";
+            var accessor = Substitute.For<IEnvironmentVariableAccessor>();
+            accessor.GetVariable("simpleversion.sourcebranch").Returns(expectedName);
+            var sut = new StubVersionEnvironment(accessor);
+
+            // Act
+            var result = sut.BranchName;
+
+            // Assert
+            result.Should().Be(expectedName);
+        }
+
         private class StubVersionEnvironment : BaseVersionEnvironment
         {
             public StubVersionEnvironment(IEnvironmentVariableAccessor accessor) : base(accessor)
             {
             }
-
-            public override string CanonicalBranchName => throw new NotImplementedException("Should not be tested");
-
-            public override string BranchName => throw new NotImplementedException("Should not be tested");
 
             public override bool IsValid => throw new NotImplementedException("Should not be tested");
 
