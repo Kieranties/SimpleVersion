@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Results </title>
+    <title>Environments </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Results ">
+    <meta name="title" content="Environments ">
     <meta name="generator" content="docfx 2.57.2.0">
     
     <link rel="shortcut icon" href="../images/log.png">
@@ -77,121 +77,23 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="results">Results</h1>
+<h1 id="environments">Environments</h1>
 
-<p>How you handle the results of SimpleVersion will vary based on how you are
-invoking the tool.  However, all implementations return the same results object.</p>
-<p>The following is an example from invoking the command line tool:</p>
-<pre><code class="lang-json">{
-  &quot;Version&quot;: &quot;0.1.0&quot;,
-  &quot;Major&quot;: 0,
-  &quot;Minor&quot;: 1,
-  &quot;Patch&quot;: 0,
-  &quot;Revision&quot;: 0,
-  &quot;Height&quot;: 18,
-  &quot;HeightPadded&quot;: &quot;0018&quot;,
-  &quot;Sha&quot;: &quot;ebc8f22ae83bfa3c1e36d6bf70c2a383ae30c9dd&quot;,
-  &quot;Sha7&quot;: &quot;ebc8f22&quot;,
-  &quot;CanonicalBranchName&quot;: &quot;refs/heads/preview/test&quot;,
-  &quot;BranchName&quot;: &quot;preview/test&quot;,
-  &quot;Formats&quot;: {
-    &quot;Semver1&quot;: &quot;0.1.0-alpha2-0018&quot;,
-    &quot;Semver2&quot;: &quot;0.1.0-alpha2.18&quot;
-  }
-}
-</code></pre>
-<h2 id="properties">Properties</h2>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type Value</th>
-<th>Details</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Version</td>
-<td><em>int</em>.<em>int</em>.<em>int</em>(.<em>int</em>)</td>
-<td>The Major.Minor.Patch version value. If Revision was provided in the original format, it will also be included.</td>
-</tr>
-<tr>
-<td>Major</td>
-<td>int</td>
-<td>The Major value reported in the Version string</td>
-</tr>
-<tr>
-<td>Minor</td>
-<td>int</td>
-<td>The Minor value reported in the Version string</td>
-</tr>
-<tr>
-<td>Patch</td>
-<td>int</td>
-<td>The Patch value reported in the Version string</td>
-</tr>
-<tr>
-<td>Revision</td>
-<td>int</td>
-<td>The Revision value. Always 0 even if not included in the Version string</td>
-</tr>
-<tr>
-<td>Height</td>
-<td>int</td>
-<td>The calculated height</td>
-</tr>
-<tr>
-<td>HeightPadded</td>
-<td>int</td>
-<td>The calculated height padded to four digits</td>
-</tr>
-<tr>
-<td>Sha</td>
-<td>string</td>
-<td>The sha of the current commit at the time of invocation</td>
-</tr>
-<tr>
-<td>Sha7</td>
-<td>string</td>
-<td>The sha of the current commit at the time of invocation, shortened to 7 characters</td>
-</tr>
-<tr>
-<td>BranchName</td>
-<td>string</td>
-<td>The checked out branch at the time of invocation</td>
-</tr>
-<tr>
-<td>CanonicalBranchName</td>
-<td>string</td>
-<td>The full canonical name of the checked out branch at the time of invocation</td>
-</tr>
-</tbody>
-</table>
-<h3 id="formats">Formats</h3>
-<p>Formats are specified combinations of the result values that follow a
-specification. Currently only built in formats are supported, however custom
-formats will be supported in a future version.</p>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Type Value</th>
-<th>Details</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Semver1</td>
-<td>string</td>
-<td>The full version string following the <a href="https://semver.org/spec/v1.0.0.html">Semver1</a> spec</td>
-</tr>
-<tr>
-<td>Semver2</td>
-<td>string</td>
-<td>The full version string following the <a href="https://semver.org/spec/v2.0.0.html">Semver2</a> spec</td>
-</tr>
-</tbody>
-</table>
+<p>SimpleVersion attempts to identify git information from the local environment.
+When running on Continuous Integration (CI) systems you may need to prepare the
+environment to cater for the CI systems specific approach to builds.</p>
+<h2 id="azure-devops">Azure Devops</h2>
+<p>Azure Devops is identified as the build environment when the environment variable <code>TF_BUILD</code> is set.</p>
+<p>When identified, the canonical and friendly branch names are derived from the <code>BUILD_SOURCEBRANCH</code> environment variable.</p>
+<h2 id="fallback-environment">Fallback Environment</h2>
+<p>For all environments, the build branch can be overridden by setting <code>simpleversion.sourcebranch</code> to the <em>full canonical branch name</em>.  When this variable is set it will override the resolution from any CI system as well as the local repository branch name.</p>
+<h3 id="teamcity">TeamCity</h3>
+<p>When building with TeamCity you can lift the branch name of the build to an environment variable by doing the following:</p>
+<ol>
+<li>Open your build configuration, and select Parameters</li>
+<li>Add a new paramter called <code>env.simpleversion.sourcebranch</code></li>
+<li>Set the value to <code>%teamcity.build.vcs.branch.{vcsid}%</code> where <code>{vcsid}</code> is the VCS Root of your repo</li>
+</ol>
 </article>
           </div>
           
@@ -200,7 +102,7 @@ formats will be supported in a future version.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Docs/site/articles/results.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Docs/site/articles/environments.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
