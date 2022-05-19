@@ -1,6 +1,6 @@
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-focal
 
-RUN apk add git \
+RUN apt get git \
     && git config --global user.email "simpleversion-acceptance@example.com" \
     && git config --global user.name "SV Acceptance"
 
