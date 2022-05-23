@@ -31,7 +31,7 @@ jobs:
   # Build
   - pwsh: ./build.ps1 -ArtifactsPath $(ArtifactsPath) -Configuration $(Configuration)
     displayName: 'Build and Test'
-  
+
   # Publish test results
   - task: PublishTestResults@2
     displayName: 'Tests: Publish unit tests'
@@ -89,13 +89,37 @@ jobs:
   dependsOn: build_test_pack
   pool:
     vmImage: ubuntu-latest
+  variables:
+    DOCKER_BUILDKIT: 1
+  strategy:
+    matrix:
+      alpine-3.14:
+        tag: 3.1-alpine3.14
+        os: alpine
+      # TODO: Missing assets in libgit 27 to support alpine
+      # https://github.com/Kieranties/SimpleVersion/issues/149
+      # alpine-3.15:
+      #   tag: 3.1-alpine3.15
+      #   os: alpine
+      ubuntu-20.04:
+        tag: 3.1-focal
+        os: ubuntu
+      ubuntu-18.04:
+        tag: 3.1-bionic
+        os: ubuntu
+      debian-10:
+        tag: 3.1-buster
+        os: debian
+      debian-11:
+        tag: 3.1-bullseye
+        os: debian
 
   steps:
   - download: current
     artifact: dist
 
   # Run acceptance tests
-  - pwsh: ./acceptance.ps1 -ArtifactsPath $(Pipeline.Workspace)
+  - pwsh: ./acceptance.ps1 -ArtifactsPath $(Pipeline.Workspace) $(tag) $(os)
     displayName: 'Tests: Run acceptance tests'
 
   # Publish acceptance results
@@ -103,9 +127,9 @@ jobs:
     displayName: 'Tests: Publish acceptance tests'
     condition: succeededOrFailed()
     inputs:
-      testRunTitle: Acceptance Tests
+      testRunTitle: Acceptance Tests [$(tag)]
       testResultsFormat: NUnit
-      testResultsFiles: '$(Pipeline.Workspace)/**/acceptanceResults.xml'
+      testResultsFiles: '$(Pipeline.Workspace)/**/$(tag).xml'
       failTaskOnFailedTests: true
 
 

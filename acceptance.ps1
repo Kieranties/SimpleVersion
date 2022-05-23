@@ -6,6 +6,8 @@ using namespace System.IO
 #>
 param(
     [String]$ArtifactsPath = (Join-Path $PSScriptRoot '.artifacts'),
+    [String]$Tag = '3.1-alpine3.14',
+    [String]$OS = 'alpine',
     [Switch]$ForceBuild
 )
 
@@ -19,13 +21,19 @@ if(-not $version) {
     throw "No dist output for to test"
 }
 
+$testOutput = Join-Path $ArtifactsPath 'tests'
+New-Item $testOutput -ItemType Directory -Force > $null
+
 $acceptanceRoot = [Path]::Combine($PSScriptRoot, 'test', 'acceptance')
 $acceptanceDocker = Join-Path $acceptanceRoot 'Dockerfile'
-$tag = "simpleversion-acceptance:${version}"
+
+$buildTag = "simpleversion-acceptance:${version}-${Tag}"
 $dockerBuildArgs = @(
     'build'
-    '--build-arg', "SIMPLEVERSION_VERSION=${version}"
-    '--tag', $tag
+    '--build-arg', "SIMPLEVERSION=${version}"
+    '--build-arg', "TAG=${Tag}",
+    '--build-arg', "OS=${OS}"
+    '--tag', $buildTag
     '-f', $acceptanceDocker
     $distPath
 )
@@ -33,7 +41,5 @@ if($ForceBuild) {
     $dockerBuildArgs += '--no-cache'
 }
 docker $dockerBuildArgs
-docker run -v "${acceptanceRoot}:/tests" $tag
-$testOutput = Join-Path $ArtifactsPath 'tests'
-New-Item $testOutput -ItemType Directory -Force > $null
-Copy-Item (Join-Path $acceptanceRoot 'testResults.xml') (Join-Path $testOutput 'acceptanceResults.xml')
+docker run -v "${acceptanceRoot}:/tests" $buildTag
+Move-Item (Join-Path $acceptanceRoot 'testResults.xml') (Join-Path $testOutput "${Tag}.xml") -Force
