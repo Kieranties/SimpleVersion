@@ -89,7 +89,8 @@ jobs:
   dependsOn: build_test_pack
   pool:
     vmImage: ubuntu-latest
-
+  variables:
+    DOCKER_BUILDKIT: 1
   strategy:
     matrix:
       alpine-3.14:
