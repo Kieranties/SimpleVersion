@@ -11,7 +11,7 @@
   <ItemGroup Label="Source library packages">
     <PackageReference Update="LibGit2Sharp" Version="0.27.0-*" />
     <PackageReference Update="System.Text.Json" Version="4.7.*" />
-    <PackageReference Update="NJsonSchema" Version="10.4.*" />
+    <PackageReference Update="NJsonSchema" Version="10.7.*" />
   </ItemGroup>
 
   <ItemGroup Label="Docs site packages">
