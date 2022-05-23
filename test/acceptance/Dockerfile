@@ -8,6 +8,9 @@ RUN apk add git
 FROM ${IMAGE}:${TAG} as ubuntu
 RUN apt install -y --no-install-recommends
 
+FROM ${IMAGE}:${TAG} as debian
+RUN apt install -y --no-install-recommends
+
 FROM ${OS} as base
 ARG SIMPLEVERSION
 
