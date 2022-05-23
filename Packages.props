@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Test library packages">
-    <PackageReference Update="Microsoft.NET.Test.Sdk" Version="16.*" />
+    <PackageReference Update="Microsoft.NET.Test.Sdk" Version="17.*" />
     <PackageReference Update="xunit" Version="$(_xunit)" />
     <PackageReference Update="xunit.runner.visualstudio" Version="$(_xunit)" />
     <PackageReference Update="FluentAssertions" Version="5.*" />
