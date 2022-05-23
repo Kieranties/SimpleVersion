@@ -96,9 +96,11 @@ jobs:
       alpine-3.14:
         tag: 3.1-alpine3.14
         os: alpine
-      alpine-3.15:
-        tag: 3.1-alpine3.15
-        os: alpine
+      # TODO: Missing assets in libgit 27 to support alpine
+      # https://github.com/Kieranties/SimpleVersion/issues/149
+      # alpine-3.15:
+      #   tag: 3.1-alpine3.15
+      #   os: alpine
       ubuntu-20.04:
         tag: 3.1-focal
         os: ubuntu
