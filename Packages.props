@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Global project tooling">
-    <GlobalPackageReference Include="Microsoft.CodeAnalysis.FXCopAnalyzers" Version="2.*" />
+    <GlobalPackageReference Include="Microsoft.CodeAnalysis.FXCopAnalyzers" Version="3.*" />
     <GlobalPackageReference Include="StyleCop.Analyzers" Version="1.*" />
   </ItemGroup>
 
