@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class DictionaryConverter&lt;TKey, TValue&gt;
    ">
-    <meta name="generator" content="docfx 2.52.0.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../images/log.png">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -61,11 +61,11 @@
       <div class="container body-content">
         
         <div id="search-results">
-          <div class="search-list"></div>
+          <div class="search-list">Search Results for <span></span></div>
           <div class="sr-items">
             <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
           </div>
-          <ul id="pagination"></ul>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
         </div>
       </div>
       <div role="main" class="container body-content hide-when-search">
@@ -103,7 +103,16 @@ Implemented to support reading/writing non-standard keys.</p>
       <span class="xref">System.Text.Json.Serialization.JsonConverter&lt;System.Collections.Generic.Dictionary&lt;TKey, TValue&gt;&gt;.Read(System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)</span>
     </div>
     <div>
+      <span class="xref">System.Text.Json.Serialization.JsonConverter&lt;System.Collections.Generic.Dictionary&lt;TKey, TValue&gt;&gt;.ReadAsPropertyName(System.Text.Json.Utf8JsonReader, System.Type, System.Text.Json.JsonSerializerOptions)</span>
+    </div>
+    <div>
       <span class="xref">System.Text.Json.Serialization.JsonConverter&lt;System.Collections.Generic.Dictionary&lt;TKey, TValue&gt;&gt;.Write(System.Text.Json.Utf8JsonWriter, System.Collections.Generic.Dictionary&lt;TKey, TValue&gt;, System.Text.Json.JsonSerializerOptions)</span>
+    </div>
+    <div>
+      <span class="xref">System.Text.Json.Serialization.JsonConverter&lt;System.Collections.Generic.Dictionary&lt;TKey, TValue&gt;&gt;.WriteAsPropertyName(System.Text.Json.Utf8JsonWriter, System.Collections.Generic.Dictionary&lt;TKey, TValue&gt;, System.Text.Json.JsonSerializerOptions)</span>
+    </div>
+    <div>
+      <span class="xref">System.Text.Json.Serialization.JsonConverter&lt;System.Collections.Generic.Dictionary&lt;TKey, TValue&gt;&gt;.HandleNull</span>
     </div>
     <div>
       <span class="xref">System.Text.Json.Serialization.JsonConverter.CanConvert(System.Type)</span>
@@ -164,7 +173,7 @@ Implemented to support reading/writing non-standard keys.</p>
     <a href="https://github.com/Kieranties/SimpleVersion/new/master/apiSpec/new?filename=SimpleVersion_Serialization_Converters_DictionaryConverter_2_Read_System_Text_Json_Utf8JsonReader__System_Type_System_Text_Json_JsonSerializerOptions_.md&amp;value=---%0Auid%3A%20SimpleVersion.Serialization.Converters.DictionaryConverter%602.Read(System.Text.Json.Utf8JsonReader%40%2CSystem.Type%2CSystem.Text.Json.JsonSerializerOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Core/Serialization/Converters/DictionaryConverter{TKey,TValue}.cs/#L19">View Source</a>
+    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Core/Serialization/Converters/DictionaryConverter{TKey,TValue}.cs/#L20">View Source</a>
   </span>
   <a id="SimpleVersion_Serialization_Converters_DictionaryConverter_2_Read_" data-uid="SimpleVersion.Serialization.Converters.DictionaryConverter`2.Read*"></a>
   <h4 id="SimpleVersion_Serialization_Converters_DictionaryConverter_2_Read_System_Text_Json_Utf8JsonReader__System_Type_System_Text_Json_JsonSerializerOptions_" data-uid="SimpleVersion.Serialization.Converters.DictionaryConverter`2.Read(System.Text.Json.Utf8JsonReader@,System.Type,System.Text.Json.JsonSerializerOptions)">Read(ref Utf8JsonReader, Type, JsonSerializerOptions)</h4>
@@ -223,7 +232,7 @@ Implemented to support reading/writing non-standard keys.</p>
     <a href="https://github.com/Kieranties/SimpleVersion/new/master/apiSpec/new?filename=SimpleVersion_Serialization_Converters_DictionaryConverter_2_Write_System_Text_Json_Utf8JsonWriter_System_Collections_Generic_Dictionary__0__1__System_Text_Json_JsonSerializerOptions_.md&amp;value=---%0Auid%3A%20SimpleVersion.Serialization.Converters.DictionaryConverter%602.Write(System.Text.Json.Utf8JsonWriter%2CSystem.Collections.Generic.Dictionary%7B%600%2C%601%7D%2CSystem.Text.Json.JsonSerializerOptions)%0Asummary%3A%20'*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax'%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Core/Serialization/Converters/DictionaryConverter{TKey,TValue}.cs/#L40">View Source</a>
+    <a href="https://github.com/Kieranties/SimpleVersion/blob/master/src/SimpleVersion.Core/Serialization/Converters/DictionaryConverter{TKey,TValue}.cs/#L41">View Source</a>
   </span>
   <a id="SimpleVersion_Serialization_Converters_DictionaryConverter_2_Write_" data-uid="SimpleVersion.Serialization.Converters.DictionaryConverter`2.Write*"></a>
   <h4 id="SimpleVersion_Serialization_Converters_DictionaryConverter_2_Write_System_Text_Json_Utf8JsonWriter_System_Collections_Generic_Dictionary__0__1__System_Text_Json_JsonSerializerOptions_" data-uid="SimpleVersion.Serialization.Converters.DictionaryConverter`2.Write(System.Text.Json.Utf8JsonWriter,System.Collections.Generic.Dictionary{`0,`1},System.Text.Json.JsonSerializerOptions)">Write(Utf8JsonWriter, Dictionary&lt;TKey, TValue&gt;, JsonSerializerOptions)</h4>
@@ -282,7 +291,8 @@ Implemented to support reading/writing non-standard keys.</p>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
-              <!-- <p><a class="back-to-top" href="#top">Back to top</a><p> -->
+                <h5>In This Article</h5>
+                <div></div>
               </nav>
             </div>
           </div>
