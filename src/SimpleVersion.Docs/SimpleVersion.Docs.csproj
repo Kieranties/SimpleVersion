@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
     <OutputType>Exe</OutputType>
     <IsPackable>false</IsPackable>
     <CopyBuildOutputToPublishDirectory>false</CopyBuildOutputToPublishDirectory>
@@ -30,7 +29,7 @@
       <FileName>latest</FileName>
       <FileName Condition="$(Version.Contains('-'))">unstable</FileName>
     </PropertyGroup>
-    
+
     <Exec Command="dotnet $(OutputPath)/$(AssemblyName).dll $(MSBuildThisFileDirectory)site/schema/$(FileName).json" />
   </Target>
 

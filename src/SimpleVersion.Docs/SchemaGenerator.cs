@@ -35,7 +35,8 @@ namespace SimpleVersion.Docs
 
             var schema = JsonSchema.FromType(type, settings);
             schema.Properties.Add("$schema", new JsonSchemaProperty { Type = JsonObjectType.String });
-            Directory.CreateDirectory(Directory.GetParent(path).FullName);
+            var targetPath = Directory.GetParent(path) ?? throw new DirectoryNotFoundException($"Target path could not be resolved: {path}");
+            Directory.CreateDirectory(targetPath.FullName);
             File.WriteAllText(path, schema.ToJson());
         }
     }

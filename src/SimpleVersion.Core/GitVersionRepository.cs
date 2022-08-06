@@ -54,6 +54,7 @@ namespace SimpleVersion
             // Fetch repository configuration
             var repoConfig = GetRespositoryConfiguration();
             var canonicalBranchName = _environment.CanonicalBranchName ?? _repo.Head.CanonicalName;
+            var repoPath = Directory.GetParent(_repo.Info.Path)?.Parent ?? throw new DirectoryNotFoundException($"Repository path could not be resolved: {_repo.Info.Path}");
 
             // Compose base result data
             var result = new VersionResult
@@ -63,7 +64,7 @@ namespace SimpleVersion
                 Sha = _repo.Head.Tip.Sha,
 
                 // Value returned from repository has trailing slash so need to get parent twice.
-                RepositoryPath = Directory.GetParent(_repo.Info.Path).Parent.FullName,
+                RepositoryPath = repoPath.FullName,
                 IsRelease = repoConfig.Branches.Release.Any(x => Regex.IsMatch(canonicalBranchName, x))
             };
 

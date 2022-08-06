@@ -1,5 +1,5 @@
 ARG OS=alpine
-ARG TAG=3.1-alpine3.14
+ARG TAG=6.0-alpine3.15
 ARG IMAGE=mcr.microsoft.com/dotnet/sdk
 
 FROM ${IMAGE}:${TAG} as alpine

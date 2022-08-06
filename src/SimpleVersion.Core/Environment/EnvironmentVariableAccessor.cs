@@ -9,6 +9,6 @@ namespace SimpleVersion.Environment
     public class EnvironmentVariableAccessor : IEnvironmentVariableAccessor
     {
         /// <inheritdoc/>
-        public string GetVariable(string name) => System.Environment.GetEnvironmentVariable(name);
+        public string? GetVariable(string name) => System.Environment.GetEnvironmentVariable(name);
     }
 }
