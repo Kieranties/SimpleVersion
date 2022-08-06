@@ -27,7 +27,7 @@ namespace SimpleVersion.Serialization
         };
 
         /// <inheritdoc />
-        public T Deserialize<T>(string value) => JsonSerializer.Deserialize<T>(value, _options);
+        public T? Deserialize<T>(string value) => JsonSerializer.Deserialize<T>(value, _options);
 
         /// <inheritdoc />
         public string Serialize(object value) => JsonSerializer.Serialize(value, _options);

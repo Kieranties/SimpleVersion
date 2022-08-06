@@ -13,10 +13,11 @@ namespace SimpleVersion.Serialization.Converters
     /// </summary>
     /// <typeparam name="TKey">The type of the key.</typeparam>
     /// <typeparam name="TValue">The value type.</typeparam>
-    public class DictionaryConverter<TKey, TValue> : JsonConverter<Dictionary<TKey, TValue>>
+    public class DictionaryConverter<TKey, TValue> : JsonConverter<Dictionary<TKey, TValue?>>
+        where TKey : notnull
     {
         /// <inheritdoc />
-        public override Dictionary<TKey, TValue> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override Dictionary<TKey, TValue?> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             if (reader.TokenType != JsonTokenType.StartObject)
             {
@@ -26,7 +27,7 @@ namespace SimpleVersion.Serialization.Converters
             // step forward
             reader.Read();
 
-            var instance = new Dictionary<TKey, TValue>();
+            var instance = new Dictionary<TKey, TValue?>();
             while (reader.TokenType != JsonTokenType.EndObject)
             {
                 var (key, value) = ReadEntry(ref reader, options);
@@ -37,7 +38,7 @@ namespace SimpleVersion.Serialization.Converters
         }
 
         /// <inheritdoc />
-        public override void Write(Utf8JsonWriter writer, Dictionary<TKey, TValue> value, JsonSerializerOptions options)
+        public override void Write(Utf8JsonWriter writer, Dictionary<TKey, TValue?> value, JsonSerializerOptions options)
         {
             Assert.ArgumentNotNull(writer, nameof(writer));
             Assert.ArgumentNotNull(value, nameof(value));
@@ -52,7 +53,7 @@ namespace SimpleVersion.Serialization.Converters
             writer.WriteEndObject();
         }
 
-        private (TKey Key, TValue Value) ReadEntry(ref Utf8JsonReader reader, JsonSerializerOptions options)
+        private (TKey Key, TValue? Value) ReadEntry(ref Utf8JsonReader reader, JsonSerializerOptions options)
         {
             if (reader.TokenType != JsonTokenType.PropertyName)
             {
@@ -60,6 +61,11 @@ namespace SimpleVersion.Serialization.Converters
             }
 
             var key = JsonSerializer.Deserialize<TKey>(reader.ValueSpan, options);
+
+            if (key == null)
+            {
+                throw new JsonException(Resources.Exception_InvalidJsonToken(reader.TokenType, this.GetType()));
+            }
 
             reader.Read();
 

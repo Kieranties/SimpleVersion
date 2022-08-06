@@ -21,6 +21,6 @@ namespace SimpleVersion
         /// <typeparam name="T">The type to deserialize.</typeparam>
         /// <param name="value">A string representation of <typeparamref name="T"/>.</param>
         /// <returns>An new instance of <typeparamref name="T"/> populated from <paramref name="value"/>.</returns>
-        T Deserialize<T>(string value);
+        T? Deserialize<T>(string value);
     }
 }

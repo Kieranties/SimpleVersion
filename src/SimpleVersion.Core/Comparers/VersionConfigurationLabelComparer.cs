@@ -18,7 +18,7 @@ namespace SimpleVersion.Comparers
         /// <param name="x">The first <see cref="VersionConfiguration"/> to compare.</param>
         /// <param name="y">The second <see cref="VersionConfiguration"/> to compare.</param>
         /// <returns>True if equal, otherwise false.</returns>
-        public bool Equals(VersionConfiguration x, VersionConfiguration y)
+        public bool Equals(VersionConfiguration? x, VersionConfiguration? y)
         {
             if (ReferenceEquals(x, y))
             {
