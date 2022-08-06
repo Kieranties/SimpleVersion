@@ -41,7 +41,10 @@ namespace SimpleVersion.Serialization.Converters
             }
 
             var converterType = typeof(DictionaryConverter<,>).MakeGenericType(typeToConvert.GetGenericArguments());
-            return (JsonConverter)Activator.CreateInstance(converterType);
+            var instance = Activator.CreateInstance(converterType);
+            return instance == null
+                ? throw new InvalidOperationException($"Could not create an instance of type {converterType}.")
+                : (instance as JsonConverter) !;
         }
     }
 }
